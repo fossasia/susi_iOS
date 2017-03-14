@@ -1,0 +1,34 @@
+PODS:
+  - Alamofire (4.4.0)
+  - Material (2.5.2):
+    - Material/Core (= 2.5.2)
+  - Material/Core (2.5.2)
+  - PopoverSwift (2.0.0)
+  - Realm (2.4.3):
+    - Realm/Headers (= 2.4.3)
+  - Realm/Headers (2.4.3)
+  - RealmSwift (2.4.3):
+    - Realm (= 2.4.3)
+  - SwiftyJSON (3.1.4)
+  - Toast-Swift (2.0.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.4)
+  - Material
+  - PopoverSwift
+  - RealmSwift
+  - SwiftyJSON
+  - Toast-Swift (~> 2.0.0)
+
+SPEC CHECKSUMS:
+  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  Material: 00ae261fa04dd3f3f8584d07e44ac658fa1bc6fd
+  PopoverSwift: bafe02fff287b722e327b157c8f2fc238889dd5e
+  Realm: e08d60b0048ccccd3949c8c28a92c4db5712d7e9
+  RealmSwift: 30d49739ccb3385d201242736ca4dda56aec9dfc
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  Toast-Swift: 5b2f8f720f7e78e48511f693df1f9c9a6e38a25a
+
+PODFILE CHECKSUM: 86b8a7ce39d3d7c54fb7266b734e14544c756776
+
+COCOAPODS: 1.2.0
