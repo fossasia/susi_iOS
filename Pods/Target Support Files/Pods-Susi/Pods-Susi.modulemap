@@ -1,0 +1,6 @@
+framework module Pods_Susi {
+  umbrella header "Pods-Susi-umbrella.h"
+
+  export *
+  module * { export * }
+}

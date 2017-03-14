@@ -1,0 +1,6 @@
+framework module Material {
+  umbrella header "Material-umbrella.h"
+
+  export *
+  module * { export * }
+}

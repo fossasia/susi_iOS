@@ -1,0 +1,6 @@
+framework module PopoverSwift {
+  umbrella header "PopoverSwift-umbrella.h"
+
+  export *
+  module * { export * }
+}
