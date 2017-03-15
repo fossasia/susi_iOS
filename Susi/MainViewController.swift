@@ -8,25 +8,36 @@
 
 import UIKit
 import Material
-import PopoverSwift
+import Popover
 
 class MainViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let cellId: String = "cellId"
     var messages: [Message] = []
     
+    fileprivate var popover: Popover!
+    private var popoverOptions: [PopoverOption] = [
+        .type(.down),
+        .blackOverlayColor(UIColor(white: 0.0, alpha: 0.6)),
+        .arrowSize(CGSize(width: 12.0, height: 10.0))
+    ]
+    
+    let popoverText = ["Settings", "Wallpaper", "Share", "Logout"]
+    
     // Search Button Configure
-    let searchButton: UIBarButtonItem = {
-        let ib = UIBarButtonItem()
+    let searchButton: IconButton = {
+        let ib = IconButton()
         ib.image = Icon.cm.search
         ib.tintColor = .white
         return ib
     }()
     
     // Settings Button Configure
-    let settingsButton: UIBarButtonItem = {
+    lazy var settingsButton: IconButton = {
         let image = Icon.cm.moreVertical
-        let ib = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(setupSettingsView))
+        let ib = IconButton()
+        ib.image = image
+        ib.addTarget(self, action: #selector(showSettingsView), for: .touchUpInside)
         ib.tintColor = .white
         return ib
     }()
@@ -42,13 +53,11 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
     
     // Setup Navigation Bar
     func setupTitle() {
-        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
-        titleLabel.text = "  Susi"
-        titleLabel.textColor = .white
-        titleLabel.font = UIFont.systemFont(ofSize: 20)
-        navigationItem.titleView = titleLabel
+        navigationItem.title = "    Susi"
+        navigationItem.titleLabel.textAlignment = .left
+        navigationItem.titleLabel.textColor = .white
         
-        navigationItem.rightBarButtonItems = [settingsButton , searchButton]
+        navigationItem.rightViews = [searchButton, settingsButton]
     }
     
     // Setup View
@@ -57,8 +66,13 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     // Setup Settings View
-    func setupSettingsView() {
-        // Setup view or popover here
+    func showSettingsView() {
+        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: Int(self.view.frame.width / 2), height: (popoverText.count * 44)))
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.isScrollEnabled = false
+        self.popover = Popover(options: self.popoverOptions)
+        self.popover.show(tableView, fromView: settingsButton)
     }
     
     // Setup Collection View
@@ -66,7 +80,7 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         collectionView?.backgroundColor = .clear
         collectionView?.delegate = self
         
-        collectionView?.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - 50)
+        collectionView?.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 400)
         
         collectionView?.register(ChatMessageCell.self, forCellWithReuseIdentifier: cellId)
     }
@@ -217,4 +231,37 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         inputTextField.text = ""
     }
 
+}
+
+extension MainViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.popover.dismiss()
+        
+        let index = indexPath.row
+        
+        if index == 0 {
+            let settingsController = SettingsViewController(collectionViewLayout: UICollectionViewFlowLayout())
+            self.navigationController?.pushViewController(settingsController, animated: true)
+        }
+        
+    }
+    
+}
+
+extension MainViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        return popoverText.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+        
+        let item = self.popoverText[indexPath.row]
+        cell.textLabel?.text = item
+        cell.imageView?.image = UIImage(named: item.lowercased())
+        return cell
+    }
+    
 }
