@@ -80,7 +80,7 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         collectionView?.backgroundColor = .clear
         collectionView?.delegate = self
         
-        collectionView?.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 400)
+        collectionView?.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - 50)
         
         collectionView?.register(ChatMessageCell.self, forCellWithReuseIdentifier: cellId)
     }
