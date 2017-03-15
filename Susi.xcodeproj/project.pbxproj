@@ -18,7 +18,7 @@
 		6D4D9B451E768E190067459C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D4D9B431E768E190067459C /* LaunchScreen.storyboard */; };
 		6D4D9B4D1E768E650067459C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4D9B4C1E768E650067459C /* LoginViewController.swift */; };
 		6D4D9B541E7690160067459C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4D9B531E7690160067459C /* Extensions.swift */; };
-		6D82ADF31E784A5A0094AA9E /* Pods_Susi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D82ADF21E784A5A0094AA9E /* Pods_Susi.framework */; };
+		6D767DEF1E79A9C800FF5485 /* Pods_Susi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D767DEE1E79A9C800FF5485 /* Pods_Susi.framework */; };
 		6D98EDFB1E796EFE00D96B32 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D98EDFA1E796EFE00D96B32 /* SettingsCell.swift */; };
 		6DE122CB1E784A0300AFF46D /* GrowingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE122CA1E784A0300AFF46D /* GrowingTextView.swift */; };
 		6DE44E0F1E769AD300215B85 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE44E0E1E769AD300215B85 /* Color.swift */; };
@@ -27,7 +27,7 @@
 		6DE44E171E76ACD900215B85 /* Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE44E151E76ACD900215B85 /* Convenience.swift */; };
 		6DE44E191E76AF8100215B85 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE44E181E76AF8100215B85 /* MainViewController.swift */; };
 		6DE44E1B1E76B5D600215B85 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE44E1A1E76B5D600215B85 /* SignUpViewController.swift */; };
-		E36CF0AFB7C7AE84BA8A8D63 /* Pods_Susi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39326DEEDBD0CCA432D3B25D /* Pods_Susi.framework */; };
+		8C8A8092D3A640059E81BB69 /* Pods_Susi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39326DEEDBD0CCA432D3B25D /* Pods_Susi.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +45,8 @@
 		6D4D9B461E768E190067459C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D4D9B4C1E768E650067459C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/LoginViewController.swift; sourceTree = "<group>"; };
 		6D4D9B531E7690160067459C /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		6D767DEC1E79A9B600FF5485 /* Pods_Susi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Susi.framework; path = "Pods/../build/Release-iphoneos/Pods_Susi.framework"; sourceTree = "<group>"; };
+		6D767DEE1E79A9C800FF5485 /* Pods_Susi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Susi.framework; path = "Pods/../build/Release-iphoneos/Pods_Susi.framework"; sourceTree = "<group>"; };
 		6D82ADF21E784A5A0094AA9E /* Pods_Susi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Susi.framework; path = "../../Library/Developer/Xcode/DerivedData/Susi-avbkhdntnaiijsctxkaeflbkpdbm/Build/Products/Debug-iphonesimulator/Pods_Susi.framework"; sourceTree = "<group>"; };
 		6D98EDFA1E796EFE00D96B32 /* SettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		6DE122CA1E784A0300AFF46D /* GrowingTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrowingTextView.swift; sourceTree = "<group>"; };
@@ -63,8 +65,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D82ADF31E784A5A0094AA9E /* Pods_Susi.framework in Frameworks */,
-				E36CF0AFB7C7AE84BA8A8D63 /* Pods_Susi.framework in Frameworks */,
+				6D767DEF1E79A9C800FF5485 /* Pods_Susi.framework in Frameworks */,
+				8C8A8092D3A640059E81BB69 /* Pods_Susi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +186,8 @@
 		BD5FA220F268315B61F71523 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6D767DEE1E79A9C800FF5485 /* Pods_Susi.framework */,
+				6D767DEC1E79A9B600FF5485 /* Pods_Susi.framework */,
 				6D82ADF21E784A5A0094AA9E /* Pods_Susi.framework */,
 				39326DEEDBD0CCA432D3B25D /* Pods_Susi.framework */,
 			);
@@ -445,6 +449,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Release-iphoneos",
+				);
 				INFOPLIST_FILE = Susi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -461,6 +469,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Release-iphoneos",
+				);
 				INFOPLIST_FILE = Susi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
