@@ -26,7 +26,6 @@ class LoginViewController: UIViewController {
         textField.keyboardType = .emailAddress
         textField.placeholder = "Email Address"
         textField.detail = "Error, incorrect email"
-        textField.text = "chashmeetsingh@gmail.com"
         textField.detailColor = .red
         textField.isClearIconButtonEnabled = true
         textField.placeholderNormalColor = .white
@@ -45,7 +44,6 @@ class LoginViewController: UIViewController {
         let textField = TextField()
         textField.placeholder = "Password"
         textField.detail = "At least 8 characters"
-        textField.text = "Sabby123"
         textField.placeholderNormalColor = .white
         textField.placeholderActiveColor = .white
         textField.dividerNormalColor = .white
