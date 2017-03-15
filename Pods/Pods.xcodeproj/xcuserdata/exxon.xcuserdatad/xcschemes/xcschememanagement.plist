@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>IQKeyboardManagerSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Material-com.cosmicmind.material.fonts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -29,7 +34,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>PopoverSwift.xcscheme</key>
+		<key>Popover.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -57,7 +62,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>3330267D9440391E0CB35E1990B7E213</key>
+		<key>219417FA8C60E67904EE8047F819C50E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>27F51A91832BAAC133AB8E9E3AAC8CAB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -72,12 +82,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6F5B6BF10D38C28126F2685FE44C7322</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>740AD7554B2845204E371EF17319C7F9</key>
+		<key>4DC059E04CBA98AEDDB5C34E02D551E9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -92,17 +97,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CBEA3A8447614E6404462287A62B3830</key>
+		<key>AA73300C01C03862E28618E6FC082E64</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D7B8845F66CC1B3D2F95EB72F65C547B</key>
+		<key>B0354DD4AE8983B057C95065F8484996</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E7025AB390E460B360BFE5BCC15539A5</key>
+		<key>D1C95DCD9B064C01C5E85EEBD270FFF1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E1D7436CB9818EF5BC9E835AC03D2783</key>
 		<dict>
 			<key>primary</key>
 			<true/>
