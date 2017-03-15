@@ -9,11 +9,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>IQKeyboardManagerSwift.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Material-com.cosmicmind.material.fonts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -62,12 +57,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>219417FA8C60E67904EE8047F819C50E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>27F51A91832BAAC133AB8E9E3AAC8CAB</key>
+		<key>060200F2B050B6E7D10E3C65F9DEC792</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -82,7 +72,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4DC059E04CBA98AEDDB5C34E02D551E9</key>
+		<key>41451D2BD21657564D88FDC940300643</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5991D89755F14052186F24F6D424F72D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,22 +92,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AA73300C01C03862E28618E6FC082E64</key>
+		<key>C328F352F4ED06A41FF9E271ABA6BC6E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B0354DD4AE8983B057C95065F8484996</key>
+		<key>DC53407C188B0CF417DD2AA9306C9162</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D1C95DCD9B064C01C5E85EEBD270FFF1</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E1D7436CB9818EF5BC9E835AC03D2783</key>
+		<key>FC6AF161B57C46F8F5A90C743CCE7CED</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -1,6 +1,5 @@
 PODS:
   - Alamofire (4.4.0)
-  - IQKeyboardManagerSwift (4.0.8)
   - Material (2.5.2):
     - Material/Core (= 2.5.2)
   - Material/Core (2.5.2)
@@ -15,7 +14,6 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
-  - IQKeyboardManagerSwift
   - Material
   - Popover
   - RealmSwift
@@ -24,7 +22,6 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
-  IQKeyboardManagerSwift: c04bc9f68473823f825eb44d958fce98d921bead
   Material: 00ae261fa04dd3f3f8584d07e44ac658fa1bc6fd
   Popover: 8bced665f98824ded3b8114a27f4d2281c78a672
   Realm: e08d60b0048ccccd3949c8c28a92c4db5712d7e9
@@ -32,6 +29,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   Toast-Swift: 5b2f8f720f7e78e48511f693df1f9c9a6e38a25a
 
-PODFILE CHECKSUM: f2350e88a3f5b5067aa71e526a0848fb619f302f
+PODFILE CHECKSUM: 5d321bcedbdc278eb75b6ba27fdbb80b31c5df55
 
 COCOAPODS: 1.2.0
