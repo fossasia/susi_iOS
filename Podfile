@@ -12,4 +12,5 @@ target 'Susi' do
   pod 'SwiftyJSON'
   pod 'RealmSwift'
   pod 'Popover'
+  pod 'SwiftValidators'
 end

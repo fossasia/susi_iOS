@@ -10,6 +10,8 @@ import UIKit
 import Material
 
 class AppNavigationController: NavigationController {
+    
+    // Configures Navigation Controller
     open override func prepare() {
         super.prepare()
         guard let v = navigationBar as? NavigationBar else {

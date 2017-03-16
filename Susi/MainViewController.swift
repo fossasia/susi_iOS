@@ -49,6 +49,14 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         setupView()
         setupCollectionView()
         setupInputComponents()
+        
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.resignResponders)))
+        inputTextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: UIControlEvents.editingChanged)
+    }
+    
+    // Resign responders
+    func resignResponders() {
+        self.view.endEditing(true)
     }
     
     // Setup Navigation Bar
@@ -189,6 +197,7 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
                     self.messages.append(results!)
                 }
                 self.collectionView?.reloadData()
+                self.scrollToLast()
             }
         }
         
@@ -227,14 +236,34 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         let message = Message(inputTextField.text!)
         messages.append(message)
         collectionView?.reloadData()
+        self.scrollToLast()
         
         inputTextField.text = ""
+    }
+    
+    // Scroll to last message
+    func scrollToLast() {
+        let lastItem = self.messages.count - 1
+        let indexPath = IndexPath(item: lastItem, section: 0)
+        self.collectionView?.scrollToItem(at: indexPath, at: .top, animated: true)
+    }
+    
+    // Check if chat field empty
+    func textFieldDidChange(textField: UITextField) {
+        if textField == inputTextField {
+            if let message = inputTextField.text, message.isEmpty {
+                sendButton.isUserInteractionEnabled = false
+            } else {
+                sendButton.isUserInteractionEnabled = true
+            }
+        }
     }
 
 }
 
 extension MainViewController: UITableViewDelegate {
     
+    // Handles item click
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.popover.dismiss()
         
@@ -243,18 +272,30 @@ extension MainViewController: UITableViewDelegate {
         if index == 0 {
             let settingsController = SettingsViewController(collectionViewLayout: UICollectionViewFlowLayout())
             self.navigationController?.pushViewController(settingsController, animated: true)
+        } else if index == 3 {
+            logoutUser()
         }
         
+    }
+    
+    func logoutUser() {
+        Client.sharedInstance.logoutUser { (success, _) in
+            if success {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
 }
 
 extension MainViewController: UITableViewDataSource {
     
+    // Number of options in popover
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return popoverText.count
     }
     
+    // Configure setting cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
         

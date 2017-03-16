@@ -20,7 +20,7 @@ extension Client {
     }
 
     struct ResponseMessages {
-        static let InvalidParams = "Invalid login details!"
+        static let InvalidParams = "Email ID / Password incorrect"
         static let ServerError = "Problem connecting to server!"
         static let SignedOut = "Successfully logged out"
     }
@@ -41,6 +41,7 @@ extension Client {
         static let ResponseType = "type"
         static let Expression = "expression"
         static let Actions = "actions"
+        static let AccessToken = "access-token"
     }
 
 }
