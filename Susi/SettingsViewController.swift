@@ -44,10 +44,12 @@ class SettingsViewController: UICollectionViewController, UICollectionViewDelega
         collectionView?.register(SettingsCell.self, forCellWithReuseIdentifier: cellId)
     }
     
+    // Handles number of sections
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return sectionHeaders.count
     }
     
+    // Handles number of cells for section
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 || section == 1 {
             return 1
@@ -56,6 +58,7 @@ class SettingsViewController: UICollectionViewController, UICollectionViewDelega
         }
     }
     
+    // Configures cell
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! SettingsCell
         
@@ -95,14 +98,17 @@ class SettingsViewController: UICollectionViewController, UICollectionViewDelega
         return CGSize(width: view.frame.width, height: 50)
     }
     
+    // Handles cell spacing
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 10
     }
     
+    // Handles header view frame
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: view.frame.width, height: 44)
     }
     
+    // Configures header view
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! SettingsHeaderView        

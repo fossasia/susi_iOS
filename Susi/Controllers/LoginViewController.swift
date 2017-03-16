@@ -9,6 +9,7 @@
 import UIKit
 import Material
 import Toast_Swift
+import SwiftValidators
 
 class LoginViewController: UIViewController {
     
@@ -21,39 +22,23 @@ class LoginViewController: UIViewController {
     }()
     
     // Setup Email Text Field
-    lazy var emailField: ErrorTextField = {
-        let textField = ErrorTextField()
+    lazy var emailField: AuthTextField = {
+        let textField = AuthTextField()
         textField.keyboardType = .emailAddress
         textField.placeholder = "Email Address"
         textField.detail = "Error, incorrect email"
-        textField.detailColor = .red
-        textField.isClearIconButtonEnabled = true
-        textField.placeholderNormalColor = .white
-        textField.placeholderActiveColor = .white
-        textField.dividerNormalColor = .white
-        textField.dividerActiveColor = .white
-        textField.textColor = .white
-        textField.clearIconButton?.tintColor = .white
-        textField.isErrorRevealed = false
         textField.delegate = self
         return textField
     }()
     
     // Setup Password Field
-    let passwordField: TextField = {
-        let textField = TextField()
+    lazy var passwordField: AuthTextField = {
+        let textField = AuthTextField()
         textField.placeholder = "Password"
-        textField.detail = "At least 8 characters"
-        textField.placeholderNormalColor = .white
-        textField.placeholderActiveColor = .white
-        textField.dividerNormalColor = .white
-        textField.dividerActiveColor = .white
-        textField.detailColor = .white
-        textField.textColor = .white
-        textField.clearIconButton?.tintColor = .white
-        textField.clearButtonMode = .whileEditing
+        textField.detail = "Error, Should be at least 8 characters"
         textField.isVisibilityIconButtonEnabled = true
         textField.visibilityIconButton?.tintColor = Color.white.withAlphaComponent(textField.isSecureTextEntry ? 0.38 : 0.54)
+        textField.delegate = self
         return textField
     }()
     
@@ -88,6 +73,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         setupView()
+        checkSession()
     }
     
     // Setup View
@@ -140,47 +126,99 @@ class LoginViewController: UIViewController {
     
     // Login User
     func performLogin() {
-        
-        toggleEditing()
-        
-        let params = [
-            Client.UserKeys.Login: emailField.text!.lowercased(),
-            Client.UserKeys.Password: passwordField.text!,
-            "type": "access-token"
-        ] as [String : Any]
-        
-        Client.sharedInstance.loginUser(params as [String : AnyObject]) { (success, message) in
-            DispatchQueue.main.async {
-                self.toggleEditing()
-                if success {
-                    let vc = MainViewController(collectionViewLayout: UICollectionViewFlowLayout())
-                    let nvc = AppNavigationController(rootViewController: vc)
-                    self.present(nvc, animated: true, completion: {
-                        nvc.view.makeToast(message)
-                    })
+
+        if isValid() {
+            toggleEditing()
+            
+            let params = [
+                Client.UserKeys.Login: emailField.text!.lowercased(),
+                Client.UserKeys.Password: passwordField.text!,
+                Client.ChatKeys.ResponseType: Client.ChatKeys.AccessToken
+            ] as [String : Any]
+            
+            Client.sharedInstance.loginUser(params as [String : AnyObject]) { (_, success, message) in
+                DispatchQueue.main.async {
+                    self.toggleEditing()
+                    if success {
+                        self.completeLogin()
+                    }
+                    self.view.makeToast(message)
                 }
-                self.view.makeToast(message)
             }
         }
+        
     }
     
+    // Toggle Editing
     func toggleEditing() {
         emailField.isEnabled = !emailField.isEnabled
         passwordField.isEnabled = !passwordField.isEnabled
         loginButton.isEnabled = !loginButton.isEnabled
     }
     
+    // Clear field after login
+    func clearFields() {
+        emailField.text = ""
+        passwordField.text = ""
+    }
+    
+    // Show sign up controller
     func showSignUpView() {
+        clearFields()
+        
         let vc = SignUpViewController()
         self.present(vc, animated: true, completion: nil)
+    }
+    
+    // Validate fields
+    func isValid() -> Bool {
+        if let emailID = emailField.text, !emailID.isValidEmail() {
+            emailField.isErrorRevealed = true
+            return false
+        }
+        if let password = passwordField.text, password.isEmpty {
+            passwordField.isErrorRevealed = true
+            return false
+        }
+        return true
+    }
+    
+    // Login User
+    func completeLogin() {
+        let vc = MainViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        let nvc = AppNavigationController(rootViewController: vc)
+        self.present(nvc, animated: true, completion: {
+            self.clearFields()
+        })
+    }
+    
+    // Check existing session
+    func checkSession() {
+        if let user = UserDefaults.standard.value(forKey: "user") {
+            let _ = User(dictionary: user as! [String : AnyObject])
+            
+            DispatchQueue.main.async {
+                self.completeLogin()
+            }
+        }
     }
 
 }
 
 extension LoginViewController: TextFieldDelegate {
+    
+    // Verify input data after editing over
     public func textFieldDidEndEditing(_ textField: UITextField) {
-        if let emailID = emailField.text, !emailID.isValidEmail() {
-            (textField as? ErrorTextField)?.isErrorRevealed = true
+        if let emailID = emailField.text, !emailID.isValidEmail() && textField == emailField {
+            emailField.isErrorRevealed = true
+        } else {
+            emailField.isErrorRevealed = false
+        }
+        
+        if let password = passwordField.text, password.isEmpty && textField == passwordField {
+            passwordField.isErrorRevealed = true
+        } else {
+            passwordField.isErrorRevealed = false
         }
     }
     

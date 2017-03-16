@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Material
 
 extension UIColor {
     static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {
@@ -37,4 +38,25 @@ extension UIView {
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
     }
     
+}
+
+class AuthTextField: ErrorTextField {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        detailColor = .red
+        isClearIconButtonEnabled = true
+        placeholderNormalColor = .white
+        placeholderActiveColor = .white
+        dividerNormalColor = .white
+        dividerActiveColor = .white
+        textColor = .white
+        clearIconButton?.tintColor = .white
+        isErrorRevealed = false
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
 }

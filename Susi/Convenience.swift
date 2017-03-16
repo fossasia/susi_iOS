@@ -12,22 +12,20 @@ extension Client {
 
     // MARK: - Auth Methods
 
-    func loginUser(_ params: [String : AnyObject], _ completion: @escaping(_ success: Bool, _ error: String) -> Void) {
+    func loginUser(_ params: [String : AnyObject], _ completion: @escaping(_ user: User?, _ success: Bool, _ error: String) -> Void) {
 
         _ = taskForPOSTMethod(false, Methods.Login, parameters: params, completionHandlerForPOST: { (results, message) in
             
             if let error = message {
                 print(error.localizedDescription)
-                completion(false, ResponseMessages.ServerError)
+                completion(nil, false, ResponseMessages.InvalidParams)
                 return
-            } else {
+            } else if let results = results as? [String : AnyObject] {
                 
-                guard let successMessage = results?[UserKeys.Message] as? String else {
-                    completion(false, ResponseMessages.InvalidParams)
-                    return
-                }
+                let user = User(dictionary: results)
                 
-                completion(true, successMessage)
+                UserDefaults.standard.set(results, forKey: "user")
+                completion(user, true, user.message)
                 return
             }
             
@@ -43,15 +41,15 @@ extension Client {
                 print(error.localizedDescription)
                 completion(false, ResponseMessages.ServerError)
                 return
-            } else {
+            } else if let results = results {
                 
-                guard let successMessage = results?[UserKeys.Message] as? String else {
+                guard let successMessage = results[UserKeys.Message] as? String else {
                     completion(false, ResponseMessages.InvalidParams)
                     return
                 }
                 
                 completion(true, successMessage)
-                
+                return
             }
 
         })
@@ -60,7 +58,8 @@ extension Client {
 
     func logoutUser(_ completion: @escaping(_ success: Bool, _ error: String) -> Void) {
 
-        
+        UserDefaults.standard.removeObject(forKey: "user")
+        completion(true, ResponseMessages.SignedOut)
 
     }
     
@@ -74,7 +73,7 @@ extension Client {
                 print(error.localizedDescription)
                 completion(nil, false, ResponseMessages.InvalidParams)
                 return
-            } else {
+            } else if let results = results {
                 
                 guard let response = results as? [String : AnyObject] else {
                     completion(nil, false, ResponseMessages.InvalidParams)
