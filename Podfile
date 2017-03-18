@@ -13,4 +13,5 @@ target 'Susi' do
   pod 'RealmSwift'
   pod 'Popover'
   pod 'SwiftValidators'
+  pod 'ALTextInputBar'
 end
