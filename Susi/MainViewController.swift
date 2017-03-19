@@ -9,8 +9,9 @@
 import UIKit
 import Material
 import Popover
+import ALTextInputBar
 
-class MainViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class MainViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, ALTextInputBarDelegate {
     
     let cellId: String = "cellId"
     var messages: [Message] = []
@@ -41,7 +42,7 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         ib.tintColor = .white
         return ib
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,8 +51,38 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         setupCollectionView()
         setupInputComponents()
         
+        // Dismiss keyboard when touched anywhere in CV
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.resignResponders)))
-        inputTextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: UIControlEvents.editingChanged)
+        
+        subscribeToKeyboardNotifications()
+    }
+    
+    func subscribeToKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func handleKeyboardNotification(notification: NSNotification) {
+        
+        if let userInfo = notification.userInfo {
+            
+            let keyboardFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
+            let isKeyboardShowing = notification.name == NSNotification.Name.UIKeyboardWillShow
+            
+            bottomConstraint?.constant = isKeyboardShowing ? -keyboardFrame!.height : 0
+            
+            UIView.animate(withDuration: 0, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+                
+                self.view.layoutIfNeeded()
+                
+            }, completion: { (completed) in
+                
+                if isKeyboardShowing {
+                    self.scrollToLast()
+                }
+                
+            })
+        }
     }
     
     // Resign responders
@@ -165,9 +196,12 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
     }()
     
     // Setup Input Text Field
-    let inputTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Ask Susi Something..."
+    lazy var inputTextField: ALTextInputBar = {
+        let textField = ALTextInputBar()
+        textField.textView.placeholder = "Ask Susi Something..."
+        textField.textView.font = UIFont.systemFont(ofSize: 17)
+        textField.backgroundColor = .clear
+        textField.delegate = self
         return textField
     }()
     
@@ -243,22 +277,22 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
     
     // Scroll to last message
     func scrollToLast() {
-        let lastItem = self.messages.count - 1
-        let indexPath = IndexPath(item: lastItem, section: 0)
-        self.collectionView?.scrollToItem(at: indexPath, at: .top, animated: true)
+        if messages.count > 0 {
+            let lastItem = self.messages.count - 1
+            let indexPath = IndexPath(item: lastItem, section: 0)
+            self.collectionView?.scrollToItem(at: indexPath, at: .top, animated: true)
+        }
     }
     
     // Check if chat field empty
-    func textFieldDidChange(textField: UITextField) {
-        if textField == inputTextField {
-            if let message = inputTextField.text, message.isEmpty {
-                sendButton.isUserInteractionEnabled = false
-            } else {
-                sendButton.isUserInteractionEnabled = true
-            }
+    func textViewDidChange(textView: ALTextView) {
+        if let message = inputTextField.text, message.isEmpty {
+            sendButton.isUserInteractionEnabled = false
+        } else {
+            sendButton.isUserInteractionEnabled = true
         }
     }
-
+    
 }
 
 extension MainViewController: UITableViewDelegate {
