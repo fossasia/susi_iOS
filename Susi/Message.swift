@@ -7,14 +7,26 @@
 //
 
 import UIKit
-import Realm
-import RealmSwift
 
 struct Message {
     
     var body: String? = ""
-     var created_at = Date()
-     var isBot = false
+    var created_at = Date()
+    var isBot = false
+    var responseType: ResponseTypes = .answer
+    
+    var mapData: MapData?
+    
+    struct MapData {
+        var longitude: Double
+        var latitude: Double
+        var zoom: Int
+    }
+    
+    enum ResponseTypes: String {
+        case answer = "answer"
+        case map = "map"
+    }
     
     init(_ body: String) {
         self.body = body
@@ -35,6 +47,39 @@ struct Message {
                 if let response = actions[0] as? [String : String] {
                     self.body = response[Client.ChatKeys.Expression]!
                 }
+                
+                if let responses = actions as? [[String : String]] {
+                    
+                    for response in responses {
+                        let responseType = response[Client.ChatKeys.ResponseType]
+                        //debugPrint("response type: \(responseType)")
+                        if responseType == ResponseTypes.answer.rawValue {
+                            self.body = response[Client.ChatKeys.Expression]
+                            
+                            //debugPrint("Inside Answer")
+                            
+                        } else if responseType == ResponseTypes.map.rawValue {
+                            
+                            //debugPrint("Inside Map")
+                            
+                            self.responseType = ResponseTypes.map
+                            
+                            if let latitude = response[Client.ChatKeys.Latitude],
+                                let longitude = response[Client.ChatKeys.Longitude],
+                                let zoom = response[Client.ChatKeys.Zoom] {
+                                
+                                self.mapData = MapData(longitude: Double(longitude)!, latitude: Double(latitude)!, zoom: Int(zoom)!)
+                            }
+                            
+                            self.body = self.body?.components(separatedBy: " ").dropLast().joined(separator: " ")
+                            //debugPrint("Map Data: \(mapData)")
+                        } else {
+                            //debugPrint("Inside None")
+                        }
+                    }
+                    
+                }
+                
             }
         }
         

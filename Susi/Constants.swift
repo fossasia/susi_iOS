@@ -42,6 +42,9 @@ extension Client {
         static let Expression = "expression"
         static let Actions = "actions"
         static let AccessToken = "access-token"
+        static let Latitude = "latitude"
+        static let Longitude = "longitude"
+        static let Zoom = "zoom"
     }
 
 }

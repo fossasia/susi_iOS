@@ -13,7 +13,8 @@ import ALTextInputBar
 
 class MainViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, ALTextInputBarDelegate {
     
-    let cellId: String = "cellId"
+    let cellId = "cellId"
+    
     var messages: [Message] = []
     
     fileprivate var popover: Popover!
@@ -118,7 +119,7 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
     func setupCollectionView() {
         collectionView?.backgroundColor = .clear
         collectionView?.delegate = self
-        
+
         collectionView?.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - 50)
         
         collectionView?.register(ChatMessageCell.self, forCellWithReuseIdentifier: cellId)
@@ -126,15 +127,17 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
     
     // Number of items
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print("Number of messages: \(messages.count)")
         return messages.count
     }
     
     // Configure Cell
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ChatMessageCell
-        let message = messages[indexPath.row]
         
-        cell.messageTextView.text = message.body
+        let message = messages[indexPath.row]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ChatMessageCell
+        
+        cell.message = message
         
         if let messageText = message.body {
             
@@ -144,13 +147,23 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
             let estimatedFrame = NSString(string: messageText).boundingRect(with: size, options: options, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 18)], context: nil)
             
             if message.isBot {
-                cell.messageTextView.frame = CGRect(x: 16, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 30)
-                
-                cell.textBubbleView.frame = CGRect(x: 4, y: -4, width: estimatedFrame.width + 16 + 8 + 16, height: estimatedFrame.height + 20 + 6)
                 
                 cell.bubbleImageView.image = ChatMessageCell.grayBubbleImage
                 cell.bubbleImageView.tintColor = .white
                 cell.messageTextView.textColor = UIColor.black
+                
+                // Check if Map Type
+                if message.responseType == Message.ResponseTypes.map {
+                    cell.messageTextView.frame = CGRect(x: 16, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 30)
+                    cell.textBubbleView.frame = CGRect(x: 4, y: -4, width: estimatedFrame.width + 16 + 8 + 16, height: estimatedFrame.height + 20 + 6 + 250)
+                    
+                    let frame = CGRect(x: 16, y: estimatedFrame.height + 30 + 4, width: estimatedFrame.width + 16 - 4, height: 250 - 24)
+                    cell.addMapView(frame)
+                } else {
+                    cell.messageTextView.frame = CGRect(x: 16, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 30)
+                    cell.textBubbleView.frame = CGRect(x: 4, y: -4, width: estimatedFrame.width + 16 + 8 + 16, height: estimatedFrame.height + 20 + 6)
+                    cell.mapView.removeFromSuperview()
+                }
                 
             } else {
                 
@@ -162,10 +175,13 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
                 cell.bubbleImageView.image = ChatMessageCell.blueBubbleImage
                 cell.bubbleImageView.tintColor = UIColor.rgb(red: 220, green: 248, blue: 198)
                 cell.messageTextView.textColor = .black
+                
+                cell.mapView.removeFromSuperview()
             }
         }
         
         return cell
+        
     }
     
     // Calculate Bubble Height
@@ -176,6 +192,10 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
             let size = CGSize(width: 250, height: 1000)
             let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
             let estimatedFrame = NSString(string: messageText).boundingRect(with: size, options: options, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 18)], context: nil)
+            
+            if message.responseType == Message.ResponseTypes.map {
+                return CGSize(width: view.frame.width, height: estimatedFrame.height + 20 + 250)
+            }
             
             return CGSize(width: view.frame.width, height: estimatedFrame.height + 20)
         }
@@ -201,6 +221,7 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         textField.textView.placeholder = "Ask Susi Something..."
         textField.textView.font = UIFont.systemFont(ofSize: 17)
         textField.backgroundColor = .clear
+        textField.textView.maxNumberOfLines = 2
         textField.delegate = self
         return textField
     }()

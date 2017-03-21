@@ -19,5 +19,9 @@ class BaseCell: CollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupViews() {}
+    func setupViews() {
+        for view in subviews {
+            view.removeFromSuperview()
+        }
+    }
 }
