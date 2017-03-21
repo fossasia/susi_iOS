@@ -81,10 +81,6 @@ class ChatMessageCell: BaseCell, MKMapViewDelegate {
             let region = MKCoordinateRegion(center: center, span: span)
             
             mapView.setRegion(region, animated: true)
-            
-            let dropPin = MKPointAnnotation()
-            dropPin.coordinate = center
-            mapView.addAnnotation(dropPin)
         }
     }
     
