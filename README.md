@@ -4,9 +4,9 @@
 
 Screenshots:
 
-<img src="https://raw.githubusercontent.com/chashmeetsingh/susi-iOS/master/Screenshots/Screen%201.png" width="400" height="650">
-<img src="https://raw.githubusercontent.com/chashmeetsingh/susi-iOS/master/Screenshots/Screen%202.png" width="400" height="650">
-<img src="https://raw.githubusercontent.com/chashmeetsingh/susi-iOS/master/Screenshots/Screen%203.png" width="400" height="650">
-<img src="https://raw.githubusercontent.com/chashmeetsingh/susi-iOS/master/Screenshots/Screen%204.png" width="400" height="650">
-<img src="https://raw.githubusercontent.com/chashmeetsingh/susi-iOS/master/Screenshots/Screen%205.png" width="400" height="650">
-<img src="https://raw.githubusercontent.com/chashmeetsingh/susi-iOS/master/Screenshots/Screen%206.png" width="400" height="650">
+<img src="https://raw.githubusercontent.com/fossasia/susi_iOS/master/Screenshots/Screen%201.png" width="400" height="650">
+<img src="https://raw.githubusercontent.com/fossasia/susi_iOS/master/Screenshots/Screen%202.png" width="400" height="650">
+<img src="https://raw.githubusercontent.com/fossasia/susi_iOS/master/Screenshots/Screen%203.png" width="400" height="650">
+<img src="https://raw.githubusercontent.com/fossasia/susi_iOS/master/Screenshots/Screen%204.png" width="400" height="650">
+<img src="https://raw.githubusercontent.com/fossasia/susi_iOS/master/Screenshots/Screen%205.png" width="400" height="650">
+<img src="https://raw.githubusercontent.com/fossasia/susi_iOS/master/Screenshots/Screen%206.png" width="400" height="650">
