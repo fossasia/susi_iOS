@@ -28,6 +28,7 @@
 		6DE44E1B1E76B5D600215B85 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE44E1A1E76B5D600215B85 /* SignUpViewController.swift */; };
 		6DF591D41E817EC0003B2C6B /* Pods_Susi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DF591D31E817EC0003B2C6B /* Pods_Susi.framework */; };
 		6DF591D61E8189B7003B2C6B /* WebsearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF591D51E8189B7003B2C6B /* WebsearchResult.swift */; };
+		9B1814DE7FB0475950444A8F /* Pods_Susi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39326DEEDBD0CCA432D3B25D /* Pods_Susi.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6DF591D41E817EC0003B2C6B /* Pods_Susi.framework in Frameworks */,
+				9B1814DE7FB0475950444A8F /* Pods_Susi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
