@@ -44,6 +44,21 @@ class ChatMessageCell: BaseCell, MKMapViewDelegate {
         return mapView
     }()
     
+    let websearchContentView = UIView()
+    
+    let searchImageView: UIImageView = {
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "no-image")
+        return imageView
+    }()
+    
+    let websiteText: UILabel = {
+        let label = UILabel()
+        label.textColor = .white
+        return label
+    }()
+    
     static let grayBubbleImage = UIImage(named: "bubble_gray")!.resizableImage(withCapInsets: UIEdgeInsets(top: 22, left: 26, bottom: 22, right: 26)).withRenderingMode(.alwaysTemplate)
     static let blueBubbleImage = UIImage(named: "bubble_blue")!.resizableImage(withCapInsets: UIEdgeInsets(top: 22, left: 26, bottom: 22, right: 26)).withRenderingMode(.alwaysTemplate)
     
@@ -67,6 +82,7 @@ class ChatMessageCell: BaseCell, MKMapViewDelegate {
     }
     
     func addMapView(_ frame: CGRect) {
+        websearchContentView.removeFromSuperview()
         textBubbleView.addSubview(mapView)
         
         mapView.frame = frame
@@ -82,6 +98,20 @@ class ChatMessageCell: BaseCell, MKMapViewDelegate {
             
             mapView.setRegion(region, animated: true)
         }
+    }
+    
+    func addLinkPreview(_ frame: CGRect) {
+        mapView.removeFromSuperview()
+        
+        textBubbleView.addSubview(websearchContentView)
+        websearchContentView.backgroundColor = .lightGray
+        websearchContentView.frame = frame
+        
+        websearchContentView.addSubview(searchImageView)
+        websearchContentView.addSubview(websiteText)
+        websearchContentView.addConstraintsWithFormat(format: "H:|-4-[v0(44)]-4-[v1]-4-|", views: searchImageView, websiteText)
+        websearchContentView.addConstraintsWithFormat(format: "V:|-4-[v0]-4-|", views: searchImageView)
+        websearchContentView.addConstraintsWithFormat(format: "V:|-4-[v0(44)]-4-|", views: websiteText)
     }
     
 }

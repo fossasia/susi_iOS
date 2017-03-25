@@ -35,7 +35,7 @@ extension Client {
     
     struct ChatKeys {
         static let Answers = "answers"
-        static let Query = "q"
+        static let Query = "query"
         static let TimeZoneOffset = "timezoneOffset"
         static let AnswerDate = "answer_date"
         static let ResponseType = "type"
@@ -45,6 +45,17 @@ extension Client {
         static let Latitude = "latitude"
         static let Longitude = "longitude"
         static let Zoom = "zoom"
+    }
+    
+    struct WebsearchKeys {
+        static let RelatedTopics = "RelatedTopics"
+        static let Icon = "Icon"
+        static let Url = "URL"
+        static let FirstURL = "FirstURL"
+        static let Text = "Text"
+        static let Heading = "Heading"
+        static let Format = "format"
+        static let Query = "q"
     }
 
 }

@@ -68,13 +68,13 @@ extension Client {
     func queryResponse(_ params: [String : String], _ completion: @escaping(_ response: Message?, _ success: Bool, _ error: String) -> Void) {
      
         _ = taskForGETMethod(Methods.Chat, parameters: params, completionHandlerForGET: { (results, message) in
-            
+
             if let error = message {
                 print(error.localizedDescription)
-                completion(nil, false, ResponseMessages.InvalidParams)
+                completion(nil, false, ResponseMessages.ServerError)
                 return
             } else if let results = results {
-                
+
                 guard let response = results as? [String : AnyObject] else {
                     completion(nil, false, ResponseMessages.InvalidParams)
                     return
@@ -83,6 +83,32 @@ extension Client {
                 let message = Message.getMessageFromResponse(response, isBot: true)
                 
                 completion(message, true, "cool")
+                return
+                
+            }
+            
+        })
+        
+    }
+    
+    func websearch(_ params: [String : String], _ completion: @escaping(_ response: WebsearchResult?, _ success: Bool, _ error: String) -> Void) {
+        
+        _ = taskForGETMethod(Methods.Chat, parameters: params, completionHandlerForGET: { (results, message) in
+            
+            if let error = message {
+                print(error.localizedDescription)
+                completion(nil, false, ResponseMessages.ServerError)
+                return
+            } else if let results = results {
+                                
+                guard let response = results as? [String : AnyObject] else {
+                    completion(nil, false, ResponseMessages.InvalidParams)
+                    return
+                }
+                
+                let searchResult = WebsearchResult(dictionary: response)
+                
+                completion(searchResult, true, ResponseMessages.ServerError)
                 return
                 
             }

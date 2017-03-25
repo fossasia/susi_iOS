@@ -127,17 +127,18 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
     
     // Number of items
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("Number of messages: \(messages.count)")
+        //print("Number of messages: \(messages.count)")
         return messages.count
     }
     
     // Configure Cell
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let message = messages[indexPath.row]
+        var message = messages[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ChatMessageCell
         
         cell.message = message
+        print(message)
         
         if let messageText = message.body {
             
@@ -159,10 +160,39 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
                     
                     let frame = CGRect(x: 16, y: estimatedFrame.height + 30 + 4, width: estimatedFrame.width + 16 - 4, height: 250 - 24)
                     cell.addMapView(frame)
+                } else if message.responseType == Message.ResponseTypes.websearch {
+                    
+                    let params = [
+                        Client.WebsearchKeys.Query: message.query!,
+                        Client.WebsearchKeys.Format: "json"
+                    ]
+
+                    Client.sharedInstance.websearch(params, { (results, success, error) in
+                        
+                        if success {
+                            cell.message?.websearchData = results
+                            message.websearchData = results
+                            
+                            self.collectionView?.reloadData()
+                            self.scrollToLast()
+                            
+                        } else {
+                            print(error)
+                        }
+                        
+                    })
+                    
+                    cell.messageTextView.frame = CGRect(x: 16, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 30)
+                    cell.textBubbleView.frame = CGRect(x: 4, y: -4, width: estimatedFrame.width + 16 + 8 + 16, height: estimatedFrame.height + 20 + 6 + 64)
+                    
+                    let frame = CGRect(x: 16, y: estimatedFrame.height + 20, width: estimatedFrame.width + 16 - 4, height: 60 - 8)
+                    cell.addLinkPreview(frame)
                 } else {
                     cell.messageTextView.frame = CGRect(x: 16, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 30)
                     cell.textBubbleView.frame = CGRect(x: 4, y: -4, width: estimatedFrame.width + 16 + 8 + 16, height: estimatedFrame.height + 20 + 6)
+                    
                     cell.mapView.removeFromSuperview()
+                    cell.websearchContentView.removeFromSuperview()
                 }
                 
             } else {
@@ -195,6 +225,8 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
             
             if message.responseType == Message.ResponseTypes.map {
                 return CGSize(width: view.frame.width, height: estimatedFrame.height + 20 + 250)
+            } else if message.responseType == Message.ResponseTypes.websearch {
+                return CGSize(width: view.frame.width, height: estimatedFrame.height + 20 + 64)
             }
             
             return CGSize(width: view.frame.width, height: estimatedFrame.height + 20)

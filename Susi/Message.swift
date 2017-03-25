@@ -23,9 +23,13 @@ struct Message {
         var zoom: Int
     }
     
+    var websearchData: WebsearchResult?
+    var query: String?
+    
     enum ResponseTypes: String {
         case answer = "answer"
         case map = "map"
+        case websearch = "websearch"
     }
     
     init(_ body: String) {
@@ -52,15 +56,12 @@ struct Message {
                     
                     for response in responses {
                         let responseType = response[Client.ChatKeys.ResponseType]
-                        //debugPrint("response type: \(responseType)")
+
                         if responseType == ResponseTypes.answer.rawValue {
+                            
                             self.body = response[Client.ChatKeys.Expression]
                             
-                            //debugPrint("Inside Answer")
-                            
                         } else if responseType == ResponseTypes.map.rawValue {
-                            
-                            //debugPrint("Inside Map")
                             
                             self.responseType = ResponseTypes.map
                             
@@ -72,7 +73,12 @@ struct Message {
                             }
                             
                             self.body = self.body?.components(separatedBy: " ").dropLast().joined(separator: " ")
-                            //debugPrint("Map Data: \(mapData)")
+
+                        } else if responseType == ResponseTypes.websearch.rawValue {
+                            
+                            self.responseType = ResponseTypes.websearch
+                            self.query = response[Client.ChatKeys.Query]
+                            
                         } else {
                             //debugPrint("Inside None")
                         }

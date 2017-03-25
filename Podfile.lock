@@ -10,6 +10,7 @@ PODS:
   - Realm/Headers (2.4.3)
   - RealmSwift (2.4.3):
     - Realm (= 2.4.3)
+  - SwiftLinkPreview (2.0.3)
   - SwiftValidators (5.1.1)
   - SwiftyJSON (3.1.4)
   - Toast-Swift (2.0.0)
@@ -20,6 +21,7 @@ DEPENDENCIES:
   - Material
   - Popover
   - RealmSwift
+  - SwiftLinkPreview (~> 2.0.3)
   - SwiftValidators
   - SwiftyJSON
   - Toast-Swift (~> 2.0.0)
@@ -31,10 +33,11 @@ SPEC CHECKSUMS:
   Popover: 8bced665f98824ded3b8114a27f4d2281c78a672
   Realm: e08d60b0048ccccd3949c8c28a92c4db5712d7e9
   RealmSwift: 30d49739ccb3385d201242736ca4dda56aec9dfc
+  SwiftLinkPreview: b5ca44d10bad50db03c130adb0e6f2ac0588586e
   SwiftValidators: 3be5c8f80287fe4960d1b053519b22f304804a00
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   Toast-Swift: 5b2f8f720f7e78e48511f693df1f9c9a6e38a25a
 
-PODFILE CHECKSUM: d657888be70340bcb0407f581083fe91dab32043
+PODFILE CHECKSUM: a04b0c2649b8abee718217990c76c042b085548b
 
 COCOAPODS: 1.2.0
