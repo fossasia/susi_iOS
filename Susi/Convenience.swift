@@ -94,27 +94,35 @@ extension Client {
     
     func websearch(_ params: [String : AnyObject], _ completion: @escaping(_ response: WebsearchResult?, _ success: Bool, _ error: String) -> Void) {
         
-//        _ = makeRequest(.get, [:], Methods.Chat, parameters: params, completion: { (results, message) in
-//            
-//            if let error = message {
-//                print(error.localizedDescription)
-//                completion(nil, false, ResponseMessages.ServerError)
-//                return
-//            } else if let results = results {
-//                
-//                guard let response = results as? [String : AnyObject] else {
-//                    completion(nil, false, ResponseMessages.InvalidParams)
-//                    return
-//                }
-//                
-//                let searchResult = WebsearchResult(dictionary: response)
-//                
-//                completion(searchResult, true, ResponseMessages.ServerError)
-//                return
-//                
-//            }
-//            
-//        })
+        let url = URL(string: "http://api.duckduckgo.com")
+        
+        Alamofire.request(url!, method: .get, parameters: params, encoding: URLEncoding(destination: .methodDependent), headers: [:]).validate().responseJSON { (response:DataResponse<Any>) in
+            
+            print(response.result, response.error?.localizedDescription, response.request?.urlRequest)
+            
+            switch(response.result) {
+                
+            case .success(_):
+                
+                if let data = response.result.value as? [String : AnyObject] {
+                    
+                    let searchResult = WebsearchResult(dictionary: data)
+                    
+                    completion(searchResult, true, ResponseMessages.ServerError)
+                    return
+
+                    
+                } else {
+                    completion(nil, false, ResponseMessages.ServerError)
+                }
+                break
+            case .failure(let error):
+                print(error.localizedDescription)
+                completion(nil, false, ResponseMessages.ServerError)
+                break
+            }
+            
+        }
         
     }
 

@@ -9,12 +9,24 @@
 import UIKit
 import Material
 import MapKit
+import Alamofire
+import AlamofireImage
 
 class ChatMessageCell: BaseCell, MKMapViewDelegate {
     
     var message: Message? {
         didSet {
             messageTextView.text = message?.body
+            websiteText.text = message?.websearchData?.info
+    
+            if let imageString = message?.websearchData?.image {
+                if let url = URL(string: imageString) {
+                    if let urlRequest = URLRequest(url: url) as? URLRequest {
+                        searchImageView.af_setImage(withURLRequest: urlRequest)
+                    }
+                }
+            }
+            
         }
     }
     
@@ -56,6 +68,7 @@ class ChatMessageCell: BaseCell, MKMapViewDelegate {
     let websiteText: UILabel = {
         let label = UILabel()
         label.textColor = .white
+        label.numberOfLines = 2
         return label
     }()
     

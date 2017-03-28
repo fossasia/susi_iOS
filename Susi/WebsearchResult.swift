@@ -20,7 +20,7 @@ class WebsearchResult: NSObject {
         if let relatedTopics = dictionary[Client.WebsearchKeys.RelatedTopics] as? [[String : AnyObject]] {
             
             if let icon = relatedTopics[0][Client.WebsearchKeys.Icon] as? [String : String] {
-                if let image = icon[Client.WebsearchKeys.Icon] {
+                if let image = icon[Client.WebsearchKeys.Url] {
                     self.image = image
                 }
             }

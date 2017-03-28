@@ -138,7 +138,6 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ChatMessageCell
         
         cell.message = message
-        print(message)
         
         if let messageText = message.body {
             
@@ -169,12 +168,16 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
 
                     Client.sharedInstance.websearch(params as [String : AnyObject], { (results, success, error) in
                         DispatchQueue.main.async {
+
                             if success {
                                 cell.message?.websearchData = results
                                 message.websearchData = results
                                 
-                                self.collectionView?.reloadData()
-                                self.scrollToLast()
+                                cell.messageTextView.frame = CGRect(x: 16, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 30)
+                                cell.textBubbleView.frame = CGRect(x: 4, y: -4, width: estimatedFrame.width + 16 + 8 + 16, height: estimatedFrame.height + 20 + 6 + 64)
+                                
+                                let frame = CGRect(x: 16, y: estimatedFrame.height + 20, width: estimatedFrame.width + 16 - 4, height: 60 - 8)
+                                cell.addLinkPreview(frame)
                                 
                             } else {
                                 print(error)
@@ -183,11 +186,7 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
                         
                     })
                     
-                    cell.messageTextView.frame = CGRect(x: 16, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 30)
-                    cell.textBubbleView.frame = CGRect(x: 4, y: -4, width: estimatedFrame.width + 16 + 8 + 16, height: estimatedFrame.height + 20 + 6 + 64)
                     
-                    let frame = CGRect(x: 16, y: estimatedFrame.height + 20, width: estimatedFrame.width + 16 - 4, height: 60 - 8)
-                    cell.addLinkPreview(frame)
                 } else {
                     cell.messageTextView.frame = CGRect(x: 16, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 30)
                     cell.textBubbleView.frame = CGRect(x: 4, y: -4, width: estimatedFrame.width + 16 + 8 + 16, height: estimatedFrame.height + 20 + 6)
