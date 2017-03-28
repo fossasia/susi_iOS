@@ -167,17 +167,18 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
                         Client.WebsearchKeys.Format: "json"
                     ]
 
-                    Client.sharedInstance.websearch(params, { (results, success, error) in
-                        
-                        if success {
-                            cell.message?.websearchData = results
-                            message.websearchData = results
-                            
-                            self.collectionView?.reloadData()
-                            self.scrollToLast()
-                            
-                        } else {
-                            print(error)
+                    Client.sharedInstance.websearch(params as [String : AnyObject], { (results, success, error) in
+                        DispatchQueue.main.async {
+                            if success {
+                                cell.message?.websearchData = results
+                                message.websearchData = results
+                                
+                                self.collectionView?.reloadData()
+                                self.scrollToLast()
+                                
+                            } else {
+                                print(error)
+                            }
                         }
                         
                     })
@@ -273,12 +274,12 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
     func handleSend() {
         
         let params = [
-            Client.ChatKeys.Query: inputTextField.text!,
+            Client.WebsearchKeys.Query: inputTextField.text!,
             Client.ChatKeys.TimeZoneOffset: "-530"
         ]
         saveMessage()
         
-        Client.sharedInstance.queryResponse(params) { (results, success, message) in
+        Client.sharedInstance.queryResponse(params as [String : AnyObject]) { (results, success, message) in
             DispatchQueue.main.async {
                 if success {
                     self.messages.append(results!)
@@ -366,9 +367,13 @@ extension MainViewController: UITableViewDelegate {
     }
     
     func logoutUser() {
-        Client.sharedInstance.logoutUser { (success, _) in
-            if success {
-                self.dismiss(animated: true, completion: nil)
+        Client.sharedInstance.logoutUser { (success, error) in
+            DispatchQueue.main.async {
+                if success {
+                    self.dismiss(animated: true, completion: nil)
+                } else {
+                    print(error)
+                }
             }
         }
     }

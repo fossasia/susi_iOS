@@ -58,11 +58,11 @@ struct Message {
                         let responseType = response[Client.ChatKeys.ResponseType]
 
                         if responseType == ResponseTypes.answer.rawValue {
-                            
+                            debugPrint("Inside Answer")
                             self.body = response[Client.ChatKeys.Expression]
                             
                         } else if responseType == ResponseTypes.map.rawValue {
-                            
+                            debugPrint("Inside Map")
                             self.responseType = ResponseTypes.map
                             
                             if let latitude = response[Client.ChatKeys.Latitude],
@@ -75,12 +75,12 @@ struct Message {
                             self.body = self.body?.components(separatedBy: " ").dropLast().joined(separator: " ")
 
                         } else if responseType == ResponseTypes.websearch.rawValue {
-                            
+                            debugPrint("Inside Websearch")
                             self.responseType = ResponseTypes.websearch
                             self.query = response[Client.ChatKeys.Query]
                             
                         } else {
-                            //debugPrint("Inside None")
+                            debugPrint("Inside None")
                         }
                     }
                     

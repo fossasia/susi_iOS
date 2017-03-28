@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 extension Client {
 
@@ -14,7 +15,7 @@ extension Client {
 
     func loginUser(_ params: [String : AnyObject], _ completion: @escaping(_ user: User?, _ success: Bool, _ error: String) -> Void) {
 
-        _ = taskForPOSTMethod(false, Methods.Login, parameters: params, completionHandlerForPOST: { (results, message) in
+        _ = makeRequest(.post, [:], Methods.Login, parameters: params, completion: { (results, message) in
             
             if let error = message {
                 print(error.localizedDescription)
@@ -35,8 +36,8 @@ extension Client {
 
     func registerUser(_ params: [String : AnyObject], _ completion: @escaping(_ success: Bool, _ error: String) -> Void) {
 
-        _ = taskForPOSTMethod(false, Methods.Register, parameters: params, completionHandlerForPOST: { (results, message) in
-
+        _ = makeRequest(.post, [:], Methods.Register, parameters: params, completion: { (results, message) in
+            
             if let error = message {
                 print(error.localizedDescription)
                 completion(false, ResponseMessages.ServerError)
@@ -51,7 +52,7 @@ extension Client {
                 completion(true, successMessage)
                 return
             }
-
+            
         })
 
     }
@@ -65,16 +66,16 @@ extension Client {
     
     // MARK: - Chat Methods
     
-    func queryResponse(_ params: [String : String], _ completion: @escaping(_ response: Message?, _ success: Bool, _ error: String) -> Void) {
-     
-        _ = taskForGETMethod(Methods.Chat, parameters: params, completionHandlerForGET: { (results, message) in
-
+    func queryResponse(_ params: [String : AnyObject], _ completion: @escaping(_ response: Message?, _ success: Bool, _ error: String) -> Void) {
+        
+        _ = makeRequest(.get, [:], Methods.Chat, parameters: params, completion: { (results, message) in
+            
             if let error = message {
                 print(error.localizedDescription)
                 completion(nil, false, ResponseMessages.ServerError)
                 return
             } else if let results = results {
-
+                
                 guard let response = results as? [String : AnyObject] else {
                     completion(nil, false, ResponseMessages.InvalidParams)
                     return
@@ -91,29 +92,29 @@ extension Client {
         
     }
     
-    func websearch(_ params: [String : String], _ completion: @escaping(_ response: WebsearchResult?, _ success: Bool, _ error: String) -> Void) {
+    func websearch(_ params: [String : AnyObject], _ completion: @escaping(_ response: WebsearchResult?, _ success: Bool, _ error: String) -> Void) {
         
-        _ = taskForGETMethod(Methods.Chat, parameters: params, completionHandlerForGET: { (results, message) in
-            
-            if let error = message {
-                print(error.localizedDescription)
-                completion(nil, false, ResponseMessages.ServerError)
-                return
-            } else if let results = results {
-                                
-                guard let response = results as? [String : AnyObject] else {
-                    completion(nil, false, ResponseMessages.InvalidParams)
-                    return
-                }
-                
-                let searchResult = WebsearchResult(dictionary: response)
-                
-                completion(searchResult, true, ResponseMessages.ServerError)
-                return
-                
-            }
-            
-        })
+//        _ = makeRequest(.get, [:], Methods.Chat, parameters: params, completion: { (results, message) in
+//            
+//            if let error = message {
+//                print(error.localizedDescription)
+//                completion(nil, false, ResponseMessages.ServerError)
+//                return
+//            } else if let results = results {
+//                
+//                guard let response = results as? [String : AnyObject] else {
+//                    completion(nil, false, ResponseMessages.InvalidParams)
+//                    return
+//                }
+//                
+//                let searchResult = WebsearchResult(dictionary: response)
+//                
+//                completion(searchResult, true, ResponseMessages.ServerError)
+//                return
+//                
+//            }
+//            
+//        })
         
     }
 
