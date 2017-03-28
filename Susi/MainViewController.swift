@@ -9,10 +9,12 @@
 import UIKit
 import Material
 import Popover
+import ALTextInputBar
 
-class MainViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class MainViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, ALTextInputBarDelegate {
     
-    let cellId: String = "cellId"
+    let cellId = "cellId"
+    
     var messages: [Message] = []
     
     fileprivate var popover: Popover!
@@ -41,7 +43,7 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         ib.tintColor = .white
         return ib
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,8 +52,38 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         setupCollectionView()
         setupInputComponents()
         
+        // Dismiss keyboard when touched anywhere in CV
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.resignResponders)))
-        inputTextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: UIControlEvents.editingChanged)
+        
+        subscribeToKeyboardNotifications()
+    }
+    
+    func subscribeToKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func handleKeyboardNotification(notification: NSNotification) {
+        
+        if let userInfo = notification.userInfo {
+            
+            let keyboardFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
+            let isKeyboardShowing = notification.name == NSNotification.Name.UIKeyboardWillShow
+            
+            bottomConstraint?.constant = isKeyboardShowing ? -keyboardFrame!.height : 0
+            
+            UIView.animate(withDuration: 0, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+                
+                self.view.layoutIfNeeded()
+                
+            }, completion: { (completed) in
+                
+                if isKeyboardShowing {
+                    self.scrollToLast()
+                }
+                
+            })
+        }
     }
     
     // Resign responders
@@ -87,7 +119,7 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
     func setupCollectionView() {
         collectionView?.backgroundColor = .clear
         collectionView?.delegate = self
-        
+
         collectionView?.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - 50)
         
         collectionView?.register(ChatMessageCell.self, forCellWithReuseIdentifier: cellId)
@@ -95,15 +127,17 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
     
     // Number of items
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        //print("Number of messages: \(messages.count)")
         return messages.count
     }
     
     // Configure Cell
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ChatMessageCell
-        let message = messages[indexPath.row]
         
-        cell.messageTextView.text = message.body
+        var message = messages[indexPath.row]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ChatMessageCell
+        
+        cell.message = message
         
         if let messageText = message.body {
             
@@ -113,13 +147,53 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
             let estimatedFrame = NSString(string: messageText).boundingRect(with: size, options: options, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 18)], context: nil)
             
             if message.isBot {
-                cell.messageTextView.frame = CGRect(x: 16, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 30)
-                
-                cell.textBubbleView.frame = CGRect(x: 4, y: -4, width: estimatedFrame.width + 16 + 8 + 16, height: estimatedFrame.height + 20 + 6)
                 
                 cell.bubbleImageView.image = ChatMessageCell.grayBubbleImage
                 cell.bubbleImageView.tintColor = .white
                 cell.messageTextView.textColor = UIColor.black
+                
+                // Check if Map Type
+                if message.responseType == Message.ResponseTypes.map {
+                    cell.messageTextView.frame = CGRect(x: 16, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 30)
+                    cell.textBubbleView.frame = CGRect(x: 4, y: -4, width: estimatedFrame.width + 16 + 8 + 16, height: estimatedFrame.height + 20 + 6 + 250)
+                    
+                    let frame = CGRect(x: 16, y: estimatedFrame.height + 30 + 4, width: estimatedFrame.width + 16 - 4, height: 250 - 24)
+                    cell.addMapView(frame)
+                } else if message.responseType == Message.ResponseTypes.websearch {
+                    
+                    let params = [
+                        Client.WebsearchKeys.Query: message.query!,
+                        Client.WebsearchKeys.Format: "json"
+                    ]
+
+                    Client.sharedInstance.websearch(params as [String : AnyObject], { (results, success, error) in
+                        DispatchQueue.main.async {
+
+                            if success {
+                                cell.message?.websearchData = results
+                                message.websearchData = results
+                                
+                                cell.messageTextView.frame = CGRect(x: 16, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 30)
+                                cell.textBubbleView.frame = CGRect(x: 4, y: -4, width: estimatedFrame.width + 16 + 8 + 16, height: estimatedFrame.height + 20 + 6 + 64)
+                                
+                                let frame = CGRect(x: 16, y: estimatedFrame.height + 20, width: estimatedFrame.width + 16 - 4, height: 60 - 8)
+                                cell.addLinkPreview(frame)
+                                
+                            } else {
+                                print(error)
+                            }
+                        }
+                        
+                    })
+                    
+                    
+                } else {
+                    cell.messageTextView.frame = CGRect(x: 16, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 30)
+                    cell.textBubbleView.frame = CGRect(x: 4, y: -4, width: estimatedFrame.width + 16 + 8 + 16, height: estimatedFrame.height + 20 + 6)
+                    
+                    cell.mapView.removeFromSuperview()
+                    cell.websearchContentView.removeFromSuperview()
+                }
                 
             } else {
                 
@@ -131,10 +205,13 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
                 cell.bubbleImageView.image = ChatMessageCell.blueBubbleImage
                 cell.bubbleImageView.tintColor = UIColor.rgb(red: 220, green: 248, blue: 198)
                 cell.messageTextView.textColor = .black
+                
+                cell.mapView.removeFromSuperview()
             }
         }
         
         return cell
+        
     }
     
     // Calculate Bubble Height
@@ -145,6 +222,12 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
             let size = CGSize(width: 250, height: 1000)
             let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
             let estimatedFrame = NSString(string: messageText).boundingRect(with: size, options: options, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 18)], context: nil)
+            
+            if message.responseType == Message.ResponseTypes.map {
+                return CGSize(width: view.frame.width, height: estimatedFrame.height + 20 + 250)
+            } else if message.responseType == Message.ResponseTypes.websearch {
+                return CGSize(width: view.frame.width, height: estimatedFrame.height + 20 + 64)
+            }
             
             return CGSize(width: view.frame.width, height: estimatedFrame.height + 20)
         }
@@ -165,9 +248,13 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
     }()
     
     // Setup Input Text Field
-    let inputTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Ask Susi Something..."
+    lazy var inputTextField: ALTextInputBar = {
+        let textField = ALTextInputBar()
+        textField.textView.placeholder = "Ask Susi Something..."
+        textField.textView.font = UIFont.systemFont(ofSize: 17)
+        textField.backgroundColor = .clear
+        textField.textView.maxNumberOfLines = 2
+        textField.delegate = self
         return textField
     }()
     
@@ -186,12 +273,12 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
     func handleSend() {
         
         let params = [
-            Client.ChatKeys.Query: inputTextField.text!,
+            Client.WebsearchKeys.Query: inputTextField.text!,
             Client.ChatKeys.TimeZoneOffset: "-530"
         ]
         saveMessage()
         
-        Client.sharedInstance.queryResponse(params) { (results, success, message) in
+        Client.sharedInstance.queryResponse(params as [String : AnyObject]) { (results, success, message) in
             DispatchQueue.main.async {
                 if success {
                     self.messages.append(results!)
@@ -243,22 +330,22 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
     
     // Scroll to last message
     func scrollToLast() {
-        let lastItem = self.messages.count - 1
-        let indexPath = IndexPath(item: lastItem, section: 0)
-        self.collectionView?.scrollToItem(at: indexPath, at: .top, animated: true)
+        if messages.count > 0 {
+            let lastItem = self.messages.count - 1
+            let indexPath = IndexPath(item: lastItem, section: 0)
+            self.collectionView?.scrollToItem(at: indexPath, at: .top, animated: true)
+        }
     }
     
     // Check if chat field empty
-    func textFieldDidChange(textField: UITextField) {
-        if textField == inputTextField {
-            if let message = inputTextField.text, message.isEmpty {
-                sendButton.isUserInteractionEnabled = false
-            } else {
-                sendButton.isUserInteractionEnabled = true
-            }
+    func textViewDidChange(textView: ALTextView) {
+        if let message = inputTextField.text, message.isEmpty {
+            sendButton.isUserInteractionEnabled = false
+        } else {
+            sendButton.isUserInteractionEnabled = true
         }
     }
-
+    
 }
 
 extension MainViewController: UITableViewDelegate {
@@ -279,9 +366,13 @@ extension MainViewController: UITableViewDelegate {
     }
     
     func logoutUser() {
-        Client.sharedInstance.logoutUser { (success, _) in
-            if success {
-                self.dismiss(animated: true, completion: nil)
+        Client.sharedInstance.logoutUser { (success, error) in
+            DispatchQueue.main.async {
+                if success {
+                    self.dismiss(animated: true, completion: nil)
+                } else {
+                    print(error)
+                }
             }
         }
     }

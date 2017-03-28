@@ -33,7 +33,7 @@ class SignUpViewController: UIViewController {
     lazy var passwordField: AuthTextField = {
         let textField = AuthTextField()
         textField.placeholder = "Password"
-        textField.detail = "Should be atleast 8 characters long"
+        textField.detailLabel.text = "Password should be 6 characters long with one uppercase, lowercase and a number"
         textField.clearButtonMode = .whileEditing
         textField.isVisibilityIconButtonEnabled = true
         textField.visibilityIconButton?.tintColor = Color.white.withAlphaComponent(textField.isSecureTextEntry ? 0.38 : 0.54)
@@ -100,19 +100,19 @@ class SignUpViewController: UIViewController {
     // Add Subview Password Field
     private func preparePasswordField() {
         self.view.addSubview(passwordField)
-        self.view.layout(passwordField).top(165).left(20).right(20)
+        self.view.layout(passwordField).top(175).left(20).right(20)
     }
     
     // Add Subview Confirm Password Field
     private func prepareConfirmPasswordField() {
         self.view.addSubview(confirmPasswordField)
-        self.view.layout(confirmPasswordField).top(235).left(20).right(20)
+        self.view.layout(confirmPasswordField).top(260).left(20).right(20)
     }
     
     // Add Subview Sign Up Button
     private func prepareSignUpButton() {
         self.view.addSubview(signUpButton)
-        self.view.layout(signUpButton).height(44).top(300).left(20).right(20)
+        self.view.layout(signUpButton).height(44).top(325).left(20).right(20)
     }
     
     // Sign Up User
@@ -123,8 +123,8 @@ class SignUpViewController: UIViewController {
             toggleEditing()
             
             let params = [
-                Client.UserKeys.SignUp: emailField.text?.lowercased(),
-                Client.UserKeys.Password: passwordField.text
+                Client.UserKeys.SignUp: emailField.text!.lowercased(),
+                Client.UserKeys.Password: passwordField.text!
             ]
             
             Client.sharedInstance.registerUser(params as [String : AnyObject]) { (success, message) in
@@ -155,7 +155,7 @@ class SignUpViewController: UIViewController {
             emailField.isErrorRevealed = true
             return false
         }
-        if let password = passwordField.text, password.isEmpty, let confirmPassword = confirmPasswordField.text, confirmPassword.isEmpty {
+        if let password = passwordField.text, password.isEmpty, let confirmPassword = confirmPasswordField.text, confirmPassword.isEmpty || checkTextSufficientComplexity(text: password) {
             passwordField.isErrorRevealed = true
             return false
         }
@@ -164,6 +164,25 @@ class SignUpViewController: UIViewController {
             return false
         }
         return true
+    }
+    
+    // Password validation
+    func checkTextSufficientComplexity(text : String) -> Bool{
+        
+        let capitalLetterRegEx  = ".*[A-Z]+.*"
+        var texttest = NSPredicate(format:"SELF MATCHES %@", capitalLetterRegEx)
+        let capitalResult = texttest.evaluate(with: text)
+        
+        let numberRegEx  = ".*[0-9]+.*"
+        let texttest1 = NSPredicate(format:"SELF MATCHES %@", numberRegEx)
+        let numberResult = texttest1.evaluate(with: text)
+        
+        let lowercaseLetterRegEx  = ".*[a-z]+.*"
+        texttest = NSPredicate(format:"SELF MATCHES %@", lowercaseLetterRegEx)
+        let lowercaseResult = texttest.evaluate(with: text)
+        
+        return capitalResult && numberResult && lowercaseResult
+        
     }
 
 }
@@ -178,7 +197,7 @@ extension SignUpViewController: TextFieldDelegate {
             emailField.isErrorRevealed = false
         }
         
-        if let password = passwordField.text, password.isEmpty && textField == passwordField && password.characters.count < 8 {
+        if let password = passwordField.text, password.isEmpty && textField == passwordField && password.characters.count < 6 {
             passwordField.isErrorRevealed = true
         } else {
             passwordField.isErrorRevealed = false
