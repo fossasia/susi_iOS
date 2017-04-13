@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         UIApplication.shared.statusBarStyle = .lightContent
+        initializeUserSettings()
                         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
@@ -23,6 +24,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = LoginViewController()
         
         return true
+    }
+    
+    func initializeUserSettings() {
+        
+        let firstLaunch = UserDefaults.standard.bool(forKey: "firstLaunch")
+        
+        if !firstLaunch {
+            UserDefaults.standard.set(true, forKey: "firstLaunch")
+            UserDefaults.standard.set(false, forKey: "enterToSend")
+            UserDefaults.standard.set(false, forKey: "micInput")
+            UserDefaults.standard.set(false, forKey: "speechOutput")
+            UserDefaults.standard.set(false, forKey: "speechOutputAlwaysOn")
+        }
+        
     }
 
 }

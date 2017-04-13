@@ -67,7 +67,7 @@ class ChatMessageCell: BaseCell, MKMapViewDelegate {
     
     let websiteText: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        label.textColor = UIColor(red:0.26, green:0.26, blue:0.26, alpha:1.0)
         label.numberOfLines = 2
         return label
     }()
@@ -117,7 +117,7 @@ class ChatMessageCell: BaseCell, MKMapViewDelegate {
         mapView.removeFromSuperview()
         
         textBubbleView.addSubview(websearchContentView)
-        websearchContentView.backgroundColor = .lightGray
+        websearchContentView.backgroundColor = UIColor(red:0.88, green:0.88, blue:0.88, alpha:1.0)
         websearchContentView.frame = frame
         
         websearchContentView.addSubview(searchImageView)
@@ -126,5 +126,7 @@ class ChatMessageCell: BaseCell, MKMapViewDelegate {
         websearchContentView.addConstraintsWithFormat(format: "V:|-4-[v0]-4-|", views: searchImageView)
         websearchContentView.addConstraintsWithFormat(format: "V:|-4-[v0(44)]-4-|", views: websiteText)
     }
+    
+    
     
 }
