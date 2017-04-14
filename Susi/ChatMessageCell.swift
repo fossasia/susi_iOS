@@ -5,7 +5,6 @@
 //  Created by Chashmeet Singh on 2017-03-21.
 //  Copyright © 2017 FOSSAsia. All rights reserved.
 //
-
 import UIKit
 import Material
 import MapKit
@@ -18,7 +17,7 @@ class ChatMessageCell: BaseCell, MKMapViewDelegate {
         didSet {
             messageTextView.text = message?.body
             websiteText.text = message?.websearchData?.info
-    
+            
             if let imageString = message?.websearchData?.image {
                 if let url = URL(string: imageString) {
                     if let urlRequest = URLRequest(url: url) as? URLRequest {
@@ -67,7 +66,7 @@ class ChatMessageCell: BaseCell, MKMapViewDelegate {
     
     let websiteText: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        label.textColor = UIColor(red:0.26, green:0.26, blue:0.26, alpha:1.0)
         label.numberOfLines = 2
         return label
     }()
@@ -117,7 +116,7 @@ class ChatMessageCell: BaseCell, MKMapViewDelegate {
         mapView.removeFromSuperview()
         
         textBubbleView.addSubview(websearchContentView)
-        websearchContentView.backgroundColor = .lightGray
+        websearchContentView.backgroundColor = UIColor(red:0.88, green:0.88, blue:0.88, alpha:1.0)
         websearchContentView.frame = frame
         
         websearchContentView.addSubview(searchImageView)

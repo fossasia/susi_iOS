@@ -10,14 +10,14 @@ import UIKit
 import Material
 
 class SettingsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-
+    
     let cellId = "cellId"
     let headerId = "headerId"
     let sectionHeaders = ["Chat Settings", "Mic Settings", "Speech Settings"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupView()
         setupTitle()
         setupCollectionView()
@@ -66,19 +66,27 @@ class SettingsViewController: UICollectionViewController, UICollectionViewDelega
             cell.titleLabel.text = "Enter To Send"
             cell.detailLabel.text = "Send message by hitting return"
             cell.settingSwitch.isHidden = false
+            cell.settingSwitch.tag = 0
+            cell.settingSwitch.isOn = UserDefaults.standard.bool(forKey: "enterToSend")
         } else if indexPath.section == 1 {
             cell.titleLabel.text = "Mic Input"
             cell.detailLabel.text = "Send message by hitting return"
             cell.settingSwitch.isHidden = false
+            cell.settingSwitch.tag = 1
+            cell.settingSwitch.isOn = UserDefaults.standard.bool(forKey: "micInput")
         } else {
             if indexPath.item == 0 {
                 cell.titleLabel.text = "Speech Output"
                 cell.detailLabel.text = "Enable speech output only for input"
                 cell.settingSwitch.isHidden = false
+                cell.settingSwitch.tag = 2
+                cell.settingSwitch.isOn = UserDefaults.standard.bool(forKey: "speechOutput")
             } else if indexPath.item == 1 {
                 cell.titleLabel.text = "Speech Output Always On"
                 cell.detailLabel.text = "Enable speech output regardless of input"
                 cell.settingSwitch.isHidden = false
+                cell.settingSwitch.isOn = UserDefaults.standard.bool(forKey: "speechOutputAlwaysOn")
+                cell.settingSwitch.tag = 3
             } else if indexPath.item == 2 {
                 cell.titleLabel.text = "Language"
                 cell.detailLabel.text = "Select Language"
@@ -89,6 +97,8 @@ class SettingsViewController: UICollectionViewController, UICollectionViewDelega
                 cell.settingSwitch.isHidden = true
             }
         }
+        
+        cell.settingSwitch.addTarget(self, action: #selector(switchDidToggle(sender:)), for: .valueChanged)
         
         return cell
     }
@@ -111,7 +121,7 @@ class SettingsViewController: UICollectionViewController, UICollectionViewDelega
     // Configures header view
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! SettingsHeaderView        
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! SettingsHeaderView
         
         switch kind {
         case UICollectionElementKindSectionHeader:
@@ -124,5 +134,17 @@ class SettingsViewController: UICollectionViewController, UICollectionViewDelega
         }
         
     }
-
+    
+    func switchDidToggle(sender: UISwitch!) {
+        if sender.tag == 0 {
+            UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: "enterToSend"), forKey: "enterToSend")
+        } else if sender.tag == 1 {
+            UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: "micInput"), forKey: "micInput")
+        } else if sender.tag == 2 {
+            UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: "speechOutput"), forKey: "speechOutput")
+        } else if sender.tag == 3 {
+            UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: "speechOutputAlwaysOn"), forKey: "speechOutputAlwaysOn")
+        }
+    }
+    
 }
