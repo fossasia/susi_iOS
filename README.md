@@ -1,6 +1,7 @@
 # iOS App for Susi
 
 [![Join the chat at https://gitter.im/fossasia/susi_iOS](https://badges.gitter.im/fossasia/susi_iOS.svg)](https://gitter.im/fossasia/susi_iOS?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build Status](https://travis-ci.org/fossasia/susi_iOS.svg?branch=master)](https://travis-ci.org/fossasia/susi_iOS)
 
 The main feature of the app is to provide a conversational interface to provide intelligent answers using the loklak/AskSusi infrastructure. The app also offers login functionalities to connect to other services and stored personal data. Additionally the application uses data provided by the user's phone to improve Susi answers. Geolocation information for example helps to offer better answers related to questions about "things nearby".
 
