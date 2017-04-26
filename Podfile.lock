@@ -7,11 +7,11 @@ PODS:
     - Material/Core (= 2.6.3)
   - Material/Core (2.6.3)
   - Popover (1.0.5)
-  - Realm (2.5.1):
-    - Realm/Headers (= 2.5.1)
-  - Realm/Headers (2.5.1)
-  - RealmSwift (2.5.1):
-    - Realm (= 2.5.1)
+  - Realm (2.6.2):
+    - Realm/Headers (= 2.6.2)
+  - Realm/Headers (2.6.2)
+  - RealmSwift (2.6.2):
+    - Realm (= 2.6.2)
   - SwiftValidators (6.0.0)
   - Toast-Swift (2.0.0)
 
@@ -31,8 +31,8 @@ SPEC CHECKSUMS:
   ALTextInputBar: f46ccbddb4c548ee7fd96a2015ffe433f4de551a
   Material: af607a7ec0e9978ef85cf189a3d8ceeeb650400f
   Popover: f31b0ef6f43192256e6fcf13a0ce10f01c803159
-  Realm: 32f86104d37c8521f864d4274050b38ba6190733
-  RealmSwift: f719e7511c902b8908593e8f143f59e47931bdb6
+  Realm: 29222766425b9f831228f81b63f0e38a97a4d700
+  RealmSwift: d161a80f96cb91ae88391a7d5a9cf08024a7bc8e
   SwiftValidators: 4ccbec749f61a36f7a922781bb09452e80cde396
   Toast-Swift: 5b2f8f720f7e78e48511f693df1f9c9a6e38a25a
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		189D691E354BDB032E565137 /* Pods_Susi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39326DEEDBD0CCA432D3B25D /* Pods_Susi.framework */; };
 		6D2F984B1E76DF2200FE2B6F /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2F984A1E76DF2200FE2B6F /* BaseCell.swift */; };
 		6D2F984D1E76E62900FE2B6F /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2F984C1E76E62900FE2B6F /* Message.swift */; };
 		6D3E82441E7943EE00D48776 /* AppNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3E82431E7943EE00D48776 /* AppNavigationController.swift */; };
@@ -18,6 +19,7 @@
 		6D4D9B451E768E190067459C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D4D9B431E768E190067459C /* LaunchScreen.storyboard */; };
 		6D4D9B4D1E768E650067459C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4D9B4C1E768E650067459C /* LoginViewController.swift */; };
 		6D4D9B541E7690160067459C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4D9B531E7690160067459C /* Extensions.swift */; };
+		6D7877A81EAFA9D200BD2496 /* SusiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7877A71EAFA9D200BD2496 /* SusiUITests.swift */; };
 		6D98EDFB1E796EFE00D96B32 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D98EDFA1E796EFE00D96B32 /* SettingsCell.swift */; };
 		6D9C0D291E7B223A00199828 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9C0D281E7B223A00199828 /* User.swift */; };
 		6DE44E0F1E769AD300215B85 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE44E0E1E769AD300215B85 /* Color.swift */; };
@@ -26,10 +28,18 @@
 		6DE44E171E76ACD900215B85 /* Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE44E151E76ACD900215B85 /* Convenience.swift */; };
 		6DE44E191E76AF8100215B85 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE44E181E76AF8100215B85 /* MainViewController.swift */; };
 		6DE44E1B1E76B5D600215B85 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE44E1A1E76B5D600215B85 /* SignUpViewController.swift */; };
-		6DF591D41E817EC0003B2C6B /* Pods_Susi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DF591D31E817EC0003B2C6B /* Pods_Susi.framework */; };
 		6DF591D61E8189B7003B2C6B /* WebsearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF591D51E8189B7003B2C6B /* WebsearchResult.swift */; };
-		9B1814DE7FB0475950444A8F /* Pods_Susi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39326DEEDBD0CCA432D3B25D /* Pods_Susi.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6D7877AA1EAFA9D200BD2496 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6D4D9B2F1E768E190067459C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6D4D9B361E768E190067459C;
+			remoteInfo = Susi;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		39326DEEDBD0CCA432D3B25D /* Pods_Susi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Susi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,9 +58,13 @@
 		6D4D9B531E7690160067459C /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		6D767DEC1E79A9B600FF5485 /* Pods_Susi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Susi.framework; path = "Pods/../build/Release-iphoneos/Pods_Susi.framework"; sourceTree = "<group>"; };
 		6D767DEE1E79A9C800FF5485 /* Pods_Susi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Susi.framework; path = "Pods/../build/Release-iphoneos/Pods_Susi.framework"; sourceTree = "<group>"; };
+		6D7877A51EAFA9D200BD2496 /* SusiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SusiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D7877A71EAFA9D200BD2496 /* SusiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SusiUITests.swift; sourceTree = "<group>"; };
+		6D7877A91EAFA9D200BD2496 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D82ADF21E784A5A0094AA9E /* Pods_Susi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Susi.framework; path = "../../Library/Developer/Xcode/DerivedData/Susi-avbkhdntnaiijsctxkaeflbkpdbm/Build/Products/Debug-iphonesimulator/Pods_Susi.framework"; sourceTree = "<group>"; };
 		6D98EDFA1E796EFE00D96B32 /* SettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		6D9C0D281E7B223A00199828 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		6DCCB3D11EAFC1E70089D784 /* Pods_Susi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Susi.framework; path = "Pods/../build/Debug-iphoneos/Pods_Susi.framework"; sourceTree = "<group>"; };
 		6DE44E0E1E769AD300215B85 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		6DE44E101E76ACAF00215B85 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		6DE44E141E76ACD900215B85 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -68,8 +82,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6DF591D41E817EC0003B2C6B /* Pods_Susi.framework in Frameworks */,
-				9B1814DE7FB0475950444A8F /* Pods_Susi.framework in Frameworks */,
+				189D691E354BDB032E565137 /* Pods_Susi.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D7877A21EAFA9D200BD2496 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				6D4D9B391E768E190067459C /* Susi */,
+				6D7877A61EAFA9D200BD2496 /* SusiUITests */,
 				6D4D9B381E768E190067459C /* Products */,
 				1D60790BCD441CA8C61D6EAA /* Pods */,
 				BD5FA220F268315B61F71523 /* Frameworks */,
@@ -118,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				6D4D9B371E768E190067459C /* Susi.app */,
+				6D7877A51EAFA9D200BD2496 /* SusiUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -174,6 +196,15 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
+		6D7877A61EAFA9D200BD2496 /* SusiUITests */ = {
+			isa = PBXGroup;
+			children = (
+				6D7877A71EAFA9D200BD2496 /* SusiUITests.swift */,
+				6D7877A91EAFA9D200BD2496 /* Info.plist */,
+			);
+			path = SusiUITests;
+			sourceTree = "<group>";
+		};
 		6DE44E121E76ACBA00215B85 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +229,7 @@
 		BD5FA220F268315B61F71523 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6DCCB3D11EAFC1E70089D784 /* Pods_Susi.framework */,
 				6DF591D31E817EC0003B2C6B /* Pods_Susi.framework */,
 				6D767DEE1E79A9C800FF5485 /* Pods_Susi.framework */,
 				6D767DEC1E79A9B600FF5485 /* Pods_Susi.framework */,
@@ -230,19 +262,44 @@
 			productReference = 6D4D9B371E768E190067459C /* Susi.app */;
 			productType = "com.apple.product-type.application";
 		};
+		6D7877A41EAFA9D200BD2496 /* SusiUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6D7877AE1EAFA9D200BD2496 /* Build configuration list for PBXNativeTarget "SusiUITests" */;
+			buildPhases = (
+				6D7877A11EAFA9D200BD2496 /* Sources */,
+				6D7877A21EAFA9D200BD2496 /* Frameworks */,
+				6D7877A31EAFA9D200BD2496 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6D7877AB1EAFA9D200BD2496 /* PBXTargetDependency */,
+			);
+			name = SusiUITests;
+			productName = SusiUITests;
+			productReference = 6D7877A51EAFA9D200BD2496 /* SusiUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		6D4D9B2F1E768E190067459C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0820;
+				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = FOSSAsia;
 				TargetAttributes = {
 					6D4D9B361E768E190067459C = {
 						CreatedOnToolsVersion = 8.2.1;
-						ProvisioningStyle = Manual;
+						DevelopmentTeam = 29QXBB297F;
+						ProvisioningStyle = Automatic;
+					};
+					6D7877A41EAFA9D200BD2496 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 29QXBB297F;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 6D4D9B361E768E190067459C;
 					};
 				};
 			};
@@ -260,6 +317,7 @@
 			projectRoot = "";
 			targets = (
 				6D4D9B361E768E190067459C /* Susi */,
+				6D7877A41EAFA9D200BD2496 /* SusiUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -271,6 +329,13 @@
 			files = (
 				6D4D9B451E768E190067459C /* LaunchScreen.storyboard in Resources */,
 				6D4D9B421E768E190067459C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D7877A31EAFA9D200BD2496 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,7 +415,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6D7877A11EAFA9D200BD2496 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D7877A81EAFA9D200BD2496 /* SusiUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6D7877AB1EAFA9D200BD2496 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6D4D9B361E768E190067459C /* Susi */;
+			targetProxy = 6D7877AA1EAFA9D200BD2496 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		6D4D9B431E768E190067459C /* LaunchScreen.storyboard */ = {
@@ -462,16 +543,19 @@
 			baseConfigurationReference = F0725CD4F3C4305D555E2D38 /* Pods-Susi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 29QXBB297F;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Release-iphoneos",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = Susi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.fossasia.susi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -482,18 +566,55 @@
 			baseConfigurationReference = 97955E10DCBDDA37F3FE9945 /* Pods-Susi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 29QXBB297F;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Release-iphoneos",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = Susi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.fossasia.susi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		6D7877AC1EAFA9D200BD2496 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 29QXBB297F;
+				INFOPLIST_FILE = SusiUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.fossasia.SusiUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Susi;
+			};
+			name = Debug;
+		};
+		6D7877AD1EAFA9D200BD2496 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 29QXBB297F;
+				INFOPLIST_FILE = SusiUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.fossasia.SusiUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Susi;
 			};
 			name = Release;
 		};
@@ -514,6 +635,15 @@
 			buildConfigurations = (
 				6D4D9B4A1E768E190067459C /* Debug */,
 				6D4D9B4B1E768E190067459C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6D7877AE1EAFA9D200BD2496 /* Build configuration list for PBXNativeTarget "SusiUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D7877AC1EAFA9D200BD2496 /* Debug */,
+				6D7877AD1EAFA9D200BD2496 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
