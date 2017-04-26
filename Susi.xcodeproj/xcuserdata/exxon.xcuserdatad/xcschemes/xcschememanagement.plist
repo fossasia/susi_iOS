@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Susi.xcscheme</key>
+		<key>Susi.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,6 +12,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>6D215B911EB0BE7300CD2C1D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>6D4D9B361E768E190067459C</key>
 		<dict>
 			<key>primary</key>
