@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D215B951EB0BE7300CD2C1D /* SusiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D215B941EB0BE7300CD2C1D /* SusiUITests.swift */; };
 		6D2F984B1E76DF2200FE2B6F /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2F984A1E76DF2200FE2B6F /* BaseCell.swift */; };
 		6D2F984D1E76E62900FE2B6F /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2F984C1E76E62900FE2B6F /* Message.swift */; };
 		6D3E82441E7943EE00D48776 /* AppNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3E82431E7943EE00D48776 /* AppNavigationController.swift */; };
@@ -31,8 +32,21 @@
 		9B1814DE7FB0475950444A8F /* Pods_Susi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39326DEEDBD0CCA432D3B25D /* Pods_Susi.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		6D215B971EB0BE7300CD2C1D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6D4D9B2F1E768E190067459C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6D4D9B361E768E190067459C;
+			remoteInfo = Susi;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		39326DEEDBD0CCA432D3B25D /* Pods_Susi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Susi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D215B921EB0BE7300CD2C1D /* SusiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SusiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D215B941EB0BE7300CD2C1D /* SusiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SusiUITests.swift; sourceTree = "<group>"; };
+		6D215B961EB0BE7300CD2C1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D2F984A1E76DF2200FE2B6F /* BaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 		6D2F984C1E76E62900FE2B6F /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		6D3E82431E7943EE00D48776 /* AppNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNavigationController.swift; sourceTree = "<group>"; };
@@ -64,6 +78,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		6D215B8F1EB0BE7300CD2C1D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6D4D9B341E768E190067459C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -83,6 +104,15 @@
 				97955E10DCBDDA37F3FE9945 /* Pods-Susi.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		6D215B931EB0BE7300CD2C1D /* SusiUITests */ = {
+			isa = PBXGroup;
+			children = (
+				6D215B941EB0BE7300CD2C1D /* SusiUITests.swift */,
+				6D215B961EB0BE7300CD2C1D /* Info.plist */,
+			);
+			path = SusiUITests;
 			sourceTree = "<group>";
 		};
 		6D2F98471E76DED400FE2B6F /* Custom Views */ = {
@@ -108,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				6D4D9B391E768E190067459C /* Susi */,
+				6D215B931EB0BE7300CD2C1D /* SusiUITests */,
 				6D4D9B381E768E190067459C /* Products */,
 				1D60790BCD441CA8C61D6EAA /* Pods */,
 				BD5FA220F268315B61F71523 /* Frameworks */,
@@ -118,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				6D4D9B371E768E190067459C /* Susi.app */,
+				6D215B921EB0BE7300CD2C1D /* SusiUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -210,6 +242,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		6D215B911EB0BE7300CD2C1D /* SusiUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6D215B991EB0BE7300CD2C1D /* Build configuration list for PBXNativeTarget "SusiUITests" */;
+			buildPhases = (
+				6D215B8E1EB0BE7300CD2C1D /* Sources */,
+				6D215B8F1EB0BE7300CD2C1D /* Frameworks */,
+				6D215B901EB0BE7300CD2C1D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6D215B981EB0BE7300CD2C1D /* PBXTargetDependency */,
+			);
+			name = SusiUITests;
+			productName = SusiUITests;
+			productReference = 6D215B921EB0BE7300CD2C1D /* SusiUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		6D4D9B361E768E190067459C /* Susi */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6D4D9B491E768E190067459C /* Build configuration list for PBXNativeTarget "Susi" */;
@@ -236,13 +286,20 @@
 		6D4D9B2F1E768E190067459C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0820;
+				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = FOSSAsia;
 				TargetAttributes = {
+					6D215B911EB0BE7300CD2C1D = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 29QXBB297F;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 6D4D9B361E768E190067459C;
+					};
 					6D4D9B361E768E190067459C = {
 						CreatedOnToolsVersion = 8.2.1;
-						ProvisioningStyle = Manual;
+						DevelopmentTeam = 29QXBB297F;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -260,11 +317,19 @@
 			projectRoot = "";
 			targets = (
 				6D4D9B361E768E190067459C /* Susi */,
+				6D215B911EB0BE7300CD2C1D /* SusiUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		6D215B901EB0BE7300CD2C1D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6D4D9B351E768E190067459C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -325,6 +390,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		6D215B8E1EB0BE7300CD2C1D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D215B951EB0BE7300CD2C1D /* SusiUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6D4D9B331E768E190067459C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -352,6 +425,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		6D215B981EB0BE7300CD2C1D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6D4D9B361E768E190067459C /* Susi */;
+			targetProxy = 6D215B971EB0BE7300CD2C1D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		6D4D9B431E768E190067459C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -364,6 +445,36 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		6D215B9A1EB0BE7300CD2C1D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				DEVELOPMENT_TEAM = 29QXBB297F;
+				INFOPLIST_FILE = SusiUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.fossasia.SusiUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Susi;
+			};
+			name = Debug;
+		};
+		6D215B9B1EB0BE7300CD2C1D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				DEVELOPMENT_TEAM = 29QXBB297F;
+				INFOPLIST_FILE = SusiUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.fossasia.SusiUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Susi;
+			};
+			name = Release;
+		};
 		6D4D9B471E768E190067459C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -462,7 +573,8 @@
 			baseConfigurationReference = F0725CD4F3C4305D555E2D38 /* Pods-Susi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 29QXBB297F;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Release-iphoneos",
@@ -472,6 +584,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.fossasia.susi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -482,7 +595,8 @@
 			baseConfigurationReference = 97955E10DCBDDA37F3FE9945 /* Pods-Susi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 29QXBB297F;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Release-iphoneos",
@@ -492,6 +606,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.fossasia.susi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -500,6 +615,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		6D215B991EB0BE7300CD2C1D /* Build configuration list for PBXNativeTarget "SusiUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D215B9A1EB0BE7300CD2C1D /* Debug */,
+				6D215B9B1EB0BE7300CD2C1D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		6D4D9B321E768E190067459C /* Build configuration list for PBXProject "Susi" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

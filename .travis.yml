@@ -1,0 +1,9 @@
+language: swift
+script: ./build.sh
+osx_image: xcode8.2
+xcode_sdk: iphonesimulator10.0
+
+before_install:
+- gem install cocoapods
+- pod repo update
+- chmod +x build.sh
