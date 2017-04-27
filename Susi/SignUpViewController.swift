@@ -10,6 +10,12 @@ import UIKit
 import Material
 
 class SignUpViewController: UIViewController {
+    
+    // Define UI margin constants
+    struct UIMarginSpec {
+        static let MARGIN_SMALL = 10
+        static let MARGIN_MEDIUM = 20;
+    }
 
     // Setup Dismiss Button
     let dismissButton: IconButton = {
@@ -26,6 +32,7 @@ class SignUpViewController: UIViewController {
         textField.keyboardType = .emailAddress
         textField.placeholder = "Email Address"
         textField.detail = "Error, incorrect email"
+        textField.delegate = self
         return textField
     }()
     
@@ -66,8 +73,13 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupView()
+        addTapGesture()
+    }
+    
+    func addTapGesture() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
+        self.view.addGestureRecognizer(tap)
     }
     
     func setupView() {
@@ -83,7 +95,8 @@ class SignUpViewController: UIViewController {
     // Add Subview Dismiss Button
     func prepareDismissButton() {
         self.view.addSubview(dismissButton)
-        self.view.layout(dismissButton).topLeft(top: 20, left: 8)
+        self.view.layout(dismissButton)
+            .topLeft(top: CGFloat(UIMarginSpec.MARGIN_MEDIUM), left: 8)
     }
     
     // Dismiss View Controller
@@ -94,25 +107,38 @@ class SignUpViewController: UIViewController {
     // Add Subview Email Field
     private func prepareEmailField() {
         self.view.addSubview(emailField)
-        self.view.layout(emailField).top(100).left(20).right(20)
+        self.view.layout(emailField)
+            .center(offsetY: -confirmPasswordField.height - passwordField.height - 180)
+            .left(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
+            .right(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
     }
     
     // Add Subview Password Field
     private func preparePasswordField() {
         self.view.addSubview(passwordField)
-        self.view.layout(passwordField).top(175).left(20).right(20)
+        self.view.layout(passwordField)
+            .center(offsetY: -confirmPasswordField.height - 100)
+            .left(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
+            .right(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
     }
     
     // Add Subview Confirm Password Field
     private func prepareConfirmPasswordField() {
         self.view.addSubview(confirmPasswordField)
-        self.view.layout(confirmPasswordField).top(260).left(20).right(20)
+        self.view.layout(confirmPasswordField)
+            .center(offsetY: 0)
+            .left(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
+            .right(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
     }
     
     // Add Subview Sign Up Button
     private func prepareSignUpButton() {
         self.view.addSubview(signUpButton)
-        self.view.layout(signUpButton).height(44).top(325).left(20).right(20)
+        self.view.layout(signUpButton)
+            .height(44)
+            .center(offsetY: confirmPasswordField.height + 70)
+            .left(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
+            .right(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
     }
     
     // Sign Up User
@@ -140,6 +166,19 @@ class SignUpViewController: UIViewController {
         }
         
     }
+    
+    //function called on return button click of keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        dismissKeyboard()
+        return false
+    }
+    
+    //dismiss keyboard if open.
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        self.view.endEditing(true)
+    }
+
     
     // Toggle Editing
     func toggleEditing() {
