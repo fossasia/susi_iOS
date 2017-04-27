@@ -30,3 +30,7 @@ Package.pins
 # CocoaPods
 
 Pods/*
+
+# Userdata
+
+Susi.xcworkspace/xcuserdata/
