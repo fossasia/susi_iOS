@@ -1,7 +1,8 @@
 language: swift
 script: ./build.sh
-osx_image: xcode8.2
+osx_image: xcode8.3
 xcode_sdk: iphonesimulator10.0
+cache: cocoapods
 
 before_install:
 - gem install cocoapods
