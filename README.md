@@ -9,16 +9,25 @@ The main feature of the app is to provide a conversational interface to provide 
 
 Make the app functionality and UI/UX similar to the android app for Susi.
 
-## iOS App Development Set up
+## Development Setup
 
-- Clone / Fork the repo
-- Run `pod install` to install the Pods (dependencies)
-- Open `Susi.xcworkspace`
-- Build and run in the simulator
+Before you begin, you should already have the Xcode downloaded and set up correctly. You can find a guide on how to do this here: [Setting up Xcode](https://developer.apple.com/library/content/documentation/IDEs/Conceptual/AppStoreDistributionTutorial/Setup/Setup.html)
+
+## Setting up the iOS Project
+
+1. Download the _susi_iOS_ project source. You can do this either by forking and cloning the repository (recommended if you plan on pushing changes) or by downloading it as a ZIP file and extracting it.
+
+2. Navigate to the unzipped folder and run `pod install`.
+
+3. Open `Susi.xcworkspace` from the folder.
+
+4. Build the project (⌘+B) and check for any errors.
+
+5. Run the app (⌘+R).and test it.
 
 ## Communication
 
-Please join our mailing list to discuss questions regarding the project: https://groups.google.com/forum/#!forum/loklak
+Please join our mailing list to discuss questions regarding the project: https://groups.google.com/forum/#!forum/opntec-dev
 
 Our chat channel is on gitter here: https://gitter.im/fossasia/susi_iOS
 
