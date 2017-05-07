@@ -274,7 +274,8 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         
         let params = [
             Client.WebsearchKeys.Query: inputTextField.text!,
-            Client.ChatKeys.TimeZoneOffset: "-530"
+            Client.ChatKeys.TimeZoneOffset: "-530",
+            Client.ChatKeys.Language: Locale.current.languageCode
         ]
         saveMessage()
         

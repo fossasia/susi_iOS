@@ -45,6 +45,7 @@ extension Client {
         static let Latitude = "latitude"
         static let Longitude = "longitude"
         static let Zoom = "zoom"
+        static let Language = "language"
     }
     
     struct WebsearchKeys {
