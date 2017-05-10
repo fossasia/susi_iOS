@@ -13,6 +13,13 @@ Make the app functionality and UI/UX similar to the android app for Susi.
 
 Before you begin, you should already have the Xcode downloaded and set up correctly. You can find a guide on how to do this here: [Setting up Xcode](https://developer.apple.com/library/content/documentation/IDEs/Conceptual/AppStoreDistributionTutorial/Setup/Setup.html)
 
+##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Steps to install Cocoapods (one time installation)
+
+- Run `sudo gem install cocoapods` to install the latest version of cocoapods
+
+-  Next, run `pod setup` for setting up cocoapods master repo. You may include `--verbose` for more descriptive logs.
+**NOTE:** This might take a while to setup depending on your network speed.
+
 ## Setting up the iOS Project
 
 1. Download the _susi_iOS_ project source. You can do this either by forking and cloning the repository (recommended if you plan on pushing changes) or by downloading it as a ZIP file and extracting it.
