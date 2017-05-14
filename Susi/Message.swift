@@ -30,6 +30,7 @@ struct Message {
         case answer = "answer"
         case map = "map"
         case websearch = "websearch"
+        case image = "image"
     }
     
     init(_ body: String) {
@@ -59,7 +60,12 @@ struct Message {
 
                         if responseType == ResponseTypes.answer.rawValue {
                             debugPrint("Inside Answer")
-                            self.body = response[Client.ChatKeys.Expression]
+                            if let expression = response[Client.ChatKeys.Expression] {
+                                if expression.isURL() && expression.isImage() {
+                                    self.responseType = ResponseTypes.image
+                                }
+                                self.body = expression
+                            }
                             
                         } else if responseType == ResponseTypes.map.rawValue {
                             debugPrint("Inside Map")

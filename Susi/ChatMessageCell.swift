@@ -20,8 +20,17 @@ class ChatMessageCell: BaseCell, MKMapViewDelegate {
             
             if let imageString = message?.websearchData?.image {
                 if let url = URL(string: imageString) {
-                    if let urlRequest = URLRequest(url: url) as? URLRequest {
-                        searchImageView.af_setImage(withURLRequest: urlRequest)
+                    let urlRequest = URLRequest(url: url)
+                    searchImageView.af_setImage(withURLRequest: urlRequest)
+                }
+            }
+            
+            if let imageString = message?.body, imageString.isImage() {
+                Alamofire.request(imageString).responseImage { response in
+                    if let image = response.result.value {
+                        print("image downloaded: \(image)")
+                        self.imageView.image = image
+                        self.imageView.startAnimating()
                     }
                 }
             }
@@ -49,7 +58,6 @@ class ChatMessageCell: BaseCell, MKMapViewDelegate {
     let mapView: MKMapView = {
         let mapView = MKMapView()
         mapView.mapType = .standard
-        mapView.backgroundColor = .red
         mapView.isZoomEnabled = true
         mapView.isScrollEnabled = false
         return mapView
@@ -69,6 +77,13 @@ class ChatMessageCell: BaseCell, MKMapViewDelegate {
         label.textColor = UIColor(red:0.26, green:0.26, blue:0.26, alpha:1.0)
         label.numberOfLines = 2
         return label
+    }()
+    
+    let imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.layer.cornerRadius = 8.0
+        return imageView
     }()
     
     static let grayBubbleImage = UIImage(named: "bubble_gray")!.resizableImage(withCapInsets: UIEdgeInsets(top: 22, left: 26, bottom: 22, right: 26)).withRenderingMode(.alwaysTemplate)
@@ -95,6 +110,7 @@ class ChatMessageCell: BaseCell, MKMapViewDelegate {
     
     func addMapView(_ frame: CGRect) {
         websearchContentView.removeFromSuperview()
+        imageView.removeFromSuperview()
         textBubbleView.addSubview(mapView)
         
         mapView.frame = frame
@@ -114,6 +130,7 @@ class ChatMessageCell: BaseCell, MKMapViewDelegate {
     
     func addLinkPreview(_ frame: CGRect) {
         mapView.removeFromSuperview()
+        imageView.removeFromSuperview()
         
         textBubbleView.addSubview(websearchContentView)
         websearchContentView.backgroundColor = UIColor(red:0.88, green:0.88, blue:0.88, alpha:1.0)
@@ -124,6 +141,15 @@ class ChatMessageCell: BaseCell, MKMapViewDelegate {
         websearchContentView.addConstraintsWithFormat(format: "H:|-4-[v0(44)]-4-[v1]-4-|", views: searchImageView, websiteText)
         websearchContentView.addConstraintsWithFormat(format: "V:|-4-[v0]-4-|", views: searchImageView)
         websearchContentView.addConstraintsWithFormat(format: "V:|-4-[v0(44)]-4-|", views: websiteText)
+    }
+    
+    func addImageView() {
+        mapView.removeFromSuperview()
+        websearchContentView.removeFromSuperview()
+        messageTextView.text = ""
+        textBubbleView.addSubview(imageView)
+        textBubbleView.addConstraintsWithFormat(format: "H:|-20-[v0]-15-|", views: imageView)
+        textBubbleView.addConstraintsWithFormat(format: "V:|-15-[v0]-15-|", views: imageView)
     }
     
 }

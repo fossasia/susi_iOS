@@ -10,6 +10,7 @@ import UIKit
 import Material
 import Popover
 import ALTextInputBar
+import AlamofireImage
 
 class MainViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, ALTextInputBarDelegate {
     
@@ -187,12 +188,22 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
                     })
                     
                     
+                } else if message.responseType == Message.ResponseTypes.image {
+                    let width = Int(cell.frame.width / 2)
+                    let height = 150
+                    
+                    cell.messageTextView.frame = CGRect(x: 16, y: 0, width: width + 16, height: height + 30)
+                    cell.textBubbleView.frame = CGRect(x: 4, y: -4, width: width + 16 + 8 + 16, height: height + 20 + 6)
+                    
+                    cell.addImageView()
+                    
                 } else {
                     cell.messageTextView.frame = CGRect(x: 16, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 30)
                     cell.textBubbleView.frame = CGRect(x: 4, y: -4, width: estimatedFrame.width + 16 + 8 + 16, height: estimatedFrame.height + 20 + 6)
                     
                     cell.mapView.removeFromSuperview()
                     cell.websearchContentView.removeFromSuperview()
+                    cell.imageView.removeFromSuperview()
                 }
                 
             } else {
@@ -227,6 +238,8 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
                 return CGSize(width: view.frame.width, height: estimatedFrame.height + 20 + 250)
             } else if message.responseType == Message.ResponseTypes.websearch {
                 return CGSize(width: view.frame.width, height: estimatedFrame.height + 20 + 64)
+            } else if message.responseType == Message.ResponseTypes.image {
+                return CGSize(width: view.frame.width, height: 150 + 20)
             }
             
             return CGSize(width: view.frame.width, height: estimatedFrame.height + 20)
