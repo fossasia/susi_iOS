@@ -21,8 +21,31 @@ extension String {
         let emailTest  = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: self)
     }
+    
+    public func isImage() -> Bool {
+        let imageFormats = ["jpg", "jpeg", "png", "gif"]
+        
+        if let ext = self.getExtension() {
+            return imageFormats.contains(ext)
+        }
+        
+        return false
+    }
+    
+    public func getExtension() -> String? {
+        let ext = (self as NSString).pathExtension
+        
+        if ext.isEmpty {
+            return nil
+        }
+        
+        return ext
+    }
+    
+    public func isURL() -> Bool {
+        return URL(string: self) != nil
+    }
 }
-
 
 extension UIView {
     
@@ -58,5 +81,5 @@ class AuthTextField: ErrorTextField {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
 }

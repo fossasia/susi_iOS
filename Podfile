@@ -14,4 +14,5 @@ target 'Susi' do
   pod 'SwiftValidators'
   pod 'ALTextInputBar'
   pod 'AlamofireImage', '~> 3.1'
+  pod 'Nuke-Gifu-Plugin'
 end
