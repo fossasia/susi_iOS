@@ -10,6 +10,7 @@ import Material
 import MapKit
 import Alamofire
 import AlamofireImage
+import NukeGifuPlugin
 
 class ChatMessageCell: BaseCell, MKMapViewDelegate {
     
@@ -26,15 +27,10 @@ class ChatMessageCell: BaseCell, MKMapViewDelegate {
             }
             
             if let imageString = message?.body, imageString.isImage() {
-                Alamofire.request(imageString).responseImage { response in
-                    if let image = response.result.value {
-                        print("image downloaded: \(image)")
-                        self.imageView.image = image
-                        self.imageView.startAnimating()
-                    }
+                if let url = URL(string: imageString) {
+                    AnimatedImage.manager.loadImage(with: url, into: imageView)
                 }
             }
-            
         }
     }
     
@@ -79,9 +75,9 @@ class ChatMessageCell: BaseCell, MKMapViewDelegate {
         return label
     }()
     
-    let imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+    let imageView: AnimatedImageView = {
+        let imageView = AnimatedImageView()
+        imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 8.0
         return imageView
     }()
@@ -150,6 +146,11 @@ class ChatMessageCell: BaseCell, MKMapViewDelegate {
         textBubbleView.addSubview(imageView)
         textBubbleView.addConstraintsWithFormat(format: "H:|-20-[v0]-15-|", views: imageView)
         textBubbleView.addConstraintsWithFormat(format: "V:|-15-[v0]-15-|", views: imageView)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imageView.prepareForReuse()
     }
     
 }
