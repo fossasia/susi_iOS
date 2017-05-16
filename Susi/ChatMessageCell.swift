@@ -6,7 +6,6 @@
 //  Copyright © 2017 FOSSAsia. All rights reserved.
 //
 import UIKit
-import Material
 import MapKit
 import Alamofire
 import AlamofireImage

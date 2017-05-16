@@ -8,20 +8,17 @@
 
 import UIKit
 import Material
+import MaterialComponents
 
 class SignUpViewController: UIViewController {
-    
-    // Define UI margin constants
-    struct UIMarginSpec {
-        static let MARGIN_SMALL = 10
-        static let MARGIN_MEDIUM = 20;
-    }
 
     // Setup Dismiss Button
-    let dismissButton: IconButton = {
-        let ib = IconButton()
-        ib.image = Icon.cm.arrowBack
+    let dismissButton: MDCFloatingButton = {
+        let ib = MDCFloatingButton()
+        ib.setImage(Icon.cm.arrowBack, for: .normal)
         ib.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
+        ib.setElevation(0.0, for: .normal)
+        ib.backgroundColor = .clear
         ib.tintColor = .white
         return ib
     }()
@@ -62,8 +59,8 @@ class SignUpViewController: UIViewController {
     }()
     
     // Setup Sign Up Button
-    lazy var signUpButton: RaisedButton = {
-        let button = RaisedButton()
+    lazy var signUpButton: MDCRaisedButton = {
+        let button = MDCRaisedButton()
         button.setTitle("SIGN UP", for: .normal)
         button.backgroundColor = .white
         button.setTitleColor(UIColor.defaultColor(), for: .normal)
@@ -96,7 +93,7 @@ class SignUpViewController: UIViewController {
     func prepareDismissButton() {
         self.view.addSubview(dismissButton)
         self.view.layout(dismissButton)
-            .topLeft(top: CGFloat(UIMarginSpec.MARGIN_MEDIUM), left: 8)
+            .topLeft(top: CGFloat(UIView.UIMarginSpec.MARGIN_MEDIUM), left: 8)
     }
     
     // Dismiss View Controller
@@ -109,8 +106,8 @@ class SignUpViewController: UIViewController {
         self.view.addSubview(emailField)
         self.view.layout(emailField)
             .center(offsetY: -confirmPasswordField.height - passwordField.height - 180)
-            .left(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
-            .right(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
+            .left(CGFloat(UIView.UIMarginSpec.MARGIN_MEDIUM))
+            .right(CGFloat(UIView.UIMarginSpec.MARGIN_MEDIUM))
     }
     
     // Add Subview Password Field
@@ -118,8 +115,8 @@ class SignUpViewController: UIViewController {
         self.view.addSubview(passwordField)
         self.view.layout(passwordField)
             .center(offsetY: -confirmPasswordField.height - 100)
-            .left(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
-            .right(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
+            .left(CGFloat(UIView.UIMarginSpec.MARGIN_MEDIUM))
+            .right(CGFloat(UIView.UIMarginSpec.MARGIN_MEDIUM))
     }
     
     // Add Subview Confirm Password Field
@@ -127,8 +124,8 @@ class SignUpViewController: UIViewController {
         self.view.addSubview(confirmPasswordField)
         self.view.layout(confirmPasswordField)
             .center(offsetY: 0)
-            .left(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
-            .right(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
+            .left(CGFloat(UIView.UIMarginSpec.MARGIN_MEDIUM))
+            .right(CGFloat(UIView.UIMarginSpec.MARGIN_MEDIUM))
     }
     
     // Add Subview Sign Up Button
@@ -137,8 +134,8 @@ class SignUpViewController: UIViewController {
         self.view.layout(signUpButton)
             .height(44)
             .center(offsetY: confirmPasswordField.height + 70)
-            .left(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
-            .right(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
+            .left(CGFloat(UIView.UIMarginSpec.MARGIN_MEDIUM))
+            .right(CGFloat(UIView.UIMarginSpec.MARGIN_MEDIUM))
     }
     
     // Sign Up User

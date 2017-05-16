@@ -6,6 +6,58 @@ PODS:
   - Material (2.6.3):
     - Material/Core (= 2.6.3)
   - Material/Core (2.6.3)
+  - MaterialComponents/ActivityIndicator (23.1.0):
+    - MaterialComponents/private/Application
+    - MaterialComponents/private/RTL
+  - MaterialComponents/Buttons (23.1.0):
+    - MaterialComponents/Ink
+    - MaterialComponents/private/Math
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/Typography
+    - MDFTextAccessibility
+  - MaterialComponents/CollectionCells (23.1.0):
+    - MaterialComponents/CollectionLayoutAttributes
+    - MaterialComponents/Ink
+    - MaterialComponents/private/Icons/ic_check
+    - MaterialComponents/private/Icons/ic_check_circle
+    - MaterialComponents/private/Icons/ic_chevron_right
+    - MaterialComponents/private/Icons/ic_info
+    - MaterialComponents/private/Icons/ic_radio_button_unchecked
+    - MaterialComponents/private/Icons/ic_reorder
+    - MaterialComponents/private/Math
+    - MaterialComponents/private/RTL
+    - MaterialComponents/Typography
+  - MaterialComponents/CollectionLayoutAttributes (23.1.0)
+  - MaterialComponents/Collections (23.1.0):
+    - MaterialComponents/CollectionCells
+    - MaterialComponents/CollectionLayoutAttributes
+    - MaterialComponents/Ink
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/Typography
+  - MaterialComponents/Ink (23.1.0)
+  - MaterialComponents/private/Application (23.1.0)
+  - MaterialComponents/private/Icons/Base (23.1.0)
+  - MaterialComponents/private/Icons/ic_check (23.1.0):
+    - MaterialComponents/private/Icons/Base
+  - MaterialComponents/private/Icons/ic_check_circle (23.1.0):
+    - MaterialComponents/private/Icons/Base
+  - MaterialComponents/private/Icons/ic_chevron_right (23.1.0):
+    - MaterialComponents/private/Icons/Base
+  - MaterialComponents/private/Icons/ic_info (23.1.0):
+    - MaterialComponents/private/Icons/Base
+  - MaterialComponents/private/Icons/ic_radio_button_unchecked (23.1.0):
+    - MaterialComponents/private/Icons/Base
+  - MaterialComponents/private/Icons/ic_reorder (23.1.0):
+    - MaterialComponents/private/Icons/Base
+  - MaterialComponents/private/Math (23.1.0)
+  - MaterialComponents/private/RTL (23.1.0)
+  - MaterialComponents/ShadowElevations (23.1.0)
+  - MaterialComponents/ShadowLayer (23.1.0)
+  - MaterialComponents/Typography (23.1.0):
+    - MaterialComponents/private/Application
+  - MDFTextAccessibility (1.2.0)
   - Popover (1.0.5)
   - Realm (2.5.1):
     - Realm/Headers (= 2.5.1)
@@ -20,6 +72,9 @@ DEPENDENCIES:
   - AlamofireImage (~> 3.1)
   - ALTextInputBar
   - Material
+  - MaterialComponents/ActivityIndicator
+  - MaterialComponents/Buttons
+  - MaterialComponents/Collections
   - Popover
   - RealmSwift
   - SwiftValidators
@@ -30,12 +85,14 @@ SPEC CHECKSUMS:
   AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
   ALTextInputBar: f46ccbddb4c548ee7fd96a2015ffe433f4de551a
   Material: af607a7ec0e9978ef85cf189a3d8ceeeb650400f
+  MaterialComponents: 7979134f28cca6654f9d3786e96a8d1bff26dfc6
+  MDFTextAccessibility: 94098925e0853551c5a311ce7c1ecefbe297cdb6
   Popover: f31b0ef6f43192256e6fcf13a0ce10f01c803159
   Realm: 32f86104d37c8521f864d4274050b38ba6190733
   RealmSwift: f719e7511c902b8908593e8f143f59e47931bdb6
   SwiftValidators: 4ccbec749f61a36f7a922781bb09452e80cde396
   Toast-Swift: 5b2f8f720f7e78e48511f693df1f9c9a6e38a25a
 
-PODFILE CHECKSUM: a82995ef385dda4d243bfdf81e79d632c88bea03
+PODFILE CHECKSUM: 86db4fb01c74a27198372bfd8a5ce9196c386141
 
 COCOAPODS: 1.2.1

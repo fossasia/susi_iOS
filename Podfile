@@ -14,4 +14,7 @@ target 'Susi' do
   pod 'SwiftValidators'
   pod 'ALTextInputBar'
   pod 'AlamofireImage', '~> 3.1'
+  pod 'MaterialComponents/Collections'
+  pod 'MaterialComponents/Buttons'
+  pod 'MaterialComponents/ActivityIndicator'
 end

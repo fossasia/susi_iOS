@@ -10,14 +10,9 @@ import UIKit
 import Material
 import Toast_Swift
 import SwiftValidators
+import MaterialComponents.MaterialButtons
 
 class LoginViewController: UIViewController {
-    
-    // Define UI margin constants
-    struct UIMarginSpec {
-        static let MARGIN_SMALL = 10
-        static let MARGIN_MEDIUM = 20;
-    }
     
     // Setup Susi Logo
     let susiLogo: UIImageView = {
@@ -49,30 +44,36 @@ class LoginViewController: UIViewController {
     }()
     
     // Setup Login Button
-    lazy var loginButton: RaisedButton = {
-        let button = RaisedButton()
+    lazy var loginButton: MDCRaisedButton = {
+        let button = MDCRaisedButton()
         button.setTitle("LOGIN", for: .normal)
-        button.backgroundColor = .white
+        button.setBackgroundColor(.white, for: .normal)
         button.setTitleColor(UIColor.defaultColor(), for: .normal)
         button.addTarget(self, action: #selector(performLogin), for: .touchUpInside)
         return button
     }()
     
     // Setup Forgot Button
-    let forgotButton: FlatButton = {
-        let button = FlatButton()
+    let forgotButton: MDCFlatButton = {
+        let button = MDCFlatButton()
         button.setTitle("Forgot Password?", for: .normal)
         button.setTitleColor(.white, for: .normal)
         return button
     }()
     
     // Setup Sign Up Button
-    lazy var signUpButton: FlatButton = {
-        let button = FlatButton()
+    lazy var signUpButton: MDCFlatButton = {
+        let button = MDCFlatButton()
         button.setTitle("Sign up for SUSI", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(showSignUpView), for: .touchUpInside)
         return button
+    }()
+    
+    // Activity Indicator
+    let activityIndicator: MDCActivityIndicator = {
+        let indicator = MDCActivityIndicator(frame: CGRect(x: 0, y: 0, width: 75, height: 75))
+        return indicator
     }()
     
     override func viewDidLoad() {
@@ -97,6 +98,7 @@ class LoginViewController: UIViewController {
         prepareLoginButton()
         prepareForgotButton()
         prepareSignUpButton()
+        prepareActivityIndicator()
     }
     
     // Add Subview Logo
@@ -110,8 +112,8 @@ class LoginViewController: UIViewController {
         self.view.addSubview(emailField)
         self.view.layout(emailField)
             .center(offsetY: -passwordField.height - 80)
-            .left(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
-            .right(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
+            .left(CGFloat(UIView.UIMarginSpec.MARGIN_MEDIUM))
+            .right(CGFloat(UIView.UIMarginSpec.MARGIN_MEDIUM))
     }
     
     // Add Subview Password Field
@@ -119,8 +121,8 @@ class LoginViewController: UIViewController {
         self.view.addSubview(passwordField)
         self.view.layout(passwordField)
             .center(offsetY: 0)
-            .left(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
-            .right(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
+            .left(CGFloat(UIView.UIMarginSpec.MARGIN_MEDIUM))
+            .right(CGFloat(UIView.UIMarginSpec.MARGIN_MEDIUM))
     }
     
     // Add Subview Login Button
@@ -129,8 +131,8 @@ class LoginViewController: UIViewController {
         self.view.layout(loginButton)
             .height(44)
             .center(offsetY: passwordField.height + 60)
-            .left(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
-            .right(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
+            .left(CGFloat(UIView.UIMarginSpec.MARGIN_MEDIUM))
+            .right(CGFloat(UIView.UIMarginSpec.MARGIN_MEDIUM))
     }
     
     // Add Subview Forgot Button
@@ -138,9 +140,17 @@ class LoginViewController: UIViewController {
         self.view.addSubview(forgotButton)
         self.view.layout(forgotButton)
             .height(44)
-            .center(offsetY: passwordField.height + loginButton.height + 70)
-            .left(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
-            .right(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
+            .center(offsetY: passwordField.height + loginButton.height + 90)
+            .left(CGFloat(UIView.UIMarginSpec.MARGIN_MEDIUM))
+            .right(CGFloat(UIView.UIMarginSpec.MARGIN_MEDIUM))
+    }
+    
+    // Add Subview Activity Indicator
+    private func prepareActivityIndicator() {
+        self.view.addSubview(activityIndicator)
+        loginButton.layout(activityIndicator)
+            .centerHorizontally()
+            .top(activityIndicator, top: loginButton.height + 10)
     }
     
     // Add Subview Sign Up Button
@@ -149,8 +159,8 @@ class LoginViewController: UIViewController {
         self.view.layout(signUpButton)
             .height(44)
             .bottom(20)
-            .left(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
-            .right(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
+            .left(CGFloat(UIView.UIMarginSpec.MARGIN_MEDIUM))
+            .right(CGFloat(UIView.UIMarginSpec.MARGIN_MEDIUM))
     }
     
     // Login User
@@ -158,7 +168,7 @@ class LoginViewController: UIViewController {
 
         if isValid() {
             toggleEditing()
-            
+            self.activityIndicator.startAnimating()
             let params = [
                 Client.UserKeys.Login: emailField.text!.lowercased(),
                 Client.UserKeys.Password: passwordField.text!,
@@ -168,6 +178,7 @@ class LoginViewController: UIViewController {
             Client.sharedInstance.loginUser(params as [String : AnyObject]) { (_, success, message) in
                 DispatchQueue.main.async {
                     self.toggleEditing()
+                    self.activityIndicator.stopAnimating()
                     if success {
                         self.completeLogin()
                     }
