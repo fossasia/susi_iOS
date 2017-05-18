@@ -17,4 +17,5 @@ target 'Susi' do
   pod 'MaterialComponents/Collections'
   pod 'MaterialComponents/Buttons'
   pod 'MaterialComponents/ActivityIndicator'
+  pod 'SnapKit', '~> 3.2.0'
 end

@@ -40,8 +40,9 @@ extension UIView {
     
     // Define UI margin constants
     struct UIMarginSpec {
-        static let MARGIN_SMALL = 10
-        static let MARGIN_MEDIUM = 20;
+        static let MARGIN_SMALL: CGFloat = 10
+        static let MARGIN_MEDIUM: CGFloat = 20
+        static let MARGIN_MAX: CGFloat = 75
     }
     
 }

@@ -11,6 +11,7 @@ import Material
 import Toast_Swift
 import SwiftValidators
 import MaterialComponents.MaterialButtons
+import SnapKit
 
 class LoginViewController: UIViewController {
     
@@ -27,7 +28,7 @@ class LoginViewController: UIViewController {
         let textField = AuthTextField()
         textField.keyboardType = .emailAddress
         textField.placeholder = "Email Address"
-        textField.detail = "Error, incorrect email"
+        textField.detail = "Error, Email not valid"
         textField.delegate = self
         return textField
     }()
@@ -73,6 +74,7 @@ class LoginViewController: UIViewController {
     // Activity Indicator
     let activityIndicator: MDCActivityIndicator = {
         let indicator = MDCActivityIndicator(frame: CGRect(x: 0, y: 0, width: 75, height: 75))
+        indicator.strokeWidth = 2.0
         return indicator
     }()
     
@@ -93,77 +95,86 @@ class LoginViewController: UIViewController {
         self.view.backgroundColor = UIColor.defaultColor()
         
         prepareLogo()
-        prepareEmailField()
         preparePasswordField()
+        prepareEmailField()
         prepareLoginButton()
+        prepareActivityIndicator()
         prepareForgotButton()
         prepareSignUpButton()
-        prepareActivityIndicator()
     }
     
-    // Add Subview Logo
+    // Adds Susi Logo
     private func prepareLogo() {
         self.view.addSubview(susiLogo)
-        self.view.layout(susiLogo).top(50).centerHorizontally()
+        susiLogo.snp.makeConstraints { (make) in
+            make.top.equalTo(self.view).offset(50)
+            make.centerX.equalTo(self.view)
+        }
     }
     
-    // Add Subview Email Field
+    // Adds Email Field
     private func prepareEmailField() {
         self.view.addSubview(emailField)
-        self.view.layout(emailField)
-            .center(offsetY: -passwordField.height - 80)
-            .left(CGFloat(UIView.UIMarginSpec.MARGIN_MEDIUM))
-            .right(CGFloat(UIView.UIMarginSpec.MARGIN_MEDIUM))
+        emailField.snp.makeConstraints { (make) in
+            make.centerY.equalTo(self.view).offset(-passwordField.height - UIView.UIMarginSpec.MARGIN_MAX)
+            make.left.equalTo(self.view).offset(UIView.UIMarginSpec.MARGIN_MEDIUM)
+            make.right.equalTo(self.view).offset(-UIView.UIMarginSpec.MARGIN_MEDIUM)
+        }
     }
     
-    // Add Subview Password Field
+    // Adds Password Field
     private func preparePasswordField() {
         self.view.addSubview(passwordField)
-        self.view.layout(passwordField)
-            .center(offsetY: 0)
-            .left(CGFloat(UIView.UIMarginSpec.MARGIN_MEDIUM))
-            .right(CGFloat(UIView.UIMarginSpec.MARGIN_MEDIUM))
+        passwordField.snp.makeConstraints { (make) in
+            make.centerY.equalTo(self.view).offset(UIView.UIMarginSpec.MARGIN_SMALL)
+            make.left.equalTo(self.view).offset(UIView.UIMarginSpec.MARGIN_MEDIUM)
+            make.right.equalTo(self.view).offset(-UIView.UIMarginSpec.MARGIN_MEDIUM)
+        }
     }
     
-    // Add Subview Login Button
+    // Adds Login Button
     private func prepareLoginButton() {
         self.view.addSubview(loginButton)
-        self.view.layout(loginButton)
-            .height(44)
-            .center(offsetY: passwordField.height + 60)
-            .left(CGFloat(UIView.UIMarginSpec.MARGIN_MEDIUM))
-            .right(CGFloat(UIView.UIMarginSpec.MARGIN_MEDIUM))
+        loginButton.snp.makeConstraints { (make) in
+            make.top.equalTo(passwordField).offset(passwordField.height + UIView.UIMarginSpec.MARGIN_MAX)
+            make.left.equalTo(self.view).offset(UIView.UIMarginSpec.MARGIN_MEDIUM)
+            make.right.equalTo(self.view).offset(-UIView.UIMarginSpec.MARGIN_MEDIUM)
+            make.height.equalTo(44.0)
+        }
     }
     
-    // Add Subview Forgot Button
-    private func prepareForgotButton() {
-        self.view.addSubview(forgotButton)
-        self.view.layout(forgotButton)
-            .height(44)
-            .center(offsetY: passwordField.height + loginButton.height + 90)
-            .left(CGFloat(UIView.UIMarginSpec.MARGIN_MEDIUM))
-            .right(CGFloat(UIView.UIMarginSpec.MARGIN_MEDIUM))
-    }
-    
-    // Add Subview Activity Indicator
+    // Adds Activity Indicator
     private func prepareActivityIndicator() {
         self.view.addSubview(activityIndicator)
-        loginButton.layout(activityIndicator)
-            .centerHorizontally()
-            .top(activityIndicator, top: loginButton.height + 10)
+        activityIndicator.snp.makeConstraints { (make) in
+            make.top.equalTo(loginButton).offset(loginButton.height + UIView.UIMarginSpec.MARGIN_MAX - UIView.UIMarginSpec.MARGIN_MEDIUM)
+            make.centerX.equalTo(self.view)
+        }
     }
     
-    // Add Subview Sign Up Button
+    // Adds Forgot Button
+    private func prepareForgotButton() {
+        self.view.addSubview(forgotButton)
+        forgotButton.snp.makeConstraints { (make) in
+            make.top.equalTo(activityIndicator).offset(30)
+            make.centerX.equalTo(self.view)
+            make.left.equalTo(self.view).offset(UIView.UIMarginSpec.MARGIN_MEDIUM)
+            make.right.equalTo(self.view).offset(-UIView.UIMarginSpec.MARGIN_MEDIUM)
+        }
+    }
+    
+    // Adds Sign Up Button
     private func prepareSignUpButton() {
         self.view.addSubview(signUpButton)
-        self.view.layout(signUpButton)
-            .height(44)
-            .bottom(20)
-            .left(CGFloat(UIView.UIMarginSpec.MARGIN_MEDIUM))
-            .right(CGFloat(UIView.UIMarginSpec.MARGIN_MEDIUM))
+        signUpButton.snp.makeConstraints { (make) in
+            make.centerX.equalTo(self.view)
+            make.bottom.equalTo(self.view).offset(-UIView.UIMarginSpec.MARGIN_MEDIUM)
+            make.left.equalTo(self.view).offset(UIView.UIMarginSpec.MARGIN_MEDIUM)
+            make.right.equalTo(self.view).offset(-UIView.UIMarginSpec.MARGIN_MEDIUM)
+        }
     }
     
-    // Login User
+    // Hit login button
     func performLogin() {
 
         if isValid() {
@@ -189,13 +200,13 @@ class LoginViewController: UIViewController {
         
     }
     
-    //function called on return button click of keyboard
+    // function called on return button click of keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         dismissKeyboard()
         return false
     }
     
-    //dismiss keyboard if open.
+    // dismiss keyboard if open.
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         self.view.endEditing(true)
@@ -235,7 +246,7 @@ class LoginViewController: UIViewController {
         return true
     }
     
-    // Login User
+    // Complete Login and Push
     func completeLogin() {
         let vc = MainViewController(collectionViewLayout: UICollectionViewFlowLayout())
         let nvc = AppNavigationController(rootViewController: vc)
