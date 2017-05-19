@@ -14,8 +14,8 @@ import SnapKit
 class SignUpViewController: UIViewController {
 
     // Setup Dismiss Button
-    let dismissButton: MDCButton = {
-        let ib = MDCButton()
+    let dismissButton: MDCFlatButton = {
+        let ib = MDCFlatButton()
         ib.setImage(Icon.cm.arrowBack, for: .normal)
         ib.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
         ib.backgroundColor = .clear
