@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import Material
+import MaterialComponents.MaterialCollectionCells
 
-class BaseCell: CollectionViewCell {
+class BaseCell: MDCCollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()

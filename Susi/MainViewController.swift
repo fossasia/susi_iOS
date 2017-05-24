@@ -10,8 +10,9 @@ import UIKit
 import Material
 import Popover
 import ALTextInputBar
+import MaterialComponents.MaterialButtons
 
-class MainViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, ALTextInputBarDelegate {
+class MainViewController: MDCCollectionViewController, ALTextInputBarDelegate {
     
     let cellId = "cellId"
     
@@ -27,20 +28,21 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
     let popoverText = ["Settings", "Wallpaper", "Share", "Logout"]
     
     // Search Button Configure
-    let searchButton: IconButton = {
-        let ib = IconButton()
-        ib.image = Icon.cm.search
+    let searchButton: UIView = {
+        let ib = MDCButton()
+        ib.setImage(Icon.cm.search, for: .normal)
+        ib.setBackgroundColor(.clear, for: .normal)
         ib.tintColor = .white
         return ib
     }()
     
     // Settings Button Configure
-    lazy var settingsButton: IconButton = {
-        let image = Icon.cm.moreVertical
-        let ib = IconButton()
-        ib.image = image
-        ib.addTarget(self, action: #selector(showSettingsView), for: .touchUpInside)
+    lazy var settingsButton: UIView = {
+        let ib = MDCButton()
+        ib.setImage(Icon.cm.moreVertical, for: .normal)
+        ib.setBackgroundColor(.clear, for: .normal)
         ib.tintColor = .white
+        ib.addTarget(self, action: #selector(showSettingsView), for: .touchUpInside)
         return ib
     }()
     
@@ -215,7 +217,7 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     // Calculate Bubble Height
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let message = messages[indexPath.row]
         
         if let messageText = message.body {
@@ -236,7 +238,7 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     // Set Edge Insets
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsetsMake(8, 0, 0, 0)
     }
     
@@ -259,12 +261,14 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
     }()
     
     // Setup Send Button
-    lazy var sendButton: UIButton = {
-        let button = UIButton(type: .system)
+    lazy var sendButton: MDCFlatButton = {
+        let button = MDCFlatButton()
         button.setTitle("Send", for: .normal)
         let titleColor = UIColor(red: 0, green: 137/255, blue: 249/255, alpha: 1)
         button.setTitleColor(titleColor, for: .normal)
+        button.setBackgroundColor(.clear, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        button.sizeToFit()
         button.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
         return button
     }()
@@ -272,23 +276,26 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
     // Send Button Action
     func handleSend() {
         
-        let params = [
-            Client.WebsearchKeys.Query: inputTextField.text!,
-            Client.ChatKeys.TimeZoneOffset: "-530",
-            Client.ChatKeys.Language: Locale.current.languageCode
-        ]
-        saveMessage()
-        
-        Client.sharedInstance.queryResponse(params as [String : AnyObject]) { (results, success, message) in
-            DispatchQueue.main.async {
-                if success {
-                    self.messages.append(results!)
+        if let query = inputTextField.text {
+            if query.characters.count > 0 {
+                let params = [
+                    Client.WebsearchKeys.Query: inputTextField.text!,
+                    Client.ChatKeys.TimeZoneOffset: "-530",
+                    Client.ChatKeys.Language: Locale.current.languageCode
+                ]
+                saveMessage()
+                
+                Client.sharedInstance.queryResponse(params as [String : AnyObject]) { (results, success, message) in
+                    DispatchQueue.main.async {
+                        if success {
+                            self.messages.append(results!)
+                        }
+                        self.collectionView?.reloadData()
+                        self.scrollToLast()
+                    }
                 }
-                self.collectionView?.reloadData()
-                self.scrollToLast()
             }
         }
-        
     }
     
     var bottomConstraint: NSLayoutConstraint?
@@ -300,7 +307,7 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         view.addConstraintsWithFormat(format: "H:|[v0]|", views: messageInputContainerView)
         view.addConstraintsWithFormat(format: "V:[v0(48)]", views: messageInputContainerView)
         
-        bottomConstraint = NSLayoutConstraint(item: messageInputContainerView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
+        bottomConstraint = NSLayoutConstraint(item: messageInputContainerView, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1, constant: 0)
         view.addConstraint(bottomConstraint!)
         
         let topBorderView = UIView()
@@ -310,7 +317,7 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         messageInputContainerView.addSubview(sendButton)
         messageInputContainerView.addSubview(topBorderView)
         
-        messageInputContainerView.addConstraintsWithFormat(format: "H:|-8-[v0][v1(60)]|", views: inputTextField, sendButton)
+        messageInputContainerView.addConstraintsWithFormat(format: "H:|-8-[v0][v1(80)]|", views: inputTextField, sendButton)
         
         messageInputContainerView.addConstraintsWithFormat(format: "V:|[v0]|", views: inputTextField)
         messageInputContainerView.addConstraintsWithFormat(format: "V:|[v0]|", views: sendButton)

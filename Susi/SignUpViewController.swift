@@ -8,20 +8,17 @@
 
 import UIKit
 import Material
+import MaterialComponents
+import SnapKit
 
 class SignUpViewController: UIViewController {
-    
-    // Define UI margin constants
-    struct UIMarginSpec {
-        static let MARGIN_SMALL = 10
-        static let MARGIN_MEDIUM = 20;
-    }
 
     // Setup Dismiss Button
-    let dismissButton: IconButton = {
-        let ib = IconButton()
-        ib.image = Icon.cm.arrowBack
+    let dismissButton: MDCFlatButton = {
+        let ib = MDCFlatButton()
+        ib.setImage(Icon.cm.arrowBack, for: .normal)
         ib.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
+        ib.backgroundColor = .clear
         ib.tintColor = .white
         return ib
     }()
@@ -40,7 +37,7 @@ class SignUpViewController: UIViewController {
     lazy var passwordField: AuthTextField = {
         let textField = AuthTextField()
         textField.placeholder = "Password"
-        textField.detailLabel.text = "Password should be 6 characters long with one uppercase, lowercase and a number"
+        textField.detailLabel.text = "Should be 6 characters long with one uppercase, lowercase and a digit"
         textField.clearButtonMode = .whileEditing
         textField.isVisibilityIconButtonEnabled = true
         textField.visibilityIconButton?.tintColor = Color.white.withAlphaComponent(textField.isSecureTextEntry ? 0.38 : 0.54)
@@ -62,8 +59,8 @@ class SignUpViewController: UIViewController {
     }()
     
     // Setup Sign Up Button
-    lazy var signUpButton: RaisedButton = {
-        let button = RaisedButton()
+    lazy var signUpButton: MDCRaisedButton = {
+        let button = MDCRaisedButton()
         button.setTitle("SIGN UP", for: .normal)
         button.backgroundColor = .white
         button.setTitleColor(UIColor.defaultColor(), for: .normal)
@@ -86,17 +83,19 @@ class SignUpViewController: UIViewController {
         self.view.backgroundColor = UIColor.defaultColor()
         
         prepareDismissButton()
-        prepareEmailField()
-        preparePasswordField()
         prepareConfirmPasswordField()
+        preparePasswordField()
+        prepareEmailField()
         prepareSignUpButton()
     }
     
-    // Add Subview Dismiss Button
+    // Adds Dismiss Button
     func prepareDismissButton() {
         self.view.addSubview(dismissButton)
-        self.view.layout(dismissButton)
-            .topLeft(top: CGFloat(UIMarginSpec.MARGIN_MEDIUM), left: 8)
+        dismissButton.snp.makeConstraints { (make) in
+            make.left.equalTo(8)
+            make.top.equalTo(UIView.UIMarginSpec.MARGIN_MEDIUM)
+        }
     }
     
     // Dismiss View Controller
@@ -104,44 +103,48 @@ class SignUpViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    // Add Subview Email Field
+    // Adds Email Field
     private func prepareEmailField() {
         self.view.addSubview(emailField)
-        self.view.layout(emailField)
-            .center(offsetY: -confirmPasswordField.height - passwordField.height - 180)
-            .left(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
-            .right(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
+        emailField.snp.makeConstraints { (make) in
+            make.top.equalTo(passwordField).offset(-UIView.UIMarginSpec.MARGIN_MAX)
+            make.left.equalTo(UIView.UIMarginSpec.MARGIN_MEDIUM)
+            make.right.equalTo(-UIView.UIMarginSpec.MARGIN_MEDIUM)
+        }
     }
     
-    // Add Subview Password Field
+    // Adds Password Field
     private func preparePasswordField() {
         self.view.addSubview(passwordField)
-        self.view.layout(passwordField)
-            .center(offsetY: -confirmPasswordField.height - 100)
-            .left(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
-            .right(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
+        passwordField.snp.makeConstraints { (make) in
+            make.top.equalTo(confirmPasswordField).offset(-UIView.UIMarginSpec.MARGIN_MAX)
+            make.left.equalTo(UIView.UIMarginSpec.MARGIN_MEDIUM)
+            make.right.equalTo(-UIView.UIMarginSpec.MARGIN_MEDIUM)
+        }
     }
     
     // Add Subview Confirm Password Field
     private func prepareConfirmPasswordField() {
         self.view.addSubview(confirmPasswordField)
-        self.view.layout(confirmPasswordField)
-            .center(offsetY: 0)
-            .left(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
-            .right(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
+        confirmPasswordField.snp.makeConstraints { (make) in
+            make.center.equalTo(self.view)
+            make.left.equalTo(UIView.UIMarginSpec.MARGIN_MEDIUM)
+            make.right.equalTo(-UIView.UIMarginSpec.MARGIN_MEDIUM)
+        }
     }
     
-    // Add Subview Sign Up Button
+    // Adds Sign Up Button
     private func prepareSignUpButton() {
         self.view.addSubview(signUpButton)
-        self.view.layout(signUpButton)
-            .height(44)
-            .center(offsetY: confirmPasswordField.height + 70)
-            .left(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
-            .right(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
+        signUpButton.snp.makeConstraints { (make) in
+            make.top.equalTo(confirmPasswordField).offset(UIView.UIMarginSpec.MARGIN_MAX)
+            make.left.equalTo(UIView.UIMarginSpec.MARGIN_MEDIUM)
+            make.right.equalTo(-UIView.UIMarginSpec.MARGIN_MEDIUM)
+            make.height.equalTo(44)
+        }
     }
     
-    // Sign Up User
+    // Hit SignUp button
     func performSignUp() {
         
         if isValid() {
@@ -167,13 +170,13 @@ class SignUpViewController: UIViewController {
         
     }
     
-    //function called on return button click of keyboard
+    // function called on return button click of keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         dismissKeyboard()
         return false
     }
     
-    //dismiss keyboard if open.
+    // dismiss keyboard if open.
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         self.view.endEditing(true)

@@ -10,14 +10,10 @@ import UIKit
 import Material
 import Toast_Swift
 import SwiftValidators
+import MaterialComponents.MaterialButtons
+import SnapKit
 
 class LoginViewController: UIViewController {
-    
-    // Define UI margin constants
-    struct UIMarginSpec {
-        static let MARGIN_SMALL = 10
-        static let MARGIN_MEDIUM = 20;
-    }
     
     // Setup Susi Logo
     let susiLogo: UIImageView = {
@@ -32,7 +28,7 @@ class LoginViewController: UIViewController {
         let textField = AuthTextField()
         textField.keyboardType = .emailAddress
         textField.placeholder = "Email Address"
-        textField.detail = "Error, incorrect email"
+        textField.detail = "Error, Email not valid"
         textField.delegate = self
         return textField
     }()
@@ -49,30 +45,37 @@ class LoginViewController: UIViewController {
     }()
     
     // Setup Login Button
-    lazy var loginButton: RaisedButton = {
-        let button = RaisedButton()
+    lazy var loginButton: MDCRaisedButton = {
+        let button = MDCRaisedButton()
         button.setTitle("LOGIN", for: .normal)
-        button.backgroundColor = .white
+        button.setBackgroundColor(.white, for: .normal)
         button.setTitleColor(UIColor.defaultColor(), for: .normal)
         button.addTarget(self, action: #selector(performLogin), for: .touchUpInside)
         return button
     }()
     
     // Setup Forgot Button
-    let forgotButton: FlatButton = {
-        let button = FlatButton()
+    let forgotButton: MDCFlatButton = {
+        let button = MDCFlatButton()
         button.setTitle("Forgot Password?", for: .normal)
         button.setTitleColor(.white, for: .normal)
         return button
     }()
     
     // Setup Sign Up Button
-    lazy var signUpButton: FlatButton = {
-        let button = FlatButton()
+    lazy var signUpButton: MDCFlatButton = {
+        let button = MDCFlatButton()
         button.setTitle("Sign up for SUSI", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(showSignUpView), for: .touchUpInside)
         return button
+    }()
+    
+    // Activity Indicator
+    let activityIndicator: MDCActivityIndicator = {
+        let indicator = MDCActivityIndicator(frame: CGRect(x: 0, y: 0, width: 75, height: 75))
+        indicator.strokeWidth = 2.0
+        return indicator
     }()
     
     override func viewDidLoad() {
@@ -92,73 +95,91 @@ class LoginViewController: UIViewController {
         self.view.backgroundColor = UIColor.defaultColor()
         
         prepareLogo()
-        prepareEmailField()
         preparePasswordField()
+        prepareEmailField()
         prepareLoginButton()
+        prepareActivityIndicator()
         prepareForgotButton()
         prepareSignUpButton()
     }
     
-    // Add Subview Logo
+    // Adds Susi Logo
     private func prepareLogo() {
         self.view.addSubview(susiLogo)
-        self.view.layout(susiLogo).top(50).centerHorizontally()
+        susiLogo.snp.makeConstraints { (make) in
+            make.top.equalTo(self.view).offset(50)
+            make.centerX.equalTo(self.view)
+        }
     }
     
-    // Add Subview Email Field
+    // Adds Email Field
     private func prepareEmailField() {
         self.view.addSubview(emailField)
-        self.view.layout(emailField)
-            .center(offsetY: -passwordField.height - 80)
-            .left(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
-            .right(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
+        emailField.snp.makeConstraints { (make) in
+            make.centerY.equalTo(self.view).offset(-passwordField.height - UIView.UIMarginSpec.MARGIN_MAX)
+            make.left.equalTo(self.view).offset(UIView.UIMarginSpec.MARGIN_MEDIUM)
+            make.right.equalTo(self.view).offset(-UIView.UIMarginSpec.MARGIN_MEDIUM)
+        }
     }
     
-    // Add Subview Password Field
+    // Adds Password Field
     private func preparePasswordField() {
         self.view.addSubview(passwordField)
-        self.view.layout(passwordField)
-            .center(offsetY: 0)
-            .left(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
-            .right(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
+        passwordField.snp.makeConstraints { (make) in
+            make.centerY.equalTo(self.view).offset(UIView.UIMarginSpec.MARGIN_SMALL)
+            make.left.equalTo(self.view).offset(UIView.UIMarginSpec.MARGIN_MEDIUM)
+            make.right.equalTo(self.view).offset(-UIView.UIMarginSpec.MARGIN_MEDIUM)
+        }
     }
     
-    // Add Subview Login Button
+    // Adds Login Button
     private func prepareLoginButton() {
         self.view.addSubview(loginButton)
-        self.view.layout(loginButton)
-            .height(44)
-            .center(offsetY: passwordField.height + 60)
-            .left(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
-            .right(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
+        loginButton.snp.makeConstraints { (make) in
+            make.top.equalTo(passwordField).offset(passwordField.height + UIView.UIMarginSpec.MARGIN_MAX)
+            make.left.equalTo(self.view).offset(UIView.UIMarginSpec.MARGIN_MEDIUM)
+            make.right.equalTo(self.view).offset(-UIView.UIMarginSpec.MARGIN_MEDIUM)
+            make.height.equalTo(44.0)
+        }
     }
     
-    // Add Subview Forgot Button
+    // Adds Activity Indicator
+    private func prepareActivityIndicator() {
+        self.view.addSubview(activityIndicator)
+        activityIndicator.snp.makeConstraints { (make) in
+            make.top.equalTo(loginButton).offset(loginButton.height + UIView.UIMarginSpec.MARGIN_MAX - UIView.UIMarginSpec.MARGIN_MEDIUM)
+            make.centerX.equalTo(self.view)
+        }
+    }
+    
+    // Adds Forgot Button
     private func prepareForgotButton() {
         self.view.addSubview(forgotButton)
-        self.view.layout(forgotButton)
-            .height(44)
-            .center(offsetY: passwordField.height + loginButton.height + 70)
-            .left(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
-            .right(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
+        forgotButton.snp.makeConstraints { (make) in
+            make.top.equalTo(activityIndicator).offset(30)
+            make.centerX.equalTo(self.view)
+            make.left.equalTo(self.view).offset(UIView.UIMarginSpec.MARGIN_MEDIUM)
+            make.right.equalTo(self.view).offset(-UIView.UIMarginSpec.MARGIN_MEDIUM)
+        }
     }
     
-    // Add Subview Sign Up Button
+    // Adds Sign Up Button
     private func prepareSignUpButton() {
         self.view.addSubview(signUpButton)
-        self.view.layout(signUpButton)
-            .height(44)
-            .bottom(20)
-            .left(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
-            .right(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
+        signUpButton.snp.makeConstraints { (make) in
+            make.centerX.equalTo(self.view)
+            make.bottom.equalTo(self.view).offset(-UIView.UIMarginSpec.MARGIN_MEDIUM)
+            make.left.equalTo(self.view).offset(UIView.UIMarginSpec.MARGIN_MEDIUM)
+            make.right.equalTo(self.view).offset(-UIView.UIMarginSpec.MARGIN_MEDIUM)
+        }
     }
     
-    // Login User
+    // Hit login button
     func performLogin() {
 
         if isValid() {
             toggleEditing()
-            
+            self.activityIndicator.startAnimating()
             let params = [
                 Client.UserKeys.Login: emailField.text!.lowercased(),
                 Client.UserKeys.Password: passwordField.text!,
@@ -168,6 +189,7 @@ class LoginViewController: UIViewController {
             Client.sharedInstance.loginUser(params as [String : AnyObject]) { (_, success, message) in
                 DispatchQueue.main.async {
                     self.toggleEditing()
+                    self.activityIndicator.stopAnimating()
                     if success {
                         self.completeLogin()
                     }
@@ -178,13 +200,13 @@ class LoginViewController: UIViewController {
         
     }
     
-    //function called on return button click of keyboard
+    // function called on return button click of keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         dismissKeyboard()
         return false
     }
     
-    //dismiss keyboard if open.
+    // dismiss keyboard if open.
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         self.view.endEditing(true)
@@ -224,7 +246,7 @@ class LoginViewController: UIViewController {
         return true
     }
     
-    // Login User
+    // Complete Login and Push
     func completeLogin() {
         let vc = MainViewController(collectionViewLayout: UICollectionViewFlowLayout())
         let nvc = AppNavigationController(rootViewController: vc)

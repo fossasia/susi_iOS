@@ -16,7 +16,7 @@ extension Client {
     func loginUser(_ params: [String : AnyObject], _ completion: @escaping(_ user: User?, _ success: Bool, _ error: String) -> Void) {
 
         _ = makeRequest(.post, [:], Methods.Login, parameters: params, completion: { (results, message) in
-            
+                        
             if let error = message {
                 print(error.localizedDescription)
                 completion(nil, false, ResponseMessages.InvalidParams)
