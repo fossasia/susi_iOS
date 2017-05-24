@@ -1,5 +1,6 @@
 # iOS App for Susi
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4faa165463a44fffbd23f319d78a26ea)](https://www.codacy.com/app/mb/susi_iOS?utm_source=github.com&utm_medium=referral&utm_content=fossasia/susi_iOS&utm_campaign=badger)
 [![Join the chat at https://gitter.im/fossasia/susi_iOS](https://badges.gitter.im/fossasia/susi_iOS.svg)](https://gitter.im/fossasia/susi_iOS?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/fossasia/susi_iOS.svg?branch=master)](https://travis-ci.org/fossasia/susi_iOS)
 
