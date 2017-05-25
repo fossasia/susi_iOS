@@ -11,8 +11,9 @@ import Material
 import Popover
 import ALTextInputBar
 import AlamofireImage
+import CoreLocation
 
-class MainViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, ALTextInputBarDelegate {
+class MainViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, ALTextInputBarDelegate, CLLocationManagerDelegate {
     
     let cellId = "cellId"
     
@@ -45,6 +46,9 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         return ib
     }()
     
+    // Location Manager
+    var locationManager = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,6 +61,9 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.resignResponders)))
         
         subscribeToKeyboardNotifications()
+        
+        // Configure Location Manager
+        configureLocationManager()
     }
     
     func subscribeToKeyboardNotifications() {
@@ -90,6 +97,18 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
     // Resign responders
     func resignResponders() {
         self.view.endEditing(true)
+    }
+    
+    // Configures Location Manager
+    func configureLocationManager() {
+        locationManager.delegate = self
+        if CLLocationManager.authorizationStatus() == .notDetermined || CLLocationManager.authorizationStatus() == .denied {
+            self.locationManager.requestWhenInUseAuthorization()
+        }
+        
+        locationManager.distanceFilter = kCLDistanceFilterNone
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
     }
     
     // Setup Navigation Bar
@@ -285,14 +304,19 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
     // Send Button Action
     func handleSend() {
         
-        let params = [
-            Client.WebsearchKeys.Query: inputTextField.text!,
-            Client.ChatKeys.TimeZoneOffset: "-530",
-            Client.ChatKeys.Language: Locale.current.languageCode
+        var params: [String : AnyObject] = [
+            Client.WebsearchKeys.Query: inputTextField.text! as AnyObject,
+            Client.ChatKeys.TimeZoneOffset: "-530" as AnyObject,
+            Client.ChatKeys.Language: Locale.current.languageCode as AnyObject
         ]
         saveMessage()
         
-        Client.sharedInstance.queryResponse(params as [String : AnyObject]) { (results, success, message) in
+        if let location = locationManager.location {
+            params[Client.ChatKeys.Latitude] = location.coordinate.latitude as AnyObject
+            params[Client.ChatKeys.Longitude] = location.coordinate.longitude as AnyObject
+        }
+        
+        Client.sharedInstance.queryResponse(params) { (results, success, message) in
             DispatchQueue.main.async {
                 if success {
                     self.messages.append(results!)
