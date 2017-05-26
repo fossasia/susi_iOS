@@ -10,11 +10,11 @@ import UIKit
 import Material
 
 class SignUpViewController: UIViewController {
-    
+
     // Define UI margin constants
     struct UIMarginSpec {
         static let MARGIN_SMALL = 10
-        static let MARGIN_MEDIUM = 20;
+        static let MARGIN_MEDIUM = 20
     }
 
     // Setup Dismiss Button
@@ -25,7 +25,7 @@ class SignUpViewController: UIViewController {
         ib.tintColor = .white
         return ib
     }()
-    
+
     // Setup Email Field
     lazy var emailField: AuthTextField = {
         let textField = AuthTextField()
@@ -35,7 +35,7 @@ class SignUpViewController: UIViewController {
         textField.delegate = self
         return textField
     }()
-    
+
     // Setup Password Field
     lazy var passwordField: AuthTextField = {
         let textField = AuthTextField()
@@ -47,7 +47,7 @@ class SignUpViewController: UIViewController {
         textField.delegate = self
         return textField
     }()
-    
+
     // Setup Confirm Password Field
     lazy var confirmPasswordField: AuthTextField = {
         let textField = AuthTextField()
@@ -60,7 +60,7 @@ class SignUpViewController: UIViewController {
         textField.delegate = self
         return textField
     }()
-    
+
     // Setup Sign Up Button
     lazy var signUpButton: RaisedButton = {
         let button = RaisedButton()
@@ -70,40 +70,40 @@ class SignUpViewController: UIViewController {
         button.addTarget(self, action: #selector(performSignUp), for: .touchUpInside)
         return button
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         addTapGesture()
     }
-    
+
     func addTapGesture() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
         self.view.addGestureRecognizer(tap)
     }
-    
+
     func setupView() {
         self.view.backgroundColor = UIColor.defaultColor()
-        
+
         prepareDismissButton()
         prepareEmailField()
         preparePasswordField()
         prepareConfirmPasswordField()
         prepareSignUpButton()
     }
-    
+
     // Add Subview Dismiss Button
     func prepareDismissButton() {
         self.view.addSubview(dismissButton)
         self.view.layout(dismissButton)
             .topLeft(top: CGFloat(UIMarginSpec.MARGIN_MEDIUM), left: 8)
     }
-    
+
     // Dismiss View Controller
     func dismissView() {
         self.dismiss(animated: true, completion: nil)
     }
-    
+
     // Add Subview Email Field
     private func prepareEmailField() {
         self.view.addSubview(emailField)
@@ -112,7 +112,7 @@ class SignUpViewController: UIViewController {
             .left(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
             .right(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
     }
-    
+
     // Add Subview Password Field
     private func preparePasswordField() {
         self.view.addSubview(passwordField)
@@ -121,7 +121,7 @@ class SignUpViewController: UIViewController {
             .left(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
             .right(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
     }
-    
+
     // Add Subview Confirm Password Field
     private func prepareConfirmPasswordField() {
         self.view.addSubview(confirmPasswordField)
@@ -130,7 +130,7 @@ class SignUpViewController: UIViewController {
             .left(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
             .right(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
     }
-    
+
     // Add Subview Sign Up Button
     private func prepareSignUpButton() {
         self.view.addSubview(signUpButton)
@@ -140,19 +140,19 @@ class SignUpViewController: UIViewController {
             .left(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
             .right(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
     }
-    
+
     // Sign Up User
     func performSignUp() {
-        
+
         if isValid() {
-            
+
             toggleEditing()
-            
+
             let params = [
                 Client.UserKeys.SignUp: emailField.text!.lowercased(),
                 Client.UserKeys.Password: passwordField.text!
             ]
-            
+
             Client.sharedInstance.registerUser(params as [String : AnyObject]) { (success, message) in
                 DispatchQueue.main.async {
                     self.toggleEditing()
@@ -162,24 +162,23 @@ class SignUpViewController: UIViewController {
                     self.view.makeToast(message)
                 }
             }
-            
+
         }
-        
+
     }
-    
+
     //function called on return button click of keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         dismissKeyboard()
         return false
     }
-    
+
     //dismiss keyboard if open.
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         self.view.endEditing(true)
     }
 
-    
     // Toggle Editing
     func toggleEditing() {
         emailField.isEnabled = !emailField.isEnabled
@@ -187,7 +186,7 @@ class SignUpViewController: UIViewController {
         confirmPasswordField.isEnabled = !confirmPasswordField.isEnabled
         signUpButton.isEnabled = !signUpButton.isEnabled
     }
-    
+
     // Validate fields
     func isValid() -> Bool {
         if let emailID = emailField.text, !emailID.isValidEmail() {
@@ -204,30 +203,30 @@ class SignUpViewController: UIViewController {
         }
         return true
     }
-    
+
     // Password validation
-    func checkTextSufficientComplexity(text : String) -> Bool{
-        
+    func checkTextSufficientComplexity(text: String) -> Bool {
+
         let capitalLetterRegEx  = ".*[A-Z]+.*"
         var texttest = NSPredicate(format:"SELF MATCHES %@", capitalLetterRegEx)
         let capitalResult = texttest.evaluate(with: text)
-        
+
         let numberRegEx  = ".*[0-9]+.*"
         let texttest1 = NSPredicate(format:"SELF MATCHES %@", numberRegEx)
         let numberResult = texttest1.evaluate(with: text)
-        
+
         let lowercaseLetterRegEx  = ".*[a-z]+.*"
         texttest = NSPredicate(format:"SELF MATCHES %@", lowercaseLetterRegEx)
         let lowercaseResult = texttest.evaluate(with: text)
-        
+
         return capitalResult && numberResult && lowercaseResult
-        
+
     }
 
 }
 
 extension SignUpViewController: TextFieldDelegate {
-    
+
     // Verify input data after editing over
     public func textFieldDidEndEditing(_ textField: UITextField) {
         if let emailID = emailField.text, !emailID.isValidEmail() && textField == emailField {
@@ -235,14 +234,14 @@ extension SignUpViewController: TextFieldDelegate {
         } else {
             emailField.isErrorRevealed = false
         }
-        
+
         if let password = passwordField.text, password.isEmpty && textField == passwordField && password.characters.count < 6 {
             passwordField.isErrorRevealed = true
         } else {
             passwordField.isErrorRevealed = false
         }
     }
-    
+
     public func textFieldShouldClear(_ textField: UITextField) -> Bool {
         (textField as? ErrorTextField)?.isErrorRevealed = false
         return true

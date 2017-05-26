@@ -23,25 +23,24 @@ extension String {
     }
 }
 
-
 extension UIView {
-    
+
     func addConstraintsWithFormat(format: String, views: UIView...) {
-        
+
         var viewsDictionary = [String: UIView]()
         for (index, view) in views.enumerated() {
             let key = "v\(index)"
             viewsDictionary[key] = view
             view.translatesAutoresizingMaskIntoConstraints = false
         }
-        
+
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
     }
-    
+
 }
 
 class AuthTextField: ErrorTextField {
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         detailColor = .red
@@ -54,7 +53,7 @@ class AuthTextField: ErrorTextField {
         clearIconButton?.tintColor = .white
         isErrorRevealed = false
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

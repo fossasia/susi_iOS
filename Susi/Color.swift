@@ -9,9 +9,9 @@
 import UIKit
 
 extension UIColor {
-    
+
     class func defaultColor() -> UIColor {
         return UIColor.rgb(red: 43, green: 62, blue: 79)
     }
-    
+
 }
