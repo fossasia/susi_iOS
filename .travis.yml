@@ -8,3 +8,7 @@ before_install:
 - gem install cocoapods
 - pod repo update
 - chmod +x build.sh
+
+after_success:
+  - chmod +x upload-ipa.sh
+  - ./upload-ipa.sh
