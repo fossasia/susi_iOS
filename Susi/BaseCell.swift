@@ -10,6 +10,7 @@ import UIKit
 import Material
 
 class BaseCell: CollectionViewCell {
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
@@ -24,4 +25,5 @@ class BaseCell: CollectionViewCell {
             view.removeFromSuperview()
         }
     }
+
 }
