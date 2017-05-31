@@ -168,9 +168,11 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
     }
 
     func handleDismiss() {
+
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.blackView.removeFromSuperview()
         }, completion: nil)
+
     }
 
     // Setup Collection View
@@ -185,7 +187,7 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
 
     // Number of items
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //print("Number of messages: \(messages.count)")
+        // print("Number of messages: \(messages.count)")
         return messages.count
     }
 

@@ -15,8 +15,8 @@ class LoginViewController: UIViewController {
 
     // Define UI margin constants
     struct UIMarginSpec {
-        static let MARGIN_SMALL = 10
-        static let MARGIN_MEDIUM = 20
+        static let smallMargin = 10
+        static let mediumMargin = 20
     }
 
     // Setup Susi Logo
@@ -110,8 +110,8 @@ class LoginViewController: UIViewController {
         self.view.addSubview(emailField)
         self.view.layout(emailField)
             .center(offsetY: -passwordField.height - 80)
-            .left(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
-            .right(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
+            .left(CGFloat(UIMarginSpec.mediumMargin))
+            .right(CGFloat(UIMarginSpec.mediumMargin))
     }
 
     // Add Subview Password Field
@@ -119,8 +119,8 @@ class LoginViewController: UIViewController {
         self.view.addSubview(passwordField)
         self.view.layout(passwordField)
             .center(offsetY: 0)
-            .left(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
-            .right(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
+            .left(CGFloat(UIMarginSpec.mediumMargin))
+            .right(CGFloat(UIMarginSpec.mediumMargin))
     }
 
     // Add Subview Login Button
@@ -129,8 +129,8 @@ class LoginViewController: UIViewController {
         self.view.layout(loginButton)
             .height(44)
             .center(offsetY: passwordField.height + 60)
-            .left(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
-            .right(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
+            .left(CGFloat(UIMarginSpec.mediumMargin))
+            .right(CGFloat(UIMarginSpec.mediumMargin))
     }
 
     // Add Subview Forgot Button
@@ -139,8 +139,8 @@ class LoginViewController: UIViewController {
         self.view.layout(forgotButton)
             .height(44)
             .center(offsetY: passwordField.height + loginButton.height + 70)
-            .left(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
-            .right(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
+            .left(CGFloat(UIMarginSpec.mediumMargin))
+            .right(CGFloat(UIMarginSpec.mediumMargin))
     }
 
     // Add Subview Sign Up Button
@@ -149,8 +149,8 @@ class LoginViewController: UIViewController {
         self.view.layout(signUpButton)
             .height(44)
             .bottom(20)
-            .left(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
-            .right(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
+            .left(CGFloat(UIMarginSpec.mediumMargin))
+            .right(CGFloat(UIMarginSpec.mediumMargin))
     }
 
     // Login User
@@ -178,15 +178,15 @@ class LoginViewController: UIViewController {
 
     }
 
-    //function called on return button click of keyboard
+    // function called on return button click of keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         dismissKeyboard()
         return false
     }
 
-    //dismiss keyboard if open.
+    // dismiss keyboard if open.
     func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        // Causes the view (or one of its embedded text fields) to resign the first responder status.
         self.view.endEditing(true)
     }
 
