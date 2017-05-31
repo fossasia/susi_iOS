@@ -12,13 +12,13 @@ import Toast_Swift
 import SwiftValidators
 
 class LoginViewController: UIViewController {
-    
+
     // Define UI margin constants
     struct UIMarginSpec {
         static let MARGIN_SMALL = 10
-        static let MARGIN_MEDIUM = 20;
+        static let MARGIN_MEDIUM = 20
     }
-    
+
     // Setup Susi Logo
     let susiLogo: UIImageView = {
         let iv = UIImageView()
@@ -26,7 +26,7 @@ class LoginViewController: UIViewController {
         iv.image = UIImage(named: "susi")
         return iv
     }()
-    
+
     // Setup Email Text Field
     lazy var emailField: AuthTextField = {
         let textField = AuthTextField()
@@ -36,7 +36,7 @@ class LoginViewController: UIViewController {
         textField.delegate = self
         return textField
     }()
-    
+
     // Setup Password Field
     lazy var passwordField: AuthTextField = {
         let textField = AuthTextField()
@@ -47,7 +47,7 @@ class LoginViewController: UIViewController {
         textField.delegate = self
         return textField
     }()
-    
+
     // Setup Login Button
     lazy var loginButton: RaisedButton = {
         let button = RaisedButton()
@@ -57,7 +57,7 @@ class LoginViewController: UIViewController {
         button.addTarget(self, action: #selector(performLogin), for: .touchUpInside)
         return button
     }()
-    
+
     // Setup Forgot Button
     let forgotButton: FlatButton = {
         let button = FlatButton()
@@ -65,7 +65,7 @@ class LoginViewController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         return button
     }()
-    
+
     // Setup Sign Up Button
     lazy var signUpButton: FlatButton = {
         let button = FlatButton()
@@ -74,23 +74,23 @@ class LoginViewController: UIViewController {
         button.addTarget(self, action: #selector(showSignUpView), for: .touchUpInside)
         return button
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         checkSession()
         addTapGesture()
     }
-    
+
     func addTapGesture() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
         self.view.addGestureRecognizer(tap)
     }
-    
+
     // Setup View
     func setupView() {
         self.view.backgroundColor = UIColor.defaultColor()
-        
+
         prepareLogo()
         prepareEmailField()
         preparePasswordField()
@@ -98,13 +98,13 @@ class LoginViewController: UIViewController {
         prepareForgotButton()
         prepareSignUpButton()
     }
-    
+
     // Add Subview Logo
     private func prepareLogo() {
         self.view.addSubview(susiLogo)
         self.view.layout(susiLogo).top(50).centerHorizontally()
     }
-    
+
     // Add Subview Email Field
     private func prepareEmailField() {
         self.view.addSubview(emailField)
@@ -113,7 +113,7 @@ class LoginViewController: UIViewController {
             .left(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
             .right(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
     }
-    
+
     // Add Subview Password Field
     private func preparePasswordField() {
         self.view.addSubview(passwordField)
@@ -122,7 +122,7 @@ class LoginViewController: UIViewController {
             .left(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
             .right(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
     }
-    
+
     // Add Subview Login Button
     private func prepareLoginButton() {
         self.view.addSubview(loginButton)
@@ -132,7 +132,7 @@ class LoginViewController: UIViewController {
             .left(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
             .right(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
     }
-    
+
     // Add Subview Forgot Button
     private func prepareForgotButton() {
         self.view.addSubview(forgotButton)
@@ -142,7 +142,7 @@ class LoginViewController: UIViewController {
             .left(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
             .right(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
     }
-    
+
     // Add Subview Sign Up Button
     private func prepareSignUpButton() {
         self.view.addSubview(signUpButton)
@@ -152,19 +152,19 @@ class LoginViewController: UIViewController {
             .left(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
             .right(CGFloat(UIMarginSpec.MARGIN_MEDIUM))
     }
-    
+
     // Login User
     func performLogin() {
 
         if isValid() {
             toggleEditing()
-            
+
             let params = [
                 Client.UserKeys.Login: emailField.text!.lowercased(),
                 Client.UserKeys.Password: passwordField.text!,
                 Client.ChatKeys.ResponseType: Client.ChatKeys.AccessToken
             ] as [String : Any]
-            
+
             Client.sharedInstance.loginUser(params as [String : AnyObject]) { (_, success, message) in
                 DispatchQueue.main.async {
                     self.toggleEditing()
@@ -175,42 +175,42 @@ class LoginViewController: UIViewController {
                 }
             }
         }
-        
+
     }
-    
+
     //function called on return button click of keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         dismissKeyboard()
         return false
     }
-    
+
     //dismiss keyboard if open.
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         self.view.endEditing(true)
     }
-    
+
     // Toggle Editing
     func toggleEditing() {
         emailField.isEnabled = !emailField.isEnabled
         passwordField.isEnabled = !passwordField.isEnabled
         loginButton.isEnabled = !loginButton.isEnabled
     }
-    
+
     // Clear field after login
     func clearFields() {
         emailField.text = ""
         passwordField.text = ""
     }
-    
+
     // Show sign up controller
     func showSignUpView() {
         clearFields()
-        
+
         let vc = SignUpViewController()
         self.present(vc, animated: true, completion: nil)
     }
-    
+
     // Validate fields
     func isValid() -> Bool {
         if let emailID = emailField.text, !emailID.isValidEmail() {
@@ -223,7 +223,7 @@ class LoginViewController: UIViewController {
         }
         return true
     }
-    
+
     // Login User
     func completeLogin() {
         let vc = MainViewController(collectionViewLayout: UICollectionViewFlowLayout())
@@ -232,12 +232,12 @@ class LoginViewController: UIViewController {
             self.clearFields()
         })
     }
-    
+
     // Check existing session
     func checkSession() {
         if let user = UserDefaults.standard.value(forKey: "user") {
-            let _ = User(dictionary: user as! [String : AnyObject])
-            
+            _ = User(dictionary: user as! [String : AnyObject])
+
             DispatchQueue.main.async {
                 self.completeLogin()
             }
@@ -247,7 +247,7 @@ class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: TextFieldDelegate {
-    
+
     // Verify input data after editing over
     public func textFieldDidEndEditing(_ textField: UITextField) {
         if let emailID = emailField.text, !emailID.isValidEmail() && textField == emailField {
@@ -255,14 +255,14 @@ extension LoginViewController: TextFieldDelegate {
         } else {
             emailField.isErrorRevealed = false
         }
-        
+
         if let password = passwordField.text, password.isEmpty && textField == passwordField {
             passwordField.isErrorRevealed = true
         } else {
             passwordField.isErrorRevealed = false
         }
     }
-    
+
     public func textFieldShouldClear(_ textField: UITextField) -> Bool {
         (textField as? ErrorTextField)?.isErrorRevealed = false
         return true

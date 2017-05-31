@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4FCDF8638A44821DEACBB4E0 /* Pods_Susi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39326DEEDBD0CCA432D3B25D /* Pods_Susi.framework */; };
 		6D215B951EB0BE7300CD2C1D /* SusiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D215B941EB0BE7300CD2C1D /* SusiUITests.swift */; };
 		6D2F984B1E76DF2200FE2B6F /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2F984A1E76DF2200FE2B6F /* BaseCell.swift */; };
 		6D2F984D1E76E62900FE2B6F /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2F984C1E76E62900FE2B6F /* Message.swift */; };
+		6D389BEA1EDB912500DEAEA0 /* YouTubePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D389BE81EDB912500DEAEA0 /* YouTubePlayer.swift */; };
+		6D389BEB1EDB912500DEAEA0 /* YTPlayer.html in Resources */ = {isa = PBXBuildFile; fileRef = 6D389BE91EDB912500DEAEA0 /* YTPlayer.html */; };
 		6D3E82441E7943EE00D48776 /* AppNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3E82431E7943EE00D48776 /* AppNavigationController.swift */; };
 		6D3E82461E7953B200D48776 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3E82451E7953B200D48776 /* SettingsViewController.swift */; };
 		6D3E82481E796B5200D48776 /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3E82471E796B5200D48776 /* SettingsHeaderView.swift */; };
@@ -21,15 +24,14 @@
 		6D4D9B541E7690160067459C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4D9B531E7690160067459C /* Extensions.swift */; };
 		6D98EDFB1E796EFE00D96B32 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D98EDFA1E796EFE00D96B32 /* SettingsCell.swift */; };
 		6D9C0D291E7B223A00199828 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9C0D281E7B223A00199828 /* User.swift */; };
+		6DE1B5EB1EDB89BF0032E711 /* Pods_Susi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DE1B5EA1EDB89BF0032E711 /* Pods_Susi.framework */; };
 		6DE44E0F1E769AD300215B85 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE44E0E1E769AD300215B85 /* Color.swift */; };
 		6DE44E111E76ACAF00215B85 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE44E101E76ACAF00215B85 /* Client.swift */; };
 		6DE44E161E76ACD900215B85 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE44E141E76ACD900215B85 /* Constants.swift */; };
 		6DE44E171E76ACD900215B85 /* Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE44E151E76ACD900215B85 /* Convenience.swift */; };
 		6DE44E191E76AF8100215B85 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE44E181E76AF8100215B85 /* MainViewController.swift */; };
 		6DE44E1B1E76B5D600215B85 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE44E1A1E76B5D600215B85 /* SignUpViewController.swift */; };
-		6DF591D41E817EC0003B2C6B /* Pods_Susi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DF591D31E817EC0003B2C6B /* Pods_Susi.framework */; };
 		6DF591D61E8189B7003B2C6B /* WebsearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF591D51E8189B7003B2C6B /* WebsearchResult.swift */; };
-		9B1814DE7FB0475950444A8F /* Pods_Susi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39326DEEDBD0CCA432D3B25D /* Pods_Susi.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		6D215B961EB0BE7300CD2C1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D2F984A1E76DF2200FE2B6F /* BaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 		6D2F984C1E76E62900FE2B6F /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		6D389BE81EDB912500DEAEA0 /* YouTubePlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouTubePlayer.swift; sourceTree = "<group>"; };
+		6D389BE91EDB912500DEAEA0 /* YTPlayer.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = YTPlayer.html; sourceTree = "<group>"; };
 		6D3E82431E7943EE00D48776 /* AppNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNavigationController.swift; sourceTree = "<group>"; };
 		6D3E82451E7953B200D48776 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		6D3E82471E796B5200D48776 /* SettingsHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
@@ -65,6 +69,8 @@
 		6D82ADF21E784A5A0094AA9E /* Pods_Susi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Susi.framework; path = "../../Library/Developer/Xcode/DerivedData/Susi-avbkhdntnaiijsctxkaeflbkpdbm/Build/Products/Debug-iphonesimulator/Pods_Susi.framework"; sourceTree = "<group>"; };
 		6D98EDFA1E796EFE00D96B32 /* SettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		6D9C0D281E7B223A00199828 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		6DE1B5E81EDB896F0032E711 /* Pods_Susi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Susi.framework; path = "Pods/../build/Debug-iphoneos/Pods_Susi.framework"; sourceTree = "<group>"; };
+		6DE1B5EA1EDB89BF0032E711 /* Pods_Susi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Susi.framework; path = "Pods/../build/Debug-iphoneos/Pods_Susi.framework"; sourceTree = "<group>"; };
 		6DE44E0E1E769AD300215B85 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		6DE44E101E76ACAF00215B85 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		6DE44E141E76ACD900215B85 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -89,8 +95,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6DF591D41E817EC0003B2C6B /* Pods_Susi.framework in Frameworks */,
-				9B1814DE7FB0475950444A8F /* Pods_Susi.framework in Frameworks */,
+				6DE1B5EB1EDB89BF0032E711 /* Pods_Susi.framework in Frameworks */,
+				4FCDF8638A44821DEACBB4E0 /* Pods_Susi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,6 +132,15 @@
 			name = "Custom Views";
 			sourceTree = "<group>";
 		};
+		6D389BE71EDB90E800DEAEA0 /* Youtube-Player */ = {
+			isa = PBXGroup;
+			children = (
+				6D389BE81EDB912500DEAEA0 /* YouTubePlayer.swift */,
+				6D389BE91EDB912500DEAEA0 /* YTPlayer.html */,
+			);
+			name = "Youtube-Player";
+			sourceTree = "<group>";
+		};
 		6D3FB3471E8136640015E1D6 /* Message Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +172,7 @@
 		6D4D9B391E768E190067459C /* Susi */ = {
 			isa = PBXGroup;
 			children = (
+				6D389BE71EDB90E800DEAEA0 /* Youtube-Player */,
 				6D2F98471E76DED400FE2B6F /* Custom Views */,
 				6DE44E121E76ACBA00215B85 /* Model */,
 				6D4D9B521E768FF40067459C /* Helpers */,
@@ -230,6 +246,8 @@
 		BD5FA220F268315B61F71523 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6DE1B5EA1EDB89BF0032E711 /* Pods_Susi.framework */,
+				6DE1B5E81EDB896F0032E711 /* Pods_Susi.framework */,
 				6DF591D31E817EC0003B2C6B /* Pods_Susi.framework */,
 				6D767DEE1E79A9C800FF5485 /* Pods_Susi.framework */,
 				6D767DEC1E79A9B600FF5485 /* Pods_Susi.framework */,
@@ -334,6 +352,7 @@
 			files = (
 				6D4D9B451E768E190067459C /* LaunchScreen.storyboard in Resources */,
 				6D4D9B421E768E190067459C /* Assets.xcassets in Resources */,
+				6D389BEB1EDB912500DEAEA0 /* YTPlayer.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,6 +421,7 @@
 			files = (
 				6D3E82481E796B5200D48776 /* SettingsHeaderView.swift in Sources */,
 				6D4D9B4D1E768E650067459C /* LoginViewController.swift in Sources */,
+				6D389BEA1EDB912500DEAEA0 /* YouTubePlayer.swift in Sources */,
 				6DE44E0F1E769AD300215B85 /* Color.swift in Sources */,
 				6D98EDFB1E796EFE00D96B32 /* SettingsCell.swift in Sources */,
 				6D3FB3491E813B900015E1D6 /* ChatMessageCell.swift in Sources */,
@@ -580,6 +600,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Release-iphoneos",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = Susi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -602,6 +623,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Release-iphoneos",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = Susi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
