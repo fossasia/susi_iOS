@@ -44,6 +44,20 @@ Our chat channel is on gitter here: https://gitter.im/fossasia/susi_iOS
 
 A native iOS app.
 
+## Screenshots
+
+  <p align="center">
+    <img src="docs/img/Screen1.png" height = "480" width="270"> 
+    <img src="docs/img/Screen2.png" height = "480" width="270"> 
+    <img src="docs/img/Screen3.png" height = "480" width="270">
+  </p>
+
+  <p align="center">
+    <img src="docs/img/Screen4.png" height = "480" width="270"> 
+    <img src="docs/img/Screen5.png" height = "480" width="270"> 
+    <img src="docs/img/Screen6.png" height = "480" width="270">
+  </p>
+
 ## Branch Policy
 
 Note: For the initialization period all commits go directly to the master branch. In the next stages we follow the branch policy as below:
@@ -63,7 +77,7 @@ you are supposed to make a pull request to _development_.
 Please help us follow the best practice to make it easy for the reviewer as well as the contributor. We want to focus on the code quality more than on managing pull request ethics. 
 
 * Single commit per pull request
-* Reference the issue numbers in the commit message. Follow the pattern ``` Fixes #<issue number> <commit message>```
+* For writing commit messages please read the [COMMITSTYLE](docs/commitStyle.md) carefully. Kindly adhere to the guidelines.
 * Follow uniform design practices. The design language must be consistent throughout the app.
 * The pull request will not get merged until and unless the commits are squashed. In case there are multiple commits on the PR, the commit author needs to squash them and not the maintainers cherrypicking and merging squashes.
 * If the PR is related to any front end change, please attach relevant screenshots in the pull request description.
