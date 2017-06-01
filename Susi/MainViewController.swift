@@ -89,6 +89,9 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
 
             bottomConstraint?.constant = isKeyboardShowing ? -keyboardFrame!.height : 0
 
+            collectionView?.frame = isKeyboardShowing ? CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - keyboardFrame!.height - 47) :
+                CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - 47)
+
             UIView.animate(withDuration: 0, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
 
                 self.view.layoutIfNeeded()
@@ -186,7 +189,7 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         }
         collectionView?.backgroundColor = .clear
         collectionView?.delegate = self
-        collectionView?.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - 45)
+        collectionView?.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - 47)
         collectionView?.register(ChatMessageCell.self, forCellWithReuseIdentifier: cellId)
     }
 
@@ -430,7 +433,7 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         if messages.count > 0 {
             let lastItem = self.messages.count - 1
             let indexPath = IndexPath(item: lastItem, section: 0)
-            self.collectionView?.scrollToItem(at: indexPath, at: .top, animated: true)
+            self.collectionView?.scrollToItem(at: indexPath, at: .bottom, animated: true)
         }
     }
 
