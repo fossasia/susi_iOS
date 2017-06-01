@@ -18,7 +18,7 @@ extension Client {
         _ = makeRequest(.post, [:], Methods.Login, parameters: params, completion: { (results, message) in
 
             if let error = message {
-                print(error.localizedDescription)
+                debugPrint(error.localizedDescription)
                 completion(nil, false, ResponseMessages.InvalidParams)
                 return
             } else if let results = results as? [String : AnyObject] {
@@ -39,7 +39,7 @@ extension Client {
         _ = makeRequest(.post, [:], Methods.Register, parameters: params, completion: { (results, message) in
 
             if let error = message {
-                print(error.localizedDescription)
+                debugPrint(error.localizedDescription)
                 completion(false, ResponseMessages.ServerError)
                 return
             } else if let results = results {
@@ -71,7 +71,7 @@ extension Client {
         _ = makeRequest(.get, [:], Methods.Chat, parameters: params, completion: { (results, message) in
 
             if let error = message {
-                print(error.localizedDescription)
+                debugPrint(error.localizedDescription)
                 completion(nil, false, ResponseMessages.ServerError)
                 return
             } else if let results = results {
@@ -97,7 +97,7 @@ extension Client {
         _ = customRequest(.get, [:], CustomURLs.DuckDuckGo, params, completion: { (results, message) in
 
             if let error = message {
-                print(error.localizedDescription)
+                debugPrint(error.localizedDescription)
                 completion(nil, false, ResponseMessages.ServerError)
                 return
             } else if let results = results {
@@ -129,7 +129,7 @@ extension Client {
         _ = customRequest(.get, [:], CustomURLs.YoutubeSearch, params as [String : AnyObject], completion: { (results, message) in
 
             if let error = message {
-                print(error.localizedDescription)
+                debugPrint(error.localizedDescription)
                 completion(nil, false, ResponseMessages.ServerError)
                 return
             } else if let results = results {
