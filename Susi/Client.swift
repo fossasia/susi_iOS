@@ -40,7 +40,7 @@ class Client: NSObject {
                 break
 
             case .failure(let error):
-                print(error.localizedDescription)
+                debugPrint(error.localizedDescription)
                 sendError(ResponseMessages.ServerError)
                 break
             }
@@ -68,7 +68,7 @@ class Client: NSObject {
                 break
 
             case .failure(let error):
-                print(error.localizedDescription)
+                debugPrint(error.localizedDescription)
                 sendError(ResponseMessages.ServerError)
                 break
             }

@@ -15,4 +15,5 @@ target 'Susi' do
   pod 'ALTextInputBar'
   pod 'AlamofireImage', '~> 3.1'
   pod 'SwiftLint'
+  pod 'Nuke-Gifu-Plugin'
 end
