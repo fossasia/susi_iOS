@@ -11,12 +11,6 @@ import Material
 
 class SignUpViewController: UIViewController {
 
-    // Define UI margin constants
-    struct UIMarginSpec {
-        static let smallMargin = 10
-        static let mediumMargin = 20
-    }
-
     // Setup Dismiss Button
     let dismissButton: IconButton = {
         let ib = IconButton()
@@ -96,7 +90,7 @@ class SignUpViewController: UIViewController {
     func prepareDismissButton() {
         self.view.addSubview(dismissButton)
         self.view.layout(dismissButton)
-            .topLeft(top: CGFloat(UIMarginSpec.mediumMargin), left: 8)
+            .topLeft(top: UIView.UIMarginSpec.mediumMargin, left: 8)
     }
 
     // Dismiss View Controller
@@ -109,8 +103,8 @@ class SignUpViewController: UIViewController {
         self.view.addSubview(emailField)
         self.view.layout(emailField)
             .center(offsetY: -confirmPasswordField.height - passwordField.height - 180)
-            .left(CGFloat(UIMarginSpec.mediumMargin))
-            .right(CGFloat(UIMarginSpec.mediumMargin))
+            .left(UIView.UIMarginSpec.mediumMargin)
+            .right(UIView.UIMarginSpec.mediumMargin)
     }
 
     // Add Subview Password Field
@@ -118,8 +112,8 @@ class SignUpViewController: UIViewController {
         self.view.addSubview(passwordField)
         self.view.layout(passwordField)
             .center(offsetY: -confirmPasswordField.height - 100)
-            .left(CGFloat(UIMarginSpec.mediumMargin))
-            .right(CGFloat(UIMarginSpec.mediumMargin))
+            .left(UIView.UIMarginSpec.mediumMargin)
+            .right(UIView.UIMarginSpec.mediumMargin)
     }
 
     // Add Subview Confirm Password Field
@@ -127,8 +121,8 @@ class SignUpViewController: UIViewController {
         self.view.addSubview(confirmPasswordField)
         self.view.layout(confirmPasswordField)
             .center(offsetY: 0)
-            .left(CGFloat(UIMarginSpec.mediumMargin))
-            .right(CGFloat(UIMarginSpec.mediumMargin))
+            .left(UIView.UIMarginSpec.mediumMargin)
+            .right(UIView.UIMarginSpec.mediumMargin)
     }
 
     // Add Subview Sign Up Button
@@ -137,8 +131,8 @@ class SignUpViewController: UIViewController {
         self.view.layout(signUpButton)
             .height(44)
             .center(offsetY: confirmPasswordField.height + 70)
-            .left(CGFloat(UIMarginSpec.mediumMargin))
-            .right(CGFloat(UIMarginSpec.mediumMargin))
+            .left(UIView.UIMarginSpec.mediumMargin)
+            .right(UIView.UIMarginSpec.mediumMargin)
     }
 
     // Sign Up User

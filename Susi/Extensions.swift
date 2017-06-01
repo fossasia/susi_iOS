@@ -65,6 +65,13 @@ extension UIView {
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
     }
 
+    // Define UI margin constants
+    struct UIMarginSpec {
+        static let smallMargin: CGFloat = 10.0
+        static let mediumMargin: CGFloat = 20.0
+        static let largeMatgin: CGFloat = 40.0
+    }
+
 }
 
 class AuthTextField: ErrorTextField {
