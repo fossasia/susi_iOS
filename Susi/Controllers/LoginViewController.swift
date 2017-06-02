@@ -13,12 +13,6 @@ import SwiftValidators
 
 class LoginViewController: UIViewController {
 
-    // Define UI margin constants
-    struct UIMarginSpec {
-        static let smallMargin = 10
-        static let mediumMargin = 20
-    }
-
     // Setup Susi Logo
     let susiLogo: UIImageView = {
         let iv = UIImageView()
@@ -59,10 +53,11 @@ class LoginViewController: UIViewController {
     }()
 
     // Setup Forgot Button
-    let forgotButton: FlatButton = {
+    lazy var forgotButton: FlatButton = {
         let button = FlatButton()
         button.setTitle("Forgot Password?", for: .normal)
         button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(showFPView), for: .touchUpInside)
         return button
     }()
 
@@ -110,8 +105,8 @@ class LoginViewController: UIViewController {
         self.view.addSubview(emailField)
         self.view.layout(emailField)
             .center(offsetY: -passwordField.height - 80)
-            .left(CGFloat(UIMarginSpec.mediumMargin))
-            .right(CGFloat(UIMarginSpec.mediumMargin))
+            .left(UIView.UIMarginSpec.mediumMargin)
+            .right(UIView.UIMarginSpec.mediumMargin)
     }
 
     // Add Subview Password Field
@@ -119,8 +114,8 @@ class LoginViewController: UIViewController {
         self.view.addSubview(passwordField)
         self.view.layout(passwordField)
             .center(offsetY: 0)
-            .left(CGFloat(UIMarginSpec.mediumMargin))
-            .right(CGFloat(UIMarginSpec.mediumMargin))
+            .left(UIView.UIMarginSpec.mediumMargin)
+            .right(UIView.UIMarginSpec.mediumMargin)
     }
 
     // Add Subview Login Button
@@ -129,8 +124,8 @@ class LoginViewController: UIViewController {
         self.view.layout(loginButton)
             .height(44)
             .center(offsetY: passwordField.height + 60)
-            .left(CGFloat(UIMarginSpec.mediumMargin))
-            .right(CGFloat(UIMarginSpec.mediumMargin))
+            .left(UIView.UIMarginSpec.mediumMargin)
+            .right(UIView.UIMarginSpec.mediumMargin)
     }
 
     // Add Subview Forgot Button
@@ -139,8 +134,8 @@ class LoginViewController: UIViewController {
         self.view.layout(forgotButton)
             .height(44)
             .center(offsetY: passwordField.height + loginButton.height + 70)
-            .left(CGFloat(UIMarginSpec.mediumMargin))
-            .right(CGFloat(UIMarginSpec.mediumMargin))
+            .left(UIView.UIMarginSpec.mediumMargin)
+            .right(UIView.UIMarginSpec.mediumMargin)
     }
 
     // Add Subview Sign Up Button
@@ -149,8 +144,8 @@ class LoginViewController: UIViewController {
         self.view.layout(signUpButton)
             .height(44)
             .bottom(20)
-            .left(CGFloat(UIMarginSpec.mediumMargin))
-            .right(CGFloat(UIMarginSpec.mediumMargin))
+            .left(UIView.UIMarginSpec.mediumMargin)
+            .right(UIView.UIMarginSpec.mediumMargin)
     }
 
     // Login User
@@ -209,6 +204,13 @@ class LoginViewController: UIViewController {
 
         let vc = SignUpViewController()
         self.present(vc, animated: true, completion: nil)
+    }
+
+    // Show Forgot Password VC
+    func showFPView() {
+        let vc = ForgotPasswordViewController()
+        let nvc = AppNavigationController(rootViewController: vc)
+        self.present(nvc, animated: true, completion: nil)
     }
 
     // Validate fields

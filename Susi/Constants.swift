@@ -17,6 +17,7 @@ extension Client {
         static let Login = "/aaa/login.json"
         static let Register = "/aaa/signup.json"
         static let Chat = "/susi/chat.json"
+        static let ResetPassword = "/aaa/recoverpassword.json"
     }
 
     struct ResponseMessages {
@@ -31,6 +32,7 @@ extension Client {
         static let Login = "login"
         static let SignUp = "signup"
         static let Password = "password"
+        static let ForgotEmail = "forgotemail"
     }
 
     struct ChatKeys {

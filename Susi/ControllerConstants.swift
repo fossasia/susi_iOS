@@ -15,4 +15,10 @@ struct ControllerConstants {
     static let wallpaperOptionsPickAction = "Pick image from gallery"
     static let wallpaperOptionsNoWallpaperAction = "No wallpaper"
     static let dialogCancelAction = "Cancel"
+    static let emailSent = "Email Sent"
+    static let ok = "Ok"
+    static let forgotPassword = "Forgot Password"
+    static let reset = "Reset"
+    static let enterEmailID = "Enter your Email ID"
+    static let invalidEmail = "Invalid Email ID"
 }

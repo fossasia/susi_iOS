@@ -57,6 +57,29 @@ extension Client {
 
     }
 
+    func resetPassword(_ params: [String : AnyObject], _ completion: @escaping(_ success: Bool, _ error: String) -> Void) {
+
+        _ = makeRequest(.get, [:], Methods.ResetPassword, parameters: params, completion: { (results, message) in
+
+            if let error = message {
+                debugPrint(error.localizedDescription)
+                completion(false, ResponseMessages.ServerError)
+                return
+            } else if let results = results {
+
+                guard let successMessage = results[UserKeys.Message] as? String else {
+                    completion(false, ResponseMessages.InvalidParams)
+                    return
+                }
+
+                completion(true, successMessage)
+                return
+            }
+
+        })
+
+    }
+
     func logoutUser(_ completion: @escaping(_ success: Bool, _ error: String) -> Void) {
 
         UserDefaults.standard.removeObject(forKey: "user")
