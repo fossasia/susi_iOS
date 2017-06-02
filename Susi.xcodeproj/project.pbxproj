@@ -65,7 +65,7 @@
 		6D4D9B411E768E190067459C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6D4D9B441E768E190067459C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6D4D9B461E768E190067459C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6D4D9B4C1E768E650067459C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/LoginViewController.swift; sourceTree = "<group>"; };
+		6D4D9B4C1E768E650067459C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6D4D9B531E7690160067459C /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		6D767DEC1E79A9B600FF5485 /* Pods_Susi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Susi.framework; path = "Pods/../build/Release-iphoneos/Pods_Susi.framework"; sourceTree = "<group>"; };
 		6D767DEE1E79A9C800FF5485 /* Pods_Susi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Susi.framework; path = "Pods/../build/Release-iphoneos/Pods_Susi.framework"; sourceTree = "<group>"; };
@@ -119,8 +119,8 @@
 		6D215B931EB0BE7300CD2C1D /* SusiUITests */ = {
 			isa = PBXGroup;
 			children = (
-				6D215B941EB0BE7300CD2C1D /* SusiUITests.swift */,
 				6D215B961EB0BE7300CD2C1D /* Info.plist */,
+				6D215B941EB0BE7300CD2C1D /* SusiUITests.swift */,
 			);
 			path = SusiUITests;
 			sourceTree = "<group>";
@@ -128,21 +128,23 @@
 		6D2F98471E76DED400FE2B6F /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
-				6D2F984A1E76DF2200FE2B6F /* BaseCell.swift */,
-				6D3E82471E796B5200D48776 /* SettingsHeaderView.swift */,
-				6D98EDFA1E796EFE00D96B32 /* SettingsCell.swift */,
 				6D3FB3471E8136640015E1D6 /* Message Cells */,
+				6D2F984A1E76DF2200FE2B6F /* BaseCell.swift */,
+				6D98EDFA1E796EFE00D96B32 /* SettingsCell.swift */,
+				6D3E82471E796B5200D48776 /* SettingsHeaderView.swift */,
 			);
 			name = "Custom Views";
+			path = "Custom Views";
 			sourceTree = "<group>";
 		};
 		6D389BE71EDB90E800DEAEA0 /* Youtube-Player */ = {
 			isa = PBXGroup;
 			children = (
-				6D389BE81EDB912500DEAEA0 /* YouTubePlayer.swift */,
 				6D389BE91EDB912500DEAEA0 /* YTPlayer.html */,
+				6D389BE81EDB912500DEAEA0 /* YouTubePlayer.swift */,
 			);
 			name = "Youtube-Player";
+			path = "Youtube-Player";
 			sourceTree = "<group>";
 		};
 		6D3FB3471E8136640015E1D6 /* Message Cells */ = {
@@ -151,16 +153,17 @@
 				6D3FB3481E813B900015E1D6 /* ChatMessageCell.swift */,
 			);
 			name = "Message Cells";
+			path = "Message Cells";
 			sourceTree = "<group>";
 		};
 		6D4D9B2E1E768E190067459C = {
 			isa = PBXGroup;
 			children = (
+				BD5FA220F268315B61F71523 /* Frameworks */,
+				1D60790BCD441CA8C61D6EAA /* Pods */,
+				6D4D9B381E768E190067459C /* Products */,
 				6D4D9B391E768E190067459C /* Susi */,
 				6D215B931EB0BE7300CD2C1D /* SusiUITests */,
-				6D4D9B381E768E190067459C /* Products */,
-				1D60790BCD441CA8C61D6EAA /* Pods */,
-				BD5FA220F268315B61F71523 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -176,13 +179,13 @@
 		6D4D9B391E768E190067459C /* Susi */ = {
 			isa = PBXGroup;
 			children = (
-				6D389BE71EDB90E800DEAEA0 /* Youtube-Player */,
-				6D2F98471E76DED400FE2B6F /* Custom Views */,
-				6DE44E121E76ACBA00215B85 /* Model */,
-				6D4D9B521E768FF40067459C /* Helpers */,
 				6D4D9B511E768F390067459C /* Assets */,
-				6D4D9B4F1E768F250067459C /* Supporting Files */,
 				6D4D9B501E768F2E0067459C /* Controllers */,
+				6D2F98471E76DED400FE2B6F /* Custom Views */,
+				6D4D9B521E768FF40067459C /* Helpers */,
+				6DE44E121E76ACBA00215B85 /* Model */,
+				6D4D9B4F1E768F250067459C /* Supporting Files */,
+				6D389BE71EDB90E800DEAEA0 /* Youtube-Player */,
 			);
 			path = Susi;
 			sourceTree = "<group>";
@@ -191,23 +194,25 @@
 			isa = PBXGroup;
 			children = (
 				6D4D9B3A1E768E190067459C /* AppDelegate.swift */,
-				6D4D9B431E768E190067459C /* LaunchScreen.storyboard */,
 				6D4D9B461E768E190067459C /* Info.plist */,
+				6D4D9B431E768E190067459C /* LaunchScreen.storyboard */,
 			);
 			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		6D4D9B501E768F2E0067459C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6D3E82431E7943EE00D48776 /* AppNavigationController.swift */,
+				6DFC75B81EE077E9002F92BA /* ForgotPasswordViewController.swift */,
 				6D4D9B4C1E768E650067459C /* LoginViewController.swift */,
 				6DE44E181E76AF8100215B85 /* MainViewController.swift */,
-				6DE44E1A1E76B5D600215B85 /* SignUpViewController.swift */,
-				6D3E82431E7943EE00D48776 /* AppNavigationController.swift */,
 				6D3E82451E7953B200D48776 /* SettingsViewController.swift */,
-				6DFC75B81EE077E9002F92BA /* ForgotPasswordViewController.swift */,
+				6DE44E1A1E76B5D600215B85 /* SignUpViewController.swift */,
 			);
 			name = Controllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		6D4D9B511E768F390067459C /* Assets */ = {
@@ -216,27 +221,30 @@
 				6D4D9B411E768E190067459C /* Assets.xcassets */,
 			);
 			name = Assets;
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		6D4D9B521E768FF40067459C /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				6D4D9B531E7690160067459C /* Extensions.swift */,
 				6DE44E0E1E769AD300215B85 /* Color.swift */,
 				4CD0AA5E1EDF2CB700BC8FD5 /* ControllerConstants.swift */,
+				6D4D9B531E7690160067459C /* Extensions.swift */,
 			);
 			name = Helpers;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		6DE44E121E76ACBA00215B85 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6DE44E131E76ACC200215B85 /* Client */,
 				6D2F984C1E76E62900FE2B6F /* Message.swift */,
 				6D9C0D281E7B223A00199828 /* User.swift */,
 				6DF591D51E8189B7003B2C6B /* WebsearchResult.swift */,
-				6DE44E131E76ACC200215B85 /* Client */,
 			);
 			name = Model;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		6DE44E131E76ACC200215B85 /* Client */ = {
@@ -247,6 +255,7 @@
 				6DE44E151E76ACD900215B85 /* Convenience.swift */,
 			);
 			name = Client;
+			path = Client;
 			sourceTree = "<group>";
 		};
 		BD5FA220F268315B61F71523 /* Frameworks */ = {
@@ -466,6 +475,7 @@
 				6D4D9B441E768E190067459C /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -610,7 +620,7 @@
 					"$(PROJECT_DIR)/build/Release-iphoneos",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
-				INFOPLIST_FILE = Susi/Info.plist;
+				INFOPLIST_FILE = "Susi/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.fossasia.susi;
@@ -633,7 +643,7 @@
 					"$(PROJECT_DIR)/build/Release-iphoneos",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
-				INFOPLIST_FILE = Susi/Info.plist;
+				INFOPLIST_FILE = "Susi/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.fossasia.susi;
