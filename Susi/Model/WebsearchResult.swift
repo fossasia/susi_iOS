@@ -10,9 +10,9 @@ import UIKit
 
 class WebsearchResult: NSObject {
 
-    var image: String = "no-image"
-    var info: String = "No data found"
-    var url: String = "https://duckduckgo.com/"
+    var image: String = Client.WebSearch.image
+    var info: String = Client.WebSearch.noData
+    var url: String = Client.WebSearch.duckDuckGo
     var query: String = ""
 
     init(dictionary: [String:AnyObject]) {

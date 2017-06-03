@@ -8,9 +8,10 @@
 
 extension Client {
 
-    struct API {
-        static let APIScheme = "http"
-        static let BaseUrl = "api.asksusi.com"
+    struct APIURLs {
+        static let SusiAPI = "http://api.asksusi.com"
+        static let DuckDuckGo = "http://api.duckduckgo.com"
+        static let YoutubeSearch = "https://www.googleapis.com/youtube/v3/search"
     }
 
     struct Methods {
@@ -78,9 +79,10 @@ extension Client {
         static let VideoID = "videoId"
     }
 
-    struct CustomURLs {
-        static let DuckDuckGo = "http://api.duckduckgo.com"
-        static let YoutubeSearch = "https://www.googleapis.com/youtube/v3/search"
+    struct WebSearch {
+        static let image = "no-image"
+        static let noData = "No data found"
+        static let duckDuckGo = "https://duckduckgo.com/"
     }
 
 }

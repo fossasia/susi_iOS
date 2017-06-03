@@ -11,9 +11,8 @@ import Material
 
 class SettingsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
-    let cellId = "cellId"
-    let headerId = "headerId"
-    let sectionHeaders = ["Chat Settings", "Mic Settings", "Speech Settings"]
+    let headerId = ControllerConstants.Settings.headerId
+    let sectionHeaders = ControllerConstants.Settings.sectionHeaders
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +24,7 @@ class SettingsViewController: UICollectionViewController, UICollectionViewDelega
 
     // Setup Navigation Bar
     func setupTitle() {
-        navigationItem.title = "Settings"
+        navigationItem.title = ControllerConstants.Settings.settings
         navigationItem.titleLabel.textAlignment = .left
         navigationItem.titleLabel.textColor = .white
     }
@@ -41,7 +40,7 @@ class SettingsViewController: UICollectionViewController, UICollectionViewDelega
         collectionView?.delegate = self
 
         collectionView?.register(SettingsHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
-        collectionView?.register(SettingsCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.register(SettingsCell.self, forCellWithReuseIdentifier: ControllerConstants.cellId)
     }
 
     // Handles number of sections
@@ -60,41 +59,37 @@ class SettingsViewController: UICollectionViewController, UICollectionViewDelega
 
     // Configures cell
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! SettingsCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.cellId, for: indexPath) as! SettingsCell
 
         if indexPath.section == 0 {
-            cell.titleLabel.text = "Enter To Send"
-            cell.detailLabel.text = "Send message by hitting return"
-            cell.settingSwitch.isHidden = false
+            cell.titleLabel.text = ControllerConstants.Settings.enterToSend
+            cell.detailLabel.text = ControllerConstants.Settings.sendMessageByReturn
             cell.settingSwitch.tag = 0
-            cell.settingSwitch.isOn = UserDefaults.standard.bool(forKey: "enterToSend")
+            cell.settingSwitch.isOn = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.enterToSend)
         } else if indexPath.section == 1 {
-            cell.titleLabel.text = "Mic Input"
-            cell.detailLabel.text = "Send message by hitting return"
-            cell.settingSwitch.isHidden = false
+            cell.titleLabel.text = ControllerConstants.Settings.micInput
+            cell.detailLabel.text = ControllerConstants.Settings.sendMessageByReturn
             cell.settingSwitch.tag = 1
-            cell.settingSwitch.isOn = UserDefaults.standard.bool(forKey: "micInput")
+            cell.settingSwitch.isOn = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.micInput)
         } else {
             if indexPath.item == 0 {
-                cell.titleLabel.text = "Speech Output"
-                cell.detailLabel.text = "Enable speech output only for input"
-                cell.settingSwitch.isHidden = false
+                cell.titleLabel.text = ControllerConstants.Settings.speechOutput
+                cell.detailLabel.text = ControllerConstants.Settings.enableSpeechOutputOnlyInput
                 cell.settingSwitch.tag = 2
-                cell.settingSwitch.isOn = UserDefaults.standard.bool(forKey: "speechOutput")
+                cell.settingSwitch.isOn = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.speechOutput)
             } else if indexPath.item == 1 {
-                cell.titleLabel.text = "Speech Output Always On"
-                cell.detailLabel.text = "Enable speech output regardless of input"
-                cell.settingSwitch.isHidden = false
-                cell.settingSwitch.isOn = UserDefaults.standard.bool(forKey: "speechOutputAlwaysOn")
+                cell.titleLabel.text = ControllerConstants.Settings.speechOutputAlwaysOn
+                cell.detailLabel.text = ControllerConstants.Settings.enableSpeechOutputOutputRegardlessOfInput
+                cell.settingSwitch.isOn = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn)
                 cell.settingSwitch.tag = 3
             } else if indexPath.item == 2 {
-                cell.titleLabel.text = "Language"
-                cell.detailLabel.text = "Select Language"
-                cell.settingSwitch.isHidden = true
+                cell.titleLabel.text = ControllerConstants.Settings.language
+                cell.detailLabel.text = ControllerConstants.Settings.selectLanguage
+                cell.settingSwitch.removeFromSuperview()
             } else {
-                cell.titleLabel.text = "Rate Susi"
-                cell.detailLabel.text = "Rate our app on App Store"
-                cell.settingSwitch.isHidden = true
+                cell.titleLabel.text = ControllerConstants.Settings.rateSusi
+                cell.detailLabel.text = ControllerConstants.Settings.rateOnAppStore
+                cell.settingSwitch.removeFromSuperview()
             }
         }
 
@@ -137,13 +132,13 @@ class SettingsViewController: UICollectionViewController, UICollectionViewDelega
 
     func switchDidToggle(sender: UISwitch!) {
         if sender.tag == 0 {
-            UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: "enterToSend"), forKey: "enterToSend")
+            UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: ControllerConstants.Settings.enterToSend), forKey: ControllerConstants.Settings.enterToSend)
         } else if sender.tag == 1 {
-            UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: "micInput"), forKey: "micInput")
+            UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: ControllerConstants.Settings.micInput), forKey: ControllerConstants.Settings.micInput)
         } else if sender.tag == 2 {
-            UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: "speechOutput"), forKey: "speechOutput")
+            UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: ControllerConstants.Settings.speechOutput), forKey: ControllerConstants.Settings.speechOutput)
         } else if sender.tag == 3 {
-            UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: "speechOutputAlwaysOn"), forKey: "speechOutputAlwaysOn")
+            UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: ControllerConstants.Settings.speechOutputAlwaysOn), forKey: ControllerConstants.Settings.speechOutputAlwaysOn)
         }
     }
 

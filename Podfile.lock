@@ -3,6 +3,7 @@ PODS:
   - AlamofireImage (3.2.0):
     - Alamofire (~> 4.1)
   - ALTextInputBar (1.1.5)
+  - BouncyLayout (1.1.0)
   - Gifu (2.0.0)
   - Material (2.6.3):
     - Material/Core (= 2.6.3)
@@ -12,11 +13,6 @@ PODS:
     - Gifu (~> 2.0)
     - Nuke (~> 5.0)
   - Popover (1.0.5)
-  - Realm (2.7.0):
-    - Realm/Headers (= 2.7.0)
-  - Realm/Headers (2.7.0)
-  - RealmSwift (2.7.0):
-    - Realm (= 2.7.0)
   - SwiftLint (0.19.0)
   - SwiftValidators (6.0.0)
   - Toast-Swift (2.0.0)
@@ -25,10 +21,10 @@ DEPENDENCIES:
   - Alamofire (~> 4.4)
   - AlamofireImage (~> 3.1)
   - ALTextInputBar
+  - BouncyLayout
   - Material
   - Nuke-Gifu-Plugin
   - Popover
-  - RealmSwift
   - SwiftLint
   - SwiftValidators
   - Toast-Swift (~> 2.0.0)
@@ -37,17 +33,16 @@ SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
   ALTextInputBar: 9e9b9323ffd53cc77497d51b025e46d53aa2dc1e
+  BouncyLayout: f91c6504437a61acd733404f55f75bd8154f5840
   Gifu: 56a4d8f1092399159fa32662aa2232158b48d8ac
   Material: af607a7ec0e9978ef85cf189a3d8ceeeb650400f
   Nuke: 8ab71e77f6a54ff5fb697f93537c35f419bb01f7
   Nuke-Gifu-Plugin: 212968cf0c170a504a8ddf69806cf6c6aa2f40b4
   Popover: f31b0ef6f43192256e6fcf13a0ce10f01c803159
-  Realm: 07e5d3a9e0e41d65fd5f9f05150ed6295d0f093b
-  RealmSwift: 6d06425d3900c86473c4f323bf6949b43fca22bc
   SwiftLint: 3537a05b34060e78e7510f04fb7537d738247803
   SwiftValidators: 4ccbec749f61a36f7a922781bb09452e80cde396
   Toast-Swift: 5b2f8f720f7e78e48511f693df1f9c9a6e38a25a
 
-PODFILE CHECKSUM: fbbb9de9094e90c7613a8b260c56f00fb1916367
+PODFILE CHECKSUM: 33ae19067efb090ca4daf5c18427b7cfd7fc3182
 
 COCOAPODS: 1.2.1

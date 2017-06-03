@@ -21,9 +21,7 @@ class BaseCell: CollectionViewCell {
     }
 
     func setupViews() {
-        for view in subviews {
-            view.removeFromSuperview()
-        }
+        self.pulseAnimation = .none
     }
 
 }

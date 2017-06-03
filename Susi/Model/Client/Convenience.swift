@@ -15,33 +15,32 @@ extension Client {
 
     func loginUser(_ params: [String : AnyObject], _ completion: @escaping(_ user: User?, _ success: Bool, _ error: String) -> Void) {
 
-        _ = makeRequest(.post, [:], Methods.Login, parameters: params, completion: { (results, message) in
+        let url = getApiUrl(APIURLs.SusiAPI, Methods.Login)
 
-            if let error = message {
-                debugPrint(error.localizedDescription)
+        _ = makeRequest(url, .post, [:], parameters: params, completion: { (results, message) in
+
+            if let _ = message {
                 completion(nil, false, ResponseMessages.InvalidParams)
-                return
             } else if let results = results as? [String : AnyObject] {
 
                 let user = User(dictionary: results)
 
-                UserDefaults.standard.set(results, forKey: "user")
+                UserDefaults.standard.set(results, forKey: ControllerConstants.UserDefaultsKeys.user)
                 completion(user, true, user.message)
-                return
             }
-
+            return
         })
 
     }
 
     func registerUser(_ params: [String : AnyObject], _ completion: @escaping(_ success: Bool, _ error: String) -> Void) {
 
-        _ = makeRequest(.post, [:], Methods.Register, parameters: params, completion: { (results, message) in
+        let url = getApiUrl(APIURLs.SusiAPI, Methods.Register)
 
-            if let error = message {
-                debugPrint(error.localizedDescription)
+        _ = makeRequest(url, .post, [:], parameters: params, completion: { (results, message) in
+
+            if let _ = message {
                 completion(false, ResponseMessages.ServerError)
-                return
             } else if let results = results {
 
                 guard let successMessage = results[UserKeys.Message] as? String else {
@@ -50,8 +49,8 @@ extension Client {
                 }
 
                 completion(true, successMessage)
-                return
             }
+            return
 
         })
 
@@ -59,12 +58,12 @@ extension Client {
 
     func resetPassword(_ params: [String : AnyObject], _ completion: @escaping(_ success: Bool, _ error: String) -> Void) {
 
-        _ = makeRequest(.get, [:], Methods.ResetPassword, parameters: params, completion: { (results, message) in
+        let url = getApiUrl(APIURLs.SusiAPI, Methods.ResetPassword)
 
-            if let error = message {
-                debugPrint(error.localizedDescription)
+        _ = makeRequest(url, .get, [:], parameters: params, completion: { (results, message) in
+
+            if let _ = message {
                 completion(false, ResponseMessages.ServerError)
-                return
             } else if let results = results {
 
                 guard let successMessage = results[UserKeys.Message] as? String else {
@@ -73,16 +72,15 @@ extension Client {
                 }
 
                 completion(true, successMessage)
-                return
             }
-
+            return
         })
 
     }
 
     func logoutUser(_ completion: @escaping(_ success: Bool, _ error: String) -> Void) {
 
-        UserDefaults.standard.removeObject(forKey: "user")
+        UserDefaults.standard.removeObject(forKey: ControllerConstants.UserDefaultsKeys.user)
         completion(true, ResponseMessages.SignedOut)
 
     }
@@ -91,12 +89,12 @@ extension Client {
 
     func queryResponse(_ params: [String : AnyObject], _ completion: @escaping(_ response: Message?, _ success: Bool, _ error: String?) -> Void) {
 
-        _ = makeRequest(.get, [:], Methods.Chat, parameters: params, completion: { (results, message) in
+        let url = getApiUrl(APIURLs.SusiAPI, Methods.Chat)
 
-            if let error = message {
-                debugPrint(error.localizedDescription)
+        _ = makeRequest(url, .get, [:], parameters: params, completion: { (results, message) in
+
+            if let _ = message {
                 completion(nil, false, ResponseMessages.ServerError)
-                return
             } else if let results = results {
 
                 guard let response = results as? [String : AnyObject] else {
@@ -107,22 +105,22 @@ extension Client {
                 let message = Message.getMessageFromResponse(response, isBot: true)
 
                 completion(message, true, nil)
-                return
-
             }
-
+            return
         })
 
     }
 
+    // MARK: - Web Search by DuckDuckGo
+
     func websearch(_ params: [String : AnyObject], _ completion: @escaping(_ response: WebsearchResult?, _ success: Bool, _ error: String?) -> Void) {
 
-        _ = customRequest(.get, [:], CustomURLs.DuckDuckGo, params, completion: { (results, message) in
+        let url = getApiUrl(APIURLs.DuckDuckGo)
 
-            if let error = message {
-                debugPrint(error.localizedDescription)
+        _ = makeRequest(url, .get, [:], parameters: params, completion: { (results, message) in
+
+            if let _ = message {
                 completion(nil, false, ResponseMessages.ServerError)
-                return
             } else if let results = results {
 
                 guard let response = results as? [String : AnyObject] else {
@@ -133,13 +131,13 @@ extension Client {
                 let searchResult = WebsearchResult(dictionary: response)
 
                 completion(searchResult, true, nil)
-                return
-
             }
-
+            return
         })
 
     }
+
+    // MARK: - Youtube Video Search by Youtube Data API v3
 
     func searchYotubeVideos(_ query: String, _ completion: @escaping(_ response: String?, _ success: Bool, _ error: String?) -> Void) {
 
@@ -149,12 +147,12 @@ extension Client {
             YoutubeParamKeys.Query: query.replacingOccurrences(of: " ", with: "+")
         ]
 
-        _ = customRequest(.get, [:], CustomURLs.YoutubeSearch, params as [String : AnyObject], completion: { (results, message) in
+        let url = getApiUrl(APIURLs.YoutubeSearch)
 
-            if let error = message {
-                debugPrint(error.localizedDescription)
+        _ = makeRequest(url, .get, [:], parameters: params as [String : AnyObject], completion: { (results, message) in
+
+            if let _ = message {
                 completion(nil, false, ResponseMessages.ServerError)
-                return
             } else if let results = results {
 
                 guard let response = results as? [String : AnyObject] else {
@@ -163,15 +161,17 @@ extension Client {
                 }
 
                 if let itemsObject = response[Client.YoutubeResponseKeys.Items] as? [[String : AnyObject]] {
-                    if let items = itemsObject[0][Client.YoutubeResponseKeys.ID] as? [String : AnyObject] {
-                        let videoID = items[Client.YoutubeResponseKeys.VideoID] as? String
-                        completion(videoID, true, nil)
+                    if itemsObject.count > 0 {
+                        if let items = itemsObject[0][Client.YoutubeResponseKeys.ID] as? [String : AnyObject] {
+                            let videoID = items[Client.YoutubeResponseKeys.VideoID] as? String
+                            completion(videoID, true, nil)
+                        }
+                    } else {
+                        completion(nil, false, ResponseMessages.ServerError)
                     }
                 }
-                return
-
             }
-
+            return
         })
 
     }

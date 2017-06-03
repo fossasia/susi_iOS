@@ -1,61 +1,14 @@
 //
-//  ForgotPasswordViewController.swift
+//  ForgotPasswordVCMethods.swift
 //  Susi
 //
-//  Created by Chashmeet Singh on 2017-06-01.
+//  Created by Chashmeet Singh on 2017-06-04.
 //  Copyright © 2017 FOSSAsia. All rights reserved.
 //
 
 import UIKit
-import Material
 
-class ForgotPasswordViewController: UIViewController {
-
-    // Setup Dismiss Button
-    lazy var dismissButton: IconButton = {
-        let ib = IconButton()
-        ib.image = Icon.cm.arrowBack
-        ib.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
-        ib.tintColor = .white
-        return ib
-    }()
-
-    // Setup Email Text Field
-    lazy var emailField: AuthTextField = {
-        let textField = AuthTextField()
-        textField.keyboardType = .emailAddress
-        textField.placeholder = ControllerConstants.enterEmailID
-        textField.detailLabel.text = ControllerConstants.invalidEmail
-        textField.delegate = self
-        return textField
-    }()
-
-    // Setup Reset Button
-    lazy var resetButton: RaisedButton = {
-        let button = RaisedButton()
-        button.setTitle(ControllerConstants.reset, for: .normal)
-        button.backgroundColor = .white
-        button.setTitleColor(UIColor.defaultColor(), for: .normal)
-        button.addTarget(self, action: #selector(resetPassword), for: .touchUpInside)
-        return button
-    }()
-
-    // Setup Activity Indicator
-    let activityIndicator: UIActivityIndicatorView = {
-        let ai = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
-        ai.hidesWhenStopped = true
-        ai.activityIndicatorViewStyle = .whiteLarge
-        return ai
-    }()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        setupView()
-        prepareEmailField()
-        prepareResetButton()
-        prepareActivityIndicator()
-    }
+extension ForgotPasswordViewController {
 
     func setupView() {
         self.view.backgroundColor = UIColor.defaultColor()
@@ -74,7 +27,7 @@ class ForgotPasswordViewController: UIViewController {
     }
 
     // Add Subview Email Field
-    private func prepareEmailField() {
+    func prepareEmailField() {
         self.view.addSubview(emailField)
         self.view.layout(emailField)
             .top(UIView.UIMarginSpec.largeMatgin)
@@ -83,7 +36,7 @@ class ForgotPasswordViewController: UIViewController {
     }
 
     // Add Subview Reset Button
-    private func prepareResetButton() {
+    func prepareResetButton() {
         self.view.addSubview(resetButton)
         self.view.layout(resetButton)
             .height(44)
@@ -93,7 +46,7 @@ class ForgotPasswordViewController: UIViewController {
     }
 
     // Add Subview Activity Indicator
-    private func prepareActivityIndicator() {
+    func prepareActivityIndicator() {
         self.view.addSubview(activityIndicator)
         self.view.layout(activityIndicator)
             .top(resetButton.frame.maxY + 170)
@@ -139,19 +92,6 @@ class ForgotPasswordViewController: UIViewController {
     func toggleEditing() {
         self.emailField.isEnabled = !self.emailField.isEnabled
         self.resetButton.isEnabled = !self.resetButton.isEnabled
-    }
-
-}
-
-extension ForgotPasswordViewController: TextFieldDelegate {
-
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        emailField.isErrorRevealed = false
-    }
-
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        resetPassword()
-        return true
     }
 
 }
