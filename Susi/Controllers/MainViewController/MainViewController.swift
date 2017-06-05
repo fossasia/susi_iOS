@@ -9,11 +9,12 @@
 import UIKit
 import Material
 import Popover
-import ALTextInputBar
+import RSKGrowingTextView
+import RSKPlaceholderTextView
 import CoreLocation
 import AlamofireImage
 
-class MainViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, ALTextInputBarDelegate, CLLocationManagerDelegate, UIImagePickerControllerDelegate {
+class MainViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate, UIImagePickerControllerDelegate {
 
     var messages: [Message] = []
 
@@ -55,7 +56,8 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         return player
     }()
 
-    var bottomConstraint: NSLayoutConstraint?
+    var bottomConstraintTextView: NSLayoutConstraint?
+    var bottomConstraintSendButton: NSLayoutConstraint?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -135,31 +137,23 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         return UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
     }
 
-    // Setup Message Container
-    let messageInputContainerView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.white
-        return view
-    }()
-
-    // Setup Input Text Field
-    lazy var inputTextField: ALTextInputBar = {
-        let textField = ALTextInputBar()
-        textField.textView.placeholder = ControllerConstants.askSusi
-        textField.textView.font = UIFont.systemFont(ofSize: 17)
-        textField.backgroundColor = .clear
-        textField.textView.maxNumberOfLines = 2
-        textField.delegate = self
-        return textField
+    // Setup Input Text View
+    lazy var inputTextView: RSKGrowingTextView = {
+        let textView = RSKGrowingTextView()
+        textView.placeholder = ControllerConstants.askSusi as NSString
+        textView.font = UIFont.systemFont(ofSize: 17)
+        textView.backgroundColor = .white
+        textView.maximumNumberOfLines = 2
+        textView.layer.cornerRadius = 15
+        textView.delegate = self
+        return textView
     }()
 
     // Setup Send Button
-    lazy var sendButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle(ControllerConstants.send, for: .normal)
-        let titleColor = UIColor(red: 0, green: 137/255, blue: 249/255, alpha: 1)
-        button.setTitleColor(titleColor, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+    lazy var sendButton: FABButton = {
+        let button = FABButton()
+        button.setImage(UIImage(named: ControllerConstants.send), for: .normal)
+        button.backgroundColor = UIColor.defaultColor()
         button.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
         return button
     }()

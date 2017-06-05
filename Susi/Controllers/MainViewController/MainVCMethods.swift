@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 import Popover
-import ALTextInputBar
+import RSKGrowingTextView
 
 extension MainViewController {
 
@@ -25,7 +25,8 @@ extension MainViewController {
             let keyboardFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
             let isKeyboardShowing = notification.name == NSNotification.Name.UIKeyboardWillShow
 
-            bottomConstraint?.constant = isKeyboardShowing ? -keyboardFrame!.height : 0
+            bottomConstraintTextView?.constant = isKeyboardShowing ? (-keyboardFrame!.height - 8.0) : 0
+            bottomConstraintSendButton?.constant = isKeyboardShowing ? (-keyboardFrame!.height - 8.0) : 0
 
             collectionView?.frame = isKeyboardShowing ? CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - keyboardFrame!.height - 47) :
                 CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - 47)
@@ -134,7 +135,7 @@ extension MainViewController {
 
     // Send Button Action
     func handleSend() {
-        if let text = inputTextField.text {
+        if let text = inputTextView.text, text.characters.count > 0 {
             if text.contains(ControllerConstants.play) || text.contains(ControllerConstants.play.uppercased()) {
 
                 let query = text.replacingOccurrences(of: ControllerConstants.play, with: "")
@@ -151,7 +152,7 @@ extension MainViewController {
             } else {
 
                 var params: [String : AnyObject] = [
-                    Client.WebsearchKeys.Query: inputTextField.text! as AnyObject,
+                    Client.WebsearchKeys.Query: inputTextView.text! as AnyObject,
                     Client.ChatKeys.TimeZoneOffset: ControllerConstants.timeZone as AnyObject,
                     Client.ChatKeys.Language: Locale.current.languageCode as AnyObject
                 ]
@@ -179,38 +180,28 @@ extension MainViewController {
     // Setup Input Components
     func setupInputComponents() {
 
-        view.addSubview(messageInputContainerView)
-        view.addConstraintsWithFormat(format: "H:|[v0]|", views: messageInputContainerView)
-        view.addConstraintsWithFormat(format: "V:[v0(48)]", views: messageInputContainerView)
+        view.addSubview(inputTextView)
+        view.addSubview(sendButton)
 
-        bottomConstraint = NSLayoutConstraint(item: messageInputContainerView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
-        view.addConstraint(bottomConstraint!)
+        view.layout(sendButton).bottomRight(bottom: 8.0, right: 8.0).width(44).height(44)
+        view.layout(inputTextView).bottomLeft(bottom: 8.0, left: 8.0).width(view.frame.width - 64)
 
-        let topBorderView = UIView()
-        topBorderView.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
+        bottomConstraintTextView = NSLayoutConstraint(item: inputTextView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
+        view.addConstraint(bottomConstraintTextView!)
 
-        messageInputContainerView.addSubview(inputTextField)
-        messageInputContainerView.addSubview(sendButton)
-        messageInputContainerView.addSubview(topBorderView)
-
-        messageInputContainerView.addConstraintsWithFormat(format: "H:|-8-[v0][v1(60)]|", views: inputTextField, sendButton)
-
-        messageInputContainerView.addConstraintsWithFormat(format: "V:|[v0]|", views: inputTextField)
-        messageInputContainerView.addConstraintsWithFormat(format: "V:|[v0]|", views: sendButton)
-
-        messageInputContainerView.addConstraintsWithFormat(format: "H:|[v0]|", views: topBorderView)
-        messageInputContainerView.addConstraintsWithFormat(format: "V:|[v0(0.5)]", views: topBorderView)
+        bottomConstraintSendButton = NSLayoutConstraint(item: sendButton, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
+        view.addConstraint(bottomConstraintSendButton!)
     }
 
     // Temporarily save message to object
     func saveMessage() {
-        let message = Message(inputTextField.text!.trimmed)
+        let message = Message(inputTextView.text!.trimmed)
         messages.append(message)
         let indexPath = IndexPath(item: messages.count - 1, section: 0)
         collectionView?.insertItems(at: [indexPath])
         self.scrollToLast()
 
-        inputTextField.text = ""
+        inputTextView.text = ""
     }
 
     // Scroll to last message
@@ -223,8 +214,8 @@ extension MainViewController {
     }
 
     // Check if chat field empty
-    func textViewDidChange(textView: ALTextView) {
-        if let message = inputTextField.text, message.isEmpty {
+    func textViewDidChange(textView: RSKGrowingTextView) {
+        if let message = inputTextView.text, message.isEmpty {
             sendButton.isUserInteractionEnabled = false
         } else {
             sendButton.isUserInteractionEnabled = true
