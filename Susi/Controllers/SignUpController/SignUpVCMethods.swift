@@ -1,75 +1,14 @@
 //
-//  SignUpViewController.swift
+//  SignUpVCMethods.swift
 //  Susi
 //
-//  Created by Chashmeet Singh on 2017-03-13.
+//  Created by Chashmeet Singh on 2017-06-04.
 //  Copyright © 2017 FOSSAsia. All rights reserved.
 //
 
 import UIKit
-import Material
 
-class SignUpViewController: UIViewController {
-
-    // Setup Dismiss Button
-    let dismissButton: IconButton = {
-        let ib = IconButton()
-        ib.image = Icon.cm.arrowBack
-        ib.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
-        ib.tintColor = .white
-        return ib
-    }()
-
-    // Setup Email Field
-    lazy var emailField: AuthTextField = {
-        let textField = AuthTextField()
-        textField.keyboardType = .emailAddress
-        textField.placeholder = "Email Address"
-        textField.detail = "Error, incorrect email"
-        textField.delegate = self
-        return textField
-    }()
-
-    // Setup Password Field
-    lazy var passwordField: AuthTextField = {
-        let textField = AuthTextField()
-        textField.placeholder = "Password"
-        textField.detailLabel.text = "Password should be 6 characters long with one uppercase, lowercase and a number"
-        textField.clearButtonMode = .whileEditing
-        textField.isVisibilityIconButtonEnabled = true
-        textField.visibilityIconButton?.tintColor = Color.white.withAlphaComponent(textField.isSecureTextEntry ? 0.38 : 0.54)
-        textField.delegate = self
-        return textField
-    }()
-
-    // Setup Confirm Password Field
-    lazy var confirmPasswordField: AuthTextField = {
-        let textField = AuthTextField()
-        textField.placeholder = "Confirm Password"
-        textField.detail = "Passwords do not match"
-        textField.clearIconButton?.tintColor = .white
-        textField.clearButtonMode = .whileEditing
-        textField.isVisibilityIconButtonEnabled = true
-        textField.visibilityIconButton?.tintColor = Color.white.withAlphaComponent(textField.isSecureTextEntry ? 0.38 : 0.54)
-        textField.delegate = self
-        return textField
-    }()
-
-    // Setup Sign Up Button
-    lazy var signUpButton: RaisedButton = {
-        let button = RaisedButton()
-        button.setTitle("SIGN UP", for: .normal)
-        button.backgroundColor = .white
-        button.setTitleColor(UIColor.defaultColor(), for: .normal)
-        button.addTarget(self, action: #selector(performSignUp), for: .touchUpInside)
-        return button
-    }()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupView()
-        addTapGesture()
-    }
+extension SignUpViewController {
 
     func addTapGesture() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
@@ -215,30 +154,6 @@ class SignUpViewController: UIViewController {
 
         return capitalResult && numberResult && lowercaseResult
 
-    }
-
-}
-
-extension SignUpViewController: TextFieldDelegate {
-
-    // Verify input data after editing over
-    public func textFieldDidEndEditing(_ textField: UITextField) {
-        if let emailID = emailField.text, !emailID.isValidEmail() && textField == emailField {
-            emailField.isErrorRevealed = true
-        } else {
-            emailField.isErrorRevealed = false
-        }
-
-        if let password = passwordField.text, password.isEmpty && textField == passwordField && password.characters.count < 6 {
-            passwordField.isErrorRevealed = true
-        } else {
-            passwordField.isErrorRevealed = false
-        }
-    }
-
-    public func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        (textField as? ErrorTextField)?.isErrorRevealed = false
-        return true
     }
 
 }

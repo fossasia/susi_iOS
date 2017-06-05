@@ -9,7 +9,17 @@
 /* Begin PBXBuildFile section */
 		4CD0AA5F1EDF2CB700BC8FD5 /* ControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD0AA5E1EDF2CB700BC8FD5 /* ControllerConstants.swift */; };
 		4FCDF8638A44821DEACBB4E0 /* Pods_Susi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39326DEEDBD0CCA432D3B25D /* Pods_Susi.framework */; };
+		6D0DB6221EE41C7000AD030D /* MainVCDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0DB6211EE41C7000AD030D /* MainVCDelegates.swift */; };
+		6D0DB6241EE41D1000AD030D /* MainVCMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0DB6231EE41D1000AD030D /* MainVCMethods.swift */; };
+		6D0DB6261EE4272300AD030D /* OutgoingChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0DB6251EE4272300AD030D /* OutgoingChatCell.swift */; };
+		6D0DB6281EE436FC00AD030D /* IncomingChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0DB6271EE436FC00AD030D /* IncomingChatCell.swift */; };
 		6D215B951EB0BE7300CD2C1D /* SusiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D215B941EB0BE7300CD2C1D /* SusiUITests.swift */; };
+		6D24B08A1EE4079E0097418A /* LoginVCMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D24B0891EE4079E0097418A /* LoginVCMethods.swift */; };
+		6D24B08C1EE408890097418A /* LoginVCDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D24B08B1EE408890097418A /* LoginVCDelegates.swift */; };
+		6D24B08F1EE4090C0097418A /* ForgotPasswordVCDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D24B08E1EE4090C0097418A /* ForgotPasswordVCDelegates.swift */; };
+		6D24B0911EE4093C0097418A /* ForgotPasswordVCMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D24B0901EE4093C0097418A /* ForgotPasswordVCMethods.swift */; };
+		6D24B0941EE409AB0097418A /* SignUpVCDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D24B0931EE409AB0097418A /* SignUpVCDelegates.swift */; };
+		6D24B0961EE409DB0097418A /* SignUpVCMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D24B0951EE409DB0097418A /* SignUpVCMethods.swift */; };
 		6D2F984B1E76DF2200FE2B6F /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2F984A1E76DF2200FE2B6F /* BaseCell.swift */; };
 		6D2F984D1E76E62900FE2B6F /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2F984C1E76E62900FE2B6F /* Message.swift */; };
 		6D389BEA1EDB912500DEAEA0 /* YouTubePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D389BE81EDB912500DEAEA0 /* YouTubePlayer.swift */; };
@@ -49,9 +59,19 @@
 /* Begin PBXFileReference section */
 		39326DEEDBD0CCA432D3B25D /* Pods_Susi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Susi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CD0AA5E1EDF2CB700BC8FD5 /* ControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControllerConstants.swift; sourceTree = "<group>"; };
+		6D0DB6211EE41C7000AD030D /* MainVCDelegates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVCDelegates.swift; sourceTree = "<group>"; };
+		6D0DB6231EE41D1000AD030D /* MainVCMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVCMethods.swift; sourceTree = "<group>"; };
+		6D0DB6251EE4272300AD030D /* OutgoingChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutgoingChatCell.swift; sourceTree = "<group>"; };
+		6D0DB6271EE436FC00AD030D /* IncomingChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomingChatCell.swift; sourceTree = "<group>"; };
 		6D215B921EB0BE7300CD2C1D /* SusiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SusiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D215B941EB0BE7300CD2C1D /* SusiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SusiUITests.swift; sourceTree = "<group>"; };
 		6D215B961EB0BE7300CD2C1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6D24B0891EE4079E0097418A /* LoginVCMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVCMethods.swift; sourceTree = "<group>"; };
+		6D24B08B1EE408890097418A /* LoginVCDelegates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVCDelegates.swift; sourceTree = "<group>"; };
+		6D24B08E1EE4090C0097418A /* ForgotPasswordVCDelegates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVCDelegates.swift; sourceTree = "<group>"; };
+		6D24B0901EE4093C0097418A /* ForgotPasswordVCMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVCMethods.swift; sourceTree = "<group>"; };
+		6D24B0931EE409AB0097418A /* SignUpVCDelegates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVCDelegates.swift; sourceTree = "<group>"; };
+		6D24B0951EE409DB0097418A /* SignUpVCMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVCMethods.swift; sourceTree = "<group>"; };
 		6D2F984A1E76DF2200FE2B6F /* BaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 		6D2F984C1E76E62900FE2B6F /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		6D389BE81EDB912500DEAEA0 /* YouTubePlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouTubePlayer.swift; sourceTree = "<group>"; };
@@ -65,7 +85,7 @@
 		6D4D9B411E768E190067459C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6D4D9B441E768E190067459C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6D4D9B461E768E190067459C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6D4D9B4C1E768E650067459C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		6D4D9B4C1E768E650067459C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6D4D9B531E7690160067459C /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		6D767DEC1E79A9B600FF5485 /* Pods_Susi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Susi.framework; path = "Pods/../build/Release-iphoneos/Pods_Susi.framework"; sourceTree = "<group>"; };
 		6D767DEE1E79A9C800FF5485 /* Pods_Susi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Susi.framework; path = "Pods/../build/Release-iphoneos/Pods_Susi.framework"; sourceTree = "<group>"; };
@@ -125,15 +145,53 @@
 			path = SusiUITests;
 			sourceTree = "<group>";
 		};
+		6D24B0881EE407760097418A /* LoginController */ = {
+			isa = PBXGroup;
+			children = (
+				6D24B08B1EE408890097418A /* LoginVCDelegates.swift */,
+				6D24B0891EE4079E0097418A /* LoginVCMethods.swift */,
+				6D4D9B4C1E768E650067459C /* LoginViewController.swift */,
+			);
+			path = LoginController;
+			sourceTree = "<group>";
+		};
+		6D24B08D1EE408F10097418A /* ForgotPasswordController */ = {
+			isa = PBXGroup;
+			children = (
+				6D24B08E1EE4090C0097418A /* ForgotPasswordVCDelegates.swift */,
+				6D24B0901EE4093C0097418A /* ForgotPasswordVCMethods.swift */,
+				6DFC75B81EE077E9002F92BA /* ForgotPasswordViewController.swift */,
+			);
+			path = ForgotPasswordController;
+			sourceTree = "<group>";
+		};
+		6D24B0921EE409860097418A /* SignUpController */ = {
+			isa = PBXGroup;
+			children = (
+				6D24B0931EE409AB0097418A /* SignUpVCDelegates.swift */,
+				6D24B0951EE409DB0097418A /* SignUpVCMethods.swift */,
+				6DE44E1A1E76B5D600215B85 /* SignUpViewController.swift */,
+			);
+			path = SignUpController;
+			sourceTree = "<group>";
+		};
+		6D24B0971EE411A40097418A /* MainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6D0DB6211EE41C7000AD030D /* MainVCDelegates.swift */,
+				6D0DB6231EE41D1000AD030D /* MainVCMethods.swift */,
+				6DE44E181E76AF8100215B85 /* MainViewController.swift */,
+			);
+			path = MainViewController;
+			sourceTree = "<group>";
+		};
 		6D2F98471E76DED400FE2B6F /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
 				6D3FB3471E8136640015E1D6 /* Message Cells */,
-				6D2F984A1E76DF2200FE2B6F /* BaseCell.swift */,
 				6D98EDFA1E796EFE00D96B32 /* SettingsCell.swift */,
 				6D3E82471E796B5200D48776 /* SettingsHeaderView.swift */,
 			);
-			name = "Custom Views";
 			path = "Custom Views";
 			sourceTree = "<group>";
 		};
@@ -143,16 +201,17 @@
 				6D389BE91EDB912500DEAEA0 /* YTPlayer.html */,
 				6D389BE81EDB912500DEAEA0 /* YouTubePlayer.swift */,
 			);
-			name = "Youtube-Player";
 			path = "Youtube-Player";
 			sourceTree = "<group>";
 		};
 		6D3FB3471E8136640015E1D6 /* Message Cells */ = {
 			isa = PBXGroup;
 			children = (
+				6D2F984A1E76DF2200FE2B6F /* BaseCell.swift */,
 				6D3FB3481E813B900015E1D6 /* ChatMessageCell.swift */,
+				6D0DB6271EE436FC00AD030D /* IncomingChatCell.swift */,
+				6D0DB6251EE4272300AD030D /* OutgoingChatCell.swift */,
 			);
-			name = "Message Cells";
 			path = "Message Cells";
 			sourceTree = "<group>";
 		};
@@ -197,21 +256,19 @@
 				6D4D9B461E768E190067459C /* Info.plist */,
 				6D4D9B431E768E190067459C /* LaunchScreen.storyboard */,
 			);
-			name = "Supporting Files";
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		6D4D9B501E768F2E0067459C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6D24B08D1EE408F10097418A /* ForgotPasswordController */,
+				6D24B0881EE407760097418A /* LoginController */,
+				6D24B0971EE411A40097418A /* MainViewController */,
+				6D24B0921EE409860097418A /* SignUpController */,
 				6D3E82431E7943EE00D48776 /* AppNavigationController.swift */,
-				6DFC75B81EE077E9002F92BA /* ForgotPasswordViewController.swift */,
-				6D4D9B4C1E768E650067459C /* LoginViewController.swift */,
-				6DE44E181E76AF8100215B85 /* MainViewController.swift */,
 				6D3E82451E7953B200D48776 /* SettingsViewController.swift */,
-				6DE44E1A1E76B5D600215B85 /* SignUpViewController.swift */,
 			);
-			name = Controllers;
 			path = Controllers;
 			sourceTree = "<group>";
 		};
@@ -220,7 +277,6 @@
 			children = (
 				6D4D9B411E768E190067459C /* Assets.xcassets */,
 			);
-			name = Assets;
 			path = Assets;
 			sourceTree = "<group>";
 		};
@@ -231,7 +287,6 @@
 				4CD0AA5E1EDF2CB700BC8FD5 /* ControllerConstants.swift */,
 				6D4D9B531E7690160067459C /* Extensions.swift */,
 			);
-			name = Helpers;
 			path = Helpers;
 			sourceTree = "<group>";
 		};
@@ -243,7 +298,6 @@
 				6D9C0D281E7B223A00199828 /* User.swift */,
 				6DF591D51E8189B7003B2C6B /* WebsearchResult.swift */,
 			);
-			name = Model;
 			path = Model;
 			sourceTree = "<group>";
 		};
@@ -254,7 +308,6 @@
 				6DE44E141E76ACD900215B85 /* Constants.swift */,
 				6DE44E151E76ACD900215B85 /* Convenience.swift */,
 			);
-			name = Client;
 			path = Client;
 			sourceTree = "<group>";
 		};
@@ -437,9 +490,14 @@
 				6D3E82481E796B5200D48776 /* SettingsHeaderView.swift in Sources */,
 				6D4D9B4D1E768E650067459C /* LoginViewController.swift in Sources */,
 				6D389BEA1EDB912500DEAEA0 /* YouTubePlayer.swift in Sources */,
+				6D0DB6261EE4272300AD030D /* OutgoingChatCell.swift in Sources */,
+				6D0DB6241EE41D1000AD030D /* MainVCMethods.swift in Sources */,
 				6DE44E0F1E769AD300215B85 /* Color.swift in Sources */,
 				6D98EDFB1E796EFE00D96B32 /* SettingsCell.swift in Sources */,
+				6D0DB6221EE41C7000AD030D /* MainVCDelegates.swift in Sources */,
+				6D24B0961EE409DB0097418A /* SignUpVCMethods.swift in Sources */,
 				6D3FB3491E813B900015E1D6 /* ChatMessageCell.swift in Sources */,
+				6D0DB6281EE436FC00AD030D /* IncomingChatCell.swift in Sources */,
 				6D4D9B541E7690160067459C /* Extensions.swift in Sources */,
 				6DE44E171E76ACD900215B85 /* Convenience.swift in Sources */,
 				6DFC75B91EE077E9002F92BA /* ForgotPasswordViewController.swift in Sources */,
@@ -448,13 +506,18 @@
 				6D3E82461E7953B200D48776 /* SettingsViewController.swift in Sources */,
 				6D4D9B3B1E768E190067459C /* AppDelegate.swift in Sources */,
 				6D2F984B1E76DF2200FE2B6F /* BaseCell.swift in Sources */,
+				6D24B0941EE409AB0097418A /* SignUpVCDelegates.swift in Sources */,
 				6DE44E1B1E76B5D600215B85 /* SignUpViewController.swift in Sources */,
 				6D9C0D291E7B223A00199828 /* User.swift in Sources */,
+				6D24B08C1EE408890097418A /* LoginVCDelegates.swift in Sources */,
+				6D24B0911EE4093C0097418A /* ForgotPasswordVCMethods.swift in Sources */,
 				6D2F984D1E76E62900FE2B6F /* Message.swift in Sources */,
+				6D24B08F1EE4090C0097418A /* ForgotPasswordVCDelegates.swift in Sources */,
 				6DE44E161E76ACD900215B85 /* Constants.swift in Sources */,
 				4CD0AA5F1EDF2CB700BC8FD5 /* ControllerConstants.swift in Sources */,
 				6DE44E191E76AF8100215B85 /* MainViewController.swift in Sources */,
 				6DF591D61E8189B7003B2C6B /* WebsearchResult.swift in Sources */,
+				6D24B08A1EE4079E0097418A /* LoginVCMethods.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,81 +1,15 @@
 //
-//  LoginViewController.swift
+//  LoginVCMethods.swift
 //  Susi
 //
-//  Created by Chashmeet Singh on 2017-03-13.
+//  Created by Chashmeet Singh on 2017-06-04.
 //  Copyright © 2017 FOSSAsia. All rights reserved.
 //
 
 import UIKit
-import Material
-import Toast_Swift
-import SwiftValidators
+import BouncyLayout
 
-class LoginViewController: UIViewController {
-
-    // Setup Susi Logo
-    let susiLogo: UIImageView = {
-        let iv = UIImageView()
-        iv.contentMode = .scaleAspectFit
-        iv.image = UIImage(named: "susi")
-        return iv
-    }()
-
-    // Setup Email Text Field
-    lazy var emailField: AuthTextField = {
-        let textField = AuthTextField()
-        textField.keyboardType = .emailAddress
-        textField.placeholder = "Email Address"
-        textField.detail = "Error, incorrect email"
-        textField.delegate = self
-        return textField
-    }()
-
-    // Setup Password Field
-    lazy var passwordField: AuthTextField = {
-        let textField = AuthTextField()
-        textField.placeholder = "Password"
-        textField.detail = "Error, Should be at least 8 characters"
-        textField.isVisibilityIconButtonEnabled = true
-        textField.visibilityIconButton?.tintColor = Color.white.withAlphaComponent(textField.isSecureTextEntry ? 0.38 : 0.54)
-        textField.delegate = self
-        return textField
-    }()
-
-    // Setup Login Button
-    lazy var loginButton: RaisedButton = {
-        let button = RaisedButton()
-        button.setTitle("LOGIN", for: .normal)
-        button.backgroundColor = .white
-        button.setTitleColor(UIColor.defaultColor(), for: .normal)
-        button.addTarget(self, action: #selector(performLogin), for: .touchUpInside)
-        return button
-    }()
-
-    // Setup Forgot Button
-    lazy var forgotButton: FlatButton = {
-        let button = FlatButton()
-        button.setTitle("Forgot Password?", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.addTarget(self, action: #selector(showFPView), for: .touchUpInside)
-        return button
-    }()
-
-    // Setup Sign Up Button
-    lazy var signUpButton: FlatButton = {
-        let button = FlatButton()
-        button.setTitle("Sign up for SUSI", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.addTarget(self, action: #selector(showSignUpView), for: .touchUpInside)
-        return button
-    }()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupView()
-        checkSession()
-        addTapGesture()
-    }
+extension LoginViewController {
 
     func addTapGesture() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
@@ -158,7 +92,7 @@ class LoginViewController: UIViewController {
                 Client.UserKeys.Login: emailField.text!.lowercased(),
                 Client.UserKeys.Password: passwordField.text!,
                 Client.ChatKeys.ResponseType: Client.ChatKeys.AccessToken
-            ] as [String : Any]
+                ] as [String : Any]
 
             Client.sharedInstance.loginUser(params as [String : AnyObject]) { (_, success, message) in
                 DispatchQueue.main.async {
@@ -179,9 +113,8 @@ class LoginViewController: UIViewController {
         return false
     }
 
-    // dismiss keyboard if open.
+    // force dismiss keyboard if open.
     func dismissKeyboard() {
-        // Causes the view (or one of its embedded text fields) to resign the first responder status.
         self.view.endEditing(true)
     }
 
@@ -228,7 +161,8 @@ class LoginViewController: UIViewController {
 
     // Login User
     func completeLogin() {
-        let vc = MainViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        let layout = BouncyLayout()
+        let vc = MainViewController(collectionViewLayout: layout)
         let nvc = AppNavigationController(rootViewController: vc)
         self.present(nvc, animated: true, completion: {
             self.clearFields()
@@ -237,36 +171,15 @@ class LoginViewController: UIViewController {
 
     // Check existing session
     func checkSession() {
-        if let user = UserDefaults.standard.value(forKey: "user") {
-            _ = User(dictionary: user as! [String : AnyObject])
+        if let user = UserDefaults.standard.value(forKey: ControllerConstants.UserDefaultsKeys.user) {
+            if let user = user as? [String : AnyObject] {
+                _ = User(dictionary: user)
 
-            DispatchQueue.main.async {
-                self.completeLogin()
+                DispatchQueue.main.async {
+                    self.completeLogin()
+                }
             }
         }
     }
 
-}
-
-extension LoginViewController: TextFieldDelegate {
-
-    // Verify input data after editing over
-    public func textFieldDidEndEditing(_ textField: UITextField) {
-        if let emailID = emailField.text, !emailID.isValidEmail() && textField == emailField {
-            emailField.isErrorRevealed = true
-        } else {
-            emailField.isErrorRevealed = false
-        }
-
-        if let password = passwordField.text, password.isEmpty && textField == passwordField {
-            passwordField.isErrorRevealed = true
-        } else {
-            passwordField.isErrorRevealed = false
-        }
-    }
-
-    public func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        (textField as? ErrorTextField)?.isErrorRevealed = false
-        return true
-    }
 }
