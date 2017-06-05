@@ -8,6 +8,7 @@
 
 import UIKit
 import Popover
+import RSKGrowingTextView
 
 extension MainViewController: UITableViewDelegate {
 
@@ -69,6 +70,14 @@ extension MainViewController: UITableViewDataSource {
         cell.textLabel?.text = item
         cell.imageView?.image = UIImage(named: item.lowercased())
         return cell
+    }
+
+}
+
+extension MainViewController: RSKGrowingTextViewDelegate {
+
+    func textViewDidChange(_ textView: UITextView) {
+        self.inputTextView.superview?.layoutIfNeeded()
     }
 
 }

@@ -167,7 +167,7 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
         self.bubbleImageView.tintColor = .white
         self.messageTextView.textColor = .black
     }
-    
+
     func clearViews() {
         mapView.removeFromSuperview()
         websearchContentView.removeFromSuperview()

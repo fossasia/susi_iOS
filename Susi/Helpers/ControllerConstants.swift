@@ -23,7 +23,7 @@ class ControllerConstants {
     static let invalidEmail = "Invalid Email ID"
     static let errorOccured = "Some error occured"
     static let json = "json"
-    static let send = "Send"
+    static let send = "send"
     static let play = "play"
     static let timeZone = "-530"
     static let askSusi = "Ask Susi Something..."
