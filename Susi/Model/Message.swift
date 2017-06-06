@@ -37,6 +37,12 @@ struct Message {
         self.body = body
     }
 
+    init(_ body: String, _ isBot: Bool) {
+        self.body = body
+        self.isBot = isBot
+        self.responseType = ResponseTypes.image
+    }
+
     init(dictionary: [String : AnyObject], isBot: Bool) {
 
         if let created_at = dictionary[Client.ChatKeys.AnswerDate] as? String {

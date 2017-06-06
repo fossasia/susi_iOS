@@ -77,6 +77,10 @@ extension Client {
         static let Items = "items"
         static let ID = "id"
         static let VideoID = "videoId"
+        static let snippet = "snippet"
+        static let thumbnails = "thumbnails"
+        static let medium = "medium"
+        static let url = "url"
     }
 
     struct WebSearch {
