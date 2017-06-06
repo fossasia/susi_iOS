@@ -13,6 +13,7 @@ import RSKGrowingTextView
 import RSKPlaceholderTextView
 import CoreLocation
 import AlamofireImage
+import AVFoundation
 
 class MainViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate, UIImagePickerControllerDelegate {
 
@@ -74,6 +75,9 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
 
         // Configure Location Manager
         configureLocationManager()
+
+        initSnowboy()
+        startHotwordRecognition()
     }
 
     // Number of items
@@ -145,7 +149,6 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         textView.backgroundColor = .white
         textView.maximumNumberOfLines = 2
         textView.layer.cornerRadius = 15
-        textView.delegate = self
         return textView
     }()
 
@@ -157,5 +160,17 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         button.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
         return button
     }()
+
+    // Snowboy
+    let RESOURCE = Bundle.main.path(forResource: "common", ofType: "res")
+    let MODEL = Bundle.main.path(forResource: "susi", ofType: "pmdl")
+
+    var wrapper: SnowboyWrapper! = nil
+
+    var audioRecorder: AVAudioRecorder!
+    var audioPlayer: AVAudioPlayer!
+    var soundFileURL: URL!
+
+    var timer: Timer!
 
 }
