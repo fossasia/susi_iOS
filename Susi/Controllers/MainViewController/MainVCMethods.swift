@@ -136,41 +136,25 @@ extension MainViewController {
     // Send Button Action
     func handleSend() {
         if let text = inputTextView.text, text.characters.count > 0 {
-            if text.contains(ControllerConstants.play) || text.contains(ControllerConstants.play.uppercased()) {
+            var params: [String : AnyObject] = [
+                Client.WebsearchKeys.Query: inputTextView.text! as AnyObject,
+                Client.ChatKeys.TimeZoneOffset: ControllerConstants.timeZone as AnyObject,
+                Client.ChatKeys.Language: Locale.current.languageCode as AnyObject
+            ]
 
-                let query = text.replacingOccurrences(of: ControllerConstants.play, with: "")
-                    .replacingOccurrences(of: ControllerConstants.play.uppercased(), with: "")
+            if let location = locationManager.location {
+                params[Client.ChatKeys.Latitude] = location.coordinate.latitude as AnyObject
+                params[Client.ChatKeys.Longitude] = location.coordinate.longitude as AnyObject
+            }
 
-                Client.sharedInstance.searchYotubeVideos(query) { (result, _, _) in
-                    DispatchQueue.main.async {
-                        if let result = result {
-                            self.addYotubePlayer(result)
-                        }
+            Client.sharedInstance.queryResponse(params) { (results, success, _) in
+                DispatchQueue.main.async {
+                    if success {
+                        self.messages.append(results!)
+                        let indexPath = IndexPath(item: self.messages.count - 1, section: 0)
+                        self.collectionView?.insertItems(at: [indexPath])
                     }
-                }
-
-            } else {
-
-                var params: [String : AnyObject] = [
-                    Client.WebsearchKeys.Query: inputTextView.text! as AnyObject,
-                    Client.ChatKeys.TimeZoneOffset: ControllerConstants.timeZone as AnyObject,
-                    Client.ChatKeys.Language: Locale.current.languageCode as AnyObject
-                ]
-
-                if let location = locationManager.location {
-                    params[Client.ChatKeys.Latitude] = location.coordinate.latitude as AnyObject
-                    params[Client.ChatKeys.Longitude] = location.coordinate.longitude as AnyObject
-                }
-
-                Client.sharedInstance.queryResponse(params) { (results, success, _) in
-                    DispatchQueue.main.async {
-                        if success {
-                            self.messages.append(results!)
-                            let indexPath = IndexPath(item: self.messages.count - 1, section: 0)
-                            self.collectionView?.insertItems(at: [indexPath])
-                        }
-                        self.scrollToLast()
-                    }
+                    self.scrollToLast()
                 }
             }
         }
