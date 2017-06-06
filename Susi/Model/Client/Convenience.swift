@@ -139,7 +139,7 @@ extension Client {
 
     // MARK: - Youtube Video Search by Youtube Data API v3
 
-    func searchYotubeVideos(_ query: String, _ completion: @escaping(_ response: String?, _ success: Bool, _ error: String?) -> Void) {
+    func searchYotubeVideos(_ query: String, _ completion: @escaping(_ response: String?, _ thumbnailURL: String?, _ success: Bool, _ error: String?) -> Void) {
 
         let params = [
             YoutubeParamKeys.Key: YoutubeParamValues.Key,
@@ -152,11 +152,11 @@ extension Client {
         _ = makeRequest(url, .get, [:], parameters: params as [String : AnyObject], completion: { (results, message) in
 
             if let _ = message {
-                completion(nil, false, ResponseMessages.ServerError)
+                completion(nil, nil, false, ResponseMessages.ServerError)
             } else if let results = results {
 
                 guard let response = results as? [String : AnyObject] else {
-                    completion(nil, false, ResponseMessages.InvalidParams)
+                    completion(nil, nil, false, ResponseMessages.InvalidParams)
                     return
                 }
 
@@ -164,10 +164,17 @@ extension Client {
                     if itemsObject.count > 0 {
                         if let items = itemsObject[0][Client.YoutubeResponseKeys.ID] as? [String : AnyObject] {
                             let videoID = items[Client.YoutubeResponseKeys.VideoID] as? String
-                            completion(videoID, true, nil)
+                            if let items = itemsObject[0][Client.YoutubeResponseKeys.snippet] as? [String : AnyObject] {
+                                if let thumbnails = items[Client.YoutubeResponseKeys.thumbnails] as? [String : AnyObject] {
+                                    if let mediumImage = thumbnails[Client.YoutubeResponseKeys.medium] as? [String : AnyObject] {
+                                        let url = mediumImage[Client.YoutubeResponseKeys.url] as? String
+                                        completion(videoID, url, true, nil)
+                                    }
+                                }
+                            }
                         }
                     } else {
-                        completion(nil, false, ResponseMessages.ServerError)
+                        completion(nil, nil, false, ResponseMessages.ServerError)
                     }
                 }
             }

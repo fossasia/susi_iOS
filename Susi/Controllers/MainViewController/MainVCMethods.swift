@@ -87,7 +87,15 @@ extension MainViewController {
     }
 
     // Shows Youtube Player
-    func addYotubePlayer(_ videoID: String) {
+    func addYotubePlayer(_ videoID: String, _ imageURL: String) {
+
+        // Add image message
+        let message = Message(imageURL, true)
+        messages.append(message)
+        let indexPath = IndexPath(item: messages.count - 1, section: 0)
+        collectionView?.insertItems(at: [indexPath])
+        self.scrollToLast()
+
         if let window = UIApplication.shared.keyWindow {
             blackView.frame = window.frame
             self.view.addSubview(blackView)
@@ -136,15 +144,16 @@ extension MainViewController {
     // Send Button Action
     func handleSend() {
         if let text = inputTextView.text, text.characters.count > 0 {
-            if text.contains(ControllerConstants.play) || text.contains(ControllerConstants.play.uppercased()) {
-
+            if text.contains(ControllerConstants.play.lowercased()) || text.contains(ControllerConstants.play) {
                 let query = text.replacingOccurrences(of: ControllerConstants.play, with: "")
                     .replacingOccurrences(of: ControllerConstants.play.uppercased(), with: "")
 
-                Client.sharedInstance.searchYotubeVideos(query) { (result, _, _) in
+                Client.sharedInstance.searchYotubeVideos(query) { (videoID, imageURL, success, error) in
                     DispatchQueue.main.async {
-                        if let result = result {
-                            self.addYotubePlayer(result)
+                        if success {
+                            self.addYotubePlayer(videoID!, imageURL!)
+                        } else {
+                            debugPrint(error ?? ControllerConstants.errorOccured)
                         }
                     }
                 }
