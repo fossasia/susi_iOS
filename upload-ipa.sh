@@ -18,14 +18,14 @@ echo "********************"
 echo "*    Uploading     *"
 echo "********************"
 
-#create a new directory that will contain out generated apk
+#create a new directory that will contain out generated ipa
 mkdir $HOME/buildiPA/
 
 #copy .ipa from build folder and README.md to the folder just created
 cp -R @$OUTPUTDIR/$APPNAME.ipa $HOME/buildiPA/
 cp -R README.md $HOME/buildiPA/
 
-git clone --quiet --branch=apk https://fossasia:$GITHUB_API_KEY@github.com/fossasia/susi_iOS ipa > /dev/null
+git clone --quiet --branch=ipa https://fossasia:$GITHUB_API_KEY@github.com/fossasia/susi_iOS ipa > /dev/null
 
 cd ipa
 cp -Rf $HOME/buildiPA/*  ./
@@ -38,5 +38,5 @@ git commit -am "Travis build pushed [skip ci]"
 git branch -D ipa
 git branch -m ipa
 
-#push to the branch apk
+#push to the branch ipa
 git push origin ipa --force --quiet> /dev/null
