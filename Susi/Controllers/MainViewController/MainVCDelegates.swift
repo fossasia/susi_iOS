@@ -8,7 +8,7 @@
 
 import UIKit
 import Popover
-import RSKGrowingTextView
+import AVFoundation
 
 extension MainViewController: UITableViewDelegate {
 
@@ -74,10 +74,63 @@ extension MainViewController: UITableViewDataSource {
 
 }
 
-extension MainViewController: RSKGrowingTextViewDelegate {
+extension MainViewController: AVAudioPlayerDelegate {
 
-    func textViewDidChange(_ textView: UITextView) {
-        self.inputTextView.superview?.layoutIfNeeded()
+    func playAudio() {
+        do {
+            try audioPlayer = AVAudioPlayer(contentsOf:(soundFileURL))
+            audioPlayer!.delegate = self
+            audioPlayer!.prepareToPlay()
+            audioPlayer!.play()
+        } catch let error {
+            print("Audio player error: \(error.localizedDescription)")
+        }
+    }
+
+    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
+        print("Audio Recorder did finish recording.")
+        runSnowboy()
+    }
+
+    func audioRecorderEncodeErrorDidOccur(_ recorder: AVAudioRecorder, error: Error?) {
+        print("Audio Recorder encode error.")
+    }
+
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        print("Audio player did finish playing.")
+    }
+
+    func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
+        print("Audio player decode error.")
+    }
+
+}
+
+extension MainViewController: AVAudioRecorderDelegate {
+
+    func startRecording() {
+        do {
+            let fileMgr = FileManager.default
+            let dirPaths = fileMgr.urls(for: .documentDirectory,
+                                        in: .userDomainMask)
+            soundFileURL = dirPaths[0].appendingPathComponent("temp.wav")
+            let recordSettings =
+                [AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue,
+                 AVEncoderBitRateKey: 128000,
+                 AVNumberOfChannelsKey: 1,
+                 AVSampleRateKey: 16000.0] as [String : Any]
+            let audioSession = AVAudioSession.sharedInstance()
+            try audioSession.setCategory(AVAudioSessionCategoryRecord)
+            try audioRecorder = AVAudioRecorder(url: soundFileURL,
+                                                settings: recordSettings as [String : AnyObject])
+            audioRecorder.delegate = self
+            audioRecorder.prepareToRecord()
+            audioRecorder.record(forDuration: 2.0)
+
+            print("Started recording...")
+        } catch let error {
+            print("Audio session error: \(error.localizedDescription)")
+        }
     }
 
 }

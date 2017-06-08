@@ -10,6 +10,7 @@ import UIKit
 import CoreLocation
 import Popover
 import RSKGrowingTextView
+import AVFoundation
 
 extension MainViewController {
 
@@ -84,6 +85,7 @@ extension MainViewController {
         tableView.isScrollEnabled = false
         self.popover = Popover(options: self.popoverOptions)
         self.popover.show(tableView, fromView: settingsButton)
+        self.popover.showBlackOverlay = true
     }
 
     // Shows Youtube Player
@@ -167,7 +169,7 @@ extension MainViewController {
         view.addSubview(inputTextView)
         view.addSubview(sendButton)
 
-        view.layout(sendButton).bottomRight(bottom: 8.0, right: 8.0).width(44).height(44)
+        view.layout(sendButton).bottomRight(bottom: 8.0, right: 8.0).width(40).height(40)
         view.layout(inputTextView).bottomLeft(bottom: 8.0, left: 8.0).width(view.frame.width - 64)
 
         bottomConstraintTextView = NSLayoutConstraint(item: inputTextView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
@@ -291,6 +293,33 @@ extension MainViewController {
         }))
 
         self.present(imageDialog, animated: true, completion: nil)
+    }
+
+    func initSnowboy() {
+        wrapper = SnowboyWrapper(resources: RESOURCE, modelStr: MODEL)
+        wrapper.setSensitivity("0.5")
+        wrapper.setAudioGain(1.0)
+        print("Sample rate: \(wrapper?.sampleRate()); channels: \(wrapper?.numChannels()); bits: \(wrapper?.bitsPerSample())")
+    }
+
+    func startHotwordRecognition() {
+        timer = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(startRecording), userInfo: nil, repeats: true)
+        timer.fire()
+    }
+
+    func runSnowboy() {
+
+        let file = try! AVAudioFile(forReading: soundFileURL)
+        let format = AVAudioFormat(commonFormat: .pcmFormatFloat32, sampleRate: 16000.0, channels: 1, interleaved: false)
+        let buffer = AVAudioPCMBuffer(pcmFormat: format, frameCapacity: AVAudioFrameCount(file.length))
+        try! file.read(into: buffer)
+        let array = Array(UnsafeBufferPointer(start: buffer.floatChannelData![0], count:Int(buffer.frameLength)))
+
+        print("Frame capacity: \(AVAudioFrameCount(file.length))")
+        print("Buffer frame length: \(buffer.frameLength)")
+
+        let result = wrapper.runDetection(array, length: Int32(buffer.frameLength))
+        print("Result: \(result)")
     }
 
 }
