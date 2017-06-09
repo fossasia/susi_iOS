@@ -88,7 +88,7 @@ extension MainViewController: AVAudioPlayerDelegate {
     }
 
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
-        print("Audio Recorder did finish recording.")
+        // print("Audio Recorder did finish recording.")
         runSnowboy()
     }
 
@@ -127,7 +127,7 @@ extension MainViewController: AVAudioRecorderDelegate {
             audioRecorder.prepareToRecord()
             audioRecorder.record(forDuration: 2.0)
 
-            print("Started recording...")
+            // print("Started recording...")
         } catch let error {
             print("Audio session error: \(error.localizedDescription)")
         }

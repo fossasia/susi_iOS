@@ -54,6 +54,9 @@ extension Client {
         static let Title = "title"
         static let Link = "link"
         static let Description = "description"
+        static let Text = "text"
+        static let Columns = "columns"
+        static let QueryDate = "query_date"
     }
 
     struct WebsearchKeys {

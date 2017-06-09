@@ -19,4 +19,5 @@ target 'Susi' do
   pod 'BouncyLayout'
   pod 'DLRadioButton', '~> 1.4'
   pod ‘RealmSwift’
+  pod 'SwiftLinkPreview', '~> 2.0.5'
 end

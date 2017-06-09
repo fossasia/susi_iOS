@@ -103,6 +103,7 @@ extension Client {
                 }
 
                 let messageN = MessageNew(dictionary: response)
+                print(messageN)
 
                 let message = Message.getMessageFromResponse(response, isBot: true)
 

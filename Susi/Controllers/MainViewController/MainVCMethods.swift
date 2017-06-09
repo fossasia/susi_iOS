@@ -299,7 +299,7 @@ extension MainViewController {
         wrapper = SnowboyWrapper(resources: RESOURCE, modelStr: MODEL)
         wrapper.setSensitivity("0.5")
         wrapper.setAudioGain(1.0)
-        print("Sample rate: \(wrapper?.sampleRate()); channels: \(wrapper?.numChannels()); bits: \(wrapper?.bitsPerSample())")
+        //  print("Sample rate: \(wrapper?.sampleRate()); channels: \(wrapper?.numChannels()); bits: \(wrapper?.bitsPerSample())")
     }
 
     func startHotwordRecognition() {
@@ -315,11 +315,11 @@ extension MainViewController {
         try! file.read(into: buffer)
         let array = Array(UnsafeBufferPointer(start: buffer.floatChannelData![0], count:Int(buffer.frameLength)))
 
-        print("Frame capacity: \(AVAudioFrameCount(file.length))")
-        print("Buffer frame length: \(buffer.frameLength)")
+        // print("Frame capacity: \(AVAudioFrameCount(file.length))")
+        // print("Buffer frame length: \(buffer.frameLength)")
 
         let result = wrapper.runDetection(array, length: Int32(buffer.frameLength))
-        print("Result: \(result)")
+        // print("Result: \(result)")
     }
 
 }
