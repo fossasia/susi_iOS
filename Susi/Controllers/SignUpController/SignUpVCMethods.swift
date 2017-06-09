@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DLRadioButton
 
 extension SignUpViewController {
 
@@ -22,6 +23,7 @@ extension SignUpViewController {
         prepareEmailField()
         preparePasswordField()
         prepareConfirmPasswordField()
+        prepareRadioButtons()
         prepareSignUpButton()
     }
 
@@ -41,27 +43,79 @@ extension SignUpViewController {
     private func prepareEmailField() {
         self.view.addSubview(emailField)
         self.view.layout(emailField)
-            .center(offsetY: -confirmPasswordField.height - passwordField.height - 180)
+            .top(70)
             .left(UIView.UIMarginSpec.mediumMargin)
             .right(UIView.UIMarginSpec.mediumMargin)
+        self.view.layoutSubviews()
     }
 
     // Add Subview Password Field
     private func preparePasswordField() {
         self.view.addSubview(passwordField)
         self.view.layout(passwordField)
-            .center(offsetY: -confirmPasswordField.height - 100)
+            .top(emailField.frame.maxY + emailField.frame.height)
             .left(UIView.UIMarginSpec.mediumMargin)
             .right(UIView.UIMarginSpec.mediumMargin)
+        self.view.layoutSubviews()
     }
 
     // Add Subview Confirm Password Field
     private func prepareConfirmPasswordField() {
         self.view.addSubview(confirmPasswordField)
         self.view.layout(confirmPasswordField)
-            .center(offsetY: 0)
+            .top(passwordField.frame.maxY + passwordField.frame.height)
             .left(UIView.UIMarginSpec.mediumMargin)
             .right(UIView.UIMarginSpec.mediumMargin)
+        self.view.layoutSubviews()
+    }
+
+    func prepareRadioButtons() {
+        self.view.addSubview(standardServerRB)
+        self.view.layout(standardServerRB)
+            .top(confirmPasswordField.frame.maxY + UIView.UIMarginSpec.mediumMargin)
+            .left(UIView.UIMarginSpec.mediumMargin)
+            .right(UIView.UIMarginSpec.mediumMargin)
+            .height(44)
+        self.view.layoutSubviews()
+        standardServerRB.addTarget(self, action: #selector(toggleRadioButtons), for: .touchUpInside)
+
+        self.view.addSubview(customServerRB)
+        self.view.layout(customServerRB)
+            .top(standardServerRB.frame.maxY)
+            .left(UIView.UIMarginSpec.mediumMargin)
+            .right(UIView.UIMarginSpec.mediumMargin)
+        self.view.layoutSubviews()
+        customServerRB.addTarget(self, action: #selector(toggleRadioButtons), for: .touchUpInside)
+
+        self.view.addSubview(self.customServerAddressField)
+        self.view.layout(self.customServerAddressField)
+            .top(self.customServerRB.frame.maxY + 10)
+            .left(UIView.UIMarginSpec.mediumMargin)
+            .right(UIView.UIMarginSpec.mediumMargin)
+        self.view.layoutSubviews()
+    }
+
+    func toggleRadioButtons(_ sender: Any) {
+        let button = sender as? DLRadioButton
+        if button == standardServerRB {
+            customServerRB.isSelected = false
+            customServerAddressField.tag = 0
+        } else if button == customServerRB {
+            standardServerRB.isSelected = false
+            customServerAddressField.tag = 1
+        }
+        addAddressField()
+    }
+
+    func addAddressField() {
+        UIView.animate(withDuration: 0.5) {
+            if self.customServerAddressField.tag == 0 {
+                self.signUpButton.frame.origin.y = self.customServerAddressField.frame.minY
+            } else {
+                self.signUpButton.frame.origin.y = self.customServerAddressField.frame.maxY + UIView.UIMarginSpec.mediumMargin
+            }
+            self.view.layoutIfNeeded()
+        }
     }
 
     // Add Subview Sign Up Button
@@ -69,7 +123,7 @@ extension SignUpViewController {
         self.view.addSubview(signUpButton)
         self.view.layout(signUpButton)
             .height(44)
-            .center(offsetY: confirmPasswordField.height + 70)
+            .top(customServerAddressField.frame.minY)
             .left(UIView.UIMarginSpec.mediumMargin)
             .right(UIView.UIMarginSpec.mediumMargin)
     }

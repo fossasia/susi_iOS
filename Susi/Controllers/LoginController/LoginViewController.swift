@@ -10,8 +10,11 @@ import UIKit
 import Material
 import Toast_Swift
 import SwiftValidators
+import DLRadioButton
 
 class LoginViewController: UIViewController {
+
+    let scrollView = UIScrollView()
 
     // Setup Susi Logo
     let susiLogo: UIImageView = {
@@ -71,8 +74,34 @@ class LoginViewController: UIViewController {
         return button
     }()
 
+    let standardServerRB: DLRadioButton = {
+        let button = DLRadioButton()
+        button.setTitle(ControllerConstants.standardServer, for: .normal)
+        button.isSelected = true
+        return button
+    }()
+
+    let customServerRB: DLRadioButton = {
+        let button = DLRadioButton()
+        button.setTitle(ControllerConstants.customServer, for: .normal)
+        return button
+    }()
+
+    let customServerAddressField: TextField = {
+        let textfield = TextField()
+        textfield.placeholderNormalColor = .white
+        textfield.placeholderActiveColor = .white
+        textfield.dividerNormalColor = .white
+        textfield.dividerActiveColor = .white
+        textfield.textColor = .white
+        textfield.tag = 0
+        textfield.placeholder = ControllerConstants.customIPAddress
+        return textfield
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
         setupView()
         checkSession()
         addTapGesture()

@@ -15,7 +15,7 @@ extension Client {
 
     func loginUser(_ params: [String : AnyObject], _ completion: @escaping(_ user: User?, _ success: Bool, _ error: String) -> Void) {
 
-        let url = getApiUrl(APIURLs.SusiAPI, Methods.Login)
+        let url = getApiUrl(UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.ipAddress) as! String, Methods.Login)
 
         _ = makeRequest(url, .post, [:], parameters: params, completion: { (results, message) in
 
@@ -35,7 +35,7 @@ extension Client {
 
     func registerUser(_ params: [String : AnyObject], _ completion: @escaping(_ success: Bool, _ error: String) -> Void) {
 
-        let url = getApiUrl(APIURLs.SusiAPI, Methods.Register)
+        let url = getApiUrl(UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.ipAddress) as! String, Methods.Register)
 
         _ = makeRequest(url, .post, [:], parameters: params, completion: { (results, message) in
 
@@ -58,7 +58,7 @@ extension Client {
 
     func resetPassword(_ params: [String : AnyObject], _ completion: @escaping(_ success: Bool, _ error: String) -> Void) {
 
-        let url = getApiUrl(APIURLs.SusiAPI, Methods.ResetPassword)
+        let url = getApiUrl(UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.ipAddress) as! String, Methods.ResetPassword)
 
         _ = makeRequest(url, .get, [:], parameters: params, completion: { (results, message) in
 
@@ -89,7 +89,7 @@ extension Client {
 
     func queryResponse(_ params: [String : AnyObject], _ completion: @escaping(_ response: Message?, _ success: Bool, _ error: String?) -> Void) {
 
-        let url = getApiUrl(APIURLs.SusiAPI, Methods.Chat)
+        let url = getApiUrl(UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.ipAddress) as! String, Methods.Chat)
 
         _ = makeRequest(url, .get, [:], parameters: params, completion: { (results, message) in
 

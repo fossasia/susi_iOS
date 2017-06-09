@@ -8,6 +8,7 @@
 
 import UIKit
 import Material
+import DLRadioButton
 
 class ForgotPasswordViewController: UIViewController {
 
@@ -28,6 +29,31 @@ class ForgotPasswordViewController: UIViewController {
         textField.detailLabel.text = ControllerConstants.invalidEmail
         textField.delegate = self
         return textField
+    }()
+
+    let standardServerRB: DLRadioButton = {
+        let button = DLRadioButton()
+        button.setTitle(ControllerConstants.standardServer, for: .normal)
+        button.isSelected = true
+        return button
+    }()
+
+    let customServerRB: DLRadioButton = {
+        let button = DLRadioButton()
+        button.setTitle(ControllerConstants.customServer, for: .normal)
+        return button
+    }()
+
+    let customServerAddressField: TextField = {
+        let textfield = TextField()
+        textfield.placeholderNormalColor = .white
+        textfield.placeholderActiveColor = .white
+        textfield.dividerNormalColor = .white
+        textfield.dividerActiveColor = .white
+        textfield.textColor = .white
+        textfield.tag = 0
+        textfield.placeholder = ControllerConstants.customIPAddress
+        return textfield
     }()
 
     // Setup Reset Button
@@ -53,6 +79,7 @@ class ForgotPasswordViewController: UIViewController {
 
         setupView()
         prepareEmailField()
+        prepareRadioButtons()
         prepareResetButton()
         prepareActivityIndicator()
     }
