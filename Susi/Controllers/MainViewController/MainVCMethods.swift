@@ -181,7 +181,7 @@ extension MainViewController {
 
     // Temporarily save message to object
     func saveMessage() {
-        let message = Message(inputTextView.text!.trimmed)
+        let message = MessageOld(inputTextView.text!.trimmed)
         messages.append(message)
         let indexPath = IndexPath(item: messages.count - 1, section: 0)
         collectionView?.insertItems(at: [indexPath])
@@ -318,7 +318,7 @@ extension MainViewController {
         // print("Frame capacity: \(AVAudioFrameCount(file.length))")
         // print("Buffer frame length: \(buffer.frameLength)")
 
-        let result = wrapper.runDetection(array, length: Int32(buffer.frameLength))
+        _ = wrapper.runDetection(array, length: Int32(buffer.frameLength))
         // print("Result: \(result)")
     }
 

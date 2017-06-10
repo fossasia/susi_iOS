@@ -10,7 +10,7 @@ import UIKit
 
 class OutgoingChatCell: ChatMessageCell {
 
-    var message: Message? {
+    var message: MessageOld? {
         didSet {
             messageTextView.text = message?.body
         }

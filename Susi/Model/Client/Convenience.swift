@@ -87,7 +87,7 @@ extension Client {
 
     // MARK: - Chat Methods
 
-    func queryResponse(_ params: [String : AnyObject], _ completion: @escaping(_ response: Message?, _ success: Bool, _ error: String?) -> Void) {
+    func queryResponse(_ params: [String : AnyObject], _ completion: @escaping(_ response: MessageOld?, _ success: Bool, _ error: String?) -> Void) {
 
         let url = getApiUrl(UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.ipAddress) as! String, Methods.Chat)
 
@@ -102,10 +102,10 @@ extension Client {
                     return
                 }
 
-                let messageN = MessageNew(dictionary: response)
+                let messageN = Message(dictionary: response)
                 print(messageN)
 
-                let message = Message.getMessageFromResponse(response, isBot: true)
+                let message = MessageOld.getMessageFromResponse(response, isBot: true)
 
                 completion(message, true, nil)
             }

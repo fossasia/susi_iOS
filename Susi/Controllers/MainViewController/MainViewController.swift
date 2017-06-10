@@ -17,7 +17,7 @@ import AVFoundation
 
 class MainViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate, UIImagePickerControllerDelegate {
 
-    var messages: [Message] = []
+    var messages: [MessageOld] = []
 
     var popover: Popover!
     var popoverOptions: [PopoverOption] = [
@@ -122,11 +122,11 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
             let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
             let estimatedFrame = NSString(string: messageText).boundingRect(with: size, options: options, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 18)], context: nil)
 
-            if message.responseType == Message.ResponseTypes.map {
+            if message.responseType == MessageOld.ResponseTypes.map {
                 return CGSize(width: view.frame.width, height: estimatedFrame.height + 240)
-            } else if message.responseType == Message.ResponseTypes.websearch {
+            } else if message.responseType == MessageOld.ResponseTypes.websearch {
                 return CGSize(width: view.frame.width, height: estimatedFrame.height + 20 + 64)
-            } else if message.responseType == Message.ResponseTypes.image {
+            } else if message.responseType == MessageOld.ResponseTypes.image {
                 return CGSize(width: view.frame.width, height: 150)
             }
 

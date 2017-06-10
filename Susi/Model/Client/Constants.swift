@@ -57,6 +57,8 @@ extension Client {
         static let Text = "text"
         static let Columns = "columns"
         static let QueryDate = "query_date"
+        static let ShortenedUrl = "finalUrl"
+        static let Image = "image"
     }
 
     struct WebsearchKeys {

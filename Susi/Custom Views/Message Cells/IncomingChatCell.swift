@@ -12,7 +12,7 @@ import MapKit
 
 class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
 
-    var message: Message? {
+    var message: MessageOld? {
         didSet {
             messageTextView.text = message?.body
             websiteText.text = message?.websearchData?.info
@@ -119,14 +119,14 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
         imageView.prepareForReuse()
     }
 
-    func setupCell(_ estimatedFrame: CGRect, _ viewFrame: CGRect, _ message: Message) {
+    func setupCell(_ estimatedFrame: CGRect, _ viewFrame: CGRect, _ message: MessageOld) {
 
-        if message.responseType == Message.ResponseTypes.map {
+        if message.responseType == MessageOld.ResponseTypes.map {
             messageTextView.frame = CGRect(x: 16, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 30)
             textBubbleView.frame = CGRect(x: 4, y: -4, width: estimatedFrame.width + 40, height: estimatedFrame.height + 240)
             bubbleImageView.isHidden = false
             addMapView(CGRect(x: 16, y: estimatedFrame.height + 20, width: estimatedFrame.width + 12, height: 210))
-        } else if message.responseType == Message.ResponseTypes.websearch {
+        } else if message.responseType == MessageOld.ResponseTypes.websearch {
             self.messageTextView.frame = CGRect(x: 16, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 30)
             self.textBubbleView.frame = CGRect(x: 4, y: -4, width: estimatedFrame.width + 40, height: estimatedFrame.height + 85)
             bubbleImageView.isHidden = false
@@ -150,7 +150,7 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
                 }
 
             })
-        } else if message.responseType == Message.ResponseTypes.image {
+        } else if message.responseType == MessageOld.ResponseTypes.image {
             let width = Int(frame.width / 2)
             let height = 150
             messageTextView.frame = CGRect(x: 16, y: 0, width: width + 16, height: height)

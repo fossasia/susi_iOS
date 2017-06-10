@@ -14,7 +14,6 @@ target 'Susi' do
   pod 'RSKGrowingTextView'
   pod 'RSKPlaceholderTextView', '2.0.0'
   pod 'AlamofireImage', '~> 3.1'
-  pod 'SwiftLint'
   pod 'Nuke-Gifu-Plugin'
   pod 'BouncyLayout'
   pod 'DLRadioButton', '~> 1.4'
