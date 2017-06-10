@@ -13,6 +13,11 @@ PODS:
     - Gifu (~> 2.0)
     - Nuke (~> 5.0)
   - Popover (1.0.6)
+  - Realm (2.8.0):
+    - Realm/Headers (= 2.8.0)
+  - Realm/Headers (2.8.0)
+  - RealmSwift (2.8.0):
+    - Realm (= 2.8.0)
   - RSKGrowingTextView (2.0.0):
     - RSKPlaceholderTextView (= 2.0.0)
   - RSKPlaceholderTextView (2.0.0)
@@ -28,6 +33,7 @@ DEPENDENCIES:
   - Material
   - Nuke-Gifu-Plugin
   - Popover
+  - RealmSwift
   - RSKGrowingTextView
   - RSKPlaceholderTextView (= 2.0.0)
   - SwiftLint
@@ -44,12 +50,14 @@ SPEC CHECKSUMS:
   Nuke: 8ab71e77f6a54ff5fb697f93537c35f419bb01f7
   Nuke-Gifu-Plugin: 212968cf0c170a504a8ddf69806cf6c6aa2f40b4
   Popover: 227aa929a6cdf41c4828786be8ede109c40344c9
+  Realm: 929243ad2b618b3232e70658bedc61110e7563f1
+  RealmSwift: 5b7079b891f2833d1849294161ba3e092bbda3f6
   RSKGrowingTextView: 1d9c64f1e9f8ed9b47d883548a3fd76dfdfe1353
   RSKPlaceholderTextView: 301f0f30e70e7c42fe4e941e3a08365ab0d890d5
   SwiftLint: 3537a05b34060e78e7510f04fb7537d738247803
   SwiftValidators: 4ccbec749f61a36f7a922781bb09452e80cde396
   Toast-Swift: 5b2f8f720f7e78e48511f693df1f9c9a6e38a25a
 
-PODFILE CHECKSUM: 2deec0c56c7791e4f58c4e067c3ce9e74d89a6bc
+PODFILE CHECKSUM: 6d313f1aed7aab62951ae58e7f54fcbe8ca351e6
 
 COCOAPODS: 1.2.1

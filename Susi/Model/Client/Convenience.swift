@@ -102,6 +102,8 @@ extension Client {
                     return
                 }
 
+                let messageN = MessageNew(dictionary: response)
+
                 let message = Message.getMessageFromResponse(response, isBot: true)
 
                 completion(message, true, nil)

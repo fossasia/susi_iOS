@@ -18,4 +18,5 @@ target 'Susi' do
   pod 'Nuke-Gifu-Plugin'
   pod 'BouncyLayout'
   pod 'DLRadioButton', '~> 1.4'
+  pod ‘RealmSwift’
 end
