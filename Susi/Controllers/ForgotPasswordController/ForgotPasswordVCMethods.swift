@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DLRadioButton
 
 extension ForgotPasswordViewController {
 
@@ -33,6 +34,57 @@ extension ForgotPasswordViewController {
             .top(UIView.UIMarginSpec.largeMatgin)
             .left(UIView.UIMarginSpec.mediumMargin)
             .right(UIView.UIMarginSpec.mediumMargin)
+        self.view.layoutSubviews()
+    }
+
+    func prepareRadioButtons() {
+        self.view.addSubview(standardServerRB)
+        self.view.layout(standardServerRB)
+            .top(emailField.frame.maxY + UIView.UIMarginSpec.mediumMargin)
+            .left(UIView.UIMarginSpec.mediumMargin)
+            .right(UIView.UIMarginSpec.mediumMargin)
+            .height(44)
+        self.view.layoutSubviews()
+        standardServerRB.addTarget(self, action: #selector(toggleRadioButtons), for: .touchUpInside)
+
+        self.view.addSubview(customServerRB)
+        self.view.layout(customServerRB)
+            .top(standardServerRB.frame.maxY)
+            .left(UIView.UIMarginSpec.mediumMargin)
+            .right(UIView.UIMarginSpec.mediumMargin)
+        self.view.layoutSubviews()
+        customServerRB.addTarget(self, action: #selector(toggleRadioButtons), for: .touchUpInside)
+
+        self.view.addSubview(self.customServerAddressField)
+        self.view.layout(self.customServerAddressField)
+            .top(self.customServerRB.frame.maxY + 10)
+            .left(UIView.UIMarginSpec.mediumMargin)
+            .right(UIView.UIMarginSpec.mediumMargin)
+        self.view.layoutSubviews()
+    }
+
+    func toggleRadioButtons(_ sender: Any) {
+        let button = sender as? DLRadioButton
+        if button == standardServerRB {
+            customServerRB.isSelected = false
+            customServerAddressField.tag = 0
+        } else if button == customServerRB {
+            standardServerRB.isSelected = false
+            customServerAddressField.tag = 1
+        }
+        addAddressField()
+    }
+
+    func addAddressField() {
+        UIView.animate(withDuration: 0.5) {
+            if self.customServerAddressField.tag == 0 {
+                self.resetButton.frame.origin.y = self.customServerAddressField.frame.minY
+            } else {
+                self.resetButton.frame.origin.y = self.customServerAddressField.frame.maxY + UIView.UIMarginSpec.mediumMargin
+            }
+            self.activityIndicator.frame.origin.y = self.resetButton.frame.maxY + UIView.UIMarginSpec.mediumMargin
+            self.view.layoutIfNeeded()
+        }
     }
 
     // Add Subview Reset Button
@@ -40,16 +92,17 @@ extension ForgotPasswordViewController {
         self.view.addSubview(resetButton)
         self.view.layout(resetButton)
             .height(44)
-            .top(emailField.height + 70)
+            .top(customServerAddressField.frame.minY)
             .left(UIView.UIMarginSpec.mediumMargin)
             .right(UIView.UIMarginSpec.mediumMargin)
+        self.view.layoutSubviews()
     }
 
     // Add Subview Activity Indicator
     func prepareActivityIndicator() {
         self.view.addSubview(activityIndicator)
         self.view.layout(activityIndicator)
-            .top(resetButton.frame.maxY + 170)
+            .top(resetButton.frame.maxY + UIView.UIMarginSpec.mediumMargin)
             .centerHorizontally()
     }
 

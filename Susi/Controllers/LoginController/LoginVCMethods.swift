@@ -8,11 +8,12 @@
 
 import UIKit
 import BouncyLayout
+import DLRadioButton
 
 extension LoginViewController {
 
     func addTapGesture() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(tap)
     }
 
@@ -20,66 +21,136 @@ extension LoginViewController {
     func setupView() {
         self.view.backgroundColor = UIColor.defaultColor()
 
+        prepareScrollView()
         prepareLogo()
         prepareEmailField()
         preparePasswordField()
+        prepareRadioButtons()
         prepareLoginButton()
         prepareForgotButton()
         prepareSignUpButton()
     }
 
+    // Add Subview Scroll View
+    func prepareScrollView() {
+        self.view.addSubview(scrollView)
+        scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+        scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height * 1.25)
+        scrollView.alwaysBounceVertical = true
+    }
+
     // Add Subview Logo
     private func prepareLogo() {
-        self.view.addSubview(susiLogo)
-        self.view.layout(susiLogo).top(50).centerHorizontally()
+        self.scrollView.addSubview(susiLogo)
+        self.scrollView.layout(susiLogo)
+            .top(50)
+            .centerHorizontally()
     }
 
     // Add Subview Email Field
     private func prepareEmailField() {
-        self.view.addSubview(emailField)
-        self.view.layout(emailField)
-            .center(offsetY: -passwordField.height - 80)
+        self.scrollView.addSubview(emailField)
+        self.scrollView.layout(emailField)
+            .top(susiLogo.frame.maxY + susiLogo.frame.height + 30)
             .left(UIView.UIMarginSpec.mediumMargin)
             .right(UIView.UIMarginSpec.mediumMargin)
+            .width(view.frame.width - 40)
+        self.scrollView.layoutIfNeeded()
     }
 
     // Add Subview Password Field
     private func preparePasswordField() {
-        self.view.addSubview(passwordField)
-        self.view.layout(passwordField)
-            .center(offsetY: 0)
+        self.scrollView.addSubview(passwordField)
+        self.scrollView.layout(passwordField)
+            .top(emailField.frame.maxY + emailField.frame.height + 20)
             .left(UIView.UIMarginSpec.mediumMargin)
             .right(UIView.UIMarginSpec.mediumMargin)
+        self.scrollView.layoutSubviews()
+    }
+
+    func prepareRadioButtons() {
+        self.scrollView.addSubview(standardServerRB)
+        self.scrollView.layout(standardServerRB)
+            .top(passwordField.frame.maxY + 20)
+            .left(UIView.UIMarginSpec.mediumMargin)
+            .right(UIView.UIMarginSpec.mediumMargin)
+            .height(44)
+        self.scrollView.layoutSubviews()
+        standardServerRB.addTarget(self, action: #selector(toggleRadioButtons), for: .touchUpInside)
+
+        self.scrollView.addSubview(customServerRB)
+        self.scrollView.layout(customServerRB)
+            .top(standardServerRB.frame.maxY)
+            .left(UIView.UIMarginSpec.mediumMargin)
+            .right(UIView.UIMarginSpec.mediumMargin)
+        self.scrollView.layoutSubviews()
+        customServerRB.addTarget(self, action: #selector(toggleRadioButtons), for: .touchUpInside)
+
+        self.scrollView.addSubview(self.customServerAddressField)
+        self.scrollView.layout(self.customServerAddressField)
+            .top(self.customServerRB.frame.maxY + 10)
+            .left(UIView.UIMarginSpec.mediumMargin)
+            .right(UIView.UIMarginSpec.mediumMargin)
+        self.scrollView.layoutSubviews()
+    }
+
+    func toggleRadioButtons(_ sender: Any) {
+        let button = sender as? DLRadioButton
+        if button == standardServerRB {
+            customServerRB.isSelected = false
+            customServerAddressField.tag = 0
+        } else if button == customServerRB {
+            standardServerRB.isSelected = false
+            customServerAddressField.tag = 1
+        }
+        addAddressField()
+    }
+
+    func addAddressField() {
+        UIView.animate(withDuration: 0.5) {
+            if self.customServerAddressField.tag == 0 {
+                self.loginButton.frame.origin.y = self.customServerRB.frame.maxY + UIView.UIMarginSpec.smallMargin
+                self.forgotButton.frame.origin.y = self.loginButton.frame.maxY
+                self.signUpButton.frame.origin.y = self.forgotButton.frame.maxY + self.forgotButton.frame.height
+            } else {
+                self.loginButton.frame.origin.y = self.customServerRB.frame.maxY + UIView.UIMarginSpec.largeMatgin + 20
+                self.forgotButton.frame.origin.y = self.loginButton.frame.maxY + UIView.UIMarginSpec.smallMargin
+                self.signUpButton.frame.origin.y  = self.forgotButton.frame.maxY + self.forgotButton.frame.height
+            }
+            self.scrollView.layoutIfNeeded()
+        }
     }
 
     // Add Subview Login Button
     private func prepareLoginButton() {
-        self.view.addSubview(loginButton)
-        self.view.layout(loginButton)
-            .height(44)
-            .center(offsetY: passwordField.height + 60)
+        self.scrollView.addSubview(loginButton)
+        self.scrollView.layout(loginButton)
+            .top(customServerRB.frame.maxY + 20)
             .left(UIView.UIMarginSpec.mediumMargin)
             .right(UIView.UIMarginSpec.mediumMargin)
+            .height(44)
+        self.scrollView.layoutSubviews()
     }
 
     // Add Subview Forgot Button
     private func prepareForgotButton() {
-        self.view.addSubview(forgotButton)
-        self.view.layout(forgotButton)
-            .height(44)
-            .center(offsetY: passwordField.height + loginButton.height + 70)
+        self.scrollView.addSubview(forgotButton)
+        self.scrollView.layout(forgotButton)
+            .top(loginButton.frame.maxY + UIView.UIMarginSpec.smallMargin)
             .left(UIView.UIMarginSpec.mediumMargin)
             .right(UIView.UIMarginSpec.mediumMargin)
+            .height(44)
+        self.scrollView.layoutSubviews()
     }
 
     // Add Subview Sign Up Button
     private func prepareSignUpButton() {
-        self.view.addSubview(signUpButton)
-        self.view.layout(signUpButton)
-            .height(44)
-            .bottom(20)
+        self.scrollView.addSubview(signUpButton)
+        self.scrollView.layout(signUpButton)
+            .top(forgotButton.frame.maxY + forgotButton.frame.height)
             .left(UIView.UIMarginSpec.mediumMargin)
             .right(UIView.UIMarginSpec.mediumMargin)
+            .height(44)
     }
 
     // Login User
@@ -92,7 +163,7 @@ extension LoginViewController {
                 Client.UserKeys.Login: emailField.text!.lowercased(),
                 Client.UserKeys.Password: passwordField.text!,
                 Client.ChatKeys.ResponseType: Client.ChatKeys.AccessToken
-                ] as [String : Any]
+            ] as [String : Any]
 
             Client.sharedInstance.loginUser(params as [String : AnyObject]) { (_, success, message) in
                 DispatchQueue.main.async {
@@ -156,12 +227,24 @@ extension LoginViewController {
             passwordField.isErrorRevealed = true
             return false
         }
+        if customServerAddressField.tag == 1 {
+            if let address = customServerAddressField.text, address.isEmpty {
+                return false
+            }
+        }
         return true
     }
 
     // Login User
     func completeLogin() {
         let layout = BouncyLayout()
+
+        if customServerAddressField.tag == 0 {
+            UserDefaults.standard.set(Client.APIURLs.SusiAPI, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
+        } else {
+            UserDefaults.standard.set(customServerAddressField.text!, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
+        }
+
         let vc = MainViewController(collectionViewLayout: layout)
         let nvc = AppNavigationController(rootViewController: vc)
         self.present(nvc, animated: true, completion: {

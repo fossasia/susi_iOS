@@ -17,4 +17,5 @@ target 'Susi' do
   pod 'SwiftLint'
   pod 'Nuke-Gifu-Plugin'
   pod 'BouncyLayout'
+  pod 'DLRadioButton', '~> 1.4'
 end

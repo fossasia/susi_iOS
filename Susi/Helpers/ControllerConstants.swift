@@ -33,6 +33,9 @@ class ControllerConstants {
     static let outgoingCell = "outgoingCell"
     static let defaultMessage = "Sample message"
     static let defaultWebSearchImage = "no-image"
+    static let standardServer = "Standard Server"
+    static let customServer = "Custom Server"
+    static let customIPAddress = "Address http://"
 
     struct Login {
         static let susiImage = "susi"
@@ -80,6 +83,7 @@ class ControllerConstants {
         static let speechOutput = "speechOutput"
         static let speechOutputAlwaysOn = "speechOutputAlwaysOn"
         static let wallpaper = "wallpaper"
+        static let ipAddress = "ipAddress"
     }
 
 }
