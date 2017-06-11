@@ -165,6 +165,12 @@ extension LoginViewController {
                 Client.ChatKeys.ResponseType: Client.ChatKeys.AccessToken
             ] as [String : Any]
 
+            if customServerAddressField.tag == 0 {
+                UserDefaults.standard.set(Client.APIURLs.SusiAPI, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
+            } else {
+                UserDefaults.standard.set(customServerAddressField.text!, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
+            }
+
             Client.sharedInstance.loginUser(params as [String : AnyObject]) { (_, success, message) in
                 DispatchQueue.main.async {
                     self.toggleEditing()
@@ -238,13 +244,6 @@ extension LoginViewController {
     // Login User
     func completeLogin() {
         let layout = BouncyLayout()
-
-        if customServerAddressField.tag == 0 {
-            UserDefaults.standard.set(Client.APIURLs.SusiAPI, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
-        } else {
-            UserDefaults.standard.set(customServerAddressField.text!, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
-        }
-
         let vc = MainViewController(collectionViewLayout: layout)
         let nvc = AppNavigationController(rootViewController: vc)
         self.present(nvc, animated: true, completion: {
