@@ -86,6 +86,11 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         super.viewDidAppear(animated)
         loadMessages()
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        print("memory issue")
+    }
 
     // Number of items
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -124,8 +129,9 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
             return CGSize(width: view.frame.width, height: 150)
         } else if message.actionType == ActionType.map.rawValue {
             return CGSize(width: view.frame.width, height: 230)
-        } else if message.actionType == ActionType.websearch.rawValue {
-            return CGSize(width: view.frame.width, height: estimatedFrame.height + 89)
+        } else if message.actionType == ActionType.websearch.rawValue ||
+            message.actionType == ActionType.rss.rawValue {
+            return CGSize(width: view.frame.width, height: 155)
         }
         return CGSize(width: view.frame.width, height: estimatedFrame.height + 25)
     }
