@@ -50,7 +50,7 @@ class TableData: Object {
 
 }
 
-class TableAction: Message {
+class TableAction: Object {
     dynamic var size: Int = 0
     var columns = List<Column>()
     var tableData = List<TableData>()

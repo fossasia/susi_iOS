@@ -8,7 +8,7 @@ PODS:
   - Material (2.6.3):
     - Material/Core (= 2.6.3)
   - Material/Core (2.6.3)
-  - Nuke (5.1)
+  - Nuke (5.1.1)
   - Nuke-Gifu-Plugin (1.0):
     - Gifu (~> 2.0)
     - Nuke (~> 5.0)
@@ -47,7 +47,7 @@ SPEC CHECKSUMS:
   DLRadioButton: 7bb8a6e3768b572469ace553391ab4d2af6f9c19
   Gifu: 56a4d8f1092399159fa32662aa2232158b48d8ac
   Material: af607a7ec0e9978ef85cf189a3d8ceeeb650400f
-  Nuke: 8ab71e77f6a54ff5fb697f93537c35f419bb01f7
+  Nuke: 0a2ddb4bd13d75782964bf598a159ca2a836d826
   Nuke-Gifu-Plugin: 212968cf0c170a504a8ddf69806cf6c6aa2f40b4
   Popover: 227aa929a6cdf41c4828786be8ede109c40344c9
   Realm: 929243ad2b618b3232e70658bedc61110e7563f1

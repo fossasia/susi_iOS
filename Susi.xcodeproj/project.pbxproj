@@ -21,7 +21,6 @@
 		6D24B0941EE409AB0097418A /* SignUpVCDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D24B0931EE409AB0097418A /* SignUpVCDelegates.swift */; };
 		6D24B0961EE409DB0097418A /* SignUpVCMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D24B0951EE409DB0097418A /* SignUpVCMethods.swift */; };
 		6D2F984B1E76DF2200FE2B6F /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2F984A1E76DF2200FE2B6F /* BaseCell.swift */; };
-		6D2F984D1E76E62900FE2B6F /* MessageOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2F984C1E76E62900FE2B6F /* MessageOld.swift */; };
 		6D35E47F1EE70F4200188E1F /* common.res in Resources */ = {isa = PBXBuildFile; fileRef = 6D35E47D1EE70F4200188E1F /* common.res */; };
 		6D35E4861EE70F6300188E1F /* SnowboyWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6D35E4851EE70F6300188E1F /* SnowboyWrapper.mm */; };
 		6D35E4881EE70F9000188E1F /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D35E4871EE70F9000188E1F /* Accelerate.framework */; };
@@ -86,7 +85,6 @@
 		6D24B0931EE409AB0097418A /* SignUpVCDelegates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVCDelegates.swift; sourceTree = "<group>"; };
 		6D24B0951EE409DB0097418A /* SignUpVCMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVCMethods.swift; sourceTree = "<group>"; };
 		6D2F984A1E76DF2200FE2B6F /* BaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
-		6D2F984C1E76E62900FE2B6F /* MessageOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageOld.swift; sourceTree = "<group>"; };
 		6D35E47D1EE70F4200188E1F /* common.res */ = {isa = PBXFileReference; lastKnownFileType = file; path = common.res; sourceTree = "<group>"; };
 		6D35E4821EE70F5600188E1F /* snowboy-detect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "snowboy-detect.h"; sourceTree = "<group>"; };
 		6D35E4831EE70F6200188E1F /* Susi-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Susi-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -349,7 +347,6 @@
 			isa = PBXGroup;
 			children = (
 				6DE44E131E76ACC200215B85 /* Client */,
-				6D2F984C1E76E62900FE2B6F /* MessageOld.swift */,
 				6D9C0D281E7B223A00199828 /* User.swift */,
 				6DF591D51E8189B7003B2C6B /* WebsearchResult.swift */,
 				6D61B9AA1EEBAA3900CD3536 /* Message.swift */,
@@ -586,7 +583,6 @@
 				6D24B08C1EE408890097418A /* LoginVCDelegates.swift in Sources */,
 				6D24B0911EE4093C0097418A /* ForgotPasswordVCMethods.swift in Sources */,
 				6D61B9B11EEBAB0200CD3536 /* WebsearchAction.swift in Sources */,
-				6D2F984D1E76E62900FE2B6F /* MessageOld.swift in Sources */,
 				6D24B08F1EE4090C0097418A /* ForgotPasswordVCDelegates.swift in Sources */,
 				6DE44E161E76ACD900215B85 /* Constants.swift in Sources */,
 				4CD0AA5F1EDF2CB700BC8FD5 /* ControllerConstants.swift in Sources */,

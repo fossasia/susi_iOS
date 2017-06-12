@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-class WebsearchAction: Message {
+class WebsearchAction: Object {
     dynamic var shortenedURL: String = ""
     dynamic var title: String = ""
     dynamic var desc: String = ""

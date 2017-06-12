@@ -14,10 +14,12 @@ import RSKPlaceholderTextView
 import CoreLocation
 import AlamofireImage
 import AVFoundation
+import RealmSwift
 
-class MainViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate, UIImagePickerControllerDelegate {
+class MainViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
-    var messages: [MessageOld] = []
+    var messages = List<Message>()
+    let realm = try! Realm()
 
     var popover: Popover!
     var popoverOptions: [PopoverOption] = [
@@ -80,6 +82,11 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         startHotwordRecognition()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        loadMessages()
+    }
+
     // Number of items
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // print("Number of messages: \(messages.count)")
@@ -90,55 +97,42 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         let message = messages[indexPath.row]
+//        print(message)
 
-        let messageText = message.body
-        let size = CGSize(width: 250, height: 1000)
-        let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
-        let estimatedFrame = NSString(string: messageText!).boundingRect(with: size, options: options, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 18)], context: nil)
+        let messageBody = message.message
+        let estimatedFrame = self.estimatedFrame(messageBody: messageBody)
 
-        if message.isBot {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.incomingCell, for: indexPath) as! IncomingBubbleCell
-            cell.message = message
-            cell.setupCell(estimatedFrame, view.frame, message)
-            cell.layoutSubviews()
-            cell.layoutIfNeeded()
-            return cell
-        } else {
+        if message.fromUser {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.outgoingCell, for: indexPath) as! OutgoingChatCell
             cell.message = message
             cell.setupCell(estimatedFrame, view.frame)
-            cell.layoutSubviews()
-            cell.layoutIfNeeded()
             return cell
         }
+
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.incomingCell, for: indexPath) as! IncomingBubbleCell
+        cell.message = message
+        cell.setupCell(estimatedFrame, view.frame)
+        return cell
     }
 
     // Calculate Bubble Height
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let message = messages[indexPath.row]
 
-        if let messageText = message.body {
-            let size = CGSize(width: 250, height: 1000)
-            let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
-            let estimatedFrame = NSString(string: messageText).boundingRect(with: size, options: options, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 18)], context: nil)
-
-            if message.responseType == MessageOld.ResponseTypes.map {
-                return CGSize(width: view.frame.width, height: estimatedFrame.height + 240)
-            } else if message.responseType == MessageOld.ResponseTypes.websearch {
-                return CGSize(width: view.frame.width, height: estimatedFrame.height + 20 + 64)
-            } else if message.responseType == MessageOld.ResponseTypes.image {
-                return CGSize(width: view.frame.width, height: 150)
-            }
-
-            return CGSize(width: view.frame.width, height: estimatedFrame.height + 20)
+        let estimatedFrame = self.estimatedFrame(messageBody: message.message)
+        if message.message.isImage() {
+            return CGSize(width: view.frame.width, height: 150)
+        } else if message.actionType == ActionType.map.rawValue {
+            return CGSize(width: view.frame.width, height: 230)
+        } else if message.actionType == ActionType.websearch.rawValue {
+            return CGSize(width: view.frame.width, height: estimatedFrame.height + 89)
         }
-
-        return CGSize(width: view.frame.width, height: 100)
+        return CGSize(width: view.frame.width, height: estimatedFrame.height + 25)
     }
 
     // Set Edge Insets
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
+        return UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0)
     }
 
     // Setup Input Text View

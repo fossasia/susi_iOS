@@ -12,19 +12,20 @@ import MapKit
 
 class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
 
-    var message: MessageOld? {
+    var message: Message? {
         didSet {
-            messageTextView.text = message?.body
-            websiteText.text = message?.websearchData?.info
+            messageTextView.text = message?.message
 
-            if let imageString = message?.websearchData?.image {
-                if let url = URL(string: imageString) {
-                    let urlRequest = URLRequest(url: url)
-                    searchImageView.af_setImage(withURLRequest: urlRequest)
-                }
-            }
+//            websiteText.text = message?.websearchData?.info
 
-            if let imageString = message?.body, imageString.isImage() {
+//            if let imageString = message?.websearchData?.image {
+//                if let url = URL(string: imageString) {
+//                    let urlRequest = URLRequest(url: url)
+//                    searchImageView.af_setImage(withURLRequest: urlRequest)
+//                }
+//            }
+
+            if let imageString = message?.message, imageString.isImage() {
                 if let url = URL(string: imageString) {
                     AnimatedImage.manager.loadImage(with: url, into: imageView)
                 }
@@ -71,13 +72,13 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
         super.setupViews()
 
         self.bubbleImageView.image = ChatMessageCell.grayBubbleImage
-        clearViews()
     }
 
     func addMapView(_ frame: CGRect) {
         textBubbleView.addSubview(mapView)
 
         mapView.frame = frame
+        mapView.isZoomEnabled = false
 
         if let mapData = message?.mapData {
             let latitude = mapData.latitude
@@ -119,53 +120,99 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
         imageView.prepareForReuse()
     }
 
-    func setupCell(_ estimatedFrame: CGRect, _ viewFrame: CGRect, _ message: MessageOld) {
+    func setupCell(_ estimatedFrame: CGRect, _ viewFrame: CGRect) {
 
-        if message.responseType == MessageOld.ResponseTypes.map {
-            messageTextView.frame = CGRect(x: 16, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 30)
-            textBubbleView.frame = CGRect(x: 4, y: -4, width: estimatedFrame.width + 40, height: estimatedFrame.height + 240)
-            bubbleImageView.isHidden = false
-            addMapView(CGRect(x: 16, y: estimatedFrame.height + 20, width: estimatedFrame.width + 12, height: 210))
-        } else if message.responseType == MessageOld.ResponseTypes.websearch {
-            self.messageTextView.frame = CGRect(x: 16, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 30)
-            self.textBubbleView.frame = CGRect(x: 4, y: -4, width: estimatedFrame.width + 40, height: estimatedFrame.height + 85)
-            bubbleImageView.isHidden = false
-
-            let params = [
-                Client.WebsearchKeys.Query: message.query!,
-                Client.WebsearchKeys.Format: ControllerConstants.json
-            ]
-
-            Client.sharedInstance.websearch(params as [String : AnyObject], { (results, success, error) in
-                DispatchQueue.main.async {
-                    if success {
-                        self.message?.websearchData = results
-
-                        let frame = CGRect(x: 16, y: estimatedFrame.height + 20, width: estimatedFrame.width + 12, height: 52)
-                        self.addLinkPreview(frame)
-                    } else {
-                        debugPrint(error ?? ControllerConstants.errorOccured)
-                    }
-                    self.layoutIfNeeded()
-                }
-
-            })
-        } else if message.responseType == MessageOld.ResponseTypes.image {
-            let width = Int(frame.width / 2)
-            let height = 150
-            messageTextView.frame = CGRect(x: 16, y: 0, width: width + 16, height: height)
-            textBubbleView.frame = CGRect(x: 4, y: -4, width: width + 40, height: height)
-            bubbleImageView.isHidden = true
-
-            addImageView()
-        } else {
-            self.messageTextView.frame = CGRect(x: 16, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 30)
-            self.textBubbleView.frame = CGRect(x: 4, y: -4, width: estimatedFrame.width + 40, height: estimatedFrame.height + 26)
-            bubbleImageView.isHidden = false
-        }
-
+        self.clearViews()
         self.bubbleImageView.tintColor = .white
         self.messageTextView.textColor = .black
+
+        if let message = message {
+            if message.message.isImage() {
+                let width = Int(frame.width / 2)
+                let height = 150
+                messageTextView.frame = CGRect.zero
+                textBubbleView.frame = CGRect(x: 4, y: -4, width: width + 40, height: height)
+                bubbleImageView.isHidden = true
+                self.addImageView()
+            } else  if message.actionType == ActionType.answer.rawValue {
+                self.messageTextView.frame = CGRect(x: 16, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 30)
+                self.textBubbleView.frame = CGRect(x: 4, y: -4, width: estimatedFrame.width + 40, height: estimatedFrame.height + 26)
+                bubbleImageView.isHidden = false
+
+                if message.message.containsURL() {
+                    let attributedString = NSMutableAttributedString(string: message.message)
+                    _ = attributedString.setAsLink(textToFind: message.message.extractFirstURL(),
+                                                   linkURL: message.message.extractFirstURL(), text: message.message)
+                    self.messageTextView.attributedText = attributedString
+                } else {
+                    let attributedString = NSMutableAttributedString(string: message.message)
+                    attributedString.addAttributes([NSFontAttributeName: UIFont.systemFont(ofSize: 16.0)],
+                                                   range: NSRange(location: 0, length: message.message.characters.count))
+                    self.messageTextView.attributedText = attributedString
+                }
+
+            } else if message.actionType == ActionType.map.rawValue {
+                messageTextView.frame = CGRect.zero
+                textBubbleView.frame = CGRect(x: 4, y: -4, width: 300, height: 232)
+                bubbleImageView.isHidden = false
+                addMapView(CGRect(x: 16, y: 12, width: 272, height: 210))
+            } else if message.actionType == ActionType.anchor.rawValue {
+                self.messageTextView.frame = CGRect(x: 16, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 30)
+                self.textBubbleView.frame = CGRect(x: 4, y: -4, width: estimatedFrame.width + 40, height: estimatedFrame.height + 32)
+                bubbleImageView.isHidden = false
+                let attributedString = NSMutableAttributedString(string: message.anchorData!.text)
+                _ = attributedString.setAsLink(textToFind: message.anchorData!.text, linkURL: message.anchorData!.link, text: message.message)
+                self.messageTextView.attributedText = attributedString
+            } else {
+                self.messageTextView.frame = .zero
+                self.textBubbleView.frame = .zero
+                self.bubbleImageView.frame = .zero
+            }
+        }
+
+//        if message.responseType == MessageOld.ResponseTypes.map {
+//            messageTextView.frame = CGRect(x: 16, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 30)
+//            textBubbleView.frame = CGRect(x: 4, y: -4, width: estimatedFrame.width + 40, height: estimatedFrame.height + 240)
+//            bubbleImageView.isHidden = false
+//            addMapView(CGRect(x: 16, y: estimatedFrame.height + 20, width: estimatedFrame.width + 12, height: 210))
+//        } else if message.responseType == MessageOld.ResponseTypes.websearch {
+//            self.messageTextView.frame = CGRect(x: 16, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 30)
+//            self.textBubbleView.frame = CGRect(x: 4, y: -4, width: estimatedFrame.width + 40, height: estimatedFrame.height + 85)
+//            bubbleImageView.isHidden = false
+//
+//            let params = [
+//                Client.WebsearchKeys.Query: message.query!,
+//                Client.WebsearchKeys.Format: ControllerConstants.json
+//            ]
+//
+//            Client.sharedInstance.websearch(params as [String : AnyObject], { (results, success, error) in
+//                DispatchQueue.main.async {
+//                    if success {
+//                        self.message?.websearchData = results
+//
+//                        let frame = CGRect(x: 16, y: estimatedFrame.height + 20, width: estimatedFrame.width + 12, height: 52)
+//                        self.addLinkPreview(frame)
+//                    } else {
+//                        debugPrint(error ?? ControllerConstants.errorOccured)
+//                    }
+//                    self.layoutIfNeeded()
+//                }
+//
+//            })
+//        } else if message.responseType == MessageOld.ResponseTypes.image {
+//            let width = Int(frame.width / 2)
+//            let height = 150
+//            messageTextView.frame = CGRect(x: 16, y: 0, width: width + 16, height: height)
+//            textBubbleView.frame = CGRect(x: 4, y: -4, width: width + 40, height: height)
+//            bubbleImageView.isHidden = true
+//
+//            addImageView()
+//        } else {
+//            self.messageTextView.frame = CGRect(x: 16, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 30)
+//            self.textBubbleView.frame = CGRect(x: 4, y: -4, width: estimatedFrame.width + 40, height: estimatedFrame.height + 26)
+//            bubbleImageView.isHidden = false
+//        }
+
     }
 
     func clearViews() {

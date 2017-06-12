@@ -28,7 +28,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func initializeRealm() {
-        var config = Realm.Configuration()
+        var config = Realm.Configuration(schemaVersion: 1,
+            migrationBlock: { _, oldSchemaVersion in
+                if (oldSchemaVersion < 0) {
+                    // Nothing to do!
+                }
+        })
+
         config.fileURL = config.fileURL?.deletingLastPathComponent().appendingPathComponent("susi.realm")
         Realm.Configuration.defaultConfiguration = config
     }

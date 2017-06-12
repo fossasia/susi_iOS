@@ -9,13 +9,13 @@
 import Foundation
 import RealmSwift
 
-class AnswerAction: Message {
+class AnswerAction: Object {
     dynamic var expression: String = ""
 
-    convenience init(data: [String : AnyObject]) {
+    convenience init(action: [String : AnyObject]) {
         self.init()
 
-        if let expression = data[Client.ChatKeys.Expression] as? String {
+        if let expression = action[Client.ChatKeys.Expression] as? String {
             self.expression = expression
         }
     }

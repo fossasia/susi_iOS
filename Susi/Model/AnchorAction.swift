@@ -9,15 +9,15 @@
 import Foundation
 import RealmSwift
 
-class AnchorAction: Message {
+class AnchorAction: Object {
     dynamic var link: String = ""
     dynamic var text: String = ""
 
-    convenience init(data: [String : AnyObject]) {
+    convenience init(action: [String : AnyObject]) {
         self.init()
 
-        if let link = data[Client.ChatKeys.Link] as? String,
-            let text = data[Client.ChatKeys.Text] as? String {
+        if let link = action[Client.ChatKeys.Link] as? String,
+            let text = action[Client.ChatKeys.Text] as? String {
             self.link = link
             self.text = text
         }

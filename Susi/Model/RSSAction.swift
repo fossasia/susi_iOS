@@ -18,13 +18,13 @@ class RSSFeed: Object {
     convenience init(data: [String : AnyObject], title: String, description: String, link: String) {
         self.init()
 
-        if let title = data[title] as? String {
+        if let title = data[title] as? String, !title.isEmpty {
             self.title = title.trimmed
         }
-        if let desc = data[description] as? String {
+        if let desc = data[description] as? String, !desc.isEmpty {
             self.desc = desc.trimmed
         }
-        if let link = data[link] as? String {
+        if let link = data[link] as? String, !link.isEmpty {
             self.link = link
         }
     }
@@ -40,7 +40,7 @@ class RSSFeed: Object {
 
 }
 
-class RSSAction: Message {
+class RSSAction: Object {
     dynamic var count = 0
     var rssFeed = List<RSSFeed>()
 

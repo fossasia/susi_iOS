@@ -25,7 +25,7 @@ extension String {
         return emailTest.evaluate(with: self)
     }
 
-    public func isImage() -> Bool {
+    func isImage() -> Bool {
         let imageFormats = ["jpg", "jpeg", "png", "gif"]
 
         if let ext = self.getExtension() {
@@ -35,7 +35,7 @@ extension String {
         return false
     }
 
-    public func getExtension() -> String? {
+    func getExtension() -> String? {
         let ext = (self as NSString).pathExtension
 
         if ext.isEmpty {
@@ -45,8 +45,36 @@ extension String {
         return ext
     }
 
-    public func isURL() -> Bool {
+    func isURL() -> Bool {
         return URL(string: self) != nil
+    }
+
+    func containsURL() -> Bool {
+        var isValid = false
+
+        if !self.contains("..") {
+            let head       = "((http|https)://)?([(w|W)]{3}+\\.)?"
+            let tail       = "\\.+[A-Za-z]{2,3}+(\\.)?+(/(.)*)?"
+
+            let urlRegEx = head+"+(.)+"+tail
+
+            let urlTest = NSPredicate(format:"SELF MATCHES %@", urlRegEx)
+            isValid = urlTest.evaluate(with: self.trimmed)
+        }
+        return isValid
+    }
+
+    func extractFirstURL() -> String {
+        if self.containsURL() {
+            let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
+            let matches = detector.matches(in: self, options: [], range: NSMakeRange(0, self.characters.count))
+
+            for match in matches {
+                let url = (self as NSString).substring(with: match.range)
+                return url
+            }
+        }
+        return ""
     }
 
 }
@@ -91,6 +119,21 @@ class AuthTextField: ErrorTextField {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+}
+
+extension NSMutableAttributedString {
+
+    public func setAsLink(textToFind: String, linkURL: String, text: String) -> Bool {
+
+        let foundRange = self.mutableString.range(of: textToFind)
+        if foundRange.location != NSNotFound {
+            self.addAttribute(NSLinkAttributeName, value: linkURL, range: foundRange)
+            self.addAttributes([NSFontAttributeName: UIFont.systemFont(ofSize: 16.0)], range: self.mutableString.range(of: text))
+            return true
+        }
+        return false
     }
 
 }

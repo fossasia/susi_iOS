@@ -22,76 +22,74 @@ enum ActionType: String {
 class Message: Object {
     dynamic var queryDate = NSDate()
     dynamic var answerDate = NSDate()
-    dynamic var query: String = ""
+    dynamic var message: String = ""
     dynamic var isSent = false
     dynamic var isMarked = false
     dynamic var fromUser = true
-    let messages = List<Message>()
+    dynamic var actionType = ActionType.answer.rawValue
+    dynamic var answerData: AnswerAction?
+    dynamic var rssData: RSSAction?
+    dynamic var mapData: MapAction?
+    dynamic var anchorData: AnchorAction?
+    dynamic var tableData: TableAction?
 
-    convenience init(messageBody: String) {
+    convenience init(message: String) {
         self.init()
-        self.query = messageBody
+        self.message = message
+        self.fromUser = true
     }
 
-    convenience init(dictionary: [String : AnyObject]) {
-        self.init()
+    static func getAllAction(data: [String : AnyObject]) -> List<Message> {
 
-        self.fromUser = false
+        let messages = List<Message>()
 
-        if let query = dictionary[Client.ChatKeys.Query] as? String {
-            self.query = query
-        }
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        
-        if let queryDate = dictionary[Client.ChatKeys.QueryDate] as? String,
-            let answerDate = dictionary[Client.ChatKeys.AnswerDate] as? String {
-            self.queryDate = dateFormatter.date(from: queryDate)! as NSDate
-            self.answerDate = dateFormatter.date(from: answerDate)! as NSDate
-        }
-
-        if let answers = dictionary[Client.ChatKeys.Answers] as? [[String : AnyObject]] {
+        if let answers = data[Client.ChatKeys.Answers] as? [[String : AnyObject]] {
             if let actions = answers[0][Client.ChatKeys.Actions] as? [[String : AnyObject]] {
                 for action in actions {
+
+                    let message = Message()
+                    message.fromUser = false
+
+                    if let body = data[Client.ChatKeys.Query] as? String {
+                        message.message = body
+                    }
+
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+
+                    if let queryDate = data[Client.ChatKeys.QueryDate] as? String,
+                        let answerDate = data[Client.ChatKeys.AnswerDate] as? String {
+                        message.queryDate = dateFormatter.date(from: queryDate)! as NSDate
+                        message.answerDate = dateFormatter.date(from: answerDate)! as NSDate
+                    }
+
                     if let type = action[Client.ChatKeys.ResponseType] as? String,
                         let data = answers[0][Client.ChatKeys.Data] as? [[String : AnyObject]] {
                         if type == ActionType.answer.rawValue {
-                            let answer = AnswerAction(data: action)
-                            answer.queryDate = self.queryDate
-                            answer.answerDate = self.answerDate
-                            answer.query = self.query
-                            self.messages.append(answer)
+                            message.message = action[Client.ChatKeys.Expression] as! String
+                            message.actionType = ActionType.answer.rawValue
+                            message.answerData = AnswerAction(action: action)
                         } else if type == ActionType.rss.rawValue {
-                            let rss = RSSAction(data: data, actionObject: action)
-                            rss.queryDate = self.queryDate
-                            rss.answerDate = self.answerDate
-                            rss.query = self.query
-                            self.messages.append(rss)
+                            message.actionType = ActionType.rss.rawValue
+                            message.rssData = RSSAction(data: data, actionObject: action)
                         } else if type == ActionType.map.rawValue {
-                            let map = MapAction(data: action)
-                            map.queryDate = self.queryDate
-                            map.answerDate = self.answerDate
-                            map.query = self.query
-                            self.messages.append(map)
+                            message.actionType = ActionType.map.rawValue
+                            message.mapData = MapAction(action: action)
                         } else if type == ActionType.anchor.rawValue {
-                            let anchor = AnchorAction(data: action)
-                            anchor.queryDate = self.queryDate
-                            anchor.answerDate = self.answerDate
-                            anchor.query = self.query
-                            self.messages.append(anchor)
+                            message.actionType = ActionType.anchor.rawValue
+                            message.anchorData = AnchorAction(action: action)
+                            message.message = message.anchorData!.text
                         } else if type == ActionType.table.rawValue {
-                            let table = TableAction(data: data, actionObject: action)
-                            table.queryDate = self.queryDate
-                            table.answerDate = self.answerDate
-                            table.query = self.query
-                            self.messages.append(table)
+                            message.actionType = ActionType.table.rawValue
+                            message.tableData = TableAction(data: data, actionObject: action)
                         }
                     }
+                    messages.append(message)
                 }
             }
         }
 
+        return messages
     }
 
 }
