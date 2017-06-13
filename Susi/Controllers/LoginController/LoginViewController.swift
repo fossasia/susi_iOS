@@ -108,10 +108,10 @@ class LoginViewController: UIViewController {
         addTapGesture()
 
         print(Realm.Configuration.defaultConfiguration.fileURL!)
-        //let realm = try! Realm()
-        //try! realm.write {
-        //    realm.deleteAll()
-        //}
+//        let realm = try! Realm()
+//        try! realm.write {
+//            realm.deleteAll()
+//        }
     }
 
 }

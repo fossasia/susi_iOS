@@ -267,5 +267,11 @@ extension MainViewController: AVAudioRecorderDelegate {
             print("Audio session error: \(error.localizedDescription)")
         }
     }
-
+    
+    func stopRecording() {
+        if (audioRecorder != nil && audioRecorder.isRecording) {
+            audioRecorder.stop()
+        }
+    }
+    
 }

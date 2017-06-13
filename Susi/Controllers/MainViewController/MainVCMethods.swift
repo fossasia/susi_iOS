@@ -120,11 +120,12 @@ extension MainViewController {
         collectionView?.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - 47)
         collectionView?.register(IncomingBubbleCell.self, forCellWithReuseIdentifier: ControllerConstants.incomingCell)
         collectionView?.register(OutgoingChatCell.self, forCellWithReuseIdentifier: ControllerConstants.outgoingCell)
+        collectionView?.register(RSSCell.self, forCellWithReuseIdentifier: ControllerConstants.rssCell)
     }
 
     // Send Button Action
     func handleSend() {
-        if let text = inputTextView.text, text.characters.count > 0 {
+        if let text = inputTextView.text, text.characters.count > 0 && !text.isEmpty {
             var params: [String : AnyObject] = [
                 Client.WebsearchKeys.Query: inputTextView.text! as AnyObject,
                 Client.ChatKeys.TimeZoneOffset: ControllerConstants.timeZone as AnyObject,
@@ -154,8 +155,8 @@ extension MainViewController {
                     }
                 }
             }
+            saveMessage()
         }
-        saveMessage()
     }
 
     // Setup Input Components

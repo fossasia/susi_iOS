@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Nuke
 import NukeGifuPlugin
 import MapKit
 
@@ -18,7 +19,10 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
 
             if let imageString = message?.message, imageString.isImage() {
                 if let url = URL(string: imageString) {
-                    AnimatedImage.manager.loadImage(with: url, into: imageView)
+                    var request = Request(url: url)
+                    request.memoryCacheOptions.readAllowed = true
+                    request.memoryCacheOptions.writeAllowed = true
+                    AnimatedImage.manager.loadImage(with: request, into: imageView)
                 }
             }
         }
@@ -36,16 +40,9 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
 
     let imageView: AnimatedImageView = {
         let imageView = AnimatedImageView()
-        imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 16
         imageView.layer.masksToBounds = true
         return imageView
-    }()
-
-    lazy var websearchView: WebsearchCollectionView = {
-        let view = WebsearchCollectionView()
-        view.message = self.message
-        return view
     }()
 
     override func setupViews() {
@@ -78,17 +75,6 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
         textBubbleView.addSubview(imageView)
         textBubbleView.addConstraintsWithFormat(format: "H:|-8-[v0]-5-|", views: imageView)
         textBubbleView.addConstraintsWithFormat(format: "V:|-4-[v0]-5-|", views: imageView)
-    }
-
-    func addWebsearchView() {
-        self.addSubview(websearchView)
-        self.addConstraintsWithFormat(format: "H:|[v0]|", views: websearchView)
-        self.addConstraintsWithFormat(format: "V:[v0(150)]", views: websearchView)
-    }
-
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        self.imageView.prepareForReuse()
     }
 
     func setupCell(_ estimatedFrame: CGRect, _ viewFrame: CGRect) {
@@ -134,16 +120,11 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
                 let attributedString = NSMutableAttributedString(string: message.anchorData!.text)
                 _ = attributedString.setAsLink(textToFind: message.anchorData!.text, linkURL: message.anchorData!.link, text: message.message)
                 self.messageTextView.attributedText = attributedString
-            } else if message.actionType == ActionType.rss.rawValue {
-                self.addWebsearchView()
-                self.messageTextView.frame = .zero
-                self.textBubbleView.frame = .zero
-                self.bubbleImageView.frame = .zero
             } else {
-                self.messageTextView.frame = .zero
-                self.textBubbleView.frame = .zero
-                self.bubbleImageView.frame = .zero
+                debugPrint("no action")
             }
+        } else {
+            debugPrint("no message")
         }
 
     }
@@ -151,7 +132,6 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
     func clearViews() {
         self.mapView.removeFromSuperview()
         self.imageView.removeFromSuperview()
-        self.websearchView.removeFromSuperview()
     }
 
 }

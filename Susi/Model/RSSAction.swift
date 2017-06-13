@@ -29,10 +29,10 @@ class RSSFeed: Object {
         }
     }
 
-    static func getRSSFeeds(data: [[String : AnyObject]], title: String, description: String, link: String) -> List<RSSFeed> {
+    static func getRSSFeeds(data: [[String : AnyObject]], title: String, description: String, link: String, count: Int) -> List<RSSFeed> {
         let feeds = List<RSSFeed>()
-        for feedData in data {
-            let feed = RSSFeed(data: feedData, title: title, description: description, link: link)
+        for index in (0..<count) {
+            let feed = RSSFeed(data: data[index], title: title, description: description, link: link)
             feeds.append(feed)
         }
         return feeds
@@ -57,7 +57,8 @@ class RSSAction: Object {
             self.rssFeed = RSSFeed.getRSSFeeds(data: data,
                                                title: title,
                                                description: description,
-                                               link: link)
+                                               link: link,
+                                               count: count)
         }
     }
 }

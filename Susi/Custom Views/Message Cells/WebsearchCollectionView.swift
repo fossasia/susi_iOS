@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import SwiftLinkPreview
 import RealmSwift
+import Nuke
 
 class WebsearchCollectionView: UIView, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
 
@@ -25,10 +25,11 @@ class WebsearchCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
 
     let realm = try! Realm()
 
-    let slp = SwiftLinkPreview()
-    var slpResonse = SwiftLinkPreview.Response()
-
-    var message: Message?
+    var message: Message? {
+        didSet {
+            self.collectionView.reloadData()
+        }
+    }
 
     let cellId = "cellId"
 
@@ -59,39 +60,29 @@ class WebsearchCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
         cell.backgroundColor = .white
 
         let feed = message?.rssData?.rssFeed[indexPath.item]
-
+        cell.titleLabel.text = feed?.title
+        cell.descriptionLabel.text = feed?.desc
+        cell.feed = feed
+        cell.setupCell()
         if let webData = feed?.webData {
-            cell.webData = webData
-        } else {
-            slp.preview(feed?.link, onSuccess: { (response) in
-                // handle success
-                cell.slpResonse = response
-
-                try! self.realm.write {
-                    feed?.webData = WebsearchAction()
-                    if let title = response[.title] as? String {
-                        feed?.webData?.title = title
-                    }
-                    if let description = response[.description] as? String {
-                        feed?.webData?.desc = description
-                    }
-                    feed?.webData?.image = response[.image] as? String
-                    if let url = response[.finalUrl] as? String {
-                        feed?.webData?.shortenedURL = url
-                    }
-                }
-
-            }) { (error) in
-                // handle error
-                print(error.localizedDescription)
+            if let imageString = webData.image {
+                let url = URL(string: imageString)
+                var request = Request(url: url!)
+                request.memoryCacheOptions.readAllowed = true
+                request.memoryCacheOptions.writeAllowed = true
+                Nuke.loadImage(with: request, into: cell.imageView)
+            } else {
+                cell.imageView.image = UIImage(named: "placeholder")
             }
+        } else {
+            cell.imageView.image = UIImage(named: "placeholder")
         }
-
+        
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: frame.width * 3 / 5, height: 150)
+        return CGSize(width: frame.width * 3 / 5, height: 135)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

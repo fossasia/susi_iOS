@@ -47,6 +47,7 @@
 		6D8278A81EE961FC00636432 /* susi.pmdl in Resources */ = {isa = PBXBuildFile; fileRef = 6D8278A71EE961FC00636432 /* susi.pmdl */; };
 		6D87A32E1EEE54CC00A6D763 /* WebsearchCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D87A32D1EEE54CC00A6D763 /* WebsearchCollectionView.swift */; };
 		6D87A3301EEE557000A6D763 /* WebsearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D87A32F1EEE557000A6D763 /* WebsearchCell.swift */; };
+		6D87A3321EEE86CC00A6D763 /* RSSCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D87A3311EEE86CC00A6D763 /* RSSCell.swift */; };
 		6D98EDFB1E796EFE00D96B32 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D98EDFA1E796EFE00D96B32 /* SettingsCell.swift */; };
 		6D9C0D291E7B223A00199828 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9C0D281E7B223A00199828 /* User.swift */; };
 		6DE1B5EB1EDB89BF0032E711 /* Pods_Susi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DE1B5EA1EDB89BF0032E711 /* Pods_Susi.framework */; };
@@ -121,6 +122,7 @@
 		6D82ADF21E784A5A0094AA9E /* Pods_Susi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Susi.framework; path = "../../Library/Developer/Xcode/DerivedData/Susi-avbkhdntnaiijsctxkaeflbkpdbm/Build/Products/Debug-iphonesimulator/Pods_Susi.framework"; sourceTree = "<group>"; };
 		6D87A32D1EEE54CC00A6D763 /* WebsearchCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebsearchCollectionView.swift; path = "Message Cells/WebsearchCollectionView.swift"; sourceTree = "<group>"; };
 		6D87A32F1EEE557000A6D763 /* WebsearchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebsearchCell.swift; sourceTree = "<group>"; };
+		6D87A3311EEE86CC00A6D763 /* RSSCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSCell.swift; sourceTree = "<group>"; };
 		6D98EDFA1E796EFE00D96B32 /* SettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		6D9C0D281E7B223A00199828 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6DE1B5E81EDB896F0032E711 /* Pods_Susi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Susi.framework; path = "Pods/../build/Debug-iphoneos/Pods_Susi.framework"; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 				6D3FB3481E813B900015E1D6 /* ChatMessageCell.swift */,
 				6D0DB6271EE436FC00AD030D /* IncomingChatCell.swift */,
 				6D0DB6251EE4272300AD030D /* OutgoingChatCell.swift */,
+				6D87A3311EEE86CC00A6D763 /* RSSCell.swift */,
 				6D87A32F1EEE557000A6D763 /* WebsearchCell.swift */,
 			);
 			path = "Message Cells";
@@ -597,6 +600,7 @@
 				6DE44E191E76AF8100215B85 /* MainViewController.swift in Sources */,
 				6DF591D61E8189B7003B2C6B /* WebsearchResult.swift in Sources */,
 				6D61B9B31EEBAB4000CD3536 /* TableAction.swift in Sources */,
+				6D87A3321EEE86CC00A6D763 /* RSSCell.swift in Sources */,
 				6D24B08A1EE4079E0097418A /* LoginVCMethods.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

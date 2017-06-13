@@ -12,7 +12,6 @@ import Popover
 import RSKGrowingTextView
 import RSKPlaceholderTextView
 import CoreLocation
-import AlamofireImage
 import AVFoundation
 import RealmSwift
 
@@ -87,6 +86,11 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         loadMessages()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        stopRecording()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         print("memory issue")
@@ -102,7 +106,6 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         let message = messages[indexPath.row]
-//        print(message)
 
         let messageBody = message.message
         let estimatedFrame = self.estimatedFrame(messageBody: messageBody)
@@ -111,6 +114,10 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.outgoingCell, for: indexPath) as! OutgoingChatCell
             cell.message = message
             cell.setupCell(estimatedFrame, view.frame)
+            return cell
+        } else if message.actionType == ActionType.rss.rawValue {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.rssCell, for: indexPath) as! RSSCell
+            cell.message = message
             return cell
         }
 
@@ -129,9 +136,8 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
             return CGSize(width: view.frame.width, height: 150)
         } else if message.actionType == ActionType.map.rawValue {
             return CGSize(width: view.frame.width, height: 230)
-        } else if message.actionType == ActionType.websearch.rawValue ||
-            message.actionType == ActionType.rss.rawValue {
-            return CGSize(width: view.frame.width, height: 155)
+        } else if message.actionType == ActionType.rss.rawValue {
+            return CGSize(width: view.frame.width, height: 140)
         }
         return CGSize(width: view.frame.width, height: estimatedFrame.height + 25)
     }
