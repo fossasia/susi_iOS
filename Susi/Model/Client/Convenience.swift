@@ -112,7 +112,7 @@ extension Client {
 
     // MARK: - Web Search by DuckDuckGo
 
-    func websearch(_ params: [String : AnyObject], _ completion: @escaping(_ response: WebsearchResult?, _ success: Bool, _ error: String?) -> Void) {
+    func websearch(_ params: [String : AnyObject], _ completion: @escaping(_ response: List<WebsearchAction>?, _ success: Bool, _ error: String?) -> Void) {
 
         let url = getApiUrl(APIURLs.DuckDuckGo)
 
@@ -127,9 +127,12 @@ extension Client {
                     return
                 }
 
-                let searchResult = WebsearchResult(dictionary: response)
-
-                completion(searchResult, true, nil)
+                if let result = response[Client.WebsearchKeys.RelatedTopics] as? [[String : AnyObject]] {
+                    let results = WebsearchAction.getSearchResults(result)
+                    completion(results, true, nil)
+                } else {
+                    completion(nil, false, "Result empty")
+                }
             }
             return
         })

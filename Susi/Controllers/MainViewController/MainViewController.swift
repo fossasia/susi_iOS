@@ -85,12 +85,12 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         super.viewDidAppear(animated)
         loadMessages()
     }
-    
+
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         stopRecording()
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         print("memory issue")
@@ -115,7 +115,7 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
             cell.message = message
             cell.setupCell(estimatedFrame, view.frame)
             return cell
-        } else if message.actionType == ActionType.rss.rawValue {
+        } else if message.actionType == ActionType.rss.rawValue || message.actionType == ActionType.websearch.rawValue {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.rssCell, for: indexPath) as! RSSCell
             cell.message = message
             return cell
@@ -136,7 +136,8 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
             return CGSize(width: view.frame.width, height: 150)
         } else if message.actionType == ActionType.map.rawValue {
             return CGSize(width: view.frame.width, height: 230)
-        } else if message.actionType == ActionType.rss.rawValue {
+        } else if message.actionType == ActionType.rss.rawValue ||
+            message.actionType == ActionType.websearch.rawValue {
             return CGSize(width: view.frame.width, height: 140)
         }
         return CGSize(width: view.frame.width, height: estimatedFrame.height + 25)

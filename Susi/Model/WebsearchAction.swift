@@ -10,24 +10,43 @@ import Foundation
 import RealmSwift
 
 class WebsearchAction: Object {
-    dynamic var shortenedURL: String = ""
-    dynamic var title: String = ""
-    dynamic var desc: String = ""
+    dynamic var shortenedURL: String = Client.WebSearch.duckDuckGo
+    dynamic var title: String = Client.WebSearch.noData
+    dynamic var desc: String = Client.WebSearch.noDescription
     dynamic var image: String?
 
-    convenience init(data: [String : AnyObject]) {
+    convenience init(data: [String:AnyObject]) {
         self.init()
 
-        if let shortenedUrl = data[Client.ChatKeys.ShortenedUrl] as? String,
-            let title = data[Client.ChatKeys.Title] as? String,
-            let desc = data[Client.ChatKeys.Description] as? String,
-            let image = data[Client.ChatKeys.Image] as? String {
-            self.shortenedURL = shortenedUrl
-            self.title = title
-            self.desc = desc
-            self.image = image
+        if let result = data[Client.WebsearchKeys.Result] as? String, !result.isEmpty {
+            self.desc = result
         }
 
+        if let icon = data[Client.WebsearchKeys.Icon] as? [String : AnyObject] {
+            if let url = icon[Client.WebsearchKeys.Url] as? String, !url.isEmpty {
+                self.image = url
+            }
+        }
+
+        if let text = data[Client.WebsearchKeys.Text] as? String {
+            self.title = text
+        }
+
+        if let firstUrl = data[Client.WebsearchKeys.FirstURL] as? String {
+            self.shortenedURL = firstUrl
+        }
+
+    }
+
+    static func getSearchResults(_ dictionary: [[String : AnyObject]]) -> List<WebsearchAction> {
+        let results = List<WebsearchAction>()
+        for record in dictionary {
+            if let _ = record[Client.WebsearchKeys.Result] as? String {
+                let websearchAction = WebsearchAction(data: record)
+                results.append(websearchAction)
+            }
+        }
+        return results
     }
 
 }

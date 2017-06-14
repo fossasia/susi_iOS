@@ -32,6 +32,7 @@ class Message: Object {
     dynamic var mapData: MapAction?
     dynamic var anchorData: AnchorAction?
     dynamic var tableData: TableAction?
+    var websearchData = List<WebsearchAction>()
 
     convenience init(message: String) {
         self.init()
@@ -82,6 +83,9 @@ class Message: Object {
                         } else if type == ActionType.table.rawValue {
                             message.actionType = ActionType.table.rawValue
                             message.tableData = TableAction(data: data, actionObject: action)
+                        } else if type == ActionType.websearch.rawValue {
+                            message.actionType = ActionType.websearch.rawValue
+                            message.message = action[Client.ChatKeys.Query] as! String
                         }
                     }
                     messages.append(message)

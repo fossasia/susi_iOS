@@ -13,13 +13,12 @@ import Nuke
 import Material
 
 class WebsearchCell: BaseCell {
-    
+
     var imageString: String?
-    
+    let slp = SwiftLinkPreview()
+
     var feed: RSSFeed? {
         didSet {
-            let slp = SwiftLinkPreview()
-            
             slp.preview(feed?.link, onSuccess: { (response) in
                 if let imageString = response[.image] as? String {
                     let url = URL(string: imageString)
@@ -28,43 +27,43 @@ class WebsearchCell: BaseCell {
                     request.memoryCacheOptions.writeAllowed = true
                     Nuke.loadImage(with: request, into: self.imageView)
                 }
-                
+
                 let realm = try! Realm()
                 try! realm.write {
-                    
+
                     let webData = WebsearchAction()
-                    
+
                     if let title = response[.title] as? String, !title.isEmpty {
                         webData.title = title
                         self.titleLabel.text = title
                     } else {
                         webData.title = self.feed!.title
                     }
-                    
+
                     if let description = response[.description] as? String, !description.isEmpty {
                         webData.desc = description
                         self.descriptionLabel.text = description
                     } else {
                         webData.desc = self.feed!.desc
                     }
-                    
+
                     if let image = response[.image] as? String {
                         webData.image = image
                         self.imageString = image
                     } else {
                         webData.image = nil
                     }
-                    
+
                     webData.shortenedURL = self.feed!.link
-                    
+
                     self.feed?.webData = webData
-                    
+
                 }
                 self.setupCell()
             }) { (error) in
                 debugPrint(error.localizedDescription)
             }
-            
+
         }
     }
 

@@ -27,7 +27,29 @@ class WebsearchCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
 
     var message: Message? {
         didSet {
-            self.collectionView.reloadData()
+            if message?.actionType == ActionType.websearch.rawValue {
+                let params = [
+                    Client.WebsearchKeys.Query: message?.message,
+                    Client.WebsearchKeys.Format: ControllerConstants.json
+                ]
+
+                Client.sharedInstance.websearch(params as [String : AnyObject], { (results, success, message) in
+                    DispatchQueue.main.async {
+                        if success {
+                            try! self.realm.write {
+                                for result in results! {
+                                    self.message?.websearchData.append(result)
+                                }
+                                self.collectionView.reloadData()
+                            }
+                        } else {
+                            debugPrint(message ?? ControllerConstants.errorOccured)
+                        }
+                    }
+                })
+            } else {
+                self.collectionView.reloadData()
+            }
         }
     }
 
@@ -50,6 +72,8 @@ class WebsearchCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let rssData = message?.rssData {
             return rssData.count
+        } else if let webData = message?.websearchData {
+            return webData.count
         }
         return 0
     }
@@ -59,25 +83,42 @@ class WebsearchCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
 
         cell.backgroundColor = .white
 
-        let feed = message?.rssData?.rssFeed[indexPath.item]
-        cell.titleLabel.text = feed?.title
-        cell.descriptionLabel.text = feed?.desc
-        cell.feed = feed
-        cell.setupCell()
-        if let webData = feed?.webData {
-            if let imageString = webData.image {
-                let url = URL(string: imageString)
-                var request = Request(url: url!)
-                request.memoryCacheOptions.readAllowed = true
-                request.memoryCacheOptions.writeAllowed = true
-                Nuke.loadImage(with: request, into: cell.imageView)
+        if message?.actionType == ActionType.rss.rawValue {
+            let feed = message?.rssData?.rssFeed[indexPath.item]
+            cell.titleLabel.text = feed?.title
+            cell.descriptionLabel.text = feed?.desc
+            cell.feed = feed
+            cell.setupCell()
+            if let webData = feed?.webData {
+                if let imageString = webData.image {
+                    let url = URL(string: imageString)
+                    var request = Request(url: url!)
+                    request.memoryCacheOptions.readAllowed = true
+                    request.memoryCacheOptions.writeAllowed = true
+                    Nuke.loadImage(with: request, into: cell.imageView)
+                } else {
+                    cell.imageView.image = UIImage(named: "placeholder")
+                }
             } else {
                 cell.imageView.image = UIImage(named: "placeholder")
             }
-        } else {
-            cell.imageView.image = UIImage(named: "placeholder")
+        } else if message?.actionType == ActionType.websearch.rawValue {
+            let webData = message?.websearchData[indexPath.item]
+            cell.titleLabel.text = webData?.title
+            cell.descriptionLabel.text = webData?.desc.html2String
+            cell.setupCell()
+            if let imageString = webData?.image {
+                cell.imageString = imageString
+                if let url = URL(string: imageString) {
+                    var request = Request(url: url)
+                    request.memoryCacheOptions.readAllowed = true
+                    request.memoryCacheOptions.writeAllowed = true
+                    Nuke.loadImage(with: request, into: cell.imageView)
+                }
+            } else {
+                cell.imageView.image = UIImage(named: "placeholder")
+            }
         }
-        
         return cell
     }
 
