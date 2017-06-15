@@ -12,7 +12,7 @@ class OutgoingChatCell: ChatMessageCell {
 
     var message: Message? {
         didSet {
-            messageTextView.text = message?.body
+            messageTextView.text = message?.message
         }
     }
 

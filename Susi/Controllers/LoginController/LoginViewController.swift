@@ -11,6 +11,7 @@ import Material
 import Toast_Swift
 import SwiftValidators
 import DLRadioButton
+import RealmSwift
 
 class LoginViewController: UIViewController {
 
@@ -105,6 +106,12 @@ class LoginViewController: UIViewController {
         setupView()
         checkSession()
         addTapGesture()
+
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
+//        let realm = try! Realm()
+//        try! realm.write {
+//            realm.deleteAll()
+//        }
     }
 
 }

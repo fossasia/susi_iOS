@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,27 +16,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        UIApplication.shared.statusBarStyle = .lightContent
+        initializeRealm()
         initializeUserSettings()
 
+        UIApplication.shared.statusBarStyle = .lightContent
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-
         window?.rootViewController = LoginViewController()
 
         return true
     }
 
-    func initializeUserSettings() {
+    func initializeRealm() {
+        var config = Realm.Configuration(schemaVersion: 1,
+            migrationBlock: { _, oldSchemaVersion in
+                if (oldSchemaVersion < 0) {
+                    // Nothing to do!
+                }
+        })
 
-        let firstLaunch = UserDefaults.standard.bool(forKey: "firstLaunch")
+        config.fileURL = config.fileURL?.deletingLastPathComponent().appendingPathComponent("susi.realm")
+        Realm.Configuration.defaultConfiguration = config
+    }
+
+    func initializeUserSettings() {
+        let firstLaunch = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.firstLaunch)
 
         if !firstLaunch {
-            UserDefaults.standard.set(true, forKey: "firstLaunch")
-            UserDefaults.standard.set(false, forKey: "enterToSend")
-            UserDefaults.standard.set(false, forKey: "micInput")
-            UserDefaults.standard.set(false, forKey: "speechOutput")
-            UserDefaults.standard.set(false, forKey: "speechOutputAlwaysOn")
+            UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.firstLaunch)
+            UserDefaults.standard.set(false, forKey: ControllerConstants.UserDefaultsKeys.enterToSend)
+            UserDefaults.standard.set(false, forKey: ControllerConstants.UserDefaultsKeys.micInput)
+            UserDefaults.standard.set(false, forKey: ControllerConstants.UserDefaultsKeys.speechOutput)
+            UserDefaults.standard.set(false, forKey: ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn)
         }
 
     }

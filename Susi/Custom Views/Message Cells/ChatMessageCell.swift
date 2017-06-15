@@ -8,19 +8,20 @@
 
 import UIKit
 
-class ChatMessageCell: BaseCell {
+class ChatMessageCell: BaseCell, UITextViewDelegate {
 
     static let grayBubbleImage = UIImage(named: "bubble_gray")!.resizableImage(withCapInsets: UIEdgeInsets(top: 22, left: 26, bottom: 22, right: 26)).withRenderingMode(.alwaysTemplate)
 
     static let blueBubbleImage = UIImage(named: "bubble_blue")!.resizableImage(withCapInsets: UIEdgeInsets(top: 22, left: 26, bottom: 22, right: 26)).withRenderingMode(.alwaysTemplate)
 
-    let messageTextView: UITextView = {
+    lazy var messageTextView: UITextView = {
         let textView = UITextView()
-        textView.font = UIFont.systemFont(ofSize: 18)
+        textView.font = UIFont.systemFont(ofSize: 16)
         textView.text = ControllerConstants.defaultMessage
         textView.isEditable = false
         textView.backgroundColor = .clear
-        textView.isSelectable = false
+        textView.isSelectable = true
+        textView.delegate = self
         return textView
     }()
 
@@ -48,6 +49,16 @@ class ChatMessageCell: BaseCell {
         textBubbleView.addConstraintsWithFormat(format: "H:|[v0]|", views: bubbleImageView)
         textBubbleView.addConstraintsWithFormat(format: "V:|[v0]|", views: bubbleImageView)
 
+    }
+
+    @available(iOS, deprecated: 10.0)
+    func textView(_ textView: UITextView, shouldInteractWith url: URL, in characterRange: NSRange) -> Bool {
+        return true
+    }
+
+    @available(iOS 10.0, *)
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        return true
     }
 
 }

@@ -49,6 +49,16 @@ extension Client {
         static let Longitude = "longitude"
         static let Zoom = "zoom"
         static let Language = "language"
+        static let Data = "data"
+        static let Count = "count"
+        static let Title = "title"
+        static let Link = "link"
+        static let Description = "description"
+        static let Text = "text"
+        static let Columns = "columns"
+        static let QueryDate = "query_date"
+        static let ShortenedUrl = "finalUrl"
+        static let Image = "image"
     }
 
     struct WebsearchKeys {
@@ -60,6 +70,7 @@ extension Client {
         static let Heading = "Heading"
         static let Format = "format"
         static let Query = "q"
+        static let Result = "Result"
     }
 
     struct YoutubeParamKeys {
@@ -83,6 +94,7 @@ extension Client {
         static let image = "no-image"
         static let noData = "No data found"
         static let duckDuckGo = "https://duckduckgo.com/"
+        static let noDescription = "No Description"
     }
 
 }

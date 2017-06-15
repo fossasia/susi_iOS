@@ -31,6 +31,7 @@ class ControllerConstants {
     static let cellId = "cellId"
     static let incomingCell = "incomingCell"
     static let outgoingCell = "outgoingCell"
+    static let rssCell = "rssCell"
     static let defaultMessage = "Sample message"
     static let defaultWebSearchImage = "no-image"
     static let standardServer = "Standard Server"
@@ -84,6 +85,7 @@ class ControllerConstants {
         static let speechOutputAlwaysOn = "speechOutputAlwaysOn"
         static let wallpaper = "wallpaper"
         static let ipAddress = "ipAddress"
+        static let firstLaunch = "firstLaunch"
     }
 
 }

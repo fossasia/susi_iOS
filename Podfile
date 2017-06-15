@@ -13,9 +13,10 @@ target 'Susi' do
   pod 'SwiftValidators'
   pod 'RSKGrowingTextView'
   pod 'RSKPlaceholderTextView', '2.0.0'
-  pod 'AlamofireImage', '~> 3.1'
-  pod 'SwiftLint'
-  pod 'Nuke-Gifu-Plugin'
   pod 'BouncyLayout'
   pod 'DLRadioButton', '~> 1.4'
+  pod ‘RealmSwift’
+  pod 'SwiftLinkPreview', '~> 2.0.5'
+  pod 'Nuke'
+  pod 'Nuke-Gifu-Plugin'
 end

@@ -2,108 +2,98 @@
 //  Message.swift
 //  Susi
 //
-//  Created by Chashmeet Singh on 2017-03-13.
+//  Created by Chashmeet Singh on 2017-06-10.
 //  Copyright © 2017 FOSSAsia. All rights reserved.
 //
 
-import UIKit
+import Foundation
+import RealmSwift
 
-struct Message {
+enum ActionType: String {
+    case answer
+    case websearch
+    case piechart
+    case rss
+    case table
+    case map
+    case anchor
+}
 
-    var body: String? = ""
-    var created_at = Date()
-    var isBot = false
-    var responseType: ResponseTypes = .answer
+class Message: Object {
+    dynamic var queryDate = NSDate()
+    dynamic var answerDate = NSDate()
+    dynamic var message: String = ""
+    dynamic var isSent = false
+    dynamic var isMarked = false
+    dynamic var fromUser = true
+    dynamic var actionType = ActionType.answer.rawValue
+    dynamic var answerData: AnswerAction?
+    dynamic var rssData: RSSAction?
+    dynamic var mapData: MapAction?
+    dynamic var anchorData: AnchorAction?
+    dynamic var tableData: TableAction?
+    var websearchData = List<WebsearchAction>()
 
-    var mapData: MapData?
-
-    struct MapData {
-        var longitude: Double
-        var latitude: Double
-        var zoom: Int
+    convenience init(message: String) {
+        self.init()
+        self.message = message
+        self.fromUser = true
     }
 
-    var websearchData: WebsearchResult?
-    var query: String?
+    static func getAllAction(data: [String : AnyObject]) -> List<Message> {
 
-    enum ResponseTypes: String {
-        case answer = "answer"
-        case map = "map"
-        case websearch = "websearch"
-        case image = "image"
-    }
+        let messages = List<Message>()
 
-    init(_ body: String) {
-        self.body = body
-    }
+        if let answers = data[Client.ChatKeys.Answers] as? [[String : AnyObject]] {
+            if let actions = answers[0][Client.ChatKeys.Actions] as? [[String : AnyObject]] {
+                for action in actions {
 
-    init(dictionary: [String : AnyObject], isBot: Bool) {
+                    let message = Message()
+                    message.fromUser = false
 
-        if let created_at = dictionary[Client.ChatKeys.AnswerDate] as? String {
-            let dateFormatter = DateFormatter()
-            dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale!
-            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z"
-
-            self.created_at = dateFormatter.date(from: created_at)!
-        }
-
-        if let body = dictionary[Client.ChatKeys.Answers] as? [[String : AnyObject]] {
-            if body.count > 0 {
-                if let actions = body[0][Client.ChatKeys.Actions] as? NSArray {
-                    if let response = actions[0] as? [String : String] {
-                        self.body = response[Client.ChatKeys.Expression]!
+                    if let body = data[Client.ChatKeys.Query] as? String {
+                        message.message = body
                     }
 
-                    if let responses = actions as? [[String : String]] {
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
 
-                        for response in responses {
-                            let responseType = response[Client.ChatKeys.ResponseType]
+                    if let queryDate = data[Client.ChatKeys.QueryDate] as? String,
+                        let answerDate = data[Client.ChatKeys.AnswerDate] as? String {
+                        message.queryDate = dateFormatter.date(from: queryDate)! as NSDate
+                        message.answerDate = dateFormatter.date(from: answerDate)! as NSDate
+                    }
 
-                            if responseType == ResponseTypes.answer.rawValue {
-
-                                if let expression = response[Client.ChatKeys.Expression] {
-                                    if expression.isURL() && expression.isImage() {
-                                        self.responseType = ResponseTypes.image
-                                    }
-                                    self.body = expression
-                                }
-
-                            } else if responseType == ResponseTypes.map.rawValue {
-
-                                self.responseType = ResponseTypes.map
-
-                                if let latitude = response[Client.ChatKeys.Latitude],
-                                    let longitude = response[Client.ChatKeys.Longitude],
-                                    let zoom = response[Client.ChatKeys.Zoom] {
-
-                                    self.mapData = MapData(longitude: Double(longitude)!, latitude: Double(latitude)!, zoom: Int(zoom)!)
-                                }
-
-                                self.body = self.body?.components(separatedBy: " ").dropLast().joined(separator: " ")
-
-                            } else if responseType == ResponseTypes.websearch.rawValue {
-
-                                self.responseType = ResponseTypes.websearch
-                                self.query = response[Client.ChatKeys.Query]
-
-                            } else {
-                                debugPrint("error")
-                            }
+                    if let type = action[Client.ChatKeys.ResponseType] as? String,
+                        let data = answers[0][Client.ChatKeys.Data] as? [[String : AnyObject]] {
+                        if type == ActionType.answer.rawValue {
+                            message.message = action[Client.ChatKeys.Expression] as! String
+                            message.actionType = ActionType.answer.rawValue
+                            message.answerData = AnswerAction(action: action)
+                        } else if type == ActionType.rss.rawValue {
+                            message.actionType = ActionType.rss.rawValue
+                            message.rssData = RSSAction(data: data, actionObject: action)
+                        } else if type == ActionType.map.rawValue {
+                            message.actionType = ActionType.map.rawValue
+                            message.mapData = MapAction(action: action)
+                        } else if type == ActionType.anchor.rawValue {
+                            message.actionType = ActionType.anchor.rawValue
+                            message.anchorData = AnchorAction(action: action)
+                            message.message = message.anchorData!.text
+                        } else if type == ActionType.table.rawValue {
+                            message.actionType = ActionType.table.rawValue
+                            message.tableData = TableAction(data: data, actionObject: action)
+                        } else if type == ActionType.websearch.rawValue {
+                            message.actionType = ActionType.websearch.rawValue
+                            message.message = action[Client.ChatKeys.Query] as! String
                         }
                     }
+                    messages.append(message)
                 }
-            } else {
-                debugPrint(body)
             }
         }
 
-        self.isBot = isBot
-    }
-
-    static func getMessageFromResponse(_ result: [String : AnyObject], isBot: Bool) -> Message {
-        let message = Message(dictionary: result, isBot: isBot)
-
-        return message
+        return messages
     }
 
 }

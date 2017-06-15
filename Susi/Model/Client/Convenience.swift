@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Alamofire
+import RealmSwift
 
 extension Client {
 
@@ -87,7 +87,7 @@ extension Client {
 
     // MARK: - Chat Methods
 
-    func queryResponse(_ params: [String : AnyObject], _ completion: @escaping(_ response: Message?, _ success: Bool, _ error: String?) -> Void) {
+    func queryResponse(_ params: [String : AnyObject], _ completion: @escaping(_ messages: List<Message>?, _ success: Bool, _ error: String?) -> Void) {
 
         let url = getApiUrl(UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.ipAddress) as! String, Methods.Chat)
 
@@ -102,9 +102,8 @@ extension Client {
                     return
                 }
 
-                let message = Message.getMessageFromResponse(response, isBot: true)
-
-                completion(message, true, nil)
+                let messages = Message.getAllAction(data: response)
+                completion(messages, true, nil)
             }
             return
         })
@@ -113,7 +112,7 @@ extension Client {
 
     // MARK: - Web Search by DuckDuckGo
 
-    func websearch(_ params: [String : AnyObject], _ completion: @escaping(_ response: WebsearchResult?, _ success: Bool, _ error: String?) -> Void) {
+    func websearch(_ params: [String : AnyObject], _ completion: @escaping(_ response: List<WebsearchAction>?, _ success: Bool, _ error: String?) -> Void) {
 
         let url = getApiUrl(APIURLs.DuckDuckGo)
 
@@ -128,9 +127,12 @@ extension Client {
                     return
                 }
 
-                let searchResult = WebsearchResult(dictionary: response)
-
-                completion(searchResult, true, nil)
+                if let result = response[Client.WebsearchKeys.RelatedTopics] as? [[String : AnyObject]] {
+                    let results = WebsearchAction.getSearchResults(result)
+                    completion(results, true, nil)
+                } else {
+                    completion(nil, false, "Result empty")
+                }
             }
             return
         })
