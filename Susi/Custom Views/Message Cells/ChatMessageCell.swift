@@ -39,6 +39,13 @@ class ChatMessageCell: BaseCell, UITextViewDelegate {
         return imageView
     }()
 
+    let timeLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.italicSystemFont(ofSize: 8)
+        label.textColor = .black
+        return label
+    }()
+
     override func setupViews() {
         super.setupViews()
 

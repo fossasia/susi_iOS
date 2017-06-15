@@ -19,4 +19,5 @@ target 'Susi' do
   pod 'SwiftLinkPreview', '~> 2.0.5'
   pod 'Nuke'
   pod 'Nuke-Gifu-Plugin'
+  pod 'SwiftDate', '~> 4.0'
 end

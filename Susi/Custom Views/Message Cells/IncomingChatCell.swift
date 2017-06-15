@@ -10,6 +10,7 @@ import UIKit
 import Nuke
 import NukeGifuPlugin
 import MapKit
+import SwiftDate
 
 class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
 
@@ -77,6 +78,15 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
         textBubbleView.addConstraintsWithFormat(format: "V:|-4-[v0]-5-|", views: imageView)
     }
 
+    func setupDate() {
+        let date = DateInRegion(absoluteDate: message?.answerDate as Date!)
+        let str = date.string(format: .custom("HH:mm a"))
+        timeLabel.text = str
+        textBubbleView.addSubview(timeLabel)
+        textBubbleView.addConstraintsWithFormat(format: "H:[v0]-20-|", views: timeLabel)
+        textBubbleView.addConstraintsWithFormat(format: "V:[v0]-6-|", views: timeLabel)
+    }
+
     func setupCell(_ estimatedFrame: CGRect, _ viewFrame: CGRect) {
 
         self.clearViews()
@@ -108,6 +118,8 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
                     self.messageTextView.attributedText = attributedString
                 }
 
+                self.setupDate()
+
             } else if message.actionType == ActionType.map.rawValue {
                 self.messageTextView.frame = CGRect.zero
                 self.textBubbleView.frame = CGRect(x: 4, y: -4, width: 300, height: 232)
@@ -120,6 +132,7 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
                 let attributedString = NSMutableAttributedString(string: message.anchorData!.text)
                 _ = attributedString.setAsLink(textToFind: message.anchorData!.text, linkURL: message.anchorData!.link, text: message.message)
                 self.messageTextView.attributedText = attributedString
+                self.setupDate()
             } else {
                 debugPrint("no action")
             }
@@ -132,6 +145,7 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
     func clearViews() {
         self.mapView.removeFromSuperview()
         self.imageView.removeFromSuperview()
+        self.timeLabel.removeFromSuperview()
     }
 
 }
