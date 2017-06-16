@@ -133,14 +133,14 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
 
         let estimatedFrame = self.estimatedFrame(messageBody: message.message)
         if message.message.isImage() {
-            return CGSize(width: view.frame.width, height: 150)
+            return CGSize(width: view.frame.width, height: 160)
         } else if message.actionType == ActionType.map.rawValue {
-            return CGSize(width: view.frame.width, height: 230)
+            return CGSize(width: view.frame.width, height: 240)
         } else if message.actionType == ActionType.rss.rawValue ||
             message.actionType == ActionType.websearch.rawValue {
             return CGSize(width: view.frame.width, height: 140)
         }
-        return CGSize(width: view.frame.width, height: estimatedFrame.height + 25)
+        return CGSize(width: view.frame.width, height: estimatedFrame.height + 35)
     }
 
     // Set Edge Insets

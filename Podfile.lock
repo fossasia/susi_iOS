@@ -19,6 +19,7 @@ PODS:
   - RSKGrowingTextView (2.0.0):
     - RSKPlaceholderTextView (= 2.0.0)
   - RSKPlaceholderTextView (2.0.0)
+  - SwiftDate (4.1.2)
   - SwiftLinkPreview (2.0.5)
   - SwiftValidators (6.0.0)
   - Toast-Swift (2.0.0)
@@ -34,6 +35,7 @@ DEPENDENCIES:
   - RealmSwift
   - RSKGrowingTextView
   - RSKPlaceholderTextView (= 2.0.0)
+  - SwiftDate (~> 4.0)
   - SwiftLinkPreview (~> 2.0.5)
   - SwiftValidators
   - Toast-Swift (~> 2.0.0)
@@ -51,10 +53,11 @@ SPEC CHECKSUMS:
   RealmSwift: 4764ca7657f2193c256fb032c0b123926f70dbcd
   RSKGrowingTextView: 1d9c64f1e9f8ed9b47d883548a3fd76dfdfe1353
   RSKPlaceholderTextView: 301f0f30e70e7c42fe4e941e3a08365ab0d890d5
+  SwiftDate: 2dfdebd4f67ae71c9c3e2413ee3c56947f302858
   SwiftLinkPreview: be9b78b79b1b31e00c3468b0476f57534985da7d
   SwiftValidators: 4ccbec749f61a36f7a922781bb09452e80cde396
   Toast-Swift: 5b2f8f720f7e78e48511f693df1f9c9a6e38a25a
 
-PODFILE CHECKSUM: fb3d04fc8d8c2d72c689e6f5abd98fa4124f2d11
+PODFILE CHECKSUM: a49821bc50f85985f18747b07dc9ed30cc67a050
 
 COCOAPODS: 1.2.1
