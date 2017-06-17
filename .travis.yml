@@ -1,14 +1,30 @@
 language: swift
-script: ./build.sh
+script:
+  - xctool -workspace Susi.xcworkspace -scheme Susi -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty -c
+  - xctool test -workspace Susi.xcworkspace -scheme SusiUITests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty -c
+  - xctool -workspace Susi.xcworkspace -scheme Susi -sdk iphoneos -configuration Release OBJROOT=$PWD/build SYMROOT=$PWD/build ONLY_ACTIVE_ARCH=NO 'CODE_SIGN_RESOURCE_RULES_PATH=$(SDKROOT)/ResourceRules.plist'
+
 osx_image: xcode8.3
 xcode_sdk: iphonesimulator10.0
 cache: cocoapods
 
 before_install:
-- gem install cocoapods
-- pod repo update
-- chmod +x build.sh
+  - gem install cocoapods
+  - pod repo update
+  - chmod +x build.sh
 
 after_success:
   - chmod +x upload-ipa.sh
-  - ./upload-ipa.sh
+  - "./upload-ipa.sh"
+
+env:
+  global:
+  - APP_NAME="Susi"
+  - 'DEVELOPER_NAME="iPhone Distribution: Prathmesh Ranaut (EWDLU6F58Z)"'
+  - PROFILE_NAME="Cash"
+  - secure: jefnYp0gxsDt6rAZx6ZXwudye9Eb5+5XrzuI2VXzcCzmGQXC4pGoB0uYYMduJg3czFof2n5zRN6zn4gs+ew/Egbk3hqVo48HDCV6dxvpy67/R1w8UwX3lEa/xJrmRXsVfBuvFLAakRLEgjGE7EoXaGIwCPgMgkOtKEcGClc9FG+lwRCVJce0g7eWpQ0OJr7RiLfK2niZhpZBOBSoB8/T/F6BHEHWRpcFiKOWfGuc3ja7uy/WeRskXblxycqLxEOUy2f9a/xXnuL/9O0Y181jZ/UfwKMN+2lFV4V+W7p1Nn9p5/fJWFti7eq9Nn7rRdHmbnzRdXnW5nrxjMnNh9n2VeN/spHmmUpORSrsXvLMHHhKzUqpETKORDbPyCYL94RWfQKMA5NUBdbkCyzX4f7SjbQorPjZ7gmwu59ZKGq6hMHReZkqTp5WpEThd/xrBJB76jUmgPpXUIrBl7Ihk/9EgHnE0mlus9PM7x6b/758gZkC3PURVqVcHe/nHYKXF/v7eHWmA7HDmtIWawr82pcjJs32c9XW5AFftl22A1LIuJMteE1h0yaAKqh86ViqPpNj198uO7LoMTg6z+RRMVLUipBQTLdYxwa1RhuGRQiGMgV0Xrr1FgF3sMz6meLPH/v4IKzZjpq4mX+8YCG22gw5aFxKLYGkSLIvs9HLSg0u2iI=
+
+before_script:
+  - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/profile/Cash.mobileprovision.enc -d -a -out scripts/profile/Cash.mobileprovision
+  - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.cer.enc -d -a -out scripts/certs/dist.cer
+  - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.p12.enc -d -a -out scripts/certs/dist.p12

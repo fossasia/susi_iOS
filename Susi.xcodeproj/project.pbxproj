@@ -450,9 +450,9 @@
 					};
 					6D4D9B361E768E190067459C = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = MLF4G8Y374;
+						DevelopmentTeam = EWDLU6F58Z;
 						LastSwiftMigration = 0830;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -757,8 +757,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = MLF4G8Y374;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = EWDLU6F58Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Release-iphoneos",
@@ -773,7 +773,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.fossasia.susi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "d6edc103-9bcf-4903-9ec5-f5ef34a66bb3";
+				PROVISIONING_PROFILE_SPECIFIER = Cash;
 				SWIFT_OBJC_BRIDGING_HEADER = "Susi/Susi-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -787,8 +788,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = MLF4G8Y374;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = EWDLU6F58Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Release-iphoneos",
@@ -803,7 +804,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.fossasia.susi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "d6edc103-9bcf-4903-9ec5-f5ef34a66bb3";
+				PROVISIONING_PROFILE_SPECIFIER = Cash;
 				SWIFT_OBJC_BRIDGING_HEADER = "Susi/Susi-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
