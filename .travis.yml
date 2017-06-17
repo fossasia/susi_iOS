@@ -1,8 +1,8 @@
 language: swift
 script:
-  - xctool -workspace Susi.xcworkspace -scheme Susi -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty -c
-  - xctool test -workspace Susi.xcworkspace -scheme SusiUITests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty -c
-  - xctool -workspace Susi.xcworkspace -scheme Susi -sdk iphoneos -configuration Release OBJROOT=$PWD/build SYMROOT=$PWD/build ONLY_ACTIVE_ARCH=NO 'CODE_SIGN_RESOURCE_RULES_PATH=$(SDKROOT)/ResourceRules.plist'
+  - xcodebuild -workspace Susi.xcworkspace -scheme Susi -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO -destination “platform=iOS Simulator,name=iPhone 6S” | xcpretty -c
+  - xcodebuild test -workspace Susi.xcworkspace -scheme SusiUITests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO -destination “platform=iOS Simulator,name=iPhone 6S” | xcpretty -c
+  - xcodebuild -workspace Susi.xcworkspace -scheme Susi -sdk iphoneos -configuration Release OBJROOT=$PWD/build SYMROOT=$PWD/build ONLY_ACTIVE_ARCH=NO 'CODE_SIGN_RESOURCE_RULES_PATH=$(SDKROOT)/ResourceRules.plist'
 
 osx_image: xcode8.3
 xcode_sdk: iphonesimulator10.0
@@ -13,9 +13,14 @@ before_install:
   - pod repo update
   - chmod +x build.sh
 
+before_script:
+  - ./scripts/add-key.sh
+
 after_success:
-  - chmod +x upload-ipa.sh
-  - "./upload-ipa.sh"
+  - ./scripts/sign-and-upload.sh
+
+after_script:
+  - ./scripts/remove-key.sh
 
 env:
   global:
