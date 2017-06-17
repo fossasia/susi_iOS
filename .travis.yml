@@ -11,7 +11,6 @@ cache: cocoapods
 before_install:
   - gem install cocoapods
   - pod repo update
-  - chmod +x build.sh
 
 before_script:
   - ./scripts/add-key.sh
