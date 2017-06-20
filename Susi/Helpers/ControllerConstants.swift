@@ -47,6 +47,7 @@ class ControllerConstants {
         static let login = "LOGIN"
         static let forgotPassword = "Forgot Password?"
         static let signUpForSusi = "Sign up for SUSI"
+        static let skip = "Skip"
     }
 
     struct SignUp {
