@@ -10,6 +10,7 @@ import UIKit
 import Popover
 import AVFoundation
 import CoreLocation
+import RealmSwift
 
 extension MainViewController: CLLocationManagerDelegate {
 
@@ -150,6 +151,12 @@ extension MainViewController: UITableViewDelegate {
     }
 
     func logoutUser() {
+
+        let realm = try! Realm()
+        try! realm.write {
+            realm.deleteAll()
+        }
+
         Client.sharedInstance.logoutUser { (success, error) in
             DispatchQueue.main.async {
                 if success {
