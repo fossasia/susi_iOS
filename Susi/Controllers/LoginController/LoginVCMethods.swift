@@ -9,6 +9,7 @@
 import UIKit
 import BouncyLayout
 import DLRadioButton
+import RealmSwift
 
 extension LoginViewController {
 
@@ -260,10 +261,18 @@ extension LoginViewController {
     func checkSession() {
         if let user = UserDefaults.standard.value(forKey: ControllerConstants.UserDefaultsKeys.user) {
             if let user = user as? [String : AnyObject] {
-                _ = User(dictionary: user)
+                let user = User(dictionary: user)
 
                 DispatchQueue.main.async {
-                    self.completeLogin()
+                    print(user.expiryTime)
+                    if user.expiryTime > Date() {
+                        self.completeLogin()
+                    } else {
+                        let realm = try! Realm()
+                        try! realm.write {
+                            realm.deleteAll()
+                        }
+                    }
                 }
             }
         }
