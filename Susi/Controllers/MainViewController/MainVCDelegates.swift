@@ -10,6 +10,7 @@ import UIKit
 import Popover
 import AVFoundation
 import CoreLocation
+import RSKGrowingTextView
 
 extension MainViewController: CLLocationManagerDelegate {
 
@@ -272,6 +273,26 @@ extension MainViewController: AVAudioRecorderDelegate {
         if (audioRecorder != nil && audioRecorder.isRecording) {
             audioRecorder.stop()
         }
+    }
+
+}
+
+extension MainViewController: RSKGrowingTextViewDelegate, UITextViewDelegate {
+
+    func textViewDidChange(_ textView: UITextView) {
+        if let message = inputTextView.text, message.trimmed.isEmpty {
+            self.sendButton.isUserInteractionEnabled = false
+        } else {
+            self.sendButton.isUserInteractionEnabled = true
+        }
+    }
+
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" && UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.enterToSend) {
+            handleSend()
+            return false
+        }
+        return true
     }
 
 }

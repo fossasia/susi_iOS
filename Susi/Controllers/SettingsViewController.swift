@@ -132,13 +132,13 @@ class SettingsViewController: UICollectionViewController, UICollectionViewDelega
 
     func switchDidToggle(sender: UISwitch!) {
         if sender.tag == 0 {
-            UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: ControllerConstants.Settings.enterToSend), forKey: ControllerConstants.Settings.enterToSend)
+            UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.enterToSend), forKey: ControllerConstants.UserDefaultsKeys.enterToSend)
         } else if sender.tag == 1 {
-            UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: ControllerConstants.Settings.micInput), forKey: ControllerConstants.Settings.micInput)
+            UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.micInput), forKey: ControllerConstants.UserDefaultsKeys.micInput)
         } else if sender.tag == 2 {
-            UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: ControllerConstants.Settings.speechOutput), forKey: ControllerConstants.Settings.speechOutput)
+            UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.speechOutput), forKey: ControllerConstants.UserDefaultsKeys.speechOutput)
         } else if sender.tag == 3 {
-            UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: ControllerConstants.Settings.speechOutputAlwaysOn), forKey: ControllerConstants.Settings.speechOutputAlwaysOn)
+            UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn), forKey: ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn)
         }
     }
 

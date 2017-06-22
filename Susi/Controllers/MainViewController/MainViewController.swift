@@ -156,6 +156,7 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         textView.backgroundColor = .white
         textView.maximumNumberOfLines = 2
         textView.layer.cornerRadius = 15
+        textView.delegate = self
         return textView
     }()
 
