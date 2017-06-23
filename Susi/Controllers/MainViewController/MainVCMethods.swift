@@ -199,15 +199,6 @@ extension MainViewController {
         }
     }
 
-    // Check if chat field empty
-    func textViewDidChange(textView: RSKGrowingTextView) {
-        if let message = inputTextView.text, message.isEmpty {
-            sendButton.isUserInteractionEnabled = false
-        } else {
-            sendButton.isUserInteractionEnabled = true
-        }
-    }
-
     func estimatedFrame(messageBody: String) -> CGRect {
         let size = CGSize(width: 250, height: 1000)
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)

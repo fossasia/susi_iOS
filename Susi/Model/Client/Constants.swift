@@ -34,6 +34,7 @@ extension Client {
         static let SignUp = "signup"
         static let Password = "password"
         static let ForgotEmail = "forgotemail"
+        static let ValidSeconds = "valid_seconds"
     }
 
     struct ChatKeys {
