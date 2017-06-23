@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import SwiftDate
 
 class User: NSObject {
 
     var accessToken: String = ""
     var message: String = ""
+    var expiryTime = Date()
 
     init(dictionary: [String:AnyObject]) {
 
@@ -21,6 +23,10 @@ class User: NSObject {
 
         if let message = dictionary[Client.UserKeys.Message] as? String {
             self.message = message
+        }
+
+        if let validSeconds = dictionary[Client.UserKeys.ValidSeconds] as? Int {
+            self.expiryTime = Date() + validSeconds.seconds
         }
 
     }
