@@ -102,8 +102,8 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
                 self.bubbleImageView.isHidden = true
                 self.addImageView()
             } else  if message.actionType == ActionType.answer.rawValue {
-                self.messageTextView.frame = CGRect(x: 16, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 30)
-                self.textBubbleView.frame = CGRect(x: 4, y: -4, width: estimatedFrame.width + 40, height: estimatedFrame.height + 26)
+                self.messageTextView.frame = CGRect(x: 16, y: 0, width: max(estimatedFrame.width + 16, viewFrame.width / 3), height: estimatedFrame.height + 30)
+                self.textBubbleView.frame = CGRect(x: 4, y: -4, width: max(estimatedFrame.width + 40, viewFrame.width / 3), height: estimatedFrame.height + 26)
                 self.bubbleImageView.isHidden = false
 
                 if message.message.containsURL() {
