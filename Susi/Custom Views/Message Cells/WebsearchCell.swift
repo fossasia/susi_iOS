@@ -22,10 +22,12 @@ class WebsearchCell: BaseCell {
             slp.preview(feed?.link, onSuccess: { (response) in
                 if let imageString = response[.image] as? String {
                     let url = URL(string: imageString)
-                    var request = Request(url: url!)
-                    request.memoryCacheOptions.readAllowed = true
-                    request.memoryCacheOptions.writeAllowed = true
-                    Nuke.loadImage(with: request, into: self.imageView)
+                    if let url = url {
+                        var request = Request(url: url)
+                        request.memoryCacheOptions.readAllowed = true
+                        request.memoryCacheOptions.writeAllowed = true
+                        Nuke.loadImage(with: request, into: self.imageView)
+                    }
                 }
 
                 let realm = try! Realm()

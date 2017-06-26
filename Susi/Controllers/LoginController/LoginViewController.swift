@@ -100,6 +100,14 @@ class LoginViewController: UIViewController {
         return textfield
     }()
 
+    lazy var skip: FlatButton = {
+        let button = FlatButton()
+        button.setTitle(ControllerConstants.Login.skip, for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(anonymousMode), for: .touchUpInside)
+        return button
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

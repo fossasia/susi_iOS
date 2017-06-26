@@ -29,6 +29,7 @@ extension LoginViewController {
         prepareRadioButtons()
         prepareLoginButton()
         prepareForgotButton()
+        prepareSkipButton()
         prepareSignUpButton()
     }
 
@@ -146,6 +147,16 @@ extension LoginViewController {
             .left(UIView.UIMarginSpec.mediumMargin)
             .right(UIView.UIMarginSpec.mediumMargin)
             .height(44)
+        self.scrollView.layoutSubviews()
+    }
+
+    private func prepareSkipButton() {
+        self.scrollView.addSubview(skip)
+        self.scrollView.layout(skip)
+            .top(forgotButton.frame.maxY)
+            .left(UIView.UIMarginSpec.mediumMargin)
+            .right(UIView.UIMarginSpec.mediumMargin)
+            .height(22)
         self.scrollView.layoutSubviews()
     }
 
@@ -276,6 +287,15 @@ extension LoginViewController {
                 }
             }
         }
+    }
+
+    func anonymousMode() {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.deleteAll()
+        }
+        UserDefaults.standard.set(Client.APIURLs.SusiAPI, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
+        self.completeLogin()
     }
 
 }
