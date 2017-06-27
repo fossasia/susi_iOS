@@ -50,5 +50,7 @@
 	<false/>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>$(PRODUCT_NAME) wants to ue the device microphone</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Speech recognition will be used to determine which words you speak into this device&amp;apos;s microphone.</string>
 </dict>
 </plist>

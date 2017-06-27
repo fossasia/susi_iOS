@@ -12,6 +12,8 @@ import AVFoundation
 import CoreLocation
 import RSKGrowingTextView
 import RealmSwift
+import Speech
+import NVActivityIndicatorView
 
 extension MainViewController: CLLocationManagerDelegate {
 
@@ -287,11 +289,14 @@ extension MainViewController: AVAudioRecorderDelegate {
 extension MainViewController: RSKGrowingTextViewDelegate, UITextViewDelegate {
 
     func textViewDidChange(_ textView: UITextView) {
-        if let message = inputTextView.text, message.trimmed.isEmpty {
-            self.sendButton.isUserInteractionEnabled = false
+        if let message = inputTextView.text, message.isEmpty {
+            self.sendButton.tag = 0
+            self.sendButton.setImage(UIImage(named: ControllerConstants.mic), for: .normal)
         } else {
-            self.sendButton.isUserInteractionEnabled = true
+            self.sendButton.setImage(UIImage(named: ControllerConstants.send), for: .normal)
+            self.sendButton.tag = 1
         }
+        addTargetSendButton()
     }
 
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
@@ -300,6 +305,147 @@ extension MainViewController: RSKGrowingTextViewDelegate, UITextViewDelegate {
             return false
         }
         return true
+    }
+
+}
+
+extension MainViewController: SFSpeechRecognizerDelegate {
+
+    func configureSpeechRecognizer() {
+        speechRecognizer?.delegate = self
+
+        SFSpeechRecognizer.requestAuthorization { (authStatus) in
+
+            var isEnabled = false
+
+            switch authStatus {
+            case .authorized:
+                print("Autorized speech")
+                isEnabled = true
+
+            case .denied:
+                print("Denied speech")
+                isEnabled = false
+
+            case .restricted:
+                print("speech restricted")
+                isEnabled = false
+
+            case .notDetermined:
+                print("not determined")
+                isEnabled = false
+            }
+
+            OperationQueue.main.addOperation {
+                // handle button enable/disable
+                self.sendButton.tag = isEnabled ? 0 : 1
+                self.addTargetSendButton()
+            }
+
+        }
+
+    }
+
+    func startSTT() {
+
+        configureSpeechRecognizer()
+
+        if recognitionTask != nil {
+            recognitionTask?.cancel()
+            recognitionTask = nil
+        }
+
+        if audioEngine.isRunning {
+            stopSTT()
+            return
+        }
+
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setCategory(AVAudioSessionCategoryRecord)
+            try audioSession.setMode(AVAudioSessionModeMeasurement)
+            try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
+        } catch {
+            print("audioSession properties weren't set because of an error.")
+        }
+
+        recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
+
+        guard let inputNode = audioEngine.inputNode else {
+            fatalError("Audio engine has no input node")
+        }
+
+        guard let recognitionRequest = recognitionRequest else {
+            fatalError("Unable to create an SFSpeechAudioBufferRecognitionRequest object")
+        }
+
+        recognitionRequest.shouldReportPartialResults = true
+
+        recognitionTask = speechRecognizer?.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in
+
+            var isFinal = false
+
+            if result != nil {
+
+                self.inputTextView.text = result?.bestTranscription.formattedString
+                isFinal = (result?.isFinal)!
+            }
+
+            if error != nil || isFinal {
+                self.audioEngine.stop()
+                inputNode.removeTap(onBus: 0)
+
+                self.recognitionRequest = nil
+                self.recognitionTask = nil
+            }
+        })
+
+        let recordingFormat = inputNode.outputFormat(forBus: 0)
+        inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer, _) in
+            self.recognitionRequest?.append(buffer)
+        }
+
+        audioEngine.prepare()
+
+        do {
+            try audioEngine.start()
+        } catch {
+            print("audioEngine couldn't start because of an error.")
+        }
+
+        print("Say something, I'm listening!")
+
+        // Listening indicator swift
+        self.indicatorView.frame = self.sendButton.frame
+
+        self.indicatorView.isUserInteractionEnabled = true
+        let gesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(startSTT))
+        gesture.numberOfTapsRequired = 1
+        self.indicatorView.addGestureRecognizer(gesture)
+
+        self.sendButton.setImage(UIImage(), for: .normal)
+        indicatorView.startAnimating()
+        self.sendButton.addSubview(indicatorView)
+        self.sendButton.addConstraintsWithFormat(format: "V:|[v0(24)]|", views: indicatorView)
+        self.sendButton.addConstraintsWithFormat(format: "H:|[v0(24)]|", views: indicatorView)
+
+        self.inputTextView.isUserInteractionEnabled = false
+    }
+
+    func stopSTT() {
+        print("audioEngine stopped")
+        audioEngine.inputNode?.removeTap(onBus: 0)
+        audioEngine.stop()
+        recognitionRequest?.endAudio()
+        indicatorView.removeFromSuperview()
+
+        if inputTextView.text.isEmpty {
+            self.sendButton.setImage(UIImage(named: ControllerConstants.mic), for: .normal)
+        } else {
+            self.sendButton.setImage(UIImage(named: ControllerConstants.send), for: .normal)
+        }
+
+        self.inputTextView.isUserInteractionEnabled = true
     }
 
 }
