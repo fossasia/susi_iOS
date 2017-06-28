@@ -24,6 +24,7 @@ class ControllerConstants {
     static let errorOccured = "Some error occured"
     static let json = "json"
     static let send = "send"
+    static let mic = "microphone"
     static let play = "play"
     static let timeZone = "-530"
     static let askSusi = "Ask Susi Something..."

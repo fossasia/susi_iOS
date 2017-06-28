@@ -51,6 +51,7 @@
 		6D98EDFB1E796EFE00D96B32 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D98EDFA1E796EFE00D96B32 /* SettingsCell.swift */; };
 		6D9C0D291E7B223A00199828 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9C0D281E7B223A00199828 /* User.swift */; };
 		6DE1B5EB1EDB89BF0032E711 /* Pods_Susi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DE1B5EA1EDB89BF0032E711 /* Pods_Susi.framework */; };
+		6DE264911F0278A900EBAD13 /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DE264901F0278A900EBAD13 /* Speech.framework */; };
 		6DE44E0F1E769AD300215B85 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE44E0E1E769AD300215B85 /* Color.swift */; };
 		6DE44E111E76ACAF00215B85 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE44E101E76ACAF00215B85 /* Client.swift */; };
 		6DE44E161E76ACD900215B85 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE44E141E76ACD900215B85 /* Constants.swift */; };
@@ -126,6 +127,7 @@
 		6D9C0D281E7B223A00199828 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6DE1B5E81EDB896F0032E711 /* Pods_Susi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Susi.framework; path = "Pods/../build/Debug-iphoneos/Pods_Susi.framework"; sourceTree = "<group>"; };
 		6DE1B5EA1EDB89BF0032E711 /* Pods_Susi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Susi.framework; path = "Pods/../build/Debug-iphoneos/Pods_Susi.framework"; sourceTree = "<group>"; };
+		6DE264901F0278A900EBAD13 /* Speech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Speech.framework; path = System/Library/Frameworks/Speech.framework; sourceTree = SDKROOT; };
 		6DE44E0E1E769AD300215B85 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		6DE44E101E76ACAF00215B85 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		6DE44E141E76ACD900215B85 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DE264911F0278A900EBAD13 /* Speech.framework in Frameworks */,
 				6D35E48A1EE70F9C00188E1F /* libsnowboy-detect.a in Frameworks */,
 				6D35E48C1EE710B600188E1F /* libsnowboy-detect.a in Frameworks */,
 				6D35E4881EE70F9000188E1F /* Accelerate.framework in Frameworks */,
@@ -379,6 +382,7 @@
 		BD5FA220F268315B61F71523 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6DE264901F0278A900EBAD13 /* Speech.framework */,
 				6D35E4891EE70F9C00188E1F /* libsnowboy-detect.a */,
 				6D35E4871EE70F9000188E1F /* Accelerate.framework */,
 				6DE1B5EA1EDB89BF0032E711 /* Pods_Susi.framework */,
@@ -765,7 +769,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = "Susi/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -795,7 +799,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = "Susi/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

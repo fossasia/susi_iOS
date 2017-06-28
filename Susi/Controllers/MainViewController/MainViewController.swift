@@ -14,6 +14,8 @@ import RSKPlaceholderTextView
 import CoreLocation
 import AVFoundation
 import RealmSwift
+import Speech
+import NVActivityIndicatorView
 
 class MainViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
@@ -61,6 +63,13 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
     var bottomConstraintTextView: NSLayoutConstraint?
     var bottomConstraintSendButton: NSLayoutConstraint?
 
+    let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))
+    var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
+    var recognitionTask: SFSpeechRecognitionTask?
+    let audioEngine = AVAudioEngine()
+
+    let indicatorView = NVActivityIndicatorView(frame: CGRect(), type: .ballPulse, color: .white, padding: 0)
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -77,8 +86,8 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         // Configure Location Manager
         configureLocationManager()
 
-        initSnowboy()
-        startHotwordRecognition()
+//        initSnowboy()
+//        startHotwordRecognition()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -163,9 +172,9 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
     // Setup Send Button
     lazy var sendButton: FABButton = {
         let button = FABButton()
-        button.setImage(UIImage(named: ControllerConstants.send), for: .normal)
+        button.setImage(UIImage(named: ControllerConstants.mic), for: .normal)
+        button.addTarget(self, action: #selector(startSTT), for: .touchUpInside)
         button.backgroundColor = UIColor.defaultColor()
-        button.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
         return button
     }()
 

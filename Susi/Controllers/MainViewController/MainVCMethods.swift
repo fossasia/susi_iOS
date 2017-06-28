@@ -191,7 +191,9 @@ extension MainViewController {
             collectionView?.insertItems(at: [indexPath])
             self.scrollToLast()
 
+            self.sendButton.tag = 0
             inputTextView.text = ""
+            self.textViewDidChange(inputTextView)
         }
     }
 
@@ -214,6 +216,19 @@ extension MainViewController {
         self.messages = List<Message>(realm.objects(Message.self))
         self.collectionView?.reloadData()
         self.scrollToLast()
+    }
+
+    func addTargetSendButton() {
+        if sendButton.tag == 0 {
+            sendButton.removeTarget(self, action: #selector(handleSend), for: .touchUpInside)
+            sendButton.addTarget(self, action: #selector(startSTT), for: .touchUpInside)
+        } else {
+            if audioEngine.isRunning {
+                stopSTT()
+            }
+            sendButton.removeTarget(self, action: #selector(startSTT), for: .touchUpInside)
+            sendButton.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
+        }
     }
 
 }
