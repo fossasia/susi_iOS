@@ -8,7 +8,7 @@
 
 import UIKit
 import RealmSwift
-import Nuke
+import Kingfisher
 
 class WebsearchCollectionView: UIView, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
 
@@ -28,7 +28,7 @@ class WebsearchCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
     var message: Message? {
         didSet {
             if message?.actionType == ActionType.websearch.rawValue {
-                let params = [
+                var params = [
                     Client.WebsearchKeys.Query: message?.message,
                     Client.WebsearchKeys.Format: ControllerConstants.json
                 ]
@@ -47,6 +47,7 @@ class WebsearchCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
                         }
                     }
                 })
+                params.removeAll()
             } else {
                 self.collectionView.reloadData()
             }
@@ -92,10 +93,7 @@ class WebsearchCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
             if let webData = feed?.webData {
                 if let imageString = webData.image {
                     let url = URL(string: imageString)
-                    var request = Request(url: url!)
-                    request.memoryCacheOptions.readAllowed = true
-                    request.memoryCacheOptions.writeAllowed = true
-                    Nuke.loadImage(with: request, into: cell.imageView)
+                    cell.imageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder"), options: nil, progressBlock: nil, completionHandler: nil)
                 } else {
                     cell.imageView.image = UIImage(named: "placeholder")
                 }
@@ -110,10 +108,7 @@ class WebsearchCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
             if let imageString = webData?.image {
                 cell.imageString = imageString
                 if let url = URL(string: imageString) {
-                    var request = Request(url: url)
-                    request.memoryCacheOptions.readAllowed = true
-                    request.memoryCacheOptions.writeAllowed = true
-                    Nuke.loadImage(with: request, into: cell.imageView)
+                    cell.imageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder"), options: nil, progressBlock: nil, completionHandler: nil)
                 }
             } else {
                 cell.imageView.image = UIImage(named: "placeholder")

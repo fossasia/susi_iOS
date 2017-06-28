@@ -16,9 +16,8 @@ target 'Susi' do
   pod 'BouncyLayout'
   pod 'DLRadioButton', '~> 1.4'
   pod 'RealmSwift'
-  pod 'SwiftLinkPreview', '~> 2.0.5'
-  pod 'Nuke'
-  pod 'Nuke-Gifu-Plugin'
+  pod 'ReadabilityKit'
+  pod 'Kingfisher'
   pod 'SwiftDate', '~> 4.0'
   pod 'NVActivityIndicatorView'
 end

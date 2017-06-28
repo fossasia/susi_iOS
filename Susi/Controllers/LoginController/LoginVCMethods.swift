@@ -176,7 +176,7 @@ extension LoginViewController {
         if isValid() {
             toggleEditing()
 
-            let params = [
+            var params = [
                 Client.UserKeys.Login: emailField.text!.lowercased(),
                 Client.UserKeys.Password: passwordField.text!,
                 Client.ChatKeys.ResponseType: Client.ChatKeys.AccessToken
@@ -197,6 +197,7 @@ extension LoginViewController {
                     self.view.makeToast(message)
                 }
             }
+            params.removeAll()
         }
 
     }
