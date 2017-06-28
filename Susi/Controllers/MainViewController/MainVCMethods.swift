@@ -137,6 +137,11 @@ extension MainViewController {
                 params[Client.ChatKeys.Longitude] = location.coordinate.longitude as AnyObject
             }
 
+            if let userData = UserDefaults.standard.dictionary(forKey: ControllerConstants.UserDefaultsKeys.user) as [String : AnyObject]? {
+                let user = User(dictionary: userData)
+                params[Client.ChatKeys.AccessToken] = user.accessToken as AnyObject
+            }
+
             Client.sharedInstance.queryResponse(params) { (messages, success, _) in
                 DispatchQueue.main.async {
                     if success {
