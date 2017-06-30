@@ -81,13 +81,21 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         // Dismiss keyboard when touched anywhere in CV
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.resignResponders)))
 
-        subscribeToKeyboardNotifications()
-
         // Configure Location Manager
         configureLocationManager()
 
 //        initSnowboy()
 //        startHotwordRecognition()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        subscribeToKeyboardNotifications()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        unsubscriveToKeyboardNotifications()
     }
 
     override func viewDidAppear(_ animated: Bool) {

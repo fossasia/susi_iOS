@@ -143,7 +143,7 @@ extension Client {
 
     func searchYotubeVideos(_ query: String, _ completion: @escaping(_ response: String?, _ success: Bool, _ error: String?) -> Void) {
 
-        let params = [
+        var params = [
             YoutubeParamKeys.Key: YoutubeParamValues.Key,
             YoutubeParamKeys.Part: YoutubeParamValues.Part,
             YoutubeParamKeys.Query: query.replacingOccurrences(of: " ", with: "+")
@@ -173,6 +173,7 @@ extension Client {
                     }
                 }
             }
+            params.removeAll()
             return
         })
 

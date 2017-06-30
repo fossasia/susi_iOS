@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import Nuke
-import NukeGifuPlugin
+import Kingfisher
 import MapKit
 import SwiftDate
 
@@ -20,10 +19,7 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
 
             if let imageString = message?.message, imageString.isImage() {
                 if let url = URL(string: imageString) {
-                    var request = Request(url: url)
-                    request.memoryCacheOptions.readAllowed = true
-                    request.memoryCacheOptions.writeAllowed = true
-                    AnimatedImage.manager.loadImage(with: request, into: imageView)
+                    self.imageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder"), options: nil, progressBlock: nil, completionHandler: nil)
                 }
             }
         }
