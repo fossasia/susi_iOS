@@ -135,7 +135,7 @@ extension SignUpViewController {
 
             toggleEditing()
 
-            let params = [
+            var params = [
                 Client.UserKeys.SignUp: emailField.text!.lowercased(),
                 Client.UserKeys.Password: passwordField.text!
             ]
@@ -149,7 +149,7 @@ extension SignUpViewController {
                     self.view.makeToast(message)
                 }
             }
-
+            params.removeAll()
         }
 
     }

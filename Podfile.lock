@@ -2,16 +2,19 @@ PODS:
   - Alamofire (4.5.0)
   - BouncyLayout (1.1.0)
   - DLRadioButton (1.4.9)
-  - Gifu (2.0.0)
+  - Ji (2.0.1):
+    - Ji/Ji (= 2.0.1)
+  - Ji/Ji (2.0.1):
+    - Ji/Ji-libxml
+  - Ji/Ji-libxml (2.0.1)
+  - Kingfisher (3.10.2)
   - Material (2.6.3):
     - Material/Core (= 2.6.3)
   - Material/Core (2.6.3)
-  - Nuke (5.1.1)
-  - Nuke-Gifu-Plugin (1.0):
-    - Gifu (~> 2.0)
-    - Nuke (~> 5.0)
   - NVActivityIndicatorView (3.6.1)
   - Popover (1.0.6)
+  - ReadabilityKit (0.6.1):
+    - Ji (~> 2.0.1)
   - Realm (2.8.3):
     - Realm/Headers (= 2.8.3)
   - Realm/Headers (2.8.3)
@@ -21,7 +24,6 @@ PODS:
     - RSKPlaceholderTextView (= 2.0.0)
   - RSKPlaceholderTextView (2.0.0)
   - SwiftDate (4.1.2)
-  - SwiftLinkPreview (2.0.5)
   - SwiftValidators (6.0.0)
   - Toast-Swift (2.0.0)
 
@@ -29,16 +31,15 @@ DEPENDENCIES:
   - Alamofire (~> 4.4)
   - BouncyLayout
   - DLRadioButton (~> 1.4)
+  - Kingfisher
   - Material
-  - Nuke
-  - Nuke-Gifu-Plugin
   - NVActivityIndicatorView
   - Popover
+  - ReadabilityKit
   - RealmSwift
   - RSKGrowingTextView
   - RSKPlaceholderTextView (= 2.0.0)
   - SwiftDate (~> 4.0)
-  - SwiftLinkPreview (~> 2.0.5)
   - SwiftValidators
   - Toast-Swift (~> 2.0.0)
 
@@ -46,21 +47,20 @@ SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   BouncyLayout: f91c6504437a61acd733404f55f75bd8154f5840
   DLRadioButton: 7bb8a6e3768b572469ace553391ab4d2af6f9c19
-  Gifu: 56a4d8f1092399159fa32662aa2232158b48d8ac
+  Ji: 6bb602a28dd08b804158f64990e6051ed5de0110
+  Kingfisher: 7297492bf8cec9b2e2dee3519f2219948580d98e
   Material: af607a7ec0e9978ef85cf189a3d8ceeeb650400f
-  Nuke: 0a2ddb4bd13d75782964bf598a159ca2a836d826
-  Nuke-Gifu-Plugin: 212968cf0c170a504a8ddf69806cf6c6aa2f40b4
   NVActivityIndicatorView: 9f52a7f84bf5c6a798722c450fe3c198e01c56ed
   Popover: 227aa929a6cdf41c4828786be8ede109c40344c9
+  ReadabilityKit: 49c26a2da9708ae3b355854d5bee6a7edee2dfee
   Realm: 3601ef091c8c499a31101d8563b991e75546cdce
   RealmSwift: 8183818515471b01a99abdd2970f8e4fd52b6f4a
   RSKGrowingTextView: 1d9c64f1e9f8ed9b47d883548a3fd76dfdfe1353
   RSKPlaceholderTextView: 301f0f30e70e7c42fe4e941e3a08365ab0d890d5
   SwiftDate: 2dfdebd4f67ae71c9c3e2413ee3c56947f302858
-  SwiftLinkPreview: be9b78b79b1b31e00c3468b0476f57534985da7d
   SwiftValidators: 4ccbec749f61a36f7a922781bb09452e80cde396
   Toast-Swift: 5b2f8f720f7e78e48511f693df1f9c9a6e38a25a
 
-PODFILE CHECKSUM: f6eb39adfb9758a22648b7adb17fdf8e42ba2b71
+PODFILE CHECKSUM: 58954db12f677952f042adc406aec98e3da0b669
 
 COCOAPODS: 1.2.1
