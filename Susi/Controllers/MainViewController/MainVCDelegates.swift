@@ -217,8 +217,14 @@ extension MainViewController: AVAudioPlayerDelegate {
         // print("Frame capacity: \(AVAudioFrameCount(file.length))")
         // print("Buffer frame length: \(buffer.frameLength)")
 
-        _ = wrapper.runDetection(array, length: Int32(buffer.frameLength))
+        let result = wrapper.runDetection(array, length: Int32(buffer.frameLength))
         // print("Result: \(result)")
+
+        if result == 1 {
+            stopRecording()
+            timer.invalidate()
+            startSTT()
+        }
     }
 
     func playAudio() {
@@ -446,6 +452,10 @@ extension MainViewController: SFSpeechRecognizerDelegate {
         }
 
         self.inputTextView.isUserInteractionEnabled = true
+
+        if UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.hotwordEnabled) {
+            startHotwordRecognition()
+        }
     }
 
 }

@@ -50,8 +50,10 @@ class SettingsViewController: UICollectionViewController, UICollectionViewDelega
 
     // Handles number of cells for section
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == 0 || section == 1 {
+        if section == 0 {
             return 1
+        } else if section == 1 {
+            return 2
         } else {
             return 4
         }
@@ -67,21 +69,28 @@ class SettingsViewController: UICollectionViewController, UICollectionViewDelega
             cell.settingSwitch.tag = 0
             cell.settingSwitch.isOn = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.enterToSend)
         } else if indexPath.section == 1 {
-            cell.titleLabel.text = ControllerConstants.Settings.micInput
-            cell.detailLabel.text = ControllerConstants.Settings.sendMessageByReturn
-            cell.settingSwitch.tag = 1
-            cell.settingSwitch.isOn = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.micInput)
+            if indexPath.item == 0 {
+                cell.titleLabel.text = ControllerConstants.Settings.micInput
+                cell.detailLabel.text = ControllerConstants.Settings.sendMessageByReturn
+                cell.settingSwitch.tag = 1
+                cell.settingSwitch.isOn = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.micInput)
+            } else if indexPath.item == 1 {
+                cell.titleLabel.text = ControllerConstants.Settings.enableHotword
+                cell.detailLabel.text = ControllerConstants.Settings.susiHotword
+                cell.settingSwitch.tag = 2
+                cell.settingSwitch.isOn = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.hotwordEnabled)
+            }
         } else {
             if indexPath.item == 0 {
                 cell.titleLabel.text = ControllerConstants.Settings.speechOutput
                 cell.detailLabel.text = ControllerConstants.Settings.enableSpeechOutputOnlyInput
-                cell.settingSwitch.tag = 2
+                cell.settingSwitch.tag = 3
                 cell.settingSwitch.isOn = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.speechOutput)
             } else if indexPath.item == 1 {
                 cell.titleLabel.text = ControllerConstants.Settings.speechOutputAlwaysOn
                 cell.detailLabel.text = ControllerConstants.Settings.enableSpeechOutputOutputRegardlessOfInput
                 cell.settingSwitch.isOn = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn)
-                cell.settingSwitch.tag = 3
+                cell.settingSwitch.tag = 4
             } else if indexPath.item == 2 {
                 cell.titleLabel.text = ControllerConstants.Settings.language
                 cell.detailLabel.text = ControllerConstants.Settings.selectLanguage
@@ -136,8 +145,10 @@ class SettingsViewController: UICollectionViewController, UICollectionViewDelega
         } else if sender.tag == 1 {
             UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.micInput), forKey: ControllerConstants.UserDefaultsKeys.micInput)
         } else if sender.tag == 2 {
-            UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.speechOutput), forKey: ControllerConstants.UserDefaultsKeys.speechOutput)
+            UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.hotwordEnabled), forKey: ControllerConstants.UserDefaultsKeys.hotwordEnabled)
         } else if sender.tag == 3 {
+            UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.speechOutput), forKey: ControllerConstants.UserDefaultsKeys.speechOutput)
+        } else if sender.tag == 4 {
             UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn), forKey: ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn)
         }
     }

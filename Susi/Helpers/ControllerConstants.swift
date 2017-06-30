@@ -77,6 +77,8 @@ class ControllerConstants {
         static let rateSusi = "Rate Susi"
         static let rateOnAppStore = "Rate our app on App Store"
         static let settingsList = ["Settings", "Wallpaper", "Share", "Logout"]
+        static let enableHotword = "Enable Hotword Recognition"
+        static let susiHotword = "Enable Susi hotword recognition"
     }
 
     struct UserDefaultsKeys {
@@ -88,6 +90,7 @@ class ControllerConstants {
         static let wallpaper = "wallpaper"
         static let ipAddress = "ipAddress"
         static let firstLaunch = "firstLaunch"
+        static let hotwordEnabled = "hotwordEnabled"
     }
 
 }

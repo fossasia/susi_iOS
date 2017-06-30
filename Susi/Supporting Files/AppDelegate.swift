@@ -48,6 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.set(false, forKey: ControllerConstants.UserDefaultsKeys.micInput)
             UserDefaults.standard.set(false, forKey: ControllerConstants.UserDefaultsKeys.speechOutput)
             UserDefaults.standard.set(false, forKey: ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn)
+            UserDefaults.standard.set(false, forKey: ControllerConstants.UserDefaultsKeys.hotwordEnabled)
         }
 
     }
