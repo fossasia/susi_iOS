@@ -111,7 +111,7 @@ extension ForgotPasswordViewController {
 
         if let emailID = emailField.text, !emailID.isEmpty && emailID.isValidEmail() {
 
-            let params = [
+            var params = [
                 Client.UserKeys.ForgotEmail: emailField.text?.lowercased()
             ]
 
@@ -134,7 +134,7 @@ extension ForgotPasswordViewController {
                     self.emailField.endEditing(true)
                 }
             }
-
+            params.removeAll()
         } else {
             emailField.isErrorRevealed = true
         }

@@ -20,6 +20,11 @@ extension MainViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
 
+    func unsubscriveToKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+
     func handleKeyboardNotification(notification: NSNotification) {
 
         if let userInfo = notification.userInfo {
@@ -161,6 +166,7 @@ extension MainViewController {
                 }
             }
             saveMessage()
+            params.removeAll()
         }
     }
 

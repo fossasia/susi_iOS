@@ -169,6 +169,7 @@ extension MainViewController: UITableViewDelegate {
                 }
             }
         }
+        self.messages.removeAll()
     }
 
 }
@@ -363,6 +364,8 @@ extension MainViewController: SFSpeechRecognizerDelegate {
 
         if audioEngine.isRunning {
             stopSTT()
+            self.recognitionRequest = nil
+            self.recognitionTask = nil
             return
         }
 
