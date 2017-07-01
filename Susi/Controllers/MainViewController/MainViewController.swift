@@ -174,6 +174,7 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         textView.maximumNumberOfLines = 2
         textView.layer.cornerRadius = 15
         textView.delegate = self
+        textView.accessibilityIdentifier = ControllerConstants.TestKeys.chatInputView
         return textView
     }()
 
@@ -183,6 +184,7 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         button.setImage(UIImage(named: ControllerConstants.mic), for: .normal)
         button.addTarget(self, action: #selector(startSTT), for: .touchUpInside)
         button.backgroundColor = UIColor.defaultColor()
+        button.accessibilityIdentifier = ControllerConstants.TestKeys.send
         return button
     }()
 

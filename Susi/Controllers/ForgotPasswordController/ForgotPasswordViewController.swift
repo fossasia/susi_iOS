@@ -28,6 +28,7 @@ class ForgotPasswordViewController: UIViewController {
         textField.placeholder = ControllerConstants.enterEmailID
         textField.detailLabel.text = ControllerConstants.invalidEmail
         textField.delegate = self
+        textField.accessibilityIdentifier = ControllerConstants.TestKeys.email
         return textField
     }()
 

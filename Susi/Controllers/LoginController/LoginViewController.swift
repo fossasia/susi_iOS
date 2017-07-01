@@ -30,9 +30,11 @@ class LoginViewController: UIViewController {
         let textField = AuthTextField()
         textField.keyboardType = .emailAddress
         textField.placeholder = ControllerConstants.Login.emailAddress
-        textField.detail = ControllerConstants.Login.invalidEmail
+        textField.detailLabel.text = ControllerConstants.Login.invalidEmail
         textField.delegate = self
         textField.autocorrectionType = .no
+        textField.accessibilityIdentifier = ControllerConstants.TestKeys.email
+        textField.detailLabel.accessibilityIdentifier = ControllerConstants.TestKeys.emailDetail
         return textField
     }()
 
@@ -44,6 +46,7 @@ class LoginViewController: UIViewController {
         textField.isVisibilityIconButtonEnabled = true
         textField.visibilityIconButton?.tintColor = Color.white.withAlphaComponent(textField.isSecureTextEntry ? 0.38 : 0.54)
         textField.delegate = self
+        textField.accessibilityIdentifier = ControllerConstants.TestKeys.password
         return textField
     }()
 
@@ -116,10 +119,7 @@ class LoginViewController: UIViewController {
         addTapGesture()
 
         print(Realm.Configuration.defaultConfiguration.fileURL!)
-//        let realm = try! Realm()
-//        try! realm.write {
-//            realm.deleteAll()
-//        }
+//        resetDB()
     }
 
 }

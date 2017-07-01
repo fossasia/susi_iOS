@@ -64,6 +64,7 @@ class WebsearchCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
         addSubview(collectionView)
         addConstraintsWithFormat(format: "H:|[v0]|", views: collectionView)
         addConstraintsWithFormat(format: "V:|[v0]|", views: collectionView)
+        collectionView.accessibilityIdentifier = ControllerConstants.TestKeys.rssCollectionView
     }
 
     required init?(coder aDecoder: NSCoder) {
