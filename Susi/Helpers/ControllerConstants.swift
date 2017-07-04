@@ -77,6 +77,8 @@ class ControllerConstants {
         static let rateSusi = "Rate Susi"
         static let rateOnAppStore = "Rate our app on App Store"
         static let settingsList = ["Settings", "Wallpaper", "Share", "Logout"]
+        static let enableHotword = "Enable Hotword Recognition"
+        static let susiHotword = "Enable Susi hotword recognition"
     }
 
     struct UserDefaultsKeys {
@@ -88,6 +90,35 @@ class ControllerConstants {
         static let wallpaper = "wallpaper"
         static let ipAddress = "ipAddress"
         static let firstLaunch = "firstLaunch"
+        static let hotwordEnabled = "hotwordEnabled"
+    }
+
+    struct TestKeys {
+        static let email = "email"
+        static let password = "password"
+        static let send = "send"
+        static let login = "LOGIN"
+        static let returnHit = "return"
+        static let incorrectLogin = "Email ID / Password incorrect"
+        static let emailDetail = "emailDetail"
+        static let confirmPassword = "confirmPassword"
+        static let signUp = "signUp"
+        static let forgotPassword = "Forgot Password?"
+        static let reset = "Reset"
+        static let emailSent = "Email Sent"
+        static let ok = "Ok"
+        static let skip = "Skip"
+        static let chatInputView = "inputView"
+        static let logout = "Logout"
+        static let rssCollectionView = "rssCollectionView"
+
+        struct TestAccount {
+            static let emailId = "susi.ai@mail.com"
+            static let password = "Password123"
+            static let incorrectPassword = "password"
+            static let invalidEmail = "susi.ai@mail"
+        }
+
     }
 
 }

@@ -261,6 +261,8 @@ extension LoginViewController {
 
     // Login User
     func completeLogin(_ firstLogin: Bool = true) {
+        resetDB()
+
         let layout = BouncyLayout()
         let vc = MainViewController(collectionViewLayout: layout)
         let nvc = AppNavigationController(rootViewController: vc)
@@ -282,10 +284,7 @@ extension LoginViewController {
                     if user.expiryTime > Date() {
                         self.completeLogin(false)
                     } else {
-                        let realm = try! Realm()
-                        try! realm.write {
-                            realm.deleteAll()
-                        }
+                        self.resetDB()
                     }
                 }
             }
@@ -293,12 +292,16 @@ extension LoginViewController {
     }
 
     func anonymousMode() {
+        resetDB()
+        UserDefaults.standard.set(Client.APIURLs.SusiAPI, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
+        self.completeLogin()
+    }
+
+    func resetDB() {
         let realm = try! Realm()
         try! realm.write {
             realm.deleteAll()
         }
-        UserDefaults.standard.set(Client.APIURLs.SusiAPI, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
-        self.completeLogin()
     }
 
 }

@@ -28,6 +28,7 @@ class SignUpViewController: UIViewController {
         textField.placeholder = ControllerConstants.SignUp.emailAddress
         textField.detail = ControllerConstants.SignUp.invalidEmail
         textField.delegate = self
+        textField.accessibilityIdentifier = ControllerConstants.TestKeys.email
         return textField
     }()
 
@@ -40,6 +41,7 @@ class SignUpViewController: UIViewController {
         textField.isVisibilityIconButtonEnabled = true
         textField.visibilityIconButton?.tintColor = Color.white.withAlphaComponent(textField.isSecureTextEntry ? 0.38 : 0.54)
         textField.delegate = self
+        textField.accessibilityIdentifier = ControllerConstants.TestKeys.password
         return textField
     }()
 
@@ -53,6 +55,7 @@ class SignUpViewController: UIViewController {
         textField.isVisibilityIconButtonEnabled = true
         textField.visibilityIconButton?.tintColor = Color.white.withAlphaComponent(textField.isSecureTextEntry ? 0.38 : 0.54)
         textField.delegate = self
+        textField.accessibilityIdentifier = ControllerConstants.TestKeys.confirmPassword
         return textField
     }()
 
@@ -63,6 +66,7 @@ class SignUpViewController: UIViewController {
         button.backgroundColor = .white
         button.setTitleColor(UIColor.defaultColor(), for: .normal)
         button.addTarget(self, action: #selector(performSignUp), for: .touchUpInside)
+        button.accessibilityIdentifier = ControllerConstants.TestKeys.signUp
         return button
     }()
 

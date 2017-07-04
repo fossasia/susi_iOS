@@ -9,7 +9,7 @@
 extension Client {
 
     struct APIURLs {
-        static let SusiAPI = "http://api.asksusi.com"
+        static let SusiAPI = "http://api.susi.ai"
         static let DuckDuckGo = "http://api.duckduckgo.com"
         static let YoutubeSearch = "https://www.googleapis.com/youtube/v3/search"
     }

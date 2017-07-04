@@ -91,8 +91,7 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         // Configure Location Manager
         configureLocationManager()
 
-//        initSnowboy()
-//        startHotwordRecognition()
+        initSnowboy()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -108,6 +107,14 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         loadMessages()
+
+        if UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.hotwordEnabled) {
+            startHotwordRecognition()
+        } else {
+            stopRecording()
+            timer.invalidate()
+        }
+
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -181,6 +188,7 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         textView.maximumNumberOfLines = 2
         textView.layer.cornerRadius = 15
         textView.delegate = self
+        textView.accessibilityIdentifier = ControllerConstants.TestKeys.chatInputView
         return textView
     }()
 
@@ -190,6 +198,7 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         button.setImage(UIImage(named: ControllerConstants.mic), for: .normal)
         button.addTarget(self, action: #selector(startSTT), for: .touchUpInside)
         button.backgroundColor = UIColor.defaultColor()
+        button.accessibilityIdentifier = ControllerConstants.TestKeys.send
         return button
     }()
 
