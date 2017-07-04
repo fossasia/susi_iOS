@@ -84,8 +84,7 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         // Configure Location Manager
         configureLocationManager()
 
-//        initSnowboy()
-//        startHotwordRecognition()
+        initSnowboy()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -101,6 +100,14 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         loadMessages()
+
+        if UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.hotwordEnabled) {
+            startHotwordRecognition()
+        } else {
+            stopRecording()
+            timer.invalidate()
+        }
+
     }
 
     override func viewDidDisappear(_ animated: Bool) {
