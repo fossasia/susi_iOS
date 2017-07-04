@@ -4,6 +4,7 @@
 [![Join the chat at https://gitter.im/fossasia/susi_iOS](https://badges.gitter.im/fossasia/susi_iOS.svg)](https://gitter.im/fossasia/susi_iOS?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/fossasia/susi_iOS.svg?branch=master)](https://travis-ci.org/fossasia/susi_iOS)
 [![Preview the app](https://img.shields.io/badge/Preview-Appetize.io-orange.svg)](https://appetize.io/app/bngee02t60ambqz5ed3kjgfgkm)
+[![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=595bb221b59837000107dd41&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/595bb221b59837000107dd41/build/latest?branch=master)
 
 The main feature of the app is to provide a conversational interface to provide intelligent answers using the loklak/AskSusi infrastructure. The app also offers login functionalities to connect to other services and stored personal data. Additionally the application uses data provided by the user's phone to improve Susi answers. Geolocation information for example helps to offer better answers related to questions about "things nearby".
 
@@ -85,3 +86,5 @@ Please help us follow the best practice to make it easy for the reviewer as well
 ## License
 
 This project is currently licensed under the Apache License Version 2.0. A copy of [LICENSE.md](https://github.com/fossasia/susi_iOS/blob/master/LICENSE) should be present along with the source code. To obtain the software under a different license, please contact FOSSASIA.
+
+
