@@ -33,7 +33,7 @@ class WebsearchCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
                     Client.WebsearchKeys.Format: ControllerConstants.json
                 ]
 
-                Client.sharedInstance.websearch(params as [String : AnyObject], { (results, success, message) in
+                Client.sharedInstance.websearch(params as [String : AnyObject]) { (results, success, message) in
                     DispatchQueue.main.async {
                         if success {
                             try! self.realm.write {
@@ -46,7 +46,7 @@ class WebsearchCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
                             debugPrint(message ?? ControllerConstants.errorOccured)
                         }
                     }
-                })
+                }
                 params.removeAll()
             } else {
                 self.collectionView.reloadData()

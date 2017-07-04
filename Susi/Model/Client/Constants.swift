@@ -19,6 +19,7 @@ extension Client {
         static let Register = "/aaa/signup.json"
         static let Chat = "/susi/chat.json"
         static let ResetPassword = "/aaa/recoverpassword.json"
+        static let Memory = "/susi/memory.json"
     }
 
     struct ResponseMessages {
@@ -60,6 +61,7 @@ extension Client {
         static let QueryDate = "query_date"
         static let ShortenedUrl = "finalUrl"
         static let Image = "image"
+        static let Cognitions = "cognitions"
     }
 
     struct WebsearchKeys {

@@ -96,4 +96,26 @@ class Message: Object {
         return messages
     }
 
+    static func getMessagesFromMemory(_ cognitions: [[String : AnyObject]]) -> List<Message> {
+
+        let messages = List<Message>()
+
+        for cognition in cognitions {
+
+            if let query = cognition[Client.ChatKeys.Query] as? String {
+                let message = Message(message: query)
+                messages.append(message)
+            }
+
+            let actionMessages = Message.getAllAction(data: cognition)
+            for message in actionMessages {
+                messages.append(message)
+            }
+
+        }
+
+        return messages
+
+    }
+
 }

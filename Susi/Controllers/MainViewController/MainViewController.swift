@@ -70,6 +70,13 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
 
     let indicatorView = NVActivityIndicatorView(frame: CGRect(), type: .ballPulse, color: .white, padding: 0)
 
+    // flag for login
+    var loadMemoryFromNetwork: Bool? {
+        didSet {
+            getMessagesFromMemory()
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
