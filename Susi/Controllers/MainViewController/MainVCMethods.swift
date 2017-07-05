@@ -237,4 +237,32 @@ extension MainViewController {
         }
     }
 
+    func getMessagesFromMemory() {
+        if let userData = UserDefaults.standard.dictionary(forKey: ControllerConstants.UserDefaultsKeys.user) {
+            let user = User(dictionary: userData as [String : AnyObject])
+
+            let params = [
+                Client.ChatKeys.AccessToken: user.accessToken
+            ]
+
+            Client.sharedInstance.getMessagesFromMemory(params as [String : AnyObject]) { (messages, _, _) in
+                DispatchQueue.main.async {
+                    self.collectionView?.performBatchUpdates({
+                        for message in messages! {
+                            try! self.realm.write {
+                                self.realm.add(message)
+                                self.messages.append(message)
+                                let indexPath = IndexPath(item: self.messages.count - 1, section: 0)
+                                self.collectionView?.insertItems(at: [indexPath])
+                            }
+                        }
+                    }, completion: { (_) in
+                        self.scrollToLast()
+                    })
+                }
+            }
+
+        }
+    }
+
 }

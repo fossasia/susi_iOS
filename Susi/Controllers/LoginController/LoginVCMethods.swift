@@ -260,7 +260,7 @@ extension LoginViewController {
     }
 
     // Login User
-    func completeLogin() {
+    func completeLogin(_ firstLogin: Bool = true) {
         resetDB()
 
         let layout = BouncyLayout()
@@ -268,6 +268,9 @@ extension LoginViewController {
         let nvc = AppNavigationController(rootViewController: vc)
         self.present(nvc, animated: true, completion: {
             self.clearFields()
+            if firstLogin {
+                vc.loadMemoryFromNetwork = true
+            }
         })
     }
 
@@ -278,9 +281,8 @@ extension LoginViewController {
                 let user = User(dictionary: user)
 
                 DispatchQueue.main.async {
-                    print(user.expiryTime)
                     if user.expiryTime > Date() {
-                        self.completeLogin()
+                        self.completeLogin(false)
                     } else {
                         self.resetDB()
                     }

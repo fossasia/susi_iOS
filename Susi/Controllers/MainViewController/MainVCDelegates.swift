@@ -286,7 +286,7 @@ extension MainViewController: AVAudioRecorderDelegate {
     }
 
     func stopRecording() {
-        if (audioRecorder != nil && audioRecorder.isRecording) {
+        if audioRecorder != nil && audioRecorder.isRecording {
             audioRecorder.stop()
         }
     }

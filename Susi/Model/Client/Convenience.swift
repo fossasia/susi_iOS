@@ -78,6 +78,31 @@ extension Client {
 
     }
 
+    func getMessagesFromMemory(_ params: [String : AnyObject], _ completion: @escaping(_ messages: List<Message>?, _ success: Bool, _ error: String?) -> Void) {
+
+        let url = getApiUrl(UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.ipAddress) as! String, Methods.Memory)
+
+        _ = makeRequest(url, .get, [:], parameters: params, completion: { (results, error) in
+
+            if let _ = error {
+                completion(nil, false, error!.localizedDescription)
+            } else if let results = results {
+
+                guard let cognitions = results[Client.ChatKeys.Cognitions] as? [[String : AnyObject]] else {
+                    completion(nil, false, ResponseMessages.ServerError)
+                    return
+                }
+
+                let messages = Message.getMessagesFromMemory(cognitions)
+                completion(messages, true, nil)
+
+            }
+            return
+
+        })
+
+    }
+
     func logoutUser(_ completion: @escaping(_ success: Bool, _ error: String) -> Void) {
 
         UserDefaults.standard.removeObject(forKey: ControllerConstants.UserDefaultsKeys.user)
