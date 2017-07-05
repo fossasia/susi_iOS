@@ -242,7 +242,7 @@ extension MainViewController {
             let user = User(dictionary: userData as [String : AnyObject])
 
             let params = [
-                Client.ChatKeys.AccessToken: user.accessToken
+                Client.UserKeys.AccessToken: user.accessToken
             ]
 
             Client.sharedInstance.getMessagesFromMemory(params as [String : AnyObject]) { (messages, _, _) in
