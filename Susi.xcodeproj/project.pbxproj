@@ -15,7 +15,6 @@
 		6D0DB6281EE436FC00AD030D /* IncomingChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0DB6271EE436FC00AD030D /* IncomingChatCell.swift */; };
 		6D215B951EB0BE7300CD2C1D /* AuthenticationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D215B941EB0BE7300CD2C1D /* AuthenticationUITests.swift */; };
 		6D24B08A1EE4079E0097418A /* LoginVCMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D24B0891EE4079E0097418A /* LoginVCMethods.swift */; };
-		6D24B08C1EE408890097418A /* LoginVCDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D24B08B1EE408890097418A /* LoginVCDelegates.swift */; };
 		6D24B08F1EE4090C0097418A /* ForgotPasswordVCDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D24B08E1EE4090C0097418A /* ForgotPasswordVCDelegates.swift */; };
 		6D24B0911EE4093C0097418A /* ForgotPasswordVCMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D24B0901EE4093C0097418A /* ForgotPasswordVCMethods.swift */; };
 		6D24B0941EE409AB0097418A /* SignUpVCDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D24B0931EE409AB0097418A /* SignUpVCDelegates.swift */; };
@@ -92,7 +91,6 @@
 		6D215B941EB0BE7300CD2C1D /* AuthenticationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationUITests.swift; sourceTree = "<group>"; };
 		6D215B961EB0BE7300CD2C1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D24B0891EE4079E0097418A /* LoginVCMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVCMethods.swift; sourceTree = "<group>"; };
-		6D24B08B1EE408890097418A /* LoginVCDelegates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVCDelegates.swift; sourceTree = "<group>"; };
 		6D24B08E1EE4090C0097418A /* ForgotPasswordVCDelegates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVCDelegates.swift; sourceTree = "<group>"; };
 		6D24B0901EE4093C0097418A /* ForgotPasswordVCMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVCMethods.swift; sourceTree = "<group>"; };
 		6D24B0931EE409AB0097418A /* SignUpVCDelegates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVCDelegates.swift; sourceTree = "<group>"; };
@@ -206,7 +204,6 @@
 		6D24B0881EE407760097418A /* LoginController */ = {
 			isa = PBXGroup;
 			children = (
-				6D24B08B1EE408890097418A /* LoginVCDelegates.swift */,
 				6D24B0891EE4079E0097418A /* LoginVCMethods.swift */,
 				6D4D9B4C1E768E650067459C /* LoginViewController.swift */,
 			);
@@ -679,7 +676,6 @@
 				6D24B0941EE409AB0097418A /* SignUpVCDelegates.swift in Sources */,
 				6DE44E1B1E76B5D600215B85 /* SignUpViewController.swift in Sources */,
 				6D9C0D291E7B223A00199828 /* User.swift in Sources */,
-				6D24B08C1EE408890097418A /* LoginVCDelegates.swift in Sources */,
 				6D24B0911EE4093C0097418A /* ForgotPasswordVCMethods.swift in Sources */,
 				6D61B9B11EEBAB0200CD3536 /* WebsearchAction.swift in Sources */,
 				6D24B08F1EE4090C0097418A /* ForgotPasswordVCDelegates.swift in Sources */,

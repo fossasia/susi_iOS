@@ -18,42 +18,6 @@ extension LoginViewController {
         self.view.addGestureRecognizer(tap)
     }
 
-    // Setup View
-//    func setupView() {
-//        self.view.backgroundColor = UIColor.defaultColor()
-//
-//        prepareScrollView()
-//        prepareLogo()
-//        prepareEmailField()
-//        preparePasswordField()
-//        prepareRadioButtons()
-//        prepareLoginButton()
-//        prepareForgotButton()
-//        prepareSkipButton()
-//        prepareSignUpButton()
-//    }
-//
-//    // Add Subview Scroll View
-//    func prepareScrollView() {
-//        self.view.addSubview(scrollView)
-//        scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-//        scrollView.alwaysBounceVertical = true
-//        scrollView.isScrollEnabled = true
-//    }
-//
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//        scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height * 1.2)
-//    }
-//
-//    // Add Subview Logo
-//    private func prepareLogo() {
-//        self.scrollView.addSubview(susiLogo)
-//        self.scrollView.layout(susiLogo)
-//            .top(50)
-//            .centerHorizontally()
-//    }
-
     // Configures Email Text Field
     func prepareEmailField() {
         emailTextField.placeholderNormalColor = .white
