@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="17A291m" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0ek-IO-lKt">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="stJ-RQ-98a">
+            <objects>
+                <viewController id="0ek-IO-lKt" customClass="LoginViewController" customModule="Susi" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YPg-SH-GPq"/>
+                        <viewControllerLayoutGuide type="bottom" id="qeg-ec-MXB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eB9-M6-ocu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="susi" translatesAutoresizingMaskIntoConstraints="NO" id="a1R-Kp-3L1">
+                                <rect key="frame" x="20" y="28" width="374" height="85"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="85" id="2sz-gr-uZT"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ViN-ki-rRD" customClass="TextField" customModule="Material">
+                                <rect key="frame" x="20" y="145" width="374" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Email Address"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="dividerColor">
+                                        <color key="value" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isClearIconButtonEnabled" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isVisibilityIconButtonAutoHandled" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="0ek-IO-lKt" id="uX4-Ze-euh"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bMo-Iv-Lqa" customClass="TextField" customModule="Material">
+                                <rect key="frame" x="20" y="204" width="374" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" secureTextEntry="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Password"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isVisibilityIconButtonEnabled" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isVisibilityIconButtonAutoHandled" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="0ek-IO-lKt" id="yAm-aa-QF0"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="trP-xG-72E" customClass="DLRadioButton">
+                                <rect key="frame" x="35" y="254" width="359" height="34"/>
+                                <state key="normal" title="SUSI AI Standard Server"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USZ-bF-rAa" customClass="DLRadioButton">
+                                <rect key="frame" x="35" y="296" width="359" height="34"/>
+                                <state key="normal" title="Personal Server"/>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LU3-5s-B2R" customClass="TextField" customModule="Material">
+                                <rect key="frame" x="20" y="355" width="374" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" returnKeyType="go"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Address http://"/>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tyX-vw-iD6" customClass="RaisedButton" customModule="Material">
+                                <rect key="frame" x="20" y="350" width="374" height="44"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="pGd-5d-AZr"/>
+                                </constraints>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uui-73-IEM" customClass="FlatButton" customModule="Material">
+                                <rect key="frame" x="20" y="440" width="374" height="34"/>
+                                <state key="normal" title="Skip"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Q5-rQ-6Ig" customClass="FlatButton" customModule="Material">
+                                <rect key="frame" x="20" y="402" width="374" height="34"/>
+                                <state key="normal" title="Forgot Password"/>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Ey6-yh-fIO">
+                                <rect key="frame" x="189" y="480" width="37" height="37"/>
+                            </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0l-NZ-Q5Q" customClass="FlatButton" customModule="Material">
+                                <rect key="frame" x="20" y="682" width="374" height="34"/>
+                                <state key="normal" title="Sign Up for SUSI"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.16862745098039217" green="0.24313725490196078" blue="0.30980392156862746" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="a1R-Kp-3L1" firstAttribute="trailing" secondItem="eB9-M6-ocu" secondAttribute="trailingMargin" id="3CD-n4-10g"/>
+                            <constraint firstItem="Ey6-yh-fIO" firstAttribute="leading" secondItem="eB9-M6-ocu" secondAttribute="leadingMargin" constant="169" id="5qQ-ai-FpG"/>
+                            <constraint firstItem="LU3-5s-B2R" firstAttribute="leading" secondItem="eB9-M6-ocu" secondAttribute="leadingMargin" id="6ci-VP-tZs"/>
+                            <constraint firstItem="trP-xG-72E" firstAttribute="leading" secondItem="USZ-bF-rAa" secondAttribute="leading" id="9Kq-kR-e6z"/>
+                            <constraint firstItem="a1R-Kp-3L1" firstAttribute="leading" secondItem="eB9-M6-ocu" secondAttribute="leadingMargin" id="BNf-As-pvS"/>
+                            <constraint firstItem="bMo-Iv-Lqa" firstAttribute="trailing" secondItem="trP-xG-72E" secondAttribute="trailing" id="E38-DF-2xc"/>
+                            <constraint firstItem="ViN-ki-rRD" firstAttribute="top" secondItem="a1R-Kp-3L1" secondAttribute="bottom" constant="32" id="LDg-Vy-D5f"/>
+                            <constraint firstItem="a1R-Kp-3L1" firstAttribute="leading" secondItem="ViN-ki-rRD" secondAttribute="leading" id="Mt5-qq-pP1"/>
+                            <constraint firstItem="trP-xG-72E" firstAttribute="leading" secondItem="eB9-M6-ocu" secondAttribute="leadingMargin" constant="15" id="QZT-8L-cHp"/>
+                            <constraint firstItem="ViN-ki-rRD" firstAttribute="leading" secondItem="bMo-Iv-Lqa" secondAttribute="leading" id="QfV-0R-dMd"/>
+                            <constraint firstItem="3Q5-rQ-6Ig" firstAttribute="leading" secondItem="eB9-M6-ocu" secondAttribute="leadingMargin" id="SM9-fI-HPd"/>
+                            <constraint firstItem="Uui-73-IEM" firstAttribute="leading" secondItem="eB9-M6-ocu" secondAttribute="leadingMargin" id="Tdk-fh-5tm"/>
+                            <constraint firstItem="N0l-NZ-Q5Q" firstAttribute="leading" secondItem="eB9-M6-ocu" secondAttribute="leadingMargin" id="UeQ-SA-ebJ"/>
+                            <constraint firstItem="Uui-73-IEM" firstAttribute="trailing" secondItem="eB9-M6-ocu" secondAttribute="trailingMargin" id="WPy-kJ-VPi"/>
+                            <constraint firstItem="LU3-5s-B2R" firstAttribute="top" secondItem="USZ-bF-rAa" secondAttribute="bottom" constant="25" id="dY3-Wu-MB9"/>
+                            <constraint firstItem="ViN-ki-rRD" firstAttribute="trailing" secondItem="bMo-Iv-Lqa" secondAttribute="trailing" id="fhZ-tW-8N8"/>
+                            <constraint firstItem="USZ-bF-rAa" firstAttribute="top" secondItem="trP-xG-72E" secondAttribute="bottom" constant="8" symbolic="YES" id="gQQ-n6-1RB"/>
+                            <constraint firstItem="trP-xG-72E" firstAttribute="top" secondItem="bMo-Iv-Lqa" secondAttribute="bottom" constant="20" id="ic7-9g-fy4"/>
+                            <constraint firstItem="tyX-vw-iD6" firstAttribute="trailing" secondItem="eB9-M6-ocu" secondAttribute="trailingMargin" id="jA6-6q-dE5"/>
+                            <constraint firstItem="a1R-Kp-3L1" firstAttribute="top" secondItem="YPg-SH-GPq" secondAttribute="bottom" constant="8" symbolic="YES" id="jev-aN-fdj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ey6-yh-fIO" secondAttribute="trailing" constant="168" id="km9-ZT-hHH"/>
+                            <constraint firstItem="3Q5-rQ-6Ig" firstAttribute="top" secondItem="tyX-vw-iD6" secondAttribute="bottom" constant="8" id="kvt-Wb-227"/>
+                            <constraint firstItem="qeg-ec-MXB" firstAttribute="top" secondItem="N0l-NZ-Q5Q" secondAttribute="bottom" constant="20" id="mTH-3x-2lv"/>
+                            <constraint firstItem="LU3-5s-B2R" firstAttribute="trailing" secondItem="eB9-M6-ocu" secondAttribute="trailingMargin" id="mdP-3Q-Hjc"/>
+                            <constraint firstItem="Uui-73-IEM" firstAttribute="top" secondItem="3Q5-rQ-6Ig" secondAttribute="bottom" constant="4" id="mmx-OW-Ax0"/>
+                            <constraint firstItem="tyX-vw-iD6" firstAttribute="leading" secondItem="eB9-M6-ocu" secondAttribute="leadingMargin" id="pWY-4m-AGr"/>
+                            <constraint firstItem="N0l-NZ-Q5Q" firstAttribute="trailing" secondItem="eB9-M6-ocu" secondAttribute="trailingMargin" id="ptl-sx-n0S"/>
+                            <constraint firstItem="tyX-vw-iD6" firstAttribute="leading" secondItem="eB9-M6-ocu" secondAttribute="leadingMargin" id="q82-gn-8vn"/>
+                            <constraint firstItem="Ey6-yh-fIO" firstAttribute="top" secondItem="Uui-73-IEM" secondAttribute="bottom" constant="6" id="sAb-hR-zRO"/>
+                            <constraint firstItem="bMo-Iv-Lqa" firstAttribute="top" secondItem="ViN-ki-rRD" secondAttribute="bottom" constant="29" id="swt-rt-kZR"/>
+                            <constraint firstItem="tyX-vw-iD6" firstAttribute="trailing" secondItem="eB9-M6-ocu" secondAttribute="trailingMargin" id="uUX-yA-AxI"/>
+                            <constraint firstItem="tyX-vw-iD6" firstAttribute="top" secondItem="USZ-bF-rAa" secondAttribute="bottom" constant="20" id="vf0-gO-zdC"/>
+                            <constraint firstItem="3Q5-rQ-6Ig" firstAttribute="trailing" secondItem="eB9-M6-ocu" secondAttribute="trailingMargin" id="wRV-9c-yKS"/>
+                            <constraint firstItem="a1R-Kp-3L1" firstAttribute="trailing" secondItem="ViN-ki-rRD" secondAttribute="trailing" id="x9K-XO-VkX"/>
+                            <constraint firstItem="trP-xG-72E" firstAttribute="trailing" secondItem="USZ-bF-rAa" secondAttribute="trailing" id="yrS-DB-TjR"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="addressField" destination="LU3-5s-B2R" id="kLe-KG-ORJ"/>
+                        <outlet property="emailTextField" destination="ViN-ki-rRD" id="KpM-yn-hBM"/>
+                        <outlet property="forgotPassword" destination="3Q5-rQ-6Ig" id="1sD-sb-0Q2"/>
+                        <outlet property="indicatorView" destination="Ey6-yh-fIO" id="mwh-Lu-SQz"/>
+                        <outlet property="loginButton" destination="tyX-vw-iD6" id="Acg-Qg-9ff"/>
+                        <outlet property="loginButtonTopConstraint" destination="vf0-gO-zdC" id="hoS-Ec-hqE"/>
+                        <outlet property="passwordTextField" destination="bMo-Iv-Lqa" id="sDg-W6-Z6a"/>
+                        <outlet property="personalServerButton" destination="USZ-bF-rAa" id="gie-se-GcR"/>
+                        <outlet property="signUpButton" destination="N0l-NZ-Q5Q" id="Aoi-3T-9C3"/>
+                        <outlet property="skipButton" destination="Uui-73-IEM" id="QUZ-1p-rs5"/>
+                        <outlet property="standardServerButton" destination="trP-xG-72E" id="jg1-ZX-VmO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7ib-rp-qeC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="31.884057971014496" y="40.760869565217398"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="susi" width="440" height="100"/>
+    </resources>
+</document>

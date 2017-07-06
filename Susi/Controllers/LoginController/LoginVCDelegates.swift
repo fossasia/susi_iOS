@@ -13,17 +13,17 @@ extension LoginViewController: TextFieldDelegate {
 
     // Verify input data after editing over
     public func textFieldDidEndEditing(_ textField: UITextField) {
-        if let emailID = emailField.text, !emailID.isValidEmail() && textField == emailField {
-            emailField.isErrorRevealed = true
-        } else {
-            emailField.isErrorRevealed = false
-        }
-
-        if let password = passwordField.text, password.isEmpty && textField == passwordField {
-            passwordField.isErrorRevealed = true
-        } else {
-            passwordField.isErrorRevealed = false
-        }
+//        if let emailID = emailField.text, !emailID.isValidEmail() && textField == emailField {
+//            emailField.isErrorRevealed = true
+//        } else {
+//            emailField.isErrorRevealed = false
+//        }
+//
+//        if let password = passwordField.text, password.isEmpty && textField == passwordField {
+//            passwordField.isErrorRevealed = true
+//        } else {
+//            passwordField.isErrorRevealed = false
+//        }
     }
 
     public func textFieldShouldClear(_ textField: UITextField) -> Bool {

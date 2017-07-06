@@ -21,10 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         initializeRealm()
         initializeUserSettings()
 
-        UIApplication.shared.statusBarStyle = .lightContent
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.makeKeyAndVisible()
-        window?.rootViewController = LoginViewController()
+//        UIApplication.shared.statusBarStyle = .lightContent
+//        window = UIWindow(frame: UIScreen.main.bounds)
+//        window?.makeKeyAndVisible()
+//        window?.rootViewController = LoginViewController()
 
         return true
     }
