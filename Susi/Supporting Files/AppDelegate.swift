@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         if !firstLaunch {
             UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.firstLaunch)
-            UserDefaults.standard.set(false, forKey: ControllerConstants.UserDefaultsKeys.enterToSend)
+            UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.enterToSend)
             UserDefaults.standard.set(false, forKey: ControllerConstants.UserDefaultsKeys.micInput)
             UserDefaults.standard.set(false, forKey: ControllerConstants.UserDefaultsKeys.speechOutput)
             UserDefaults.standard.set(false, forKey: ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn)
