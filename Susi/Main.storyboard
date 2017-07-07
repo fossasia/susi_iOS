@@ -93,6 +93,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Q5-rQ-6Ig" customClass="FlatButton" customModule="Material">
                                 <rect key="frame" x="20" y="402" width="374" height="34"/>
                                 <state key="normal" title="Forgot Password"/>
+                                <connections>
+                                    <segue destination="hF4-Pz-cCO" kind="show" id="eZr-1Q-eyn"/>
+                                </connections>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Ey6-yh-fIO">
                                 <rect key="frame" x="189" y="480" width="37" height="37"/>
@@ -159,8 +162,132 @@
             </objects>
             <point key="canvasLocation" x="31.884057971014496" y="40.760869565217398"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="H6a-qx-OLK">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hF4-Pz-cCO" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="jgu-nc-Cv5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Fit-NA-UMn" kind="relationship" relationship="rootViewController" id="59Z-eh-tsp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sjd-dq-hpC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1355.072463768116" y="181.79347826086959"/>
+        </scene>
+        <!--Forgot Password-->
+        <scene sceneID="BCX-3y-eQI">
+            <objects>
+                <viewController id="Fit-NA-UMn" customClass="ForgotPasswordViewController" customModule="Susi" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MY1-jM-TPp"/>
+                        <viewControllerLayoutGuide type="bottom" id="DGr-8h-EN0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="U1T-gl-beX">
+                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xUr-5V-fz5" customClass="TextField" customModule="Material">
+                                <rect key="frame" x="20" y="24" width="374" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Email Address"/>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gyg-4X-NRt" customClass="DLRadioButton">
+                                <rect key="frame" x="34" y="66" width="360" height="34"/>
+                                <state key="normal" title="SUSI AI Standard Server"/>
+                                <connections>
+                                    <action selector="toggleRadioButtons:" destination="Fit-NA-UMn" eventType="touchUpInside" id="YYl-xz-eaB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xEW-jk-Ko4" customClass="DLRadioButton">
+                                <rect key="frame" x="34" y="108" width="360" height="34"/>
+                                <state key="normal" title="Personal Server"/>
+                                <connections>
+                                    <action selector="toggleRadioButtons:" destination="Fit-NA-UMn" eventType="touchUpInside" id="4Oc-q8-gxb"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qiK-SW-xKP" customClass="TextField" customModule="Material">
+                                <rect key="frame" x="20" y="166" width="374" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" returnKeyType="go"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Address http://"/>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9bQ-nT-dJk" customClass="FlatButton" customModule="Material">
+                                <rect key="frame" x="20" y="166" width="374" height="44"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="5uG-f6-7eE"/>
+                                </constraints>
+                                <state key="normal" title="Reset">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="BRz-rB-H1u">
+                                <rect key="frame" x="189" y="223" width="37" height="37"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.16987413169999999" green="0.2420473397" blue="0.30863785739999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="xUr-5V-fz5" firstAttribute="trailing" secondItem="Gyg-4X-NRt" secondAttribute="trailing" id="5Kr-Rg-5JV"/>
+                            <constraint firstItem="BRz-rB-H1u" firstAttribute="centerX" secondItem="qiK-SW-xKP" secondAttribute="centerX" id="ARn-Y8-BDs"/>
+                            <constraint firstItem="xEW-jk-Ko4" firstAttribute="top" secondItem="Gyg-4X-NRt" secondAttribute="bottom" constant="8" symbolic="YES" id="CrZ-aY-YSd"/>
+                            <constraint firstItem="BRz-rB-H1u" firstAttribute="top" secondItem="9bQ-nT-dJk" secondAttribute="bottom" constant="13" id="H0Z-xk-0OH"/>
+                            <constraint firstItem="9bQ-nT-dJk" firstAttribute="leading" secondItem="qiK-SW-xKP" secondAttribute="leading" id="KaQ-Yx-hXk"/>
+                            <constraint firstItem="xUr-5V-fz5" firstAttribute="trailing" secondItem="U1T-gl-beX" secondAttribute="trailingMargin" id="LmH-tx-Yg2"/>
+                            <constraint firstItem="9bQ-nT-dJk" firstAttribute="trailing" secondItem="qiK-SW-xKP" secondAttribute="trailing" id="dRh-Hn-mLg"/>
+                            <constraint firstItem="qiK-SW-xKP" firstAttribute="top" secondItem="xEW-jk-Ko4" secondAttribute="bottom" constant="24" id="dVQ-QO-UuO"/>
+                            <constraint firstItem="Gyg-4X-NRt" firstAttribute="top" secondItem="xUr-5V-fz5" secondAttribute="bottom" constant="12" id="fAZ-vg-GVl"/>
+                            <constraint firstItem="xEW-jk-Ko4" firstAttribute="trailing" secondItem="qiK-SW-xKP" secondAttribute="trailing" id="iKl-1q-ESO"/>
+                            <constraint firstItem="Gyg-4X-NRt" firstAttribute="leading" secondItem="U1T-gl-beX" secondAttribute="leadingMargin" constant="14" id="kQk-zE-Uik"/>
+                            <constraint firstItem="9bQ-nT-dJk" firstAttribute="top" secondItem="xEW-jk-Ko4" secondAttribute="bottom" constant="24" id="lAh-wG-sdK"/>
+                            <constraint firstItem="Gyg-4X-NRt" firstAttribute="leading" secondItem="xEW-jk-Ko4" secondAttribute="leading" id="pGm-wy-TEp"/>
+                            <constraint firstItem="xUr-5V-fz5" firstAttribute="leading" secondItem="U1T-gl-beX" secondAttribute="leadingMargin" id="rOg-NS-Jnt"/>
+                            <constraint firstItem="xUr-5V-fz5" firstAttribute="leading" secondItem="qiK-SW-xKP" secondAttribute="leading" id="wKj-74-WL8"/>
+                            <constraint firstItem="Gyg-4X-NRt" firstAttribute="trailing" secondItem="xEW-jk-Ko4" secondAttribute="trailing" id="xpl-ci-RK3"/>
+                            <constraint firstItem="xUr-5V-fz5" firstAttribute="top" secondItem="MY1-jM-TPp" secondAttribute="bottom" constant="24" id="zcY-n0-nS6"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Forgot Password" id="cc2-rG-5hm">
+                        <barButtonItem key="leftBarButtonItem" image="back_arrow" id="hMs-qn-EGF">
+                            <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="dismissView" destination="Fit-NA-UMn" id="e8d-go-GnO"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="activityIndicator" destination="BRz-rB-H1u" id="7u2-oO-Jgt"/>
+                        <outlet property="addressField" destination="qiK-SW-xKP" id="5zz-ht-suB"/>
+                        <outlet property="emailTextField" destination="xUr-5V-fz5" id="sm6-tx-pbD"/>
+                        <outlet property="personalServerButton" destination="xEW-jk-Ko4" id="pd3-dH-GkJ"/>
+                        <outlet property="resetButton" destination="9bQ-nT-dJk" id="8Qw-og-o3t"/>
+                        <outlet property="resetButtonTopConstraint" destination="lAh-wG-sdK" id="VC1-Cy-zPQ"/>
+                        <outlet property="standardServerButton" destination="Gyg-4X-NRt" id="8AP-2I-qJw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dGF-1C-qe5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2105.7971014492755" y="180.16304347826087"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="back_arrow" width="24" height="24"/>
         <image name="susi" width="440" height="100"/>
     </resources>
 </document>

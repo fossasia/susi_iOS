@@ -67,7 +67,7 @@ class Message: Object {
                     if let type = action[Client.ChatKeys.ResponseType] as? String,
                         let data = answers[0][Client.ChatKeys.Data] as? [[String : AnyObject]] {
                         if type == ActionType.answer.rawValue {
-                            message.message = action[Client.ChatKeys.Expression] as! String
+                            message.message = action[Client.ChatKeys.Expression] as? String ?? ""
                             message.actionType = ActionType.answer.rawValue
                             message.answerData = AnswerAction(action: action)
                         } else if type == ActionType.rss.rawValue {
@@ -85,7 +85,7 @@ class Message: Object {
                             message.tableData = TableAction(data: data, actionObject: action)
                         } else if type == ActionType.websearch.rawValue {
                             message.actionType = ActionType.websearch.rawValue
-                            message.message = action[Client.ChatKeys.Query] as! String
+                            message.message = action[Client.ChatKeys.Query] as? String ?? ""
                         }
                     }
                     messages.append(message)

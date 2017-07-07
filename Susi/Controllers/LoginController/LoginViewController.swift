@@ -39,7 +39,6 @@ class LoginViewController: UIViewController {
         prepareRadioButtons()
         prepareAddressField()
         prepareLoginButton()
-        prepareForgotButton()
         prepareSkipButton()
         prepareSignUpButton()
 
