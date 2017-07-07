@@ -8,114 +8,92 @@
 
 import UIKit
 import DLRadioButton
+import SwiftValidators
 
 extension ForgotPasswordViewController {
 
-    func setupView() {
-        self.view.backgroundColor = UIColor.defaultColor()
-
-        if let navController = self.navigationController {
-            navController.navigationBar.backgroundColor = UIColor.navBarColor()
-            navigationItem.titleLabel.text = ControllerConstants.forgotPassword
-            navigationItem.titleLabel.textColor = .white
-            navigationItem.leftViews = [dismissButton]
-        }
-    }
-
     // Dismiss View
-    func dismissView() {
+    @IBAction func dismissView() {
         self.dismiss(animated: true, completion: nil)
     }
 
-    // Add Subview Email Field
+    // Configures Email Field
     func prepareEmailField() {
-        self.view.addSubview(emailField)
-        self.view.layout(emailField)
-            .top(UIView.UIMarginSpec.largeMatgin)
-            .left(UIView.UIMarginSpec.mediumMargin)
-            .right(UIView.UIMarginSpec.mediumMargin)
-        self.view.layoutSubviews()
+        emailTextField.placeholderNormalColor = .white
+        emailTextField.placeholderActiveColor = .white
+        emailTextField.dividerNormalColor = .white
+        emailTextField.dividerActiveColor = .red
+        emailTextField.textColor = .white
+        emailTextField.clearIconButton?.tintColor = .white
+        emailTextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
     }
-
-    func prepareRadioButtons() {
-        self.view.addSubview(standardServerRB)
-        self.view.layout(standardServerRB)
-            .top(emailField.frame.maxY + UIView.UIMarginSpec.mediumMargin)
-            .left(UIView.UIMarginSpec.mediumMargin)
-            .right(UIView.UIMarginSpec.mediumMargin)
-            .height(44)
-        self.view.layoutSubviews()
-        standardServerRB.addTarget(self, action: #selector(toggleRadioButtons), for: .touchUpInside)
-
-        self.view.addSubview(customServerRB)
-        self.view.layout(customServerRB)
-            .top(standardServerRB.frame.maxY)
-            .left(UIView.UIMarginSpec.mediumMargin)
-            .right(UIView.UIMarginSpec.mediumMargin)
-        self.view.layoutSubviews()
-        customServerRB.addTarget(self, action: #selector(toggleRadioButtons), for: .touchUpInside)
-
-        self.view.addSubview(self.customServerAddressField)
-        self.view.layout(self.customServerAddressField)
-            .top(self.customServerRB.frame.maxY + 10)
-            .left(UIView.UIMarginSpec.mediumMargin)
-            .right(UIView.UIMarginSpec.mediumMargin)
-        self.view.layoutSubviews()
-    }
-
-    func toggleRadioButtons(_ sender: Any) {
-        let button = sender as? DLRadioButton
-        if button == standardServerRB {
-            customServerRB.isSelected = false
-            customServerAddressField.tag = 0
-        } else if button == customServerRB {
-            standardServerRB.isSelected = false
-            customServerAddressField.tag = 1
-        }
-        addAddressField()
-    }
-
-    func addAddressField() {
-        UIView.animate(withDuration: 0.5) {
-            if self.customServerAddressField.tag == 0 {
-                self.resetButton.frame.origin.y = self.customServerAddressField.frame.minY
-            } else {
-                self.resetButton.frame.origin.y = self.customServerAddressField.frame.maxY + UIView.UIMarginSpec.mediumMargin
-            }
-            self.activityIndicator.frame.origin.y = self.resetButton.frame.maxY + UIView.UIMarginSpec.mediumMargin
-            self.view.layoutIfNeeded()
-        }
-    }
-
-    // Add Subview Reset Button
+    
     func prepareResetButton() {
-        self.view.addSubview(resetButton)
-        self.view.layout(resetButton)
-            .height(44)
-            .top(customServerAddressField.frame.minY)
-            .left(UIView.UIMarginSpec.mediumMargin)
-            .right(UIView.UIMarginSpec.mediumMargin)
-        self.view.layoutSubviews()
+        resetButton.addTarget(self, action: #selector(resetPassword), for: .touchUpInside)
     }
-
-    // Add Subview Activity Indicator
-    func prepareActivityIndicator() {
-        self.view.addSubview(activityIndicator)
-        self.view.layout(activityIndicator)
-            .top(resetButton.frame.maxY + UIView.UIMarginSpec.mediumMargin)
-            .centerHorizontally()
+    
+    func textFieldDidChange(textField: UITextField) {
+        if textField == emailTextField, let emailID = emailTextField.text {
+            if !emailID.isValidEmail() {
+                emailTextField.dividerActiveColor = .red
+            } else {
+                emailTextField.dividerActiveColor = .green
+            }
+        }
+    }
+    
+    @IBAction func toggleRadioButtons(_ sender: Any) {
+        if let button = sender as? DLRadioButton {
+            if button == standardServerButton {
+                personalServerButton.isSelected = false
+                addressField.tag = 0
+            } else if button == personalServerButton {
+                standardServerButton.isSelected = false
+                addressField.tag = 1
+            }
+            toggleAddressFieldDisplay()
+        }
+    }
+    
+    func toggleAddressFieldDisplay() {
+        UIView.animate(withDuration: 0.5) {
+            if self.addressField.tag == 1 {
+                self.resetButtonTopConstraint.constant = 67
+            } else {
+                self.resetButtonTopConstraint.constant = 24
+                self.addressField.endEditing(true)
+            }
+        }
+    }
+    
+    func prepareAddressField() {
+        addressField.placeholderNormalColor = .white
+        addressField.placeholderActiveColor = .white
+        addressField.dividerNormalColor = .white
+        addressField.dividerActiveColor = .white
+        addressField.textColor = .white
     }
 
     // Call Reset Password API
     func resetPassword() {
 
-        if let emailID = emailField.text, !emailID.isEmpty && emailID.isValidEmail() {
+        if let emailID = emailTextField.text, !emailID.isEmpty && emailID.isValidEmail() {
 
             var params = [
-                Client.UserKeys.ForgotEmail: emailField.text?.lowercased()
+                Client.UserKeys.ForgotEmail: emailTextField.text?.lowercased()
             ]
 
-            self.emailField.isErrorRevealed = false
+            if standardServerButton.isSelected {
+                UserDefaults.standard.set(Client.APIURLs.SusiAPI, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
+            } else if personalServerButton.isSelected {
+                if let ipAddress = addressField.text, !ipAddress.isEmpty && Validator.isIP().apply(ipAddress) {
+                    UserDefaults.standard.set(ipAddress, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
+                } else {
+                    self.view.makeToast("Invalid IP Address")
+                    return
+                }
+            }
+            
             self.toggleEditing()
             self.activityIndicator.startAnimating()
 
@@ -130,20 +108,20 @@ extension ForgotPasswordViewController {
                     }))
                     self.present(errorDialog, animated: true, completion: nil)
 
-                    self.emailField.text = ""
-                    self.emailField.endEditing(true)
+                    self.emailTextField.text = ""
+                    self.emailTextField.endEditing(true)
                 }
             }
             params.removeAll()
         } else {
-            emailField.isErrorRevealed = true
+            self.view.makeToast("Invalid email address")
         }
 
     }
 
     // Toggle editing
     func toggleEditing() {
-        self.emailField.isEnabled = !self.emailField.isEnabled
+        self.emailTextField.isEnabled = !self.emailTextField.isEnabled
         self.resetButton.isEnabled = !self.resetButton.isEnabled
     }
 

@@ -85,11 +85,6 @@ extension LoginViewController {
         loginButton.addTarget(self, action: #selector(performLogin), for: .touchUpInside)
     }
 
-    // Configures Forgot Button
-    func prepareForgotButton() {
-        forgotPassword.addTarget(self, action: #selector(presentForgotPasswordController), for: .touchUpInside)
-    }
-
     func prepareSkipButton() {
         skipButton.addTarget(self, action: #selector(enterAnonymousMode), for: .touchUpInside)
     }
