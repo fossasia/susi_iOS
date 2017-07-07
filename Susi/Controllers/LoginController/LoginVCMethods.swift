@@ -215,8 +215,6 @@ extension LoginViewController {
 
     // Present Main View Controller
     func completeLogin(_ firstLogin: Bool = true) {
-        resetDB()
-
         let layout = BouncyLayout()
         let vc = MainViewController(collectionViewLayout: layout)
         let nvc = AppNavigationController(rootViewController: vc)
