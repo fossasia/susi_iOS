@@ -111,9 +111,9 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         if UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.hotwordEnabled) {
             startHotwordRecognition()
         } else if let timer = timer {
-            stopRecording()
             timer.invalidate()
         }
+        stopRecording()
 
     }
 
