@@ -18,176 +18,106 @@ extension LoginViewController {
         self.view.addGestureRecognizer(tap)
     }
 
-    // Setup View
-    func setupView() {
-        self.view.backgroundColor = UIColor.defaultColor()
-
-        prepareScrollView()
-        prepareLogo()
-        prepareEmailField()
-        preparePasswordField()
-        prepareRadioButtons()
-        prepareLoginButton()
-        prepareForgotButton()
-        prepareSkipButton()
-        prepareSignUpButton()
+    // Configures Email Text Field
+    func prepareEmailField() {
+        emailTextField.placeholderNormalColor = .white
+        emailTextField.placeholderActiveColor = .white
+        emailTextField.dividerNormalColor = .white
+        emailTextField.dividerActiveColor = .red
+        emailTextField.textColor = .white
+        emailTextField.clearIconButton?.tintColor = .white
+        emailTextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
     }
 
-    // Add Subview Scroll View
-    func prepareScrollView() {
-        self.view.addSubview(scrollView)
-        scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-        scrollView.alwaysBounceVertical = true
-        scrollView.isScrollEnabled = true
+    // Configures Password Text Field
+    func preparePasswordField() {
+        passwordTextField.placeholderNormalColor = .white
+        passwordTextField.placeholderActiveColor = .white
+        passwordTextField.dividerNormalColor = .white
+        passwordTextField.dividerActiveColor = .red
+        passwordTextField.textColor = .white
+        passwordTextField.clearIconButton?.tintColor = .white
+        passwordTextField.visibilityIconButton?.tintColor = .white
+        passwordTextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
     }
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height * 1.2)
-    }
-
-    // Add Subview Logo
-    private func prepareLogo() {
-        self.scrollView.addSubview(susiLogo)
-        self.scrollView.layout(susiLogo)
-            .top(50)
-            .centerHorizontally()
-    }
-
-    // Add Subview Email Field
-    private func prepareEmailField() {
-        self.scrollView.addSubview(emailField)
-        self.scrollView.layout(emailField)
-            .top(susiLogo.frame.maxY + susiLogo.frame.height + 30)
-            .left(UIView.UIMarginSpec.mediumMargin)
-            .right(UIView.UIMarginSpec.mediumMargin)
-            .width(view.frame.width - 40)
-        self.scrollView.layoutIfNeeded()
-    }
-
-    // Add Subview Password Field
-    private func preparePasswordField() {
-        self.scrollView.addSubview(passwordField)
-        self.scrollView.layout(passwordField)
-            .top(emailField.frame.maxY + emailField.frame.height + 20)
-            .left(UIView.UIMarginSpec.mediumMargin)
-            .right(UIView.UIMarginSpec.mediumMargin)
-        self.scrollView.layoutSubviews()
-    }
-
+    // Configures the radio buttons
     func prepareRadioButtons() {
-        self.scrollView.addSubview(standardServerRB)
-        self.scrollView.layout(standardServerRB)
-            .top(passwordField.frame.maxY + 20)
-            .left(UIView.UIMarginSpec.mediumMargin)
-            .right(UIView.UIMarginSpec.mediumMargin)
-            .height(44)
-        self.scrollView.layoutSubviews()
-        standardServerRB.addTarget(self, action: #selector(toggleRadioButtons), for: .touchUpInside)
-
-        self.scrollView.addSubview(customServerRB)
-        self.scrollView.layout(customServerRB)
-            .top(standardServerRB.frame.maxY)
-            .left(UIView.UIMarginSpec.mediumMargin)
-            .right(UIView.UIMarginSpec.mediumMargin)
-        self.scrollView.layoutSubviews()
-        customServerRB.addTarget(self, action: #selector(toggleRadioButtons), for: .touchUpInside)
-
-        self.scrollView.addSubview(self.customServerAddressField)
-        self.scrollView.layout(self.customServerAddressField)
-            .top(self.customServerRB.frame.maxY + 10)
-            .left(UIView.UIMarginSpec.mediumMargin)
-            .right(UIView.UIMarginSpec.mediumMargin)
-        self.scrollView.layoutSubviews()
+        standardServerButton.addTarget(self, action: #selector(toggleRadioButtons), for: .touchUpInside)
+        personalServerButton.addTarget(self, action: #selector(toggleRadioButtons), for: .touchUpInside)
     }
 
     func toggleRadioButtons(_ sender: Any) {
-        let button = sender as? DLRadioButton
-        if button == standardServerRB {
-            customServerRB.isSelected = false
-            customServerAddressField.tag = 0
-        } else if button == customServerRB {
-            standardServerRB.isSelected = false
-            customServerAddressField.tag = 1
-        }
-        addAddressField()
-    }
-
-    func addAddressField() {
-        UIView.animate(withDuration: 0.5) {
-            if self.customServerAddressField.tag == 0 {
-                self.loginButton.frame.origin.y = self.customServerRB.frame.maxY + UIView.UIMarginSpec.smallMargin
-                self.forgotButton.frame.origin.y = self.loginButton.frame.maxY
-                self.signUpButton.frame.origin.y = self.forgotButton.frame.maxY + self.forgotButton.frame.height
-            } else {
-                self.loginButton.frame.origin.y = self.customServerRB.frame.maxY + UIView.UIMarginSpec.largeMatgin + 20
-                self.forgotButton.frame.origin.y = self.loginButton.frame.maxY + UIView.UIMarginSpec.smallMargin
-                self.signUpButton.frame.origin.y  = self.forgotButton.frame.maxY + self.forgotButton.frame.height
+        if let button = sender as? DLRadioButton {
+            if button == standardServerButton {
+                personalServerButton.isSelected = false
+                addressField.tag = 0
+            } else if button == personalServerButton {
+                standardServerButton.isSelected = false
+                addressField.tag = 1
             }
-            self.scrollView.layoutIfNeeded()
+            toggleAddressFieldDisplay()
         }
     }
 
-    // Add Subview Login Button
-    private func prepareLoginButton() {
-        self.scrollView.addSubview(loginButton)
-        self.scrollView.layout(loginButton)
-            .top(customServerRB.frame.maxY + 20)
-            .left(UIView.UIMarginSpec.mediumMargin)
-            .right(UIView.UIMarginSpec.mediumMargin)
-            .height(44)
-        self.scrollView.layoutSubviews()
+    func toggleAddressFieldDisplay() {
+        UIView.animate(withDuration: 0.5) {
+            if self.addressField.tag == 1 {
+                self.loginButtonTopConstraint.constant = 67
+            } else {
+                self.loginButtonTopConstraint.constant = 20
+                self.addressField.endEditing(true)
+            }
+        }
     }
 
-    // Add Subview Forgot Button
-    private func prepareForgotButton() {
-        self.scrollView.addSubview(forgotButton)
-        self.scrollView.layout(forgotButton)
-            .top(loginButton.frame.maxY + UIView.UIMarginSpec.smallMargin)
-            .left(UIView.UIMarginSpec.mediumMargin)
-            .right(UIView.UIMarginSpec.mediumMargin)
-            .height(44)
-        self.scrollView.layoutSubviews()
+    func prepareAddressField() {
+        addressField.placeholderNormalColor = .white
+        addressField.placeholderActiveColor = .white
+        addressField.dividerNormalColor = .white
+        addressField.dividerActiveColor = .white
+        addressField.textColor = .white
+        addressField.clearIconButton?.tintColor = .white
     }
 
-    private func prepareSkipButton() {
-        self.scrollView.addSubview(skip)
-        self.scrollView.layout(skip)
-            .top(forgotButton.frame.maxY)
-            .left(UIView.UIMarginSpec.mediumMargin)
-            .right(UIView.UIMarginSpec.mediumMargin)
-            .height(22)
-        self.scrollView.layoutSubviews()
+    // Configure Login Button
+    func prepareLoginButton() {
+        loginButton.addTarget(self, action: #selector(performLogin), for: .touchUpInside)
     }
 
-    // Add Subview Sign Up Button
-    private func prepareSignUpButton() {
-        self.scrollView.addSubview(signUpButton)
-        self.scrollView.layout(signUpButton)
-            .top(forgotButton.frame.maxY + forgotButton.frame.height)
-            .left(UIView.UIMarginSpec.mediumMargin)
-            .right(UIView.UIMarginSpec.mediumMargin)
-            .height(44)
+    // Configures Forgot Button
+    func prepareForgotButton() {
+        forgotPassword.addTarget(self, action: #selector(presentForgotPasswordController), for: .touchUpInside)
     }
 
-    // Login User
+    func prepareSkipButton() {
+        skipButton.addTarget(self, action: #selector(enterAnonymousMode), for: .touchUpInside)
+    }
+
+    // Configures Sign Up Button
+    func prepareSignUpButton() {
+        signUpButton.addTarget(self, action: #selector(presentSignUpController), for: .touchUpInside)
+    }
+
+    // Call Login API
     func performLogin() {
 
         if isValid() {
             toggleEditing()
 
             var params = [
-                Client.UserKeys.Login: emailField.text!.lowercased(),
-                Client.UserKeys.Password: passwordField.text!,
+                Client.UserKeys.Login: emailTextField.text!.lowercased(),
+                Client.UserKeys.Password: passwordTextField.text!,
                 Client.ChatKeys.ResponseType: Client.ChatKeys.AccessToken
             ] as [String : Any]
 
-            if customServerAddressField.tag == 0 {
+            if addressField.tag == 1 {
                 UserDefaults.standard.set(Client.APIURLs.SusiAPI, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
-            } else {
-                UserDefaults.standard.set(customServerAddressField.text!, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
+            } else if let ipAddress = addressField.text {
+                UserDefaults.standard.set(ipAddress, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
             }
 
+            indicatorView.startAnimating()
             Client.sharedInstance.loginUser(params as [String : AnyObject]) { (_, success, message) in
                 DispatchQueue.main.async {
                     self.toggleEditing()
@@ -195,17 +125,43 @@ extension LoginViewController {
                         self.completeLogin()
                     }
                     self.view.makeToast(message)
+                    self.indicatorView.stopAnimating()
                 }
             }
             params.removeAll()
+        } else if let emailID = emailTextField.text, !emailID.isValidEmail() {
+            self.view.makeToast("Invalid email address")
+        } else if let password = passwordTextField.text, password.isEmpty {
+            self.view.makeToast("Password length too short")
         }
 
     }
 
-    // function called on return button click of keyboard
+    // Keyboard Return Key Hit
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        dismissKeyboard()
+        if textField == emailTextField {
+            _ = passwordTextField.becomeFirstResponder()
+        } else if textField == passwordTextField {
+            dismissKeyboard()
+            performLogin()
+        }
         return false
+    }
+
+    func textFieldDidChange(textField: UITextField) {
+        if textField == emailTextField, let emailID = emailTextField.text {
+            if !emailID.isValidEmail() {
+                emailTextField.dividerActiveColor = .red
+            } else {
+                emailTextField.dividerActiveColor = .green
+            }
+        } else if textField == passwordTextField, let password = passwordTextField.text {
+            if password.isEmpty || password.characters.count < 5 {
+                passwordTextField.dividerActiveColor = .red
+            } else {
+                passwordTextField.dividerActiveColor = .green
+            }
+        }
     }
 
     // force dismiss keyboard if open.
@@ -215,27 +171,27 @@ extension LoginViewController {
 
     // Toggle Editing
     func toggleEditing() {
-        emailField.isEnabled = !emailField.isEnabled
-        passwordField.isEnabled = !passwordField.isEnabled
+        emailTextField.isEnabled = !emailTextField.isEnabled
+        passwordTextField.isEnabled = !passwordTextField.isEnabled
         loginButton.isEnabled = !loginButton.isEnabled
     }
 
     // Clear field after login
     func clearFields() {
-        emailField.text = ""
-        passwordField.text = ""
+        emailTextField.text = ""
+        passwordTextField.text = ""
     }
 
     // Show sign up controller
-    func showSignUpView() {
+    func presentSignUpController() {
         clearFields()
 
         let vc = SignUpViewController()
         self.present(vc, animated: true, completion: nil)
     }
 
-    // Show Forgot Password VC
-    func showFPView() {
+    // Present Forgot Password VC
+    func presentForgotPasswordController() {
         let vc = ForgotPasswordViewController()
         let nvc = AppNavigationController(rootViewController: vc)
         self.present(nvc, animated: true, completion: nil)
@@ -243,23 +199,21 @@ extension LoginViewController {
 
     // Validate fields
     func isValid() -> Bool {
-        if let emailID = emailField.text, !emailID.isValidEmail() {
-            emailField.isErrorRevealed = true
+        if let emailID = emailTextField.text, !emailID.isValidEmail() {
             return false
         }
-        if let password = passwordField.text, password.isEmpty {
-            passwordField.isErrorRevealed = true
+        if let password = passwordTextField.text, password.isEmpty {
             return false
         }
-        if customServerAddressField.tag == 1 {
-            if let address = customServerAddressField.text, address.isEmpty {
+        if addressField.tag == 0 {
+            if let address = addressField.text, address.isEmpty {
                 return false
             }
         }
         return true
     }
 
-    // Login User
+    // Present Main View Controller
     func completeLogin(_ firstLogin: Bool = true) {
         let layout = BouncyLayout()
         let vc = MainViewController(collectionViewLayout: layout)
@@ -289,7 +243,7 @@ extension LoginViewController {
         }
     }
 
-    func anonymousMode() {
+    func enterAnonymousMode() {
         resetDB()
         UserDefaults.standard.set(Client.APIURLs.SusiAPI, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
         self.completeLogin()
