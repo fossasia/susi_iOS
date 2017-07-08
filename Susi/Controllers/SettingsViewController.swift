@@ -61,50 +61,52 @@ class SettingsViewController: UICollectionViewController, UICollectionViewDelega
 
     // Configures cell
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.cellId, for: indexPath) as! SettingsCell
-
-        if indexPath.section == 0 {
-            cell.titleLabel.text = ControllerConstants.Settings.enterToSend
-            cell.detailLabel.text = ControllerConstants.Settings.sendMessageByReturn
-            cell.settingSwitch.tag = 0
-            cell.settingSwitch.isOn = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.enterToSend)
-        } else if indexPath.section == 1 {
-            if indexPath.item == 0 {
-                cell.titleLabel.text = ControllerConstants.Settings.micInput
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.cellId, for: indexPath) as? SettingsCell {
+            if indexPath.section == 0 {
+                cell.titleLabel.text = ControllerConstants.Settings.enterToSend
                 cell.detailLabel.text = ControllerConstants.Settings.sendMessageByReturn
-                cell.settingSwitch.tag = 1
-                cell.settingSwitch.isOn = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.micInput)
-            } else if indexPath.item == 1 {
-                cell.titleLabel.text = ControllerConstants.Settings.enableHotword
-                cell.detailLabel.text = ControllerConstants.Settings.susiHotword
-                cell.settingSwitch.tag = 2
-                cell.settingSwitch.isOn = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.hotwordEnabled)
-            }
-        } else {
-            if indexPath.item == 0 {
-                cell.titleLabel.text = ControllerConstants.Settings.speechOutput
-                cell.detailLabel.text = ControllerConstants.Settings.enableSpeechOutputOnlyInput
-                cell.settingSwitch.tag = 3
-                cell.settingSwitch.isOn = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.speechOutput)
-            } else if indexPath.item == 1 {
-                cell.titleLabel.text = ControllerConstants.Settings.speechOutputAlwaysOn
-                cell.detailLabel.text = ControllerConstants.Settings.enableSpeechOutputOutputRegardlessOfInput
-                cell.settingSwitch.isOn = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn)
-                cell.settingSwitch.tag = 4
-            } else if indexPath.item == 2 {
-                cell.titleLabel.text = ControllerConstants.Settings.language
-                cell.detailLabel.text = ControllerConstants.Settings.selectLanguage
-                cell.settingSwitch.removeFromSuperview()
+                cell.settingSwitch.tag = 0
+                cell.settingSwitch.isOn = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.enterToSend)
+            } else if indexPath.section == 1 {
+                if indexPath.item == 0 {
+                    cell.titleLabel.text = ControllerConstants.Settings.micInput
+                    cell.detailLabel.text = ControllerConstants.Settings.sendMessageByReturn
+                    cell.settingSwitch.tag = 1
+                    cell.settingSwitch.isOn = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.micInput)
+                } else if indexPath.item == 1 {
+                    cell.titleLabel.text = ControllerConstants.Settings.enableHotword
+                    cell.detailLabel.text = ControllerConstants.Settings.susiHotword
+                    cell.settingSwitch.tag = 2
+                    cell.settingSwitch.isOn = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.hotwordEnabled)
+                }
             } else {
-                cell.titleLabel.text = ControllerConstants.Settings.rateSusi
-                cell.detailLabel.text = ControllerConstants.Settings.rateOnAppStore
-                cell.settingSwitch.removeFromSuperview()
+                if indexPath.item == 0 {
+                    cell.titleLabel.text = ControllerConstants.Settings.speechOutput
+                    cell.detailLabel.text = ControllerConstants.Settings.enableSpeechOutputOnlyInput
+                    cell.settingSwitch.tag = 3
+                    cell.settingSwitch.isOn = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.speechOutput)
+                } else if indexPath.item == 1 {
+                    cell.titleLabel.text = ControllerConstants.Settings.speechOutputAlwaysOn
+                    cell.detailLabel.text = ControllerConstants.Settings.enableSpeechOutputOutputRegardlessOfInput
+                    cell.settingSwitch.isOn = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn)
+                    cell.settingSwitch.tag = 4
+                } else if indexPath.item == 2 {
+                    cell.titleLabel.text = ControllerConstants.Settings.language
+                    cell.detailLabel.text = ControllerConstants.Settings.selectLanguage
+                    cell.settingSwitch.removeFromSuperview()
+                } else {
+                    cell.titleLabel.text = ControllerConstants.Settings.rateSusi
+                    cell.detailLabel.text = ControllerConstants.Settings.rateOnAppStore
+                    cell.settingSwitch.removeFromSuperview()
+                }
             }
+
+            cell.settingSwitch.addTarget(self, action: #selector(switchDidToggle(sender:)), for: .valueChanged)
+
+            return cell
+        } else {
+            return UICollectionViewCell()
         }
-
-        cell.settingSwitch.addTarget(self, action: #selector(switchDidToggle(sender:)), for: .valueChanged)
-
-        return cell
     }
 
     // Set frame for cell
@@ -125,15 +127,17 @@ class SettingsViewController: UICollectionViewController, UICollectionViewDelega
     // Configures header view
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
 
-        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! SettingsHeaderView
+        if let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as? SettingsHeaderView {
+            switch kind {
+            case UICollectionElementKindSectionHeader:
 
-        switch kind {
-        case UICollectionElementKindSectionHeader:
+                headerView.settingsLabel.text = sectionHeaders[indexPath.section]
+                return headerView
 
-            headerView.settingsLabel.text = sectionHeaders[indexPath.section]
-            return headerView
-
-        default:
+            default:
+                return UICollectionReusableView()
+            }
+        } else {
             return UICollectionReusableView()
         }
 

@@ -142,20 +142,29 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
         let estimatedFrame = self.estimatedFrame(messageBody: messageBody)
 
         if message.fromUser {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.outgoingCell, for: indexPath) as! OutgoingChatCell
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.outgoingCell, for: indexPath) as? OutgoingChatCell {
+                cell.message = message
+                cell.setupCell(estimatedFrame, view.frame)
+                return cell
+            } else {
+                return UICollectionViewCell()
+            }
+        } else if message.actionType == ActionType.rss.rawValue || message.actionType == ActionType.websearch.rawValue {
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.rssCell, for: indexPath) as? RSSCell {
+                cell.message = message
+                return cell
+            } else {
+                return UICollectionViewCell()
+            }
+        }
+
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.incomingCell, for: indexPath) as? IncomingBubbleCell {
             cell.message = message
             cell.setupCell(estimatedFrame, view.frame)
             return cell
-        } else if message.actionType == ActionType.rss.rawValue || message.actionType == ActionType.websearch.rawValue {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.rssCell, for: indexPath) as! RSSCell
-            cell.message = message
-            return cell
+        } else {
+            return UICollectionViewCell()
         }
-
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.incomingCell, for: indexPath) as! IncomingBubbleCell
-        cell.message = message
-        cell.setupCell(estimatedFrame, view.frame)
-        return cell
     }
 
     // Calculate Bubble Height
