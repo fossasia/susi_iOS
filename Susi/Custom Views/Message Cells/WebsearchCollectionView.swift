@@ -84,6 +84,8 @@ class WebsearchCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? WebsearchCell {
             cell.backgroundColor = .white
             
+            let placeholder = UIImage(named: "placeholder")
+            
             if message?.actionType == ActionType.rss.rawValue {
                 let feed = message?.rssData?.rssFeed[indexPath.item]
                 cell.titleLabel.text = feed?.title
@@ -93,12 +95,12 @@ class WebsearchCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
                 if let webData = feed?.webData {
                     if let imageString = webData.image {
                         let url = URL(string: imageString)
-                        cell.imageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder"), options: nil, progressBlock: nil, completionHandler: nil)
+                        cell.imageView.kf.setImage(with: url, placeholder: placeholder, options: nil, progressBlock: nil, completionHandler: nil)
                     } else {
-                        cell.imageView.image = UIImage(named: "placeholder")
+                        cell.imageView.image = placeholder
                     }
                 } else {
-                    cell.imageView.image = UIImage(named: "placeholder")
+                    cell.imageView.image = placeholder
                 }
             } else if message?.actionType == ActionType.websearch.rawValue {
                 let webData = message?.websearchData[indexPath.item]
@@ -108,10 +110,10 @@ class WebsearchCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
                 if let imageString = webData?.image {
                     cell.imageString = imageString
                     if let url = URL(string: imageString) {
-                        cell.imageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder"), options: nil, progressBlock: nil, completionHandler: nil)
+                        cell.imageView.kf.setImage(with: url, placeholder: placeholder, options: nil, progressBlock: nil, completionHandler: nil)
                     }
                 } else {
-                    cell.imageView.image = UIImage(named: "placeholder")
+                    cell.imageView.image = placeholder
                 }
             }
             return cell
