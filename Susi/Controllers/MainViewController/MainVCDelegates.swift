@@ -279,7 +279,7 @@ extension MainViewController: AVAudioRecorderDelegate {
             audioRecorder.prepareToRecord()
             audioRecorder.record(forDuration: 2.0)
 
-            // print("Started recording...")
+//             print("Started recording...")
         } catch let error {
             print("Audio session error: \(error.localizedDescription)")
         }
@@ -344,8 +344,6 @@ extension MainViewController: SFSpeechRecognizerDelegate {
             }
 
             OperationQueue.main.addOperation {
-                // handle button enable/disable
-                self.sendButton.tag = isEnabled ? 0 : 1
                 self.addTargetSendButton()
             }
 
@@ -401,12 +399,9 @@ extension MainViewController: SFSpeechRecognizerDelegate {
             }
 
             if error != nil || isFinal {
-                self.audioEngine.stop()
-                inputNode.removeTap(onBus: 0)
-
-                self.recognitionRequest = nil
-                self.recognitionTask = nil
+                self.handleSend()
             }
+
         })
 
         let recordingFormat = inputNode.outputFormat(forBus: 0)
@@ -432,7 +427,7 @@ extension MainViewController: SFSpeechRecognizerDelegate {
         gesture.numberOfTapsRequired = 1
         self.indicatorView.addGestureRecognizer(gesture)
 
-        self.sendButton.setImage(UIImage(), for: .normal)
+        self.sendButton.setImage(nil, for: .normal)
         indicatorView.startAnimating()
         self.sendButton.addSubview(indicatorView)
         self.sendButton.addConstraintsWithFormat(format: "V:|[v0(24)]|", views: indicatorView)
@@ -446,15 +441,11 @@ extension MainViewController: SFSpeechRecognizerDelegate {
         audioEngine.inputNode?.removeTap(onBus: 0)
         audioEngine.stop()
         recognitionRequest?.endAudio()
+        audioRecorder?.stop()
         indicatorView.removeFromSuperview()
-
-        if inputTextView.text.isEmpty {
-            self.sendButton.setImage(UIImage(named: ControllerConstants.mic), for: .normal)
-        } else {
-            self.sendButton.setImage(UIImage(named: ControllerConstants.send), for: .normal)
-        }
-
         self.inputTextView.isUserInteractionEnabled = true
+
+        textViewDidChange(inputTextView)
 
         if UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.hotwordEnabled) {
             startHotwordRecognition()

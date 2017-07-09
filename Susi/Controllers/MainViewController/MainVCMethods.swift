@@ -225,6 +225,7 @@ extension MainViewController {
     }
 
     func addTargetSendButton() {
+        print("send button tag: \(sendButton.tag)")
         if sendButton.tag == 0 {
             sendButton.removeTarget(self, action: #selector(handleSend), for: .touchUpInside)
             sendButton.addTarget(self, action: #selector(startSTT), for: .touchUpInside)
