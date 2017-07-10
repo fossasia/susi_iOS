@@ -16,7 +16,6 @@
 		6D215B951EB0BE7300CD2C1D /* AuthenticationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D215B941EB0BE7300CD2C1D /* AuthenticationUITests.swift */; };
 		6D24B08A1EE4079E0097418A /* LoginVCMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D24B0891EE4079E0097418A /* LoginVCMethods.swift */; };
 		6D24B0911EE4093C0097418A /* ForgotPasswordVCMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D24B0901EE4093C0097418A /* ForgotPasswordVCMethods.swift */; };
-		6D24B0941EE409AB0097418A /* SignUpVCDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D24B0931EE409AB0097418A /* SignUpVCDelegates.swift */; };
 		6D24B0961EE409DB0097418A /* SignUpVCMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D24B0951EE409DB0097418A /* SignUpVCMethods.swift */; };
 		6D2F984B1E76DF2200FE2B6F /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2F984A1E76DF2200FE2B6F /* BaseCell.swift */; };
 		6D3527131F083F8E00395BD5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE44E141E76ACD900215B85 /* Constants.swift */; };
@@ -91,7 +90,6 @@
 		6D215B961EB0BE7300CD2C1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D24B0891EE4079E0097418A /* LoginVCMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVCMethods.swift; sourceTree = "<group>"; };
 		6D24B0901EE4093C0097418A /* ForgotPasswordVCMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVCMethods.swift; sourceTree = "<group>"; };
-		6D24B0931EE409AB0097418A /* SignUpVCDelegates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVCDelegates.swift; sourceTree = "<group>"; };
 		6D24B0951EE409DB0097418A /* SignUpVCMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVCMethods.swift; sourceTree = "<group>"; };
 		6D2F984A1E76DF2200FE2B6F /* BaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 		6D35E47D1EE70F4200188E1F /* common.res */ = {isa = PBXFileReference; lastKnownFileType = file; path = common.res; sourceTree = "<group>"; };
@@ -220,7 +218,6 @@
 		6D24B0921EE409860097418A /* SignUpController */ = {
 			isa = PBXGroup;
 			children = (
-				6D24B0931EE409AB0097418A /* SignUpVCDelegates.swift */,
 				6D24B0951EE409DB0097418A /* SignUpVCMethods.swift */,
 				6DE44E1A1E76B5D600215B85 /* SignUpViewController.swift */,
 			);
@@ -670,7 +667,6 @@
 				6D4D9B3B1E768E190067459C /* AppDelegate.swift in Sources */,
 				6D61B9B51EEBAB6000CD3536 /* AnchorAction.swift in Sources */,
 				6D2F984B1E76DF2200FE2B6F /* BaseCell.swift in Sources */,
-				6D24B0941EE409AB0097418A /* SignUpVCDelegates.swift in Sources */,
 				6DE44E1B1E76B5D600215B85 /* SignUpViewController.swift in Sources */,
 				6D9C0D291E7B223A00199828 /* User.swift in Sources */,
 				6D24B0911EE4093C0097418A /* ForgotPasswordVCMethods.swift in Sources */,

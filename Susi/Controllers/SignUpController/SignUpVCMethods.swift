@@ -16,116 +16,70 @@ extension SignUpViewController {
         self.view.addGestureRecognizer(tap)
     }
 
-    func setupView() {
-        self.view.backgroundColor = UIColor.defaultColor()
+    func prepareFields() {
+        emailTextField.placeholderNormalColor = .white
+        emailTextField.placeholderActiveColor = .white
+        emailTextField.dividerNormalColor = .white
+        emailTextField.dividerActiveColor = .white
+        emailTextField.textColor = .white
+        emailTextField.clearIconButton?.tintColor = .white
+        emailTextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
 
-        prepareDismissButton()
-        prepareEmailField()
-        preparePasswordField()
-        prepareConfirmPasswordField()
-        prepareRadioButtons()
-        prepareSignUpButton()
+        passwordTextField.placeholderNormalColor = .white
+        passwordTextField.placeholderActiveColor = .white
+        passwordTextField.dividerNormalColor = .white
+        passwordTextField.dividerActiveColor = .white
+        passwordTextField.textColor = .white
+        passwordTextField.visibilityIconButton?.tintColor = .white
+        passwordTextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
+
+        confirmPasswordTextField.placeholderNormalColor = .white
+        confirmPasswordTextField.placeholderActiveColor = .white
+        confirmPasswordTextField.dividerNormalColor = .white
+        confirmPasswordTextField.dividerActiveColor = .white
+        confirmPasswordTextField.textColor = .white
+        confirmPasswordTextField.visibilityIconButton?.tintColor = .white
+        confirmPasswordTextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
+
+        addressTextField.placeholderNormalColor = .white
+        addressTextField.placeholderActiveColor = .white
+        addressTextField.dividerNormalColor = .white
+        addressTextField.dividerActiveColor = .white
+        addressTextField.textColor = .white
+        addressTextField.clearIconButton?.tintColor = .white
     }
 
-    // Add Subview Dismiss Button
-    func prepareDismissButton() {
-        self.view.addSubview(dismissButton)
-        self.view.layout(dismissButton)
-            .topLeft(top: UIView.UIMarginSpec.mediumMargin, left: 8)
+    func prepareSignUpButton() {
+        signUpButton.addTarget(self, action: #selector(performSignUp), for: .touchUpInside)
     }
 
     // Dismiss View Controller
-    func dismissView() {
+    @IBAction func dismissView() {
         self.dismiss(animated: true, completion: nil)
     }
 
-    // Add Subview Email Field
-    private func prepareEmailField() {
-        self.view.addSubview(emailField)
-        self.view.layout(emailField)
-            .top(70)
-            .left(UIView.UIMarginSpec.mediumMargin)
-            .right(UIView.UIMarginSpec.mediumMargin)
-        self.view.layoutSubviews()
-    }
-
-    // Add Subview Password Field
-    private func preparePasswordField() {
-        self.view.addSubview(passwordField)
-        self.view.layout(passwordField)
-            .top(emailField.frame.maxY + emailField.frame.height)
-            .left(UIView.UIMarginSpec.mediumMargin)
-            .right(UIView.UIMarginSpec.mediumMargin)
-        self.view.layoutSubviews()
-    }
-
-    // Add Subview Confirm Password Field
-    private func prepareConfirmPasswordField() {
-        self.view.addSubview(confirmPasswordField)
-        self.view.layout(confirmPasswordField)
-            .top(passwordField.frame.maxY + passwordField.frame.height)
-            .left(UIView.UIMarginSpec.mediumMargin)
-            .right(UIView.UIMarginSpec.mediumMargin)
-        self.view.layoutSubviews()
-    }
-
-    func prepareRadioButtons() {
-        self.view.addSubview(standardServerRB)
-        self.view.layout(standardServerRB)
-            .top(confirmPasswordField.frame.maxY + UIView.UIMarginSpec.mediumMargin)
-            .left(UIView.UIMarginSpec.mediumMargin)
-            .right(UIView.UIMarginSpec.mediumMargin)
-            .height(44)
-        self.view.layoutSubviews()
-        standardServerRB.addTarget(self, action: #selector(toggleRadioButtons), for: .touchUpInside)
-
-        self.view.addSubview(customServerRB)
-        self.view.layout(customServerRB)
-            .top(standardServerRB.frame.maxY)
-            .left(UIView.UIMarginSpec.mediumMargin)
-            .right(UIView.UIMarginSpec.mediumMargin)
-        self.view.layoutSubviews()
-        customServerRB.addTarget(self, action: #selector(toggleRadioButtons), for: .touchUpInside)
-
-        self.view.addSubview(self.customServerAddressField)
-        self.view.layout(self.customServerAddressField)
-            .top(self.customServerRB.frame.maxY + 10)
-            .left(UIView.UIMarginSpec.mediumMargin)
-            .right(UIView.UIMarginSpec.mediumMargin)
-        self.view.layoutSubviews()
-    }
-
-    func toggleRadioButtons(_ sender: Any) {
-        let button = sender as? DLRadioButton
-        if button == standardServerRB {
-            customServerRB.isSelected = false
-            customServerAddressField.tag = 0
-        } else if button == customServerRB {
-            standardServerRB.isSelected = false
-            customServerAddressField.tag = 1
-        }
-        addAddressField()
-    }
-
-    func addAddressField() {
-        UIView.animate(withDuration: 0.5) {
-            if self.customServerAddressField.tag == 0 {
-                self.signUpButton.frame.origin.y = self.customServerAddressField.frame.minY
-            } else {
-                self.signUpButton.frame.origin.y = self.customServerAddressField.frame.maxY + UIView.UIMarginSpec.mediumMargin
+    @IBAction func toggleRadioButtons(_ sender: Any) {
+        if let button = sender as? DLRadioButton {
+            if button == standardServerButton {
+                personalServerButton.isSelected = false
+                addressTextField.tag = 0
+            } else if button == personalServerButton {
+                standardServerButton.isSelected = false
+                addressTextField.tag = 1
             }
-            self.view.layoutIfNeeded()
+            toggleAddressFieldDisplay()
         }
     }
 
-    // Add Subview Sign Up Button
-    private func prepareSignUpButton() {
-        self.view.addSubview(signUpButton)
-        self.view.layout(signUpButton)
-            .height(44)
-            .top(customServerAddressField.frame.minY)
-            .left(UIView.UIMarginSpec.mediumMargin)
-            .right(UIView.UIMarginSpec.mediumMargin)
+    func toggleAddressFieldDisplay() {
+        UIView.animate(withDuration: 0.5) {
+            if self.addressTextField.tag == 1 {
+                self.signUpButtonTopConstraint.constant = 67
+            } else {
+                self.signUpButtonTopConstraint.constant = 17
+                self.addressTextField.endEditing(true)
+            }
+        }
     }
 
     // Sign Up User
@@ -134,14 +88,22 @@ extension SignUpViewController {
         if isValid() {
 
             toggleEditing()
+            activityIndicator.startAnimating()
 
             var params = [
-                Client.UserKeys.SignUp: emailField.text!.lowercased(),
-                Client.UserKeys.Password: passwordField.text!
+                Client.UserKeys.SignUp: emailTextField.text!.lowercased(),
+                Client.UserKeys.Password: emailTextField.text!
             ]
+
+            if addressTextField.tag == 1 {
+                UserDefaults.standard.set(Client.APIURLs.SusiAPI, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
+            } else if let ipAddress = addressTextField.text {
+                UserDefaults.standard.set(ipAddress, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
+            }
 
             Client.sharedInstance.registerUser(params as [String : AnyObject]) { (success, message) in
                 DispatchQueue.main.async {
+                    self.activityIndicator.stopAnimating()
                     self.toggleEditing()
                     if success {
                         self.dismissView()
@@ -150,6 +112,12 @@ extension SignUpViewController {
                 }
             }
             params.removeAll()
+        } else if let emailID = emailTextField.text, !emailID.isValidEmail() {
+            self.view.makeToast("Invalid email address")
+        } else if let password = passwordTextField.text, password.isEmpty {
+            self.view.makeToast("Password length too short")
+        } else if let password = passwordTextField.text, let confirmPassword = confirmPasswordTextField.text, password != confirmPassword {
+            self.view.makeToast("Passwords do not match")
         }
 
     }
@@ -157,7 +125,32 @@ extension SignUpViewController {
     // function called on return button click of keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         dismissKeyboard()
+        if textField == confirmPasswordTextField {
+            performSignUp()
+        }
         return false
+    }
+
+    func textFieldDidChange(textField: UITextField) {
+        if textField == emailTextField, let emailID = emailTextField.text {
+            if !emailID.isValidEmail() {
+                emailTextField.dividerActiveColor = .red
+            } else {
+                emailTextField.dividerActiveColor = .green
+            }
+        } else if textField == passwordTextField, let password = passwordTextField.text {
+            if password.isEmpty || password.characters.count < 5 {
+                passwordTextField.dividerActiveColor = .red
+            } else {
+                passwordTextField.dividerActiveColor = .green
+            }
+        } else if textField == confirmPasswordTextField, let password = passwordTextField.text, let confirmPassword = confirmPasswordTextField.text {
+            if password != confirmPassword {
+                confirmPasswordTextField.dividerActiveColor = .red
+            } else {
+                confirmPasswordTextField.dividerActiveColor = .green
+            }
+        }
     }
 
     // dismiss keyboard if open.
@@ -168,46 +161,24 @@ extension SignUpViewController {
 
     // Toggle Editing
     func toggleEditing() {
-        emailField.isEnabled = !emailField.isEnabled
-        passwordField.isEnabled = !passwordField.isEnabled
-        confirmPasswordField.isEnabled = !confirmPasswordField.isEnabled
+        emailTextField.isEnabled = !emailTextField.isEnabled
+        passwordTextField.isEnabled = !passwordTextField.isEnabled
+        confirmPasswordTextField.isEnabled = !confirmPasswordTextField.isEnabled
         signUpButton.isEnabled = !signUpButton.isEnabled
     }
 
     // Validate fields
     func isValid() -> Bool {
-        if let emailID = emailField.text, !emailID.isValidEmail() {
-            emailField.isErrorRevealed = true
+        if let emailID = emailTextField.text, !emailID.isValidEmail() {
             return false
         }
-        if let password = passwordField.text, password.isEmpty, let confirmPassword = confirmPasswordField.text, confirmPassword.isEmpty || checkTextSufficientComplexity(text: password) {
-            passwordField.isErrorRevealed = true
+        if let password = passwordTextField.text, password.isEmpty, let confirmPassword = confirmPasswordTextField.text, confirmPassword.isEmpty || password.isTextSufficientComplexity {
             return false
         }
-        if let password = passwordField.text, let confirmPassword = confirmPasswordField.text, password != confirmPassword {
-            confirmPasswordField.isErrorRevealed = true
+        if let password = passwordTextField.text, let confirmPassword = confirmPasswordTextField.text, password != confirmPassword {
             return false
         }
         return true
-    }
-
-    // Password validation
-    func checkTextSufficientComplexity(text: String) -> Bool {
-
-        let capitalLetterRegEx  = ".*[A-Z]+.*"
-        var texttest = NSPredicate(format:"SELF MATCHES %@", capitalLetterRegEx)
-        let capitalResult = texttest.evaluate(with: text)
-
-        let numberRegEx  = ".*[0-9]+.*"
-        let texttest1 = NSPredicate(format:"SELF MATCHES %@", numberRegEx)
-        let numberResult = texttest1.evaluate(with: text)
-
-        let lowercaseLetterRegEx  = ".*[a-z]+.*"
-        texttest = NSPredicate(format:"SELF MATCHES %@", lowercaseLetterRegEx)
-        let lowercaseResult = texttest.evaluate(with: text)
-
-        return capitalResult && numberResult && lowercaseResult
-
     }
 
 }

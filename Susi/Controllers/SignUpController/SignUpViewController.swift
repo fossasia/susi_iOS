@@ -12,93 +12,24 @@ import DLRadioButton
 
 class SignUpViewController: UIViewController {
 
-    // Setup Dismiss Button
-    let dismissButton: IconButton = {
-        let ib = IconButton()
-        ib.image = Icon.cm.arrowBack
-        ib.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
-        ib.tintColor = .white
-        return ib
-    }()
+    @IBOutlet weak var emailTextField: TextField!
+    @IBOutlet weak var passwordTextField: TextField!
+    @IBOutlet weak var confirmPasswordTextField: TextField!
+    @IBOutlet weak var addressTextField: TextField!
+    @IBOutlet weak var signUpButton: RaisedButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
-    // Setup Email Field
-    lazy var emailField: AuthTextField = {
-        let textField = AuthTextField()
-        textField.keyboardType = .emailAddress
-        textField.placeholder = ControllerConstants.SignUp.emailAddress
-        textField.detail = ControllerConstants.SignUp.invalidEmail
-        textField.delegate = self
-        textField.accessibilityIdentifier = ControllerConstants.TestKeys.email
-        return textField
-    }()
+    @IBOutlet weak var standardServerButton: DLRadioButton!
+    @IBOutlet weak var personalServerButton: DLRadioButton!
 
-    // Setup Password Field
-    lazy var passwordField: AuthTextField = {
-        let textField = AuthTextField()
-        textField.placeholder = ControllerConstants.SignUp.password
-        textField.detailLabel.text = ControllerConstants.SignUp.passwordError
-        textField.clearButtonMode = .whileEditing
-        textField.isVisibilityIconButtonEnabled = true
-        textField.visibilityIconButton?.tintColor = Color.white.withAlphaComponent(textField.isSecureTextEntry ? 0.38 : 0.54)
-        textField.delegate = self
-        textField.accessibilityIdentifier = ControllerConstants.TestKeys.password
-        return textField
-    }()
-
-    // Setup Confirm Password Field
-    lazy var confirmPasswordField: AuthTextField = {
-        let textField = AuthTextField()
-        textField.placeholder = ControllerConstants.SignUp.confirmPassword
-        textField.detail = ControllerConstants.SignUp.passwordDoNotMatch
-        textField.clearIconButton?.tintColor = .white
-        textField.clearButtonMode = .whileEditing
-        textField.isVisibilityIconButtonEnabled = true
-        textField.visibilityIconButton?.tintColor = Color.white.withAlphaComponent(textField.isSecureTextEntry ? 0.38 : 0.54)
-        textField.delegate = self
-        textField.accessibilityIdentifier = ControllerConstants.TestKeys.confirmPassword
-        return textField
-    }()
-
-    // Setup Sign Up Button
-    lazy var signUpButton: RaisedButton = {
-        let button = RaisedButton()
-        button.setTitle(ControllerConstants.SignUp.signUp, for: .normal)
-        button.backgroundColor = .white
-        button.setTitleColor(UIColor.defaultColor(), for: .normal)
-        button.addTarget(self, action: #selector(performSignUp), for: .touchUpInside)
-        button.accessibilityIdentifier = ControllerConstants.TestKeys.signUp
-        return button
-    }()
-
-    let standardServerRB: DLRadioButton = {
-        let button = DLRadioButton()
-        button.setTitle(ControllerConstants.standardServer, for: .normal)
-        button.isSelected = true
-        return button
-    }()
-
-    let customServerRB: DLRadioButton = {
-        let button = DLRadioButton()
-        button.setTitle(ControllerConstants.customServer, for: .normal)
-        return button
-    }()
-
-    let customServerAddressField: TextField = {
-        let textfield = TextField()
-        textfield.placeholderNormalColor = .white
-        textfield.placeholderActiveColor = .white
-        textfield.dividerNormalColor = .white
-        textfield.dividerActiveColor = .white
-        textfield.textColor = .white
-        textfield.tag = 0
-        textfield.placeholder = ControllerConstants.customIPAddress
-        return textfield
-    }()
+    @IBOutlet weak var signUpButtonTopConstraint: NSLayoutConstraint!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
+
         addTapGesture()
+        prepareFields()
+        prepareSignUpButton()
     }
 
 }

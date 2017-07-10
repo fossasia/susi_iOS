@@ -9,7 +9,7 @@
 import XCTest
 
 class AnonymousUITests: XCTestCase {
-    
+
     private let app = XCUIApplication()
     
     override func setUp() {

@@ -89,11 +89,6 @@ extension LoginViewController {
         skipButton.addTarget(self, action: #selector(enterAnonymousMode), for: .touchUpInside)
     }
 
-    // Configures Sign Up Button
-    func prepareSignUpButton() {
-        signUpButton.addTarget(self, action: #selector(presentSignUpController), for: .touchUpInside)
-    }
-
     // Call Login API
     func performLogin() {
 
@@ -200,6 +195,7 @@ extension LoginViewController {
         if let password = passwordTextField.text, password.isEmpty {
             return false
         }
+
         if addressField.tag == 0 {
             if let address = addressField.text, address.isEmpty {
                 return false
