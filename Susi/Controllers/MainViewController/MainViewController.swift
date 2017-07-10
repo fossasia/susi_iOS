@@ -180,7 +180,7 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
             message.actionType == ActionType.websearch.rawValue {
             return CGSize(width: view.frame.width, height: 140)
         }
-        return CGSize(width: view.frame.width, height: estimatedFrame.height + 35)
+        return CGSize(width: view.frame.width, height: estimatedFrame.height + 38)
     }
 
     // Set Edge Insets
@@ -222,5 +222,7 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
     var soundFileURL: URL!
 
     var timer: Timer!
+
+    var detectionTimer: Timer?
 
 }

@@ -402,6 +402,15 @@ extension MainViewController: SFSpeechRecognizerDelegate {
                 self.handleSend()
             }
 
+            if let _ = self.detectionTimer?.isValid {
+                self.detectionTimer?.invalidate()
+            } else {
+                self.detectionTimer = Timer(timeInterval: 2.0, repeats: false, block: { (_) in
+                    self.handleSend()
+                    self.detectionTimer?.invalidate()
+                })
+            }
+
         })
 
         let recordingFormat = inputNode.outputFormat(forBus: 0)

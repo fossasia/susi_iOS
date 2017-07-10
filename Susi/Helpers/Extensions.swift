@@ -90,6 +90,25 @@ extension String {
         return html2AttributedString?.string ?? ""
     }
 
+    // Password validation
+    var isTextSufficientComplexity: Bool {
+
+        let capitalLetterRegEx  = ".*[A-Z]+.*"
+        var texttest = NSPredicate(format:"SELF MATCHES %@", capitalLetterRegEx)
+        let capitalResult = texttest.evaluate(with: self)
+
+        let numberRegEx  = ".*[0-9]+.*"
+        let texttest1 = NSPredicate(format:"SELF MATCHES %@", numberRegEx)
+        let numberResult = texttest1.evaluate(with: self)
+
+        let lowercaseLetterRegEx  = ".*[a-z]+.*"
+        texttest = NSPredicate(format:"SELF MATCHES %@", lowercaseLetterRegEx)
+        let lowercaseResult = texttest.evaluate(with: self)
+
+        return capitalResult && numberResult && lowercaseResult
+
+    }
+
 }
 
 extension UIView {

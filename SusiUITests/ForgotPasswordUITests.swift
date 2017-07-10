@@ -9,7 +9,7 @@
 import XCTest
 
 class ForgotPasswordUITests: XCTestCase {
-    
+
     private let app = XCUIApplication()
     
     override func setUp() {

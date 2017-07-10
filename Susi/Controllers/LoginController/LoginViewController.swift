@@ -40,7 +40,6 @@ class LoginViewController: UIViewController {
         prepareAddressField()
         prepareLoginButton()
         prepareSkipButton()
-        prepareSignUpButton()
 
         checkSession()
 
