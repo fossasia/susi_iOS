@@ -16,6 +16,7 @@ import AVFoundation
 import RealmSwift
 import Speech
 import NVActivityIndicatorView
+import Realm
 
 class MainViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 

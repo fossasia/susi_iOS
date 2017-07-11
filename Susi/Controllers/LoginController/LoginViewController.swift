@@ -8,10 +8,9 @@
 
 import UIKit
 import Material
-import Toast_Swift
-import SwiftValidators
 import DLRadioButton
 import RealmSwift
+import Toast_Swift
 
 class LoginViewController: UIViewController {
 

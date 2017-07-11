@@ -13,7 +13,6 @@ class ForgotPasswordUITests: XCTestCase {
     private let app = XCUIApplication()
     
     override func setUp() {
-        
         super.setUp()
         
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -33,9 +32,6 @@ class ForgotPasswordUITests: XCTestCase {
     }
 
     func testForgotPassword() {
-     
-        
-        let app = XCUIApplication()
         app.buttons[ControllerConstants.TestKeys.forgotPassword].tap()
         
         let textField = app.textFields[ControllerConstants.TestKeys.email]
@@ -43,7 +39,7 @@ class ForgotPasswordUITests: XCTestCase {
         textField.typeText(ControllerConstants.TestKeys.TestAccount.emailId)
         app.buttons[ControllerConstants.TestKeys.reset].tap()
         
-        sleep(3)
+        sleep(5)
         
         let alert = app.alerts[ControllerConstants.TestKeys.emailSent].buttons[ControllerConstants.TestKeys.ok]
         XCTAssertTrue(alert.exists)

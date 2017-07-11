@@ -13,7 +13,6 @@ class ChatUITests: XCTestCase {
     private let app = XCUIApplication()
     
     override func setUp() {
-
         super.setUp()
         
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -35,7 +34,6 @@ class ChatUITests: XCTestCase {
     }
     
     func testAnswerAction() {
-        
         let inputviewTextView = app.textViews[ControllerConstants.TestKeys.chatInputView]
         inputviewTextView.tap()
         inputviewTextView.typeText("Hi there")
@@ -49,12 +47,10 @@ class ChatUITests: XCTestCase {
         
         let incomingMessage = collectionViewsQuery.children(matching: .cell).element(boundBy: 1).children(matching: .textView).element
         XCTAssertTrue(incomingMessage.exists)
-        
     }
     
     func testMapAndAnchor() {
-        
-        let inputviewTextView = XCUIApplication().textViews[ControllerConstants.TestKeys.chatInputView]
+        let inputviewTextView = app.textViews[ControllerConstants.TestKeys.chatInputView]
         inputviewTextView.tap()
         inputviewTextView.typeText("Where IS Singapore?")
         app.buttons[ControllerConstants.TestKeys.send].tap()
@@ -64,11 +60,9 @@ class ChatUITests: XCTestCase {
         let collectionViewsQuery = app.collectionViews
         let mapViewCell = collectionViewsQuery.children(matching: .cell).element(boundBy: 3).children(matching: .other).element(boundBy: 0)
         XCTAssertTrue(mapViewCell.exists)
-        
     }
     
     func testRSSAction() {
-        
         let inputviewTextView = app.textViews[ControllerConstants.TestKeys.chatInputView]
         inputviewTextView.tap()
         inputviewTextView.typeText("Amazon")
@@ -78,7 +72,6 @@ class ChatUITests: XCTestCase {
         
         let collectionView = app.collectionViews.collectionViews[ControllerConstants.TestKeys.rssCollectionView]
         XCTAssertTrue(collectionView.exists)
-        
     }
     
 }
