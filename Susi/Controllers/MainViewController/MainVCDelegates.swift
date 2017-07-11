@@ -323,24 +323,18 @@ extension MainViewController: SFSpeechRecognizerDelegate {
 
         SFSpeechRecognizer.requestAuthorization { (authStatus) in
 
-            var isEnabled = false
-
             switch authStatus {
             case .authorized:
                 print("Autorized speech")
-                isEnabled = true
 
             case .denied:
                 print("Denied speech")
-                isEnabled = false
 
             case .restricted:
                 print("speech restricted")
-                isEnabled = false
 
             case .notDetermined:
                 print("not determined")
-                isEnabled = false
             }
 
             OperationQueue.main.addOperation {

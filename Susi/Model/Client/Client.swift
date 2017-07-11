@@ -27,7 +27,7 @@ class Client: NSObject {
         }
 
         Alamofire.request(url, method: httpMethod, parameters: parameters, encoding: URLEncoding(destination: .methodDependent), headers: headers).validate().responseJSON { (response: DataResponse<Any>) in
-            print(response.request?.url)
+            print(response.request?.url ?? "Error: invalid URL")
             switch(response.result) {
 
             case .success(_):
