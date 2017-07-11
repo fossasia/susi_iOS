@@ -89,7 +89,6 @@ class ControllerConstants {
         static let speechOutputAlwaysOn = "speechOutputAlwaysOn"
         static let wallpaper = "wallpaper"
         static let ipAddress = "ipAddress"
-        static let firstLaunch = "firstLaunch"
         static let hotwordEnabled = "hotwordEnabled"
     }
 

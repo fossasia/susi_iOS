@@ -41,7 +41,6 @@ class Message: Object {
     }
 
     static func getAllAction(data: [String : AnyObject]) -> List<Message> {
-
         let messages = List<Message>()
 
         if let answers = data[Client.ChatKeys.Answers] as? [[String : AnyObject]] {
@@ -50,14 +49,10 @@ class Message: Object {
 
                     let message = Message()
                     message.fromUser = false
-
-                    if let body = data[Client.ChatKeys.Query] as? String {
-                        message.message = body
-                    }
+                    message.message = data[Client.ChatKeys.Query] as? String ?? ""
 
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-
                     if let queryDate = data[Client.ChatKeys.QueryDate] as? String,
                         let answerDate = data[Client.ChatKeys.AnswerDate] as? String {
                         message.queryDate = dateFormatter.date(from: queryDate)! as NSDate
@@ -97,25 +92,19 @@ class Message: Object {
     }
 
     static func getMessagesFromMemory(_ cognitions: [[String : AnyObject]]) -> List<Message> {
-
         let messages = List<Message>()
 
         for cognition in cognitions {
-
             if let query = cognition[Client.ChatKeys.Query] as? String {
                 let message = Message(message: query)
                 messages.append(message)
             }
-
             let actionMessages = Message.getAllAction(data: cognition)
             for message in actionMessages {
                 messages.append(message)
             }
-
         }
-
         return messages
-
     }
 
 }

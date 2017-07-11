@@ -15,11 +15,7 @@ class AnchorAction: Object {
 
     convenience init(action: [String : AnyObject]) {
         self.init()
-
-        if let link = action[Client.ChatKeys.Link] as? String,
-            let text = action[Client.ChatKeys.Text] as? String {
-            self.link = link
-            self.text = text
-        }
+        link = action[Client.ChatKeys.Link] as? String ?? ""
+        text = action[Client.ChatKeys.Text] as? String ?? ""
     }
 }

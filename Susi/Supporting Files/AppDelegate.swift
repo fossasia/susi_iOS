@@ -18,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         resetStateIfUITesting()
         initializeRealm()
-        initializeUserSettings()
         return true
     }
 
@@ -30,24 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Realm.Configuration.defaultConfiguration = config
     }
 
-    func initializeUserSettings() {
-        let firstLaunch = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.firstLaunch)
-
-        if !firstLaunch {
-            UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.firstLaunch)
-            UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.enterToSend)
-            UserDefaults.standard.set(false, forKey: ControllerConstants.UserDefaultsKeys.micInput)
-            UserDefaults.standard.set(false, forKey: ControllerConstants.UserDefaultsKeys.speechOutput)
-            UserDefaults.standard.set(false, forKey: ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn)
-            UserDefaults.standard.set(false, forKey: ControllerConstants.UserDefaultsKeys.hotwordEnabled)
-        }
-
-    }
-
     func resetStateIfUITesting() {
         if ProcessInfo.processInfo.arguments.contains("UI-Testing") {
             UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
-            initializeUserSettings()
             UserDefaults.standard.set(Client.APIURLs.SusiAPI, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
         }
     }
