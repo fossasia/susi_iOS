@@ -13,7 +13,6 @@ class AnonymousUITests: XCTestCase {
     private let app = XCUIApplication()
     
     override func setUp() {
-        
         super.setUp()
         
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -33,8 +32,6 @@ class AnonymousUITests: XCTestCase {
     }
     
     func testAnonymousMode() {
-        
-        let app = XCUIApplication()
         app.buttons[ControllerConstants.TestKeys.skip].tap()
         
         let textView = app.textViews[ControllerConstants.TestKeys.chatInputView]
@@ -44,12 +41,11 @@ class AnonymousUITests: XCTestCase {
         let sendButton = app.buttons[ControllerConstants.TestKeys.send]
         sendButton.tap()
         
-        sleep(3)
+        sleep(5)
         
         let collectionViewsQuery = app.collectionViews
         let responseMessage = collectionViewsQuery.children(matching: .cell).element(boundBy: 1).children(matching: .textView).element
         XCTAssertTrue(responseMessage.exists)
-        
     }
     
 }

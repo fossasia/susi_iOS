@@ -30,6 +30,7 @@
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ViN-ki-rRD" customClass="TextField" customModule="Material">
                                 <rect key="frame" x="20" y="145" width="374" height="30"/>
+                                <accessibility key="accessibilityConfiguration" identifier="email"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
@@ -47,6 +48,7 @@
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bMo-Iv-Lqa" customClass="TextField" customModule="Material">
                                 <rect key="frame" x="20" y="204" width="374" height="30"/>
+                                <accessibility key="accessibilityConfiguration" identifier="password"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" secureTextEntry="YES"/>
@@ -79,6 +81,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tyX-vw-iD6" customClass="RaisedButton" customModule="Material">
                                 <rect key="frame" x="20" y="350" width="374" height="44"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="login"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="pGd-5d-AZr"/>
                                 </constraints>
@@ -88,10 +91,12 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uui-73-IEM" customClass="FlatButton" customModule="Material">
                                 <rect key="frame" x="20" y="440" width="374" height="34"/>
+                                <accessibility key="accessibilityConfiguration" identifier="skip"/>
                                 <state key="normal" title="Skip"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Q5-rQ-6Ig" customClass="FlatButton" customModule="Material">
                                 <rect key="frame" x="20" y="402" width="374" height="34"/>
+                                <accessibility key="accessibilityConfiguration" identifier="forgotPassword"/>
                                 <state key="normal" title="Forgot Password"/>
                                 <connections>
                                     <segue destination="hF4-Pz-cCO" kind="show" id="eZr-1Q-eyn"/>
@@ -102,6 +107,7 @@
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0l-NZ-Q5Q" customClass="FlatButton" customModule="Material">
                                 <rect key="frame" x="20" y="682" width="374" height="34"/>
+                                <accessibility key="accessibilityConfiguration" identifier="signUp"/>
                                 <state key="normal" title="Sign Up for SUSI"/>
                                 <connections>
                                     <segue destination="Azo-Yr-Z9r" kind="show" id="AbC-lv-5zl"/>
@@ -179,6 +185,7 @@
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fZv-XU-9rZ" customClass="TextField" customModule="Material">
                                 <rect key="frame" x="20" y="74" width="374" height="30"/>
+                                <accessibility key="accessibilityConfiguration" identifier="email"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
@@ -196,6 +203,7 @@
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N3z-41-ZBS" customClass="TextField" customModule="Material">
                                 <rect key="frame" x="20" y="148" width="374" height="30"/>
+                                <accessibility key="accessibilityConfiguration" identifier="password"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" secureTextEntry="YES"/>
@@ -210,6 +218,7 @@
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TcY-GF-sf2" customClass="TextField" customModule="Material">
                                 <rect key="frame" x="20" y="222" width="374" height="30"/>
+                                <accessibility key="accessibilityConfiguration" identifier="confirmPassword"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" secureTextEntry="YES"/>
@@ -248,6 +257,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="diq-Fb-8ST" customClass="RaisedButton" customModule="Material">
                                 <rect key="frame" x="20" y="365" width="374" height="44"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="signUp"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Hq2-zy-vS9"/>
                                 </constraints>
@@ -348,6 +358,7 @@
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xUr-5V-fz5" customClass="TextField" customModule="Material">
                                 <rect key="frame" x="20" y="24" width="374" height="30"/>
+                                <accessibility key="accessibilityConfiguration" identifier="email"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -381,6 +392,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9bQ-nT-dJk" customClass="FlatButton" customModule="Material">
                                 <rect key="frame" x="20" y="166" width="374" height="44"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="reset"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="5uG-f6-7eE"/>
                                 </constraints>

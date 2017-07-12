@@ -1,14 +1,15 @@
 language: swift
-script: ./build.sh
 osx_image: xcode8.3
-xcode_sdk: iphonesimulator10.0
 cache: cocoapods
 
 before_install:
 - gem install cocoapods
 - pod repo update
-- chmod +x build.sh
 
 after_success:
   - chmod +x upload-ipa.sh
   - ./upload-ipa.sh
+
+script:
+  - set -ev
+  - xcodebuild test -workspace Susi.xcworkspace -scheme Susi -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.0' ONLY_ACTIVE_ARCH=NO | xcpretty -c

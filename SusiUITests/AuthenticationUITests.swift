@@ -13,7 +13,6 @@ class AuthenticationUITests: XCTestCase {
     private let app = XCUIApplication()
 
     override func setUp() {
-        
         super.setUp()
 
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -33,37 +32,28 @@ class AuthenticationUITests: XCTestCase {
     }
 
     func testLoginSuccess() {
-        
-        let scrollViewsQuery = app.scrollViews
-        
-        let emailField = scrollViewsQuery.textFields[ControllerConstants.TestKeys.email]
+        let emailField = app.textFields[ControllerConstants.TestKeys.email]
         emailField.tap()
         emailField.typeText(ControllerConstants.TestKeys.TestAccount.emailId)
-        app.buttons[ControllerConstants.TestKeys.returnHit].tap()
         
-        let secureTextField = scrollViewsQuery.secureTextFields[ControllerConstants.TestKeys.password]
+        let secureTextField = app.secureTextFields[ControllerConstants.TestKeys.password]
         secureTextField.tap()
         secureTextField.typeText(ControllerConstants.TestKeys.TestAccount.password)
         
         app.buttons[ControllerConstants.TestKeys.login].tap()
         
-        sleep(3)
+        sleep(5)
         
         let sendButton = app.buttons[ControllerConstants.TestKeys.send]
         XCTAssertTrue(sendButton.exists)
-        
     }
     
     func testLoginFailure() {
-        
-        let scrollViewsQuery = app.scrollViews
-        
-        let emailField = scrollViewsQuery.textFields[ControllerConstants.TestKeys.email]
+        let emailField = app.textFields[ControllerConstants.TestKeys.email]
         emailField.tap()
         emailField.typeText(ControllerConstants.TestKeys.TestAccount.emailId)
-        app.buttons[ControllerConstants.TestKeys.returnHit].tap()
         
-        let secureTextField = scrollViewsQuery.secureTextFields[ControllerConstants.TestKeys.password]
+        let secureTextField = app.secureTextFields[ControllerConstants.TestKeys.password]
         secureTextField.tap()
         secureTextField.typeText(ControllerConstants.TestKeys.TestAccount.incorrectPassword)
         
@@ -73,11 +63,9 @@ class AuthenticationUITests: XCTestCase {
         
         let toast = app.staticTexts[ControllerConstants.TestKeys.incorrectLogin]
         XCTAssertTrue(toast.exists)
-        
     }
     
     func testLogoutSuccess() {
-        
         testLoginSuccess()
         
         let button = app.navigationBars["Susi.MainView"].children(matching: .other).element(boundBy: 0).children(matching: .button).element(boundBy: 1)
@@ -87,12 +75,10 @@ class AuthenticationUITests: XCTestCase {
         
         let loginButton = app.buttons[ControllerConstants.TestKeys.login]
         XCTAssertTrue(loginButton.exists)
-        
     }
     
     func testSignUpFailure() {
-        
-        app.buttons["Sign up for SUSI"].tap()
+        app.buttons[ControllerConstants.TestKeys.signUp].tap()
         
         let emailTextField = app.textFields[ControllerConstants.TestKeys.email]
         emailTextField.tap()
@@ -106,13 +92,12 @@ class AuthenticationUITests: XCTestCase {
         confirmpasswordTextField.tap()
         confirmpasswordTextField.typeText(ControllerConstants.TestKeys.TestAccount.password)
         
-        app.buttons["signUp"].tap()
+        app.buttons[ControllerConstants.TestKeys.signUp].tap()
         
         sleep(2)
         
         let toast = app.staticTexts[Client.ResponseMessages.ServerError]
         XCTAssertTrue(toast.exists)
-        
     }
 
 }
