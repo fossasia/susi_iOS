@@ -16,14 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        resetStateIfUITesting()
         initializeRealm()
+        resetStateIfUITesting()
         return true
     }
 
     func initializeRealm() {
-        var config = Realm.Configuration(schemaVersion: 1,
-            migrationBlock: nil)
+        var config = Realm.Configuration(schemaVersion: 1, migrationBlock: nil)
 
         config.fileURL = config.fileURL?.deletingLastPathComponent().appendingPathComponent("susi.realm")
         Realm.Configuration.defaultConfiguration = config
@@ -33,6 +32,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if ProcessInfo.processInfo.arguments.contains("UI-Testing") {
             UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
             UserDefaults.standard.set(Client.APIURLs.SusiAPI, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
+            let realm = try! Realm()
+            try! realm.write {
+                realm.deleteAll()
+            }
         }
     }
 

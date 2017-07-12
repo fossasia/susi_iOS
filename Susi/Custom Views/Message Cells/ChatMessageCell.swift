@@ -55,7 +55,7 @@ class ChatMessageCell: BaseCell, UITextViewDelegate {
         textBubbleView.addSubview(bubbleImageView)
         textBubbleView.addConstraintsWithFormat(format: "H:|[v0]|", views: bubbleImageView)
         textBubbleView.addConstraintsWithFormat(format: "V:|[v0]|", views: bubbleImageView)
-
+        self.accessibilityIdentifier = ControllerConstants.TestKeys.chatCells
     }
 
     @available(iOS, deprecated: 10.0)

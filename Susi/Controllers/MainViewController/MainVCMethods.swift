@@ -126,6 +126,7 @@ extension MainViewController {
         collectionView?.register(IncomingBubbleCell.self, forCellWithReuseIdentifier: ControllerConstants.incomingCell)
         collectionView?.register(OutgoingChatCell.self, forCellWithReuseIdentifier: ControllerConstants.outgoingCell)
         collectionView?.register(RSSCell.self, forCellWithReuseIdentifier: ControllerConstants.rssCell)
+        collectionView?.accessibilityIdentifier = ControllerConstants.TestKeys.chatCollectionView
     }
 
     // Send Button Action

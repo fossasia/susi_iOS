@@ -24,7 +24,6 @@ class ChatUITests: XCTestCase {
         app.launch()
         
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-        
         AuthenticationUITests.init().testLoginSuccess()
     }
     
@@ -43,10 +42,8 @@ class ChatUITests: XCTestCase {
         
         sleep(5)
         
-        let collectionViewsQuery = app.collectionViews
-        
-        let incomingMessage = collectionViewsQuery.children(matching: .cell).element(boundBy: 1).children(matching: .textView).element
-        XCTAssertTrue(incomingMessage.exists)
+        let chatCells = app.collectionViews.cells.matching(identifier: ControllerConstants.TestKeys.chatCells)
+        XCTAssertEqual(chatCells.count, 2)
     }
     
     func testMapAndAnchor() {
@@ -57,9 +54,8 @@ class ChatUITests: XCTestCase {
         
         sleep(5)
         
-        let collectionViewsQuery = app.collectionViews
-        let mapViewCell = collectionViewsQuery.children(matching: .cell).element(boundBy: 3).children(matching: .other).element(boundBy: 0)
-        XCTAssertTrue(mapViewCell.exists)
+        let chatCells = app.collectionViews.cells.matching(identifier: ControllerConstants.TestKeys.chatCells)
+        XCTAssertEqual(chatCells.count, 4)
     }
     
     func testRSSAction() {
@@ -70,8 +66,8 @@ class ChatUITests: XCTestCase {
         
         sleep(5)
         
-        let collectionView = app.collectionViews.collectionViews[ControllerConstants.TestKeys.rssCollectionView]
-        XCTAssertTrue(collectionView.exists)
+        let chatCells = app.collectionViews.cells.matching(identifier: ControllerConstants.TestKeys.chatCells)
+        XCTAssertEqual(chatCells.count, 3)
     }
     
 }

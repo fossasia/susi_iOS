@@ -11,5 +11,5 @@ after_success:
   - ./upload-ipa.sh
 
 script:
-  - set -ev
-  - xcodebuild test -workspace Susi.xcworkspace -scheme Susi -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.0' ONLY_ACTIVE_ARCH=NO | xcpretty -c
+  - set -o pipefail
+  - xcodebuild build test -workspace Susi.xcworkspace -scheme Susi -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.0' ONLY_ACTIVE_ARCH=NO | xcpretty -c
