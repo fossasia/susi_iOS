@@ -17,25 +17,10 @@ class WebsearchAction: Object {
 
     convenience init(data: [String:AnyObject]) {
         self.init()
-
-        if let result = data[Client.WebsearchKeys.Result] as? String, !result.isEmpty {
-            self.desc = result
-        }
-
-        if let icon = data[Client.WebsearchKeys.Icon] as? [String : AnyObject] {
-            if let url = icon[Client.WebsearchKeys.Url] as? String, !url.isEmpty {
-                self.image = url
-            }
-        }
-
-        if let text = data[Client.WebsearchKeys.Text] as? String {
-            self.title = text
-        }
-
-        if let firstUrl = data[Client.WebsearchKeys.FirstURL] as? String {
-            self.shortenedURL = firstUrl
-        }
-
+        desc = data[Client.WebsearchKeys.Result] as? String ?? Client.WebSearch.noDescription
+        image = data[Client.WebsearchKeys.Icon]?[Client.WebsearchKeys.Url] as? String
+        title = data[Client.WebsearchKeys.Text] as? String ?? Client.WebSearch.noData
+        shortenedURL = data[Client.WebsearchKeys.FirstURL] as? String ?? Client.WebSearch.duckDuckGo
     }
 
     static func getSearchResults(_ dictionary: [[String : AnyObject]]) -> List<WebsearchAction> {

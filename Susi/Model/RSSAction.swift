@@ -17,16 +17,9 @@ class RSSFeed: Object {
 
     convenience init(data: [String : AnyObject], title: String, description: String, link: String) {
         self.init()
-
-        if let title = data[title] as? String, !title.isEmpty {
-            self.title = title.trimmed
-        }
-        if let desc = data[description] as? String, !desc.isEmpty {
-            self.desc = desc.trimmed
-        }
-        if let link = data[link] as? String, !link.isEmpty {
-            self.link = link
-        }
+        self.title = (data[title] as? String ?? "No title").trimmed
+        self.desc = (data[description] as? String ?? "No description").trimmed
+        self.link = (data[link] as? String ?? "http://google.com")
     }
 
     static func getRSSFeeds(data: [[String : AnyObject]], title: String, description: String, link: String, count: Int) -> List<RSSFeed> {
@@ -46,10 +39,7 @@ class RSSAction: Object {
 
     convenience init(data: [[String : AnyObject]], actionObject: [String : AnyObject]) {
         self.init()
-
-        if let count = actionObject[Client.ChatKeys.Count] as? Int {
-            self.count = count
-        }
+        count = actionObject[Client.ChatKeys.Count] as? Int ?? 0
 
         if let title = actionObject[Client.ChatKeys.Title] as? String,
             let description = actionObject[Client.ChatKeys.Description] as? String,

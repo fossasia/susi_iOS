@@ -11,24 +11,14 @@ import SwiftDate
 
 class User: NSObject {
 
-    var accessToken: String = ""
-    var message: String = ""
-    var expiryTime = Date()
+    let accessToken: String
+    let message: String
+    let expiryTime: Date
 
     init(dictionary: [String:AnyObject]) {
-
-        if let accessToken = dictionary[Client.UserKeys.AccessToken] as? String {
-            self.accessToken = accessToken
-        }
-
-        if let message = dictionary[Client.UserKeys.Message] as? String {
-            self.message = message
-        }
-
-        if let validSeconds = dictionary[Client.UserKeys.ValidSeconds] as? Int {
-            self.expiryTime = Date() + validSeconds.seconds
-        }
-
+        self.accessToken = dictionary[Client.UserKeys.AccessToken] as? String ?? ""
+        self.message = dictionary[Client.UserKeys.Message] as? String ?? ""
+        self.expiryTime = Date() + (dictionary[Client.UserKeys.ValidSeconds] as? Int ?? 0).seconds
     }
 
 }

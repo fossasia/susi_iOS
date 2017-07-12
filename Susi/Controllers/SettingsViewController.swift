@@ -66,18 +66,18 @@ class SettingsViewController: UICollectionViewController, UICollectionViewDelega
                 cell.titleLabel.text = ControllerConstants.Settings.enterToSend
                 cell.detailLabel.text = ControllerConstants.Settings.sendMessageByReturn
                 cell.settingSwitch.tag = 0
-                cell.settingSwitch.isOn = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.enterToSend)
+                cell.settingSwitch.isOn = UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.enterToSend) as? Bool ?? true
             } else if indexPath.section == 1 {
                 if indexPath.item == 0 {
                     cell.titleLabel.text = ControllerConstants.Settings.micInput
                     cell.detailLabel.text = ControllerConstants.Settings.sendMessageByReturn
                     cell.settingSwitch.tag = 1
-                    cell.settingSwitch.isOn = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.micInput)
+                    cell.settingSwitch.isOn = UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.micInput) as? Bool ?? true
                 } else if indexPath.item == 1 {
                     cell.titleLabel.text = ControllerConstants.Settings.enableHotword
                     cell.detailLabel.text = ControllerConstants.Settings.susiHotword
                     cell.settingSwitch.tag = 2
-                    cell.settingSwitch.isOn = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.hotwordEnabled)
+                    cell.settingSwitch.isOn = UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.hotwordEnabled) as? Bool ?? true
                 }
             } else {
                 if indexPath.item == 0 {

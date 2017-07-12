@@ -1,5 +1,9 @@
 //
-//  Use this file to import your target's public headers that you would like to expose to Swift.
+//  Susi-Bridging-Header.h
+//  Susi
+//
+//  Created by Chashmeet Singh on 2017-07-11.
+//  Copyright © 2017 FOSSAsia. All rights reserved.
 //
 
 #ifndef Susi_Bridging_Header_h

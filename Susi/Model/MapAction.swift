@@ -12,19 +12,13 @@ import RealmSwift
 class MapAction: Object {
     dynamic var latitude: Double = 0.0
     dynamic var longitude: Double = 0.0
-    dynamic var zoom: Int = 13
+    dynamic var zoom: Int = 12
 
     convenience init(action: [String : AnyObject]) {
         self.init()
-
-        if let latitude = action[Client.ChatKeys.Latitude] as? String,
-            let longitude = action[Client.ChatKeys.Longitude] as? String,
-            let zoom = action[Client.ChatKeys.Zoom] as? String {
-            self.longitude = Double(longitude)!
-            self.latitude = Double(latitude)!
-            self.zoom = Int(zoom)!
-        }
-
+        latitude = Double(action[Client.ChatKeys.Latitude] as? String ?? "0.0")!
+        longitude = Double(action[Client.ChatKeys.Longitude] as? String ?? "0.0")!
+        zoom = Int(action[Client.ChatKeys.Zoom] as? String ?? "12")!
     }
 
 }
