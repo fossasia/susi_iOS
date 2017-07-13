@@ -20,6 +20,8 @@ extension Client {
         static let Chat = "/susi/chat.json"
         static let ResetPassword = "/aaa/recoverpassword.json"
         static let Memory = "/susi/memory.json"
+        static let UserSettings = "/aaa/changeUserSettings.json"
+        static let ListUserSettings = "/aaa/listUserSettings.json"
     }
 
     struct ResponseMessages {

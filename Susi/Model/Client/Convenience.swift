@@ -110,6 +110,71 @@ extension Client {
 
     }
 
+    func changeUserSettings(_ params: [String : AnyObject], _ completion: @escaping(_ success: Bool, _ error: String) -> Void) {
+
+        let url = getApiUrl(UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.ipAddress) as! String, Methods.UserSettings)
+
+        _ = makeRequest(url, .get, [:], parameters: params, completion: { (results, message) in
+
+            if let _ = message {
+                completion(false, ResponseMessages.ServerError)
+            } else if let results = results {
+
+                guard let response = results as? [String : AnyObject] else {
+                    completion(false, ResponseMessages.ServerError)
+                    return
+                }
+
+                if let accepted = response[ControllerConstants.accepted] as? Bool, let message = response[Client.UserKeys.Message] as? String {
+                    if accepted {
+                        completion(true, message)
+                        return
+                    }
+                    completion(false, message)
+                    return
+                }
+
+            }
+            return
+        })
+
+    }
+
+    func fetchUserSettings(_ params: [String : AnyObject], _ completion: @escaping(_ success: Bool, _ error: String) -> Void) {
+
+        let url = getApiUrl(UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.ipAddress) as! String, Methods.ListUserSettings)
+
+        _ = makeRequest(url, .get, [:], parameters: params, completion: { (results, message) in
+
+            if let _ = message {
+                completion(false, ResponseMessages.ServerError)
+            } else if let results = results {
+
+                guard let response = results as? [String : AnyObject] else {
+                    completion(false, ResponseMessages.ServerError)
+                    return
+                }
+
+                guard let settings = response[ControllerConstants.Settings.settings.lowercased()] as? [String:String] else {
+                    completion(false, ResponseMessages.ServerError)
+                    return
+                }
+
+                for (key, value) in settings {
+                    if value.toBool() != nil {
+                        UserDefaults.standard.set(value.toBool()!, forKey: key)
+                    } else {
+                        UserDefaults.standard.set(value, forKey: key)
+                    }
+                }
+                completion(true, response[Client.UserKeys.Message] as? String ?? "error")
+
+            }
+            return
+        })
+
+    }
+
     // MARK: - Chat Methods
 
     func queryResponse(_ params: [String : AnyObject], _ completion: @escaping(_ messages: List<Message>?, _ success: Bool, _ error: String?) -> Void) {

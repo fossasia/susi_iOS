@@ -108,11 +108,12 @@ extension LoginViewController {
             }
 
             indicatorView.startAnimating()
-            Client.sharedInstance.loginUser(params as [String : AnyObject]) { (_, success, message) in
+            Client.sharedInstance.loginUser(params as [String : AnyObject]) { (user, success, message) in
                 DispatchQueue.main.async {
                     self.toggleEditing()
                     if success {
                         self.completeLogin()
+                        self.fetchUserSettings(user!.accessToken)
                     }
                     self.view.makeToast(message)
                     self.indicatorView.stopAnimating()
@@ -123,6 +124,19 @@ extension LoginViewController {
             self.view.makeToast("Invalid email address")
         } else if let password = passwordTextField.text, password.isEmpty {
             self.view.makeToast("Password length too short")
+        }
+
+    }
+
+    func fetchUserSettings(_ accessToken: String) {
+        let params = [
+            Client.UserKeys.AccessToken: accessToken
+        ]
+
+        Client.sharedInstance.fetchUserSettings(params as [String : AnyObject]) { (success, message) in
+            DispatchQueue.global().async {
+                print("User settings fetch status: \(success) : \(message)")
+            }
         }
 
     }
@@ -226,6 +240,7 @@ extension LoginViewController {
                 DispatchQueue.main.async {
                     if user.expiryTime > Date() {
                         self.completeLogin(false)
+                        self.fetchUserSettings(user.accessToken)
                     } else {
                         self.resetDB()
                     }

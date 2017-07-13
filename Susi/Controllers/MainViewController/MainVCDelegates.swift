@@ -208,23 +208,30 @@ extension MainViewController: AVAudioPlayerDelegate {
     }
 
     func runSnowboy() {
-
         let file = try! AVAudioFile(forReading: soundFileURL)
         let format = AVAudioFormat(commonFormat: .pcmFormatFloat32, sampleRate: 16000.0, channels: 1, interleaved: false)
-        let buffer = AVAudioPCMBuffer(pcmFormat: format, frameCapacity: AVAudioFrameCount(file.length))
-        try! file.read(into: buffer)
-        let array = Array(UnsafeBufferPointer(start: buffer.floatChannelData![0], count:Int(buffer.frameLength)))
 
-        // print("Frame capacity: \(AVAudioFrameCount(file.length))")
-        // print("Buffer frame length: \(buffer.frameLength)")
+        let audioFrameCount = AVAudioFrameCount(file.length)
+        if audioFrameCount > 0 {
+            let buffer = AVAudioPCMBuffer(pcmFormat: format, frameCapacity: audioFrameCount)
+            do {
+                try file.read(into: buffer)
+            } catch let error {
+                print(error.localizedDescription)
+            }
+            let array = Array(UnsafeBufferPointer(start: buffer.floatChannelData![0], count:Int(buffer.frameLength)))
 
-        let result = wrapper.runDetection(array, length: Int32(buffer.frameLength))
-        // print("Result: \(result)")
+            // print("Frame capacity: \(AVAudioFrameCount(file.length))")
+            // print("Buffer frame length: \(buffer.frameLength)")
 
-        if result == 1 {
-            stopRecording()
-            timer.invalidate()
-            startSTT()
+            let result = wrapper.runDetection(array, length: Int32(buffer.frameLength))
+            // print("Result: \(result)")
+
+            if result == 1 {
+                stopRecording()
+                timer.invalidate()
+                startSTT()
+            }
         }
     }
 
