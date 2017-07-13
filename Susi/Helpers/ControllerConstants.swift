@@ -110,6 +110,8 @@ class ControllerConstants {
         static let chatInputView = "inputView"
         static let logout = "Logout"
         static let rssCollectionView = "rssCollectionView"
+        static let chatCollectionView = "chatCollectionView"
+        static let chatCells = "chatCell"
 
         struct TestAccount {
             static let emailId = "susi.ai@mail.com"
