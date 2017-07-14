@@ -1,0 +1,20 @@
+machine:
+  xcode:
+    version: 8.3.2
+
+dependencies:
+  pre:
+    - gem install cocoapods
+    - pod repo update
+
+test:
+  override:
+    - set -o pipefail && xcodebuild clean build test -workspace Susi.xcworkspace -scheme Susi -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.3' | tee $CIRCLE_ARTIFACTS/xcode_raw.log | xcpretty --test --color    
+
+deployment:
+  master:
+    branch: master
+    owner: circleci
+    commands:
+      - chmod +x upload-ipa.sh
+      - ./upload-ipa.sh
