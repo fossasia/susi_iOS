@@ -38,6 +38,9 @@ class ControllerConstants {
     static let standardServer = "Standard Server"
     static let customServer = "Custom Server"
     static let customIPAddress = "Address http://"
+    static let key = "key"
+    static let value = "value"
+    static let accepted = "Accepted"
 
     struct Login {
         static let susiImage = "susi"

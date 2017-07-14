@@ -144,17 +144,49 @@ class SettingsViewController: UICollectionViewController, UICollectionViewDelega
     }
 
     func switchDidToggle(sender: UISwitch!) {
-        if sender.tag == 0 {
-            UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.enterToSend), forKey: ControllerConstants.UserDefaultsKeys.enterToSend)
-        } else if sender.tag == 1 {
-            UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.micInput), forKey: ControllerConstants.UserDefaultsKeys.micInput)
-        } else if sender.tag == 2 {
-            UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.hotwordEnabled), forKey: ControllerConstants.UserDefaultsKeys.hotwordEnabled)
-        } else if sender.tag == 3 {
-            UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.speechOutput), forKey: ControllerConstants.UserDefaultsKeys.speechOutput)
-        } else if sender.tag == 4 {
-            UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn), forKey: ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn)
+
+        var params = [String: AnyObject]()
+
+        if let userData = UserDefaults.standard.dictionary(forKey: ControllerConstants.UserDefaultsKeys.user) as [String : AnyObject]? {
+            let user = User(dictionary: userData)
+            params[Client.UserKeys.AccessToken] = user.accessToken as AnyObject
         }
+
+        var key: String = ""
+
+        if sender.tag == 0 {
+            key = ControllerConstants.UserDefaultsKeys.enterToSend
+            UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: key), forKey: key)
+            params[ControllerConstants.key] = key as AnyObject
+            params[ControllerConstants.value] = UserDefaults.standard.bool(forKey: key) as AnyObject
+        } else if sender.tag == 1 {
+            key = ControllerConstants.UserDefaultsKeys.micInput
+            UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: key), forKey: key)
+            params[ControllerConstants.key] = key as AnyObject
+            params[ControllerConstants.value] = UserDefaults.standard.bool(forKey: key) as AnyObject
+        } else if sender.tag == 2 {
+            key = ControllerConstants.UserDefaultsKeys.hotwordEnabled
+            UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: key), forKey: key)
+            params[ControllerConstants.key] = key as AnyObject
+            params[ControllerConstants.value] = UserDefaults.standard.bool(forKey: key) as AnyObject
+        } else if sender.tag == 3 {
+            key = ControllerConstants.UserDefaultsKeys.speechOutput
+            UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: key), forKey: key)
+            params[ControllerConstants.key] = key as AnyObject
+            params[ControllerConstants.value] = UserDefaults.standard.bool(forKey: key) as AnyObject
+        } else if sender.tag == 4 {
+            key = ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn
+            UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: key), forKey: key)
+            params[ControllerConstants.key] = key as AnyObject
+            params[ControllerConstants.value] = UserDefaults.standard.bool(forKey: key) as AnyObject
+        }
+
+        Client.sharedInstance.changeUserSettings(params) { (_, message) in
+            DispatchQueue.global().async {
+                self.view.makeToast(message)
+            }
+        }
+
     }
 
 }
