@@ -18,7 +18,7 @@ import Speech
 import NVActivityIndicatorView
 import Realm
 
-class MainViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class MainViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, AVSpeechSynthesizerDelegate {
 
     var messages = List<Message>()
     let realm = try! Realm()
@@ -64,7 +64,7 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
     var bottomConstraintTextView: NSLayoutConstraint?
     var bottomConstraintSendButton: NSLayoutConstraint?
 
-    let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))
+    var speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))
     var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     var recognitionTask: SFSpeechRecognitionTask?
     let audioEngine = AVAudioEngine()
@@ -206,7 +206,7 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
     lazy var sendButton: FABButton = {
         let button = FABButton()
         button.setImage(UIImage(named: ControllerConstants.mic), for: .normal)
-        button.addTarget(self, action: #selector(startSTT), for: .touchUpInside)
+        button.addTarget(self, action: #selector(setTargetForSendButton), for: .touchUpInside)
         button.backgroundColor = UIColor.defaultColor()
         button.accessibilityIdentifier = ControllerConstants.TestKeys.send
         return button
@@ -219,11 +219,12 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
     var wrapper: SnowboyWrapper! = nil
 
     var audioRecorder: AVAudioRecorder!
-    var audioPlayer: AVAudioPlayer!
     var soundFileURL: URL!
 
     var timer: Timer!
 
     var detectionTimer: Timer?
-
+    var isSpeechRecognitionRunning: Bool = false
+    let audioSession = AVAudioSession.sharedInstance()
+    let speechSynthesizer = AVSpeechSynthesizer()
 }

@@ -133,10 +133,12 @@ extension MainViewController {
     func handleSend() {
         if let text = inputTextView.text, text.characters.count > 0 && !text.isEmpty {
             var params: [String : AnyObject] = [
-                Client.WebsearchKeys.Query: inputTextView.text! as AnyObject,
+                Client.WebsearchKeys.Query: text as AnyObject,
                 Client.ChatKeys.TimeZoneOffset: ControllerConstants.timeZone as AnyObject,
                 Client.ChatKeys.Language: Locale.current.languageCode as AnyObject
             ]
+
+            saveMessage(text)
 
             if let location = locationManager.location {
                 params[Client.ChatKeys.Latitude] = location.coordinate.latitude as AnyObject
@@ -158,6 +160,9 @@ extension MainViewController {
                                     self.messages.append(message)
                                     let indexPath = IndexPath(item: self.messages.count - 1, section: 0)
                                     self.collectionView?.insertItems(at: [indexPath])
+                                    if message.actionType == ActionType.answer.rawValue {
+                                        self.speakAction(message.message)
+                                    }
                                 }
                             }
                         }, completion: { (_) in
@@ -166,8 +171,24 @@ extension MainViewController {
                     }
                 }
             }
-            saveMessage()
-            params.removeAll()
+        }
+    }
+
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        print("utterance complete")
+        if self.isSpeechRecognitionRunning {
+            self.startSTT()
+        }
+    }
+
+    func speakAction(_ string: String) {
+        if isSpeechRecognitionRunning {
+            let speechUtterance = AVSpeechUtterance(string: string)
+            speechSynthesizer.delegate = self
+
+            speechUtterance.rate = 0.4
+
+            speechSynthesizer.speak(speechUtterance)
         }
     }
 
@@ -188,8 +209,9 @@ extension MainViewController {
     }
 
     // Temporarily save message to object
-    func saveMessage() {
-        let message = Message(message: inputTextView.text.trimmed)
+    func saveMessage(_ message: String) {
+
+        let message = Message(message: message.trimmed)
 
         try! realm.write {
             realm.add(message)
@@ -199,8 +221,8 @@ extension MainViewController {
             self.scrollToLast()
 
             self.sendButton.tag = 0
-            inputTextView.text = ""
-            self.textViewDidChange(inputTextView)
+            self.inputTextView.text = ""
+            setImageForSendButton()
         }
     }
 
@@ -223,20 +245,6 @@ extension MainViewController {
         self.messages = List<Message>(realm.objects(Message.self))
         self.collectionView?.reloadData()
         self.scrollToLast()
-    }
-
-    func addTargetSendButton() {
-//        print("send button tag: \(sendButton.tag)")
-        if sendButton.tag == 0 {
-            sendButton.removeTarget(self, action: #selector(handleSend), for: .touchUpInside)
-            sendButton.addTarget(self, action: #selector(startSTT), for: .touchUpInside)
-        } else {
-            if audioEngine.isRunning {
-                stopSTT()
-            }
-            sendButton.removeTarget(self, action: #selector(startSTT), for: .touchUpInside)
-            sendButton.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
-        }
     }
 
     func getMessagesFromMemory() {
@@ -264,6 +272,29 @@ extension MainViewController {
                 }
             }
 
+        }
+    }
+
+    func setTargetForSendButton() {
+        if isSpeechRecognitionRunning {
+            stopSTT()
+            setImageForSendButton()
+        } else {
+            if sendButton.tag == 0 {
+                startSTT()
+            } else {
+                handleSend()
+            }
+        }
+    }
+
+    func setImageForSendButton() {
+        if !isSpeechRecognitionRunning {
+            if let text = inputTextView.text, text.isEmpty {
+                sendButton.setImage(UIImage(named: ControllerConstants.mic), for: .normal)
+            } else {
+                sendButton.setImage(UIImage(named: ControllerConstants.send), for: .normal)
+            }
         }
     }
 

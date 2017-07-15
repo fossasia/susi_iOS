@@ -19,7 +19,6 @@
 		6D24B0961EE409DB0097418A /* SignUpVCMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D24B0951EE409DB0097418A /* SignUpVCMethods.swift */; };
 		6D2898391F144E5C00B6151A /* SnowboyWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6D2898321F144E5C00B6151A /* SnowboyWrapper.mm */; };
 		6D28983A1F144E5C00B6151A /* common.res in Resources */ = {isa = PBXBuildFile; fileRef = 6D2898331F144E5C00B6151A /* common.res */; };
-		6D28983B1F144E5C00B6151A /* susi.pmdl in Resources */ = {isa = PBXBuildFile; fileRef = 6D2898351F144E5C00B6151A /* susi.pmdl */; };
 		6D2898421F14507700B6151A /* libsnowboy-detect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2898381F144E5C00B6151A /* libsnowboy-detect.a */; };
 		6D2898451F1450AC00B6151A /* snowboy-detect.h in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2898441F1450AC00B6151A /* snowboy-detect.h */; };
 		6D2F984B1E76DF2200FE2B6F /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2F984A1E76DF2200FE2B6F /* BaseCell.swift */; };
@@ -46,6 +45,7 @@
 		6D61B9B31EEBAB4000CD3536 /* TableAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D61B9B21EEBAB4000CD3536 /* TableAction.swift */; };
 		6D61B9B51EEBAB6000CD3536 /* AnchorAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D61B9B41EEBAB6000CD3536 /* AnchorAction.swift */; };
 		6D61B9B71EEBAB7000CD3536 /* MapAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D61B9B61EEBAB7000CD3536 /* MapAction.swift */; };
+		6D7865B41F1CB71F00BCD12F /* susi.pmdl in Resources */ = {isa = PBXBuildFile; fileRef = 6D7865B31F1CB71F00BCD12F /* susi.pmdl */; };
 		6D87A32E1EEE54CC00A6D763 /* WebsearchCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D87A32D1EEE54CC00A6D763 /* WebsearchCollectionView.swift */; };
 		6D87A3301EEE557000A6D763 /* WebsearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D87A32F1EEE557000A6D763 /* WebsearchCell.swift */; };
 		6D87A3321EEE86CC00A6D763 /* RSSCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D87A3311EEE86CC00A6D763 /* RSSCell.swift */; };
@@ -94,7 +94,6 @@
 		6D2898321F144E5C00B6151A /* SnowboyWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SnowboyWrapper.mm; sourceTree = "<group>"; };
 		6D2898331F144E5C00B6151A /* common.res */ = {isa = PBXFileReference; lastKnownFileType = file; path = common.res; sourceTree = "<group>"; };
 		6D2898341F144E5C00B6151A /* SnowboyWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowboyWrapper.h; sourceTree = "<group>"; };
-		6D2898351F144E5C00B6151A /* susi.pmdl */ = {isa = PBXFileReference; lastKnownFileType = file; path = susi.pmdl; sourceTree = "<group>"; };
 		6D2898361F144E5C00B6151A /* snowboy-detect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "snowboy-detect.h"; sourceTree = "<group>"; };
 		6D2898381F144E5C00B6151A /* libsnowboy-detect.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libsnowboy-detect.a"; sourceTree = "<group>"; };
 		6D28983D1F144E7300B6151A /* libsnowboy-detect.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libsnowboy-detect.a"; path = "../../Desktop/libsnowboy-detect.a"; sourceTree = "<group>"; };
@@ -126,6 +125,7 @@
 		6D61B9B61EEBAB7000CD3536 /* MapAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapAction.swift; sourceTree = "<group>"; };
 		6D767DEC1E79A9B600FF5485 /* Pods_Susi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Susi.framework; path = "Pods/../build/Release-iphoneos/Pods_Susi.framework"; sourceTree = "<group>"; };
 		6D767DEE1E79A9C800FF5485 /* Pods_Susi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Susi.framework; path = "Pods/../build/Release-iphoneos/Pods_Susi.framework"; sourceTree = "<group>"; };
+		6D7865B31F1CB71F00BCD12F /* susi.pmdl */ = {isa = PBXFileReference; lastKnownFileType = file; path = susi.pmdl; sourceTree = "<group>"; };
 		6D82ADF21E784A5A0094AA9E /* Pods_Susi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Susi.framework; path = "../../Library/Developer/Xcode/DerivedData/Susi-avbkhdntnaiijsctxkaeflbkpdbm/Build/Products/Debug-iphonesimulator/Pods_Susi.framework"; sourceTree = "<group>"; };
 		6D87A32D1EEE54CC00A6D763 /* WebsearchCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebsearchCollectionView.swift; sourceTree = "<group>"; };
 		6D87A32F1EEE557000A6D763 /* WebsearchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebsearchCell.swift; sourceTree = "<group>"; };
@@ -254,8 +254,8 @@
 				6D2898321F144E5C00B6151A /* SnowboyWrapper.mm */,
 				6D2898331F144E5C00B6151A /* common.res */,
 				6D2898381F144E5C00B6151A /* libsnowboy-detect.a */,
+				6D7865B31F1CB71F00BCD12F /* susi.pmdl */,
 				6D2898361F144E5C00B6151A /* snowboy-detect.h */,
-				6D2898351F144E5C00B6151A /* susi.pmdl */,
 				6D2898411F144FFF00B6151A /* Susi-Bridging-Header.h */,
 			);
 			path = "Snowboy Files";
@@ -517,7 +517,7 @@
 				6D4D9B421E768E190067459C /* Assets.xcassets in Resources */,
 				6D389BEB1EDB912500DEAEA0 /* YTPlayer.html in Resources */,
 				6DAF3AF61F0E101200929D86 /* Main.storyboard in Resources */,
-				6D28983B1F144E5C00B6151A /* susi.pmdl in Resources */,
+				6D7865B41F1CB71F00BCD12F /* susi.pmdl in Resources */,
 				6D28983A1F144E5C00B6151A /* common.res in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
