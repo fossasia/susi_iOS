@@ -46,18 +46,6 @@ class ChatUITests: XCTestCase {
         XCTAssertEqual(chatCells.count, 2)
     }
     
-    func testMapAndAnchor() {
-        let inputviewTextView = app.textViews[ControllerConstants.TestKeys.chatInputView]
-        inputviewTextView.tap()
-        inputviewTextView.typeText("Where IS Singapore?")
-        app.buttons[ControllerConstants.TestKeys.send].tap()
-        
-        sleep(5)
-        
-        let chatCells = app.collectionViews.cells.matching(identifier: ControllerConstants.TestKeys.chatCells)
-        XCTAssertEqual(chatCells.count, 4)
-    }
-    
     func testRSSAction() {
         let inputviewTextView = app.textViews[ControllerConstants.TestKeys.chatInputView]
         inputviewTextView.tap()
