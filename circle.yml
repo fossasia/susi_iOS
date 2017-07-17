@@ -14,7 +14,7 @@ test:
 deployment:
   master:
     branch: master
-    owner: circleci
+    owner: fossasia
     commands:
       - chmod +x upload-ipa.sh
       - ./upload-ipa.sh
