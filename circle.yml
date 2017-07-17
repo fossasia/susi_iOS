@@ -18,3 +18,8 @@ deployment:
     commands:
       - chmod +x upload-ipa.sh
       - ./upload-ipa.sh
+
+general:
+  branches:
+    ignore:
+      - ipa
