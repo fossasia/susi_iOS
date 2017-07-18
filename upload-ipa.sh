@@ -8,7 +8,8 @@ then
         cd ipa
 
         # Delete all stale files
-        git rm -rf * .??*
+	find . -path ./.git -prune -o -exec rm -rf {} \; 2> /dev/null
+	git add .
 
         # temporary commit to persist delete file changes
         git commit -m "temp"
