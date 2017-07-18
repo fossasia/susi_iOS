@@ -21,7 +21,6 @@
 		6D28983A1F144E5C00B6151A /* common.res in Resources */ = {isa = PBXBuildFile; fileRef = 6D2898331F144E5C00B6151A /* common.res */; };
 		6D28983B1F144E5C00B6151A /* susi.pmdl in Resources */ = {isa = PBXBuildFile; fileRef = 6D2898351F144E5C00B6151A /* susi.pmdl */; };
 		6D2898421F14507700B6151A /* libsnowboy-detect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2898381F144E5C00B6151A /* libsnowboy-detect.a */; };
-		6D2898451F1450AC00B6151A /* snowboy-detect.h in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2898441F1450AC00B6151A /* snowboy-detect.h */; };
 		6D2F984B1E76DF2200FE2B6F /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2F984A1E76DF2200FE2B6F /* BaseCell.swift */; };
 		6D3527131F083F8E00395BD5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE44E141E76ACD900215B85 /* Constants.swift */; };
 		6D3527141F083F9100395BD5 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE44E101E76ACAF00215B85 /* Client.swift */; };
@@ -164,7 +163,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D2898451F1450AC00B6151A /* snowboy-detect.h in Frameworks */,
 				6D2898421F14507700B6151A /* libsnowboy-detect.a in Frameworks */,
 				6DE264911F0278A900EBAD13 /* Speech.framework in Frameworks */,
 				6D35E4881EE70F9000188E1F /* Accelerate.framework in Frameworks */,
