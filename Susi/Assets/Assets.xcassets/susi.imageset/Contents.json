@@ -1,17 +1,8 @@
 {
   "images" : [
     {
-      "idiom" : "universal",
-      "filename" : "susi.png",
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "universal",
-      "scale" : "3x"
+      "idiom" : "iphone",
+      "filename" : "SUSI.AI_Letters_Blue_Large.pdf"
     }
   ],
   "info" : {
