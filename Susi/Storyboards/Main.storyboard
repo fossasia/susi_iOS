@@ -22,12 +22,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="susi" translatesAutoresizingMaskIntoConstraints="NO" id="a1R-Kp-3L1">
-                                <rect key="frame" x="20" y="28" width="374" height="85"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="85" id="2sz-gr-uZT"/>
-                                </constraints>
-                            </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ViN-ki-rRD" customClass="TextField" customModule="Material">
                                 <rect key="frame" x="20" y="145" width="374" height="30"/>
                                 <accessibility key="accessibilityConfiguration" identifier="email"/>
@@ -113,17 +107,23 @@
                                     <segue destination="Azo-Yr-Z9r" kind="show" id="AbC-lv-5zl"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="susi" translatesAutoresizingMaskIntoConstraints="NO" id="a1R-Kp-3L1">
+                                <rect key="frame" x="76" y="55" width="262" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="2sz-gr-uZT"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.16862745098039217" green="0.24313725490196078" blue="0.30980392156862746" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="a1R-Kp-3L1" firstAttribute="trailing" secondItem="eB9-M6-ocu" secondAttribute="trailingMargin" id="3CD-n4-10g"/>
+                            <constraint firstItem="a1R-Kp-3L1" firstAttribute="trailing" secondItem="eB9-M6-ocu" secondAttribute="trailingMargin" constant="-56" id="3CD-n4-10g"/>
                             <constraint firstItem="Ey6-yh-fIO" firstAttribute="leading" secondItem="eB9-M6-ocu" secondAttribute="leadingMargin" constant="169" id="5qQ-ai-FpG"/>
                             <constraint firstItem="LU3-5s-B2R" firstAttribute="leading" secondItem="eB9-M6-ocu" secondAttribute="leadingMargin" id="6ci-VP-tZs"/>
                             <constraint firstItem="trP-xG-72E" firstAttribute="leading" secondItem="USZ-bF-rAa" secondAttribute="leading" id="9Kq-kR-e6z"/>
-                            <constraint firstItem="a1R-Kp-3L1" firstAttribute="leading" secondItem="eB9-M6-ocu" secondAttribute="leadingMargin" id="BNf-As-pvS"/>
+                            <constraint firstItem="a1R-Kp-3L1" firstAttribute="leading" secondItem="eB9-M6-ocu" secondAttribute="leadingMargin" constant="56" id="BNf-As-pvS"/>
                             <constraint firstItem="bMo-Iv-Lqa" firstAttribute="trailing" secondItem="trP-xG-72E" secondAttribute="trailing" id="E38-DF-2xc"/>
-                            <constraint firstItem="ViN-ki-rRD" firstAttribute="top" secondItem="a1R-Kp-3L1" secondAttribute="bottom" constant="32" id="LDg-Vy-D5f"/>
-                            <constraint firstItem="a1R-Kp-3L1" firstAttribute="leading" secondItem="ViN-ki-rRD" secondAttribute="leading" id="Mt5-qq-pP1"/>
+                            <constraint firstItem="ViN-ki-rRD" firstAttribute="top" secondItem="a1R-Kp-3L1" secondAttribute="bottom" constant="30" id="LDg-Vy-D5f"/>
+                            <constraint firstItem="a1R-Kp-3L1" firstAttribute="leading" secondItem="ViN-ki-rRD" secondAttribute="leading" constant="56" id="Mt5-qq-pP1"/>
                             <constraint firstItem="trP-xG-72E" firstAttribute="leading" secondItem="eB9-M6-ocu" secondAttribute="leadingMargin" constant="15" id="QZT-8L-cHp"/>
                             <constraint firstItem="ViN-ki-rRD" firstAttribute="leading" secondItem="bMo-Iv-Lqa" secondAttribute="leading" id="QfV-0R-dMd"/>
                             <constraint firstItem="3Q5-rQ-6Ig" firstAttribute="leading" secondItem="eB9-M6-ocu" secondAttribute="leadingMargin" id="SM9-fI-HPd"/>
@@ -135,7 +135,7 @@
                             <constraint firstItem="USZ-bF-rAa" firstAttribute="top" secondItem="trP-xG-72E" secondAttribute="bottom" constant="8" symbolic="YES" id="gQQ-n6-1RB"/>
                             <constraint firstItem="trP-xG-72E" firstAttribute="top" secondItem="bMo-Iv-Lqa" secondAttribute="bottom" constant="20" id="ic7-9g-fy4"/>
                             <constraint firstItem="tyX-vw-iD6" firstAttribute="trailing" secondItem="eB9-M6-ocu" secondAttribute="trailingMargin" id="jA6-6q-dE5"/>
-                            <constraint firstItem="a1R-Kp-3L1" firstAttribute="top" secondItem="YPg-SH-GPq" secondAttribute="bottom" constant="8" symbolic="YES" id="jev-aN-fdj"/>
+                            <constraint firstItem="a1R-Kp-3L1" firstAttribute="top" secondItem="YPg-SH-GPq" secondAttribute="bottom" constant="35" id="jev-aN-fdj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ey6-yh-fIO" secondAttribute="trailing" constant="168" id="km9-ZT-hHH"/>
                             <constraint firstItem="3Q5-rQ-6Ig" firstAttribute="top" secondItem="tyX-vw-iD6" secondAttribute="bottom" constant="8" id="kvt-Wb-227"/>
                             <constraint firstItem="qeg-ec-MXB" firstAttribute="top" secondItem="N0l-NZ-Q5Q" secondAttribute="bottom" constant="20" id="mTH-3x-2lv"/>
@@ -149,7 +149,7 @@
                             <constraint firstItem="tyX-vw-iD6" firstAttribute="trailing" secondItem="eB9-M6-ocu" secondAttribute="trailingMargin" id="uUX-yA-AxI"/>
                             <constraint firstItem="tyX-vw-iD6" firstAttribute="top" secondItem="USZ-bF-rAa" secondAttribute="bottom" constant="20" id="vf0-gO-zdC"/>
                             <constraint firstItem="3Q5-rQ-6Ig" firstAttribute="trailing" secondItem="eB9-M6-ocu" secondAttribute="trailingMargin" id="wRV-9c-yKS"/>
-                            <constraint firstItem="a1R-Kp-3L1" firstAttribute="trailing" secondItem="ViN-ki-rRD" secondAttribute="trailing" id="x9K-XO-VkX"/>
+                            <constraint firstItem="a1R-Kp-3L1" firstAttribute="trailing" secondItem="ViN-ki-rRD" secondAttribute="trailing" constant="-56" id="x9K-XO-VkX"/>
                             <constraint firstItem="trP-xG-72E" firstAttribute="trailing" secondItem="USZ-bF-rAa" secondAttribute="trailing" id="yrS-DB-TjR"/>
                         </constraints>
                     </view>
@@ -450,6 +450,6 @@
     </scenes>
     <resources>
         <image name="back_arrow" width="24" height="24"/>
-        <image name="susi" width="440" height="100"/>
+        <image name="susi" width="1366" height="280"/>
     </resources>
 </document>
