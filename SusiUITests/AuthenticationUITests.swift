@@ -68,8 +68,7 @@ class AuthenticationUITests: XCTestCase {
     func testLogoutSuccess() {
         testLoginSuccess()
         
-        let button = app.navigationBars["Susi.MainView"].children(matching: .other).element(boundBy: 0).children(matching: .button).element(boundBy: 1)
-        app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .collectionView).element.tap()
+        let button = app.navigationBars["Susi.ChatView"].children(matching: .other).element(boundBy: 0).children(matching: .button).element(boundBy: 1)
         button.tap()
         app.tables.staticTexts[ControllerConstants.TestKeys.logout].tap()
         

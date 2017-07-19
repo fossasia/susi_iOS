@@ -13,7 +13,7 @@ import RSKGrowingTextView
 import AVFoundation
 import RealmSwift
 
-extension MainViewController {
+extension ChatViewController {
 
     func subscribeToKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -171,24 +171,6 @@ extension MainViewController {
                     }
                 }
             }
-        }
-    }
-
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-        print("utterance complete")
-        if self.isSpeechRecognitionRunning {
-            self.startSTT()
-        }
-    }
-
-    func speakAction(_ string: String) {
-        if isSpeechRecognitionRunning {
-            let speechUtterance = AVSpeechUtterance(string: string)
-            speechSynthesizer.delegate = self
-
-            speechUtterance.rate = 0.4
-
-            speechSynthesizer.speak(speechUtterance)
         }
     }
 
