@@ -1,5 +1,5 @@
 //
-//  MainViewController.swift
+//  ChatViewController.swift
 //  Susi
 //
 //  Created by Chashmeet Singh on 2017-03-13.
@@ -18,7 +18,7 @@ import Speech
 import NVActivityIndicatorView
 import Realm
 
-class MainViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, AVSpeechSynthesizerDelegate {
+class ChatViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, AVSpeechSynthesizerDelegate {
 
     var messages = List<Message>()
     let realm = try! Realm()
@@ -111,10 +111,9 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
 
         if UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.hotwordEnabled) {
             startHotwordRecognition()
-        } else if let timer = timer {
+        } else if let timer = hotwordTimer {
             timer.invalidate()
         }
-        stopRecording()
 
     }
 
@@ -221,7 +220,7 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
     var audioRecorder: AVAudioRecorder!
     var soundFileURL: URL!
 
-    var timer: Timer!
+    var hotwordTimer: Timer!
 
     var detectionTimer: Timer?
     var isSpeechRecognitionRunning: Bool = false

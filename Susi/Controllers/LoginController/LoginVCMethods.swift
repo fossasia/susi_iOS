@@ -221,7 +221,7 @@ extension LoginViewController {
     // Present Main View Controller
     func completeLogin(_ firstLogin: Bool = true) {
         let layout = BouncyLayout()
-        let vc = MainViewController(collectionViewLayout: layout)
+        let vc = ChatViewController(collectionViewLayout: layout)
         let nvc = AppNavigationController(rootViewController: vc)
         self.present(nvc, animated: true, completion: {
             self.clearFields()
