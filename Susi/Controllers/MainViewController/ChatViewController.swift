@@ -8,7 +8,6 @@
 
 import UIKit
 import Material
-import Popover
 import RSKGrowingTextView
 import RSKPlaceholderTextView
 import CoreLocation
@@ -23,12 +22,9 @@ class ChatViewController: UICollectionViewController, UICollectionViewDelegateFl
     var messages = List<Message>()
     let realm = try! Realm()
 
-    var popover: Popover!
-    var popoverOptions: [PopoverOption] = [
-        .type(.down),
-        .blackOverlayColor(UIColor(white: 0.0, alpha: 0.6)),
-        .arrowSize(CGSize(width: 12.0, height: 10.0))
-    ]
+    var menuOptionNameArray: [String] {
+        return ControllerConstants.Settings.settingsList
+    }
 
     // Search Button Configure
     let searchButton: IconButton = {

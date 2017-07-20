@@ -8,8 +8,6 @@
 
 import UIKit
 import CoreLocation
-import Popover
-import RSKGrowingTextView
 import AVFoundation
 import RealmSwift
 
@@ -69,17 +67,6 @@ extension ChatViewController {
     // Setup View
     func setupView() {
         self.view.backgroundColor = UIColor.rgb(red: 236, green: 229, blue: 221)
-    }
-
-    // Setup Settings View
-    func showSettingsView() {
-        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: Int(self.view.frame.width / 2), height: (ControllerConstants.Settings.settingsList.count * 44)))
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.isScrollEnabled = false
-        self.popover = Popover(options: self.popoverOptions)
-        self.popover.show(tableView, fromView: settingsButton)
-        self.popover.showBlackOverlay = true
     }
 
     // Shows Youtube Player

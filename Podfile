@@ -12,7 +12,7 @@ target 'Susi' do
   # Pods for Susi
   pod 'Material'
   pod 'Toast-Swift', '~> 2.0.0'
-  pod 'Popover'
+  pod 'FTPopOverMenu_Swift', '~> 0.0.6'
   pod 'SwiftValidators'
   pod 'RSKGrowingTextView'
   pod 'RSKPlaceholderTextView', '2.0.0'
