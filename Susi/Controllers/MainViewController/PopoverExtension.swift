@@ -1,5 +1,5 @@
 //
-//  PopoverTableViewExtension.swift
+//  PopoverExtension.swift
 //  Susi
 //
 //  Created by Chashmeet Singh on 2017-07-19.
