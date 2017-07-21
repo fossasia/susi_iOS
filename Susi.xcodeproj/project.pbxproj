@@ -53,7 +53,7 @@
 		6DAF3AF61F0E101200929D86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DAF3AF51F0E101200929D86 /* Main.storyboard */; };
 		6DCA905C1F1F09910058CABB /* LocationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCA905B1F1F09910058CABB /* LocationDelegate.swift */; };
 		6DCA905E1F1F09FD0058CABB /* ImagePickerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCA905D1F1F09FD0058CABB /* ImagePickerViewDelegate.swift */; };
-		6DCA90601F1F0A620058CABB /* PopoverTableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCA905F1F1F0A620058CABB /* PopoverTableViewExtension.swift */; };
+		6DCA90601F1F0A620058CABB /* PopoverExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCA905F1F1F0A620058CABB /* PopoverExtension.swift */; };
 		6DCA90621F1F0AD70058CABB /* AudioRecorderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCA90611F1F0AD70058CABB /* AudioRecorderDelegate.swift */; };
 		6DCA90641F1F0B320058CABB /* TextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCA90631F1F0B320058CABB /* TextViewDelegate.swift */; };
 		6DCA90661F1F0B660058CABB /* SpeechRecognizerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCA90651F1F0B660058CABB /* SpeechRecognizerDelegate.swift */; };
@@ -139,7 +139,7 @@
 		6DAF3AF51F0E101200929D86 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		6DCA905B1F1F09910058CABB /* LocationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDelegate.swift; sourceTree = "<group>"; };
 		6DCA905D1F1F09FD0058CABB /* ImagePickerViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerViewDelegate.swift; sourceTree = "<group>"; };
-		6DCA905F1F1F0A620058CABB /* PopoverTableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverTableViewExtension.swift; sourceTree = "<group>"; };
+		6DCA905F1F1F0A620058CABB /* PopoverExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverExtension.swift; sourceTree = "<group>"; };
 		6DCA90611F1F0AD70058CABB /* AudioRecorderDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecorderDelegate.swift; sourceTree = "<group>"; };
 		6DCA90631F1F0B320058CABB /* TextViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewDelegate.swift; sourceTree = "<group>"; };
 		6DCA90651F1F0B660058CABB /* SpeechRecognizerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechRecognizerDelegate.swift; sourceTree = "<group>"; };
@@ -241,7 +241,7 @@
 				6D0DB6231EE41D1000AD030D /* MainVCMethods.swift */,
 				6DCA905B1F1F09910058CABB /* LocationDelegate.swift */,
 				6DCA905D1F1F09FD0058CABB /* ImagePickerViewDelegate.swift */,
-				6DCA905F1F1F0A620058CABB /* PopoverTableViewExtension.swift */,
+				6DCA905F1F1F0A620058CABB /* PopoverExtension.swift */,
 				6DCA90611F1F0AD70058CABB /* AudioRecorderDelegate.swift */,
 				6DCA90631F1F0B320058CABB /* TextViewDelegate.swift */,
 				6DCA90651F1F0B660058CABB /* SpeechRecognizerDelegate.swift */,
@@ -688,7 +688,7 @@
 				6DCA90641F1F0B320058CABB /* TextViewDelegate.swift in Sources */,
 				6DE44E191E76AF8100215B85 /* ChatViewController.swift in Sources */,
 				6D61B9B31EEBAB4000CD3536 /* TableAction.swift in Sources */,
-				6DCA90601F1F0A620058CABB /* PopoverTableViewExtension.swift in Sources */,
+				6DCA90601F1F0A620058CABB /* PopoverExtension.swift in Sources */,
 				6D87A3321EEE86CC00A6D763 /* RSSCell.swift in Sources */,
 				6D24B08A1EE4079E0097418A /* LoginVCMethods.swift in Sources */,
 			);
