@@ -17,8 +17,9 @@ import RealmSwift
 import Speech
 import NVActivityIndicatorView
 import Realm
+import AudioKit
 
-class ChatViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, AVSpeechSynthesizerDelegate {
+class ChatViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     var messages = List<Message>()
     let realm = try! Realm()
@@ -92,7 +93,9 @@ class ChatViewController: UICollectionViewController, UICollectionViewDelegateFl
         // Configure Location Manager
         configureLocationManager()
 
+        initPermissions()
         initSnowboy()
+        initMic()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -119,7 +122,7 @@ class ChatViewController: UICollectionViewController, UICollectionViewDelegateFl
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        stopRecording()
+        stopHotwordRecognition()
     }
 
     override func didReceiveMemoryWarning() {
@@ -216,9 +219,7 @@ class ChatViewController: UICollectionViewController, UICollectionViewDelegateFl
     let MODEL = Bundle.main.path(forResource: "susi", ofType: "pmdl")
 
     var wrapper: SnowboyWrapper! = nil
-
-    var audioRecorder: AVAudioRecorder!
-    var soundFileURL: URL!
+    var microphone: EZMicrophone!
 
     var hotwordTimer: Timer!
 

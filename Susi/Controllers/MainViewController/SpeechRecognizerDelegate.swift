@@ -9,7 +9,7 @@
 import Speech
 import UIKit
 
-extension ChatViewController: SFSpeechRecognizerDelegate {
+extension ChatViewController: SFSpeechRecognizerDelegate, AVSpeechSynthesizerDelegate {
 
     func configureSpeechRecognizer() {
         speechRecognizer?.delegate = self
@@ -47,7 +47,7 @@ extension ChatViewController: SFSpeechRecognizerDelegate {
     }
 
     func startSTT() {
-        stopRecording()
+        stopHotwordRecognition()
         configureSpeechRecognizer()
 
         if recognitionTask != nil {

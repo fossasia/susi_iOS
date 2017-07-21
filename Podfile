@@ -24,6 +24,7 @@ target 'Susi' do
   pod 'SwiftDate', '~> 4.0'
   pod 'NVActivityIndicatorView'
   pod 'Fakery'
+  pod 'AudioKit'
   shared_pods
 end
 
