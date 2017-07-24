@@ -20,7 +20,7 @@ class OutgoingChatCell: ChatMessageCell {
     override func setupViews() {
         super.setupViews()
 
-        self.bubbleImageView.image = ChatMessageCell.blueBubbleImage
+        self.bubbleImageView.image = ChatMessageCell.outgoingBubbleImage
     }
 
     func setupDate() {

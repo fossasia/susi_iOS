@@ -10,9 +10,9 @@ import UIKit
 
 class ChatMessageCell: BaseCell, UITextViewDelegate {
 
-    static let grayBubbleImage = UIImage(named: "bubble_gray")!.resizableImage(withCapInsets: UIEdgeInsets(top: 22, left: 26, bottom: 22, right: 26)).withRenderingMode(.alwaysTemplate)
+    static let incomingBubbleImage = UIImage(named: "bubble_gray")!.resizableImage(withCapInsets: UIEdgeInsets(top: 22, left: 26, bottom: 22, right: 26)).withRenderingMode(.alwaysTemplate)
 
-    static let blueBubbleImage = UIImage(named: "bubble_blue")!.resizableImage(withCapInsets: UIEdgeInsets(top: 22, left: 26, bottom: 22, right: 26)).withRenderingMode(.alwaysTemplate)
+    static let outgoingBubbleImage = UIImage(named: "bubble_blue")!.resizableImage(withCapInsets: UIEdgeInsets(top: 22, left: 26, bottom: 22, right: 26)).withRenderingMode(.alwaysTemplate)
 
     lazy var messageTextView: UITextView = {
         let textView = UITextView()
@@ -34,7 +34,7 @@ class ChatMessageCell: BaseCell, UITextViewDelegate {
 
     let bubbleImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = ChatMessageCell.grayBubbleImage
+        imageView.image = ChatMessageCell.incomingBubbleImage
         imageView.tintColor = UIColor(white: 0.90, alpha: 1)
         return imageView
     }()
@@ -56,14 +56,14 @@ class ChatMessageCell: BaseCell, UITextViewDelegate {
         textBubbleView.addConstraintsWithFormat(format: "H:|[v0]|", views: bubbleImageView)
         textBubbleView.addConstraintsWithFormat(format: "V:|[v0]|", views: bubbleImageView)
         self.accessibilityIdentifier = ControllerConstants.TestKeys.chatCells
+
+        self.backgroundColor = .clear
     }
 
-    @available(iOS, deprecated: 10.0)
     func textView(_ textView: UITextView, shouldInteractWith url: URL, in characterRange: NSRange) -> Bool {
         return true
     }
 
-    @available(iOS 10.0, *)
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
         return true
     }

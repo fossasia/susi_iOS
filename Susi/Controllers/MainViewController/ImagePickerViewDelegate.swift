@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension ChatViewController: UIImagePickerControllerDelegate {
+extension ChatViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     // Show image picker to set/reset wallpaper
     func showImagePicker() {

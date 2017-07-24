@@ -10,6 +10,7 @@ import UIKit
 import Kingfisher
 import MapKit
 import SwiftDate
+import NVActivityIndicatorView
 
 class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
 
@@ -45,7 +46,7 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
     override func setupViews() {
         super.setupViews()
 
-        self.bubbleImageView.image = ChatMessageCell.grayBubbleImage
+        self.bubbleImageView.image = ChatMessageCell.incomingBubbleImage
     }
 
     func addMapView(_ frame: CGRect) {
