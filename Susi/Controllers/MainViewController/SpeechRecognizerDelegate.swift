@@ -173,7 +173,7 @@ extension ChatViewController: SFSpeechRecognizerDelegate {
         if isSpeechRecognitionRunning {
             let speechUtterance = AVSpeechUtterance(string: string)
             speechSynthesizer.delegate = self
-            
+
             if let language = language {
                 speechUtterance.voice = AVSpeechSynthesisVoice(language: language)
             }
