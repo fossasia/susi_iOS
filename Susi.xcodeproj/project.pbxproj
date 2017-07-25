@@ -25,6 +25,7 @@
 		6D35E4881EE70F9000188E1F /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D35E4871EE70F9000188E1F /* Accelerate.framework */; };
 		6D389BEA1EDB912500DEAEA0 /* YouTubePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D389BE81EDB912500DEAEA0 /* YouTubePlayer.swift */; };
 		6D389BEB1EDB912500DEAEA0 /* YTPlayer.html in Resources */ = {isa = PBXBuildFile; fileRef = 6D389BE91EDB912500DEAEA0 /* YTPlayer.html */; };
+		6D3DACC51F25FB9900CEFBC7 /* ActivityIndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3DACC41F25FB9900CEFBC7 /* ActivityIndicatorCell.swift */; };
 		6D3E82441E7943EE00D48776 /* AppNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3E82431E7943EE00D48776 /* AppNavigationController.swift */; };
 		6D3E82461E7953B200D48776 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3E82451E7953B200D48776 /* SettingsViewController.swift */; };
 		6D3E82481E796B5200D48776 /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3E82471E796B5200D48776 /* SettingsHeaderView.swift */; };
@@ -107,6 +108,7 @@
 		6D35E4891EE70F9C00188E1F /* libsnowboy-detect.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libsnowboy-detect.a"; path = "../../Downloads/libsnowboy-detect.a"; sourceTree = "<group>"; };
 		6D389BE81EDB912500DEAEA0 /* YouTubePlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouTubePlayer.swift; sourceTree = "<group>"; };
 		6D389BE91EDB912500DEAEA0 /* YTPlayer.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = YTPlayer.html; sourceTree = "<group>"; };
+		6D3DACC41F25FB9900CEFBC7 /* ActivityIndicatorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorCell.swift; sourceTree = "<group>"; };
 		6D3E82431E7943EE00D48776 /* AppNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNavigationController.swift; sourceTree = "<group>"; };
 		6D3E82451E7953B200D48776 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		6D3E82471E796B5200D48776 /* SettingsHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 				6D0DB6251EE4272300AD030D /* OutgoingChatCell.swift */,
 				6D87A3311EEE86CC00A6D763 /* RSSCell.swift */,
 				6D87A32F1EEE557000A6D763 /* WebsearchCell.swift */,
+				6D3DACC41F25FB9900CEFBC7 /* ActivityIndicatorCell.swift */,
 			);
 			path = "Message Cells";
 			sourceTree = "<group>";
@@ -671,6 +674,7 @@
 				6DFC75B91EE077E9002F92BA /* ForgotPasswordViewController.swift in Sources */,
 				6DE44E111E76ACAF00215B85 /* Client.swift in Sources */,
 				6D3E82441E7943EE00D48776 /* AppNavigationController.swift in Sources */,
+				6D3DACC51F25FB9900CEFBC7 /* ActivityIndicatorCell.swift in Sources */,
 				6D61B9AD1EEBAAA200CD3536 /* AnswerAction.swift in Sources */,
 				6D3E82461E7953B200D48776 /* SettingsViewController.swift in Sources */,
 				6D61B9B71EEBAB7000CD3536 /* MapAction.swift in Sources */,

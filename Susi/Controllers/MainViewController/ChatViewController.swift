@@ -134,49 +134,54 @@ class ChatViewController: UICollectionViewController, UICollectionViewDelegateFl
 
         let message = messages[indexPath.row]
 
-        let messageBody = message.message
-        let estimatedFrame = self.estimatedFrame(messageBody: messageBody)
+        if message.actionType == ActionType.indicatorView.rawValue {
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.indicatorCell, for: indexPath) as? ActivityIndicatorCell {
+                return cell
+            }
+        } else {
+            let messageBody = message.message
+            let estimatedFrame = self.estimatedFrame(messageBody: messageBody)
 
-        if message.fromUser {
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.outgoingCell, for: indexPath) as? OutgoingChatCell {
+            if message.fromUser {
+                if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.outgoingCell, for: indexPath) as? OutgoingChatCell {
+                    cell.message = message
+                    cell.setupCell(estimatedFrame, view.frame)
+                    return cell
+                }
+            } else if message.actionType == ActionType.rss.rawValue || message.actionType == ActionType.websearch.rawValue {
+                if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.rssCell, for: indexPath) as? RSSCell {
+                    cell.message = message
+                    return cell
+                }
+            }
+
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.incomingCell, for: indexPath) as? IncomingBubbleCell {
                 cell.message = message
                 cell.setupCell(estimatedFrame, view.frame)
                 return cell
-            } else {
-                return UICollectionViewCell()
-            }
-        } else if message.actionType == ActionType.rss.rawValue || message.actionType == ActionType.websearch.rawValue {
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.rssCell, for: indexPath) as? RSSCell {
-                cell.message = message
-                return cell
-            } else {
-                return UICollectionViewCell()
             }
         }
-
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.incomingCell, for: indexPath) as? IncomingBubbleCell {
-            cell.message = message
-            cell.setupCell(estimatedFrame, view.frame)
-            return cell
-        } else {
-            return UICollectionViewCell()
-        }
+        return UICollectionViewCell()
     }
 
     // Calculate Bubble Height
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let message = messages[indexPath.row]
 
-        let estimatedFrame = self.estimatedFrame(messageBody: message.message)
-        if message.message.isImage() {
-            return CGSize(width: view.frame.width, height: 160)
-        } else if message.actionType == ActionType.map.rawValue {
-            return CGSize(width: view.frame.width, height: 240)
-        } else if message.actionType == ActionType.rss.rawValue ||
-            message.actionType == ActionType.websearch.rawValue {
-            return CGSize(width: view.frame.width, height: 140)
+        if message.actionType == ActionType.indicatorView.rawValue {
+            return CGSize(width: view.frame.width, height: 44)
+        } else {
+            let estimatedFrame = self.estimatedFrame(messageBody: message.message)
+            if message.message.isImage() {
+                return CGSize(width: view.frame.width, height: 160)
+            } else if message.actionType == ActionType.map.rawValue {
+                return CGSize(width: view.frame.width, height: 240)
+            } else if message.actionType == ActionType.rss.rawValue ||
+                message.actionType == ActionType.websearch.rawValue {
+                return CGSize(width: view.frame.width, height: 140)
+            }
+            return CGSize(width: view.frame.width, height: estimatedFrame.height + 38)
         }
-        return CGSize(width: view.frame.width, height: estimatedFrame.height + 38)
     }
 
     // Set Edge Insets
