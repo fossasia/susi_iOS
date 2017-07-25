@@ -3,17 +3,19 @@ PODS:
   - BouncyLayout (1.1.0)
   - DLRadioButton (1.4.9)
   - Fakery (2.0.0)
-  - FTPopOverMenu_Swift (0.0.7)
+  - FTPopOverMenu_Swift (0.0.8)
   - Ji (2.0.1):
     - Ji/Ji (= 2.0.1)
   - Ji/Ji (2.0.1):
     - Ji/Ji-libxml
   - Ji/Ji-libxml (2.0.1)
-  - Kingfisher (3.10.2)
-  - Material (2.6.3):
-    - Material/Core (= 2.6.3)
-  - Material/Core (2.6.3)
-  - NVActivityIndicatorView (3.6.1)
+  - Kingfisher (3.10.3)
+  - Material (2.7.1):
+    - Material/Core (= 2.7.1)
+  - Material/Core (2.7.1)
+  - NVActivityIndicatorView (3.7.0):
+    - NVActivityIndicatorView/Presenter (= 3.7.0)
+  - NVActivityIndicatorView/Presenter (3.7.0)
   - ReadabilityKit (0.6.1):
     - Ji (~> 2.0.1)
   - Realm (2.8.3):
@@ -24,7 +26,7 @@ PODS:
   - RSKGrowingTextView (2.0.0):
     - RSKPlaceholderTextView (= 2.0.0)
   - RSKPlaceholderTextView (2.0.0)
-  - SwiftDate (4.1.2)
+  - SwiftDate (4.1.7)
   - SwiftValidators (6.0.0)
   - Toast-Swift (2.0.0)
 
@@ -50,17 +52,17 @@ SPEC CHECKSUMS:
   BouncyLayout: f91c6504437a61acd733404f55f75bd8154f5840
   DLRadioButton: 7bb8a6e3768b572469ace553391ab4d2af6f9c19
   Fakery: 97b99c23937d2e025d9135c75e2b17351ccd5031
-  FTPopOverMenu_Swift: 8939e3c98a72217c761e806c915101227ed7c8fc
+  FTPopOverMenu_Swift: '08f9a712c63811f675fe0b604c792e46246e00d9'
   Ji: 6bb602a28dd08b804158f64990e6051ed5de0110
-  Kingfisher: 7297492bf8cec9b2e2dee3519f2219948580d98e
-  Material: af607a7ec0e9978ef85cf189a3d8ceeeb650400f
-  NVActivityIndicatorView: 9f52a7f84bf5c6a798722c450fe3c198e01c56ed
+  Kingfisher: a0ac82dc5bcf0388dd74b294cf2cc13730c63436
+  Material: 13071c7cd340d54b4f9c839b386338a1e082b25e
+  NVActivityIndicatorView: d3738df7e2e476aca0ba6bf32a8c9fbcfc33d64b
   ReadabilityKit: 49c26a2da9708ae3b355854d5bee6a7edee2dfee
   Realm: 3601ef091c8c499a31101d8563b991e75546cdce
   RealmSwift: 8183818515471b01a99abdd2970f8e4fd52b6f4a
   RSKGrowingTextView: 1d9c64f1e9f8ed9b47d883548a3fd76dfdfe1353
   RSKPlaceholderTextView: 301f0f30e70e7c42fe4e941e3a08365ab0d890d5
-  SwiftDate: 2dfdebd4f67ae71c9c3e2413ee3c56947f302858
+  SwiftDate: '029be76691ee89176da3a46c7df3415b6734bc5b'
   SwiftValidators: 4ccbec749f61a36f7a922781bb09452e80cde396
   Toast-Swift: 5b2f8f720f7e78e48511f693df1f9c9a6e38a25a
 

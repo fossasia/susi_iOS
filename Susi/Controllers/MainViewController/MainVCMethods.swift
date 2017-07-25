@@ -113,6 +113,7 @@ extension ChatViewController {
         collectionView?.register(IncomingBubbleCell.self, forCellWithReuseIdentifier: ControllerConstants.incomingCell)
         collectionView?.register(OutgoingChatCell.self, forCellWithReuseIdentifier: ControllerConstants.outgoingCell)
         collectionView?.register(RSSCell.self, forCellWithReuseIdentifier: ControllerConstants.rssCell)
+        collectionView?.register(ActivityIndicatorCell.self, forCellWithReuseIdentifier: ControllerConstants.indicatorCell)
         collectionView?.accessibilityIdentifier = ControllerConstants.TestKeys.chatCollectionView
     }
 
@@ -126,6 +127,7 @@ extension ChatViewController {
             ]
 
             saveMessage(text)
+            addActivityIndicatorMessage()
 
             if let location = locationManager.location {
                 params[Client.ChatKeys.Latitude] = location.coordinate.latitude as AnyObject
@@ -141,6 +143,9 @@ extension ChatViewController {
                 DispatchQueue.main.async {
                     if success {
                         self.collectionView?.performBatchUpdates({
+                            let item = IndexPath(item: self.messages.count - 1, section: 0)
+                            self.collectionView?.deleteItems(at: [item])
+                            self.messages.removeLast()
                             for message in messages! {
                                 try! self.realm.write {
                                     self.realm.add(message)
@@ -159,6 +164,14 @@ extension ChatViewController {
                 }
             }
         }
+    }
+
+    func addActivityIndicatorMessage() {
+        let message = Message()
+        message.actionType = ActionType.indicatorView.rawValue
+        self.messages.append(message)
+        let indexPath = IndexPath(item: self.messages.count - 1, section: 0)
+        self.collectionView?.insertItems(at: [indexPath])
     }
 
     // Setup Input Components

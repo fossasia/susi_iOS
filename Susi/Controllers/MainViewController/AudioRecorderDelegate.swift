@@ -72,7 +72,7 @@ extension ChatViewController: AVAudioRecorderDelegate {
             audioRecorder.prepareToRecord()
             audioRecorder.record(forDuration: 2.0)
 
-            print("Started recording...")
+//            print("Started recording...")
         } catch let error {
             print("Audio session error: \(error.localizedDescription)")
         }

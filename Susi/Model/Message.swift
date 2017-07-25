@@ -17,6 +17,7 @@ enum ActionType: String {
     case table
     case map
     case anchor
+    case indicatorView
 }
 
 class Message: Object {
