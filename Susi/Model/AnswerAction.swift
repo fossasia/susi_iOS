@@ -11,9 +11,11 @@ import RealmSwift
 
 class AnswerAction: Object {
     dynamic var expression: String = ""
+    dynamic var language: String?
 
     convenience init(action: [String : AnyObject]) {
         self.init()
         self.expression = action[Client.ChatKeys.Expression] as? String ?? ""
+        self.language = action[Client.ChatKeys.Language] as? String
     }
 }

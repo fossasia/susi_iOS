@@ -148,7 +148,7 @@ extension ChatViewController {
                                     let indexPath = IndexPath(item: self.messages.count - 1, section: 0)
                                     self.collectionView?.insertItems(at: [indexPath])
                                     if message.actionType == ActionType.answer.rawValue {
-                                        self.speakAction(message.message)
+                                        self.speakAction(message.message, language: message.answerData?.language)
                                     }
                                 }
                             }
