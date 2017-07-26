@@ -41,7 +41,6 @@ class LoginViewController: UIViewController {
         prepareSkipButton()
 
         checkSession()
-
         print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
 

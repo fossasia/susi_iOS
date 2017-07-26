@@ -169,10 +169,14 @@ extension ChatViewController: SFSpeechRecognizerDelegate {
         checkAndRunHotwordRecognition()
     }
 
-    func speakAction(_ string: String) {
+    func speakAction(_ string: String, language: String?) {
         if isSpeechRecognitionRunning {
             let speechUtterance = AVSpeechUtterance(string: string)
             speechSynthesizer.delegate = self
+
+            if let language = language {
+                speechUtterance.voice = AVSpeechSynthesisVoice(language: language)
+            }
 
             speechUtterance.rate = 0.4
 
