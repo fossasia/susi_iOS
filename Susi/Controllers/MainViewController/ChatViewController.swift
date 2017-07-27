@@ -194,6 +194,7 @@ class ChatViewController: UICollectionViewController, UICollectionViewDelegateFl
         button.setImage(UIImage(named: "scroll_arrow"), for: .normal)
         button.backgroundColor = .white
         button.addTarget(self, action: #selector(scrollToLast), for: .touchUpInside)
+        button.cornerRadius = 20
         return button
     }()
 
