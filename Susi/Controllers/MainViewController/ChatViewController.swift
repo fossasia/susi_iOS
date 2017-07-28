@@ -189,6 +189,23 @@ class ChatViewController: UICollectionViewController, UICollectionViewDelegateFl
         return UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0)
     }
 
+    lazy var scrollButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "scroll_arrow"), for: .normal)
+        button.backgroundColor = .white
+        button.addTarget(self, action: #selector(scrollToLast), for: .touchUpInside)
+        button.cornerRadius = 20
+        return button
+    }()
+
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row != messages.count - 1 {
+            scrollButton.isHidden = false
+        } else {
+            scrollButton.isHidden = true
+        }
+    }
+
     // Setup Input Text View
     lazy var inputTextView: RSKGrowingTextView = {
         let textView = RSKGrowingTextView()
