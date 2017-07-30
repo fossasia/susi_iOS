@@ -21,7 +21,7 @@ class BaseCell: CollectionViewCell {
     }
 
     func setupViews() {
-        self.pulseAnimation = .none
+        pulseAnimation = .none
     }
 
 }

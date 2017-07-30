@@ -10,10 +10,6 @@ import UIKit
 
 class ChatMessageCell: BaseCell, UITextViewDelegate {
 
-    static let incomingBubbleImage = UIImage(named: "bubble_gray")!.resizableImage(withCapInsets: UIEdgeInsets(top: 22, left: 26, bottom: 22, right: 26)).withRenderingMode(.alwaysTemplate)
-
-    static let outgoingBubbleImage = UIImage(named: "bubble_blue")!.resizableImage(withCapInsets: UIEdgeInsets(top: 22, left: 26, bottom: 22, right: 26)).withRenderingMode(.alwaysTemplate)
-
     lazy var messageTextView: UITextView = {
         let textView = UITextView()
         textView.font = UIFont.systemFont(ofSize: 16)
@@ -31,14 +27,6 @@ class ChatMessageCell: BaseCell, UITextViewDelegate {
         view.layer.masksToBounds = true
         return view
     }()
-
-    let bubbleImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = ChatMessageCell.incomingBubbleImage
-        imageView.tintColor = UIColor(white: 0.90, alpha: 1)
-        return imageView
-    }()
-
     let timeLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.italicSystemFont(ofSize: 8)
@@ -51,13 +39,9 @@ class ChatMessageCell: BaseCell, UITextViewDelegate {
 
         addSubview(textBubbleView)
         addSubview(messageTextView)
+        accessibilityIdentifier = ControllerConstants.TestKeys.chatCells
 
-        textBubbleView.addSubview(bubbleImageView)
-        textBubbleView.addConstraintsWithFormat(format: "H:|[v0]|", views: bubbleImageView)
-        textBubbleView.addConstraintsWithFormat(format: "V:|[v0]|", views: bubbleImageView)
-        self.accessibilityIdentifier = ControllerConstants.TestKeys.chatCells
-
-        self.backgroundColor = .clear
+        backgroundColor = .clear
     }
 
     func textView(_ textView: UITextView, shouldInteractWith url: URL, in characterRange: NSRange) -> Bool {

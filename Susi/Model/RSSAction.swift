@@ -44,7 +44,7 @@ class RSSAction: Object {
         if let title = actionObject[Client.ChatKeys.Title] as? String,
             let description = actionObject[Client.ChatKeys.Description] as? String,
             let link = actionObject[Client.ChatKeys.Link] as? String {
-            self.rssFeed = RSSFeed.getRSSFeeds(data: data,
+            rssFeed = RSSFeed.getRSSFeeds(data: data,
                                                title: title,
                                                description: description,
                                                link: link,

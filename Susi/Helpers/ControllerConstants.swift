@@ -12,6 +12,7 @@ class ControllerConstants {
     static let errorDialogTitle = "Image Pick Error"
     static let errorDialogMessage = "Cannot access photos in your albums"
     static let wallpaperOptionsTitle = "Set Wallpaper"
+    static let toggleTheme = "Toggle Theme"
     static let wallpaperOptionsPickAction = "Pick image from gallery"
     static let wallpaperOptionsNoWallpaperAction = "No wallpaper"
     static let dialogCancelAction = "Cancel"
@@ -68,7 +69,7 @@ class ControllerConstants {
     struct Settings {
         static let settings = "Settings"
         static let headerId = "headerId"
-        static let sectionHeaders = ["Chat Settings", "Mic Settings", "Speech Settings"]
+        static let sectionHeaders = ["Chat Settings", "Mic Settings", "Speech Settings", "Theme Settings"]
         static let enterToSend = "Enter To Send"
         static let sendMessageByReturn = "Send message by hitting return"
         static let micInput = "Mic Input"
@@ -83,6 +84,10 @@ class ControllerConstants {
         static let settingsList = ["Settings", "Wallpaper", "Share", "Logout"]
         static let enableHotword = "Enable Hotword Recognition"
         static let susiHotword = "Enable Susi hotword recognition"
+        static let logout = "Logout"
+        static let changeWallpaper = "Change Wallpaper"
+        static let changeTheme = "Change Theme"
+        static let changeThemeDesc = "Toggle between dark and light themes"
     }
 
     struct UserDefaultsKeys {
@@ -94,6 +99,7 @@ class ControllerConstants {
         static let wallpaper = "wallpaper"
         static let ipAddress = "ipAddress"
         static let hotwordEnabled = "hotwordEnabled"
+        static let theme = "theme"
     }
 
     struct TestKeys {
@@ -116,6 +122,7 @@ class ControllerConstants {
         static let rssCollectionView = "rssCollectionView"
         static let chatCollectionView = "chatCollectionView"
         static let chatCells = "chatCell"
+        static let settings = "Settings"
 
         struct TestAccount {
             static let emailId = "susi.ai@mail.com"

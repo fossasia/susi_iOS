@@ -28,13 +28,13 @@ class WebsearchCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
     var message: Message? {
         didSet {
             if message?.actionType == ActionType.websearch.rawValue {
-                var params = [
+                let params = [
                     Client.WebsearchKeys.Query: message?.message,
                     Client.WebsearchKeys.Format: ControllerConstants.json
                 ]
 
                 Client.sharedInstance.websearch(params as [String : AnyObject]) { (results, success, message) in
-                    DispatchQueue.main.async {
+                    DispatchQueue.global().async {
                         if success {
                             try! self.realm.write {
                                 for result in results! {
@@ -47,7 +47,6 @@ class WebsearchCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
                         }
                     }
                 }
-                params.removeAll()
             } else {
                 self.collectionView.reloadData()
             }
@@ -95,11 +94,7 @@ class WebsearchCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
                 if let imageString = webData.image {
                     let url = URL(string: imageString)
                     cell.imageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder"), options: nil, progressBlock: nil, completionHandler: nil)
-                } else {
-                    cell.imageView.image = UIImage(named: "placeholder")
                 }
-            } else {
-                cell.imageView.image = UIImage(named: "placeholder")
             }
         } else if message?.actionType == ActionType.websearch.rawValue {
             let webData = message?.websearchData[indexPath.item]
@@ -111,8 +106,6 @@ class WebsearchCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
                 if let url = URL(string: imageString) {
                     cell.imageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder"), options: nil, progressBlock: nil, completionHandler: nil)
                 }
-            } else {
-                cell.imageView.image = UIImage(named: "placeholder")
             }
         }
         return cell
