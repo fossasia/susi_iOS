@@ -25,7 +25,7 @@ class OutgoingChatCell: ChatMessageCell {
 
     func setupDate() {
         let date = DateInRegion(absoluteDate: message?.queryDate as Date!)
-        let str = date.string(format: .custom("HH:mm a"))
+        let str = date.string(format: .custom("h:mm a"))
         timeLabel.text = str
         textBubbleView.addSubview(timeLabel)
         textBubbleView.addConstraintsWithFormat(format: "H:[v0]-23-|", views: timeLabel)
