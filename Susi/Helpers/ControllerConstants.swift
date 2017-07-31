@@ -43,6 +43,8 @@ class ControllerConstants {
     static let key = "key"
     static let value = "value"
     static let accepted = "Accepted"
+    static let thumbsUp = "thumbs_up"
+    static let thumbsDown = "thumbs_down"
 
     struct Login {
         static let susiImage = "susi"
