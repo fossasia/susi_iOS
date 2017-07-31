@@ -12,7 +12,7 @@ class RSSCell: ChatMessageCell {
 
     var message: Message? {
         didSet {
-            self.addWebsearchView()
+            addWebsearchView()
         }
     }
 
@@ -27,9 +27,9 @@ class RSSCell: ChatMessageCell {
     }
 
     func addWebsearchView() {
-        self.addSubview(websearchView)
-        self.addConstraintsWithFormat(format: "H:|[v0]|", views: websearchView)
-        self.addConstraintsWithFormat(format: "V:[v0(135)]", views: websearchView)
+        addSubview(websearchView)
+        addConstraintsWithFormat(format: "H:|[v0]|", views: websearchView)
+        addConstraintsWithFormat(format: "V:[v0(135)]", views: websearchView)
         websearchView.message = message
     }
 

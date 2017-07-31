@@ -1,5 +1,5 @@
 //
-//  MainVCMethods.swift
+//  ChatVCMethods.swift
 //  Susi
 //
 //  Created by Chashmeet Singh on 2017-06-04.
@@ -10,6 +10,7 @@ import UIKit
 import CoreLocation
 import AVFoundation
 import RealmSwift
+import Material
 
 extension ChatViewController {
 
@@ -33,8 +34,8 @@ extension ChatViewController {
             bottomConstraintTextView?.constant = isKeyboardShowing ? (-keyboardFrame!.height - 8.0) : 0
             bottomConstraintSendButton?.constant = isKeyboardShowing ? (-keyboardFrame!.height - 8.0) : 0
 
-            collectionView?.frame = isKeyboardShowing ? CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - keyboardFrame!.height - 47) :
-                CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - 47)
+            collectionView?.frame = isKeyboardShowing ? CGRect(x: 0, y: 20, width: view.frame.width, height: view.frame.height - keyboardFrame!.height - 67) :
+                CGRect(x: 0, y: 20, width: view.frame.width, height: view.frame.height - 67)
 
             UIView.animate(withDuration: 0, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
 
@@ -52,38 +53,34 @@ extension ChatViewController {
 
     // Resign responders
     func resignResponders() {
-        self.view.endEditing(true)
+        view.endEditing(true)
     }
 
     // Setup Navigation Bar
     func setupTitle() {
         navigationItem.title = ControllerConstants.susiTitle
         navigationItem.titleLabel.textAlignment = .left
-        navigationItem.titleLabel.textColor = .white
-
-        navigationItem.rightViews = [searchButton, settingsButton]
+        navigationItem.rightViews = [settingsButton]
     }
 
     // Setup View
     func setupView() {
-        self.view.backgroundColor = UIColor.rgb(red: 236, green: 229, blue: 221)
-
-        addScrollButton()
+        showSettingsButton()
     }
 
     // Shows Youtube Player
     func addYotubePlayer(_ videoID: String) {
         if let window = UIApplication.shared.keyWindow {
             blackView.frame = window.frame
-            self.view.addSubview(blackView)
+            view.addSubview(blackView)
             blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
             blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
 
-            self.blackView.addSubview(self.youtubePlayer)
+            blackView.addSubview(youtubePlayer)
             let centerX = UIScreen.main.bounds.size.width / 2
             let centerY = UIScreen.main.bounds.size.height / 3
-            self.youtubePlayer.center = CGPoint(x: centerX, y: centerY)
-            self.youtubePlayer.loadVideoID(videoID)
+            youtubePlayer.center = CGPoint(x: centerX, y: centerY)
+            youtubePlayer.loadVideoID(videoID)
 
             blackView.alpha = 0
             youtubePlayer.alpha = 0
@@ -99,24 +96,6 @@ extension ChatViewController {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.blackView.removeFromSuperview()
         }, completion: nil)
-    }
-
-    // Setup Collection View
-    func setupCollectionView() {
-        // Check if user defaults have an image, set background as image
-        if let userDefaultData = getWallpaperFromUserDefaults() {
-            if let imageData = userDefaultData as? Data { // Check if object saved in user defaults if of type Data
-                setBackgroundImage(image: UIImage(data : imageData))
-            }
-        }
-        collectionView?.backgroundColor = .clear
-        collectionView?.delegate = self
-        collectionView?.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - 47)
-        collectionView?.register(IncomingBubbleCell.self, forCellWithReuseIdentifier: ControllerConstants.incomingCell)
-        collectionView?.register(OutgoingChatCell.self, forCellWithReuseIdentifier: ControllerConstants.outgoingCell)
-        collectionView?.register(RSSCell.self, forCellWithReuseIdentifier: ControllerConstants.rssCell)
-        collectionView?.register(ActivityIndicatorCell.self, forCellWithReuseIdentifier: ControllerConstants.indicatorCell)
-        collectionView?.accessibilityIdentifier = ControllerConstants.TestKeys.chatCollectionView
     }
 
     // Send Button Action
@@ -145,9 +124,7 @@ extension ChatViewController {
                 DispatchQueue.main.async {
                     if success {
                         self.collectionView?.performBatchUpdates({
-                            let item = IndexPath(item: self.messages.count - 1, section: 0)
-                            self.collectionView?.deleteItems(at: [item])
-                            self.messages.removeLast()
+                            self.removeActivityIndicator()
                             for message in messages! {
                                 try! self.realm.write {
                                     self.realm.add(message)
@@ -168,17 +145,26 @@ extension ChatViewController {
         }
     }
 
+    func removeActivityIndicator() {
+        if messages.last?.actionType == ActionType.indicatorView.rawValue {
+            let item = IndexPath(item: messages.count - 1, section: 0)
+            collectionView?.deleteItems(at: [item])
+            messages.removeLast()
+        }
+    }
+
     func addActivityIndicatorMessage() {
+        removeActivityIndicator()
         let message = Message()
         message.actionType = ActionType.indicatorView.rawValue
-        self.messages.append(message)
-        let indexPath = IndexPath(item: self.messages.count - 1, section: 0)
-        self.collectionView?.insertItems(at: [indexPath])
+        messages.append(message)
+        let indexPath = IndexPath(item: messages.count - 1, section: 0)
+        collectionView?.insertItems(at: [indexPath])
+        scrollToLast()
     }
 
     // Setup Input Components
     func setupInputComponents() {
-
         view.addSubview(inputTextView)
         view.addSubview(sendButton)
 
@@ -212,10 +198,10 @@ extension ChatViewController {
 
     // Scroll to last message
     func scrollToLast() {
-        if self.messages.count > 0 {
-            let lastItem = self.messages.count - 1
+        if messages.count > 0 {
+            let lastItem = messages.count - 1
             let indexPath = IndexPath(item: lastItem, section: 0)
-            self.collectionView?.scrollToItem(at: indexPath, at: .bottom, animated: true)
+            collectionView?.scrollToItem(at: indexPath, at: .bottom, animated: true)
         }
     }
 
@@ -226,9 +212,9 @@ extension ChatViewController {
     }
 
     func loadMessages() {
-        self.messages = List<Message>(realm.objects(Message.self))
-        self.collectionView?.reloadData()
-        self.scrollToLast()
+        messages = List<Message>(realm.objects(Message.self))
+        collectionView?.reloadData()
+        scrollToLast()
     }
 
     func getMessagesFromMemory() {
@@ -282,11 +268,60 @@ extension ChatViewController {
         }
     }
 
-    func addScrollButton() {
-        view.addSubview(scrollButton)
-        view.addConstraintsWithFormat(format: "H:[v0(44)]-8-|", views: scrollButton)
-        view.addConstraintsWithFormat(format: "V:[v0(44)]-70-|", views: scrollButton)
-        scrollButton.isHidden = true
+    func setupTheme() {
+        UIApplication.shared.statusBarStyle = .lightContent
+        settingsButton.tintColor = .white
+        let activeTheme = UserDefaults.standard.string(forKey: ControllerConstants.UserDefaultsKeys.theme)
+        if activeTheme == theme.light.rawValue {
+            sendButton.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
+            navigationItem.titleLabel.textColor = .black
+            UIApplication.shared.statusBarView?.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
+            settingsButton.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
+            view.backgroundColor = UIColor.hexStringToUIColor(hex: "#EEEEEE")
+        } else if activeTheme == theme.dark.rawValue {
+            navigationItem.titleLabel.textColor = .white
+            sendButton.backgroundColor = UIColor.defaultColor()
+            UIApplication.shared.statusBarView?.backgroundColor = UIColor.defaultColor()
+            settingsButton.backgroundColor = UIColor.defaultColor()
+            view.backgroundColor = UIColor.hexStringToUIColor(hex: "#ECE5DD")
+        }
+    }
+
+    func showSettingsButton() {
+        view.addSubview(settingsButton)
+        view.addConstraintsWithFormat(format: "H:[v0(36)]-8-|", views: settingsButton)
+        view.addConstraintsWithFormat(format: "V:|-28-[v0(36)]", views: settingsButton)
+    }
+
+    func presentSettingsController() {
+        let settingsController = SettingsViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        let nvc = AppNavigationController(rootViewController: settingsController)
+        present(nvc, animated: true, completion: nil)
+    }
+
+    // Check if user defaults have an image data saved else return nil/Any
+    func getWallpaperFromUserDefaults() -> Any? {
+        let defaults = UserDefaults.standard
+        return defaults.object(forKey: ControllerConstants.UserDefaultsKeys.wallpaper)
+    }
+
+    // Set chat background image
+    func setBackgroundImage(image: UIImage!) {
+        let bgView = UIImageView()
+        bgView.contentMode = .scaleAspectFill
+        bgView.image = image
+        collectionView?.backgroundView = bgView
+    }
+
+    func setupWallpaper() {
+        // Check if user defaults have an image, set background as image
+        if let userDefaultData = getWallpaperFromUserDefaults() {
+            if let imageData = userDefaultData as? Data { // Check if object exists
+                setBackgroundImage(image: UIImage(data : imageData))
+            }
+        } else {
+            collectionView?.backgroundView = nil
+        }
     }
 
 }

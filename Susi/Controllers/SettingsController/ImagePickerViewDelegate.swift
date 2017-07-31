@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension ChatViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension SettingsViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     // Show image picker to set/reset wallpaper
     func showImagePicker() {
@@ -16,29 +16,15 @@ extension ChatViewController: UIImagePickerControllerDelegate, UINavigationContr
             imagePicker.allowsEditing = false
             imagePicker.delegate = self
             imagePicker.sourceType = UIImagePickerControllerSourceType.savedPhotosAlbum
-            self.present(imagePicker, animated: true, completion: nil)
+            present(imagePicker, animated: true, completion: nil)
         } else {
             // Show error dialog if no photo is available in photo album
             let errorDialog = UIAlertController(title: ControllerConstants.errorDialogTitle, message: ControllerConstants.errorDialogMessage, preferredStyle: UIAlertControllerStyle.alert)
             errorDialog.addAction(UIAlertAction(title: ControllerConstants.dialogCancelAction, style: .cancel, handler: { (_: UIAlertAction!) in
                 errorDialog.dismiss(animated: true, completion: nil)
             }))
-            self.present(errorDialog, animated: true, completion: nil)
+            present(errorDialog, animated: true, completion: nil)
         }
-
-    }
-
-    // Set chat background image
-    func setBackgroundImage(image: UIImage!) {
-        let bgView = UIImageView()
-        bgView.contentMode = .scaleAspectFill
-        bgView.image = image
-        self.collectionView?.backgroundView = bgView
-    }
-
-    // Clear chat background image
-    func clearBackgroundImage() {
-        self.collectionView?.backgroundView = nil
     }
 
     // Save image selected by user to user defaults
@@ -48,17 +34,10 @@ extension ChatViewController: UIImagePickerControllerDelegate, UINavigationContr
         defaults.set(imageData, forKey: ControllerConstants.UserDefaultsKeys.wallpaper)
     }
 
-    // Check if user defaults have an image data saved else return nil/Any
-    func getWallpaperFromUserDefaults() -> Any? {
-        let defaults = UserDefaults.standard
-        return defaults.object(forKey: ControllerConstants.UserDefaultsKeys.wallpaper)
-    }
-
     // Remove wallpaper from user defaults
     func removeWallpaperFromUserDefaults() {
         let defaults = UserDefaults.standard
         defaults.removeObject(forKey: ControllerConstants.UserDefaultsKeys.wallpaper)
-        clearBackgroundImage()
     }
 
     // Callback when image is selected from gallery
@@ -66,7 +45,6 @@ extension ChatViewController: UIImagePickerControllerDelegate, UINavigationContr
         dismiss(animated: true, completion: nil)
         let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage
         if let image = chosenImage {
-            setBackgroundImage(image: image)
             saveWallpaperInUserDefaults(image: image)
         }
     }

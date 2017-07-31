@@ -15,7 +15,7 @@ extension LoginViewController {
 
     func addTapGesture() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        self.view.addGestureRecognizer(tap)
+        view.addGestureRecognizer(tap)
     }
 
     // Configures Email Text Field
@@ -121,9 +121,9 @@ extension LoginViewController {
             }
             params.removeAll()
         } else if let emailID = emailTextField.text, !emailID.isValidEmail() {
-            self.view.makeToast("Invalid email address")
+            view.makeToast("Invalid email address")
         } else if let password = passwordTextField.text, password.isEmpty {
-            self.view.makeToast("Password length too short")
+            view.makeToast("Password length too short")
         }
 
     }
@@ -170,7 +170,7 @@ extension LoginViewController {
 
     // force dismiss keyboard if open.
     func dismissKeyboard() {
-        self.view.endEditing(true)
+        view.endEditing(true)
     }
 
     // Toggle Editing
@@ -191,14 +191,7 @@ extension LoginViewController {
         clearFields()
 
         let vc = SignUpViewController()
-        self.present(vc, animated: true, completion: nil)
-    }
-
-    // Present Forgot Password VC
-    func presentForgotPasswordController() {
-        let vc = ForgotPasswordViewController()
-        let nvc = AppNavigationController(rootViewController: vc)
-        self.present(nvc, animated: true, completion: nil)
+        present(vc, animated: true, completion: nil)
     }
 
     // Validate fields
@@ -222,8 +215,7 @@ extension LoginViewController {
     func completeLogin(_ firstLogin: Bool = true) {
         let layout = BouncyLayout()
         let vc = ChatViewController(collectionViewLayout: layout)
-        let nvc = AppNavigationController(rootViewController: vc)
-        self.present(nvc, animated: true, completion: {
+        present(vc, animated: true, completion: {
             self.clearFields()
             if firstLogin {
                 vc.loadMemoryFromNetwork = true
@@ -252,13 +244,26 @@ extension LoginViewController {
     func enterAnonymousMode() {
         resetDB()
         UserDefaults.standard.set(Client.APIURLs.SusiAPI, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
-        self.completeLogin()
+        completeLogin()
     }
 
     func resetDB() {
         let realm = try! Realm()
         try! realm.write {
             realm.deleteAll()
+        }
+    }
+
+    func setupTheme() {
+        let image = UIImage(named: "susi")?.withRenderingMode(.alwaysTemplate)
+        susiLogo.image = image
+        susiLogo.tintColor = .white
+        UIApplication.shared.statusBarStyle = .lightContent
+        let activeTheme = UserDefaults.standard.string(forKey: ControllerConstants.UserDefaultsKeys.theme)
+        if activeTheme == theme.light.rawValue {
+            view.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
+        } else if activeTheme == theme.dark.rawValue {
+            view.backgroundColor = UIColor.defaultColor()
         }
     }
 

@@ -19,8 +19,6 @@ class OutgoingChatCell: ChatMessageCell {
 
     override func setupViews() {
         super.setupViews()
-
-        self.bubbleImageView.image = ChatMessageCell.outgoingBubbleImage
     }
 
     func setupDate() {
@@ -28,17 +26,27 @@ class OutgoingChatCell: ChatMessageCell {
         let str = date.string(format: .custom("h:mm a"))
         timeLabel.text = str
         textBubbleView.addSubview(timeLabel)
-        textBubbleView.addConstraintsWithFormat(format: "H:[v0]-23-|", views: timeLabel)
+        textBubbleView.addConstraintsWithFormat(format: "H:[v0]-8-|", views: timeLabel)
         textBubbleView.addConstraintsWithFormat(format: "V:[v0]-4-|", views: timeLabel)
     }
 
     func setupCell(_ estimatedFrame: CGRect, _ viewFrame: CGRect) {
-        self.messageTextView.frame = CGRect(x: viewFrame.width - max(estimatedFrame.width + 26, viewFrame.width / 4 - 8), y: 0, width: max(estimatedFrame.width + 16, viewFrame.width / 4 - 16), height: estimatedFrame.height + 20)
-        self.textBubbleView.frame = CGRect(x: viewFrame.width - max(estimatedFrame.width + 32, viewFrame.width / 4), y: -4, width: max(estimatedFrame.width + 34, viewFrame.width / 4), height: estimatedFrame.height + 26)
+        messageTextView.frame = CGRect(x: viewFrame.width - max(estimatedFrame.width + 34, viewFrame.width / 4), y: -2, width: max(estimatedFrame.width + 16, viewFrame.width / 4 - 16), height: estimatedFrame.height + 20)
+        textBubbleView.frame = CGRect(x: viewFrame.width - max(estimatedFrame.width + 40, viewFrame.width / 4 + 8), y: -4, width: max(estimatedFrame.width + 34, viewFrame.width / 4), height: estimatedFrame.height + 26)
 
-        self.bubbleImageView.tintColor = UIColor.incomingMessageTintColor()
-        self.messageTextView.textColor = .black
-        self.setupDate()
+        setupDate()
+        setupTheme()
+    }
+
+    func setupTheme() {
+        let activeTheme = UserDefaults.standard.string(forKey: ControllerConstants.UserDefaultsKeys.theme)
+        if activeTheme == theme.light.rawValue {
+            textBubbleView.backgroundColor = UIColor.hexStringToUIColor(hex: "#E0E0E0")
+            messageTextView.textColor = .black
+        } else if activeTheme == theme.dark.rawValue {
+            textBubbleView.backgroundColor = UIColor.incomingMessageTintColor()
+            messageTextView.textColor = .black
+        }
     }
 
 }

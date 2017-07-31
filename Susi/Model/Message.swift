@@ -38,7 +38,7 @@ class Message: Object {
     convenience init(message: String) {
         self.init()
         self.message = message
-        self.fromUser = true
+        fromUser = true
     }
 
     static func getAllAction(data: [String : AnyObject]) -> List<Message> {

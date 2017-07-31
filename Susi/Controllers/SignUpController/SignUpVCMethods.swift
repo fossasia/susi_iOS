@@ -13,7 +13,7 @@ extension SignUpViewController {
 
     func addTapGesture() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
-        self.view.addGestureRecognizer(tap)
+        view.addGestureRecognizer(tap)
     }
 
     func prepareFields() {
@@ -84,7 +84,6 @@ extension SignUpViewController {
 
     // Sign Up User
     func performSignUp() {
-
         if isValid() {
 
             toggleEditing()
@@ -113,11 +112,11 @@ extension SignUpViewController {
             }
             params.removeAll()
         } else if let emailID = emailTextField.text, !emailID.isValidEmail() {
-            self.view.makeToast("Invalid email address")
+            view.makeToast("Invalid email address")
         } else if let password = passwordTextField.text, password.isEmpty {
-            self.view.makeToast("Password length too short")
+            view.makeToast("Password length too short")
         } else if let password = passwordTextField.text, let confirmPassword = confirmPasswordTextField.text, password != confirmPassword {
-            self.view.makeToast("Passwords do not match")
+            view.makeToast("Passwords do not match")
         }
 
     }
@@ -156,7 +155,7 @@ extension SignUpViewController {
     // dismiss keyboard if open.
     func dismissKeyboard() {
         // Causes the view (or one of its embedded text fields) to resign the first responder status.
-        self.view.endEditing(true)
+        view.endEditing(true)
     }
 
     // Toggle Editing
@@ -179,6 +178,16 @@ extension SignUpViewController {
             return false
         }
         return true
+    }
+
+    func setupTheme() {
+        let activeTheme = UserDefaults.standard.string(forKey: ControllerConstants.UserDefaultsKeys.theme)
+        UIApplication.shared.statusBarStyle = .lightContent
+        if activeTheme == theme.light.rawValue {
+            view.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
+        } else if activeTheme == theme.dark.rawValue {
+            view.backgroundColor = UIColor.defaultColor()
+        }
     }
 
 }

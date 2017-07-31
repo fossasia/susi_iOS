@@ -66,11 +66,13 @@ class AuthenticationUITests: XCTestCase {
     }
     
     func testLogoutSuccess() {
-        testLoginSuccess()
+        app.buttons[ControllerConstants.TestKeys.skip].tap()
         
-        let button = app.navigationBars["Susi.ChatView"].children(matching: .other).element(boundBy: 0).children(matching: .button).element(boundBy: 1)
-        button.tap()
-        app.tables.staticTexts[ControllerConstants.TestKeys.logout].tap()
+        app.buttons[ControllerConstants.TestKeys.settings].tap()
+        let collectionViewsQuery = app.collectionViews
+        collectionViewsQuery.element.swipeUp()
+        let element = collectionViewsQuery.cells.containing(.staticText, identifier: ControllerConstants.TestKeys.logout).children(matching: .other).element
+        element.tap()
         
         let loginButton = app.buttons[ControllerConstants.TestKeys.login]
         XCTAssertTrue(loginButton.exists)

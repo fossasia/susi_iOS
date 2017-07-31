@@ -32,4 +32,9 @@ class SignUpViewController: UIViewController {
         prepareSignUpButton()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupTheme()
+    }
+
 }

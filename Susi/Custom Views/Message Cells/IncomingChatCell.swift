@@ -17,10 +17,9 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
     var message: Message? {
         didSet {
             messageTextView.text = message?.message
-
             if let imageString = message?.message, imageString.isImage() {
                 if let url = URL(string: imageString) {
-                    self.imageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder"), options: nil, progressBlock: nil, completionHandler: nil)
+                    imageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder"), options: nil, progressBlock: nil, completionHandler: nil)
                 }
             }
         }
@@ -45,8 +44,7 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
 
     override func setupViews() {
         super.setupViews()
-
-        self.bubbleImageView.image = ChatMessageCell.incomingBubbleImage
+        setupTheme()
     }
 
     func addMapView(_ frame: CGRect) {
@@ -65,6 +63,13 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
             let region = MKCoordinateRegion(center: center, span: span)
 
             mapView.setRegion(region, animated: true)
+
+            // add annotation
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            mapView.addAnnotation(annotation)
+
+            mapView.showsUserLocation = true
         }
     }
 
@@ -80,69 +85,72 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
         let str = date.string(format: .custom("h:mm a"))
         timeLabel.text = str
         textBubbleView.addSubview(timeLabel)
-        textBubbleView.addConstraintsWithFormat(format: "H:[v0]-20-|", views: timeLabel)
-        textBubbleView.addConstraintsWithFormat(format: "V:[v0]-6-|", views: timeLabel)
+        textBubbleView.addConstraintsWithFormat(format: "H:[v0]-8-|", views: timeLabel)
+        textBubbleView.addConstraintsWithFormat(format: "V:[v0]-4-|", views: timeLabel)
     }
 
     func setupCell(_ estimatedFrame: CGRect, _ viewFrame: CGRect) {
-
-        self.clearViews()
-        self.bubbleImageView.tintColor = .white
-        self.messageTextView.textColor = .black
-
+        clearViews()
         if let message = message {
             if message.message.isImage() {
                 let width = Int(frame.width / 2)
                 let height = 150
-                self.messageTextView.frame = CGRect.zero
-                self.textBubbleView.frame = CGRect(x: 4, y: -4, width: width + 40, height: height)
-                self.bubbleImageView.isHidden = true
-                self.addImageView()
+                messageTextView.frame = CGRect.zero
+                textBubbleView.frame = CGRect(x: 4, y: -4, width: width + 40, height: height)
+                addImageView()
             } else  if message.actionType == ActionType.answer.rawValue {
-                self.messageTextView.frame = CGRect(x: 16, y: 0, width: max(estimatedFrame.width + 16, viewFrame.width / 3), height: estimatedFrame.height + 30)
-                self.textBubbleView.frame = CGRect(x: 4, y: -4, width: max(estimatedFrame.width + 40, viewFrame.width / 3), height: estimatedFrame.height + 26)
-                self.bubbleImageView.isHidden = false
+                messageTextView.frame = CGRect(x: 12, y: 0, width: max(estimatedFrame.width + 30, viewFrame.width / 3), height: estimatedFrame.height + 10)
+                textBubbleView.frame = CGRect(x: 8, y: -4, width: max(estimatedFrame.width + 40, viewFrame.width / 3), height: estimatedFrame.height + 26)
 
+                let attributedString = NSMutableAttributedString(string: message.message)
                 if message.message.containsURL() {
-                    let attributedString = NSMutableAttributedString(string: message.message)
                     _ = attributedString.setAsLink(textToFind: message.message.extractFirstURL(),
                                                    linkURL: message.message.extractFirstURL(), text: message.message)
-                    self.messageTextView.attributedText = attributedString
                 } else {
-                    let attributedString = NSMutableAttributedString(string: message.message)
                     attributedString.addAttributes([NSFontAttributeName: UIFont.systemFont(ofSize: 16.0)],
                                                    range: NSRange(location: 0, length: message.message.characters.count))
-                    self.messageTextView.attributedText = attributedString
                 }
 
-                self.setupDate()
+                if UserDefaults.standard.string(forKey: ControllerConstants.UserDefaultsKeys.theme) == theme.dark.rawValue {
+                    let range = (message.message as NSString).range(of: message.message)
+                    attributedString.addAttributes([NSForegroundColorAttributeName: UIColor.white], range: range)
+                }
 
+                messageTextView.attributedText = attributedString
+                setupDate()
             } else if message.actionType == ActionType.map.rawValue {
-                self.messageTextView.frame = CGRect.zero
-                self.textBubbleView.frame = CGRect(x: 4, y: -4, width: 300, height: 232)
-                self.bubbleImageView.isHidden = false
-                self.addMapView(CGRect(x: 16, y: 12, width: 272, height: 210))
+                messageTextView.frame = CGRect.zero
+                textBubbleView.frame = CGRect(x: 8, y: -4, width: 268, height: 196)
+                addMapView(CGRect(x: 8, y: 8, width: 252, height: 180))
             } else if message.actionType == ActionType.anchor.rawValue {
-                self.messageTextView.frame = CGRect(x: 16, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 30)
-                self.textBubbleView.frame = CGRect(x: 4, y: -4, width: estimatedFrame.width + 40, height: estimatedFrame.height + 32)
-                bubbleImageView.isHidden = false
+                messageTextView.frame = CGRect(x: 12, y: 0, width: estimatedFrame.width + 30, height: estimatedFrame.height + 20)
+                textBubbleView.frame = CGRect(x: 8, y: -4, width: estimatedFrame.width + 40, height: estimatedFrame.height + 32)
                 let attributedString = NSMutableAttributedString(string: message.anchorData!.text)
                 _ = attributedString.setAsLink(textToFind: message.anchorData!.text, linkURL: message.anchorData!.link, text: message.message)
-                self.messageTextView.attributedText = attributedString
-                self.setupDate()
-            } else {
-                debugPrint("no action")
+                messageTextView.attributedText = attributedString
+                setupDate()
             }
-        } else {
-            debugPrint("no message")
         }
-
     }
 
     func clearViews() {
-        self.mapView.removeFromSuperview()
-        self.imageView.removeFromSuperview()
-        self.timeLabel.removeFromSuperview()
+        mapView.removeFromSuperview()
+        imageView.removeFromSuperview()
+        timeLabel.removeFromSuperview()
+    }
+
+    func setupTheme() {
+        textBubbleView.borderWidth = 0.2
+        let activeTheme = UserDefaults.standard.string(forKey: ControllerConstants.UserDefaultsKeys.theme)
+        if activeTheme == theme.light.rawValue {
+            textBubbleView.backgroundColor = .white
+            messageTextView.textColor = .black
+            timeLabel.textColor = .black
+        } else if activeTheme == theme.dark.rawValue {
+            textBubbleView.backgroundColor = .white
+            messageTextView.textColor = .black
+            timeLabel.textColor = .black
+        }
     }
 
 }

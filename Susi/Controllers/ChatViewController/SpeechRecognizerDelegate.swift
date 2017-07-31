@@ -9,7 +9,7 @@
 import Speech
 import UIKit
 
-extension ChatViewController: SFSpeechRecognizerDelegate {
+extension ChatViewController: SFSpeechRecognizerDelegate, AVSpeechSynthesizerDelegate {
 
     func configureSpeechRecognizer() {
         speechRecognizer?.delegate = self
@@ -127,7 +127,7 @@ extension ChatViewController: SFSpeechRecognizerDelegate {
         gesture.numberOfTapsRequired = 1
         indicatorView.addGestureRecognizer(gesture)
 
-        self.sendButton.setImage(nil, for: .normal)
+        sendButton.setImage(nil, for: .normal)
         indicatorView.startAnimating()
         sendButton.addSubview(indicatorView)
         sendButton.addConstraintsWithFormat(format: "V:|[v0(24)]|", views: indicatorView)
@@ -160,7 +160,7 @@ extension ChatViewController: SFSpeechRecognizerDelegate {
 
         isSpeechRecognitionRunning = false
         inputTextView.isUserInteractionEnabled = true
-        self.sendButton.tag = 0
+        sendButton.tag = 0
         setImageForSendButton()
     }
 
@@ -170,7 +170,9 @@ extension ChatViewController: SFSpeechRecognizerDelegate {
     }
 
     func speakAction(_ string: String, language: String?) {
-        if isSpeechRecognitionRunning {
+        if isSpeechRecognitionRunning &&
+            (UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.speechOutput) ||
+            UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn)) {
             let speechUtterance = AVSpeechUtterance(string: string)
             speechSynthesizer.delegate = self
 

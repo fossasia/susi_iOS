@@ -14,6 +14,7 @@ import Toast_Swift
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var susiLogo: UIImageView!
     @IBOutlet weak var emailTextField: TextField!
     @IBOutlet weak var passwordTextField: TextField!
     @IBOutlet weak var standardServerButton: DLRadioButton!
@@ -42,6 +43,11 @@ class LoginViewController: UIViewController {
 
         checkSession()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupTheme()
     }
 
 }
