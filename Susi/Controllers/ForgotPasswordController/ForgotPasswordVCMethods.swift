@@ -9,12 +9,13 @@
 import UIKit
 import DLRadioButton
 import SwiftValidators
+import Material
 
 extension ForgotPasswordViewController {
 
     // Dismiss View
     @IBAction func dismissView() {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 
     // Configures Email Field
@@ -89,7 +90,7 @@ extension ForgotPasswordViewController {
                 if let ipAddress = addressField.text, !ipAddress.isEmpty && Validator.isIP().apply(ipAddress) {
                     UserDefaults.standard.set(ipAddress, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
                 } else {
-                    self.view.makeToast("Invalid IP Address")
+                    view.makeToast("Invalid IP Address")
                     return
                 }
             }
@@ -121,8 +122,27 @@ extension ForgotPasswordViewController {
 
     // Toggle editing
     func toggleEditing() {
-        self.emailTextField.isEnabled = !self.emailTextField.isEnabled
-        self.resetButton.isEnabled = !self.resetButton.isEnabled
+        emailTextField.isEnabled = !self.emailTextField.isEnabled
+        resetButton.isEnabled = !self.resetButton.isEnabled
+    }
+
+    func setupTheme() {
+        UIApplication.shared.statusBarStyle = .lightContent
+        let activeTheme = UserDefaults.standard.string(forKey: ControllerConstants.UserDefaultsKeys.theme)
+        if activeTheme == theme.light.rawValue {
+            view.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
+        } else if activeTheme == theme.dark.rawValue {
+            view.backgroundColor = UIColor.defaultColor()
+        }
+
+        if let navbar = navigationController?.navigationBar {
+            if activeTheme == theme.light.rawValue {
+                navbar.barTintColor = UIColor.hexStringToUIColor(hex: "#4184F3")
+            } else if activeTheme == theme.dark.rawValue {
+                navbar.barTintColor = UIColor.defaultColor()
+            }
+        }
+
     }
 
 }

@@ -14,7 +14,7 @@ extension ChatViewController: CLLocationManagerDelegate {
     func configureLocationManager() {
         locationManager.delegate = self
         if CLLocationManager.authorizationStatus() == .notDetermined || CLLocationManager.authorizationStatus() == .denied {
-            self.locationManager.requestWhenInUseAuthorization()
+            locationManager.requestWhenInUseAuthorization()
         }
 
         locationManager.distanceFilter = kCLDistanceFilterNone

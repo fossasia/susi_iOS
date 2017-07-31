@@ -15,9 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-
         initializeRealm()
         resetStateIfUITesting()
+        checkAndSetTheme()
         return true
     }
 
@@ -36,6 +36,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             try! realm.write {
                 realm.deleteAll()
             }
+        }
+    }
+
+    func checkAndSetTheme() {
+        let key = ControllerConstants.UserDefaultsKeys.theme
+        guard let _ = UserDefaults.standard.string(forKey: key) else {
+            UserDefaults.standard.set(theme.light.rawValue, forKey: ControllerConstants.UserDefaultsKeys.theme)
+            return
         }
     }
 

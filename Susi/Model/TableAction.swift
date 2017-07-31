@@ -16,8 +16,8 @@ class Column: Object {
     convenience init(key: String, value: String) {
         self.init()
 
-        self.original = key
-        self.changed = value
+        original = key
+        changed = value
     }
 
     static func getColumns(columns: [String : String]) -> List<Column> {
@@ -59,14 +59,14 @@ class TableAction: Object {
         self.init()
 
         if let count = actionObject[Client.ChatKeys.Count] as? Int, count > 0 {
-            self.size = count
+            size = count
         }
 
         if let columns = actionObject[Client.ChatKeys.Columns] as? [String : String] {
             self.columns = Column.getColumns(columns: columns)
         }
 
-        self.tableData = TableData.getTableData(data: data)
+        tableData = TableData.getTableData(data: data)
     }
 
 }

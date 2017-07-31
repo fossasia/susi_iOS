@@ -37,7 +37,7 @@ class SettingsCell: BaseCell {
         addConstraintsWithFormat(format: "H:|-8-[v0][v1]-8-|", views: titleLabel, settingSwitch)
         addConstraintsWithFormat(format: "H:|-8-[v0]", views: detailLabel)
 
-        addConstraintsWithFormat(format: "V:|-4-[v0]-4-[v1]", views: titleLabel, detailLabel)
+        addConstraintsWithFormat(format: "V:|-2-[v0]-4-[v1]-2-|", views: titleLabel, detailLabel)
         addConstraintsWithFormat(format: "V:|-8-[v0]", views: settingSwitch)
     }
 
