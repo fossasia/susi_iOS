@@ -18,7 +18,7 @@ extension ChatViewController: AVAudioRecorderDelegate {
     }
 
     func startHotwordRecognition() {
-        hotwordTimer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(startRecording), userInfo: nil, repeats: true)
+        hotwordTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(startRecording), userInfo: nil, repeats: true)
         hotwordTimer.fire()
     }
 
@@ -70,7 +70,7 @@ extension ChatViewController: AVAudioRecorderDelegate {
                                                 settings: recordSettings as [String : AnyObject])
             audioRecorder.delegate = self
             audioRecorder.prepareToRecord()
-            audioRecorder.record(forDuration: 2.0)
+            audioRecorder.record(forDuration: 1.5)
 
 //            print("Started recording...")
         } catch let error {

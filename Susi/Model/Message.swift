@@ -34,6 +34,7 @@ class Message: Object {
     dynamic var anchorData: AnchorAction?
     dynamic var tableData: TableAction?
     var websearchData = List<WebsearchAction>()
+    dynamic var skill: String = ""
 
     convenience init(message: String) {
         self.init()
@@ -43,14 +44,20 @@ class Message: Object {
 
     static func getAllAction(data: [String : AnyObject]) -> List<Message> {
         let messages = List<Message>()
+        var skill: String = ""
 
         if let answers = data[Client.ChatKeys.Answers] as? [[String : AnyObject]] {
+            if let skills = answers[0][Client.ChatKeys.Skills] as? [String], skills.count > 0 {
+                skill = skills.first!
+            }
+
             if let actions = answers[0][Client.ChatKeys.Actions] as? [[String : AnyObject]] {
                 for action in actions {
 
                     let message = Message()
                     message.fromUser = false
                     message.message = data[Client.ChatKeys.Query] as? String ?? ""
+                    message.skill = skill
 
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"

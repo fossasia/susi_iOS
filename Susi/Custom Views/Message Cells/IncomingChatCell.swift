@@ -11,6 +11,7 @@ import Kingfisher
 import MapKit
 import SwiftDate
 import NVActivityIndicatorView
+import Material
 
 class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
 
@@ -40,6 +41,22 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
         imageView.layer.cornerRadius = 16
         imageView.layer.masksToBounds = true
         return imageView
+    }()
+
+    lazy var thumbUpIcon: IconButton = {
+        let button = IconButton()
+        button.image = UIImage(named: ControllerConstants.thumbsUp)?.withRenderingMode(.alwaysTemplate)
+        button.addTarget(self, action: #selector(sendFeedback(sender:)), for: .touchUpInside)
+        button.tintColor = UIColor(white: 0.1, alpha: 0.7)
+        return button
+    }()
+
+    lazy var thumbDownIcon: IconButton = {
+        let button = IconButton()
+        button.image = UIImage(named: ControllerConstants.thumbsDown)?.withRenderingMode(.alwaysTemplate)
+        button.addTarget(self, action: #selector(sendFeedback(sender:)), for: .touchUpInside)
+        button.tintColor = UIColor(white: 0.1, alpha: 0.7)
+        return button
     }()
 
     override func setupViews() {
@@ -80,15 +97,6 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
         textBubbleView.addConstraintsWithFormat(format: "V:|-4-[v0]-5-|", views: imageView)
     }
 
-    func setupDate() {
-        let date = DateInRegion(absoluteDate: message?.answerDate as Date!)
-        let str = date.string(format: .custom("h:mm a"))
-        timeLabel.text = str
-        textBubbleView.addSubview(timeLabel)
-        textBubbleView.addConstraintsWithFormat(format: "H:[v0]-8-|", views: timeLabel)
-        textBubbleView.addConstraintsWithFormat(format: "V:[v0]-4-|", views: timeLabel)
-    }
-
     func setupCell(_ estimatedFrame: CGRect, _ viewFrame: CGRect) {
         clearViews()
         if let message = message {
@@ -117,7 +125,7 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
                 }
 
                 messageTextView.attributedText = attributedString
-                setupDate()
+                addBottomView()
             } else if message.actionType == ActionType.map.rawValue {
                 messageTextView.frame = CGRect.zero
                 textBubbleView.frame = CGRect(x: 8, y: -4, width: 268, height: 196)
@@ -128,7 +136,7 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
                 let attributedString = NSMutableAttributedString(string: message.anchorData!.text)
                 _ = attributedString.setAsLink(textToFind: message.anchorData!.text, linkURL: message.anchorData!.link, text: message.message)
                 messageTextView.attributedText = attributedString
-                setupDate()
+                addBottomView()
             }
         }
     }
@@ -137,6 +145,8 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
         mapView.removeFromSuperview()
         imageView.removeFromSuperview()
         timeLabel.removeFromSuperview()
+        thumbUpIcon.removeFromSuperview()
+        thumbDownIcon.removeFromSuperview()
     }
 
     func setupTheme() {
@@ -150,6 +160,63 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
             textBubbleView.backgroundColor = .white
             messageTextView.textColor = .black
             timeLabel.textColor = .black
+        }
+    }
+
+    func addBottomView() {
+        let date = DateInRegion(absoluteDate: message?.answerDate as Date!)
+        let str = date.string(format: .custom("h:mm a"))
+        timeLabel.text = str
+
+        textBubbleView.addSubview(timeLabel)
+
+        if message?.actionType == ActionType.answer.rawValue {
+            textBubbleView.addSubview(thumbUpIcon)
+            textBubbleView.addSubview(thumbDownIcon)
+            textBubbleView.addConstraintsWithFormat(format: "H:[v0]-4-[v1(14)]-2-[v2(14)]-8-|", views: timeLabel, thumbUpIcon, thumbDownIcon)
+            textBubbleView.addConstraintsWithFormat(format: "V:[v0(14)]-2-|", views: thumbUpIcon)
+            textBubbleView.addConstraintsWithFormat(format: "V:[v0(14)]-2-|", views: thumbDownIcon)
+            thumbUpIcon.isUserInteractionEnabled = true
+            thumbDownIcon.isUserInteractionEnabled = true
+        } else {
+            textBubbleView.addConstraintsWithFormat(format: "H:[v0]-8-|", views: timeLabel)
+        }
+        textBubbleView.addConstraintsWithFormat(format: "V:[v0]-4-|", views: timeLabel)
+    }
+
+    func sendFeedback(sender: IconButton) {
+        let feedback: String
+        if sender == thumbUpIcon {
+            thumbDownIcon.tintColor = UIColor(white: 0.1, alpha: 0.7)
+            thumbUpIcon.isUserInteractionEnabled = false
+            thumbDownIcon.isUserInteractionEnabled = true
+            feedback = "positive"
+        } else {
+            thumbUpIcon.tintColor = UIColor(white: 0.1, alpha: 0.7)
+            thumbDownIcon.isUserInteractionEnabled = false
+            thumbUpIcon.isUserInteractionEnabled = true
+            feedback = "negative"
+        }
+        sender.tintColor = UIColor.hexStringToUIColor(hex: "#2196F3")
+
+        let skillComponents = message?.skill.components(separatedBy: "/")
+        if skillComponents?.count == 7 {
+            let params: [String : AnyObject] = [
+                Client.FeedbackKeys.model: skillComponents![3] as AnyObject,
+                Client.FeedbackKeys.group: skillComponents![4] as AnyObject,
+                Client.FeedbackKeys.language: skillComponents![5] as AnyObject,
+                Client.FeedbackKeys.skill: skillComponents![6].components(separatedBy: ".").first as AnyObject,
+                Client.FeedbackKeys.rating: feedback as AnyObject
+            ]
+
+            Client.sharedInstance.sendFeedback(params, { (success, error) in
+                DispatchQueue.global().async {
+                    if let error = error {
+                        print(error)
+                    }
+                    print("Skill rated: \(success)")
+                }
+            })
         }
     }
 

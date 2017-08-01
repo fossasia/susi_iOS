@@ -22,6 +22,7 @@ extension Client {
         static let Memory = "/susi/memory.json"
         static let UserSettings = "/aaa/changeUserSettings.json"
         static let ListUserSettings = "/aaa/listUserSettings.json"
+        static let SendFeedback = "/cms/rateSkill.json"
     }
 
     struct ResponseMessages {
@@ -48,6 +49,7 @@ extension Client {
         static let ResponseType = "type"
         static let Expression = "expression"
         static let Actions = "actions"
+        static let Skills = "skills"
         static let AccessToken = "access-token"
         static let Latitude = "latitude"
         static let Longitude = "longitude"
@@ -100,6 +102,14 @@ extension Client {
         static let noData = "No data found"
         static let duckDuckGo = "https://duckduckgo.com/"
         static let noDescription = "No Description"
+    }
+
+    struct FeedbackKeys {
+        static let model = "model"
+        static let group = "group"
+        static let skill = "skill"
+        static let language = "language"
+        static let rating = "rating"
     }
 
 }

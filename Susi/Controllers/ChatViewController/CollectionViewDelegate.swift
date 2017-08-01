@@ -14,7 +14,7 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
     func setupCollectionView() {
         collectionView?.backgroundColor = .clear
         collectionView?.delegate = self
-        collectionView?.frame = CGRect(x: 0, y: 20, width: view.frame.width, height: view.frame.height - 47)
+        collectionView?.frame = CGRect(x: 0, y: 20, width: view.frame.width, height: view.frame.height - 52)
         collectionView?.register(IncomingBubbleCell.self, forCellWithReuseIdentifier: ControllerConstants.incomingCell)
         collectionView?.register(OutgoingChatCell.self, forCellWithReuseIdentifier: ControllerConstants.outgoingCell)
         collectionView?.register(RSSCell.self, forCellWithReuseIdentifier: ControllerConstants.rssCell)
@@ -72,20 +72,20 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
         } else {
             let estimatedFrame = self.estimatedFrame(messageBody: message.message)
             if message.message.isImage() {
-                return CGSize(width: view.frame.width, height: 160)
+                return CGSize(width: view.frame.width, height: 165)
             } else if message.actionType == ActionType.map.rawValue {
-                return CGSize(width: view.frame.width, height: 196)
+                return CGSize(width: view.frame.width, height: 201)
             } else if message.actionType == ActionType.rss.rawValue ||
                 message.actionType == ActionType.websearch.rawValue {
-                return CGSize(width: view.frame.width, height: 140)
+                return CGSize(width: view.frame.width, height: 145)
             }
-            return CGSize(width: view.frame.width, height: estimatedFrame.height + 38)
+            return CGSize(width: view.frame.width, height: estimatedFrame.height + 43)
         }
     }
 
     // Set Edge Insets
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
+        return UIEdgeInsets(top: 8, left: 0, bottom: 12, right: 0)
     }
 
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
