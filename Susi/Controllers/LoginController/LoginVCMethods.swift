@@ -10,6 +10,7 @@ import UIKit
 import BouncyLayout
 import DLRadioButton
 import RealmSwift
+import SwiftValidators
 
 extension LoginViewController {
 
@@ -43,18 +44,18 @@ extension LoginViewController {
 
     // Configures the radio buttons
     func prepareRadioButtons() {
-        standardServerButton.addTarget(self, action: #selector(toggleRadioButtons), for: .touchUpInside)
         personalServerButton.addTarget(self, action: #selector(toggleRadioButtons), for: .touchUpInside)
     }
 
     func toggleRadioButtons(_ sender: Any) {
         if let button = sender as? DLRadioButton {
-            if button == standardServerButton {
-                personalServerButton.isSelected = false
-                addressField.tag = 0
-            } else if button == personalServerButton {
-                standardServerButton.isSelected = false
+            button.isSelected = button.tag == 0 ? true : false
+            if button.isSelected {
                 addressField.tag = 1
+                button.tag = 1
+            } else {
+                addressField.tag = 0
+                button.tag = 0
             }
             toggleAddressFieldDisplay()
         }
@@ -66,6 +67,7 @@ extension LoginViewController {
                 self.loginButtonTopConstraint.constant = 67
             } else {
                 self.loginButtonTopConstraint.constant = 20
+                self.addressField.text = ""
                 self.addressField.endEditing(true)
             }
         }
@@ -101,10 +103,15 @@ extension LoginViewController {
                 Client.ChatKeys.ResponseType: Client.ChatKeys.AccessToken
             ] as [String : Any]
 
-            if addressField.tag == 1 {
+            if !personalServerButton.isSelected {
                 UserDefaults.standard.set(Client.APIURLs.SusiAPI, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
-            } else if let ipAddress = addressField.text {
-                UserDefaults.standard.set(ipAddress, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
+            } else {
+                if let ipAddress = addressField.text, !ipAddress.isEmpty && Validator.isIP().apply(ipAddress) {
+                    UserDefaults.standard.set(ipAddress, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
+                } else {
+                    view.makeToast("Invalid IP Address")
+                    return
+                }
             }
 
             indicatorView.startAnimating()

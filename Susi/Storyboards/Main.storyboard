@@ -55,16 +55,15 @@
                                     <outlet property="delegate" destination="0ek-IO-lKt" id="yAm-aa-QF0"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="trP-xG-72E" customClass="DLRadioButton">
-                                <rect key="frame" x="35" y="254" width="359" height="34"/>
-                                <state key="normal" title="SUSI AI Standard Server"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USZ-bF-rAa" customClass="DLRadioButton">
-                                <rect key="frame" x="35" y="296" width="359" height="34"/>
+                                <rect key="frame" x="35" y="252" width="359" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="kfu-Ba-5TR"/>
+                                </constraints>
                                 <state key="normal" title="Personal Server"/>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LU3-5s-B2R" customClass="TextField" customModule="Material">
-                                <rect key="frame" x="20" y="355" width="374" height="30"/>
+                                <rect key="frame" x="20" y="311" width="374" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" returnKeyType="go"/>
@@ -73,32 +72,29 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tyX-vw-iD6" customClass="RaisedButton" customModule="Material">
-                                <rect key="frame" x="20" y="350" width="374" height="44"/>
+                                <rect key="frame" x="20" y="298" width="374" height="44"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration" identifier="login"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="pGd-5d-AZr"/>
+                                    <constraint firstAttribute="height" constant="44" id="yik-Wd-Cjl"/>
                                 </constraints>
                                 <state key="normal" title="Login">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uui-73-IEM" customClass="FlatButton" customModule="Material">
-                                <rect key="frame" x="20" y="440" width="374" height="34"/>
+                                <rect key="frame" x="20" y="392" width="374" height="34"/>
                                 <accessibility key="accessibilityConfiguration" identifier="skip"/>
                                 <state key="normal" title="Skip"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Q5-rQ-6Ig" customClass="FlatButton" customModule="Material">
-                                <rect key="frame" x="20" y="402" width="374" height="34"/>
+                                <rect key="frame" x="20" y="350" width="374" height="34"/>
                                 <accessibility key="accessibilityConfiguration" identifier="forgotPassword"/>
                                 <state key="normal" title="Forgot Password"/>
                                 <connections>
                                     <segue destination="hF4-Pz-cCO" kind="show" identifier="forgotPassword" id="eZr-1Q-eyn"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Ey6-yh-fIO">
-                                <rect key="frame" x="189" y="480" width="37" height="37"/>
-                            </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0l-NZ-Q5Q" customClass="FlatButton" customModule="Material">
                                 <rect key="frame" x="20" y="682" width="374" height="34"/>
                                 <accessibility key="accessibilityConfiguration" identifier="signUp"/>
@@ -113,44 +109,42 @@
                                     <constraint firstAttribute="height" constant="60" id="2sz-gr-uZT"/>
                                 </constraints>
                             </imageView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Ey6-yh-fIO">
+                                <rect key="frame" x="189" y="428" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.16862745098039217" green="0.24313725490196078" blue="0.30980392156862746" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="3Q5-rQ-6Ig" firstAttribute="leading" secondItem="eB9-M6-ocu" secondAttribute="leadingMargin" id="2dh-eX-WXR"/>
                             <constraint firstItem="a1R-Kp-3L1" firstAttribute="trailing" secondItem="eB9-M6-ocu" secondAttribute="trailingMargin" constant="-56" id="3CD-n4-10g"/>
-                            <constraint firstItem="Ey6-yh-fIO" firstAttribute="leading" secondItem="eB9-M6-ocu" secondAttribute="leadingMargin" constant="169" id="5qQ-ai-FpG"/>
-                            <constraint firstItem="LU3-5s-B2R" firstAttribute="leading" secondItem="eB9-M6-ocu" secondAttribute="leadingMargin" id="6ci-VP-tZs"/>
-                            <constraint firstItem="trP-xG-72E" firstAttribute="leading" secondItem="USZ-bF-rAa" secondAttribute="leading" id="9Kq-kR-e6z"/>
+                            <constraint firstItem="Ey6-yh-fIO" firstAttribute="top" secondItem="Uui-73-IEM" secondAttribute="bottom" constant="2" id="42n-Vd-stZ"/>
+                            <constraint firstItem="Uui-73-IEM" firstAttribute="top" secondItem="3Q5-rQ-6Ig" secondAttribute="bottom" constant="8" id="6nI-8e-gGE"/>
                             <constraint firstItem="a1R-Kp-3L1" firstAttribute="leading" secondItem="eB9-M6-ocu" secondAttribute="leadingMargin" constant="56" id="BNf-As-pvS"/>
-                            <constraint firstItem="bMo-Iv-Lqa" firstAttribute="trailing" secondItem="trP-xG-72E" secondAttribute="trailing" id="E38-DF-2xc"/>
+                            <constraint firstItem="Uui-73-IEM" firstAttribute="trailing" secondItem="eB9-M6-ocu" secondAttribute="trailingMargin" id="Dor-ya-eGo"/>
+                            <constraint firstItem="USZ-bF-rAa" firstAttribute="leading" secondItem="eB9-M6-ocu" secondAttribute="leadingMargin" constant="15" id="Fyv-ce-wcw"/>
+                            <constraint firstItem="tyX-vw-iD6" firstAttribute="trailing" secondItem="eB9-M6-ocu" secondAttribute="trailingMargin" id="IFd-7S-6lt"/>
+                            <constraint firstItem="Uui-73-IEM" firstAttribute="leading" secondItem="eB9-M6-ocu" secondAttribute="leadingMargin" id="J5n-4G-ZXf"/>
                             <constraint firstItem="ViN-ki-rRD" firstAttribute="top" secondItem="a1R-Kp-3L1" secondAttribute="bottom" constant="30" id="LDg-Vy-D5f"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ey6-yh-fIO" secondAttribute="trailing" constant="168" id="MKZ-FX-wsK"/>
                             <constraint firstItem="a1R-Kp-3L1" firstAttribute="leading" secondItem="ViN-ki-rRD" secondAttribute="leading" constant="56" id="Mt5-qq-pP1"/>
-                            <constraint firstItem="trP-xG-72E" firstAttribute="leading" secondItem="eB9-M6-ocu" secondAttribute="leadingMargin" constant="15" id="QZT-8L-cHp"/>
+                            <constraint firstItem="Ey6-yh-fIO" firstAttribute="leading" secondItem="eB9-M6-ocu" secondAttribute="leadingMargin" constant="169" id="NIX-lm-3Ev"/>
+                            <constraint firstItem="LU3-5s-B2R" firstAttribute="top" secondItem="USZ-bF-rAa" secondAttribute="bottom" constant="25" id="Oyn-Mk-OHc"/>
                             <constraint firstItem="ViN-ki-rRD" firstAttribute="leading" secondItem="bMo-Iv-Lqa" secondAttribute="leading" id="QfV-0R-dMd"/>
-                            <constraint firstItem="3Q5-rQ-6Ig" firstAttribute="leading" secondItem="eB9-M6-ocu" secondAttribute="leadingMargin" id="SM9-fI-HPd"/>
-                            <constraint firstItem="Uui-73-IEM" firstAttribute="leading" secondItem="eB9-M6-ocu" secondAttribute="leadingMargin" id="Tdk-fh-5tm"/>
+                            <constraint firstItem="LU3-5s-B2R" firstAttribute="leading" secondItem="eB9-M6-ocu" secondAttribute="leadingMargin" id="RDY-2l-P2k"/>
+                            <constraint firstItem="tyX-vw-iD6" firstAttribute="leading" secondItem="eB9-M6-ocu" secondAttribute="leadingMargin" id="TWT-Yc-zI3"/>
                             <constraint firstItem="N0l-NZ-Q5Q" firstAttribute="leading" secondItem="eB9-M6-ocu" secondAttribute="leadingMargin" id="UeQ-SA-ebJ"/>
-                            <constraint firstItem="Uui-73-IEM" firstAttribute="trailing" secondItem="eB9-M6-ocu" secondAttribute="trailingMargin" id="WPy-kJ-VPi"/>
-                            <constraint firstItem="LU3-5s-B2R" firstAttribute="top" secondItem="USZ-bF-rAa" secondAttribute="bottom" constant="25" id="dY3-Wu-MB9"/>
+                            <constraint firstItem="LU3-5s-B2R" firstAttribute="trailing" secondItem="eB9-M6-ocu" secondAttribute="trailingMargin" id="ZxQ-ja-oO0"/>
+                            <constraint firstItem="3Q5-rQ-6Ig" firstAttribute="trailing" secondItem="eB9-M6-ocu" secondAttribute="trailingMargin" id="efM-OI-gu0"/>
                             <constraint firstItem="ViN-ki-rRD" firstAttribute="trailing" secondItem="bMo-Iv-Lqa" secondAttribute="trailing" id="fhZ-tW-8N8"/>
-                            <constraint firstItem="USZ-bF-rAa" firstAttribute="top" secondItem="trP-xG-72E" secondAttribute="bottom" constant="8" symbolic="YES" id="gQQ-n6-1RB"/>
-                            <constraint firstItem="trP-xG-72E" firstAttribute="top" secondItem="bMo-Iv-Lqa" secondAttribute="bottom" constant="20" id="ic7-9g-fy4"/>
-                            <constraint firstItem="tyX-vw-iD6" firstAttribute="trailing" secondItem="eB9-M6-ocu" secondAttribute="trailingMargin" id="jA6-6q-dE5"/>
                             <constraint firstItem="a1R-Kp-3L1" firstAttribute="top" secondItem="YPg-SH-GPq" secondAttribute="bottom" constant="35" id="jev-aN-fdj"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Ey6-yh-fIO" secondAttribute="trailing" constant="168" id="km9-ZT-hHH"/>
-                            <constraint firstItem="3Q5-rQ-6Ig" firstAttribute="top" secondItem="tyX-vw-iD6" secondAttribute="bottom" constant="8" id="kvt-Wb-227"/>
+                            <constraint firstItem="USZ-bF-rAa" firstAttribute="top" secondItem="bMo-Iv-Lqa" secondAttribute="bottom" constant="18" id="kLf-bq-5TI"/>
+                            <constraint firstItem="USZ-bF-rAa" firstAttribute="trailing" secondItem="eB9-M6-ocu" secondAttribute="trailingMargin" id="kNX-B5-Uxa"/>
                             <constraint firstItem="qeg-ec-MXB" firstAttribute="top" secondItem="N0l-NZ-Q5Q" secondAttribute="bottom" constant="20" id="mTH-3x-2lv"/>
-                            <constraint firstItem="LU3-5s-B2R" firstAttribute="trailing" secondItem="eB9-M6-ocu" secondAttribute="trailingMargin" id="mdP-3Q-Hjc"/>
-                            <constraint firstItem="Uui-73-IEM" firstAttribute="top" secondItem="3Q5-rQ-6Ig" secondAttribute="bottom" constant="4" id="mmx-OW-Ax0"/>
-                            <constraint firstItem="tyX-vw-iD6" firstAttribute="leading" secondItem="eB9-M6-ocu" secondAttribute="leadingMargin" id="pWY-4m-AGr"/>
+                            <constraint firstItem="tyX-vw-iD6" firstAttribute="top" secondItem="USZ-bF-rAa" secondAttribute="bottom" constant="12" id="oIU-uh-86Q"/>
                             <constraint firstItem="N0l-NZ-Q5Q" firstAttribute="trailing" secondItem="eB9-M6-ocu" secondAttribute="trailingMargin" id="ptl-sx-n0S"/>
-                            <constraint firstItem="tyX-vw-iD6" firstAttribute="leading" secondItem="eB9-M6-ocu" secondAttribute="leadingMargin" id="q82-gn-8vn"/>
-                            <constraint firstItem="Ey6-yh-fIO" firstAttribute="top" secondItem="Uui-73-IEM" secondAttribute="bottom" constant="6" id="sAb-hR-zRO"/>
                             <constraint firstItem="bMo-Iv-Lqa" firstAttribute="top" secondItem="ViN-ki-rRD" secondAttribute="bottom" constant="29" id="swt-rt-kZR"/>
-                            <constraint firstItem="tyX-vw-iD6" firstAttribute="trailing" secondItem="eB9-M6-ocu" secondAttribute="trailingMargin" id="uUX-yA-AxI"/>
-                            <constraint firstItem="tyX-vw-iD6" firstAttribute="top" secondItem="USZ-bF-rAa" secondAttribute="bottom" constant="20" id="vf0-gO-zdC"/>
-                            <constraint firstItem="3Q5-rQ-6Ig" firstAttribute="trailing" secondItem="eB9-M6-ocu" secondAttribute="trailingMargin" id="wRV-9c-yKS"/>
+                            <constraint firstItem="3Q5-rQ-6Ig" firstAttribute="top" secondItem="tyX-vw-iD6" secondAttribute="bottom" constant="8" id="uLB-On-tF3"/>
                             <constraint firstItem="a1R-Kp-3L1" firstAttribute="trailing" secondItem="ViN-ki-rRD" secondAttribute="trailing" constant="-56" id="x9K-XO-VkX"/>
-                            <constraint firstItem="trP-xG-72E" firstAttribute="trailing" secondItem="USZ-bF-rAa" secondAttribute="trailing" id="yrS-DB-TjR"/>
                         </constraints>
                     </view>
                     <connections>
@@ -159,12 +153,11 @@
                         <outlet property="forgotPassword" destination="3Q5-rQ-6Ig" id="1sD-sb-0Q2"/>
                         <outlet property="indicatorView" destination="Ey6-yh-fIO" id="mwh-Lu-SQz"/>
                         <outlet property="loginButton" destination="tyX-vw-iD6" id="Acg-Qg-9ff"/>
-                        <outlet property="loginButtonTopConstraint" destination="vf0-gO-zdC" id="hoS-Ec-hqE"/>
+                        <outlet property="loginButtonTopConstraint" destination="oIU-uh-86Q" id="1ym-vx-6y0"/>
                         <outlet property="passwordTextField" destination="bMo-Iv-Lqa" id="sDg-W6-Z6a"/>
                         <outlet property="personalServerButton" destination="USZ-bF-rAa" id="gie-se-GcR"/>
                         <outlet property="signUpButton" destination="N0l-NZ-Q5Q" id="Aoi-3T-9C3"/>
                         <outlet property="skipButton" destination="Uui-73-IEM" id="QUZ-1p-rs5"/>
-                        <outlet property="standardServerButton" destination="trP-xG-72E" id="jg1-ZX-VmO"/>
                         <outlet property="susiLogo" destination="a1R-Kp-3L1" id="Dxd-Jn-DXk"/>
                     </connections>
                 </viewController>
@@ -232,22 +225,15 @@
                                     <outlet property="delegate" destination="Azo-Yr-Z9r" id="rvf-4Q-Eqr"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TSG-xf-i5b" customClass="DLRadioButton">
-                                <rect key="frame" x="35" y="267" width="359" height="34"/>
-                                <state key="normal" title="SUSI AI Standard Server"/>
-                                <connections>
-                                    <action selector="toggleRadioButtons:" destination="Azo-Yr-Z9r" eventType="touchUpInside" id="BrV-FW-cWm"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nhz-6U-Sjk" customClass="DLRadioButton">
-                                <rect key="frame" x="35" y="309" width="359" height="34"/>
+                                <rect key="frame" x="35" y="275" width="359" height="34"/>
                                 <state key="normal" title="Personal Server"/>
                                 <connections>
                                     <action selector="toggleRadioButtons:" destination="Azo-Yr-Z9r" eventType="touchUpInside" id="D2N-9G-msF"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uqq-hh-HqX" customClass="TextField" customModule="Material">
-                                <rect key="frame" x="20" y="367" width="374" height="30"/>
+                                <rect key="frame" x="20" y="337" width="374" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" returnKeyType="go"/>
@@ -256,11 +242,11 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="diq-Fb-8ST" customClass="RaisedButton" customModule="Material">
-                                <rect key="frame" x="20" y="360" width="374" height="44"/>
+                                <rect key="frame" x="20" y="335" width="374" height="44"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration" identifier="signUp"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="Hq2-zy-vS9"/>
+                                    <constraint firstAttribute="height" constant="44" id="mpI-Io-4FE"/>
                                 </constraints>
                                 <state key="normal" title="Sign Up">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -274,36 +260,33 @@
                                 </connections>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="8w1-Me-Ajd">
-                                <rect key="frame" x="189" y="424" width="37" height="37"/>
+                                <rect key="frame" x="189" y="395" width="37" height="37"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.16862745100000001" green="0.24313725489999999" blue="0.30980392159999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="nhz-6U-Sjk" firstAttribute="leading" secondItem="E81-H1-y6d" secondAttribute="leadingMargin" constant="15" id="2WB-me-nRU"/>
+                            <constraint firstItem="8w1-Me-Ajd" firstAttribute="leading" secondItem="E81-H1-y6d" secondAttribute="leadingMargin" constant="169" id="4Kl-21-Nmj"/>
                             <constraint firstItem="TcY-GF-sf2" firstAttribute="trailing" secondItem="E81-H1-y6d" secondAttribute="trailingMargin" id="5of-Dl-Uy0"/>
+                            <constraint firstItem="nhz-6U-Sjk" firstAttribute="top" secondItem="TcY-GF-sf2" secondAttribute="bottom" constant="28" id="6xa-kQ-4tj"/>
                             <constraint firstItem="N3z-41-ZBS" firstAttribute="top" secondItem="fZv-XU-9rZ" secondAttribute="bottom" constant="44" id="9c4-Sm-lE9"/>
+                            <constraint firstItem="diq-Fb-8ST" firstAttribute="leading" secondItem="E81-H1-y6d" secondAttribute="leadingMargin" id="AdH-N5-gCh"/>
+                            <constraint firstItem="Uqq-hh-HqX" firstAttribute="leading" secondItem="E81-H1-y6d" secondAttribute="leadingMargin" id="KRV-j2-2je"/>
                             <constraint firstItem="fZv-XU-9rZ" firstAttribute="leading" secondItem="E81-H1-y6d" secondAttribute="leadingMargin" id="Kgj-8S-Sen"/>
                             <constraint firstItem="TcY-GF-sf2" firstAttribute="top" secondItem="N3z-41-ZBS" secondAttribute="bottom" constant="44" id="M3w-sw-nGw"/>
-                            <constraint firstItem="diq-Fb-8ST" firstAttribute="top" secondItem="nhz-6U-Sjk" secondAttribute="bottom" constant="17" id="O9S-xg-GkY"/>
                             <constraint firstItem="N3z-41-ZBS" firstAttribute="trailing" secondItem="E81-H1-y6d" secondAttribute="trailingMargin" id="OiE-bs-1Zi"/>
                             <constraint firstItem="jll-vc-Hx1" firstAttribute="top" secondItem="eYL-27-FPk" secondAttribute="bottom" id="OpU-0P-FLF"/>
-                            <constraint firstItem="8w1-Me-Ajd" firstAttribute="top" secondItem="diq-Fb-8ST" secondAttribute="bottom" constant="20" id="Prv-eL-Hfw"/>
-                            <constraint firstItem="TSG-xf-i5b" firstAttribute="leading" secondItem="E81-H1-y6d" secondAttribute="leadingMargin" constant="15" id="Quh-Si-0M5"/>
-                            <constraint firstItem="diq-Fb-8ST" firstAttribute="leading" secondItem="E81-H1-y6d" secondAttribute="leadingMargin" id="V7d-3v-fue"/>
-                            <constraint firstItem="nhz-6U-Sjk" firstAttribute="leading" secondItem="E81-H1-y6d" secondAttribute="leadingMargin" constant="15" id="VcH-JI-h6z"/>
-                            <constraint firstItem="TSG-xf-i5b" firstAttribute="trailing" secondItem="E81-H1-y6d" secondAttribute="trailingMargin" id="WlV-sf-dT7"/>
-                            <constraint firstItem="Uqq-hh-HqX" firstAttribute="top" secondItem="nhz-6U-Sjk" secondAttribute="bottom" constant="24" id="YeC-DP-8ZR"/>
-                            <constraint firstItem="nhz-6U-Sjk" firstAttribute="top" secondItem="TSG-xf-i5b" secondAttribute="bottom" constant="8" id="cE2-di-4MB"/>
+                            <constraint firstItem="nhz-6U-Sjk" firstAttribute="trailing" secondItem="E81-H1-y6d" secondAttribute="trailingMargin" id="Xsx-uI-Meg"/>
+                            <constraint firstItem="8w1-Me-Ajd" firstAttribute="top" secondItem="diq-Fb-8ST" secondAttribute="bottom" constant="16" id="b9V-Zx-UGN"/>
+                            <constraint firstItem="Uqq-hh-HqX" firstAttribute="top" secondItem="nhz-6U-Sjk" secondAttribute="bottom" constant="28" id="bF3-DH-dfk"/>
                             <constraint firstItem="N3z-41-ZBS" firstAttribute="leading" secondItem="E81-H1-y6d" secondAttribute="leadingMargin" id="cMQ-Uz-qhJ"/>
-                            <constraint firstItem="nhz-6U-Sjk" firstAttribute="trailing" secondItem="E81-H1-y6d" secondAttribute="trailingMargin" id="d44-Yp-hp1"/>
-                            <constraint firstItem="8w1-Me-Ajd" firstAttribute="leading" secondItem="E81-H1-y6d" secondAttribute="leadingMargin" constant="169" id="fCS-hA-oy8"/>
-                            <constraint firstItem="Uqq-hh-HqX" firstAttribute="leading" secondItem="E81-H1-y6d" secondAttribute="leadingMargin" id="gxl-wU-tQe"/>
+                            <constraint firstItem="diq-Fb-8ST" firstAttribute="top" secondItem="nhz-6U-Sjk" secondAttribute="bottom" constant="26" id="dBG-LL-KqU"/>
                             <constraint firstItem="fZv-XU-9rZ" firstAttribute="trailing" secondItem="E81-H1-y6d" secondAttribute="trailingMargin" id="j6I-YE-QDR"/>
-                            <constraint firstItem="Uqq-hh-HqX" firstAttribute="trailing" secondItem="E81-H1-y6d" secondAttribute="trailingMargin" id="mIc-j2-fVc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8w1-Me-Ajd" secondAttribute="trailing" constant="168" id="jXS-VJ-RDQ"/>
+                            <constraint firstItem="diq-Fb-8ST" firstAttribute="trailing" secondItem="E81-H1-y6d" secondAttribute="trailingMargin" id="kBp-6M-tRP"/>
+                            <constraint firstItem="Uqq-hh-HqX" firstAttribute="trailing" secondItem="E81-H1-y6d" secondAttribute="trailingMargin" id="mIg-WN-Y2F"/>
                             <constraint firstItem="TcY-GF-sf2" firstAttribute="leading" secondItem="E81-H1-y6d" secondAttribute="leadingMargin" id="n8z-1g-YSS"/>
-                            <constraint firstItem="diq-Fb-8ST" firstAttribute="trailing" secondItem="E81-H1-y6d" secondAttribute="trailingMargin" id="nmy-EE-Od4"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="8w1-Me-Ajd" secondAttribute="trailing" constant="168" id="p8T-dg-USM"/>
                             <constraint firstItem="jll-vc-Hx1" firstAttribute="leading" secondItem="E81-H1-y6d" secondAttribute="leading" constant="6" id="qvh-fE-tiO"/>
-                            <constraint firstItem="TSG-xf-i5b" firstAttribute="top" secondItem="TcY-GF-sf2" secondAttribute="bottom" constant="20" id="r7N-A5-iyt"/>
                             <constraint firstItem="fZv-XU-9rZ" firstAttribute="top" secondItem="jll-vc-Hx1" secondAttribute="bottom" constant="25" id="u9e-1v-qYn"/>
                         </constraints>
                     </view>
@@ -315,8 +298,7 @@
                         <outlet property="passwordTextField" destination="N3z-41-ZBS" id="YUY-LO-88v"/>
                         <outlet property="personalServerButton" destination="nhz-6U-Sjk" id="VhE-Lj-MMd"/>
                         <outlet property="signUpButton" destination="diq-Fb-8ST" id="s94-fS-frq"/>
-                        <outlet property="signUpButtonTopConstraint" destination="O9S-xg-GkY" id="FSJ-Ia-s1s"/>
-                        <outlet property="standardServerButton" destination="TSG-xf-i5b" id="klV-58-Yl9"/>
+                        <outlet property="signUpButtonTopConstraint" destination="dBG-LL-KqU" id="ygb-oF-B9k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MOa-7B-h41" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -367,22 +349,15 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Email Address"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gyg-4X-NRt" customClass="DLRadioButton">
-                                <rect key="frame" x="34" y="66" width="360" height="34"/>
-                                <state key="normal" title="SUSI AI Standard Server"/>
-                                <connections>
-                                    <action selector="toggleRadioButtons:" destination="Fit-NA-UMn" eventType="touchUpInside" id="YYl-xz-eaB"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xEW-jk-Ko4" customClass="DLRadioButton">
-                                <rect key="frame" x="34" y="108" width="360" height="34"/>
+                                <rect key="frame" x="35" y="72" width="359" height="34"/>
                                 <state key="normal" title="Personal Server"/>
                                 <connections>
                                     <action selector="toggleRadioButtons:" destination="Fit-NA-UMn" eventType="touchUpInside" id="4Oc-q8-gxb"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qiK-SW-xKP" customClass="TextField" customModule="Material">
-                                <rect key="frame" x="20" y="166" width="374" height="30"/>
+                                <rect key="frame" x="20" y="129" width="374" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" returnKeyType="go"/>
@@ -391,39 +366,37 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9bQ-nT-dJk" customClass="FlatButton" customModule="Material">
-                                <rect key="frame" x="20" y="166" width="374" height="44"/>
+                                <rect key="frame" x="20" y="130" width="374" height="44"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration" identifier="reset"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="5uG-f6-7eE"/>
+                                    <constraint firstAttribute="height" constant="44" id="x8k-R9-2La"/>
                                 </constraints>
                                 <state key="normal" title="Reset">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="BRz-rB-H1u">
-                                <rect key="frame" x="189" y="223" width="37" height="37"/>
+                                <rect key="frame" x="189" y="190" width="37" height="37"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.16987413169999999" green="0.2420473397" blue="0.30863785739999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="xUr-5V-fz5" firstAttribute="trailing" secondItem="Gyg-4X-NRt" secondAttribute="trailing" id="5Kr-Rg-5JV"/>
-                            <constraint firstItem="BRz-rB-H1u" firstAttribute="centerX" secondItem="qiK-SW-xKP" secondAttribute="centerX" id="ARn-Y8-BDs"/>
-                            <constraint firstItem="xEW-jk-Ko4" firstAttribute="top" secondItem="Gyg-4X-NRt" secondAttribute="bottom" constant="8" symbolic="YES" id="CrZ-aY-YSd"/>
-                            <constraint firstItem="BRz-rB-H1u" firstAttribute="top" secondItem="9bQ-nT-dJk" secondAttribute="bottom" constant="13" id="H0Z-xk-0OH"/>
-                            <constraint firstItem="9bQ-nT-dJk" firstAttribute="leading" secondItem="qiK-SW-xKP" secondAttribute="leading" id="KaQ-Yx-hXk"/>
-                            <constraint firstItem="xUr-5V-fz5" firstAttribute="trailing" secondItem="U1T-gl-beX" secondAttribute="trailingMargin" id="LmH-tx-Yg2"/>
-                            <constraint firstItem="9bQ-nT-dJk" firstAttribute="trailing" secondItem="qiK-SW-xKP" secondAttribute="trailing" id="dRh-Hn-mLg"/>
-                            <constraint firstItem="qiK-SW-xKP" firstAttribute="top" secondItem="xEW-jk-Ko4" secondAttribute="bottom" constant="24" id="dVQ-QO-UuO"/>
-                            <constraint firstItem="Gyg-4X-NRt" firstAttribute="top" secondItem="xUr-5V-fz5" secondAttribute="bottom" constant="12" id="fAZ-vg-GVl"/>
-                            <constraint firstItem="xEW-jk-Ko4" firstAttribute="trailing" secondItem="qiK-SW-xKP" secondAttribute="trailing" id="iKl-1q-ESO"/>
-                            <constraint firstItem="Gyg-4X-NRt" firstAttribute="leading" secondItem="U1T-gl-beX" secondAttribute="leadingMargin" constant="14" id="kQk-zE-Uik"/>
-                            <constraint firstItem="9bQ-nT-dJk" firstAttribute="top" secondItem="xEW-jk-Ko4" secondAttribute="bottom" constant="24" id="lAh-wG-sdK"/>
-                            <constraint firstItem="Gyg-4X-NRt" firstAttribute="leading" secondItem="xEW-jk-Ko4" secondAttribute="leading" id="pGm-wy-TEp"/>
-                            <constraint firstItem="xUr-5V-fz5" firstAttribute="leading" secondItem="U1T-gl-beX" secondAttribute="leadingMargin" id="rOg-NS-Jnt"/>
-                            <constraint firstItem="xUr-5V-fz5" firstAttribute="leading" secondItem="qiK-SW-xKP" secondAttribute="leading" id="wKj-74-WL8"/>
-                            <constraint firstItem="Gyg-4X-NRt" firstAttribute="trailing" secondItem="xEW-jk-Ko4" secondAttribute="trailing" id="xpl-ci-RK3"/>
-                            <constraint firstItem="xUr-5V-fz5" firstAttribute="top" secondItem="MY1-jM-TPp" secondAttribute="bottom" constant="24" id="zcY-n0-nS6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BRz-rB-H1u" secondAttribute="trailing" constant="168" id="2IR-w3-Wsx"/>
+                            <constraint firstItem="9bQ-nT-dJk" firstAttribute="leading" secondItem="U1T-gl-beX" secondAttribute="leadingMargin" id="56W-X5-VRt"/>
+                            <constraint firstItem="9bQ-nT-dJk" firstAttribute="trailing" secondItem="U1T-gl-beX" secondAttribute="trailingMargin" id="77F-lb-2SQ"/>
+                            <constraint firstItem="qiK-SW-xKP" firstAttribute="top" secondItem="xEW-jk-Ko4" secondAttribute="bottom" constant="23" id="8Ly-ct-GVC"/>
+                            <constraint firstItem="xUr-5V-fz5" firstAttribute="top" secondItem="MY1-jM-TPp" secondAttribute="bottom" constant="24" id="GqJ-6a-6dx"/>
+                            <constraint firstItem="9bQ-nT-dJk" firstAttribute="top" secondItem="xEW-jk-Ko4" secondAttribute="bottom" constant="24" id="IKp-iH-Tqc"/>
+                            <constraint firstItem="xEW-jk-Ko4" firstAttribute="trailing" secondItem="U1T-gl-beX" secondAttribute="trailingMargin" id="ITD-Mu-0vM"/>
+                            <constraint firstItem="xUr-5V-fz5" firstAttribute="trailing" secondItem="U1T-gl-beX" secondAttribute="trailingMargin" id="K3s-N6-h2M"/>
+                            <constraint firstItem="BRz-rB-H1u" firstAttribute="leading" secondItem="U1T-gl-beX" secondAttribute="leadingMargin" constant="169" id="K70-yn-lW4"/>
+                            <constraint firstItem="xEW-jk-Ko4" firstAttribute="leading" secondItem="U1T-gl-beX" secondAttribute="leadingMargin" constant="15" id="Z5x-gR-oNq"/>
+                            <constraint firstItem="qiK-SW-xKP" firstAttribute="trailing" secondItem="U1T-gl-beX" secondAttribute="trailingMargin" id="chw-Jy-JtV"/>
+                            <constraint firstItem="qiK-SW-xKP" firstAttribute="leading" secondItem="U1T-gl-beX" secondAttribute="leadingMargin" id="evg-cY-VPm"/>
+                            <constraint firstItem="BRz-rB-H1u" firstAttribute="top" secondItem="9bQ-nT-dJk" secondAttribute="bottom" constant="16" id="tEv-cU-LmS"/>
+                            <constraint firstItem="xEW-jk-Ko4" firstAttribute="top" secondItem="xUr-5V-fz5" secondAttribute="bottom" constant="18" id="wP9-Df-ngz"/>
+                            <constraint firstItem="xUr-5V-fz5" firstAttribute="leading" secondItem="U1T-gl-beX" secondAttribute="leadingMargin" id="zTT-wK-H02"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Forgot Password" id="cc2-rG-5hm">
@@ -440,8 +413,7 @@
                         <outlet property="emailTextField" destination="xUr-5V-fz5" id="sm6-tx-pbD"/>
                         <outlet property="personalServerButton" destination="xEW-jk-Ko4" id="pd3-dH-GkJ"/>
                         <outlet property="resetButton" destination="9bQ-nT-dJk" id="8Qw-og-o3t"/>
-                        <outlet property="resetButtonTopConstraint" destination="lAh-wG-sdK" id="VC1-Cy-zPQ"/>
-                        <outlet property="standardServerButton" destination="Gyg-4X-NRt" id="8AP-2I-qJw"/>
+                        <outlet property="resetButtonTopConstraint" destination="IKp-iH-Tqc" id="nwH-ho-6OY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dGF-1C-qe5" userLabel="First Responder" sceneMemberID="firstResponder"/>

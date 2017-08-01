@@ -15,7 +15,6 @@ class ForgotPasswordViewController: UIViewController {
     @IBOutlet weak var emailTextField: TextField!
     @IBOutlet weak var resetButton: FlatButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var standardServerButton: DLRadioButton!
     @IBOutlet weak var personalServerButton: DLRadioButton!
     @IBOutlet weak var addressField: TextField!
 

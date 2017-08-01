@@ -18,8 +18,6 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var addressTextField: TextField!
     @IBOutlet weak var signUpButton: RaisedButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-
-    @IBOutlet weak var standardServerButton: DLRadioButton!
     @IBOutlet weak var personalServerButton: DLRadioButton!
 
     @IBOutlet weak var signUpButtonTopConstraint: NSLayoutConstraint!

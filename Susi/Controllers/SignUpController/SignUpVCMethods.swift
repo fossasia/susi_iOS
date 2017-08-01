@@ -8,6 +8,7 @@
 
 import UIKit
 import DLRadioButton
+import SwiftValidators
 
 extension SignUpViewController {
 
@@ -60,12 +61,13 @@ extension SignUpViewController {
 
     @IBAction func toggleRadioButtons(_ sender: Any) {
         if let button = sender as? DLRadioButton {
-            if button == standardServerButton {
-                personalServerButton.isSelected = false
-                addressTextField.tag = 0
-            } else if button == personalServerButton {
-                standardServerButton.isSelected = false
+            button.isSelected = button.tag == 0 ? true : false
+            if button.isSelected {
                 addressTextField.tag = 1
+                button.tag = 1
+            } else {
+                addressTextField.tag = 0
+                button.tag = 0
             }
             toggleAddressFieldDisplay()
         }
@@ -77,6 +79,7 @@ extension SignUpViewController {
                 self.signUpButtonTopConstraint.constant = 67
             } else {
                 self.signUpButtonTopConstraint.constant = 17
+                self.addressTextField.text = ""
                 self.addressTextField.endEditing(true)
             }
         }
@@ -94,10 +97,15 @@ extension SignUpViewController {
                 Client.UserKeys.Password: emailTextField.text!
             ]
 
-            if addressTextField.tag == 1 {
+            if !personalServerButton.isSelected {
                 UserDefaults.standard.set(Client.APIURLs.SusiAPI, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
-            } else if let ipAddress = addressTextField.text {
-                UserDefaults.standard.set(ipAddress, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
+            } else {
+                if let ipAddress = addressTextField.text, !ipAddress.isEmpty && Validator.isIP().apply(ipAddress) {
+                    UserDefaults.standard.set(ipAddress, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
+                } else {
+                    view.makeToast("Invalid IP Address")
+                    return
+                }
             }
 
             Client.sharedInstance.registerUser(params as [String : AnyObject]) { (success, message) in

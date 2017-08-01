@@ -45,12 +45,13 @@ extension ForgotPasswordViewController {
 
     @IBAction func toggleRadioButtons(_ sender: Any) {
         if let button = sender as? DLRadioButton {
-            if button == standardServerButton {
-                personalServerButton.isSelected = false
-                addressField.tag = 0
-            } else if button == personalServerButton {
-                standardServerButton.isSelected = false
+            button.isSelected = button.tag == 0 ? true : false
+            if button.isSelected {
                 addressField.tag = 1
+                button.tag = 1
+            } else {
+                addressField.tag = 0
+                button.tag = 0
             }
             toggleAddressFieldDisplay()
         }
@@ -84,9 +85,9 @@ extension ForgotPasswordViewController {
                 Client.UserKeys.ForgotEmail: emailTextField.text?.lowercased()
             ]
 
-            if standardServerButton.isSelected {
+            if !personalServerButton.isSelected {
                 UserDefaults.standard.set(Client.APIURLs.SusiAPI, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
-            } else if personalServerButton.isSelected {
+            } else {
                 if let ipAddress = addressField.text, !ipAddress.isEmpty && Validator.isIP().apply(ipAddress) {
                     UserDefaults.standard.set(ipAddress, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
                 } else {

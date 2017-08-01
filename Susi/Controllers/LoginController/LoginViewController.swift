@@ -17,7 +17,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var susiLogo: UIImageView!
     @IBOutlet weak var emailTextField: TextField!
     @IBOutlet weak var passwordTextField: TextField!
-    @IBOutlet weak var standardServerButton: DLRadioButton!
     @IBOutlet weak var personalServerButton: DLRadioButton!
     @IBOutlet weak var addressField: TextField!
     @IBOutlet weak var loginButton: RaisedButton!
