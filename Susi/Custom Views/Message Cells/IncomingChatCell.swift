@@ -47,7 +47,7 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
         let button = IconButton()
         button.image = UIImage(named: ControllerConstants.thumbsUp)?.withRenderingMode(.alwaysTemplate)
         button.addTarget(self, action: #selector(sendFeedback(sender:)), for: .touchUpInside)
-        button.tintColor = .black
+        button.tintColor = UIColor(white: 0.1, alpha: 0.7)
         return button
     }()
 
@@ -55,7 +55,7 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
         let button = IconButton()
         button.image = UIImage(named: ControllerConstants.thumbsDown)?.withRenderingMode(.alwaysTemplate)
         button.addTarget(self, action: #selector(sendFeedback(sender:)), for: .touchUpInside)
-        button.tintColor = .black
+        button.tintColor = UIColor(white: 0.1, alpha: 0.7)
         return button
     }()
 
@@ -165,7 +165,7 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
 
     func addBottomView() {
         let date = DateInRegion(absoluteDate: message?.answerDate as Date!)
-        let str = date.string(format: .custom("HH:mm a"))
+        let str = date.string(format: .custom("h:mm a"))
         timeLabel.text = str
 
         textBubbleView.addSubview(timeLabel)
@@ -176,6 +176,8 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
             textBubbleView.addConstraintsWithFormat(format: "H:[v0]-4-[v1(14)]-2-[v2(14)]-8-|", views: timeLabel, thumbUpIcon, thumbDownIcon)
             textBubbleView.addConstraintsWithFormat(format: "V:[v0(14)]-2-|", views: thumbUpIcon)
             textBubbleView.addConstraintsWithFormat(format: "V:[v0(14)]-2-|", views: thumbDownIcon)
+            thumbUpIcon.isUserInteractionEnabled = true
+            thumbDownIcon.isUserInteractionEnabled = true
         } else {
             textBubbleView.addConstraintsWithFormat(format: "H:[v0]-8-|", views: timeLabel)
         }
@@ -185,12 +187,17 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
     func sendFeedback(sender: IconButton) {
         let feedback: String
         if sender == thumbUpIcon {
-            thumbDownIcon.tintColor = .black
+            thumbDownIcon.tintColor = UIColor(white: 0.1, alpha: 0.7)
+            thumbUpIcon.isUserInteractionEnabled = false
+            thumbDownIcon.isUserInteractionEnabled = true
             feedback = "positive"
         } else {
-            thumbUpIcon.tintColor = .black
+            thumbUpIcon.tintColor = UIColor(white: 0.1, alpha: 0.7)
+            thumbDownIcon.isUserInteractionEnabled = false
+            thumbUpIcon.isUserInteractionEnabled = true
             feedback = "negative"
         }
+        sender.tintColor = UIColor.hexStringToUIColor(hex: "#2196F3")
 
         let skillComponents = message?.skill.components(separatedBy: "/")
         if skillComponents?.count == 7 {
@@ -204,14 +211,12 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
 
             Client.sharedInstance.sendFeedback(params, { (success, error) in
                 DispatchQueue.global().async {
-                    if success {
-                        sender.tintColor = .blue
-                    } else {
-                        print(error ?? "Error")
+                    if let error = error {
+                        print(error)
                     }
+                    print("Skill rated: \(success)")
                 }
             })
-
         }
     }
 
