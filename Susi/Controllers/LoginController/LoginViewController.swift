@@ -8,7 +8,7 @@
 
 import UIKit
 import Material
-import DLRadioButton
+import M13Checkbox
 import RealmSwift
 import Toast_Swift
 
@@ -17,7 +17,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var susiLogo: UIImageView!
     @IBOutlet weak var emailTextField: TextField!
     @IBOutlet weak var passwordTextField: TextField!
-    @IBOutlet weak var personalServerButton: DLRadioButton!
+    @IBOutlet weak var personalServerButton: M13Checkbox!
     @IBOutlet weak var addressField: TextField!
     @IBOutlet weak var loginButton: RaisedButton!
     @IBOutlet weak var forgotPassword: FlatButton!
@@ -35,7 +35,6 @@ class LoginViewController: UIViewController {
         addTapGesture()
         prepareEmailField()
         preparePasswordField()
-        prepareRadioButtons()
         prepareAddressField()
         prepareLoginButton()
         prepareSkipButton()

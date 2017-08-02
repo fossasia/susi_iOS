@@ -8,7 +8,7 @@
 
 import UIKit
 import Material
-import DLRadioButton
+import M13Checkbox
 
 class SignUpViewController: UIViewController {
 
@@ -18,7 +18,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var addressTextField: TextField!
     @IBOutlet weak var signUpButton: RaisedButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var personalServerButton: DLRadioButton!
+    @IBOutlet weak var personalServerButton: M13Checkbox!
 
     @IBOutlet weak var signUpButtonTopConstraint: NSLayoutConstraint!
 

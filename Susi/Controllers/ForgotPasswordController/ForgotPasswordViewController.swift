@@ -8,14 +8,14 @@
 
 import UIKit
 import Material
-import DLRadioButton
+import M13Checkbox
 
 class ForgotPasswordViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: TextField!
     @IBOutlet weak var resetButton: FlatButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var personalServerButton: DLRadioButton!
+    @IBOutlet weak var personalServerButton: M13Checkbox!
     @IBOutlet weak var addressField: TextField!
 
     @IBOutlet weak var resetButtonTopConstraint: NSLayoutConstraint!

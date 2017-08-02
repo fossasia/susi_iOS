@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import DLRadioButton
+import M13Checkbox
 import SwiftValidators
 import Material
 
@@ -43,18 +43,13 @@ extension ForgotPasswordViewController {
         }
     }
 
-    @IBAction func toggleRadioButtons(_ sender: Any) {
-        if let button = sender as? DLRadioButton {
-            button.isSelected = button.tag == 0 ? true : false
-            if button.isSelected {
-                addressField.tag = 1
-                button.tag = 1
-            } else {
-                addressField.tag = 0
-                button.tag = 0
-            }
-            toggleAddressFieldDisplay()
+    @IBAction func toggleRadioButtons(_ sender: M13Checkbox) {
+        if sender.checkState == .checked {
+            addressField.tag = 1
+        } else {
+            addressField.tag = 0
         }
+        toggleAddressFieldDisplay()
     }
 
     func toggleAddressFieldDisplay() {
@@ -63,6 +58,7 @@ extension ForgotPasswordViewController {
                 self.resetButtonTopConstraint.constant = 67
             } else {
                 self.resetButtonTopConstraint.constant = 24
+                self.addressField.text = ""
                 self.addressField.endEditing(true)
             }
         }
@@ -81,11 +77,11 @@ extension ForgotPasswordViewController {
 
         if let emailID = emailTextField.text, !emailID.isEmpty && emailID.isValidEmail() {
 
-            var params = [
+            let params = [
                 Client.UserKeys.ForgotEmail: emailTextField.text?.lowercased()
             ]
 
-            if !personalServerButton.isSelected {
+            if personalServerButton.checkState == .unchecked {
                 UserDefaults.standard.set(Client.APIURLs.SusiAPI, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
             } else {
                 if let ipAddress = addressField.text, !ipAddress.isEmpty && Validator.isIP().apply(ipAddress) {
@@ -114,7 +110,6 @@ extension ForgotPasswordViewController {
                     self.emailTextField.endEditing(true)
                 }
             }
-            params.removeAll()
         } else {
             self.view.makeToast("Invalid email address")
         }
@@ -132,8 +127,10 @@ extension ForgotPasswordViewController {
         let activeTheme = UserDefaults.standard.string(forKey: ControllerConstants.UserDefaultsKeys.theme)
         if activeTheme == theme.light.rawValue {
             view.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
+            personalServerButton.secondaryCheckmarkTintColor = UIColor.hexStringToUIColor(hex: "#4184F3")
         } else if activeTheme == theme.dark.rawValue {
             view.backgroundColor = UIColor.defaultColor()
+            personalServerButton.secondaryCheckmarkTintColor = UIColor.defaultColor()
         }
 
         if let navbar = navigationController?.navigationBar {

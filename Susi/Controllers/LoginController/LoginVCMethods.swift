@@ -8,7 +8,7 @@
 
 import UIKit
 import BouncyLayout
-import DLRadioButton
+import M13Checkbox
 import RealmSwift
 import SwiftValidators
 
@@ -42,23 +42,13 @@ extension LoginViewController {
         passwordTextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
     }
 
-    // Configures the radio buttons
-    func prepareRadioButtons() {
-        personalServerButton.addTarget(self, action: #selector(toggleRadioButtons), for: .touchUpInside)
-    }
-
-    func toggleRadioButtons(_ sender: Any) {
-        if let button = sender as? DLRadioButton {
-            button.isSelected = button.tag == 0 ? true : false
-            if button.isSelected {
-                addressField.tag = 1
-                button.tag = 1
-            } else {
-                addressField.tag = 0
-                button.tag = 0
-            }
-            toggleAddressFieldDisplay()
+    @IBAction func toggleRadioButtons(_ sender: M13Checkbox) {
+        if sender.checkState == .checked {
+            addressField.tag = 1
+        } else {
+            addressField.tag = 0
         }
+        toggleAddressFieldDisplay()
     }
 
     func toggleAddressFieldDisplay() {
@@ -97,13 +87,13 @@ extension LoginViewController {
         if isValid() {
             toggleEditing()
 
-            var params = [
+            let params = [
                 Client.UserKeys.Login: emailTextField.text!.lowercased(),
                 Client.UserKeys.Password: passwordTextField.text!,
                 Client.ChatKeys.ResponseType: Client.ChatKeys.AccessToken
             ] as [String : Any]
 
-            if !personalServerButton.isSelected {
+            if personalServerButton.checkState == .unchecked {
                 UserDefaults.standard.set(Client.APIURLs.SusiAPI, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
             } else {
                 if let ipAddress = addressField.text, !ipAddress.isEmpty && Validator.isIP().apply(ipAddress) {
@@ -126,7 +116,6 @@ extension LoginViewController {
                     self.indicatorView.stopAnimating()
                 }
             }
-            params.removeAll()
         } else if let emailID = emailTextField.text, !emailID.isValidEmail() {
             view.makeToast("Invalid email address")
         } else if let password = passwordTextField.text, password.isEmpty {

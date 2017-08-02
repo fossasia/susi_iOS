@@ -1,7 +1,6 @@
 PODS:
   - Alamofire (4.5.0)
   - BouncyLayout (1.1.0)
-  - DLRadioButton (1.4.9)
   - Fakery (2.0.0)
   - Ji (2.0.1):
     - Ji/Ji (= 2.0.1)
@@ -9,6 +8,7 @@ PODS:
     - Ji/Ji-libxml
   - Ji/Ji-libxml (2.0.1)
   - Kingfisher (3.10.4)
+  - M13Checkbox (3.1.3)
   - Material (2.8.1):
     - Material/Core (= 2.8.1)
   - Material/Core (2.8.1)
@@ -17,11 +17,11 @@ PODS:
   - NVActivityIndicatorView/Presenter (3.7.0)
   - ReadabilityKit (0.6.1):
     - Ji (~> 2.0.1)
-  - Realm (2.9.0):
-    - Realm/Headers (= 2.9.0)
-  - Realm/Headers (2.9.0)
-  - RealmSwift (2.9.0):
-    - Realm (= 2.9.0)
+  - Realm (2.9.1):
+    - Realm/Headers (= 2.9.1)
+  - Realm/Headers (2.9.1)
+  - RealmSwift (2.9.1):
+    - Realm (= 2.9.1)
   - RSKGrowingTextView (2.0.0):
     - RSKPlaceholderTextView (= 2.0.0)
   - RSKPlaceholderTextView (2.0.0)
@@ -32,9 +32,9 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.4)
   - BouncyLayout
-  - DLRadioButton (~> 1.4)
   - Fakery
   - Kingfisher
+  - M13Checkbox (from `https://github.com/Marxon13/M13Checkbox.git`)
   - Material
   - NVActivityIndicatorView
   - ReadabilityKit
@@ -45,24 +45,33 @@ DEPENDENCIES:
   - SwiftValidators
   - Toast-Swift (~> 2.0.0)
 
+EXTERNAL SOURCES:
+  M13Checkbox:
+    :git: https://github.com/Marxon13/M13Checkbox.git
+
+CHECKOUT OPTIONS:
+  M13Checkbox:
+    :commit: 6d61652b14b1d9a295958191bddd7845c40de8ec
+    :git: https://github.com/Marxon13/M13Checkbox.git
+
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   BouncyLayout: f91c6504437a61acd733404f55f75bd8154f5840
-  DLRadioButton: 7bb8a6e3768b572469ace553391ab4d2af6f9c19
   Fakery: 97b99c23937d2e025d9135c75e2b17351ccd5031
   Ji: 6bb602a28dd08b804158f64990e6051ed5de0110
   Kingfisher: dc3a4983e86d2dfa89513664983a82340c11a289
+  M13Checkbox: f7c514add90ed6457a05a98621bb9936f231c9b4
   Material: cc27757e6c91999ac41b2089769106a9d83364c0
   NVActivityIndicatorView: d3738df7e2e476aca0ba6bf32a8c9fbcfc33d64b
   ReadabilityKit: 49c26a2da9708ae3b355854d5bee6a7edee2dfee
-  Realm: f14ab1673502559cb16592ddb8f383c474c13e05
-  RealmSwift: 16ad2c187042c4934f49750375582fe508627dcb
+  Realm: f91fb43bd474c4f731a116ebf7392c75dd015920
+  RealmSwift: 207f12a4a36b696c5183c60a1c06d70234a23e56
   RSKGrowingTextView: 1d9c64f1e9f8ed9b47d883548a3fd76dfdfe1353
   RSKPlaceholderTextView: 301f0f30e70e7c42fe4e941e3a08365ab0d890d5
   SwiftDate: '029be76691ee89176da3a46c7df3415b6734bc5b'
   SwiftValidators: 4ccbec749f61a36f7a922781bb09452e80cde396
   Toast-Swift: 5b2f8f720f7e78e48511f693df1f9c9a6e38a25a
 
-PODFILE CHECKSUM: 843cfcf8e68049bd08ffa53ebc68361b0a2583e1
+PODFILE CHECKSUM: dd58707c9026a6ab68357f5274eae3aa8972f76e
 
 COCOAPODS: 1.2.1

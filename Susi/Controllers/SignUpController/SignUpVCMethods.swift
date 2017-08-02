@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import DLRadioButton
+import M13Checkbox
 import SwiftValidators
 
 extension SignUpViewController {
@@ -59,18 +59,13 @@ extension SignUpViewController {
         self.dismiss(animated: true, completion: nil)
     }
 
-    @IBAction func toggleRadioButtons(_ sender: Any) {
-        if let button = sender as? DLRadioButton {
-            button.isSelected = button.tag == 0 ? true : false
-            if button.isSelected {
-                addressTextField.tag = 1
-                button.tag = 1
-            } else {
-                addressTextField.tag = 0
-                button.tag = 0
-            }
-            toggleAddressFieldDisplay()
+    @IBAction func toggleRadioButtons(_ sender: M13Checkbox) {
+        if sender.checkState == .checked {
+            addressTextField.tag = 1
+        } else {
+            addressTextField.tag = 0
         }
+        toggleAddressFieldDisplay()
     }
 
     func toggleAddressFieldDisplay() {
@@ -78,7 +73,7 @@ extension SignUpViewController {
             if self.addressTextField.tag == 1 {
                 self.signUpButtonTopConstraint.constant = 67
             } else {
-                self.signUpButtonTopConstraint.constant = 17
+                self.signUpButtonTopConstraint.constant = 24
                 self.addressTextField.text = ""
                 self.addressTextField.endEditing(true)
             }
@@ -92,12 +87,12 @@ extension SignUpViewController {
             toggleEditing()
             activityIndicator.startAnimating()
 
-            var params = [
+            let params = [
                 Client.UserKeys.SignUp: emailTextField.text!.lowercased(),
                 Client.UserKeys.Password: emailTextField.text!
             ]
 
-            if !personalServerButton.isSelected {
+            if personalServerButton.checkState == .unchecked {
                 UserDefaults.standard.set(Client.APIURLs.SusiAPI, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
             } else {
                 if let ipAddress = addressTextField.text, !ipAddress.isEmpty && Validator.isIP().apply(ipAddress) {
@@ -118,7 +113,6 @@ extension SignUpViewController {
                     self.view.makeToast(message)
                 }
             }
-            params.removeAll()
         } else if let emailID = emailTextField.text, !emailID.isValidEmail() {
             view.makeToast("Invalid email address")
         } else if let password = passwordTextField.text, password.isEmpty {
