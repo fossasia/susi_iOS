@@ -97,7 +97,7 @@
                                 <rect key="frame" x="189" y="436" width="37" height="37"/>
                             </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nAa-7O-0zg" customClass="M13Checkbox" customModule="M13Checkbox">
-                                <rect key="frame" x="20" y="260" width="24" height="24"/>
+                                <rect key="frame" x="20" y="262" width="24" height="24"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -140,7 +140,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Custom Server"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Custom Server URL"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
                         </subviews>
@@ -164,12 +164,12 @@
                             <constraint firstItem="ViN-ki-rRD" firstAttribute="leading" secondItem="bMo-Iv-Lqa" secondAttribute="leading" id="QfV-0R-dMd"/>
                             <constraint firstItem="tyX-vw-iD6" firstAttribute="leading" secondItem="eB9-M6-ocu" secondAttribute="leadingMargin" id="TWT-Yc-zI3"/>
                             <constraint firstItem="N0l-NZ-Q5Q" firstAttribute="leading" secondItem="eB9-M6-ocu" secondAttribute="leadingMargin" id="UeQ-SA-ebJ"/>
-                            <constraint firstItem="nAa-7O-0zg" firstAttribute="top" secondItem="bMo-Iv-Lqa" secondAttribute="bottom" constant="26" id="Why-bC-bZX"/>
+                            <constraint firstItem="nAa-7O-0zg" firstAttribute="top" secondItem="bMo-Iv-Lqa" secondAttribute="bottom" constant="28" id="Why-bC-bZX"/>
                             <constraint firstItem="3Q5-rQ-6Ig" firstAttribute="trailing" secondItem="eB9-M6-ocu" secondAttribute="trailingMargin" id="efM-OI-gu0"/>
                             <constraint firstItem="ViN-ki-rRD" firstAttribute="trailing" secondItem="bMo-Iv-Lqa" secondAttribute="trailing" id="fhZ-tW-8N8"/>
                             <constraint firstItem="a1R-Kp-3L1" firstAttribute="top" secondItem="YPg-SH-GPq" secondAttribute="bottom" constant="35" id="jev-aN-fdj"/>
                             <constraint firstItem="qeg-ec-MXB" firstAttribute="top" secondItem="N0l-NZ-Q5Q" secondAttribute="bottom" constant="20" id="mTH-3x-2lv"/>
-                            <constraint firstItem="tyX-vw-iD6" firstAttribute="top" secondItem="nAa-7O-0zg" secondAttribute="bottom" constant="22" id="nDH-nL-L0c"/>
+                            <constraint firstItem="tyX-vw-iD6" firstAttribute="top" secondItem="nAa-7O-0zg" secondAttribute="bottom" constant="20" id="nDH-nL-L0c"/>
                             <constraint firstItem="nAa-7O-0zg" firstAttribute="leading" secondItem="eB9-M6-ocu" secondAttribute="leadingMargin" id="nJH-u5-Lzh"/>
                             <constraint firstItem="N0l-NZ-Q5Q" firstAttribute="trailing" secondItem="eB9-M6-ocu" secondAttribute="trailingMargin" id="ptl-sx-n0S"/>
                             <constraint firstItem="bMo-Iv-Lqa" firstAttribute="top" secondItem="ViN-ki-rRD" secondAttribute="bottom" constant="29" id="swt-rt-kZR"/>
@@ -278,7 +278,7 @@
                                 <rect key="frame" x="189" y="383" width="37" height="37"/>
                             </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mlz-rv-BcH" customClass="M13Checkbox" customModule="M13Checkbox">
-                                <rect key="frame" x="20" y="275" width="24" height="24"/>
+                                <rect key="frame" x="20" y="277" width="24" height="24"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -319,7 +319,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Custom Server"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Custom Server URL"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
                         </subviews>
@@ -333,8 +333,8 @@
                             <constraint firstItem="j46-3i-Hj3" firstAttribute="leading" secondItem="mlz-rv-BcH" secondAttribute="trailing" constant="8" id="Cej-q3-19v"/>
                             <constraint firstItem="fZv-XU-9rZ" firstAttribute="leading" secondItem="E81-H1-y6d" secondAttribute="leadingMargin" id="Kgj-8S-Sen"/>
                             <constraint firstItem="TcY-GF-sf2" firstAttribute="top" secondItem="N3z-41-ZBS" secondAttribute="bottom" constant="44" id="M3w-sw-nGw"/>
-                            <constraint firstItem="diq-Fb-8ST" firstAttribute="top" secondItem="mlz-rv-BcH" secondAttribute="bottom" constant="24" id="NkC-8p-QSy"/>
-                            <constraint firstItem="mlz-rv-BcH" firstAttribute="top" secondItem="TcY-GF-sf2" secondAttribute="bottom" constant="28" id="Ob4-VO-i9h"/>
+                            <constraint firstItem="diq-Fb-8ST" firstAttribute="top" secondItem="mlz-rv-BcH" secondAttribute="bottom" constant="22" id="NkC-8p-QSy"/>
+                            <constraint firstItem="mlz-rv-BcH" firstAttribute="top" secondItem="TcY-GF-sf2" secondAttribute="bottom" constant="30" id="Ob4-VO-i9h"/>
                             <constraint firstItem="N3z-41-ZBS" firstAttribute="trailing" secondItem="E81-H1-y6d" secondAttribute="trailingMargin" id="OiE-bs-1Zi"/>
                             <constraint firstItem="jll-vc-Hx1" firstAttribute="top" secondItem="eYL-27-FPk" secondAttribute="bottom" id="OpU-0P-FLF"/>
                             <constraint firstItem="diq-Fb-8ST" firstAttribute="trailing" secondItem="E81-H1-y6d" secondAttribute="trailingMargin" id="Vub-YC-wBP"/>
@@ -427,7 +427,7 @@
                                 <rect key="frame" x="189" y="191" width="37" height="37"/>
                             </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1us-0p-C2t" customClass="M13Checkbox" customModule="M13Checkbox">
-                                <rect key="frame" x="20" y="79" width="24" height="24"/>
+                                <rect key="frame" x="20" y="81" width="24" height="24"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -466,7 +466,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Custom Server"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Custom Server URL"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
                         </subviews>
@@ -475,7 +475,7 @@
                             <constraint firstItem="BRz-rB-H1u" firstAttribute="leading" secondItem="U1T-gl-beX" secondAttribute="leadingMargin" constant="169" id="0gB-Vh-teP"/>
                             <constraint firstItem="BRz-rB-H1u" firstAttribute="top" secondItem="9bQ-nT-dJk" secondAttribute="bottom" constant="16" id="6PL-DX-T9n"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BRz-rB-H1u" secondAttribute="trailing" constant="168" id="Bgr-CM-sv1"/>
-                            <constraint firstItem="9bQ-nT-dJk" firstAttribute="top" secondItem="1us-0p-C2t" secondAttribute="bottom" constant="28" id="D0X-7k-SBU"/>
+                            <constraint firstItem="9bQ-nT-dJk" firstAttribute="top" secondItem="1us-0p-C2t" secondAttribute="bottom" constant="26" id="D0X-7k-SBU"/>
                             <constraint firstItem="xUr-5V-fz5" firstAttribute="top" secondItem="MY1-jM-TPp" secondAttribute="bottom" constant="24" id="GqJ-6a-6dx"/>
                             <constraint firstItem="9bQ-nT-dJk" firstAttribute="leading" secondItem="U1T-gl-beX" secondAttribute="leadingMargin" id="JhV-5i-rZK"/>
                             <constraint firstItem="xUr-5V-fz5" firstAttribute="trailing" secondItem="U1T-gl-beX" secondAttribute="trailingMargin" id="K3s-N6-h2M"/>
@@ -485,7 +485,7 @@
                             <constraint firstItem="9bQ-nT-dJk" firstAttribute="trailing" secondItem="U1T-gl-beX" secondAttribute="trailingMargin" id="dMM-iS-gZZ"/>
                             <constraint firstItem="1us-0p-C2t" firstAttribute="leading" secondItem="U1T-gl-beX" secondAttribute="leadingMargin" id="lta-1L-Np4"/>
                             <constraint firstItem="xUr-5V-fz5" firstAttribute="leading" secondItem="U1T-gl-beX" secondAttribute="leadingMargin" id="zTT-wK-H02"/>
-                            <constraint firstItem="1us-0p-C2t" firstAttribute="top" secondItem="xUr-5V-fz5" secondAttribute="bottom" constant="25" id="zTY-S1-0Et"/>
+                            <constraint firstItem="1us-0p-C2t" firstAttribute="top" secondItem="xUr-5V-fz5" secondAttribute="bottom" constant="27" id="zTY-S1-0Et"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Forgot Password" id="cc2-rG-5hm">
