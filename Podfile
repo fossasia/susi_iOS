@@ -16,13 +16,13 @@ target 'Susi' do
   pod 'RSKGrowingTextView'
   pod 'RSKPlaceholderTextView', '2.0.0'
   pod 'BouncyLayout'
-  pod 'DLRadioButton', '~> 1.4'
   pod 'RealmSwift'
   pod 'ReadabilityKit'
   pod 'Kingfisher'
   pod 'SwiftDate', '~> 4.0'
   pod 'NVActivityIndicatorView'
   pod 'Fakery'
+  pod 'M13Checkbox', :git => 'https://github.com/Marxon13/M13Checkbox.git'
   shared_pods
 end
 

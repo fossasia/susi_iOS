@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import DLRadioButton
+import M13Checkbox
 import SwiftValidators
 import Material
 
@@ -43,36 +43,23 @@ extension ForgotPasswordViewController {
         }
     }
 
-    @IBAction func toggleRadioButtons(_ sender: Any) {
-        if let button = sender as? DLRadioButton {
-            if button == standardServerButton {
-                personalServerButton.isSelected = false
-                addressField.tag = 0
-            } else if button == personalServerButton {
-                standardServerButton.isSelected = false
-                addressField.tag = 1
-            }
-            toggleAddressFieldDisplay()
-        }
-    }
-
-    func toggleAddressFieldDisplay() {
-        UIView.animate(withDuration: 0.5) {
-            if self.addressField.tag == 1 {
-                self.resetButtonTopConstraint.constant = 67
-            } else {
-                self.resetButtonTopConstraint.constant = 24
-                self.addressField.endEditing(true)
-            }
+    @IBAction func toggleRadioButtons(_ sender: M13Checkbox) {
+        if sender.checkState == .checked {
+            addressTextField.tag = 1
+            addressTextField.isUserInteractionEnabled = true
+        } else {
+            addressTextField.tag = 0
+            addressTextField.isUserInteractionEnabled = false
+            addressTextField.text = ""
         }
     }
 
     func prepareAddressField() {
-        addressField.placeholderNormalColor = .white
-        addressField.placeholderActiveColor = .white
-        addressField.dividerNormalColor = .white
-        addressField.dividerActiveColor = .white
-        addressField.textColor = .white
+        addressTextField.placeholderNormalColor = .white
+        addressTextField.placeholderActiveColor = .white
+        addressTextField.dividerNormalColor = .white
+        addressTextField.dividerActiveColor = .white
+        addressTextField.textColor = .white
     }
 
     // Call Reset Password API
@@ -80,14 +67,14 @@ extension ForgotPasswordViewController {
 
         if let emailID = emailTextField.text, !emailID.isEmpty && emailID.isValidEmail() {
 
-            var params = [
+            let params = [
                 Client.UserKeys.ForgotEmail: emailTextField.text?.lowercased()
             ]
 
-            if standardServerButton.isSelected {
+            if personalServerButton.checkState == .unchecked {
                 UserDefaults.standard.set(Client.APIURLs.SusiAPI, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
-            } else if personalServerButton.isSelected {
-                if let ipAddress = addressField.text, !ipAddress.isEmpty && Validator.isIP().apply(ipAddress) {
+            } else {
+                if let ipAddress = addressTextField.text, !ipAddress.isEmpty && Validator.isIP().apply(ipAddress) {
                     UserDefaults.standard.set(ipAddress, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
                 } else {
                     view.makeToast("Invalid IP Address")
@@ -113,7 +100,6 @@ extension ForgotPasswordViewController {
                     self.emailTextField.endEditing(true)
                 }
             }
-            params.removeAll()
         } else {
             self.view.makeToast("Invalid email address")
         }
@@ -131,8 +117,10 @@ extension ForgotPasswordViewController {
         let activeTheme = UserDefaults.standard.string(forKey: ControllerConstants.UserDefaultsKeys.theme)
         if activeTheme == theme.light.rawValue {
             view.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
+            personalServerButton.secondaryCheckmarkTintColor = UIColor.hexStringToUIColor(hex: "#4184F3")
         } else if activeTheme == theme.dark.rawValue {
             view.backgroundColor = UIColor.defaultColor()
+            personalServerButton.secondaryCheckmarkTintColor = UIColor.defaultColor()
         }
 
         if let navbar = navigationController?.navigationBar {

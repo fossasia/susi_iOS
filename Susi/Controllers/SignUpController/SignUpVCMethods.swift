@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import DLRadioButton
+import M13Checkbox
+import SwiftValidators
 
 extension SignUpViewController {
 
@@ -46,7 +47,6 @@ extension SignUpViewController {
         addressTextField.dividerNormalColor = .white
         addressTextField.dividerActiveColor = .white
         addressTextField.textColor = .white
-        addressTextField.clearIconButton?.tintColor = .white
     }
 
     func prepareSignUpButton() {
@@ -58,27 +58,14 @@ extension SignUpViewController {
         self.dismiss(animated: true, completion: nil)
     }
 
-    @IBAction func toggleRadioButtons(_ sender: Any) {
-        if let button = sender as? DLRadioButton {
-            if button == standardServerButton {
-                personalServerButton.isSelected = false
-                addressTextField.tag = 0
-            } else if button == personalServerButton {
-                standardServerButton.isSelected = false
-                addressTextField.tag = 1
-            }
-            toggleAddressFieldDisplay()
-        }
-    }
-
-    func toggleAddressFieldDisplay() {
-        UIView.animate(withDuration: 0.5) {
-            if self.addressTextField.tag == 1 {
-                self.signUpButtonTopConstraint.constant = 67
-            } else {
-                self.signUpButtonTopConstraint.constant = 17
-                self.addressTextField.endEditing(true)
-            }
+    @IBAction func toggleRadioButtons(_ sender: M13Checkbox) {
+        if sender.checkState == .checked {
+            addressTextField.tag = 1
+            addressTextField.isUserInteractionEnabled = true
+        } else {
+            addressTextField.tag = 0
+            addressTextField.isUserInteractionEnabled = false
+            addressTextField.text = ""
         }
     }
 
@@ -89,15 +76,20 @@ extension SignUpViewController {
             toggleEditing()
             activityIndicator.startAnimating()
 
-            var params = [
+            let params = [
                 Client.UserKeys.SignUp: emailTextField.text!.lowercased(),
                 Client.UserKeys.Password: emailTextField.text!
             ]
 
-            if addressTextField.tag == 1 {
+            if personalServerButton.checkState == .unchecked {
                 UserDefaults.standard.set(Client.APIURLs.SusiAPI, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
-            } else if let ipAddress = addressTextField.text {
-                UserDefaults.standard.set(ipAddress, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
+            } else {
+                if let ipAddress = addressTextField.text, !ipAddress.isEmpty && Validator.isIP().apply(ipAddress) {
+                    UserDefaults.standard.set(ipAddress, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
+                } else {
+                    view.makeToast("Invalid IP Address")
+                    return
+                }
             }
 
             Client.sharedInstance.registerUser(params as [String : AnyObject]) { (success, message) in
@@ -110,7 +102,6 @@ extension SignUpViewController {
                     self.view.makeToast(message)
                 }
             }
-            params.removeAll()
         } else if let emailID = emailTextField.text, !emailID.isValidEmail() {
             view.makeToast("Invalid email address")
         } else if let password = passwordTextField.text, password.isEmpty {
@@ -176,6 +167,11 @@ extension SignUpViewController {
         }
         if let password = passwordTextField.text, let confirmPassword = confirmPasswordTextField.text, password != confirmPassword {
             return false
+        }
+        if personalServerButton.checkState == .checked {
+            if let address = addressTextField.text, address.isEmpty {
+                return false
+            }
         }
         return true
     }

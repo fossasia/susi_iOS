@@ -66,7 +66,7 @@ class AuthenticationUITests: XCTestCase {
     }
     
     func testLogoutSuccess() {
-        app.buttons[ControllerConstants.TestKeys.skip].tap()
+        testLoginSuccess()
         
         app.buttons[ControllerConstants.TestKeys.settings].tap()
         let collectionViewsQuery = app.collectionViews
