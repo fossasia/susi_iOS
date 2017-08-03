@@ -52,7 +52,7 @@ class SettingsViewController: UICollectionViewController, UICollectionViewDelega
         } else if section == 2 {
             return 2
         } else {
-            return 5
+            return 6
         }
     }
 
@@ -108,8 +108,13 @@ class SettingsViewController: UICollectionViewController, UICollectionViewDelega
                     cell.settingSwitch.removeFromSuperview()
                     cell.pulseAnimation = .point
                     cell.detailLabel.frame = .zero
-                } else {
+                } else if indexPath.item == 4 {
                     cell.titleLabel.text = ControllerConstants.Settings.logout
+                    cell.settingSwitch.removeFromSuperview()
+                    cell.pulseAnimation = .point
+                    cell.detailLabel.frame = .zero
+                } else {
+                    cell.titleLabel.text = ControllerConstants.Settings.trainHotword
                     cell.settingSwitch.removeFromSuperview()
                     cell.pulseAnimation = .point
                     cell.detailLabel.frame = .zero
@@ -163,6 +168,11 @@ class SettingsViewController: UICollectionViewController, UICollectionViewDelega
                 showWallpaperOptions()
             } else if indexPath.item == 4 {
                 logoutUser()
+            } else if indexPath.item == 5 {
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyBoard.instantiateViewController(withIdentifier: "trainingViewController")
+                let nvc = AppNavigationController(rootViewController: vc)
+                present(nvc, animated: true, completion: nil)
             }
         }
     }
