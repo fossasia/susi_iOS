@@ -381,14 +381,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kwZ-hr-qhF">
-                                <rect key="frame" x="131" y="240" width="152" height="92"/>
+                                <rect key="frame" x="131" y="196" width="152" height="136"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="152" id="WiQ-WF-uJ8"/>
                                 </constraints>
                                 <state key="normal" image="record"/>
+                                <connections>
+                                    <action selector="startRecording:" destination="bE0-nE-Az2" eventType="touchUpInside" id="Lt7-C3-2Tm"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's train SUSI" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xd1-Ie-Pcb">
-                                <rect key="frame" x="20" y="120" width="374" height="21"/>
+                                <rect key="frame" x="20" y="76" width="374" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Qi5-JS-gbp"/>
                                 </constraints>
@@ -412,6 +415,9 @@
                                     <constraint firstAttribute="width" constant="46" id="UoJ-75-b3r"/>
                                 </constraints>
                                 <state key="normal" image="stop"/>
+                                <connections>
+                                    <action selector="stopRecording:" destination="bE0-nE-Az2" eventType="touchUpInside" id="wXb-lS-SNe"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -430,6 +436,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="uiX-h6-OGR"/>
+                    <connections>
+                        <outlet property="recordButton" destination="kwZ-hr-qhF" id="Ped-NG-xKs"/>
+                        <outlet property="recordingLabel" destination="YCC-tT-VHl" id="Pzx-6y-wuF"/>
+                        <outlet property="stopRecordButton" destination="uSd-tc-1gy" id="5YB-TV-J8j"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="byW-pI-MEp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

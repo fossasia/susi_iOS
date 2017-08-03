@@ -12,6 +12,7 @@ extension Client {
         static let SusiAPI = "http://api.susi.ai"
         static let DuckDuckGo = "http://api.duckduckgo.com"
         static let YoutubeSearch = "https://www.googleapis.com/youtube/v3/search"
+        static let SnowboyTrain = "https://snowboy.kitt.ai/api/v1/train/"
     }
 
     struct Methods {

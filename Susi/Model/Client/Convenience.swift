@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+import Alamofire
 
 extension Client {
 
@@ -262,7 +263,7 @@ extension Client {
 
     func searchYotubeVideos(_ query: String, _ completion: @escaping(_ response: String?, _ success: Bool, _ error: String?) -> Void) {
 
-        var params = [
+        let params = [
             YoutubeParamKeys.Key: YoutubeParamValues.Key,
             YoutubeParamKeys.Part: YoutubeParamValues.Part,
             YoutubeParamKeys.Query: query.replacingOccurrences(of: " ", with: "+")
@@ -292,9 +293,32 @@ extension Client {
                     }
                 }
             }
-            params.removeAll()
             return
         })
+
+    }
+
+    // MARK: - Train hotword using Snowboy API
+
+    func trainHotwordUsingSnowboy(_ params: [String : AnyObject], _ completion: @escaping(_ response: Any?, _ success: Bool, _ error: String?) -> Void) {
+
+        let url = getApiUrl(APIURLs.SnowboyTrain)
+
+        let headers = [
+            "Content-Type": "application/json"
+        ]
+        let json = try! JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
+
+        let jsonStr = String.init(data: json, encoding: .utf8)
+        print(jsonStr)
+
+        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers).responseJSON { (results) in
+            print(results.error)
+            print(results)
+            print(results.response)
+            print(results.result)
+            print(results.response?.statusCode)
+        }
 
     }
 
