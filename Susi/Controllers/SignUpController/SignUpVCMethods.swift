@@ -168,6 +168,11 @@ extension SignUpViewController {
         if let password = passwordTextField.text, let confirmPassword = confirmPasswordTextField.text, password != confirmPassword {
             return false
         }
+        if personalServerButton.checkState == .checked {
+            if let address = addressTextField.text, address.isEmpty {
+                return false
+            }
+        }
         return true
     }
 

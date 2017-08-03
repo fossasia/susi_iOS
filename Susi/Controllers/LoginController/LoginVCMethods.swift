@@ -68,13 +68,10 @@ extension LoginViewController {
         addressTextField.dividerNormalColor = .white
         addressTextField.dividerActiveColor = .white
         addressTextField.textColor = .white
-        addressTextField.clearIconButton?.tintColor = .white
-        addressTextField.visibilityIconButton?.tintColor = .white
     }
 
     // Call Login API
     func performLogin() {
-
         if isValid() {
             toggleEditing()
 
@@ -189,8 +186,7 @@ extension LoginViewController {
         if let password = passwordTextField.text, password.isEmpty {
             return false
         }
-
-        if addressTextField.tag == 0 {
+        if personalServerButton.checkState == .checked {
             if let address = addressTextField.text, address.isEmpty {
                 return false
             }
