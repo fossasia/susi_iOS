@@ -99,23 +99,22 @@ class TrainingViewController: UIViewController, AVAudioRecorderDelegate {
 
             let params: NSMutableDictionary = [
                 "name": "susi",
-                "language": "en",
-                "token": "cb01d0e0df6b7abd22992ff897e50965653a7b67",
-                "microphone": "iphone microphone"
+                "token":"cb01d0e0df6b7abd22992ff897e50965653a7b67",
+                "microphone":"iphone microphone",
+                "language":"en"
             ]
 
             let dict = [
                 [
-                    "wave": getRecordedDataAsBase64String(fileUniqueIdentifier: 0)
+                    "wave":getRecordedDataAsBase64String(fileUniqueIdentifier: 0)
                 ],
                 [
-                    "wave": getRecordedDataAsBase64String(fileUniqueIdentifier: 1)
+                    "wave":getRecordedDataAsBase64String(fileUniqueIdentifier: 1)
                 ],
                 [
-                    "wave": getRecordedDataAsBase64String(fileUniqueIdentifier: 2)
+                    "wave":getRecordedDataAsBase64String(fileUniqueIdentifier: 2)
                 ]
             ]
-            print(dict)
             params.setValue(dict, forKey: "voice_samples")
 
             Client.sharedInstance.trainHotwordUsingSnowboy(params as! [String : AnyObject], { (file, success, _) in
@@ -141,7 +140,7 @@ class TrainingViewController: UIViewController, AVAudioRecorderDelegate {
             let filePath = NSURL.fileURL(withPathComponents: pathArray)
 
             let fileData = try Data.init(contentsOf: filePath!)
-            let fileStream = fileData.base64EncodedString()
+            let fileStream = fileData.base64EncodedString(options: .endLineWithLineFeed)
             return fileStream
         } catch let error {
             debugPrint(error.localizedDescription)

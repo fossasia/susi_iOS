@@ -302,24 +302,23 @@ extension Client {
 
     func trainHotwordUsingSnowboy(_ params: [String : AnyObject], _ completion: @escaping(_ response: Any?, _ success: Bool, _ error: String?) -> Void) {
 
-        let url = getApiUrl(APIURLs.SnowboyTrain)
+        let urlString = getApiUrl(APIURLs.SnowboyTrain)
 
-        let headers = [
-            "Content-Type": "application/json"
-        ]
-        let json = try! JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
+        let url = URL(string: urlString)!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                
+        request.httpBody = try! JSONSerialization.data(withJSONObject: params)
 
-        let jsonStr = String.init(data: json, encoding: .utf8)
-        print(jsonStr)
-
-        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers).responseJSON { (results) in
+        Alamofire.request(request).responseData { (results) in
             print(results.error)
             print(results)
             print(results.response)
             print(results.result)
             print(results.response?.statusCode)
         }
-
+        
     }
 
 }
