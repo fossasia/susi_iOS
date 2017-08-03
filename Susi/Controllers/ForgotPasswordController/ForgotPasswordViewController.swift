@@ -16,9 +16,7 @@ class ForgotPasswordViewController: UIViewController {
     @IBOutlet weak var resetButton: FlatButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var personalServerButton: M13Checkbox!
-    @IBOutlet weak var addressField: TextField!
-
-    @IBOutlet weak var resetButtonTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var addressTextField: TextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()

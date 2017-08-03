@@ -45,31 +45,21 @@ extension ForgotPasswordViewController {
 
     @IBAction func toggleRadioButtons(_ sender: M13Checkbox) {
         if sender.checkState == .checked {
-            addressField.tag = 1
+            addressTextField.tag = 1
+            addressTextField.isUserInteractionEnabled = true
         } else {
-            addressField.tag = 0
-        }
-        toggleAddressFieldDisplay()
-    }
-
-    func toggleAddressFieldDisplay() {
-        UIView.animate(withDuration: 0.5) {
-            if self.addressField.tag == 1 {
-                self.resetButtonTopConstraint.constant = 67
-            } else {
-                self.resetButtonTopConstraint.constant = 24
-                self.addressField.text = ""
-                self.addressField.endEditing(true)
-            }
+            addressTextField.tag = 0
+            addressTextField.isUserInteractionEnabled = false
+            addressTextField.text = ""
         }
     }
 
     func prepareAddressField() {
-        addressField.placeholderNormalColor = .white
-        addressField.placeholderActiveColor = .white
-        addressField.dividerNormalColor = .white
-        addressField.dividerActiveColor = .white
-        addressField.textColor = .white
+        addressTextField.placeholderNormalColor = .white
+        addressTextField.placeholderActiveColor = .white
+        addressTextField.dividerNormalColor = .white
+        addressTextField.dividerActiveColor = .white
+        addressTextField.textColor = .white
     }
 
     // Call Reset Password API
@@ -84,7 +74,7 @@ extension ForgotPasswordViewController {
             if personalServerButton.checkState == .unchecked {
                 UserDefaults.standard.set(Client.APIURLs.SusiAPI, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
             } else {
-                if let ipAddress = addressField.text, !ipAddress.isEmpty && Validator.isIP().apply(ipAddress) {
+                if let ipAddress = addressTextField.text, !ipAddress.isEmpty && Validator.isIP().apply(ipAddress) {
                     UserDefaults.standard.set(ipAddress, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
                 } else {
                     view.makeToast("Invalid IP Address")

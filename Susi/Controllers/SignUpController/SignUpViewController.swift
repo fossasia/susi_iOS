@@ -15,12 +15,10 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var emailTextField: TextField!
     @IBOutlet weak var passwordTextField: TextField!
     @IBOutlet weak var confirmPasswordTextField: TextField!
-    @IBOutlet weak var addressTextField: TextField!
     @IBOutlet weak var signUpButton: RaisedButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var personalServerButton: M13Checkbox!
-
-    @IBOutlet weak var signUpButtonTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var addressTextField: TextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()

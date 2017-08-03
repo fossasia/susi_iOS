@@ -47,7 +47,6 @@ extension SignUpViewController {
         addressTextField.dividerNormalColor = .white
         addressTextField.dividerActiveColor = .white
         addressTextField.textColor = .white
-        addressTextField.clearIconButton?.tintColor = .white
     }
 
     func prepareSignUpButton() {
@@ -62,21 +61,11 @@ extension SignUpViewController {
     @IBAction func toggleRadioButtons(_ sender: M13Checkbox) {
         if sender.checkState == .checked {
             addressTextField.tag = 1
+            addressTextField.isUserInteractionEnabled = true
         } else {
             addressTextField.tag = 0
-        }
-        toggleAddressFieldDisplay()
-    }
-
-    func toggleAddressFieldDisplay() {
-        UIView.animate(withDuration: 0.5) {
-            if self.addressTextField.tag == 1 {
-                self.signUpButtonTopConstraint.constant = 67
-            } else {
-                self.signUpButtonTopConstraint.constant = 24
-                self.addressTextField.text = ""
-                self.addressTextField.endEditing(true)
-            }
+            addressTextField.isUserInteractionEnabled = false
+            addressTextField.text = ""
         }
     }
 

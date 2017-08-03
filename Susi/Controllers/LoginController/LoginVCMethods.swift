@@ -44,32 +44,13 @@ extension LoginViewController {
 
     @IBAction func toggleRadioButtons(_ sender: M13Checkbox) {
         if sender.checkState == .checked {
-            addressField.tag = 1
+            addressTextField.tag = 1
+            addressTextField.isUserInteractionEnabled = true
         } else {
-            addressField.tag = 0
+            addressTextField.tag = 0
+            addressTextField.isUserInteractionEnabled = false
+            addressTextField.text = ""
         }
-        toggleAddressFieldDisplay()
-    }
-
-    func toggleAddressFieldDisplay() {
-        UIView.animate(withDuration: 0.5) {
-            if self.addressField.tag == 1 {
-                self.loginButtonTopConstraint.constant = 67
-            } else {
-                self.loginButtonTopConstraint.constant = 20
-                self.addressField.text = ""
-                self.addressField.endEditing(true)
-            }
-        }
-    }
-
-    func prepareAddressField() {
-        addressField.placeholderNormalColor = .white
-        addressField.placeholderActiveColor = .white
-        addressField.dividerNormalColor = .white
-        addressField.dividerActiveColor = .white
-        addressField.textColor = .white
-        addressField.clearIconButton?.tintColor = .white
     }
 
     // Configure Login Button
@@ -79,6 +60,16 @@ extension LoginViewController {
 
     func prepareSkipButton() {
         skipButton.addTarget(self, action: #selector(enterAnonymousMode), for: .touchUpInside)
+    }
+
+    func prepareAddressField() {
+        addressTextField.placeholderNormalColor = .white
+        addressTextField.placeholderActiveColor = .white
+        addressTextField.dividerNormalColor = .white
+        addressTextField.dividerActiveColor = .white
+        addressTextField.textColor = .white
+        addressTextField.clearIconButton?.tintColor = .white
+        addressTextField.visibilityIconButton?.tintColor = .white
     }
 
     // Call Login API
@@ -96,7 +87,7 @@ extension LoginViewController {
             if personalServerButton.checkState == .unchecked {
                 UserDefaults.standard.set(Client.APIURLs.SusiAPI, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
             } else {
-                if let ipAddress = addressField.text, !ipAddress.isEmpty && Validator.isIP().apply(ipAddress) {
+                if let ipAddress = addressTextField.text, !ipAddress.isEmpty && Validator.isIP().apply(ipAddress) {
                     UserDefaults.standard.set(ipAddress, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
                 } else {
                     view.makeToast("Invalid IP Address")
@@ -199,8 +190,8 @@ extension LoginViewController {
             return false
         }
 
-        if addressField.tag == 0 {
-            if let address = addressField.text, address.isEmpty {
+        if addressTextField.tag == 0 {
+            if let address = addressTextField.text, address.isEmpty {
                 return false
             }
         }
