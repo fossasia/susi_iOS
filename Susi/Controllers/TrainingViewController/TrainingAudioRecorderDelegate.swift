@@ -1,65 +1,15 @@
 //
-//  TrainingViewController.swift
+//  TrainingAudioRecorderDelegate.swift
 //  Susi
 //
-//  Created by Chashmeet Singh on 2017-08-03.
+//  Created by Chashmeet Singh on 2017-08-04.
 //  Copyright © 2017 FOSSAsia. All rights reserved.
 //
 
 import UIKit
-import Material
 import AVFoundation
 
-class TrainingViewController: UIViewController, AVAudioRecorderDelegate {
-
-    @IBOutlet weak var recordButton: UIButton!
-    @IBOutlet weak var stopRecordButton: UIButton!
-    @IBOutlet weak var recordingLabel: UILabel!
-    var audioRecorder: AVAudioRecorder!
-    var count = 0
-
-    // Get directory
-    let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        setupNavBar()
-        addCancelNavItem()
-        setupUI()
-    }
-
-    func setupNavBar() {
-        guard let navBar = navigationController?.navigationBar as? NavigationBar else {
-            return
-        }
-
-        let activeTheme = UserDefaults.standard.string(forKey: ControllerConstants.UserDefaultsKeys.theme)
-        if activeTheme == theme.light.rawValue {
-            navBar.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
-            UIApplication.shared.statusBarView?.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
-        } else if activeTheme == theme.dark.rawValue {
-            navBar.backgroundColor = UIColor.defaultColor()
-            UIApplication.shared.statusBarView?.backgroundColor = UIColor.defaultColor()
-        }
-    }
-
-    func addCancelNavItem() {
-        navigationItem.title = ControllerConstants.Settings.trainHotword
-        navigationItem.titleLabel.textColor = .white
-
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelTapped(_:)))
-        cancelButton.tintColor = .white
-        navigationItem.rightBarButtonItems = [cancelButton]
-    }
-
-    func cancelTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-
-    func setupUI() {
-        stopRecordButton.isEnabled = false
-    }
+extension TrainingViewController: AVAudioRecorderDelegate {
 
     @IBAction func startRecording(_ sender: Any) {
         recordingActive(state: true)
@@ -69,7 +19,7 @@ class TrainingViewController: UIViewController, AVAudioRecorderDelegate {
         let recordingName = "recordedVoice\(count).wav"
         let pathArray = [dirPath, recordingName]
         let filePath = NSURL.fileURL(withPathComponents: pathArray)
-        print(filePath)
+        //        print(filePath)
 
         // Get instance
         let session = AVAudioSession.sharedInstance()
@@ -99,27 +49,30 @@ class TrainingViewController: UIViewController, AVAudioRecorderDelegate {
 
             let params: NSMutableDictionary = [
                 "name": "susi",
-                "token":"cb01d0e0df6b7abd22992ff897e50965653a7b67",
-                "microphone":"iphone microphone",
-                "language":"en"
+                "token": "1b286c615e95d848814144e6ffe0551505fe979c",
+                "microphone": "iphone microphone",
+                "language": "en"
             ]
 
             let dict = [
                 [
-                    "wave":getRecordedDataAsBase64String(fileUniqueIdentifier: 0)
+                    "wave": getRecordedDataAsBase64String(fileUniqueIdentifier: 0)
                 ],
                 [
-                    "wave":getRecordedDataAsBase64String(fileUniqueIdentifier: 1)
+                    "wave": getRecordedDataAsBase64String(fileUniqueIdentifier: 1)
                 ],
                 [
-                    "wave":getRecordedDataAsBase64String(fileUniqueIdentifier: 2)
+                    "wave": getRecordedDataAsBase64String(fileUniqueIdentifier: 2)
                 ]
             ]
             params.setValue(dict, forKey: "voice_samples")
 
-            Client.sharedInstance.trainHotwordUsingSnowboy(params as! [String : AnyObject], { (file, success, _) in
+            Client.sharedInstance.trainHotwordUsingSnowboy(params as! [String : AnyObject], { (success, _) in
                 DispatchQueue.main.async {
-                    print(file, success)
+                    if success {
+                        self.view.makeToast("Training successful")
+                    }
+                    self.dismiss(animated: true, completion: nil)
                 }
             })
 
