@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import Speech
 
 class TrainingViewController: UIViewController {
 
@@ -19,6 +20,12 @@ class TrainingViewController: UIViewController {
 
     // Get directory
     let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+
+    let audioSession = AVAudioSession.sharedInstance()
+    var speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))
+    var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
+    var recognitionTask: SFSpeechRecognitionTask?
+    let audioEngine = AVAudioEngine()
 
     override func viewDidLoad() {
         super.viewDidLoad()

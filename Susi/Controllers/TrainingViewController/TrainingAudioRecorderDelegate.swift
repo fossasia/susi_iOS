@@ -22,8 +22,14 @@ extension TrainingViewController: AVAudioRecorderDelegate {
         //        print(filePath)
 
         // Get instance
-        let session = AVAudioSession.sharedInstance()
-        try! session.setCategory(AVAudioSessionCategoryPlayAndRecord)
+        do {
+            try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
+            try audioSession.setMode(AVAudioSessionModeDefault)
+            try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
+        } catch {
+            print("audioSession properties weren't set because of an error.")
+        }
+
         try! audioRecorder = AVAudioRecorder(url: filePath!, settings: [:])
 
         // Start Recording
@@ -31,6 +37,7 @@ extension TrainingViewController: AVAudioRecorderDelegate {
         audioRecorder.isMeteringEnabled = true
         audioRecorder.prepareToRecord()
         audioRecorder.record()
+        startSpeechRecognition()
     }
 
     @IBAction func stopRecording(_ sender: Any) {

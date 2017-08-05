@@ -325,16 +325,16 @@ extension Client {
                         do {
                             try data.write(to: path)
                             completion(true, nil)
+                            return
                         } catch let error {
                             print(error.localizedDescription)
-                            completion(false, ResponseMessages.ServerError)
                         }
                     }
                 }
-            } else {
-                print(results.error?.localizedDescription ?? "Error")
-                completion(false, ResponseMessages.ServerError)
             }
+            print(results.error?.localizedDescription ?? "Error")
+            completion(false, ResponseMessages.ServerError)
+            return
         }
 
     }
