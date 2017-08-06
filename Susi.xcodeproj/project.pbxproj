@@ -499,7 +499,6 @@
 				6D4D9B351E768E190067459C /* Resources */,
 				880018A97BB7552C68E38EC4 /* [CP] Embed Pods Frameworks */,
 				86DB440D027D139DDD8C9B5C /* [CP] Copy Pods Resources */,
-				6DE809D21F34ED5300CAE674 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -606,19 +605,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SusiUITests/Pods-SusiUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		6DE809D21F34ED5300CAE674 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint autocorrect\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 		86DB440D027D139DDD8C9B5C /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;

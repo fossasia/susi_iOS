@@ -75,7 +75,8 @@ extension TrainingViewController: SFSpeechRecognizerDelegate {
                         transcription.contains("susie") ||
                         transcription.contains("sushi") ||
                         transcription.contains("suzi") ||
-                        transcription.contains("sushie") {
+                        transcription.contains("sushie") ||
+                        transcription.contains("sissy") {
                         self.stopRecognition()
                         self.stopRecording(self)
                     }

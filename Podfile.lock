@@ -26,7 +26,6 @@ PODS:
     - RSKPlaceholderTextView (= 2.0.0)
   - RSKPlaceholderTextView (2.0.0)
   - SwiftDate (4.1.7)
-  - SwiftLint (0.21.0)
   - SwiftValidators (6.0.0)
   - Toast-Swift (2.0.0)
 
@@ -43,7 +42,6 @@ DEPENDENCIES:
   - RSKGrowingTextView
   - RSKPlaceholderTextView (= 2.0.0)
   - SwiftDate (~> 4.0)
-  - SwiftLint
   - SwiftValidators
   - Toast-Swift (~> 2.0.0)
 
@@ -71,10 +69,9 @@ SPEC CHECKSUMS:
   RSKGrowingTextView: 1d9c64f1e9f8ed9b47d883548a3fd76dfdfe1353
   RSKPlaceholderTextView: 301f0f30e70e7c42fe4e941e3a08365ab0d890d5
   SwiftDate: '029be76691ee89176da3a46c7df3415b6734bc5b'
-  SwiftLint: 6de8b2d15f43c482bdec2953b8cfd696faa876e8
   SwiftValidators: 4ccbec749f61a36f7a922781bb09452e80cde396
   Toast-Swift: 5b2f8f720f7e78e48511f693df1f9c9a6e38a25a
 
-PODFILE CHECKSUM: 0e4e10a3b209ec834ad3b063a41d8e6a348ab85e
+PODFILE CHECKSUM: dd58707c9026a6ab68357f5274eae3aa8972f76e
 
 COCOAPODS: 1.2.1

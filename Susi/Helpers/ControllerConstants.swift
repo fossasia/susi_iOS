@@ -90,7 +90,7 @@ class ControllerConstants {
         static let changeWallpaper = "Change Wallpaper"
         static let changeTheme = "Change Theme"
         static let changeThemeDesc = "Toggle between dark and light themes"
-        static let trainHotword = "Train hotword"
+        static let trainHotword = "Let's train SUSI"
     }
 
     struct UserDefaultsKeys {

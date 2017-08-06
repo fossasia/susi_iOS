@@ -39,8 +39,8 @@ extension TrainingViewController {
         dismiss(animated: true, completion: nil)
     }
 
-    func setupUI() {
-        stopRecordButton.isEnabled = false
+    func addTargets() {
+        finishLaterButton.addTarget(self, action: #selector(cancelTapped(_:)), for: .touchUpInside)
     }
 
 }
