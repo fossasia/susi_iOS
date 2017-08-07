@@ -70,7 +70,7 @@ class TrainingViewController: UIViewController {
                 recordingLabel3.text = "Complete"
                 recordingLabel3.isHidden = false
                 micButton.isEnabled = false
-                finishLaterButton.setTitle("Download Complete", for: .normal)
+                finishLaterButton.setTitle("Training Complete", for: .normal)
                 finishLaterButton.isEnabled = false
             }
         }
@@ -78,7 +78,6 @@ class TrainingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupNavBar()
         addCancelNavItem()
         addTargets()

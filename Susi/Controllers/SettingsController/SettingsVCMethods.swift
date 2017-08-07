@@ -154,9 +154,15 @@ extension SettingsViewController {
 
     func deleteVoiceModel() {
         do {
-            try FileManager.default.removeItem(at: checkIfFileExistsAndReturnPath(fileIdentifier: 0)!)
-            try FileManager.default.removeItem(at: checkIfFileExistsAndReturnPath(fileIdentifier: 1)!)
-            try FileManager.default.removeItem(at: checkIfFileExistsAndReturnPath(fileIdentifier: 2)!)
+            if let file1 = checkIfFileExistsAndReturnPath(fileIdentifier: 0) {
+                try FileManager.default.removeItem(at: file1)
+            }
+            if let file2 = checkIfFileExistsAndReturnPath(fileIdentifier: 1) {
+                try FileManager.default.removeItem(at: file2)
+            }
+            if let file3 = checkIfFileExistsAndReturnPath(fileIdentifier: 2) {
+                try FileManager.default.removeItem(at: file3)
+            }
         } catch let error {
             print(error.localizedDescription)
         }

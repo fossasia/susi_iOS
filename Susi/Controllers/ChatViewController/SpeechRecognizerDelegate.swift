@@ -162,11 +162,11 @@ extension ChatViewController: SFSpeechRecognizerDelegate, AVSpeechSynthesizerDel
         inputTextView.isUserInteractionEnabled = true
         sendButton.tag = 0
         setImageForSendButton()
+        checkAndRunHotwordRecognition()
     }
 
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         print("utterance complete")
-        checkAndRunHotwordRecognition()
     }
 
     func speakAction(_ string: String, language: String?) {

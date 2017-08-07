@@ -84,8 +84,16 @@ class ChatViewController: UICollectionViewController {
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
         setupTheme()
+
+        // Hotword recognition stuff
         checkAndAssignIfModelExists()
         initSnowboy()
+
+        if UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.hotwordEnabled) {
+            startHotwordRecognition()
+        } else if let timer = hotwordTimer {
+            timer.invalidate()
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -97,12 +105,6 @@ class ChatViewController: UICollectionViewController {
         super.viewDidAppear(animated)
         loadMessages()
         setupWallpaper()
-
-        if UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.hotwordEnabled) {
-            startHotwordRecognition()
-        } else if let timer = hotwordTimer {
-            timer.invalidate()
-        }
     }
 
     override func viewDidDisappear(_ animated: Bool) {
