@@ -113,4 +113,20 @@ extension Client {
         static let rating = "rating"
     }
 
+    struct HotwordKeys {
+        static let name = "name"
+        static let token = "token"
+        static let microphone = "microphone"
+        static let language = "language"
+        static let voiceSamples = "voice_samples"
+        static let wave = "wave"
+    }
+
+    struct HotwordValues {
+        static let susi = "susi"
+        static let token = "1b286c615e95d848814144e6ffe0551505fe979c"
+        static let microphone = "iphone microphone"
+        static let language = "en"
+    }
+
 }

@@ -14,6 +14,9 @@ class SettingsViewController: UICollectionViewController, UICollectionViewDelega
     let headerId = ControllerConstants.Settings.headerId
     let sectionHeaders = ControllerConstants.Settings.sectionHeaders
 
+    // Get directory
+    let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+
     lazy var backButton: IconButton = {
         let button = IconButton()
         button.image = Icon.arrowBack
@@ -51,8 +54,10 @@ class SettingsViewController: UICollectionViewController, UICollectionViewDelega
             return 2
         } else if section == 2 {
             return 2
+        } else if section == 3 {
+            return 2
         } else {
-            return 6
+            return 5
         }
     }
 
@@ -89,6 +94,18 @@ class SettingsViewController: UICollectionViewController, UICollectionViewDelega
                     cell.settingSwitch.isOn = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn)
                     cell.settingSwitch.tag = 4
                 }
+            } else if indexPath.section == 3 {
+                if indexPath.item == 0 {
+                    cell.titleLabel.text = ControllerConstants.Settings.retrainVoiceModel
+                    cell.settingSwitch.removeFromSuperview()
+                    cell.pulseAnimation = .point
+                    cell.detailLabel.frame = .zero
+                } else {
+                    cell.titleLabel.text = ControllerConstants.Settings.deleteVoiceModel
+                    cell.settingSwitch.removeFromSuperview()
+                    cell.pulseAnimation = .point
+                    cell.detailLabel.frame = .zero
+                }
             } else {
                 if indexPath.item == 0 {
                     cell.titleLabel.text = ControllerConstants.Settings.changeTheme
@@ -108,13 +125,8 @@ class SettingsViewController: UICollectionViewController, UICollectionViewDelega
                     cell.settingSwitch.removeFromSuperview()
                     cell.pulseAnimation = .point
                     cell.detailLabel.frame = .zero
-                } else if indexPath.item == 4 {
-                    cell.titleLabel.text = ControllerConstants.Settings.logout
-                    cell.settingSwitch.removeFromSuperview()
-                    cell.pulseAnimation = .point
-                    cell.detailLabel.frame = .zero
                 } else {
-                    cell.titleLabel.text = ControllerConstants.Settings.trainHotword
+                    cell.titleLabel.text = ControllerConstants.Settings.logout
                     cell.settingSwitch.removeFromSuperview()
                     cell.pulseAnimation = .point
                     cell.detailLabel.frame = .zero
@@ -163,16 +175,17 @@ class SettingsViewController: UICollectionViewController, UICollectionViewDelega
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 3 {
             if indexPath.item == 0 {
+                presentTrainingController()
+            } else {
+                deleteVoiceModel()
+            }
+        } else if indexPath.section == 4 {
+            if indexPath.item == 0 {
                 themeToggleAlert()
             } else if indexPath.item == 3 {
                 showWallpaperOptions()
             } else if indexPath.item == 4 {
                 logoutUser()
-            } else if indexPath.item == 5 {
-                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyBoard.instantiateViewController(withIdentifier: "trainingViewController")
-                let nvc = AppNavigationController(rootViewController: vc)
-                present(nvc, animated: true, completion: nil)
             }
         }
     }

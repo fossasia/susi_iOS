@@ -324,4 +324,14 @@ extension ChatViewController {
         }
     }
 
+    func checkAndAssignIfModelExists() {
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+            let filePath = dir.appendingPathComponent(ControllerConstants.hotwordFileName)
+            if FileManager.default.fileExists(atPath: filePath.path) {
+                MODEL = filePath.path
+            }
+        }
+        MODEL = Bundle.main.path(forResource: "susi", ofType: "pmdl")!
+    }
+
 }

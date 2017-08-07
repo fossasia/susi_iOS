@@ -58,24 +58,24 @@ extension TrainingViewController: AVAudioRecorderDelegate {
 
     func downloadModel() {
         let params: NSMutableDictionary = [
-            "name": "susi",
-            "token": "1b286c615e95d848814144e6ffe0551505fe979c",
-            "microphone": "iphone microphone",
-            "language": "en"
+            Client.HotwordKeys.name: Client.HotwordValues.susi,
+            Client.HotwordKeys.token: Client.HotwordValues.token,
+            Client.HotwordKeys.microphone: Client.HotwordValues.microphone,
+            Client.HotwordKeys.language: Client.HotwordValues.language
         ]
 
         let dict = [
             [
-                "wave": getRecordedDataAsBase64String(fileIdentifier: 0)
+                Client.HotwordKeys.wave: getRecordedDataAsBase64String(fileIdentifier: 0)
             ],
             [
-                "wave": getRecordedDataAsBase64String(fileIdentifier: 1)
+                Client.HotwordKeys.wave: getRecordedDataAsBase64String(fileIdentifier: 1)
             ],
             [
-                "wave": getRecordedDataAsBase64String(fileIdentifier: 2)
+                Client.HotwordKeys.wave: getRecordedDataAsBase64String(fileIdentifier: 2)
             ]
         ]
-        params.setValue(dict, forKey: "voice_samples")
+        params.setValue(dict, forKey: Client.HotwordKeys.voiceSamples)
 
         if let params = params as? [String : AnyObject] {
             downloadActive(state: true)
@@ -103,14 +103,21 @@ extension TrainingViewController: AVAudioRecorderDelegate {
         } else {
             downloadLabel.text = "Downloading Trained Model"
             downloadLabel.removeGestureRecognizer(tapGesture)
+            downloadLabel.isHidden = !state
+            downloadIndicator.isHidden = !state
             if state {
-                downloadLabel.isHidden = !state
-                downloadIndicator.isHidden = !state
                 downloadIndicator.startAnimating()
             } else {
-                downloadLabel.isHidden = !state
-                downloadIndicator.isHidden = !state
-                downloadIndicator.startAnimating()
+                downloadIndicator.stopAnimating()
+            }
+        }
+    }
+
+    func checkIfModelExists() {
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+            let filePath = dir.appendingPathComponent(ControllerConstants.hotwordFileName)
+            if !FileManager.default.fileExists(atPath: filePath.path) {
+                downloadActive(state: false, failed: true)
             }
         }
     }
@@ -164,13 +171,6 @@ extension TrainingViewController: AVAudioRecorderDelegate {
     }
 
     func checkRecordings() {
-//        do {
-//            try FileManager.default.removeItem(at: checkIfFileExistsAndReturnPath(fileIdentifier: 0)!)
-//            try FileManager.default.removeItem(at: checkIfFileExistsAndReturnPath(fileIdentifier: 1)!)
-//            try FileManager.default.removeItem(at: checkIfFileExistsAndReturnPath(fileIdentifier: 2)!)
-//        } catch let error {
-//            print(error.localizedDescription)
-//        }
         if let _ = checkIfFileExistsAndReturnPath(fileIdentifier: 0) {
             count = 1
         }

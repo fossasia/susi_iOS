@@ -315,7 +315,7 @@ extension Client {
             if results.response?.statusCode == 201 {
                 if let data = results.data {
                     //this is the file. we will write to and read from it
-                    let file = "susi.pmdl"
+                    let file = ControllerConstants.hotwordFileName
 
                     if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
 

@@ -78,14 +78,14 @@ class ChatViewController: UICollectionViewController {
 
         // Configure Location Manager
         configureLocationManager()
-
-        initSnowboy()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
         setupTheme()
+        checkAndAssignIfModelExists()
+        initSnowboy()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -139,7 +139,7 @@ class ChatViewController: UICollectionViewController {
 
     // Snowboy
     let RESOURCE = Bundle.main.path(forResource: "common", ofType: "res")
-    let MODEL = Bundle.main.path(forResource: "susi", ofType: "pmdl")
+    var MODEL: String = ""
 
     var wrapper: SnowboyWrapper! = nil
 
