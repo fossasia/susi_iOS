@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+import Alamofire
 
 extension Client {
 
@@ -262,7 +263,7 @@ extension Client {
 
     func searchYotubeVideos(_ query: String, _ completion: @escaping(_ response: String?, _ success: Bool, _ error: String?) -> Void) {
 
-        var params = [
+        let params = [
             YoutubeParamKeys.Key: YoutubeParamValues.Key,
             YoutubeParamKeys.Part: YoutubeParamValues.Part,
             YoutubeParamKeys.Query: query.replacingOccurrences(of: " ", with: "+")
@@ -292,9 +293,49 @@ extension Client {
                     }
                 }
             }
-            params.removeAll()
             return
         })
+
+    }
+
+    // MARK: - Train hotword using Snowboy API
+
+    func trainHotwordUsingSnowboy(_ params: [String : AnyObject], _ completion: @escaping(_ success: Bool, _ error: String?) -> Void) {
+
+        let urlString = getApiUrl(APIURLs.SnowboyTrain)
+
+        let url = URL(string: urlString)!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        request.httpBody = try! JSONSerialization.data(withJSONObject: params)
+
+        Alamofire.request(request).responseData { (results) in
+            if results.response?.statusCode == 201 {
+                if let data = results.data {
+                    //this is the file. we will write to and read from it
+                    let file = ControllerConstants.hotwordFileName
+
+                    if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+
+                        let path = dir.appendingPathComponent(file)
+
+                        //writing
+                        do {
+                            try data.write(to: path)
+                            completion(true, nil)
+                            return
+                        } catch let error {
+                            print(error.localizedDescription)
+                        }
+                    }
+                }
+            }
+            print(results.error?.localizedDescription ?? "Error")
+            completion(false, ResponseMessages.ServerError)
+            return
+        }
 
     }
 

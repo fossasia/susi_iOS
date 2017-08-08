@@ -368,12 +368,176 @@
             </objects>
             <point key="canvasLocation" x="1157.9710144927537" y="-505.43478260869568"/>
         </scene>
+        <!--Training View Controller-->
+        <scene sceneID="zOn-LC-e9w">
+            <objects>
+                <viewController storyboardIdentifier="trainingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bE0-nE-Az2" customClass="TrainingViewController" customModule="Susi" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="F8a-2r-yKW"/>
+                        <viewControllerLayoutGuide type="bottom" id="i1r-5a-ptN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UKd-v5-epq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To help the app respond to you better, you can teach SUSI the sound of your voice." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yy3-65-91A">
+                                <rect key="frame" x="36" y="44" width="342" height="72"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="72" id="54w-rk-Y5n"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.43524378538131714" green="0.4353230893611908" blue="0.43523877859115601" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ddW-pB-G3q">
+                                <rect key="frame" x="185" y="206" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="yxZ-dE-30i"/>
+                                </constraints>
+                                <state key="normal" image="record"/>
+                                <connections>
+                                    <action selector="startRecording:" destination="bE0-nE-Az2" eventType="touchUpInside" id="5ZF-rO-jXy"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just say &quot;SUSI&quot; three times" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tb6-5d-FFq">
+                                <rect key="frame" x="36" y="152" width="342" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="manual_record" translatesAutoresizingMaskIntoConstraints="NO" id="2xw-vb-Rd9">
+                                <rect key="frame" x="36" y="279" width="24" height="24"/>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </imageView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Listening... say &quot;SUSI&quot;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZFw-Ph-8b4">
+                                <rect key="frame" x="83" y="281" width="295" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="MkY-mN-xiY">
+                                <rect key="frame" x="38" y="281" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="manual_record" translatesAutoresizingMaskIntoConstraints="NO" id="bWp-VC-efB">
+                                <rect key="frame" x="36" y="323" width="24" height="24"/>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </imageView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Say &quot;SUSI&quot; again" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbj-q3-I0O">
+                                <rect key="frame" x="83" y="325" width="295" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="kU6-Vs-OHY">
+                                <rect key="frame" x="38" y="325" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="manual_record" translatesAutoresizingMaskIntoConstraints="NO" id="FIR-6f-0Z4">
+                                <rect key="frame" x="36" y="367" width="24" height="24"/>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </imageView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="grs-I7-eRe">
+                                <rect key="frame" x="38" y="369" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Say &quot;SUSI&quot; one last time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIR-x8-YXs">
+                                <rect key="frame" x="83" y="369" width="295" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kdT-85-b2q" customClass="FlatButton" customModule="Material">
+                                <rect key="frame" x="20" y="672" width="374" height="44"/>
+                                <color key="backgroundColor" red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="ddg-oo-N52"/>
+                                </constraints>
+                                <state key="normal" title="FINISH LATER">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Downloading Trained Model" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2qB-LI-gco">
+                                <rect key="frame" x="48" y="643" width="346" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="f2u-QX-cd8">
+                                <rect key="frame" x="20" y="644" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96460121870040894" green="0.96476620435714722" blue="0.96459084749221802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="cbj-q3-I0O" firstAttribute="leading" secondItem="kU6-Vs-OHY" secondAttribute="trailing" constant="25" id="0MX-i5-OA9"/>
+                            <constraint firstItem="tIR-x8-YXs" firstAttribute="leading" secondItem="grs-I7-eRe" secondAttribute="trailing" constant="25" id="12W-Ik-5w9"/>
+                            <constraint firstItem="FIR-6f-0Z4" firstAttribute="top" secondItem="bWp-VC-efB" secondAttribute="bottom" constant="20" id="16c-iP-LLL"/>
+                            <constraint firstItem="i1r-5a-ptN" firstAttribute="top" secondItem="kdT-85-b2q" secondAttribute="bottom" constant="20" id="175-Pu-CtE"/>
+                            <constraint firstItem="FIR-6f-0Z4" firstAttribute="leading" secondItem="UKd-v5-epq" secondAttribute="leadingMargin" constant="16" id="7hU-F2-jle"/>
+                            <constraint firstItem="bWp-VC-efB" firstAttribute="leading" secondItem="UKd-v5-epq" secondAttribute="leadingMargin" constant="16" id="82N-vf-DEH"/>
+                            <constraint firstItem="cbj-q3-I0O" firstAttribute="top" secondItem="ZFw-Ph-8b4" secondAttribute="bottom" constant="24" id="C93-Un-Eq2"/>
+                            <constraint firstItem="2xw-vb-Rd9" firstAttribute="leading" secondItem="UKd-v5-epq" secondAttribute="leadingMargin" constant="16" id="Eva-Kn-bVD"/>
+                            <constraint firstItem="tIR-x8-YXs" firstAttribute="leading" secondItem="FIR-6f-0Z4" secondAttribute="trailing" constant="23" id="FBg-kI-QDQ"/>
+                            <constraint firstItem="kU6-Vs-OHY" firstAttribute="leading" secondItem="UKd-v5-epq" secondAttribute="leadingMargin" constant="18" id="FEf-SM-Nud"/>
+                            <constraint firstItem="MkY-mN-xiY" firstAttribute="top" secondItem="tb6-5d-FFq" secondAttribute="bottom" constant="105" id="FWv-Nk-7uj"/>
+                            <constraint firstItem="MkY-mN-xiY" firstAttribute="leading" secondItem="UKd-v5-epq" secondAttribute="leadingMargin" constant="18" id="G3I-HD-IPf"/>
+                            <constraint firstItem="f2u-QX-cd8" firstAttribute="leading" secondItem="UKd-v5-epq" secondAttribute="leadingMargin" id="JQs-9R-YS4"/>
+                            <constraint firstItem="kdT-85-b2q" firstAttribute="leading" secondItem="UKd-v5-epq" secondAttribute="leadingMargin" id="MGZ-hd-fXA"/>
+                            <constraint firstItem="2qB-LI-gco" firstAttribute="leading" secondItem="f2u-QX-cd8" secondAttribute="trailing" constant="8" id="PUu-GJ-tKd"/>
+                            <constraint firstItem="Yy3-65-91A" firstAttribute="top" secondItem="F8a-2r-yKW" secondAttribute="bottom" constant="24" id="Q8R-aC-4M1"/>
+                            <constraint firstItem="ZFw-Ph-8b4" firstAttribute="top" secondItem="ddW-pB-G3q" secondAttribute="bottom" constant="31" id="Rmg-Sn-Emg"/>
+                            <constraint firstItem="cbj-q3-I0O" firstAttribute="leading" secondItem="bWp-VC-efB" secondAttribute="trailing" constant="23" id="VGY-HC-rhw"/>
+                            <constraint firstItem="kU6-Vs-OHY" firstAttribute="top" secondItem="2xw-vb-Rd9" secondAttribute="bottom" constant="22" id="XzV-Sv-gZ9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tb6-5d-FFq" secondAttribute="trailing" constant="16" id="aLH-kT-GS9"/>
+                            <constraint firstItem="grs-I7-eRe" firstAttribute="leading" secondItem="UKd-v5-epq" secondAttribute="leadingMargin" constant="18" id="ato-hm-tPh"/>
+                            <constraint firstItem="kdT-85-b2q" firstAttribute="top" secondItem="f2u-QX-cd8" secondAttribute="bottom" constant="8" id="av9-5g-reB"/>
+                            <constraint firstItem="tb6-5d-FFq" firstAttribute="top" secondItem="Yy3-65-91A" secondAttribute="bottom" constant="36" id="cwU-Vr-RUH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cbj-q3-I0O" secondAttribute="trailing" constant="16" id="dED-c6-P5Y"/>
+                            <constraint firstItem="bWp-VC-efB" firstAttribute="top" secondItem="2xw-vb-Rd9" secondAttribute="bottom" constant="20" id="dZD-R0-Pnf"/>
+                            <constraint firstItem="kdT-85-b2q" firstAttribute="trailing" secondItem="UKd-v5-epq" secondAttribute="trailingMargin" id="eSO-LK-JCf"/>
+                            <constraint firstItem="Yy3-65-91A" firstAttribute="leading" secondItem="UKd-v5-epq" secondAttribute="leadingMargin" constant="16" id="fpU-ON-nGB"/>
+                            <constraint firstItem="2qB-LI-gco" firstAttribute="trailing" secondItem="UKd-v5-epq" secondAttribute="trailingMargin" id="gjR-zc-1QN"/>
+                            <constraint firstItem="tb6-5d-FFq" firstAttribute="leading" secondItem="UKd-v5-epq" secondAttribute="leadingMargin" constant="16" id="gyc-hY-MH3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ZFw-Ph-8b4" secondAttribute="trailing" constant="16" id="hkx-jk-Wvm"/>
+                            <constraint firstItem="ZFw-Ph-8b4" firstAttribute="centerY" secondItem="2xw-vb-Rd9" secondAttribute="centerY" id="iLV-Gi-7aw"/>
+                            <constraint firstItem="ZFw-Ph-8b4" firstAttribute="leading" secondItem="MkY-mN-xiY" secondAttribute="trailing" constant="25" id="iaD-BK-XW7"/>
+                            <constraint firstItem="ZFw-Ph-8b4" firstAttribute="leading" secondItem="2xw-vb-Rd9" secondAttribute="trailing" constant="23" id="kBa-tA-tkq"/>
+                            <constraint firstItem="cbj-q3-I0O" firstAttribute="top" secondItem="kU6-Vs-OHY" secondAttribute="top" id="ldf-yu-bdU"/>
+                            <constraint firstItem="ddW-pB-G3q" firstAttribute="top" secondItem="tb6-5d-FFq" secondAttribute="bottom" constant="30" id="mcc-Ew-bgA"/>
+                            <constraint firstItem="tb6-5d-FFq" firstAttribute="centerX" secondItem="ddW-pB-G3q" secondAttribute="centerX" id="mcr-Sd-gHI"/>
+                            <constraint firstItem="2qB-LI-gco" firstAttribute="leading" secondItem="f2u-QX-cd8" secondAttribute="trailing" constant="8" id="qmi-wJ-u74"/>
+                            <constraint firstItem="2xw-vb-Rd9" firstAttribute="top" secondItem="tb6-5d-FFq" secondAttribute="bottom" constant="103" id="rfY-dM-y7u"/>
+                            <constraint firstItem="tIR-x8-YXs" firstAttribute="top" secondItem="cbj-q3-I0O" secondAttribute="bottom" constant="24" id="suE-NR-7IM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tIR-x8-YXs" secondAttribute="trailing" constant="16" id="t5O-dv-VOg"/>
+                            <constraint firstItem="grs-I7-eRe" firstAttribute="top" secondItem="bWp-VC-efB" secondAttribute="bottom" constant="22" id="vgr-eT-azg"/>
+                            <constraint firstItem="kdT-85-b2q" firstAttribute="top" secondItem="2qB-LI-gco" secondAttribute="bottom" constant="8" id="yE9-c1-PNv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Yy3-65-91A" secondAttribute="trailing" constant="16" id="zkj-Mh-uN1"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="uiX-h6-OGR"/>
+                    <connections>
+                        <outlet property="downloadIndicator" destination="f2u-QX-cd8" id="RoM-Qh-heR"/>
+                        <outlet property="downloadLabel" destination="2qB-LI-gco" id="32f-Rz-3se"/>
+                        <outlet property="finishLaterButton" destination="kdT-85-b2q" id="PNd-8S-gBd"/>
+                        <outlet property="indicator1" destination="MkY-mN-xiY" id="Iwa-7j-Vwi"/>
+                        <outlet property="indicator2" destination="kU6-Vs-OHY" id="gEF-FA-Xii"/>
+                        <outlet property="indicator3" destination="grs-I7-eRe" id="O7T-qE-JTh"/>
+                        <outlet property="micButton" destination="ddW-pB-G3q" id="TOl-y2-MqW"/>
+                        <outlet property="recordPhI1" destination="2xw-vb-Rd9" id="FvO-bv-FzL"/>
+                        <outlet property="recordPhI2" destination="bWp-VC-efB" id="1hn-7r-jI3"/>
+                        <outlet property="recordPhI3" destination="FIR-6f-0Z4" id="jNc-X8-hbH"/>
+                        <outlet property="recordingLabel1" destination="ZFw-Ph-8b4" id="6Yb-FK-Kam"/>
+                        <outlet property="recordingLabel2" destination="cbj-q3-I0O" id="JSM-bc-fb8"/>
+                        <outlet property="recordingLabel3" destination="tIR-x8-YXs" id="exj-Lr-5JE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="byW-pI-MEp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2102.898550724638" y="-506.25000000000006"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="H6a-qx-OLK">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hF4-Pz-cCO" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="jgu-nc-Cv5">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="jgu-nc-Cv5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.25447925925254822" green="0.51828217506408691" blue="0.95430618524551392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -511,6 +675,8 @@
     </scenes>
     <resources>
         <image name="back_arrow" width="24" height="24"/>
+        <image name="manual_record" width="24" height="24"/>
+        <image name="record" width="100" height="100"/>
         <image name="susi" width="1366" height="280"/>
     </resources>
 </document>

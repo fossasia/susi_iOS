@@ -45,6 +45,7 @@ class ControllerConstants {
     static let accepted = "Accepted"
     static let thumbsUp = "thumbs_up"
     static let thumbsDown = "thumbs_down"
+    static let hotwordFileName = "susi.pmdl"
 
     struct Login {
         static let susiImage = "susi"
@@ -71,7 +72,7 @@ class ControllerConstants {
     struct Settings {
         static let settings = "Settings"
         static let headerId = "headerId"
-        static let sectionHeaders = ["Chat Settings", "Mic Settings", "Speech Settings", "Theme Settings"]
+        static let sectionHeaders = ["Chat Settings", "Mic Settings", "Speech Settings", "SUSI Voice Model", "Theme Settings"]
         static let enterToSend = "Enter To Send"
         static let sendMessageByReturn = "Send message by hitting return"
         static let micInput = "Mic Input"
@@ -90,6 +91,9 @@ class ControllerConstants {
         static let changeWallpaper = "Change Wallpaper"
         static let changeTheme = "Change Theme"
         static let changeThemeDesc = "Toggle between dark and light themes"
+        static let trainHotword = "Let's train SUSI"
+        static let retrainVoiceModel = "Retrain Voice Model"
+        static let deleteVoiceModel = "Delete Voice Model"
     }
 
     struct UserDefaultsKeys {

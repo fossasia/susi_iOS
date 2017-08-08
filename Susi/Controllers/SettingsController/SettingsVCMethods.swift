@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 import Material
+import Toast_Swift
 
 extension SettingsViewController {
 
@@ -142,6 +143,42 @@ extension SettingsViewController {
                 }
             }
         }
+    }
+
+    func presentTrainingController() {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "trainingViewController")
+        let nvc = AppNavigationController(rootViewController: vc)
+        present(nvc, animated: true, completion: nil)
+    }
+
+    func deleteVoiceModel() {
+        do {
+            if let file1 = checkIfFileExistsAndReturnPath(fileIdentifier: 0) {
+                try FileManager.default.removeItem(at: file1)
+            }
+            if let file2 = checkIfFileExistsAndReturnPath(fileIdentifier: 1) {
+                try FileManager.default.removeItem(at: file2)
+            }
+            if let file3 = checkIfFileExistsAndReturnPath(fileIdentifier: 2) {
+                try FileManager.default.removeItem(at: file3)
+            }
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        self.view.makeToast("Model deleted successfully")
+    }
+
+    func checkIfFileExistsAndReturnPath(fileIdentifier: Int) -> URL? {
+        let recordingName = "recordedVoice\(fileIdentifier).wav"
+        let pathArray = [dirPath, recordingName]
+        let filePath = NSURL.fileURL(withPathComponents: pathArray)
+        if let path = filePath?.path {
+            if FileManager.default.fileExists(atPath: path) {
+                return filePath
+            }
+        }
+        return nil
     }
 
 }

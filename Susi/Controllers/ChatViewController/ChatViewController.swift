@@ -78,14 +78,22 @@ class ChatViewController: UICollectionViewController {
 
         // Configure Location Manager
         configureLocationManager()
-
-        initSnowboy()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
         setupTheme()
+
+        // Hotword recognition stuff
+        checkAndAssignIfModelExists()
+        initSnowboy()
+
+        if UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.hotwordEnabled) {
+            startHotwordRecognition()
+        } else if let timer = hotwordTimer {
+            timer.invalidate()
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -97,12 +105,6 @@ class ChatViewController: UICollectionViewController {
         super.viewDidAppear(animated)
         loadMessages()
         setupWallpaper()
-
-        if UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.hotwordEnabled) {
-            startHotwordRecognition()
-        } else if let timer = hotwordTimer {
-            timer.invalidate()
-        }
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -139,7 +141,7 @@ class ChatViewController: UICollectionViewController {
 
     // Snowboy
     let RESOURCE = Bundle.main.path(forResource: "common", ofType: "res")
-    let MODEL = Bundle.main.path(forResource: "susi", ofType: "pmdl")
+    var MODEL: String = ""
 
     var wrapper: SnowboyWrapper! = nil
 
