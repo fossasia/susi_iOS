@@ -94,13 +94,17 @@ class ControllerConstants {
 
     struct UserDefaultsKeys {
         static let user = "user"
-        static let enterToSend = "enterToSend"
+        static let enterToSend = "enterAsSend"
         static let micInput = "micInput"
         static let speechOutput = "speechOutput"
-        static let speechOutputAlwaysOn = "speechOutputAlwaysOn"
+        static let speechOutputAlwaysOn = "speechOutputAlways"
+        static let speechRate = "speechRate"
+        static let speechPitch = "speechPitch"
         static let wallpaper = "wallpaper"
         static let ipAddress = "ipAddress"
-        static let hotwordEnabled = "hotwordEnabled"
+        static let hotwordEnabled = "hotwordRecognition"
+        static let ttsLanguage = "ttsLanguage"
+        static let prefLanguage = "prefLanguage"
         static let theme = "theme"
     }
 
