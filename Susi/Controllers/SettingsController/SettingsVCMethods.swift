@@ -97,45 +97,44 @@ extension SettingsViewController {
     func settingChanged(sender: AnyObject?) {
 
         var params = [String: AnyObject]()
+        var key: String = ""
+
+        if let senderTag = sender?.tag {
+            if senderTag == 0 {
+                key = ControllerConstants.UserDefaultsKeys.enterToSend
+                UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: key), forKey: key)
+                params[ControllerConstants.key] = key as AnyObject
+                params[ControllerConstants.value] = UserDefaults.standard.bool(forKey: key) as AnyObject
+            } else if senderTag == 1 {
+                key = ControllerConstants.UserDefaultsKeys.micInput
+                UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: key), forKey: key)
+                params[ControllerConstants.key] = key as AnyObject
+                params[ControllerConstants.value] = UserDefaults.standard.bool(forKey: key) as AnyObject
+            } else if senderTag == 2 {
+                key = ControllerConstants.UserDefaultsKeys.hotwordEnabled
+                UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: key), forKey: key)
+                params[ControllerConstants.key] = key as AnyObject
+                params[ControllerConstants.value] = UserDefaults.standard.bool(forKey: key) as AnyObject
+            } else if senderTag == 3 {
+                key = ControllerConstants.UserDefaultsKeys.speechOutput
+                UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: key), forKey: key)
+                params[ControllerConstants.key] = key as AnyObject
+                params[ControllerConstants.value] = UserDefaults.standard.bool(forKey: key) as AnyObject
+            } else if senderTag == 4 {
+                key = ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn
+                UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: key), forKey: key)
+                params[ControllerConstants.key] = key as AnyObject
+                params[ControllerConstants.value] = UserDefaults.standard.bool(forKey: key) as AnyObject
+            }
+        } else {
+            key = ControllerConstants.UserDefaultsKeys.theme
+            params[ControllerConstants.key] = key as AnyObject
+            params[ControllerConstants.value] = UserDefaults.standard.string(forKey: key) as AnyObject
+        }
 
         if let userData = UserDefaults.standard.dictionary(forKey: ControllerConstants.UserDefaultsKeys.user) as [String : AnyObject]? {
             let user = User(dictionary: userData)
             params[Client.UserKeys.AccessToken] = user.accessToken as AnyObject
-
-            var key: String = ""
-
-            if let senderTag = sender?.tag {
-                if senderTag == 0 {
-                    key = ControllerConstants.UserDefaultsKeys.enterToSend
-                    UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: key), forKey: key)
-                    params[ControllerConstants.key] = key as AnyObject
-                    params[ControllerConstants.value] = UserDefaults.standard.bool(forKey: key) as AnyObject
-                } else if senderTag == 1 {
-                    key = ControllerConstants.UserDefaultsKeys.micInput
-                    UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: key), forKey: key)
-                    params[ControllerConstants.key] = key as AnyObject
-                    params[ControllerConstants.value] = UserDefaults.standard.bool(forKey: key) as AnyObject
-                } else if senderTag == 2 {
-                    key = ControllerConstants.UserDefaultsKeys.hotwordEnabled
-                    UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: key), forKey: key)
-                    params[ControllerConstants.key] = key as AnyObject
-                    params[ControllerConstants.value] = UserDefaults.standard.bool(forKey: key) as AnyObject
-                } else if senderTag == 3 {
-                    key = ControllerConstants.UserDefaultsKeys.speechOutput
-                    UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: key), forKey: key)
-                    params[ControllerConstants.key] = key as AnyObject
-                    params[ControllerConstants.value] = UserDefaults.standard.bool(forKey: key) as AnyObject
-                } else if senderTag == 4 {
-                    key = ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn
-                    UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: key), forKey: key)
-                    params[ControllerConstants.key] = key as AnyObject
-                    params[ControllerConstants.value] = UserDefaults.standard.bool(forKey: key) as AnyObject
-                }
-            } else {
-                key = ControllerConstants.UserDefaultsKeys.theme
-                params[ControllerConstants.key] = key as AnyObject
-                params[ControllerConstants.value] = UserDefaults.standard.string(forKey: key) as AnyObject
-            }
 
             Client.sharedInstance.changeUserSettings(params) { (_, message) in
                 DispatchQueue.main.async {
