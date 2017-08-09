@@ -27,7 +27,7 @@ extension TrainingViewController {
     }
 
     func addCancelNavItem() {
-        navigationItem.title = ControllerConstants.Settings.trainHotword
+        navigationItem.title = ControllerConstants.trainHotword
         navigationItem.titleLabel.textColor = .white
 
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelTapped(_:)))

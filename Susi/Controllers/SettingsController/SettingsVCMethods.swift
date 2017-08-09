@@ -13,13 +13,9 @@ import Toast_Swift
 
 extension SettingsViewController {
 
-    func setupView() {
-        view.backgroundColor = .white
-    }
-
     // Setup Navigation Bar
     func setupTitle() {
-        navigationItem.title = ControllerConstants.Settings.settings
+        navigationItem.title = ControllerConstants.settings
         navigationItem.titleLabel.textAlignment = .left
         navigationItem.titleLabel.textColor = .white
         navigationItem.leftViews = [backButton]
@@ -43,15 +39,6 @@ extension SettingsViewController {
             navBar.backgroundColor = UIColor.defaultColor()
             UIApplication.shared.statusBarView?.backgroundColor = UIColor.defaultColor()
         }
-    }
-
-    // Setup Collection View
-    func setupCollectionView() {
-        collectionView?.backgroundColor = .white
-        collectionView?.delegate = self
-
-        collectionView?.register(SettingsHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
-        collectionView?.register(SettingsCell.self, forCellWithReuseIdentifier: ControllerConstants.cellId)
     }
 
     func logoutUser() {
