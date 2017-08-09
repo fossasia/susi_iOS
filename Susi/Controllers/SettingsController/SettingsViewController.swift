@@ -34,11 +34,33 @@ class SettingsViewController: UITableViewController {
         super.viewDidAppear(animated)
         setupTheme()
     }
-    
+
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let header = view as? UITableViewHeaderFooterView {
             header.textLabel?.textColor = UIColor.hexStringToUIColor(hex: "#009688")
         }
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let section = indexPath.section
+        let row = indexPath.item
+
+        if section == 3 {
+            if row == 0 {
+                themeToggleAlert()
+            }
+        } else if section == 4 {
+            if row == 0 {
+                presentTrainingController()
+            } else if row == 1 {
+                deleteVoiceModel()
+            }
+        } else if section == 5 {
+            if row == 2 {
+                logoutUser()
+            }
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
 }

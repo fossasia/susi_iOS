@@ -167,6 +167,7 @@ extension ChatViewController: SFSpeechRecognizerDelegate, AVSpeechSynthesizerDel
 
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         print("utterance complete")
+        stopSTT()
     }
 
     func speakAction(_ string: String, language: String?) {
@@ -183,8 +184,9 @@ extension ChatViewController: SFSpeechRecognizerDelegate, AVSpeechSynthesizerDel
             speechUtterance.rate = 0.4
 
             speechSynthesizer.speak(speechUtterance)
+        } else {
+            stopSTT()
         }
-        stopSTT()
     }
 
     func checkAndRunHotwordRecognition() {

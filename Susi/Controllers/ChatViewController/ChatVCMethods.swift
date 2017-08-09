@@ -298,9 +298,6 @@ extension ChatViewController {
         let vc = storyboard.instantiateViewController(withIdentifier: "SettingsController")
         let nvc = AppNavigationController(rootViewController: vc)
         present(nvc, animated: true, completion: nil)
-//        let settingsController = SettingsViewController(collectionViewLayout: UICollectionViewFlowLayout())
-//        let nvc = AppNavigationController(rootViewController: settingsController)
-//        present(nvc, animated: true, completion: nil)
     }
 
     // Check if user defaults have an image data saved else return nil/Any
