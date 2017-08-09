@@ -40,12 +40,15 @@ class ControllerConstants {
     static let standardServer = "Standard Server"
     static let customServer = "Custom Server"
     static let customIPAddress = "Address http://"
-    static let key = "key"
-    static let value = "value"
+    static let key = "key1"
+    static let value = "value1"
+    static let count = "count"
     static let accepted = "Accepted"
     static let thumbsUp = "thumbs_up"
     static let thumbsDown = "thumbs_down"
     static let hotwordFileName = "susi.pmdl"
+    static let settings = "Settings"
+    static let trainHotword = "Let's train SUSI"
 
     struct Login {
         static let susiImage = "susi"
@@ -67,33 +70,6 @@ class ControllerConstants {
         static let confirmPassword = "Confirm Password"
         static let passwordDoNotMatch = "Passwords do not match"
         static let signUp = "SIGN UP"
-    }
-
-    struct Settings {
-        static let settings = "Settings"
-        static let headerId = "headerId"
-        static let sectionHeaders = ["Chat Settings", "Mic Settings", "Speech Settings", "SUSI Voice Model", "Theme Settings"]
-        static let enterToSend = "Enter To Send"
-        static let sendMessageByReturn = "Send message by hitting return"
-        static let micInput = "Mic Input"
-        static let speechOutput = "Speech Output"
-        static let enableSpeechOutputOnlyInput = "Enable speech output only for input"
-        static let speechOutputAlwaysOn = "Speech Output Always On"
-        static let enableSpeechOutputOutputRegardlessOfInput = "Enable speech output regardless of input"
-        static let language = "Language"
-        static let selectLanguage = "Select Language"
-        static let rateSusi = "Rate Susi"
-        static let rateOnAppStore = "Rate our app on App Store"
-        static let settingsList = ["Settings", "Wallpaper", "Share", "Logout"]
-        static let enableHotword = "Enable Hotword Recognition"
-        static let susiHotword = "Enable Susi hotword recognition"
-        static let logout = "Logout"
-        static let changeWallpaper = "Change Wallpaper"
-        static let changeTheme = "Change Theme"
-        static let changeThemeDesc = "Toggle between dark and light themes"
-        static let trainHotword = "Let's train SUSI"
-        static let retrainVoiceModel = "Retrain Voice Model"
-        static let deleteVoiceModel = "Delete Voice Model"
     }
 
     struct UserDefaultsKeys {

@@ -13,13 +13,9 @@ import Toast_Swift
 
 extension SettingsViewController {
 
-    func setupView() {
-        view.backgroundColor = .white
-    }
-
     // Setup Navigation Bar
     func setupTitle() {
-        navigationItem.title = ControllerConstants.Settings.settings
+        navigationItem.title = ControllerConstants.settings
         navigationItem.titleLabel.textAlignment = .left
         navigationItem.titleLabel.textColor = .white
         navigationItem.leftViews = [backButton]
@@ -43,15 +39,6 @@ extension SettingsViewController {
             navBar.backgroundColor = UIColor.defaultColor()
             UIApplication.shared.statusBarView?.backgroundColor = UIColor.defaultColor()
         }
-    }
-
-    // Setup Collection View
-    func setupCollectionView() {
-        collectionView?.backgroundColor = .white
-        collectionView?.delegate = self
-
-        collectionView?.register(SettingsHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
-        collectionView?.register(SettingsCell.self, forCellWithReuseIdentifier: ControllerConstants.cellId)
     }
 
     func logoutUser() {
@@ -95,7 +82,7 @@ extension SettingsViewController {
         self.present(imageDialog, animated: true, completion: nil)
     }
 
-    func settingChanged(sender: AnyObject?) {
+    @IBAction func settingChanged(sender: AnyObject?) {
 
         var params = [String: AnyObject]()
         var key: String = ""
@@ -103,30 +90,18 @@ extension SettingsViewController {
         if let senderTag = sender?.tag {
             if senderTag == 0 {
                 key = ControllerConstants.UserDefaultsKeys.enterToSend
-                UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: key), forKey: key)
-                params[ControllerConstants.key] = key as AnyObject
-                params[ControllerConstants.value] = UserDefaults.standard.bool(forKey: key) as AnyObject
             } else if senderTag == 1 {
                 key = ControllerConstants.UserDefaultsKeys.micInput
-                UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: key), forKey: key)
-                params[ControllerConstants.key] = key as AnyObject
-                params[ControllerConstants.value] = UserDefaults.standard.bool(forKey: key) as AnyObject
             } else if senderTag == 2 {
                 key = ControllerConstants.UserDefaultsKeys.hotwordEnabled
-                UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: key), forKey: key)
-                params[ControllerConstants.key] = key as AnyObject
-                params[ControllerConstants.value] = UserDefaults.standard.bool(forKey: key) as AnyObject
             } else if senderTag == 3 {
                 key = ControllerConstants.UserDefaultsKeys.speechOutput
-                UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: key), forKey: key)
-                params[ControllerConstants.key] = key as AnyObject
-                params[ControllerConstants.value] = UserDefaults.standard.bool(forKey: key) as AnyObject
             } else if senderTag == 4 {
                 key = ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn
-                UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: key), forKey: key)
-                params[ControllerConstants.key] = key as AnyObject
-                params[ControllerConstants.value] = UserDefaults.standard.bool(forKey: key) as AnyObject
             }
+            UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: key), forKey: key)
+            params[ControllerConstants.key] = key as AnyObject
+            params[ControllerConstants.value] = UserDefaults.standard.bool(forKey: key) as AnyObject
         } else {
             key = ControllerConstants.UserDefaultsKeys.theme
             params[ControllerConstants.key] = key as AnyObject
@@ -136,6 +111,7 @@ extension SettingsViewController {
         if let userData = UserDefaults.standard.dictionary(forKey: ControllerConstants.UserDefaultsKeys.user) as [String : AnyObject]? {
             let user = User(dictionary: userData)
             params[Client.UserKeys.AccessToken] = user.accessToken as AnyObject
+            params[ControllerConstants.count] = 1 as AnyObject
 
             Client.sharedInstance.changeUserSettings(params) { (_, message) in
                 DispatchQueue.main.async {

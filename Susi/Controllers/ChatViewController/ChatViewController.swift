@@ -22,10 +22,6 @@ class ChatViewController: UICollectionViewController {
     var messages = List<Message>()
     let realm = try! Realm()
 
-    var menuOptionNameArray: [String] {
-        return ControllerConstants.Settings.settingsList
-    }
-
     // Settings Button Configure
     lazy var settingsButton: IconButton = {
         let image = UIImage(named: "Settings")?.withRenderingMode(.alwaysTemplate)

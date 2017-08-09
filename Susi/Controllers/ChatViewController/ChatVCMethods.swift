@@ -294,8 +294,9 @@ extension ChatViewController {
     }
 
     func presentSettingsController() {
-        let settingsController = SettingsViewController(collectionViewLayout: UICollectionViewFlowLayout())
-        let nvc = AppNavigationController(rootViewController: settingsController)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "SettingsController")
+        let nvc = AppNavigationController(rootViewController: vc)
         present(nvc, animated: true, completion: nil)
     }
 

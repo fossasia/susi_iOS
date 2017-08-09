@@ -156,7 +156,7 @@ extension Client {
                     return
                 }
 
-                guard let settings = response[ControllerConstants.Settings.settings.lowercased()] as? [String:String] else {
+                guard let settings = response[ControllerConstants.settings.lowercased()] as? [String:String] else {
                     completion(false, ResponseMessages.ServerError)
                     return
                 }
