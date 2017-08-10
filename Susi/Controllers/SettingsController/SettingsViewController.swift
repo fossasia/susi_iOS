@@ -43,7 +43,7 @@ class SettingsViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let section = indexPath.section
-        let row = indexPath.item
+        let row = indexPath.row
 
         if section == 3 {
             if row == 0 {
@@ -56,11 +56,27 @@ class SettingsViewController: UITableViewController {
                 deleteVoiceModel()
             }
         } else if section == 5 {
-            if row == 2 {
+            if row == 3 {
                 logoutUser()
             }
         }
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let user = UserDefaults.standard.dictionary(forKey: ControllerConstants.UserDefaultsKeys.user)
+        if indexPath.section == 5 && indexPath.row == 2 && user == nil {
+            cell.isHidden = true
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let user = UserDefaults.standard.dictionary(forKey: ControllerConstants.UserDefaultsKeys.user)
+        if indexPath.section == 5 && indexPath.row == 2 && user == nil {
+            return 0
+        } else {
+            return super.tableView(tableView, heightForRowAt: indexPath)
+        }
     }
 
 }
