@@ -209,14 +209,14 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
                 Client.FeedbackKeys.rating: feedback as AnyObject
             ]
 
-            Client.sharedInstance.sendFeedback(params, { (success, error) in
+            Client.sharedInstance.sendFeedback(params) { (success, error) in
                 DispatchQueue.global().async {
                     if let error = error {
                         print(error)
                     }
                     print("Skill rated: \(success)")
                 }
-            })
+            }
         }
     }
 

@@ -80,35 +80,37 @@ class WebsearchCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! WebsearchCell
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? WebsearchCell {
+            cell.backgroundColor = .white
 
-        cell.backgroundColor = .white
-
-        if message?.actionType == ActionType.rss.rawValue {
-            let feed = message?.rssData?.rssFeed[indexPath.item]
-            cell.titleLabel.text = feed?.title
-            cell.descriptionLabel.text = feed?.desc
-            cell.feed = feed
-            cell.setupCell()
-            if let webData = feed?.webData {
-                if let imageString = webData.image {
-                    let url = URL(string: imageString)
-                    cell.imageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder"), options: nil, progressBlock: nil, completionHandler: nil)
+            if message?.actionType == ActionType.rss.rawValue {
+                let feed = message?.rssData?.rssFeed[indexPath.item]
+                cell.titleLabel.text = feed?.title
+                cell.descriptionLabel.text = feed?.desc
+                cell.feed = feed
+                cell.setupCell()
+                if let webData = feed?.webData {
+                    if let imageString = webData.image {
+                        let url = URL(string: imageString)
+                        cell.imageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder"), options: nil, progressBlock: nil, completionHandler: nil)
+                    }
+                }
+            } else if message?.actionType == ActionType.websearch.rawValue {
+                let webData = message?.websearchData[indexPath.item]
+                cell.titleLabel.text = webData?.title
+                cell.descriptionLabel.text = webData?.desc.html2String
+                cell.setupCell()
+                if let imageString = webData?.image {
+                    cell.imageString = imageString
+                    if let url = URL(string: imageString) {
+                        cell.imageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder"), options: nil, progressBlock: nil, completionHandler: nil)
+                    }
                 }
             }
-        } else if message?.actionType == ActionType.websearch.rawValue {
-            let webData = message?.websearchData[indexPath.item]
-            cell.titleLabel.text = webData?.title
-            cell.descriptionLabel.text = webData?.desc.html2String
-            cell.setupCell()
-            if let imageString = webData?.image {
-                cell.imageString = imageString
-                if let url = URL(string: imageString) {
-                    cell.imageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder"), options: nil, progressBlock: nil, completionHandler: nil)
-                }
-            }
+            return cell
+        } else {
+            return UICollectionViewCell()
         }
-        return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
