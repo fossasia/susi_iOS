@@ -56,7 +56,9 @@ class SettingsViewController: UITableViewController {
                 deleteVoiceModel()
             }
         } else if section == 5 {
-            if row == 3 {
+            if row == 2 {
+                presentResetPasswordController()
+            } else if row == 3 {
                 logoutUser()
             }
         }

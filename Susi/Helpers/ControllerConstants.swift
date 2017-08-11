@@ -49,6 +49,7 @@ class ControllerConstants {
     static let hotwordFileName = "susi.pmdl"
     static let settings = "Settings"
     static let trainHotword = "Let's train SUSI"
+    static let passwordDoNotMatch = "Passwords do not match."
 
     struct Login {
         static let susiImage = "susi"

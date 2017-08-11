@@ -128,6 +128,13 @@ extension SettingsViewController {
         present(nvc, animated: true, completion: nil)
     }
 
+    func presentResetPasswordController() {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "ResetPasswordController")
+        let nvc = AppNavigationController(rootViewController: vc)
+        present(nvc, animated: true, completion: nil)
+    }
+
     func deleteVoiceModel() {
         do {
             if let file1 = checkIfFileExistsAndReturnPath(fileIdentifier: 0) {
