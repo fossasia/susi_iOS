@@ -28,10 +28,6 @@ class SettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTitle()
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         setupTheme()
     }
 
@@ -47,15 +43,11 @@ class SettingsViewController: UITableViewController {
 
         if section == 3 {
             if row == 0 {
-                themeToggleAlert()
-            }
-        } else if section == 4 {
-            if row == 0 {
                 presentTrainingController()
             } else if row == 1 {
                 deleteVoiceModel()
             }
-        } else if section == 5 {
+        } else if section == 4 {
             if row == 2 {
                 presentResetPasswordController()
             } else if row == 3 {

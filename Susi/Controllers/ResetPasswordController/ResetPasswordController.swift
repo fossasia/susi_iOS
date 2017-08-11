@@ -19,9 +19,9 @@ class ResetPasswordViewController: UITableViewController {
         return button
     }()
 
-    @IBOutlet weak var currentPassword: UITextField!
-    @IBOutlet weak var newPassword: UITextField!
-    @IBOutlet weak var confirmPassword: UITextField!
+    @IBOutlet weak var currentPassword: CustomTextField!
+    @IBOutlet weak var newPassword: CustomTextField!
+    @IBOutlet weak var confirmPassword: CustomTextField!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
 
     override func viewDidLoad() {

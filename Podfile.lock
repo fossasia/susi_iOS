@@ -15,7 +15,6 @@ PODS:
   - NVActivityIndicatorView (3.7.0):
     - NVActivityIndicatorView/Presenter (= 3.7.0)
   - NVActivityIndicatorView/Presenter (3.7.0)
-  - Presentr (1.2.3)
   - ReadabilityKit (0.6.1):
     - Ji (~> 2.0.1)
   - Realm (2.9.1):
@@ -38,7 +37,6 @@ DEPENDENCIES:
   - M13Checkbox (from `https://github.com/Marxon13/M13Checkbox.git`)
   - Material
   - NVActivityIndicatorView
-  - Presentr
   - ReadabilityKit
   - RealmSwift
   - RSKGrowingTextView
@@ -65,7 +63,6 @@ SPEC CHECKSUMS:
   M13Checkbox: f7c514add90ed6457a05a98621bb9936f231c9b4
   Material: cc27757e6c91999ac41b2089769106a9d83364c0
   NVActivityIndicatorView: d3738df7e2e476aca0ba6bf32a8c9fbcfc33d64b
-  Presentr: a21c7bbb3532c8ff60320e235c0a4869e72f8885
   ReadabilityKit: 49c26a2da9708ae3b355854d5bee6a7edee2dfee
   Realm: f91fb43bd474c4f731a116ebf7392c75dd015920
   RealmSwift: 207f12a4a36b696c5183c60a1c06d70234a23e56
@@ -75,6 +72,6 @@ SPEC CHECKSUMS:
   SwiftValidators: 4ccbec749f61a36f7a922781bb09452e80cde396
   Toast-Swift: 5b2f8f720f7e78e48511f693df1f9c9a6e38a25a
 
-PODFILE CHECKSUM: ea473c92a4f2bd55468a75d00fecd0a351506fc6
+PODFILE CHECKSUM: 891a4658c64c3d50762f5805b756c50f6ab68437
 
 COCOAPODS: 1.2.1

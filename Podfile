@@ -23,7 +23,6 @@ target 'Susi' do
   pod 'NVActivityIndicatorView'
   pod 'Fakery'
   pod 'M13Checkbox', :git => 'https://github.com/Marxon13/M13Checkbox.git'
-  pod 'Presentr'
   shared_pods
 end
 

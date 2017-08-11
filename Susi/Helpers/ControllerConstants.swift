@@ -50,6 +50,7 @@ class ControllerConstants {
     static let settings = "Settings"
     static let trainHotword = "Let's train SUSI"
     static let passwordDoNotMatch = "Passwords do not match."
+    static let resetPassword = "Reset Password"
 
     struct Login {
         static let susiImage = "susi"
@@ -86,7 +87,6 @@ class ControllerConstants {
         static let hotwordEnabled = "hotwordRecognition"
         static let ttsLanguage = "ttsLanguage"
         static let prefLanguage = "prefLanguage"
-        static let theme = "theme"
     }
 
     struct TestKeys {

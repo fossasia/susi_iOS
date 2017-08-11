@@ -30,14 +30,8 @@ class ActivityIndicatorCell: ChatMessageCell {
     }
 
     func setupTheme() {
-        let activeTheme = UserDefaults.standard.string(forKey: ControllerConstants.UserDefaultsKeys.theme)
-        if activeTheme == theme.light.rawValue {
-            textBubbleView.backgroundColor = .white
-            activityIndicator.color = UIColor.hexStringToUIColor(hex: "#757575")
-        } else if activeTheme == theme.dark.rawValue {
-            textBubbleView.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
-            activityIndicator.color = .white
-        }
+        textBubbleView.backgroundColor = .white
+        activityIndicator.color = UIColor.hexStringToUIColor(hex: "#757575")
     }
 
 }

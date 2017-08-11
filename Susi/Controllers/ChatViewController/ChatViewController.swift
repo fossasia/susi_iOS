@@ -68,18 +68,19 @@ class ChatViewController: UICollectionViewController {
         setupView()
         setupCollectionView()
         setupInputComponents()
+        setupTheme()
 
         // Dismiss keyboard when touched anywhere in CV
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.resignResponders)))
 
         // Configure Location Manager
         configureLocationManager()
+        loadMessages()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
-        setupTheme()
 
         // Hotword recognition stuff
         checkAndAssignIfModelExists()
@@ -95,23 +96,27 @@ class ChatViewController: UICollectionViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         unsubscriveToKeyboardNotifications()
+        stopRecording()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        loadMessages()
         setupWallpaper()
-    }
-
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        stopRecording()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         print("memory issue")
     }
+
+    lazy var scrollButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "scroll_arrow"), for: .normal)
+        button.backgroundColor = .white
+        button.addTarget(self, action: #selector(scrollToLast), for: .touchUpInside)
+        button.cornerRadius = 20
+        return button
+    }()
 
     // Setup Input Text View
     lazy var inputTextView: RSKGrowingTextView = {

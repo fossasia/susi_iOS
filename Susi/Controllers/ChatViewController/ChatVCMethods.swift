@@ -66,6 +66,7 @@ extension ChatViewController {
     // Setup View
     func setupView() {
         showSettingsButton()
+        addScrollButton()
     }
 
     // Shows Youtube Player
@@ -271,20 +272,11 @@ extension ChatViewController {
     func setupTheme() {
         UIApplication.shared.statusBarStyle = .lightContent
         settingsButton.tintColor = .white
-        let activeTheme = UserDefaults.standard.string(forKey: ControllerConstants.UserDefaultsKeys.theme)
-        if activeTheme == theme.light.rawValue {
-            sendButton.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
-            navigationItem.titleLabel.textColor = .black
-            UIApplication.shared.statusBarView?.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
-            settingsButton.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
-            view.backgroundColor = UIColor.hexStringToUIColor(hex: "#EEEEEE")
-        } else if activeTheme == theme.dark.rawValue {
-            navigationItem.titleLabel.textColor = .white
-            sendButton.backgroundColor = UIColor.defaultColor()
-            UIApplication.shared.statusBarView?.backgroundColor = UIColor.defaultColor()
-            settingsButton.backgroundColor = UIColor.defaultColor()
-            view.backgroundColor = UIColor.hexStringToUIColor(hex: "#ECE5DD")
-        }
+        sendButton.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
+        navigationItem.titleLabel.textColor = .black
+        UIApplication.shared.statusBarView?.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
+        settingsButton.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
+        view.backgroundColor = UIColor.hexStringToUIColor(hex: "#EEEEEE")
     }
 
     func showSettingsButton() {
@@ -333,6 +325,13 @@ extension ChatViewController {
             }
         }
         MODEL = Bundle.main.path(forResource: "susi", ofType: "pmdl")!
+    }
+
+    func addScrollButton() {
+        view.addSubview(scrollButton)
+        view.addConstraintsWithFormat(format: "H:[v0(44)]-8-|", views: scrollButton)
+        view.addConstraintsWithFormat(format: "V:[v0(44)]-70-|", views: scrollButton)
+        scrollButton.isHidden = true
     }
 
 }
