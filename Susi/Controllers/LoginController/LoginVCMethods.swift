@@ -93,16 +93,19 @@ extension LoginViewController {
             }
 
             indicatorView.startAnimating()
-            Client.sharedInstance.loginUser(params as [String : AnyObject]) { (user, success, message) in
+            Client.sharedInstance.loginUser(params as [String : AnyObject]) { (user, results, success, message) in
                 DispatchQueue.main.async {
                     self.toggleEditing()
                     if success {
-                        if let currentUser = user {
-                            currentUser.emailID = self.emailTextField.text ?? ""
+                        if var userData = results {
+                            userData[Client.UserKeys.EmailOfAccount] = (message.components(separatedBy: " ").last ?? "") as AnyObject
+                            UserDefaults.standard.set(userData, forKey: ControllerConstants.UserDefaultsKeys.user)
+                            let currentUser = User(dictionary: userData)
+                            print(currentUser.emailID)
                             self.saveUserGlobally(user: currentUser)
+                            self.completeLogin()
+                            self.fetchUserSettings(currentUser.accessToken)
                         }
-                        self.completeLogin()
-                        self.fetchUserSettings(user!.accessToken)
                     }
                     self.view.makeToast(message)
                     self.indicatorView.stopAnimating()
@@ -212,9 +215,10 @@ extension LoginViewController {
 
     // Check existing session
     func checkSession() {
-        if let user = UserDefaults.standard.value(forKey: ControllerConstants.UserDefaultsKeys.user) {
-            if let user = user as? [String : AnyObject] {
-                let user = User(dictionary: user)
+        if let userDefaultValue = UserDefaults.standard.value(forKey: ControllerConstants.UserDefaultsKeys.user) {
+            if let userData = userDefaultValue as? [String : AnyObject] {
+                print(userData)
+                let user = User(dictionary: userData)
                 saveUserGlobally(user: user)
 
                 DispatchQueue.main.async {

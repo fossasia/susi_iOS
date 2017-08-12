@@ -14,20 +14,19 @@ extension Client {
 
     // MARK: - Auth Methods
 
-    func loginUser(_ params: [String : AnyObject], _ completion: @escaping(_ user: User?, _ success: Bool, _ error: String) -> Void) {
+    func loginUser(_ params: [String : AnyObject], _ completion: @escaping(_ user: User?, _ results: [String:AnyObject]?, _ success: Bool, _ error: String) -> Void) {
 
         let url = getApiUrl(UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.ipAddress) as! String, Methods.Login)
 
         _ = makeRequest(url, .post, [:], parameters: params, completion: { (results, message) in
 
             if let _ = message {
-                completion(nil, false, ResponseMessages.InvalidParams)
+                completion(nil, nil, false, ResponseMessages.InvalidParams)
             } else if let results = results as? [String : AnyObject] {
 
                 let user = User(dictionary: results)
 
-                UserDefaults.standard.set(results, forKey: ControllerConstants.UserDefaultsKeys.user)
-                completion(user, true, user.message)
+                completion(user, results, true, user.message)
             }
             return
         })
@@ -191,7 +190,7 @@ extension Client {
                     return
                 }
 
-                if let accepted = response[ControllerConstants.accepted] as? Bool,
+                if let accepted = response[ControllerConstants.accepted.lowercased()] as? Bool,
                     let message = response[Client.UserKeys.Message] as? String {
                     if accepted {
                             completion(true, message)
