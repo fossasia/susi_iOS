@@ -51,6 +51,7 @@ class ControllerConstants {
     static let trainHotword = "Let's train SUSI"
     static let passwordDoNotMatch = "Passwords do not match."
     static let resetPassword = "Reset Password"
+    static let passwordLengthShort = "Passwords length should be atleast 6 characters"
 
     struct Login {
         static let susiImage = "susi"

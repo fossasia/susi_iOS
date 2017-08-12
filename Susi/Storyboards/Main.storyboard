@@ -970,10 +970,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kt2-dB-WCM" customClass="CustomTextField" customModule="Susi" customModuleProvider="target">
-                                                    <rect key="frame" x="159" y="7.0000000000000355" width="247" height="30"/>
+                                                    <rect key="frame" x="159" y="7" width="247" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 </textField>
                                             </subviews>
@@ -1060,10 +1060,10 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="500"/>
                     <connections>
-                        <outlet property="confirmPassword" destination="E61-Wk-XAh" id="8b3-gB-22M"/>
-                        <outlet property="currentPassword" destination="kt2-dB-WCM" id="3Fs-Og-k3c"/>
+                        <outlet property="confirmPasswordField" destination="E61-Wk-XAh" id="zt1-e5-wlK"/>
+                        <outlet property="currentPasswordField" destination="kt2-dB-WCM" id="rCZ-RY-dsu"/>
                         <outlet property="indicator" destination="phy-Xh-don" id="JO5-Sb-tTi"/>
-                        <outlet property="newPassword" destination="cXR-2h-YYh" id="oWW-Xf-ZKf"/>
+                        <outlet property="newPasswordField" destination="cXR-2h-YYh" id="Uhh-tS-qu4"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QKX-kj-wfz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1077,7 +1077,7 @@
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="736"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="jgu-nc-Cv5">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="jgu-nc-Cv5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.25447925925254822" green="0.51828217506408691" blue="0.95430618524551392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

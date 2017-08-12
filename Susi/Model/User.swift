@@ -14,6 +14,7 @@ class User: NSObject {
     let accessToken: String
     let message: String
     let expiryTime: Date
+    var emailID: String = ""
 
     init(dictionary: [String:AnyObject]) {
         accessToken = dictionary[Client.UserKeys.AccessToken] as? String ?? ""

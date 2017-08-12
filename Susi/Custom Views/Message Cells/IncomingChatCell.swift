@@ -76,7 +76,7 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
             let longitude = mapData.longitude
 
             let center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-            let zoomLevel = 360 / pow(2, Double(mapData.zoom)) * Double(frame.width) / 256
+            let zoomLevel = 360 / pow(2, Double(mapData.zoom - 1)) * Double(frame.width) / 256
             let span = MKCoordinateSpanMake(0, zoomLevel)
             let region = MKCoordinateRegion(center: center, span: span)
 

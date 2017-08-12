@@ -26,4 +26,32 @@ extension ResetPasswordViewController {
         navBar.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
     }
 
+    func validatePassword() -> [Bool:String] {
+        if let newPassword = newPasswordField.text,
+            let confirmPassword = confirmPasswordField.text {
+            if newPassword.characters.count > 5 {
+                if newPassword == confirmPassword {
+                    return [true: ""]
+                } else {
+                    return [false: ControllerConstants.passwordDoNotMatch]
+                }
+            } else {
+                return [false: ControllerConstants.passwordLengthShort]
+            }
+        }
+        return [false: Client.ResponseMessages.ServerError]
+    }
+
+    func setUIActive(active: Bool) {
+        isActive = active
+        if active {
+            indicator.startAnimating()
+        } else {
+            indicator.stopAnimating()
+        }
+        currentPasswordField.isEnabled = !active
+        newPasswordField.isEnabled = !active
+        confirmPasswordField.isEnabled = !active
+    }
+
 }

@@ -85,7 +85,7 @@ extension ForgotPasswordViewController {
             self.toggleEditing()
             self.activityIndicator.startAnimating()
 
-            Client.sharedInstance.resetPassword(params as [String : AnyObject]) { (_, message) in
+            Client.sharedInstance.recoverPassword(params as [String : AnyObject]) { (_, message) in
                 DispatchQueue.main.async {
                     self.toggleEditing()
                     self.activityIndicator.stopAnimating()

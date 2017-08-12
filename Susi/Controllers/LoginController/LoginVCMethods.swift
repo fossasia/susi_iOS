@@ -97,6 +97,10 @@ extension LoginViewController {
                 DispatchQueue.main.async {
                     self.toggleEditing()
                     if success {
+                        if let currentUser = user {
+                            currentUser.emailID = self.emailTextField.text ?? ""
+                            self.saveUserGlobally(user: currentUser)
+                        }
                         self.completeLogin()
                         self.fetchUserSettings(user!.accessToken)
                     }
@@ -211,6 +215,7 @@ extension LoginViewController {
         if let user = UserDefaults.standard.value(forKey: ControllerConstants.UserDefaultsKeys.user) {
             if let user = user as? [String : AnyObject] {
                 let user = User(dictionary: user)
+                saveUserGlobally(user: user)
 
                 DispatchQueue.main.async {
                     if user.expiryTime > Date() {
@@ -243,6 +248,12 @@ extension LoginViewController {
         susiLogo.tintColor = .white
         UIApplication.shared.statusBarStyle = .lightContent
         view.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
+    }
+
+    func saveUserGlobally(user: User) {
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            appDelegate.currentUser = user
+        }
     }
 
 }

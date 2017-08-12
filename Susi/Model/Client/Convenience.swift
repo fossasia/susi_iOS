@@ -57,9 +57,9 @@ extension Client {
 
     }
 
-    func resetPassword(_ params: [String : AnyObject], _ completion: @escaping(_ success: Bool, _ error: String) -> Void) {
+    func recoverPassword(_ params: [String : AnyObject], _ completion: @escaping(_ success: Bool, _ error: String) -> Void) {
 
-        let url = getApiUrl(UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.ipAddress) as! String, Methods.ResetPassword)
+        let url = getApiUrl(UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.ipAddress) as! String, Methods.RecoverPassword)
 
         _ = makeRequest(url, .get, [:], parameters: params, completion: { (results, message) in
 
@@ -170,6 +170,38 @@ extension Client {
                 }
                 completion(true, response[Client.UserKeys.Message] as? String ?? "error")
 
+            }
+            return
+        })
+
+    }
+
+    func resetPassword(_ params: [String : AnyObject], _ completion: @escaping(_ success: Bool, _ error: String) -> Void) {
+
+        let url = getApiUrl(UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.ipAddress) as! String, Methods.ChangePassword)
+
+        _ = makeRequest(url, .get, [:], parameters: params, completion: { (results, message) in
+
+            if let _ = message {
+                completion(false, ResponseMessages.ServerError)
+            } else if let results = results {
+
+                guard let response = results as? [String : AnyObject] else {
+                    completion(false, ResponseMessages.PasswordInvalid)
+                    return
+                }
+
+                if let accepted = response[ControllerConstants.accepted] as? Bool,
+                    let message = response[Client.UserKeys.Message] as? String {
+                    if accepted {
+                            completion(true, message)
+                    } else {
+                        completion(false, message)
+                    }
+                } else {
+                    completion(false, ResponseMessages.PasswordInvalid)
+                }
+                return
             }
             return
         })
