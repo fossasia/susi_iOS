@@ -26,19 +26,11 @@ extension SettingsViewController {
     }
 
     func setupTheme() {
-        guard let navBar = navigationController?.navigationBar as? NavigationBar else {
-            return
-        }
         navigationItem.titleLabel.textColor = .white
-
-        let activeTheme = UserDefaults.standard.string(forKey: ControllerConstants.UserDefaultsKeys.theme)
-        if activeTheme == theme.light.rawValue {
-            navBar.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
-            UIApplication.shared.statusBarView?.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
-        } else if activeTheme == theme.dark.rawValue {
-            navBar.backgroundColor = UIColor.defaultColor()
-            UIApplication.shared.statusBarView?.backgroundColor = UIColor.defaultColor()
+        if let navbar = navigationController?.navigationBar {
+            navbar.barTintColor = UIColor.hexStringToUIColor(hex: "#4184F3")
         }
+        UIApplication.shared.statusBarView?.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
     }
 
     func logoutUser() {
@@ -58,32 +50,7 @@ extension SettingsViewController {
         }
     }
 
-    func themeToggleAlert() {
-        let imageDialog = UIAlertController(title: ControllerConstants.toggleTheme, message: nil, preferredStyle: UIAlertControllerStyle.alert)
-
-        imageDialog.addAction(UIAlertAction(title: theme.dark.rawValue.capitalized, style: .default, handler: { (_: UIAlertAction!) in
-            imageDialog.dismiss(animated: true, completion: nil)
-            UserDefaults.standard.set(theme.dark.rawValue, forKey: ControllerConstants.UserDefaultsKeys.theme)
-            self.settingChanged(sender: self.imagePicker)
-            self.setupTheme()
-        }))
-
-        imageDialog.addAction(UIAlertAction(title: theme.light.rawValue.capitalized, style: .default, handler: { (_: UIAlertAction!) in
-            imageDialog.dismiss(animated: true, completion: nil)
-            UserDefaults.standard.set(theme.light.rawValue, forKey: ControllerConstants.UserDefaultsKeys.theme)
-            self.settingChanged(sender: self.imagePicker)
-            self.setupTheme()
-        }))
-
-        imageDialog.addAction(UIAlertAction(title: ControllerConstants.dialogCancelAction, style: .cancel, handler: { (_: UIAlertAction!) in
-            imageDialog.dismiss(animated: true, completion: nil)
-        }))
-
-        self.present(imageDialog, animated: true, completion: nil)
-    }
-
     @IBAction func settingChanged(sender: AnyObject?) {
-
         var params = [String: AnyObject]()
         var key: String = ""
 
@@ -102,20 +69,16 @@ extension SettingsViewController {
             UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: key), forKey: key)
             params[ControllerConstants.key] = key as AnyObject
             params[ControllerConstants.value] = UserDefaults.standard.bool(forKey: key) as AnyObject
-        } else {
-            key = ControllerConstants.UserDefaultsKeys.theme
-            params[ControllerConstants.key] = key as AnyObject
-            params[ControllerConstants.value] = UserDefaults.standard.string(forKey: key) as AnyObject
-        }
 
-        if let userData = UserDefaults.standard.dictionary(forKey: ControllerConstants.UserDefaultsKeys.user) as [String : AnyObject]? {
-            let user = User(dictionary: userData)
-            params[Client.UserKeys.AccessToken] = user.accessToken as AnyObject
-            params[ControllerConstants.count] = 1 as AnyObject
+            if let userData = UserDefaults.standard.dictionary(forKey: ControllerConstants.UserDefaultsKeys.user) as [String : AnyObject]? {
+                let user = User(dictionary: userData)
+                params[Client.UserKeys.AccessToken] = user.accessToken as AnyObject
+                params[ControllerConstants.count] = 1 as AnyObject
 
-            Client.sharedInstance.changeUserSettings(params) { (_, message) in
-                DispatchQueue.main.async {
-                    self.view.makeToast(message)
+                Client.sharedInstance.changeUserSettings(params) { (_, message) in
+                    DispatchQueue.main.async {
+                        self.view.makeToast(message)
+                    }
                 }
             }
         }
@@ -124,6 +87,13 @@ extension SettingsViewController {
     func presentTrainingController() {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "trainingViewController")
+        let nvc = AppNavigationController(rootViewController: vc)
+        present(nvc, animated: true, completion: nil)
+    }
+
+    func presentResetPasswordController() {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "ResetPasswordController")
         let nvc = AppNavigationController(rootViewController: vc)
         present(nvc, animated: true, completion: nil)
     }

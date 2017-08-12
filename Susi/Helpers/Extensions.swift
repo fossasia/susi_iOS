@@ -18,11 +18,11 @@ extension UIColor {
     static func hexStringToUIColor(hex: String, alpha: CGFloat = 1.0) -> UIColor {
         var cString: String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
 
-        if (cString.hasPrefix("#")) {
+        if cString.hasPrefix("#") {
             cString.remove(at: cString.startIndex)
         }
 
-        if ((cString.characters.count) != 6) {
+        if cString.characters.count != 6 {
             return UIColor.gray
         }
 

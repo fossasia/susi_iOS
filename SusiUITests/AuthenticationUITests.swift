@@ -35,7 +35,7 @@ class AuthenticationUITests: XCTestCase {
         let emailField = app.textFields[ControllerConstants.TestKeys.email]
         emailField.tap()
         emailField.typeText(ControllerConstants.TestKeys.TestAccount.emailId)
-        
+
         let secureTextField = app.secureTextFields[ControllerConstants.TestKeys.password]
         secureTextField.tap()
         secureTextField.typeText(ControllerConstants.TestKeys.TestAccount.password)

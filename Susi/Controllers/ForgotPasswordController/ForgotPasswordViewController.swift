@@ -24,10 +24,6 @@ class ForgotPasswordViewController: UIViewController {
         prepareEmailField()
         prepareAddressField()
         prepareResetButton()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         setupTheme()
     }
 

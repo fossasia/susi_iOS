@@ -39,14 +39,8 @@ class OutgoingChatCell: ChatMessageCell {
     }
 
     func setupTheme() {
-        let activeTheme = UserDefaults.standard.string(forKey: ControllerConstants.UserDefaultsKeys.theme)
-        if activeTheme == theme.light.rawValue {
-            textBubbleView.backgroundColor = UIColor.hexStringToUIColor(hex: "#E0E0E0")
-            messageTextView.textColor = .black
-        } else if activeTheme == theme.dark.rawValue {
-            textBubbleView.backgroundColor = UIColor.incomingMessageTintColor()
-            messageTextView.textColor = .black
-        }
+        textBubbleView.backgroundColor = UIColor.hexStringToUIColor(hex: "#E0E0E0")
+        messageTextView.textColor = .black
     }
 
 }

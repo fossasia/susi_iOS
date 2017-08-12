@@ -12,18 +12,10 @@ import Material
 extension TrainingViewController {
 
     func setupNavBar() {
-        guard let navBar = navigationController?.navigationBar as? NavigationBar else {
-            return
+        if let navbar = navigationController?.navigationBar {
+            navbar.barTintColor = UIColor.hexStringToUIColor(hex: "#4184F3")
         }
-
-        let activeTheme = UserDefaults.standard.string(forKey: ControllerConstants.UserDefaultsKeys.theme)
-        if activeTheme == theme.light.rawValue {
-            navBar.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
-            UIApplication.shared.statusBarView?.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
-        } else if activeTheme == theme.dark.rawValue {
-            navBar.backgroundColor = UIColor.defaultColor()
-            UIApplication.shared.statusBarView?.backgroundColor = UIColor.defaultColor()
-        }
+        UIApplication.shared.statusBarView?.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
     }
 
     func addCancelNavItem() {

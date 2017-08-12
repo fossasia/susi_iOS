@@ -23,6 +23,7 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
                     imageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder"), options: nil, progressBlock: nil, completionHandler: nil)
                 }
             }
+            setupTheme()
         }
     }
 
@@ -75,7 +76,7 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
             let longitude = mapData.longitude
 
             let center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-            let zoomLevel = 360 / pow(2, Double(mapData.zoom)) * Double(frame.width) / 256
+            let zoomLevel = 360 / pow(2, Double(mapData.zoom - 1)) * Double(frame.width) / 256
             let span = MKCoordinateSpanMake(0, zoomLevel)
             let region = MKCoordinateRegion(center: center, span: span)
 
@@ -119,11 +120,6 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
                                                    range: NSRange(location: 0, length: message.message.characters.count))
                 }
 
-                if UserDefaults.standard.string(forKey: ControllerConstants.UserDefaultsKeys.theme) == theme.dark.rawValue {
-                    let range = (message.message as NSString).range(of: message.message)
-                    attributedString.addAttributes([NSForegroundColorAttributeName: UIColor.white], range: range)
-                }
-
                 messageTextView.attributedText = attributedString
                 addBottomView()
             } else if message.actionType == ActionType.map.rawValue {
@@ -151,16 +147,9 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
 
     func setupTheme() {
         textBubbleView.borderWidth = 0.2
-        let activeTheme = UserDefaults.standard.string(forKey: ControllerConstants.UserDefaultsKeys.theme)
-        if activeTheme == theme.light.rawValue {
-            textBubbleView.backgroundColor = .white
-            messageTextView.textColor = .black
-            timeLabel.textColor = .black
-        } else if activeTheme == theme.dark.rawValue {
-            textBubbleView.backgroundColor = .white
-            messageTextView.textColor = .black
-            timeLabel.textColor = .black
-        }
+        textBubbleView.backgroundColor = .white
+        messageTextView.textColor = .black
+        timeLabel.textColor = .black
     }
 
     func addBottomView() {
@@ -209,14 +198,14 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
                 Client.FeedbackKeys.rating: feedback as AnyObject
             ]
 
-            Client.sharedInstance.sendFeedback(params, { (success, error) in
+            Client.sharedInstance.sendFeedback(params) { (success, error) in
                 DispatchQueue.global().async {
                     if let error = error {
                         print(error)
                     }
                     print("Skill rated: \(success)")
                 }
-            })
+            }
         }
     }
 

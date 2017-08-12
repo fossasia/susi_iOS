@@ -23,14 +23,10 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupTheme()
         addTapGesture()
         prepareFields()
         prepareSignUpButton()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setupTheme()
     }
 
 }

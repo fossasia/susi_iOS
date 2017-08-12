@@ -85,7 +85,7 @@ extension ForgotPasswordViewController {
             self.toggleEditing()
             self.activityIndicator.startAnimating()
 
-            Client.sharedInstance.resetPassword(params as [String : AnyObject]) { (_, message) in
+            Client.sharedInstance.recoverPassword(params as [String : AnyObject]) { (_, message) in
                 DispatchQueue.main.async {
                     self.toggleEditing()
                     self.activityIndicator.stopAnimating()
@@ -114,23 +114,12 @@ extension ForgotPasswordViewController {
 
     func setupTheme() {
         UIApplication.shared.statusBarStyle = .lightContent
-        let activeTheme = UserDefaults.standard.string(forKey: ControllerConstants.UserDefaultsKeys.theme)
-        if activeTheme == theme.light.rawValue {
-            view.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
-            personalServerButton.secondaryCheckmarkTintColor = UIColor.hexStringToUIColor(hex: "#4184F3")
-        } else if activeTheme == theme.dark.rawValue {
-            view.backgroundColor = UIColor.defaultColor()
-            personalServerButton.secondaryCheckmarkTintColor = UIColor.defaultColor()
-        }
+        view.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
+        personalServerButton.secondaryCheckmarkTintColor = UIColor.hexStringToUIColor(hex: "#4184F3")
 
         if let navbar = navigationController?.navigationBar {
-            if activeTheme == theme.light.rawValue {
-                navbar.barTintColor = UIColor.hexStringToUIColor(hex: "#4184F3")
-            } else if activeTheme == theme.dark.rawValue {
-                navbar.barTintColor = UIColor.defaultColor()
-            }
+            navbar.barTintColor = UIColor.hexStringToUIColor(hex: "#4184F3")
         }
-
     }
 
 }

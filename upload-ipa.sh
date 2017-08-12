@@ -1,3 +1,4 @@
+#!/bin/sh
 if [[ $CIRCLE_BRANCH != pull* ]]
 then
         git config --global user.name "chashmeetsingh"

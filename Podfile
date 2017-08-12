@@ -29,6 +29,5 @@ end
 target 'SusiUITests' do
   use_frameworks!
   
-  pod 'Fakery'
   shared_pods
 end

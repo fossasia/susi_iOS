@@ -11,7 +11,7 @@ import XCTest
 class ChatUITests: XCTestCase {
 
     private let app = XCUIApplication()
-    
+
     override func setUp() {
         super.setUp()
         

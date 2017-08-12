@@ -30,6 +30,7 @@ class LoginViewController: UIViewController {
 
         UIApplication.shared.statusBarStyle = .lightContent
 
+        setupTheme()
         addTapGesture()
         prepareEmailField()
         preparePasswordField()
@@ -39,11 +40,6 @@ class LoginViewController: UIViewController {
 
         checkSession()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setupTheme()
     }
 
 }

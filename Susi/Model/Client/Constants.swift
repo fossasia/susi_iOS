@@ -19,17 +19,19 @@ extension Client {
         static let Login = "/aaa/login.json"
         static let Register = "/aaa/signup.json"
         static let Chat = "/susi/chat.json"
-        static let ResetPassword = "/aaa/recoverpassword.json"
+        static let RecoverPassword = "/aaa/recoverpassword.json"
         static let Memory = "/susi/memory.json"
         static let UserSettings = "/aaa/changeUserSettings.json"
         static let ListUserSettings = "/aaa/listUserSettings.json"
         static let SendFeedback = "/cms/rateSkill.json"
+        static let ChangePassword = "/aaa/changepassword.json"
     }
 
     struct ResponseMessages {
         static let InvalidParams = "Email ID / Password incorrect"
         static let ServerError = "Problem connecting to server!"
         static let SignedOut = "Successfully logged out"
+        static let PasswordInvalid = "Password chosen is invalid."
     }
 
     struct UserKeys {
@@ -40,6 +42,8 @@ extension Client {
         static let Password = "password"
         static let ForgotEmail = "forgotemail"
         static let ValidSeconds = "valid_seconds"
+        static let EmailOfAccount = "changepassword"
+        static let NewPassword = "newpassword"
     }
 
     struct ChatKeys {
