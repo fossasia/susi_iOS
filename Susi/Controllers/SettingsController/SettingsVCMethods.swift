@@ -126,5 +126,15 @@ extension SettingsViewController {
         }
         return nil
     }
+    
+    func assignDefaults() {
+        enterToSend.isOn = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.enterToSend)
+        micInput.isOn = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.micInput)
+        hotwordDetection.isOn = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.hotwordEnabled)
+        speechOutput.isOn = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.speechOutput)
+        speechOutputAlwaysOn.isOn = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn)
+        speechRate.value = UserDefaults.standard.float(forKey: ControllerConstants.UserDefaultsKeys.speechRate)
+        speechPitch.value = UserDefaults.standard.float(forKey: ControllerConstants.UserDefaultsKeys.speechPitch)
+    }
 
 }

@@ -934,6 +934,15 @@
                     </tableView>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="1200"/>
+                    <connections>
+                        <outlet property="enterToSend" destination="UYb-A2-hlx" id="twB-9A-nKX"/>
+                        <outlet property="hotwordDetection" destination="wqx-Sl-n0R" id="BTn-sc-2Cp"/>
+                        <outlet property="micInput" destination="aPa-gn-EkW" id="ibL-oC-fyg"/>
+                        <outlet property="speechOutput" destination="OCZ-Am-iv8" id="fB0-WL-6GW"/>
+                        <outlet property="speechOutputAlwaysOn" destination="sMg-EU-O7x" id="pOL-tt-YRB"/>
+                        <outlet property="speechPitch" destination="Qx7-r5-5do" id="sty-xY-PFJ"/>
+                        <outlet property="speechRate" destination="P5K-ZK-4kd" id="BPu-9a-7oe"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GIQ-RV-D6h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

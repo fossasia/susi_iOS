@@ -90,6 +90,7 @@ class ControllerConstants {
         static let hotwordEnabled = "hotwordRecognition"
         static let ttsLanguage = "ttsLanguage"
         static let prefLanguage = "prefLanguage"
+        static let lanuchedBefore = "lanuchedBefore"
     }
 
     struct TestKeys {
