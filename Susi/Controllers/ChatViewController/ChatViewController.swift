@@ -124,7 +124,7 @@ class ChatViewController: UICollectionViewController {
     let indicatorView = NVActivityIndicatorView(frame: CGRect(), type: .ballPulse, color: .white, padding: 0)
 
     // flag to load messages from user's account memory
-    var loadMemoryFromNetwork: Bool? {
+    var loadMemoryFromNetwork: Bool = false {
         didSet {
             getMessagesFromMemory()
         }
@@ -134,7 +134,7 @@ class ChatViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTitle()
+        setupNavbar()
         setupView()
         setupCollectionView()
         setupInputComponents()
@@ -157,7 +157,7 @@ class ChatViewController: UICollectionViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         unsubscriveToKeyboardNotifications()
-        stopRecording()
+        stopHotwordRecognition()
     }
 
     override func didReceiveMemoryWarning() {

@@ -46,8 +46,8 @@ extension ChatViewController: SFSpeechRecognizerDelegate, AVSpeechSynthesizerDel
 
     }
 
-    func startSTT() {
-        stopRecording()
+    func startSpeechToText() {
+        stopHotwordRecognition()
         configureSpeechRecognizer()
 
         if recognitionTask != nil {
@@ -138,9 +138,9 @@ extension ChatViewController: SFSpeechRecognizerDelegate, AVSpeechSynthesizerDel
 
     func setTargetForIndicatorView() {
         if isSpeechRecognitionRunning {
-            startSTT()
+            startSpeechToText()
         } else {
-            stopSTT()
+            stopSpeechToText()
             checkAndRunHotwordRecognition()
         }
     }
@@ -150,7 +150,7 @@ extension ChatViewController: SFSpeechRecognizerDelegate, AVSpeechSynthesizerDel
         audioEngine.stop()
     }
 
-    func stopSTT() {
+    func stopSpeechToText() {
         print("audioEngine stopped")
         resetSpeechConfig()
 
@@ -167,7 +167,7 @@ extension ChatViewController: SFSpeechRecognizerDelegate, AVSpeechSynthesizerDel
 
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         print("utterance complete")
-        stopSTT()
+        stopSpeechToText()
     }
 
     func speakAction(_ string: String, language: String?) {
@@ -185,7 +185,7 @@ extension ChatViewController: SFSpeechRecognizerDelegate, AVSpeechSynthesizerDel
 
             speechSynthesizer.speak(speechUtterance)
         } else {
-            stopSTT()
+            stopSpeechToText()
         }
     }
 

@@ -56,7 +56,7 @@ extension ChatViewController: AVAudioRecorderDelegate {
             // print("Result: \(result)")
 
             if result == 1 {
-                startSTT()
+                startSpeechToText()
             }
         }
     }
@@ -101,7 +101,7 @@ extension ChatViewController: AVAudioRecorderDelegate {
     /**
         Stops the audio recorder and the hotword timer
     **/
-    func stopRecording() {
+    func stopHotwordRecognition() {
         if audioRecorder != nil && hotwordTimer != nil {
             audioRecorder.stop()
             hotwordTimer.invalidate()
