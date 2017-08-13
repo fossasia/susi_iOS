@@ -192,6 +192,8 @@ extension ChatViewController: SFSpeechRecognizerDelegate, AVSpeechSynthesizerDel
     func checkAndRunHotwordRecognition() {
         if UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.hotwordEnabled) {
             startHotwordRecognition()
+        } else if let timer = hotwordTimer {
+            timer.invalidate()
         }
     }
 

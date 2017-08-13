@@ -65,8 +65,14 @@ extension ChatViewController {
 
     // Setup View
     func setupView() {
-        showSettingsButton()
-        addScrollButton()
+        UIApplication.shared.statusBarStyle = .lightContent
+        settingsButton.tintColor = .white
+        sendButton.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
+        navigationItem.titleLabel.textColor = .black
+        UIApplication.shared.statusBarView?.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
+        settingsButton.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
+        view.backgroundColor = UIColor.hexStringToUIColor(hex: "#EEEEEE")
+
     }
 
     // Shows Youtube Player
@@ -269,17 +275,7 @@ extension ChatViewController {
         }
     }
 
-    func setupTheme() {
-        UIApplication.shared.statusBarStyle = .lightContent
-        settingsButton.tintColor = .white
-        sendButton.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
-        navigationItem.titleLabel.textColor = .black
-        UIApplication.shared.statusBarView?.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
-        settingsButton.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
-        view.backgroundColor = UIColor.hexStringToUIColor(hex: "#EEEEEE")
-    }
-
-    func showSettingsButton() {
+    func addSettingsButton() {
         view.addSubview(settingsButton)
         view.addConstraintsWithFormat(format: "H:[v0(36)]-8-|", views: settingsButton)
         view.addConstraintsWithFormat(format: "V:|-28-[v0(36)]", views: settingsButton)
@@ -290,31 +286,6 @@ extension ChatViewController {
         let vc = storyboard.instantiateViewController(withIdentifier: "SettingsController")
         let nvc = AppNavigationController(rootViewController: vc)
         present(nvc, animated: true, completion: nil)
-    }
-
-    // Check if user defaults have an image data saved else return nil/Any
-    func getWallpaperFromUserDefaults() -> Any? {
-        let defaults = UserDefaults.standard
-        return defaults.object(forKey: ControllerConstants.UserDefaultsKeys.wallpaper)
-    }
-
-    // Set chat background image
-    func setBackgroundImage(image: UIImage!) {
-        let bgView = UIImageView()
-        bgView.contentMode = .scaleAspectFill
-        bgView.image = image
-        collectionView?.backgroundView = bgView
-    }
-
-    func setupWallpaper() {
-        // Check if user defaults have an image, set background as image
-        if let userDefaultData = getWallpaperFromUserDefaults() {
-            if let imageData = userDefaultData as? Data { // Check if object exists
-                setBackgroundImage(image: UIImage(data : imageData))
-            }
-        } else {
-            collectionView?.backgroundView = nil
-        }
     }
 
     func checkAndAssignIfModelExists() {
@@ -332,6 +303,21 @@ extension ChatViewController {
         view.addConstraintsWithFormat(format: "H:[v0(44)]-8-|", views: scrollButton)
         view.addConstraintsWithFormat(format: "V:[v0(44)]-70-|", views: scrollButton)
         scrollButton.isHidden = true
+    }
+
+    func setCollectionViewOffset() {
+        view.layoutIfNeeded()
+
+        let contentSize = collectionView?.collectionViewLayout.collectionViewContentSize
+        if let contentHeight = contentSize?.height, let collectionViewHeight = collectionView?.bounds.size.height {
+            let targetContentOffset = CGPoint(x: 0, y: contentHeight - collectionViewHeight)
+            collectionView?.setContentOffset(targetContentOffset, animated: true)
+        }
+    }
+
+    // Dismiss keyboard when touched anywhere in CV
+    func addGestures() {
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.resignResponders)))
     }
 
 }

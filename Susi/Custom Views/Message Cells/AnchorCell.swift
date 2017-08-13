@@ -34,7 +34,7 @@ class AnchorCell: ChatMessageCell {
 
     func addBottomView() {
         if let answerData = message?.answerDate as Date? {
-            let date = DateInRegion(absoluteDate: message?.answerDate as Date!)
+            let date = DateInRegion(absoluteDate: answerData)
             let dateString = date.string(format: .custom("h:mm a"))
             timeLabel.text = dateString
 
