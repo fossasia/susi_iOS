@@ -217,7 +217,6 @@ extension LoginViewController {
     func checkSession() {
         if let userDefaultValue = UserDefaults.standard.value(forKey: ControllerConstants.UserDefaultsKeys.user) {
             if let userData = userDefaultValue as? [String : AnyObject] {
-                print(userData)
                 let user = User(dictionary: userData)
                 saveUserGlobally(user: user)
 

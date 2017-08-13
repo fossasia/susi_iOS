@@ -9,9 +9,9 @@ PODS:
   - Ji/Ji-libxml (2.0.1)
   - Kingfisher (3.10.4)
   - M13Checkbox (3.1.3)
-  - Material (2.8.1):
-    - Material/Core (= 2.8.1)
-  - Material/Core (2.8.1)
+  - Material (2.9.3):
+    - Material/Core (= 2.9.3)
+  - Material/Core (2.9.3)
   - NVActivityIndicatorView (3.7.0):
     - NVActivityIndicatorView/Presenter (= 3.7.0)
   - NVActivityIndicatorView/Presenter (3.7.0)
@@ -61,7 +61,7 @@ SPEC CHECKSUMS:
   Ji: 6bb602a28dd08b804158f64990e6051ed5de0110
   Kingfisher: dc3a4983e86d2dfa89513664983a82340c11a289
   M13Checkbox: f7c514add90ed6457a05a98621bb9936f231c9b4
-  Material: cc27757e6c91999ac41b2089769106a9d83364c0
+  Material: 4af954f1417b3adb5e3113fe3df45473deabb7c6
   NVActivityIndicatorView: d3738df7e2e476aca0ba6bf32a8c9fbcfc33d64b
   ReadabilityKit: 49c26a2da9708ae3b355854d5bee6a7edee2dfee
   Realm: f91fb43bd474c4f731a116ebf7392c75dd015920
@@ -74,4 +74,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 891a4658c64c3d50762f5805b756c50f6ab68437
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.3.1

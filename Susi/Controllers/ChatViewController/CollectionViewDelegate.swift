@@ -19,6 +19,8 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
         collectionView?.register(OutgoingChatCell.self, forCellWithReuseIdentifier: ControllerConstants.outgoingCell)
         collectionView?.register(RSSCell.self, forCellWithReuseIdentifier: ControllerConstants.rssCell)
         collectionView?.register(ActivityIndicatorCell.self, forCellWithReuseIdentifier: ControllerConstants.indicatorCell)
+        collectionView?.register(MapCell.self, forCellWithReuseIdentifier: ControllerConstants.mapCell)
+        collectionView?.register(AnchorCell.self, forCellWithReuseIdentifier: ControllerConstants.anchorCell)
         collectionView?.accessibilityIdentifier = ControllerConstants.TestKeys.chatCollectionView
     }
 
@@ -38,17 +40,36 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
                 return cell
             }
         } else {
-            let messageBody = message.message
-            let estimatedFrame = self.estimatedFrame(messageBody: messageBody)
 
             if message.fromUser {
                 if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.outgoingCell, for: indexPath) as? OutgoingChatCell {
                     cell.message = message
+                    let messageBody = message.message
+                    let estimatedFrame = self.estimatedFrame(messageBody: messageBody)
                     cell.setupCell(estimatedFrame, view.frame)
                     return cell
                 }
-            } else if message.actionType == ActionType.rss.rawValue || message.actionType == ActionType.websearch.rawValue {
+            }
+
+            if message.actionType == ActionType.rss.rawValue || message.actionType == ActionType.websearch.rawValue {
                 if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.rssCell, for: indexPath) as? RSSCell {
+                    cell.message = message
+                    return cell
+                }
+            }
+
+            if message.actionType == ActionType.map.rawValue {
+                if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.mapCell, for: indexPath) as? MapCell {
+                    cell.message = message
+                    return cell
+                }
+            }
+
+            if message.actionType == ActionType.anchor.rawValue {
+                if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.anchorCell, for: indexPath) as? AnchorCell {
+                    let messageBody = message.message
+                    let estimatedFrame = self.estimatedFrame(messageBody: messageBody)
+                    cell.setupCell(estimatedFrame)
                     cell.message = message
                     return cell
                 }
@@ -56,6 +77,8 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
 
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.incomingCell, for: indexPath) as? IncomingBubbleCell {
                 cell.message = message
+                let messageBody = message.message
+                let estimatedFrame = self.estimatedFrame(messageBody: messageBody)
                 cell.setupCell(estimatedFrame, view.frame)
                 return cell
             }
@@ -71,21 +94,19 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
             return CGSize(width: view.frame.width, height: 44)
         } else {
             let estimatedFrame = self.estimatedFrame(messageBody: message.message)
-            if message.message.isImage() {
-                return CGSize(width: view.frame.width, height: 165)
-            } else if message.actionType == ActionType.map.rawValue {
-                return CGSize(width: view.frame.width, height: 201)
+            if message.actionType == ActionType.map.rawValue {
+                return CGSize(width: view.frame.width, height: 200)
             } else if message.actionType == ActionType.rss.rawValue ||
                 message.actionType == ActionType.websearch.rawValue {
                 return CGSize(width: view.frame.width, height: 145)
             }
-            return CGSize(width: view.frame.width, height: estimatedFrame.height + 43)
+            return CGSize(width: view.frame.width, height: estimatedFrame.height + 30)
         }
     }
 
     // Set Edge Insets
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0)
+        return UIEdgeInsets(top: 2, left: 0, bottom: 2, right: 0)
     }
 
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {

@@ -35,6 +35,8 @@ class ControllerConstants {
     static let outgoingCell = "outgoingCell"
     static let rssCell = "rssCell"
     static let indicatorCell = "indicatorCell"
+    static let mapCell = "mapCell"
+    static let anchorCell = "anchorCell"
     static let defaultMessage = ""
     static let defaultWebSearchImage = "no-image"
     static let standardServer = "Standard Server"
