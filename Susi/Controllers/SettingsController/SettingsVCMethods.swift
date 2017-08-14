@@ -86,7 +86,7 @@ extension SettingsViewController {
 
     func presentTrainingController() {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "trainingViewController")
+        let vc = storyBoard.instantiateViewController(withIdentifier: "TrainingViewController")
         let nvc = AppNavigationController(rootViewController: vc)
         present(nvc, animated: true, completion: nil)
     }
@@ -126,7 +126,7 @@ extension SettingsViewController {
         }
         return nil
     }
-    
+
     func assignDefaults() {
         enterToSend.isOn = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.enterToSend)
         micInput.isOn = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.micInput)

@@ -371,7 +371,7 @@
         <!--Training View Controller-->
         <scene sceneID="zOn-LC-e9w">
             <objects>
-                <viewController storyboardIdentifier="trainingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bE0-nE-Az2" customClass="TrainingViewController" customModule="Susi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TrainingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bE0-nE-Az2" customClass="TrainingViewController" customModule="Susi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="F8a-2r-yKW"/>
                         <viewControllerLayoutGuide type="bottom" id="i1r-5a-ptN"/>

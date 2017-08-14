@@ -161,8 +161,10 @@ extension Client {
                 }
 
                 for (key, value) in settings {
-                    if value.toBool() != nil {
-                        UserDefaults.standard.set(value.toBool()!, forKey: key)
+                    if let bool = value.toBool() {
+                        UserDefaults.standard.set(bool, forKey: key)
+                    } else if let float = Float(value) {
+                        UserDefaults.standard.set(float, forKey: key)
                     } else {
                         UserDefaults.standard.set(value, forKey: key)
                     }

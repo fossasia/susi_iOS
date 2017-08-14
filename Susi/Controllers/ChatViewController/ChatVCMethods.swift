@@ -15,7 +15,7 @@ import Material
 extension ChatViewController {
 
     // MARK: - Keyboard Notifications
-    
+
     func subscribeToKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -52,7 +52,7 @@ extension ChatViewController {
             })
         }
     }
-    
+
     // MARK: - Configure Views
 
     // Resign responders
@@ -102,7 +102,7 @@ extension ChatViewController {
             }, completion: nil)
         }
     }
-    
+
     func addActivityIndicatorMessage() {
         removeActivityIndicator()
         let message = Message()
@@ -112,7 +112,7 @@ extension ChatViewController {
         collectionView?.insertItems(at: [indexPath])
         scrollToLast()
     }
-    
+
     func removeActivityIndicator() {
         if messages.last?.actionType == ActionType.indicatorView.rawValue {
             let item = IndexPath(item: messages.count - 1, section: 0)
@@ -120,29 +120,29 @@ extension ChatViewController {
             messages.removeLast()
         }
     }
-    
+
     // setup input components
     func setupInputComponents() {
         view.addSubview(inputTextView)
         view.addSubview(sendButton)
-        
+
         view.layout(sendButton).bottomRight(bottom: 8.0, right: 8.0).width(40).height(40)
         view.layout(inputTextView).bottomLeft(bottom: 8.0, left: 8.0).width(view.frame.width - 64)
-        
+
         bottomConstraintTextView = NSLayoutConstraint(item: inputTextView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
         view.addConstraint(bottomConstraintTextView!)
-        
+
         bottomConstraintSendButton = NSLayoutConstraint(item: sendButton, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
         view.addConstraint(bottomConstraintSendButton!)
     }
-    
+
     // setup settings button
     func addSettingsButton() {
         view.addSubview(settingsButton)
         view.addConstraintsWithFormat(format: "H:[v0(36)]-8-|", views: settingsButton)
         view.addConstraintsWithFormat(format: "V:|-28-[v0(36)]", views: settingsButton)
     }
-    
+
     // setup scroll button
     func addScrollButton() {
         view.addSubview(scrollButton)
@@ -150,9 +150,9 @@ extension ChatViewController {
         view.addConstraintsWithFormat(format: "V:[v0(44)]-70-|", views: scrollButton)
         scrollButton.isHidden = true
     }
-    
+
     // MARK: - Make API calls and use realm database
-    
+
     // handles the send action on the button
     func handleSend() {
         if let text = inputTextView.text, text.characters.count > 0 && !text.isEmpty {
@@ -161,20 +161,20 @@ extension ChatViewController {
                 Client.ChatKeys.TimeZoneOffset: ControllerConstants.timeZone as AnyObject,
                 Client.ChatKeys.Language: Locale.current.languageCode as AnyObject
             ]
-            
+
             saveMessage(text)
             addActivityIndicatorMessage()
-            
+
             if let location = locationManager.location {
                 params[Client.ChatKeys.Latitude] = location.coordinate.latitude as AnyObject
                 params[Client.ChatKeys.Longitude] = location.coordinate.longitude as AnyObject
             }
-            
+
             if let userData = UserDefaults.standard.dictionary(forKey: ControllerConstants.UserDefaultsKeys.user) as [String : AnyObject]? {
                 let user = User(dictionary: userData)
                 params[Client.ChatKeys.AccessToken] = user.accessToken as AnyObject
             }
-            
+
             Client.sharedInstance.queryResponse(params) { (messages, success, _) in
                 DispatchQueue.main.async {
                     if success {
@@ -186,16 +186,16 @@ extension ChatViewController {
             }
         }
     }
-    
+
     // downloads messages from user history
     func getMessagesFromMemory() {
         if let userData = UserDefaults.standard.dictionary(forKey: ControllerConstants.UserDefaultsKeys.user) {
             let user = User(dictionary: userData as [String : AnyObject])
-            
+
             let params = [
                 Client.UserKeys.AccessToken: user.accessToken
             ]
-            
+
             Client.sharedInstance.getMessagesFromMemory(params as [String : AnyObject]) { (messages, _, _) in
                 DispatchQueue.main.async {
                     if let messages = messages {
@@ -203,10 +203,10 @@ extension ChatViewController {
                     }
                 }
             }
-            
+
         }
     }
-    
+
     func addMessagesToCollectionView(messages: List<Message>) {
         self.collectionView?.performBatchUpdates({
             self.removeActivityIndicator()
@@ -225,7 +225,7 @@ extension ChatViewController {
             self.scrollToLast()
         })
     }
-    
+
     // save message to object
     func saveMessage(_ message: String) {
         let message = Message(message: message.trimmed)
@@ -236,9 +236,9 @@ extension ChatViewController {
         self.inputTextView.text = ""
         setImageForSendButton()
     }
-    
+
     // MARK: - Miscellaneous
-    
+
     func setTargetForSendButton() {
         if isSpeechRecognitionRunning {
             stopSpeechToText()
@@ -251,7 +251,7 @@ extension ChatViewController {
             }
         }
     }
-    
+
     func setImageForSendButton() {
         if !isSpeechRecognitionRunning {
             if let text = inputTextView.text, text.isEmpty {
@@ -261,7 +261,7 @@ extension ChatViewController {
             }
         }
     }
-    
+
     // presents the settings controller
     func presentSettingsController() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -269,7 +269,7 @@ extension ChatViewController {
         let nvc = AppNavigationController(rootViewController: vc)
         present(nvc, animated: true, completion: nil)
     }
-    
+
     // checks if personal trained model exists
     func checkAndAssignIfModelExists() {
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
@@ -280,30 +280,30 @@ extension ChatViewController {
         }
         MODEL = Bundle.main.path(forResource: "susi", ofType: "pmdl")!
     }
-    
+
     // sets content offset so that messages start displaying from bottom
     func setCollectionViewOffset() {
         view.layoutIfNeeded()
-        
+
         let contentSize = collectionView?.collectionViewLayout.collectionViewContentSize
         if let contentHeight = contentSize?.height, let collectionViewHeight = collectionView?.bounds.size.height {
             let targetContentOffset = CGPoint(x: 0, y: contentHeight - collectionViewHeight)
             collectionView?.setContentOffset(targetContentOffset, animated: true)
         }
     }
-    
+
     // dismiss keyboard when touched anywhere in CV
     func addGestures() {
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.resignResponders)))
     }
-    
+
     // dismiss the overlay for the video
     func handleDismiss() {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.blackView.removeFromSuperview()
         }, completion: nil)
     }
-    
+
     // scroll to last message
     func scrollToLast() {
         if messages.count > 0 {
@@ -312,14 +312,14 @@ extension ChatViewController {
             collectionView?.scrollToItem(at: indexPath, at: .bottom, animated: true)
         }
     }
-    
+
     // estimates frame of message
     func estimatedFrame(messageBody: String) -> CGRect {
         let size = CGSize(width: 250, height: 1000)
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
         return NSString(string: messageBody).boundingRect(with: size, options: options, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 16)], context: nil)
     }
-    
+
     // loads all messages from database
     func loadMessages() {
         messages = List<Message>(realm.objects(Message.self))

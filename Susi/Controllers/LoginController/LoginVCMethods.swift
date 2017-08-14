@@ -234,6 +234,7 @@ extension LoginViewController {
 
     func enterAnonymousMode() {
         resetDB()
+        resetSettings()
         UserDefaults.standard.set(Client.APIURLs.SusiAPI, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
         completeLogin()
     }
@@ -246,7 +247,7 @@ extension LoginViewController {
     }
 
     func setupTheme() {
-        let image = UIImage(named: "susi")?.withRenderingMode(.alwaysTemplate)
+        let image = UIImage(named: "susi")
         susiLogo.image = image
         susiLogo.tintColor = .white
         UIApplication.shared.statusBarStyle = .lightContent
@@ -257,6 +258,17 @@ extension LoginViewController {
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             appDelegate.currentUser = user
         }
+    }
+
+    func resetSettings() {
+        UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.enterToSend)
+        UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.micInput)
+        UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.hotwordEnabled)
+        UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.speechOutput)
+        UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn)
+        UserDefaults.standard.set(0.5, forKey: ControllerConstants.UserDefaultsKeys.speechRate)
+        UserDefaults.standard.set(0.5, forKey: ControllerConstants.UserDefaultsKeys.speechRate)
+        UserDefaults.standard.set("en", forKey: ControllerConstants.UserDefaultsKeys.prefLanguage)
     }
 
 }

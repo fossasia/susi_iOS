@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-    
+
     func checkAndAssignDefaultIfFirstLaunch() {
         let lanuchedBefore = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.lanuchedBefore)
         if !lanuchedBefore {
@@ -50,10 +50,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.hotwordEnabled)
             UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.speechOutput)
             UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn)
-            UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.lanuchedBefore)
             UserDefaults.standard.set(0.5, forKey: ControllerConstants.UserDefaultsKeys.speechRate)
             UserDefaults.standard.set(0.5, forKey: ControllerConstants.UserDefaultsKeys.speechRate)
             UserDefaults.standard.set("en", forKey: ControllerConstants.UserDefaultsKeys.prefLanguage)
+            UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.lanuchedBefore)
         }
     }
 
