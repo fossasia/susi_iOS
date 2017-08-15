@@ -1,0 +1,48 @@
+/* 
+  Localizable.strings
+  Susi
+
+  Created by Kasun Gayashan on 8/15/17.
+  Copyright © 2017 FOSSAsia. All rights reserved.
+*/
+
+"Email Address" = "Email Address";
+"Error, incorrect email" = "Error, incorrect email";
+"Password" = "Password";
+"Image Pick Error" = "Image Pick Error";
+"Cannot access photos in your albums" = "Cannot access photos in your albums";
+"Set Wallpaper" = "Set Wallpaper";
+"Toggle Theme" = "Toggle Theme";
+"Pick image from gallery" = "Pick image from gallery";
+"No wallpaper" = "No wallpaper";
+"Cancel" = "Cancel";
+"Email Sent" = "Email Sent" ;
+"Ok" = "OK";
+"Forgot Password" = "Forgot Password";
+"Reset" = "Reset";
+"Enter your Email ID" = "Enter your Email ID";
+"Invalid Email ID" = "Invalid Email ID";
+"Some error occured" = "Some error occured";
+"send" = "send";
+"microphone" = "microphone";
+"play" = "play";
+"-530" = "-530";
+"Ask Susi Something..." = "Ask Susi Something...";
+"Standard Server" = "Standard Server";
+"Custom Server" = "Custom Server";
+"Accepted" = "Accepted";
+"Settings" = "Settings";
+"Let's train SUSI" = "Let's train SUSI";
+"Passwords do not match." = "Passwords do not match.";
+"Reset Password" = "Reset Password";
+"Passwords length should be atleast 6" = "Passwords length should be atleast 6";
+"Error, Should be at least 8 characters" = "Error, Should be at least 8 characters";
+"LOGIN" = "LOGIN";
+"Forgot Password?" = "Forgot Password?";
+"Sign up for SUSI" = "Sign up for SUSI";
+"Skip" = "Skip";
+"Custom Server URL" = "Custom Server URL";
+"Password should be 6 characters long with one uppercase, lowercase and a number" = "Password should be 6 characters long with one uppercase, lowercase and a number";
+"Confirm Password" = "Confirm Password";
+"Passwords do not match" = "Passwords do not match";
+"SIGN UP" = "SIGN UP";

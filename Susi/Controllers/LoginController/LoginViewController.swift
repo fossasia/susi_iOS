@@ -11,6 +11,7 @@ import Material
 import M13Checkbox
 import RealmSwift
 import Toast_Swift
+import Localize_Swift
 
 class LoginViewController: UIViewController {
 
@@ -24,7 +25,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var signUpButton: FlatButton!
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     @IBOutlet weak var addressTextField: TextField!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,9 +38,21 @@ class LoginViewController: UIViewController {
         prepareLoginButton()
         prepareSkipButton()
         prepareAddressField()
-
         checkSession()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setText()
+        NotificationCenter.default.addObserver(self, selector: #selector(setText), name: NSNotification.Name( LCLLanguageChangeNotification), object: nil)
+    }
+    
+    // Remove the LCLLanguageChangeNotification on viewWillDisappear
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+
 
 }

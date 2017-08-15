@@ -1,0 +1,51 @@
+/* 
+  Localizable.strings
+  Susi
+
+  Created by Kasun Gayashan on 8/15/17.
+  Copyright © 2017 FOSSAsia. All rights reserved.
+*/
+
+"Email Address" = "E-Mail-Addresse";
+"Error, incorrect email" = "Fehler, falsche E-Mail";
+"Password" = "Passwort";
+"Image Pick Error" = "Bild auswählen Fehler";
+"Cannot access photos in your albums" = "Kann nicht auf Fotos in deinen Alben zugreifen";
+"Set Wallpaper" = "Hintergrundbild festlegen";
+"Toggle Theme" = "Toggle Theme";
+"Pick image from gallery" = "Bild aus der Galerie auswählen";
+"No wallpaper" = "Keine Tapete";
+"Cancel" = "Stornieren";
+"Email Sent" = "E-Mail gesendet";
+"Ok" = "OK";
+"Forgot Password" = "Passwort vergessen";
+"Reset" = "Zurücksetzen";
+"Enter your Email ID" = "E-Mail-ID eingeben";
+"Invalid Email ID" = "Ungültige E-Mail-ID";
+"Some error occured" = "Irgendein Fehler ist aufgetreten";
+"send" = "senden";
+"microphone" = "Mikrofon";
+"play" = "spielen";
+"-530" = "-530";
+"Ask Susi Something..." = "Fragen Sie Susi etwas ...";
+"Standard Server" = "Standard-Server";
+"Custom Server" = "Benutzerdefinierter Server";
+"Accepted" = "Akzeptiert";
+"Settings" = "Einstellungen";
+"Let's train SUSI" = "Lass uns SUSI trainieren";
+"Passwords do not match." = "Passwörter stimmen nicht überein.";
+"Reset Password" = "Passwort zurücksetzen";
+"Passwords length should be atleast 6" = "Passwörter Länge sollte mindestens 6";
+"Error, Should be at least 8 characters" = "Fehler, sollte mindestens 8 Zeichen";
+"LOGIN" = "ANMELDUNG";
+"Forgot Password" = "Passwort vergessen";
+"Forgot Password?" = "Passwort vergessen?";
+"Sign up for SUSI" = "Melden Sie sich für SUSI";
+"Skip" = "Überspringen";
+"Custom Server URL" = "Benutzerdefinierte Server-URL";
+"Password should be 6 characters long with one uppercase, lowercase and a number" = "Passwort sollte 6 Zeichen lang mit einem Großbuchstaben, Kleinbuchstaben und einer Zahl";
+"Confirm Password" = "Bestätige das Passwort";
+"Passwords do not match" = "Passwörter stimmen nicht überein";
+"SIGN UP" = "ANMELDEN";
+
+

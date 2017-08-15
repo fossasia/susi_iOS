@@ -33,5 +33,5 @@ Pods/*
 
 # Folders
 
-Susi.xcodeproj/xcuserdata/
-Susi.xcworkspace/xcuserdata/
+Susi.xcodeproj/xcuserdata/*
+Susi.xcworkspace/xcuserdata/*

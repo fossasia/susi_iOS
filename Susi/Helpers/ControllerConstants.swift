@@ -63,6 +63,7 @@ class ControllerConstants {
         static let forgotPassword = "Forgot Password?"
         static let signUpForSusi = "Sign up for SUSI"
         static let skip = "Skip"
+        static let customServerUrl = "Custom Server URL"
     }
 
     struct SignUp {

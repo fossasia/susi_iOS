@@ -76,6 +76,7 @@
 		6DEE71121F2C9DC900A512CF /* AppNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEE71111F2C9DC900A512CF /* AppNavigationController.swift */; };
 		6DFC75B91EE077E9002F92BA /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFC75B81EE077E9002F92BA /* ForgotPasswordViewController.swift */; };
 		892B50EC32D8A6569FD309D6 /* Pods_SusiUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13391E8E0AE2DD3D8688B85F /* Pods_SusiUITests.framework */; };
+		94A274141F42BBA7007B13DF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 94A274161F42BBA7007B13DF /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -171,6 +172,10 @@
 		6DEE71111F2C9DC900A512CF /* AppNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNavigationController.swift; sourceTree = "<group>"; };
 		6DF591D31E817EC0003B2C6B /* Pods_Susi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Susi.framework; path = "../../Library/Developer/Xcode/DerivedData/Susi-diaqqbbkootsgpcfnbeooroyfjde/Build/Products/Debug-iphonesimulator/Pods_Susi.framework"; sourceTree = "<group>"; };
 		6DFC75B81EE077E9002F92BA /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		94872C561F4345A5009E2EBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9488B7EA1F42E87700DA6B11 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		94A274111F42BB41007B13DF /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		94A274181F42BBAC007B13DF /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		97955E10DCBDDA37F3FE9945 /* Pods-Susi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Susi.release.xcconfig"; path = "Pods/Target Support Files/Pods-Susi/Pods-Susi.release.xcconfig"; sourceTree = "<group>"; };
 		C26FA8CF8713A7F6B0B37876 /* Pods-SusiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SusiUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SusiUITests/Pods-SusiUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F0725CD4F3C4305D555E2D38 /* Pods-Susi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Susi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Susi/Pods-Susi.debug.xcconfig"; sourceTree = "<group>"; };
@@ -396,6 +401,7 @@
 				6DE44E0E1E769AD300215B85 /* Color.swift */,
 				4CD0AA5E1EDF2CB700BC8FD5 /* ControllerConstants.swift */,
 				6D4D9B531E7690160067459C /* Extensions.swift */,
+				94A274161F42BBA7007B13DF /* Localizable.strings */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -537,7 +543,6 @@
 					};
 					6D4D9B361E768E190067459C = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = MLF4G8Y374;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
@@ -550,6 +555,7 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = 6D4D9B2E1E768E190067459C;
 			productRefGroup = 6D4D9B381E768E190067459C /* Products */;
@@ -577,6 +583,7 @@
 				6D4D9B451E768E190067459C /* LaunchScreen.storyboard in Resources */,
 				6D4D9B421E768E190067459C /* Assets.xcassets in Resources */,
 				6D389BEB1EDB912500DEAEA0 /* YTPlayer.html in Resources */,
+				94A274141F42BBA7007B13DF /* Localizable.strings in Resources */,
 				6DAF3AF61F0E101200929D86 /* Main.storyboard in Resources */,
 				6D7865B41F1CB71F00BCD12F /* susi.pmdl in Resources */,
 				6D28983A1F144E5C00B6151A /* common.res in Resources */,
@@ -765,9 +772,20 @@
 			isa = PBXVariantGroup;
 			children = (
 				6D4D9B441E768E190067459C /* Base */,
+				94A274111F42BB41007B13DF /* de */,
 			);
 			name = LaunchScreen.storyboard;
 			path = .;
+			sourceTree = "<group>";
+		};
+		94A274161F42BBA7007B13DF /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				94A274181F42BBAC007B13DF /* de */,
+				9488B7EA1F42E87700DA6B11 /* en */,
+				94872C561F4345A5009E2EBE /* Base */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -815,6 +833,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -865,6 +884,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -911,7 +931,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = MLF4G8Y374;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "Susi/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -937,7 +957,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = MLF4G8Y374;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "Susi/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;

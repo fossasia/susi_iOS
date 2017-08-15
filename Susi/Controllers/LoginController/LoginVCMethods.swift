@@ -11,16 +11,35 @@ import BouncyLayout
 import M13Checkbox
 import RealmSwift
 import SwiftValidators
+import Localize_Swift
 
 extension LoginViewController {
-
+    
+    // Steup texts in Text Field
+    func setText() {
+        
+        emailTextField.placeholder = ControllerConstants.Login.emailAddress.localized()
+        passwordTextField.placeholder = ControllerConstants.Login.password.localized()
+        addressTextField.placeholder = ControllerConstants.Login.customServerUrl.localized()
+        loginButton.title = ControllerConstants.Login.login.localized()
+        skipButton.title = ControllerConstants.Login.skip.localized()
+        signUpButton.title = ControllerConstants.Login.signUpForSusi.localized()
+        forgotPassword.title = ControllerConstants.Login.forgotPassword.localized()
+        loginButton.titleColor = UIColor.white
+        skipButton.titleColor = UIColor.white
+        signUpButton.titleColor = UIColor.white
+        forgotPassword.titleColor = UIColor.white
+        
+    }
+    
     func addTapGesture() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
-
+    
     // Configures Email Text Field
     func prepareEmailField() {
+        
         emailTextField.placeholderNormalColor = .white
         emailTextField.placeholderActiveColor = .white
         emailTextField.dividerNormalColor = .white
@@ -32,6 +51,7 @@ extension LoginViewController {
 
     // Configures Password Text Field
     func preparePasswordField() {
+        
         passwordTextField.placeholderNormalColor = .white
         passwordTextField.placeholderActiveColor = .white
         passwordTextField.dividerNormalColor = .white
@@ -55,6 +75,7 @@ extension LoginViewController {
 
     // Configure Login Button
     func prepareLoginButton() {
+        loginButton.titleColor = UIColor.white
         loginButton.addTarget(self, action: #selector(performLogin), for: .touchUpInside)
     }
 
@@ -63,12 +84,14 @@ extension LoginViewController {
     }
 
     func prepareAddressField() {
+        
         addressTextField.placeholderNormalColor = .white
         addressTextField.placeholderActiveColor = .white
         addressTextField.dividerNormalColor = .white
         addressTextField.dividerActiveColor = .white
         addressTextField.textColor = .white
     }
+  
 
     // Call Login API
     func performLogin() {
