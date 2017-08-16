@@ -44,8 +44,7 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
             if message.fromUser {
                 if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.outgoingCell, for: indexPath) as? OutgoingChatCell {
                     cell.message = message
-                    let messageBody = message.message
-                    let estimatedFrame = self.estimatedFrame(messageBody: messageBody)
+                    let estimatedFrame = self.estimatedFrame(message: message.message)
                     cell.setupCell(estimatedFrame, view.frame)
                     return cell
                 }
@@ -67,18 +66,17 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
 
             if message.actionType == ActionType.anchor.rawValue {
                 if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.anchorCell, for: indexPath) as? AnchorCell {
-                    let messageBody = message.message
-                    let estimatedFrame = self.estimatedFrame(messageBody: messageBody)
-                    cell.setupCell(estimatedFrame)
+                    let estimatedFrame = self.estimatedFrame(message: message.message)
                     cell.message = message
+                    cell.setupCell(estimatedFrame)
                     return cell
                 }
             }
 
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.incomingCell, for: indexPath) as? IncomingBubbleCell {
                 cell.message = message
-                let messageBody = message.message
-                let estimatedFrame = self.estimatedFrame(messageBody: messageBody)
+                let message = message.message
+                let estimatedFrame = self.estimatedFrame(message: message)
                 cell.setupCell(estimatedFrame, view.frame)
                 return cell
             }
@@ -93,7 +91,7 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
         if message.actionType == ActionType.indicatorView.rawValue {
             return CGSize(width: view.frame.width, height: 44)
         } else {
-            let estimatedFrame = self.estimatedFrame(messageBody: message.message)
+            let estimatedFrame = self.estimatedFrame(message: message.message)
             if message.actionType == ActionType.map.rawValue {
                 return CGSize(width: view.frame.width, height: 200)
             } else if message.actionType == ActionType.rss.rawValue ||

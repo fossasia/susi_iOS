@@ -304,7 +304,7 @@ extension ChatViewController {
 
     // dismiss keyboard when touched anywhere in CV
     func addGestures() {
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.resignResponders)))
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(resignResponders)))
     }
 
     // dismiss the overlay for the video
@@ -319,16 +319,16 @@ extension ChatViewController {
         if messages.count > 0 {
             let lastItem = messages.count - 1
             let indexPath = IndexPath(item: lastItem, section: 0)
-            collectionView?.scrollToItem(at: indexPath, at: .bottom, animated: true)
+            collectionView?.scrollToItem(at: indexPath, at: .top, animated: true)
             scrollButton.isHidden = true
         }
     }
 
     // estimates frame of message
-    func estimatedFrame(messageBody: String) -> CGRect {
+    func estimatedFrame(message: String) -> CGRect {
         let size = CGSize(width: 250, height: 1000)
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
-        return NSString(string: messageBody).boundingRect(with: size, options: options, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 16)], context: nil)
+        return NSString(string: message).boundingRect(with: size, options: options, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 16)], context: nil)
     }
 
     // loads all messages from database

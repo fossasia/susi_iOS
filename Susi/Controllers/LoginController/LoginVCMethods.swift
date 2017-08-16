@@ -221,7 +221,7 @@ extension LoginViewController {
                 saveUserGlobally(user: user)
 
                 DispatchQueue.main.async {
-                    if user.expiryTime > Date() {
+                    if Date() > user.expiryTime {
                         self.completeLogin(false)
                         self.fetchUserSettings(user.accessToken)
                     } else {

@@ -21,7 +21,7 @@ extension ChatViewController: UITextFieldDelegate {
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField.text == "\n" && UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.enterToSend) {
+        if UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.enterToSend) {
             handleSend()
             return false
         }

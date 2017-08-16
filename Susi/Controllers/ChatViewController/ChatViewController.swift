@@ -46,7 +46,7 @@ class ChatViewController: UICollectionViewController {
         button.setImage(UIImage(named: "scroll_arrow"), for: .normal)
         button.backgroundColor = .white
         button.addTarget(self, action: #selector(scrollToLast), for: .touchUpInside)
-        button.cornerRadius = 4
+        button.cornerRadius = 8
         return button
     }()
 
@@ -121,7 +121,7 @@ class ChatViewController: UICollectionViewController {
     var bottomConstraint: NSLayoutConstraint?
 
     // used for speech to text
-    var speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))
+    var speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en"))
     var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     var recognitionTask: SFSpeechRecognitionTask?
     let audioEngine = AVAudioEngine()
