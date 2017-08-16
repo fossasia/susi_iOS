@@ -34,9 +34,9 @@ class AnonymousUITests: XCTestCase {
     func testAnonymousMode() {
         app.buttons[ControllerConstants.TestKeys.skip].tap()
         
-        let textView = app.textViews[ControllerConstants.TestKeys.chatInputView]
-        textView.tap()
-        textView.typeText("hello")
+        let textField = app.textFields[ControllerConstants.TestKeys.chatInputView]
+        textField.tap()
+        textField.typeText("hello")
         
         let sendButton = app.buttons[ControllerConstants.TestKeys.send]
         sendButton.tap()
