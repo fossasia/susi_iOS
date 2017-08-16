@@ -14,7 +14,7 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
     func setupCollectionView() {
         collectionView?.backgroundColor = .clear
         collectionView?.delegate = self
-        collectionView?.frame = CGRect(x: 0, y: 20, width: view.frame.width, height: view.frame.height - 72)
+        collectionView?.frame = CGRect(x: 0, y: 20, width: view.frame.width, height: view.frame.height - 68)
         collectionView?.register(IncomingBubbleCell.self, forCellWithReuseIdentifier: ControllerConstants.incomingCell)
         collectionView?.register(OutgoingChatCell.self, forCellWithReuseIdentifier: ControllerConstants.outgoingCell)
         collectionView?.register(RSSCell.self, forCellWithReuseIdentifier: ControllerConstants.rssCell)
@@ -122,10 +122,10 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
     }
 
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.row != messages.count - 1 {
-            scrollButton.isHidden = false
-        } else {
+        if indexPath.row > messages.count - 2 {
             scrollButton.isHidden = true
+        } else {
+            scrollButton.isHidden = false
         }
     }
 

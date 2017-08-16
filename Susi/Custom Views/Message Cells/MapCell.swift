@@ -62,7 +62,7 @@ class MapCell: ChatMessageCell, MKMapViewDelegate {
 
     func setupCell() {
         messageTextView.frame = CGRect.zero
-        textBubbleView.frame = CGRect(x: 8, y: 0, width: 275, height: 200)
+        textBubbleView.frame = CGRect(x: 8, y: 0, width: 275, height: 198)
         textBubbleView.borderWidth = 0.2
         textBubbleView.backgroundColor = .white
     }

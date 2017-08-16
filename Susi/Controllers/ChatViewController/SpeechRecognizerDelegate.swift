@@ -82,7 +82,7 @@ extension ChatViewController: SFSpeechRecognizerDelegate, AVSpeechSynthesizerDel
             var isFinal = false
 
             if result != nil {
-                self.inputTextView.text = result?.bestTranscription.formattedString
+                self.inputTextField.text = result?.bestTranscription.formattedString
                 isFinal = (result?.isFinal)!
             }
 
@@ -98,7 +98,7 @@ extension ChatViewController: SFSpeechRecognizerDelegate, AVSpeechSynthesizerDel
             if let timer = self.detectionTimer, timer.isValid {
                 timer.invalidate()
                 setTimer()
-            } else if let text = self.inputTextView.text, !text.isEmpty {
+            } else if let text = self.inputTextField.text, !text.isEmpty {
                 setTimer()
             }
 
@@ -119,9 +119,11 @@ extension ChatViewController: SFSpeechRecognizerDelegate, AVSpeechSynthesizerDel
 
         print("Say something, I'm listening!")
 
-        // Listening indicator swift
-        indicatorView.frame = self.sendButton.frame
+        let indicatorFrame = CGRect(x: 0.0, y: 0.0, width: 16, height: 16)
+        indicatorView.frame = indicatorFrame
+        indicatorView.center = sendButton.center
 
+        // Listening indicator swift
         indicatorView.isUserInteractionEnabled = true
         let gesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(setTargetForSendButton))
         gesture.numberOfTapsRequired = 1
@@ -130,10 +132,11 @@ extension ChatViewController: SFSpeechRecognizerDelegate, AVSpeechSynthesizerDel
         sendButton.setImage(nil, for: .normal)
         indicatorView.startAnimating()
         sendButton.addSubview(indicatorView)
-        sendButton.addConstraintsWithFormat(format: "V:|[v0(24)]|", views: indicatorView)
-        sendButton.addConstraintsWithFormat(format: "H:|[v0(24)]|", views: indicatorView)
+        sendButton.addConstraintsWithFormat(format: "V:|[v0(14)]|", views: indicatorView)
+        sendButton.addConstraintsWithFormat(format: "H:|[v0(14)]|", views: indicatorView)
 
-        inputTextView.isUserInteractionEnabled = false
+        inputTextField.isUserInteractionEnabled = false
+        indicatorView.stopAnimating()
     }
 
     func setTargetForIndicatorView() {
@@ -159,7 +162,7 @@ extension ChatViewController: SFSpeechRecognizerDelegate, AVSpeechSynthesizerDel
         detectionTimer?.invalidate()
 
         isSpeechRecognitionRunning = false
-        inputTextView.isUserInteractionEnabled = true
+        inputTextField.isUserInteractionEnabled = true
         sendButton.tag = 0
         setImageForSendButton()
         checkAndRunHotwordRecognition()

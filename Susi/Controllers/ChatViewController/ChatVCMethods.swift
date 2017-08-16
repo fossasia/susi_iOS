@@ -33,8 +33,7 @@ extension ChatViewController {
             let keyboardFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
             let isKeyboardShowing = notification.name == NSNotification.Name.UIKeyboardWillShow
 
-            bottomConstraintTextView?.constant = isKeyboardShowing ? (-keyboardFrame!.height - 8.0) : 0
-            bottomConstraintSendButton?.constant = isKeyboardShowing ? (-keyboardFrame!.height - 8.0) : 0
+            bottomConstraint?.constant = isKeyboardShowing ? -keyboardFrame!.height : 0
 
             collectionView?.frame = isKeyboardShowing ? CGRect(x: 0, y: 20, width: view.frame.width, height: view.frame.height - keyboardFrame!.height - 71) :
                 CGRect(x: 0, y: 20, width: view.frame.width, height: view.frame.height - 71)
@@ -123,17 +122,28 @@ extension ChatViewController {
 
     // setup input components
     func setupInputComponents() {
-        view.addSubview(inputTextView)
-        view.addSubview(sendButton)
+        view.addSubview(messageInputContainerView)
+        view.addConstraintsWithFormat(format: "H:|[v0]|", views: messageInputContainerView)
+        view.addConstraintsWithFormat(format: "V:[v0(48)]", views: messageInputContainerView)
 
-        view.layout(sendButton).bottomRight(bottom: 8.0, right: 8.0).width(40).height(40)
-        view.layout(inputTextView).bottomLeft(bottom: 8.0, left: 8.0).width(view.frame.width - 64)
+        bottomConstraint = NSLayoutConstraint(item: messageInputContainerView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
+        view.addConstraint(bottomConstraint!)
 
-        bottomConstraintTextView = NSLayoutConstraint(item: inputTextView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
-        view.addConstraint(bottomConstraintTextView!)
+        // chat container view configuration
+        let topBorderView = UIView()
+        topBorderView.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
 
-        bottomConstraintSendButton = NSLayoutConstraint(item: sendButton, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
-        view.addConstraint(bottomConstraintSendButton!)
+        messageInputContainerView.addSubview(inputTextField)
+        messageInputContainerView.addSubview(sendButton)
+        messageInputContainerView.addSubview(topBorderView)
+
+        messageInputContainerView.addConstraintsWithFormat(format: "H:|-8-[v0][v1(40)]-4-|", views: inputTextField, sendButton)
+
+        messageInputContainerView.addConstraintsWithFormat(format: "V:|[v0]|", views: inputTextField)
+        messageInputContainerView.addConstraintsWithFormat(format: "V:|-4-[v0(40)]-4-|", views: sendButton)
+
+        messageInputContainerView.addConstraintsWithFormat(format: "H:|[v0]|", views: topBorderView)
+        messageInputContainerView.addConstraintsWithFormat(format: "V:|[v0(0.5)]", views: topBorderView)
     }
 
     // setup settings button
@@ -146,7 +156,7 @@ extension ChatViewController {
     // setup scroll button
     func addScrollButton() {
         view.addSubview(scrollButton)
-        view.addConstraintsWithFormat(format: "H:[v0(44)]-8-|", views: scrollButton)
+        view.addConstraintsWithFormat(format: "H:[v0(44)]|", views: scrollButton)
         view.addConstraintsWithFormat(format: "V:[v0(44)]-70-|", views: scrollButton)
         scrollButton.isHidden = true
     }
@@ -155,7 +165,7 @@ extension ChatViewController {
 
     // handles the send action on the button
     func handleSend() {
-        if let text = inputTextView.text, text.characters.count > 0 && !text.isEmpty {
+        if let text = inputTextField.text, text.characters.count > 0 && !text.isEmpty {
             var params: [String : AnyObject] = [
                 Client.WebsearchKeys.Query: text as AnyObject,
                 Client.ChatKeys.TimeZoneOffset: ControllerConstants.timeZone as AnyObject,
@@ -233,7 +243,7 @@ extension ChatViewController {
         list.append(message)
         addMessagesToCollectionView(messages: list)
         self.sendButton.tag = 0
-        self.inputTextView.text = ""
+        self.inputTextField.text = ""
         setImageForSendButton()
     }
 
@@ -254,7 +264,7 @@ extension ChatViewController {
 
     func setImageForSendButton() {
         if !isSpeechRecognitionRunning {
-            if let text = inputTextView.text, text.isEmpty {
+            if let text = inputTextField.text, text.isEmpty {
                 sendButton.setImage(UIImage(named: ControllerConstants.mic), for: .normal)
             } else {
                 sendButton.setImage(UIImage(named: ControllerConstants.send), for: .normal)
@@ -310,6 +320,7 @@ extension ChatViewController {
             let lastItem = messages.count - 1
             let indexPath = IndexPath(item: lastItem, section: 0)
             collectionView?.scrollToItem(at: indexPath, at: .bottom, animated: true)
+            scrollButton.isHidden = true
         }
     }
 

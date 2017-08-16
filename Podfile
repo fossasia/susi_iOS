@@ -3,6 +3,7 @@ platform :ios, '10.0'
 
 def shared_pods
   pod 'Alamofire', '~> 4.4'
+  pod 'ReachabilitySwift'
 end
 
 target 'Susi' do
@@ -23,6 +24,7 @@ target 'Susi' do
   pod 'NVActivityIndicatorView'
   pod 'Fakery'
   pod 'M13Checkbox', :git => 'https://github.com/Marxon13/M13Checkbox.git'
+  pod 'NotificationBannerSwift'
   shared_pods
 end
 

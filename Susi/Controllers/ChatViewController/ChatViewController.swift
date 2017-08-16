@@ -21,11 +21,12 @@ class ChatViewController: UICollectionViewController {
 
     // MARK: - Variable Declarations
 
-    // Opens settings view controller
+    // for opening settings view controller
     lazy var settingsButton: IconButton = {
-        let image = UIImage(named: "Settings")?.withRenderingMode(.alwaysTemplate)
+        let image = UIImage(named: "Settings")
         let ib = IconButton()
         ib.image = image
+        ib.tintColor = .white
         ib.cornerRadius = 18.0
         ib.addTarget(self, action: #selector(presentSettingsController), for: .touchUpInside)
         ib.tintColor = .black
@@ -45,21 +46,26 @@ class ChatViewController: UICollectionViewController {
         button.setImage(UIImage(named: "scroll_arrow"), for: .normal)
         button.backgroundColor = .white
         button.addTarget(self, action: #selector(scrollToLast), for: .touchUpInside)
-        button.cornerRadius = 20
+        button.cornerRadius = 4
         return button
     }()
 
+    // container view
+    let messageInputContainerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        return view
+    }()
+
     // chat input field
-    lazy var inputTextView: RSKGrowingTextView = {
-        let textView = RSKGrowingTextView()
-        textView.placeholder = ControllerConstants.askSusi as NSString
-        textView.font = UIFont.systemFont(ofSize: 17)
-        textView.backgroundColor = .white
-        textView.maximumNumberOfLines = 2
-        textView.layer.cornerRadius = 15
-        textView.delegate = self
-        textView.accessibilityIdentifier = ControllerConstants.TestKeys.chatInputView
-        return textView
+    lazy var inputTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = ControllerConstants.askSusi
+        textField.delegate = self
+        textField.accessibilityIdentifier = ControllerConstants.TestKeys.chatInputView
+        textField.font = UIFont.systemFont(ofSize: 16)
+        textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        return textField
     }()
 
     // send button
@@ -68,6 +74,7 @@ class ChatViewController: UICollectionViewController {
         button.setImage(UIImage(named: ControllerConstants.mic), for: .normal)
         button.addTarget(self, action: #selector(setTargetForSendButton), for: .touchUpInside)
         button.accessibilityIdentifier = ControllerConstants.TestKeys.send
+        button.tintColor = .white
         return button
     }()
 
@@ -87,7 +94,7 @@ class ChatViewController: UICollectionViewController {
     let RESOURCE = Bundle.main.path(forResource: "common", ofType: "res")
 
     // snowboy model
-    var MODEL: String = ""
+    var MODEL: String = Bundle.main.path(forResource: "susi", ofType: "pmdl")!
 
     // snowboy wrapper
     var wrapper: SnowboyWrapper! = nil
@@ -111,8 +118,7 @@ class ChatViewController: UICollectionViewController {
     let speechSynthesizer = AVSpeechSynthesizer()
 
     // constraints for the input field and send button
-    var bottomConstraintTextView: NSLayoutConstraint?
-    var bottomConstraintSendButton: NSLayoutConstraint?
+    var bottomConstraint: NSLayoutConstraint?
 
     // used for speech to text
     var speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))

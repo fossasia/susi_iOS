@@ -1,5 +1,5 @@
 //
-//  TextViewDelegate.swift
+//  TextFieldDelegate.swift
 //  Susi
 //
 //  Created by Chashmeet Singh on 2017-07-19.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-extension ChatViewController: UITextViewDelegate {
+extension ChatViewController: UITextFieldDelegate {
 
-    func textViewDidChange(_ textView: UITextView) {
-        if textView.text.isEmpty {
+    func textFieldDidChange(_ textField: UITextField) {
+        if let text = inputTextField.text, text.isEmpty {
             sendButton.tag = 0
             sendButton.setImage(UIImage(named: ControllerConstants.mic), for: .normal)
         } else {
@@ -20,8 +20,8 @@ extension ChatViewController: UITextViewDelegate {
         }
     }
 
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if text == "\n" && UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.enterToSend) {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField.text == "\n" && UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.enterToSend) {
             handleSend()
             return false
         }
