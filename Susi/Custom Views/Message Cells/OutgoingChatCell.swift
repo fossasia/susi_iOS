@@ -39,7 +39,7 @@ class OutgoingChatCell: ChatMessageCell {
     }
 
     func setupTheme() {
-        textBubbleView.backgroundColor = UIColor.hexStringToUIColor(hex: "#E0E0E0")
+        textBubbleView.backgroundColor = UIColor.outgoingCellBackgroundColor()
         messageTextView.textColor = .black
     }
 

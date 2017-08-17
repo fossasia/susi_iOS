@@ -114,11 +114,11 @@ extension ForgotPasswordViewController {
 
     func setupTheme() {
         UIApplication.shared.statusBarStyle = .lightContent
-        view.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
-        personalServerButton.secondaryCheckmarkTintColor = UIColor.hexStringToUIColor(hex: "#4184F3")
+        view.backgroundColor = UIColor.defaultColor()
+        personalServerButton.secondaryCheckmarkTintColor = UIColor.defaultColor()
 
         if let navbar = navigationController?.navigationBar {
-            navbar.barTintColor = UIColor.hexStringToUIColor(hex: "#4184F3")
+            navbar.barTintColor = UIColor.defaultColor()
         }
     }
 

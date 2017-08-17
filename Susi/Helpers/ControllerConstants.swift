@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class ControllerConstants {
     static let errorDialogTitle = "Image Pick Error"
@@ -122,6 +123,21 @@ class ControllerConstants {
             static let invalidEmail = "susi.ai@mail"
         }
 
+    }
+
+    struct Images {
+        static let backArrow = UIImage(named: "back_arrow")
+        static let check = UIImage(named: "check")
+        static let manualRecord = UIImage(named: "manual_record")
+        static let microphone = UIImage(named: "microphone")
+        static let placeholder = UIImage(named: "placeholder")
+        static let record = UIImage(named: "record")
+        static let scrollDown = UIImage(named: "scroll_down")
+        static let send = UIImage(named: "send")
+        static let settings = UIImage(named: "settings")
+        static let susiLogo = UIImage(named: "susi")
+        static let thumbsUp = UIImage(named: "thumbs_up")
+        static let thumbsDown = UIImage(named: "thumbs_down")
     }
 
 }

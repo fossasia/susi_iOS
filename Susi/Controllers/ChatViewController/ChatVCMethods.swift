@@ -70,11 +70,11 @@ extension ChatViewController {
     func setupView() {
         UIApplication.shared.statusBarStyle = .lightContent
         settingsButton.tintColor = .white
-        sendButton.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
+        sendButton.backgroundColor = UIColor.defaultColor()
         navigationItem.titleLabel.textColor = .black
-        UIApplication.shared.statusBarView?.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
-        settingsButton.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
-        view.backgroundColor = UIColor.hexStringToUIColor(hex: "#EEEEEE")
+        UIApplication.shared.statusBarView?.backgroundColor = UIColor.defaultColor()
+        settingsButton.backgroundColor = UIColor.defaultColor()
+        view.backgroundColor = UIColor.chatBackgroundColor()
 
     }
 
@@ -265,9 +265,9 @@ extension ChatViewController {
     func setImageForSendButton() {
         if !isSpeechRecognitionRunning {
             if let text = inputTextField.text, text.isEmpty {
-                sendButton.setImage(UIImage(named: ControllerConstants.mic), for: .normal)
+                sendButton.setImage(ControllerConstants.Images.microphone, for: .normal)
             } else {
-                sendButton.setImage(UIImage(named: ControllerConstants.send), for: .normal)
+                sendButton.setImage(ControllerConstants.Images.send, for: .normal)
             }
         }
     }

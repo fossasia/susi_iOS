@@ -23,7 +23,7 @@ class WebsearchCell: BaseCell {
                     if let imageString = data?.topImage {
                         let url = URL(string: imageString)
                         if let url = url {
-                            self.imageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder"), options: nil, progressBlock: nil, completionHandler: nil)
+                            self.imageView.kf.setImage(with: url, placeholder: ControllerConstants.Images.placeholder, options: nil, progressBlock: nil, completionHandler: nil)
                         }
                     }
 
@@ -65,7 +65,7 @@ class WebsearchCell: BaseCell {
     var imageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
-        iv.image = UIImage(named: "placeholder")
+        iv.image = ControllerConstants.Images.placeholder
         return iv
     }()
 

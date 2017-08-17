@@ -13,9 +13,9 @@ extension TrainingViewController {
 
     func setupNavBar() {
         if let navbar = navigationController?.navigationBar {
-            navbar.barTintColor = UIColor.hexStringToUIColor(hex: "#4184F3")
+            navbar.barTintColor = UIColor.defaultColor()
         }
-        UIApplication.shared.statusBarView?.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
+        UIApplication.shared.statusBarView?.backgroundColor = UIColor.defaultColor()
     }
 
     func addCancelNavItem() {

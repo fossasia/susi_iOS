@@ -22,9 +22,6 @@ class SettingsViewController: UITableViewController {
         return button
     }()
 
-    // Image Picker Controller
-    var imagePicker = UIImagePickerController()
-
     @IBOutlet weak var enterToSend: UISwitch!
     @IBOutlet weak var micInput: UISwitch!
     @IBOutlet weak var hotwordDetection: UISwitch!

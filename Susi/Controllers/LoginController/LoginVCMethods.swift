@@ -221,7 +221,7 @@ extension LoginViewController {
                 saveUserGlobally(user: user)
 
                 DispatchQueue.main.async {
-                    if Date() > user.expiryTime {
+                    if user.expiryTime > Date() {
                         self.completeLogin(false)
                         self.fetchUserSettings(user.accessToken)
                     } else {
@@ -247,11 +247,11 @@ extension LoginViewController {
     }
 
     func setupTheme() {
-        let image = UIImage(named: "susi")
+        let image = ControllerConstants.Images.susiLogo
         susiLogo.image = image
         susiLogo.tintColor = .white
         UIApplication.shared.statusBarStyle = .lightContent
-        view.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
+        view.backgroundColor = UIColor.defaultColor()
     }
 
     func saveUserGlobally(user: User) {
@@ -265,7 +265,7 @@ extension LoginViewController {
         UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.micInput)
         UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.hotwordEnabled)
         UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.speechOutput)
-        UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn)
+        UserDefaults.standard.set(false, forKey: ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn)
         UserDefaults.standard.set(0.5, forKey: ControllerConstants.UserDefaultsKeys.speechRate)
         UserDefaults.standard.set(0.5, forKey: ControllerConstants.UserDefaultsKeys.speechRate)
         UserDefaults.standard.set("en", forKey: ControllerConstants.UserDefaultsKeys.prefLanguage)

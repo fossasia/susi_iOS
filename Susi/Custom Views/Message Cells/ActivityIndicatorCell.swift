@@ -31,7 +31,7 @@ class ActivityIndicatorCell: ChatMessageCell {
 
     func setupTheme() {
         textBubbleView.backgroundColor = .white
-        activityIndicator.color = UIColor.hexStringToUIColor(hex: "#757575")
+        activityIndicator.color = UIColor.activityIndicatorCellColor()
     }
 
 }

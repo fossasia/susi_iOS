@@ -23,9 +23,8 @@ class ChatViewController: UICollectionViewController {
 
     // for opening settings view controller
     lazy var settingsButton: IconButton = {
-        let image = UIImage(named: "Settings")
         let ib = IconButton()
-        ib.image = image
+        ib.image = ControllerConstants.Images.settings
         ib.tintColor = .white
         ib.cornerRadius = 18.0
         ib.addTarget(self, action: #selector(presentSettingsController), for: .touchUpInside)
@@ -43,7 +42,7 @@ class ChatViewController: UICollectionViewController {
     // scroll down button
     lazy var scrollButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "scroll_arrow"), for: .normal)
+        button.setImage(ControllerConstants.Images.scrollDown, for: .normal)
         button.backgroundColor = .white
         button.addTarget(self, action: #selector(scrollToLast), for: .touchUpInside)
         button.cornerRadius = 8
@@ -71,7 +70,7 @@ class ChatViewController: UICollectionViewController {
     // send button
     lazy var sendButton: FABButton = {
         let button = FABButton()
-        button.setImage(UIImage(named: ControllerConstants.mic), for: .normal)
+        button.setImage(ControllerConstants.Images.microphone, for: .normal)
         button.addTarget(self, action: #selector(setTargetForSendButton), for: .touchUpInside)
         button.accessibilityIdentifier = ControllerConstants.TestKeys.send
         button.tintColor = .white

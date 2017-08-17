@@ -13,10 +13,10 @@ extension ChatViewController: UITextFieldDelegate {
     func textFieldDidChange(_ textField: UITextField) {
         if let text = inputTextField.text, text.isEmpty {
             sendButton.tag = 0
-            sendButton.setImage(UIImage(named: ControllerConstants.mic), for: .normal)
+            sendButton.setImage(ControllerConstants.Images.microphone, for: .normal)
         } else {
             sendButton.tag = 1
-            sendButton.setImage(UIImage(named: ControllerConstants.send), for: .normal)
+            sendButton.setImage(ControllerConstants.Images.send, for: .normal)
         }
     }
 

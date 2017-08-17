@@ -19,7 +19,7 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
 
     lazy var thumbUpIcon: IconButton = {
         let button = IconButton()
-        button.image = UIImage(named: ControllerConstants.thumbsUp)
+        button.image = ControllerConstants.Images.thumbsUp
         button.addTarget(self, action: #selector(sendFeedback(sender:)), for: .touchUpInside)
         button.tintColor = UIColor(white: 0.1, alpha: 0.7)
         return button
@@ -27,7 +27,7 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
 
     lazy var thumbDownIcon: IconButton = {
         let button = IconButton()
-        button.image = UIImage(named: ControllerConstants.thumbsDown)
+        button.image = ControllerConstants.Images.thumbsDown
         button.addTarget(self, action: #selector(sendFeedback(sender:)), for: .touchUpInside)
         button.tintColor = UIColor(white: 0.1, alpha: 0.7)
         return button
@@ -98,7 +98,7 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
             thumbUpIcon.isUserInteractionEnabled = true
             feedback = "negative"
         }
-        sender.tintColor = UIColor.hexStringToUIColor(hex: "#2196F3")
+        sender.tintColor = UIColor.thumbsSelectedColor()
 
         let skillComponents = message?.skill.components(separatedBy: "/")
         if skillComponents?.count == 7 {

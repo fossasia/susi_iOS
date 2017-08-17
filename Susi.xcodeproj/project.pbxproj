@@ -31,7 +31,6 @@
 		6D389BEB1EDB912500DEAEA0 /* YTPlayer.html in Resources */ = {isa = PBXBuildFile; fileRef = 6D389BE91EDB912500DEAEA0 /* YTPlayer.html */; };
 		6D3DACC51F25FB9900CEFBC7 /* ActivityIndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3DACC41F25FB9900CEFBC7 /* ActivityIndicatorCell.swift */; };
 		6D3E82461E7953B200D48776 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3E82451E7953B200D48776 /* SettingsViewController.swift */; };
-		6D3E82481E796B5200D48776 /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3E82471E796B5200D48776 /* SettingsHeaderView.swift */; };
 		6D3FB3491E813B900015E1D6 /* ChatMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3FB3481E813B900015E1D6 /* ChatMessageCell.swift */; };
 		6D4D9B3B1E768E190067459C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4D9B3A1E768E190067459C /* AppDelegate.swift */; };
 		6D4D9B421E768E190067459C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D4D9B411E768E190067459C /* Assets.xcassets */; };
@@ -55,7 +54,6 @@
 		6D87A3321EEE86CC00A6D763 /* RSSCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D87A3311EEE86CC00A6D763 /* RSSCell.swift */; };
 		6D8AC7BA1F205F7F00FAA335 /* CollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8AC7B91F205F7F00FAA335 /* CollectionViewDelegate.swift */; };
 		6D8DF3F01F0A2CAF0070DE1D /* ForgotPasswordUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8DF3EF1F0A2CAF0070DE1D /* ForgotPasswordUITests.swift */; };
-		6D98EDFB1E796EFE00D96B32 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D98EDFA1E796EFE00D96B32 /* SettingsCell.swift */; };
 		6D9C0D291E7B223A00199828 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9C0D281E7B223A00199828 /* User.swift */; };
 		6DAF3AF61F0E101200929D86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DAF3AF51F0E101200929D86 /* Main.storyboard */; };
 		6DCA905C1F1F09910058CABB /* LocationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCA905B1F1F09910058CABB /* LocationDelegate.swift */; };
@@ -124,7 +122,6 @@
 		6D389BE91EDB912500DEAEA0 /* YTPlayer.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = YTPlayer.html; sourceTree = "<group>"; };
 		6D3DACC41F25FB9900CEFBC7 /* ActivityIndicatorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorCell.swift; sourceTree = "<group>"; };
 		6D3E82451E7953B200D48776 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		6D3E82471E796B5200D48776 /* SettingsHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
 		6D3FB3481E813B900015E1D6 /* ChatMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessageCell.swift; sourceTree = "<group>"; };
 		6D4D9B371E768E190067459C /* Susi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Susi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D4D9B3A1E768E190067459C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -152,7 +149,6 @@
 		6D87A3311EEE86CC00A6D763 /* RSSCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSCell.swift; sourceTree = "<group>"; };
 		6D8AC7B91F205F7F00FAA335 /* CollectionViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewDelegate.swift; sourceTree = "<group>"; };
 		6D8DF3EF1F0A2CAF0070DE1D /* ForgotPasswordUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordUITests.swift; sourceTree = "<group>"; };
-		6D98EDFA1E796EFE00D96B32 /* SettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		6D9C0D281E7B223A00199828 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6DAF3AF51F0E101200929D86 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		6DCA905B1F1F09910058CABB /* LocationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDelegate.swift; sourceTree = "<group>"; };
@@ -283,8 +279,6 @@
 			isa = PBXGroup;
 			children = (
 				6D3FB3471E8136640015E1D6 /* Message Cells */,
-				6D98EDFA1E796EFE00D96B32 /* SettingsCell.swift */,
-				6D3E82471E796B5200D48776 /* SettingsHeaderView.swift */,
 				6D87A32D1EEE54CC00A6D763 /* WebsearchCollectionView.swift */,
 				6D0B28DF1F3D8F6300E273E1 /* CustomTextField.swift */,
 			);
@@ -758,7 +752,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D3E82481E796B5200D48776 /* SettingsHeaderView.swift in Sources */,
 				6D4D9B4D1E768E650067459C /* LoginViewController.swift in Sources */,
 				6D389BEA1EDB912500DEAEA0 /* YouTubePlayer.swift in Sources */,
 				6D61B9AB1EEBAA3900CD3536 /* Message.swift in Sources */,
@@ -771,7 +764,6 @@
 				6D0DB6241EE41D1000AD030D /* ChatVCMethods.swift in Sources */,
 				6DE44E0F1E769AD300215B85 /* Color.swift in Sources */,
 				6DEE71121F2C9DC900A512CF /* AppNavigationController.swift in Sources */,
-				6D98EDFB1E796EFE00D96B32 /* SettingsCell.swift in Sources */,
 				6DE0025B1F3FF93A0065DB85 /* AnchorCell.swift in Sources */,
 				6D24B0961EE409DB0097418A /* SignUpVCMethods.swift in Sources */,
 				6D87A3301EEE557000A6D763 /* WebsearchCell.swift in Sources */,
