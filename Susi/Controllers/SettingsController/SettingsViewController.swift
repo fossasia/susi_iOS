@@ -8,9 +8,12 @@
 
 import UIKit
 import Material
+import Localize_Swift
 
 class SettingsViewController: UITableViewController {
 
+    let availableLanguages = Localize.availableLanguages()
+    var actionSheet: UIAlertController!
     // Get directory
     let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
 
@@ -52,6 +55,11 @@ class SettingsViewController: UITableViewController {
                 presentResetPasswordController()
             } else if row == 3 {
                 logoutUser()
+            }
+        }
+        else if section == 5 {
+            if row == 0 {
+                changeLanguage()
             }
         }
         tableView.deselectRow(at: indexPath, animated: true)

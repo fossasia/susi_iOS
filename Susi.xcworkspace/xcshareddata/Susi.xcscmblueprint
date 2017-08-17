@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "3176722731A10ADB3E49DAAD26D6F943DA28A0A9",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "3176722731A10ADB3E49DAAD26D6F943DA28A0A9" : 9223372036854775807,
+    "777BAFA1E8F9825A0B505DD4BE1D79238ECB3DCB" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "E663A359-5ABB-4B6D-8D0A-2C0967A90733",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "3176722731A10ADB3E49DAAD26D6F943DA28A0A9" : "susi_iOS\/",
+    "777BAFA1E8F9825A0B505DD4BE1D79238ECB3DCB" : "Localize-Swift\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Susi",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Susi.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/KasunApplications\/susi_iOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3176722731A10ADB3E49DAAD26D6F943DA28A0A9"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/marmelroy\/Localize-Swift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "777BAFA1E8F9825A0B505DD4BE1D79238ECB3DCB"
+    }
+  ]
+}

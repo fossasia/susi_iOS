@@ -10,9 +10,10 @@ import UIKit
 import RealmSwift
 import Material
 import Toast_Swift
+import Localize_Swift
 
 extension SettingsViewController {
-
+    
     // Setup Navigation Bar
     func setupTitle() {
         navigationItem.title = ControllerConstants.settings
@@ -24,6 +25,24 @@ extension SettingsViewController {
     func dismissView() {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    // Language chageing
+    func changeLanguage() {
+        actionSheet = UIAlertController(title: nil, message: "Change Language", preferredStyle: UIAlertControllerStyle.actionSheet)
+        for language in availableLanguages {
+            let displayName = Localize.displayNameForLanguage(language)
+            let languageAction = UIAlertAction(title: displayName, style: .default, handler: {
+                (alert: UIAlertAction!) -> Void in
+                Localize.setCurrentLanguage(language)
+            })
+            actionSheet.addAction(languageAction)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: {
+            (alert: UIAlertAction) -> Void in
+        })
+        actionSheet.addAction(cancelAction)
+        self.present(actionSheet, animated: true, completion: nil)
+    }
 
     func setupTheme() {
         navigationItem.titleLabel.textColor = .white
@@ -32,7 +51,7 @@ extension SettingsViewController {
         }
         UIApplication.shared.statusBarView?.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
     }
-
+    
     func logoutUser() {
         let realm = try! Realm()
         try! realm.write {
