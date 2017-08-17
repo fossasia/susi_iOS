@@ -70,12 +70,24 @@ extension ChatViewController {
     func setupView() {
         UIApplication.shared.statusBarStyle = .lightContent
         settingsButton.tintColor = .white
-        sendButton.backgroundColor = UIColor.defaultColor()
         navigationItem.titleLabel.textColor = .black
         UIApplication.shared.statusBarView?.backgroundColor = UIColor.defaultColor()
         settingsButton.backgroundColor = UIColor.defaultColor()
         view.backgroundColor = UIColor.chatBackgroundColor()
 
+    }
+
+    // setup send button
+    func setupSendButton() {
+        indicatorView.stopAnimating()
+        sendButton.addSubview(indicatorView)
+        sendButton.addConstraintsWithFormat(format: "V:|-12-[v0(16)]-12-|", views: indicatorView)
+        sendButton.addConstraintsWithFormat(format: "H:|-12-[v0(16)]-12-|", views: indicatorView)
+
+        // add gesture recogniser
+        let gesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(setTargetForSendButton))
+        gesture.numberOfTapsRequired = 1
+        indicatorView.addGestureRecognizer(gesture)
     }
 
     // shows youtube player
@@ -180,8 +192,7 @@ extension ChatViewController {
                 params[Client.ChatKeys.Longitude] = location.coordinate.longitude as AnyObject
             }
 
-            if let userData = UserDefaults.standard.dictionary(forKey: ControllerConstants.UserDefaultsKeys.user) as [String : AnyObject]? {
-                let user = User(dictionary: userData)
+            if let delegate = UIApplication.shared.delegate as? AppDelegate, let user = delegate.currentUser {
                 params[Client.ChatKeys.AccessToken] = user.accessToken as AnyObject
             }
 
@@ -199,9 +210,7 @@ extension ChatViewController {
 
     // downloads messages from user history
     func getMessagesFromMemory() {
-        if let userData = UserDefaults.standard.dictionary(forKey: ControllerConstants.UserDefaultsKeys.user) {
-            let user = User(dictionary: userData as [String : AnyObject])
-
+        if let delegate = UIApplication.shared.delegate as? AppDelegate, let user = delegate.currentUser {
             let params = [
                 Client.UserKeys.AccessToken: user.accessToken
             ]
@@ -213,7 +222,6 @@ extension ChatViewController {
                     }
                 }
             }
-
         }
     }
 
@@ -225,10 +233,12 @@ extension ChatViewController {
                     self.realm.add(message)
                     self.messages.append(message)
                     let indexPath = IndexPath(item: self.messages.count - 1, section: 0)
-                    self.collectionView?.insertItems(at: [indexPath])
-                    if message.actionType == ActionType.answer.rawValue && !self.loadMemoryFromNetwork {
-                        self.speakAction(message.message, language: message.answerData?.language)
-                    }
+                    UIView.animate(withDuration: 1.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                        self.collectionView?.insertItems(at: [indexPath])
+                        if message.actionType == ActionType.answer.rawValue && !self.loadMemoryFromNetwork {
+                            self.speakAction(message.message, language: message.answerData?.language)
+                        }
+                    }, completion: nil)
                 }
             }
         }, completion: { (_) in
@@ -266,8 +276,12 @@ extension ChatViewController {
         if !isSpeechRecognitionRunning {
             if let text = inputTextField.text, text.isEmpty {
                 sendButton.setImage(ControllerConstants.Images.microphone, for: .normal)
+                sendButton.tintColor = UIColor.defaultColor()
+                sendButton.backgroundColor = .clear
             } else {
                 sendButton.setImage(ControllerConstants.Images.send, for: .normal)
+                sendButton.tintColor = .white
+                sendButton.backgroundColor = UIColor.defaultColor()
             }
         }
     }

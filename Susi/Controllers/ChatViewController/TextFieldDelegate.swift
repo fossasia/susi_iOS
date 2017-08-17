@@ -14,9 +14,13 @@ extension ChatViewController: UITextFieldDelegate {
         if let text = inputTextField.text, text.isEmpty {
             sendButton.tag = 0
             sendButton.setImage(ControllerConstants.Images.microphone, for: .normal)
+            sendButton.tintColor = UIColor.defaultColor()
+            sendButton.backgroundColor = .clear
         } else {
             sendButton.tag = 1
             sendButton.setImage(ControllerConstants.Images.send, for: .normal)
+            sendButton.tintColor = .white
+            sendButton.backgroundColor = UIColor.defaultColor()
         }
     }
 

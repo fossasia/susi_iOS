@@ -67,13 +67,17 @@ class ChatViewController: UICollectionViewController {
         return textField
     }()
 
+    // indicator view to show STT running (used inside send button)
+    let indicatorView = NVActivityIndicatorView(frame: CGRect(), type: .ballPulse, color: UIColor.defaultColor(), padding: 0)
+
     // send button
     lazy var sendButton: FABButton = {
         let button = FABButton()
         button.setImage(ControllerConstants.Images.microphone, for: .normal)
         button.addTarget(self, action: #selector(setTargetForSendButton), for: .touchUpInside)
         button.accessibilityIdentifier = ControllerConstants.TestKeys.send
-        button.tintColor = .white
+        button.tintColor = UIColor.defaultColor()
+        button.backgroundColor = .clear
         return button
     }()
 
@@ -125,9 +129,6 @@ class ChatViewController: UICollectionViewController {
     var recognitionTask: SFSpeechRecognitionTask?
     let audioEngine = AVAudioEngine()
 
-    // indicator view to show STT running (used inside send button)
-    let indicatorView = NVActivityIndicatorView(frame: CGRect(), type: .ballPulse, color: .white, padding: 0)
-
     // flag to load messages from user's account memory
     var loadMemoryFromNetwork: Bool = false {
         didSet {
@@ -141,6 +142,7 @@ class ChatViewController: UICollectionViewController {
         super.viewDidLoad()
         setupNavbar()
         setupView()
+        setupSendButton()
         setupCollectionView()
         setupInputComponents()
         addGestures()

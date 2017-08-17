@@ -70,8 +70,7 @@ extension SettingsViewController {
             params[ControllerConstants.key] = key as AnyObject
             params[ControllerConstants.value] = UserDefaults.standard.bool(forKey: key) as AnyObject
 
-            if let userData = UserDefaults.standard.dictionary(forKey: ControllerConstants.UserDefaultsKeys.user) as [String : AnyObject]? {
-                let user = User(dictionary: userData)
+            if let delegate = UIApplication.shared.delegate as? AppDelegate, let user = delegate.currentUser {
                 params[Client.UserKeys.AccessToken] = user.accessToken as AnyObject
                 params[ControllerConstants.count] = 1 as AnyObject
 
@@ -85,15 +84,13 @@ extension SettingsViewController {
     }
 
     func presentTrainingController() {
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "TrainingViewController")
+        let vc = ControllerConstants.Controllers.resetPasswordViewController
         let nvc = AppNavigationController(rootViewController: vc)
         present(nvc, animated: true, completion: nil)
     }
 
     func presentResetPasswordController() {
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "ResetPasswordController")
+        let vc = ControllerConstants.Controllers.resetPasswordViewController
         let nvc = AppNavigationController(rootViewController: vc)
         present(nvc, animated: true, completion: nil)
     }

@@ -119,24 +119,12 @@ extension ChatViewController: SFSpeechRecognizerDelegate, AVSpeechSynthesizerDel
 
         print("Say something, I'm listening!")
 
-        let indicatorFrame = CGRect(x: 0.0, y: 0.0, width: 16, height: 16)
-        indicatorView.frame = indicatorFrame
-        indicatorView.center = sendButton.center
-
         // Listening indicator swift
         indicatorView.isUserInteractionEnabled = true
-        let gesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(setTargetForSendButton))
-        gesture.numberOfTapsRequired = 1
-        indicatorView.addGestureRecognizer(gesture)
+        inputTextField.isUserInteractionEnabled = false
 
         sendButton.setImage(nil, for: .normal)
         indicatorView.startAnimating()
-        sendButton.addSubview(indicatorView)
-        sendButton.addConstraintsWithFormat(format: "V:|[v0(14)]|", views: indicatorView)
-        sendButton.addConstraintsWithFormat(format: "H:|[v0(14)]|", views: indicatorView)
-
-        inputTextField.isUserInteractionEnabled = false
-        indicatorView.stopAnimating()
     }
 
     func setTargetForIndicatorView() {
@@ -157,7 +145,7 @@ extension ChatViewController: SFSpeechRecognizerDelegate, AVSpeechSynthesizerDel
         print("audioEngine stopped")
         resetSpeechConfig()
 
-        indicatorView.removeFromSuperview()
+        indicatorView.stopAnimating()
         recognitionTask?.cancel()
         detectionTimer?.invalidate()
 
