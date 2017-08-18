@@ -52,7 +52,7 @@ class ChatUITests: XCTestCase {
         inputviewTextField.typeText("brazil")
         app.buttons[ControllerConstants.TestKeys.send].tap()
         
-        sleep(5)
+        sleep(10)
         
         let chatCells = app.collectionViews.cells.matching(identifier: ControllerConstants.TestKeys.chatCells)
         XCTAssertEqual(chatCells.count, 3)

@@ -65,8 +65,18 @@ extension SettingsViewController {
                 key = ControllerConstants.UserDefaultsKeys.speechOutput
             } else if senderTag == 4 {
                 key = ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn
+            } else if senderTag == 5 {
+                key = ControllerConstants.UserDefaultsKeys.speechRate
+            } else if senderTag == 6 {
+                key = ControllerConstants.UserDefaultsKeys.speechPitch
             }
-            UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: key), forKey: key)
+
+            if let slider = sender as? UISlider {
+                UserDefaults.standard.set(slider.value, forKey: key)
+            } else {
+                UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: key), forKey: key)
+            }
+
             params[ControllerConstants.key] = key as AnyObject
             params[ControllerConstants.value] = UserDefaults.standard.bool(forKey: key) as AnyObject
 

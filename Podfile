@@ -3,7 +3,6 @@ platform :ios, '10.0'
 
 def shared_pods
   pod 'Alamofire', '~> 4.4'
-  pod 'ReachabilitySwift'
 end
 
 target 'Susi' do
