@@ -49,7 +49,7 @@ class ChatUITests: XCTestCase {
     func testRSSAction() {
         let inputviewTextField = app.textFields[ControllerConstants.TestKeys.chatInputView]
         inputviewTextField.tap()
-        inputviewTextField.typeText("Amazon")
+        inputviewTextField.typeText("brazil")
         app.buttons[ControllerConstants.TestKeys.send].tap()
         
         sleep(5)

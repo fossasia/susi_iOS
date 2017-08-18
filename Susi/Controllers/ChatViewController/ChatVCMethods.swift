@@ -198,10 +198,8 @@ extension ChatViewController {
 
             Client.sharedInstance.queryResponse(params) { (messages, success, _) in
                 DispatchQueue.main.async {
-                    if success {
-                        if let messages = messages {
-                            self.addMessagesToCollectionView(messages: messages)
-                        }
+                    if let messages = messages, success {
+                        self.addMessagesToCollectionView(messages: messages)
                     }
                 }
             }
@@ -235,7 +233,9 @@ extension ChatViewController {
                     let indexPath = IndexPath(item: self.messages.count - 1, section: 0)
                     UIView.animate(withDuration: 1.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
                         self.collectionView?.insertItems(at: [indexPath])
-                        if message.actionType == ActionType.answer.rawValue && !self.loadMemoryFromNetwork {
+                        if message.actionType == ActionType.answer.rawValue
+                            && !message.fromUser
+                            && UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn) {
                             self.speakAction(message.message, language: message.answerData?.language)
                         }
                     }, completion: nil)

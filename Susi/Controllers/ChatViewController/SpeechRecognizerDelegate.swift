@@ -162,9 +162,8 @@ extension ChatViewController: SFSpeechRecognizerDelegate, AVSpeechSynthesizerDel
     }
 
     func speakAction(_ string: String, language: String?) {
-        if isSpeechRecognitionRunning &&
-            (UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.speechOutput) ||
-            UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn)) {
+        if UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.speechOutput) ||
+            UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn) {
             let speechUtterance = AVSpeechUtterance(string: string)
             speechSynthesizer.delegate = self
 
@@ -172,7 +171,8 @@ extension ChatViewController: SFSpeechRecognizerDelegate, AVSpeechSynthesizerDel
                 speechUtterance.voice = AVSpeechSynthesisVoice(language: language)
             }
 
-            speechUtterance.rate = 0.4
+            speechUtterance.rate = UserDefaults.standard.float(forKey: ControllerConstants.UserDefaultsKeys.speechRate)
+            speechUtterance.pitchMultiplier = UserDefaults.standard.float(forKey: ControllerConstants.UserDefaultsKeys.speechPitch)
 
             speechSynthesizer.speak(speechUtterance)
         } else {
