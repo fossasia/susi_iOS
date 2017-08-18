@@ -14,8 +14,6 @@ target 'Susi' do
   pod 'Material'
   pod 'Toast-Swift', '~> 2.0.0'
   pod 'SwiftValidators'
-  pod 'RSKGrowingTextView'
-  pod 'RSKPlaceholderTextView', '2.0.0'
   pod 'BouncyLayout'
   pod 'RealmSwift'
   pod 'ReadabilityKit'
@@ -25,6 +23,7 @@ target 'Susi' do
   pod 'Fakery'
   pod 'M13Checkbox', :git => 'https://github.com/Marxon13/M13Checkbox.git'
   pod 'NotificationBannerSwift'
+  pod 'ReachabilitySwift'
   shared_pods
 end
 

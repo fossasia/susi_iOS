@@ -200,6 +200,10 @@ extension ChatViewController {
                 DispatchQueue.main.async {
                     if let messages = messages, success {
                         self.addMessagesToCollectionView(messages: messages)
+                    } else {
+                        self.collectionView?.performBatchUpdates({
+                            self.removeActivityIndicator()
+                        }, completion: nil)
                     }
                 }
             }

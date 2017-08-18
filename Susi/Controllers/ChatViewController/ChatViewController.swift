@@ -8,8 +8,6 @@
 
 import UIKit
 import Material
-import RSKGrowingTextView
-import RSKPlaceholderTextView
 import CoreLocation
 import AVFoundation
 import RealmSwift
