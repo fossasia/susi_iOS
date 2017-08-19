@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         initializeRealm()
         resetStateIfUITesting()
+        checkAndAssignDefaultIfFirstLaunch()
         return true
     }
 
@@ -38,6 +39,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             try! realm.write {
                 realm.deleteAll()
             }
+        }
+    }
+
+    func checkAndAssignDefaultIfFirstLaunch() {
+        let lanuchedBefore = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.lanuchedBefore)
+        if !lanuchedBefore {
+            UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.enterToSend)
+            UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.micInput)
+            UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.hotwordEnabled)
+            UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.speechOutput)
+            UserDefaults.standard.set(false, forKey: ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn)
+            UserDefaults.standard.set(0.5, forKey: ControllerConstants.UserDefaultsKeys.speechRate)
+            UserDefaults.standard.set(1.0, forKey: ControllerConstants.UserDefaultsKeys.speechPitch)
+            UserDefaults.standard.set("en", forKey: ControllerConstants.UserDefaultsKeys.prefLanguage)
+            UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.lanuchedBefore)
         }
     }
 

@@ -51,22 +51,22 @@ class TrainingViewController: UIViewController {
             if count == 1 {
                 indicator1.stopAnimating()
                 recordPhI1.isHidden = false
-                recordPhI1.image = UIImage(named: "check")
-                recordPhI1.tintColor = .green
+                recordPhI1.image = ControllerConstants.Images.check
+                recordPhI1.tintColor = UIColor.defaultColor()
                 recordingLabel1.text = "Complete"
                 recordingLabel1.isHidden = false
             } else if count == 2 {
                 indicator2.stopAnimating()
                 recordPhI2.isHidden = false
-                recordPhI2.image = UIImage(named: "check")
-                recordPhI2.tintColor = .green
+                recordPhI2.image = ControllerConstants.Images.check
+                recordPhI2.tintColor = UIColor.defaultColor()
                 recordingLabel2.text = "Complete"
                 recordingLabel2.isHidden = false
             } else if count == 3 {
                 indicator3.stopAnimating()
                 recordPhI3.isHidden = false
-                recordPhI3.image = UIImage(named: "check")
-                recordPhI3.tintColor = .green
+                recordPhI3.image = ControllerConstants.Images.check
+                recordPhI3.tintColor = UIColor.defaultColor()
                 recordingLabel3.text = "Complete"
                 recordingLabel3.isHidden = false
                 micButton.isEnabled = false

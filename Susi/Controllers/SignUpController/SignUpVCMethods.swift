@@ -178,7 +178,7 @@ extension SignUpViewController {
 
     func setupTheme() {
         UIApplication.shared.statusBarStyle = .lightContent
-        view.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
+        view.backgroundColor = UIColor.defaultColor()
     }
 
 }

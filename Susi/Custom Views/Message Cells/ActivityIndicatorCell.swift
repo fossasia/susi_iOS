@@ -18,7 +18,7 @@ class ActivityIndicatorCell: ChatMessageCell {
         setupTheme()
 
         messageTextView.frame = CGRect.zero
-        textBubbleView.frame = CGRect(x: 4, y: -4, width: 100, height: self.frame.height)
+        textBubbleView.frame = CGRect(x: 4, y: 0, width: 100, height: frame.height)
         activityIndicator.frame = textBubbleView.frame
 
         textBubbleView.addSubview(activityIndicator)
@@ -31,7 +31,7 @@ class ActivityIndicatorCell: ChatMessageCell {
 
     func setupTheme() {
         textBubbleView.backgroundColor = .white
-        activityIndicator.color = UIColor.hexStringToUIColor(hex: "#757575")
+        activityIndicator.color = UIColor.activityIndicatorCellColor()
     }
 
 }

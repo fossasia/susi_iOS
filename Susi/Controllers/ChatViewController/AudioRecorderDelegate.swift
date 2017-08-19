@@ -10,6 +10,9 @@ import AVFoundation
 
 extension ChatViewController: AVAudioRecorderDelegate {
 
+    /**
+        Used to initialise the snowboy wrapper
+    **/
     func initSnowboy() {
         wrapper = SnowboyWrapper(resources: RESOURCE, modelStr: MODEL)
         wrapper.setSensitivity("0.5")
@@ -17,11 +20,21 @@ extension ChatViewController: AVAudioRecorderDelegate {
         //  print("Sample rate: \(wrapper?.sampleRate()); channels: \(wrapper?.numChannels()); bits: \(wrapper?.bitsPerSample())")
     }
 
+    /**
+        Starts a 2 seconds timer 
+        calling the startRecording method
+    **/
     func startHotwordRecognition() {
         hotwordTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(startRecording), userInfo: nil, repeats: true)
         hotwordTimer.fire()
     }
 
+    /**
+        Reads the recorded sound
+        and runs detection to check if the
+        buffer contains the hotword
+        and starts speech to text if it does
+    **/
     func runSnowboy() {
         let file = try! AVAudioFile(forReading: soundFileURL)
         let format = AVAudioFormat(commonFormat: .pcmFormatFloat32, sampleRate: 16000.0, channels: 1, interleaved: false)
@@ -34,7 +47,7 @@ extension ChatViewController: AVAudioRecorderDelegate {
             } catch let error {
                 print(error.localizedDescription)
             }
-            let array = Array(UnsafeBufferPointer(start: buffer.floatChannelData![0], count:Int(buffer.frameLength)))
+            let array = Array(UnsafeBufferPointer(start: buffer.floatChannelData![0], count: Int(buffer.frameLength)))
 
             // print("Frame capacity: \(AVAudioFrameCount(file.length))")
             // print("Buffer frame length: \(buffer.frameLength)")
@@ -43,16 +56,23 @@ extension ChatViewController: AVAudioRecorderDelegate {
             // print("Result: \(result)")
 
             if result == 1 {
-                startSTT()
+                startSpeechToText()
             }
         }
     }
 
+    /**
+        Detection runs only after recording is complete
+    **/
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         // print("Audio Recorder did finish recording.")
         runSnowboy()
     }
 
+    /**
+        Configures settings for the recorder
+        and records for 1.5 seconds
+    **/
     func startRecording() {
         do {
             let fileMgr = FileManager.default
@@ -78,7 +98,10 @@ extension ChatViewController: AVAudioRecorderDelegate {
         }
     }
 
-    func stopRecording() {
+    /**
+        Stops the audio recorder and the hotword timer
+    **/
+    func stopHotwordRecognition() {
         if audioRecorder != nil && hotwordTimer != nil {
             audioRecorder.stop()
             hotwordTimer.invalidate()

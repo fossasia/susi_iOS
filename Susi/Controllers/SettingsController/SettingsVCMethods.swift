@@ -28,9 +28,9 @@ extension SettingsViewController {
     func setupTheme() {
         navigationItem.titleLabel.textColor = .white
         if let navbar = navigationController?.navigationBar {
-            navbar.barTintColor = UIColor.hexStringToUIColor(hex: "#4184F3")
+            navbar.barTintColor = UIColor.defaultColor()
         }
-        UIApplication.shared.statusBarView?.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
+        UIApplication.shared.statusBarView?.backgroundColor = UIColor.defaultColor()
     }
 
     func logoutUser() {
@@ -65,13 +65,22 @@ extension SettingsViewController {
                 key = ControllerConstants.UserDefaultsKeys.speechOutput
             } else if senderTag == 4 {
                 key = ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn
+            } else if senderTag == 5 {
+                key = ControllerConstants.UserDefaultsKeys.speechRate
+            } else if senderTag == 6 {
+                key = ControllerConstants.UserDefaultsKeys.speechPitch
             }
-            UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: key), forKey: key)
+
+            if let slider = sender as? UISlider {
+                UserDefaults.standard.set(slider.value, forKey: key)
+            } else {
+                UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: key), forKey: key)
+            }
+
             params[ControllerConstants.key] = key as AnyObject
             params[ControllerConstants.value] = UserDefaults.standard.bool(forKey: key) as AnyObject
 
-            if let userData = UserDefaults.standard.dictionary(forKey: ControllerConstants.UserDefaultsKeys.user) as [String : AnyObject]? {
-                let user = User(dictionary: userData)
+            if let delegate = UIApplication.shared.delegate as? AppDelegate, let user = delegate.currentUser {
                 params[Client.UserKeys.AccessToken] = user.accessToken as AnyObject
                 params[ControllerConstants.count] = 1 as AnyObject
 
@@ -85,15 +94,13 @@ extension SettingsViewController {
     }
 
     func presentTrainingController() {
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "trainingViewController")
+        let vc = ControllerConstants.Controllers.resetPasswordViewController
         let nvc = AppNavigationController(rootViewController: vc)
         present(nvc, animated: true, completion: nil)
     }
 
     func presentResetPasswordController() {
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "ResetPasswordController")
+        let vc = ControllerConstants.Controllers.resetPasswordViewController
         let nvc = AppNavigationController(rootViewController: vc)
         present(nvc, animated: true, completion: nil)
     }
@@ -125,6 +132,16 @@ extension SettingsViewController {
             }
         }
         return nil
+    }
+
+    func assignDefaults() {
+        enterToSend.isOn = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.enterToSend)
+        micInput.isOn = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.micInput)
+        hotwordDetection.isOn = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.hotwordEnabled)
+        speechOutput.isOn = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.speechOutput)
+        speechOutputAlwaysOn.isOn = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn)
+        speechRate.value = UserDefaults.standard.float(forKey: ControllerConstants.UserDefaultsKeys.speechRate)
+        speechPitch.value = UserDefaults.standard.float(forKey: ControllerConstants.UserDefaultsKeys.speechPitch)
     }
 
 }

@@ -217,7 +217,6 @@ extension LoginViewController {
     func checkSession() {
         if let userDefaultValue = UserDefaults.standard.value(forKey: ControllerConstants.UserDefaultsKeys.user) {
             if let userData = userDefaultValue as? [String : AnyObject] {
-                print(userData)
                 let user = User(dictionary: userData)
                 saveUserGlobally(user: user)
 
@@ -235,6 +234,7 @@ extension LoginViewController {
 
     func enterAnonymousMode() {
         resetDB()
+        resetSettings()
         UserDefaults.standard.set(Client.APIURLs.SusiAPI, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
         completeLogin()
     }
@@ -247,17 +247,28 @@ extension LoginViewController {
     }
 
     func setupTheme() {
-        let image = UIImage(named: "susi")?.withRenderingMode(.alwaysTemplate)
+        let image = ControllerConstants.Images.susiLogo
         susiLogo.image = image
         susiLogo.tintColor = .white
         UIApplication.shared.statusBarStyle = .lightContent
-        view.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
+        view.backgroundColor = UIColor.defaultColor()
     }
 
     func saveUserGlobally(user: User) {
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             appDelegate.currentUser = user
         }
+    }
+
+    func resetSettings() {
+        UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.enterToSend)
+        UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.micInput)
+        UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.hotwordEnabled)
+        UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.speechOutput)
+        UserDefaults.standard.set(false, forKey: ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn)
+        UserDefaults.standard.set(0.5, forKey: ControllerConstants.UserDefaultsKeys.speechRate)
+        UserDefaults.standard.set(1.0, forKey: ControllerConstants.UserDefaultsKeys.speechPitch)
+        UserDefaults.standard.set("en", forKey: ControllerConstants.UserDefaultsKeys.prefLanguage)
     }
 
 }

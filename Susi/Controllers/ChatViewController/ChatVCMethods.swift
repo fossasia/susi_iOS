@@ -14,6 +14,8 @@ import Material
 
 extension ChatViewController {
 
+    // MARK: - Keyboard Notifications
+
     func subscribeToKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -31,8 +33,7 @@ extension ChatViewController {
             let keyboardFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
             let isKeyboardShowing = notification.name == NSNotification.Name.UIKeyboardWillShow
 
-            bottomConstraintTextView?.constant = isKeyboardShowing ? (-keyboardFrame!.height - 8.0) : 0
-            bottomConstraintSendButton?.constant = isKeyboardShowing ? (-keyboardFrame!.height - 8.0) : 0
+            bottomConstraint?.constant = isKeyboardShowing ? -keyboardFrame!.height : 0
 
             collectionView?.frame = isKeyboardShowing ? CGRect(x: 0, y: 20, width: view.frame.width, height: view.frame.height - keyboardFrame!.height - 71) :
                 CGRect(x: 0, y: 20, width: view.frame.width, height: view.frame.height - 71)
@@ -51,25 +52,45 @@ extension ChatViewController {
         }
     }
 
+    // MARK: - Configure Views
+
     // Resign responders
     func resignResponders() {
         view.endEditing(true)
     }
 
-    // Setup Navigation Bar
-    func setupTitle() {
+    // setup navigation bar
+    func setupNavbar() {
         navigationItem.title = ControllerConstants.susiTitle
         navigationItem.titleLabel.textAlignment = .left
         navigationItem.rightViews = [settingsButton]
     }
 
-    // Setup View
+    // setup view
     func setupView() {
-        showSettingsButton()
-        addScrollButton()
+        UIApplication.shared.statusBarStyle = .lightContent
+        settingsButton.tintColor = .white
+        navigationItem.titleLabel.textColor = .black
+        UIApplication.shared.statusBarView?.backgroundColor = UIColor.defaultColor()
+        settingsButton.backgroundColor = UIColor.defaultColor()
+        view.backgroundColor = UIColor.chatBackgroundColor()
+
     }
 
-    // Shows Youtube Player
+    // setup send button
+    func setupSendButton() {
+        indicatorView.stopAnimating()
+        sendButton.addSubview(indicatorView)
+        sendButton.addConstraintsWithFormat(format: "V:|-12-[v0(16)]-12-|", views: indicatorView)
+        sendButton.addConstraintsWithFormat(format: "H:|-12-[v0(16)]-12-|", views: indicatorView)
+
+        // add gesture recogniser
+        let gesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(setTargetForSendButton))
+        gesture.numberOfTapsRequired = 1
+        indicatorView.addGestureRecognizer(gesture)
+    }
+
+    // shows youtube player
     func addYotubePlayer(_ videoID: String) {
         if let window = UIApplication.shared.keyWindow {
             blackView.frame = window.frame
@@ -93,15 +114,70 @@ extension ChatViewController {
         }
     }
 
-    func handleDismiss() {
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.blackView.removeFromSuperview()
-        }, completion: nil)
+    func addActivityIndicatorMessage() {
+        removeActivityIndicator()
+        let message = Message()
+        message.actionType = ActionType.indicatorView.rawValue
+        messages.append(message)
+        let indexPath = IndexPath(item: messages.count - 1, section: 0)
+        collectionView?.insertItems(at: [indexPath])
+        scrollToLast()
     }
 
-    // Send Button Action
+    func removeActivityIndicator() {
+        if messages.last?.actionType == ActionType.indicatorView.rawValue {
+            let item = IndexPath(item: messages.count - 1, section: 0)
+            collectionView?.deleteItems(at: [item])
+            messages.removeLast()
+        }
+    }
+
+    // setup input components
+    func setupInputComponents() {
+        view.addSubview(messageInputContainerView)
+        view.addConstraintsWithFormat(format: "H:|[v0]|", views: messageInputContainerView)
+        view.addConstraintsWithFormat(format: "V:[v0(48)]", views: messageInputContainerView)
+
+        bottomConstraint = NSLayoutConstraint(item: messageInputContainerView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
+        view.addConstraint(bottomConstraint!)
+
+        // chat container view configuration
+        let topBorderView = UIView()
+        topBorderView.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
+
+        messageInputContainerView.addSubview(inputTextField)
+        messageInputContainerView.addSubview(sendButton)
+        messageInputContainerView.addSubview(topBorderView)
+
+        messageInputContainerView.addConstraintsWithFormat(format: "H:|-8-[v0][v1(40)]-4-|", views: inputTextField, sendButton)
+
+        messageInputContainerView.addConstraintsWithFormat(format: "V:|[v0]|", views: inputTextField)
+        messageInputContainerView.addConstraintsWithFormat(format: "V:|-4-[v0(40)]-4-|", views: sendButton)
+
+        messageInputContainerView.addConstraintsWithFormat(format: "H:|[v0]|", views: topBorderView)
+        messageInputContainerView.addConstraintsWithFormat(format: "V:|[v0(0.5)]", views: topBorderView)
+    }
+
+    // setup settings button
+    func addSettingsButton() {
+        view.addSubview(settingsButton)
+        view.addConstraintsWithFormat(format: "H:[v0(36)]-8-|", views: settingsButton)
+        view.addConstraintsWithFormat(format: "V:|-28-[v0(36)]", views: settingsButton)
+    }
+
+    // setup scroll button
+    func addScrollButton() {
+        view.addSubview(scrollButton)
+        view.addConstraintsWithFormat(format: "H:[v0(44)]|", views: scrollButton)
+        view.addConstraintsWithFormat(format: "V:[v0(44)]-70-|", views: scrollButton)
+        scrollButton.isHidden = true
+    }
+
+    // MARK: - Make API calls and use realm database
+
+    // handles the send action on the button
     func handleSend() {
-        if let text = inputTextView.text, text.characters.count > 0 && !text.isEmpty {
+        if let text = inputTextField.text, text.characters.count > 0 && !text.isEmpty {
             var params: [String : AnyObject] = [
                 Client.WebsearchKeys.Query: text as AnyObject,
                 Client.ChatKeys.TimeZoneOffset: ControllerConstants.timeZone as AnyObject,
@@ -116,143 +192,84 @@ extension ChatViewController {
                 params[Client.ChatKeys.Longitude] = location.coordinate.longitude as AnyObject
             }
 
-            if let userData = UserDefaults.standard.dictionary(forKey: ControllerConstants.UserDefaultsKeys.user) as [String : AnyObject]? {
-                let user = User(dictionary: userData)
+            if let delegate = UIApplication.shared.delegate as? AppDelegate, let user = delegate.currentUser {
                 params[Client.ChatKeys.AccessToken] = user.accessToken as AnyObject
             }
 
             Client.sharedInstance.queryResponse(params) { (messages, success, _) in
                 DispatchQueue.main.async {
-                    if success {
+                    if let messages = messages, success {
+                        self.addMessagesToCollectionView(messages: messages)
+                    } else {
                         self.collectionView?.performBatchUpdates({
                             self.removeActivityIndicator()
-                            for message in messages! {
-                                try! self.realm.write {
-                                    self.realm.add(message)
-                                    self.messages.append(message)
-                                    let indexPath = IndexPath(item: self.messages.count - 1, section: 0)
-                                    self.collectionView?.insertItems(at: [indexPath])
-                                    if message.actionType == ActionType.answer.rawValue {
-                                        self.speakAction(message.message, language: message.answerData?.language)
-                                    }
-                                }
-                            }
-                        }, completion: { (_) in
-                            self.scrollToLast()
-                        })
+                        }, completion: nil)
                     }
                 }
             }
         }
     }
 
-    func removeActivityIndicator() {
-        if messages.last?.actionType == ActionType.indicatorView.rawValue {
-            let item = IndexPath(item: messages.count - 1, section: 0)
-            collectionView?.deleteItems(at: [item])
-            messages.removeLast()
-        }
-    }
-
-    func addActivityIndicatorMessage() {
-        removeActivityIndicator()
-        let message = Message()
-        message.actionType = ActionType.indicatorView.rawValue
-        messages.append(message)
-        let indexPath = IndexPath(item: messages.count - 1, section: 0)
-        collectionView?.insertItems(at: [indexPath])
-        scrollToLast()
-    }
-
-    // Setup Input Components
-    func setupInputComponents() {
-        view.addSubview(inputTextView)
-        view.addSubview(sendButton)
-
-        view.layout(sendButton).bottomRight(bottom: 8.0, right: 8.0).width(40).height(40)
-        view.layout(inputTextView).bottomLeft(bottom: 8.0, left: 8.0).width(view.frame.width - 64)
-
-        bottomConstraintTextView = NSLayoutConstraint(item: inputTextView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
-        view.addConstraint(bottomConstraintTextView!)
-
-        bottomConstraintSendButton = NSLayoutConstraint(item: sendButton, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
-        view.addConstraint(bottomConstraintSendButton!)
-    }
-
-    // Temporarily save message to object
-    func saveMessage(_ message: String) {
-
-        let message = Message(message: message.trimmed)
-
-        try! realm.write {
-            realm.add(message)
-            messages.append(message)
-            let indexPath = IndexPath(item: messages.count - 1, section: 0)
-            collectionView?.insertItems(at: [indexPath])
-            self.scrollToLast()
-
-            self.sendButton.tag = 0
-            self.inputTextView.text = ""
-            setImageForSendButton()
-        }
-    }
-
-    // Scroll to last message
-    func scrollToLast() {
-        if messages.count > 0 {
-            let lastItem = messages.count - 1
-            let indexPath = IndexPath(item: lastItem, section: 0)
-            collectionView?.scrollToItem(at: indexPath, at: .bottom, animated: true)
-        }
-    }
-
-    func estimatedFrame(messageBody: String) -> CGRect {
-        let size = CGSize(width: 250, height: 1000)
-        let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
-        return NSString(string: messageBody).boundingRect(with: size, options: options, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 16)], context: nil)
-    }
-
-    func loadMessages() {
-        messages = List<Message>(realm.objects(Message.self))
-        collectionView?.reloadData()
-        scrollToLast()
-    }
-
+    // downloads messages from user history
     func getMessagesFromMemory() {
-        if let userData = UserDefaults.standard.dictionary(forKey: ControllerConstants.UserDefaultsKeys.user) {
-            let user = User(dictionary: userData as [String : AnyObject])
-
+        if let delegate = UIApplication.shared.delegate as? AppDelegate, let user = delegate.currentUser {
             let params = [
                 Client.UserKeys.AccessToken: user.accessToken
             ]
 
             Client.sharedInstance.getMessagesFromMemory(params as [String : AnyObject]) { (messages, _, _) in
                 DispatchQueue.main.async {
-                    self.collectionView?.performBatchUpdates({
-                        for message in messages! {
-                            try! self.realm.write {
-                                self.realm.add(message)
-                                self.messages.append(message)
-                                let indexPath = IndexPath(item: self.messages.count - 1, section: 0)
-                                self.collectionView?.insertItems(at: [indexPath])
-                            }
-                        }
-                    }, completion: { (_) in
-                        self.scrollToLast()
-                    })
+                    if let messages = messages {
+                        self.addMessagesToCollectionView(messages: messages)
+                    }
                 }
             }
-
         }
     }
 
+    func addMessagesToCollectionView(messages: List<Message>) {
+        self.collectionView?.performBatchUpdates({
+            self.removeActivityIndicator()
+            for message in messages {
+                try! self.realm.write {
+                    self.realm.add(message)
+                    self.messages.append(message)
+                    let indexPath = IndexPath(item: self.messages.count - 1, section: 0)
+                    UIView.animate(withDuration: 1.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                        self.collectionView?.insertItems(at: [indexPath])
+                        if message.actionType == ActionType.answer.rawValue
+                            && !message.fromUser
+                            && UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn) {
+                            self.speakAction(message.message, language: message.answerData?.language)
+                        }
+                    }, completion: nil)
+                }
+            }
+        }, completion: { (_) in
+            self.scrollToLast()
+        })
+    }
+
+    // save message to object
+    func saveMessage(_ message: String) {
+        let message = Message(message: message.trimmed)
+        let list = List<Message>()
+        list.append(message)
+        addMessagesToCollectionView(messages: list)
+        self.sendButton.tag = 0
+        self.inputTextField.text = ""
+        setImageForSendButton()
+    }
+
+    // MARK: - Miscellaneous
+
     func setTargetForSendButton() {
         if isSpeechRecognitionRunning {
-            stopSTT()
+            stopSpeechToText()
             setImageForSendButton()
         } else {
             if sendButton.tag == 0 {
-                startSTT()
+                startSpeechToText()
             } else {
                 handleSend()
             }
@@ -261,30 +278,19 @@ extension ChatViewController {
 
     func setImageForSendButton() {
         if !isSpeechRecognitionRunning {
-            if let text = inputTextView.text, text.isEmpty {
-                sendButton.setImage(UIImage(named: ControllerConstants.mic), for: .normal)
+            if let text = inputTextField.text, text.isEmpty {
+                sendButton.setImage(ControllerConstants.Images.microphone, for: .normal)
+                sendButton.tintColor = UIColor.defaultColor()
+                sendButton.backgroundColor = .clear
             } else {
-                sendButton.setImage(UIImage(named: ControllerConstants.send), for: .normal)
+                sendButton.setImage(ControllerConstants.Images.send, for: .normal)
+                sendButton.tintColor = .white
+                sendButton.backgroundColor = UIColor.defaultColor()
             }
         }
     }
 
-    func setupTheme() {
-        UIApplication.shared.statusBarStyle = .lightContent
-        settingsButton.tintColor = .white
-        sendButton.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
-        navigationItem.titleLabel.textColor = .black
-        UIApplication.shared.statusBarView?.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
-        settingsButton.backgroundColor = UIColor.hexStringToUIColor(hex: "#4184F3")
-        view.backgroundColor = UIColor.hexStringToUIColor(hex: "#EEEEEE")
-    }
-
-    func showSettingsButton() {
-        view.addSubview(settingsButton)
-        view.addConstraintsWithFormat(format: "H:[v0(36)]-8-|", views: settingsButton)
-        view.addConstraintsWithFormat(format: "V:|-28-[v0(36)]", views: settingsButton)
-    }
-
+    // presents the settings controller
     func presentSettingsController() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "SettingsController")
@@ -292,31 +298,7 @@ extension ChatViewController {
         present(nvc, animated: true, completion: nil)
     }
 
-    // Check if user defaults have an image data saved else return nil/Any
-    func getWallpaperFromUserDefaults() -> Any? {
-        let defaults = UserDefaults.standard
-        return defaults.object(forKey: ControllerConstants.UserDefaultsKeys.wallpaper)
-    }
-
-    // Set chat background image
-    func setBackgroundImage(image: UIImage!) {
-        let bgView = UIImageView()
-        bgView.contentMode = .scaleAspectFill
-        bgView.image = image
-        collectionView?.backgroundView = bgView
-    }
-
-    func setupWallpaper() {
-        // Check if user defaults have an image, set background as image
-        if let userDefaultData = getWallpaperFromUserDefaults() {
-            if let imageData = userDefaultData as? Data { // Check if object exists
-                setBackgroundImage(image: UIImage(data : imageData))
-            }
-        } else {
-            collectionView?.backgroundView = nil
-        }
-    }
-
+    // checks if personal trained model exists
     func checkAndAssignIfModelExists() {
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             let filePath = dir.appendingPathComponent(ControllerConstants.hotwordFileName)
@@ -327,11 +309,51 @@ extension ChatViewController {
         MODEL = Bundle.main.path(forResource: "susi", ofType: "pmdl")!
     }
 
-    func addScrollButton() {
-        view.addSubview(scrollButton)
-        view.addConstraintsWithFormat(format: "H:[v0(44)]-8-|", views: scrollButton)
-        view.addConstraintsWithFormat(format: "V:[v0(44)]-70-|", views: scrollButton)
-        scrollButton.isHidden = true
+    // sets content offset so that messages start displaying from bottom
+    func setCollectionViewOffset() {
+        view.layoutIfNeeded()
+
+        let contentSize = collectionView?.collectionViewLayout.collectionViewContentSize
+        if let contentHeight = contentSize?.height, let collectionViewHeight = collectionView?.bounds.size.height {
+            let targetContentOffset = CGPoint(x: 0, y: contentHeight - collectionViewHeight)
+            collectionView?.setContentOffset(targetContentOffset, animated: true)
+        }
+    }
+
+    // dismiss keyboard when touched anywhere in CV
+    func addGestures() {
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(resignResponders)))
+    }
+
+    // dismiss the overlay for the video
+    func handleDismiss() {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.blackView.removeFromSuperview()
+        }, completion: nil)
+    }
+
+    // scroll to last message
+    func scrollToLast() {
+        if messages.count > 0 {
+            let lastItem = messages.count - 1
+            let indexPath = IndexPath(item: lastItem, section: 0)
+            collectionView?.scrollToItem(at: indexPath, at: .top, animated: true)
+            scrollButton.isHidden = true
+        }
+    }
+
+    // estimates frame of message
+    func estimatedFrame(message: String) -> CGRect {
+        let size = CGSize(width: 250, height: 1000)
+        let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
+        return NSString(string: message).boundingRect(with: size, options: options, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 16)], context: nil)
+    }
+
+    // loads all messages from database
+    func loadMessages() {
+        messages = List<Message>(realm.objects(Message.self))
+        collectionView?.reloadData()
+        scrollToLast()
     }
 
 }

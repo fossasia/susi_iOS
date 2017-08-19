@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class ControllerConstants {
     static let errorDialogTitle = "Image Pick Error"
@@ -35,6 +36,8 @@ class ControllerConstants {
     static let outgoingCell = "outgoingCell"
     static let rssCell = "rssCell"
     static let indicatorCell = "indicatorCell"
+    static let mapCell = "mapCell"
+    static let anchorCell = "anchorCell"
     static let defaultMessage = ""
     static let defaultWebSearchImage = "no-image"
     static let standardServer = "Standard Server"
@@ -88,6 +91,7 @@ class ControllerConstants {
         static let hotwordEnabled = "hotwordRecognition"
         static let ttsLanguage = "ttsLanguage"
         static let prefLanguage = "prefLanguage"
+        static let lanuchedBefore = "lanuchedBefore"
     }
 
     struct TestKeys {
@@ -110,7 +114,7 @@ class ControllerConstants {
         static let rssCollectionView = "rssCollectionView"
         static let chatCollectionView = "chatCollectionView"
         static let chatCells = "chatCell"
-        static let settings = "Settings"
+        static let settings = "settings"
 
         struct TestAccount {
             static let emailId = "susi.ai@mail.com"
@@ -119,6 +123,27 @@ class ControllerConstants {
             static let invalidEmail = "susi.ai@mail"
         }
 
+    }
+
+    struct Images {
+        static let backArrow = UIImage(named: "back_arrow")
+        static let check = UIImage(named: "check")
+        static let manualRecord = UIImage(named: "manual_record")
+        static let microphone = UIImage(named: "microphone")
+        static let placeholder = UIImage(named: "placeholder")
+        static let record = UIImage(named: "record")
+        static let scrollDown = UIImage(named: "scroll_down")
+        static let send = UIImage(named: "send")
+        static let settings = UIImage(named: "settings")
+        static let susiLogo = UIImage(named: "susi")
+        static let thumbsUp = UIImage(named: "thumbs_up")
+        static let thumbsDown = UIImage(named: "thumbs_down")
+    }
+
+    struct Controllers {
+        static let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        static let trainingViewController = mainStoryboard.instantiateViewController(withIdentifier: "TrainingViewController")
+        static let resetPasswordViewController = mainStoryboard.instantiateViewController(withIdentifier: "ResetPasswordController")
     }
 
 }

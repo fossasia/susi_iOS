@@ -92,7 +92,7 @@ class WebsearchCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
                 if let webData = feed?.webData {
                     if let imageString = webData.image {
                         let url = URL(string: imageString)
-                        cell.imageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder"), options: nil, progressBlock: nil, completionHandler: nil)
+                        cell.imageView.kf.setImage(with: url, placeholder: ControllerConstants.Images.placeholder, options: nil, progressBlock: nil, completionHandler: nil)
                     }
                 }
             } else if message?.actionType == ActionType.websearch.rawValue {
@@ -103,7 +103,7 @@ class WebsearchCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
                 if let imageString = webData?.image {
                     cell.imageString = imageString
                     if let url = URL(string: imageString) {
-                        cell.imageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder"), options: nil, progressBlock: nil, completionHandler: nil)
+                        cell.imageView.kf.setImage(with: url, placeholder: ControllerConstants.Images.placeholder, options: nil, progressBlock: nil, completionHandler: nil)
                     }
                 }
             }

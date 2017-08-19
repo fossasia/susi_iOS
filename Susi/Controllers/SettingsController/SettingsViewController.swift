@@ -22,13 +22,19 @@ class SettingsViewController: UITableViewController {
         return button
     }()
 
-    // Image Picker Controller
-    var imagePicker = UIImagePickerController()
+    @IBOutlet weak var enterToSend: UISwitch!
+    @IBOutlet weak var micInput: UISwitch!
+    @IBOutlet weak var hotwordDetection: UISwitch!
+    @IBOutlet weak var speechOutput: UISwitch!
+    @IBOutlet weak var speechOutputAlwaysOn: UISwitch!
+    @IBOutlet weak var speechRate: UISlider!
+    @IBOutlet weak var speechPitch: UISlider!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTitle()
         setupTheme()
+        assignDefaults()
     }
 
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {

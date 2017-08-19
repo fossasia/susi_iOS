@@ -18,6 +18,7 @@ class ChatMessageCell: BaseCell, UITextViewDelegate {
         textView.backgroundColor = .clear
         textView.isSelectable = true
         textView.delegate = self
+        textView.isScrollEnabled = false
         return textView
     }()
 

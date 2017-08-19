@@ -46,8 +46,8 @@ extension ChatViewController: SFSpeechRecognizerDelegate, AVSpeechSynthesizerDel
 
     }
 
-    func startSTT() {
-        stopRecording()
+    func startSpeechToText() {
+        stopHotwordRecognition()
         configureSpeechRecognizer()
 
         if recognitionTask != nil {
@@ -82,7 +82,7 @@ extension ChatViewController: SFSpeechRecognizerDelegate, AVSpeechSynthesizerDel
             var isFinal = false
 
             if result != nil {
-                self.inputTextView.text = result?.bestTranscription.formattedString
+                self.inputTextField.text = result?.bestTranscription.formattedString
                 isFinal = (result?.isFinal)!
             }
 
@@ -98,7 +98,7 @@ extension ChatViewController: SFSpeechRecognizerDelegate, AVSpeechSynthesizerDel
             if let timer = self.detectionTimer, timer.isValid {
                 timer.invalidate()
                 setTimer()
-            } else if let text = self.inputTextView.text, !text.isEmpty {
+            } else if let text = self.inputTextField.text, !text.isEmpty {
                 setTimer()
             }
 
@@ -120,27 +120,18 @@ extension ChatViewController: SFSpeechRecognizerDelegate, AVSpeechSynthesizerDel
         print("Say something, I'm listening!")
 
         // Listening indicator swift
-        indicatorView.frame = self.sendButton.frame
-
         indicatorView.isUserInteractionEnabled = true
-        let gesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(setTargetForSendButton))
-        gesture.numberOfTapsRequired = 1
-        indicatorView.addGestureRecognizer(gesture)
+        inputTextField.isUserInteractionEnabled = false
 
         sendButton.setImage(nil, for: .normal)
         indicatorView.startAnimating()
-        sendButton.addSubview(indicatorView)
-        sendButton.addConstraintsWithFormat(format: "V:|[v0(24)]|", views: indicatorView)
-        sendButton.addConstraintsWithFormat(format: "H:|[v0(24)]|", views: indicatorView)
-
-        inputTextView.isUserInteractionEnabled = false
     }
 
     func setTargetForIndicatorView() {
         if isSpeechRecognitionRunning {
-            startSTT()
+            startSpeechToText()
         } else {
-            stopSTT()
+            stopSpeechToText()
             checkAndRunHotwordRecognition()
         }
     }
@@ -150,16 +141,16 @@ extension ChatViewController: SFSpeechRecognizerDelegate, AVSpeechSynthesizerDel
         audioEngine.stop()
     }
 
-    func stopSTT() {
+    func stopSpeechToText() {
         print("audioEngine stopped")
         resetSpeechConfig()
 
-        indicatorView.removeFromSuperview()
+        indicatorView.stopAnimating()
         recognitionTask?.cancel()
         detectionTimer?.invalidate()
 
         isSpeechRecognitionRunning = false
-        inputTextView.isUserInteractionEnabled = true
+        inputTextField.isUserInteractionEnabled = true
         sendButton.tag = 0
         setImageForSendButton()
         checkAndRunHotwordRecognition()
@@ -167,13 +158,12 @@ extension ChatViewController: SFSpeechRecognizerDelegate, AVSpeechSynthesizerDel
 
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         print("utterance complete")
-        stopSTT()
+        stopSpeechToText()
     }
 
     func speakAction(_ string: String, language: String?) {
-        if isSpeechRecognitionRunning &&
-            (UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.speechOutput) ||
-            UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn)) {
+        if UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.speechOutput) ||
+            UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn) {
             let speechUtterance = AVSpeechUtterance(string: string)
             speechSynthesizer.delegate = self
 
@@ -181,17 +171,20 @@ extension ChatViewController: SFSpeechRecognizerDelegate, AVSpeechSynthesizerDel
                 speechUtterance.voice = AVSpeechSynthesisVoice(language: language)
             }
 
-            speechUtterance.rate = 0.4
+            speechUtterance.rate = UserDefaults.standard.float(forKey: ControllerConstants.UserDefaultsKeys.speechRate)
+            speechUtterance.pitchMultiplier = UserDefaults.standard.float(forKey: ControllerConstants.UserDefaultsKeys.speechPitch)
 
             speechSynthesizer.speak(speechUtterance)
         } else {
-            stopSTT()
+            stopSpeechToText()
         }
     }
 
     func checkAndRunHotwordRecognition() {
         if UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.hotwordEnabled) {
             startHotwordRecognition()
+        } else if let timer = hotwordTimer {
+            timer.invalidate()
         }
     }
 
