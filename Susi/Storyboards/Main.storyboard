@@ -269,6 +269,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jll-vc-Hx1">
                                 <rect key="frame" x="6" y="20" width="24" height="24"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" image="back_arrow"/>
                                 <connections>
                                     <action selector="dismissView" destination="Azo-Yr-Z9r" eventType="touchUpInside" id="ejq-6B-l2r"/>
@@ -1092,7 +1093,7 @@
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="736"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="jgu-nc-Cv5">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="jgu-nc-Cv5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.25447925925254822" green="0.51828217506408691" blue="0.95430618524551392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
