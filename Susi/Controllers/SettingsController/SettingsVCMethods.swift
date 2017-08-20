@@ -144,4 +144,16 @@ extension SettingsViewController {
         speechPitch.value = UserDefaults.standard.float(forKey: ControllerConstants.UserDefaultsKeys.speechPitch)
     }
 
+    func shareApp() {
+        //Set the default sharing message.
+        let message = "Meet SUSI.AI, Your Artificial Intelligence for Personal Assistants, Robots, Help Desks and Chatbots."
+        //Set the link to share.
+        if let link = NSURL(string: "http://susi.ai") {
+            let objectsToShare = [message, link] as [Any]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+            self.present(activityVC, animated: true, completion: nil)
+        }
+    }
+
 }
