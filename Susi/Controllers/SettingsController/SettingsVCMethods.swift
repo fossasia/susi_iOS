@@ -145,9 +145,9 @@ extension SettingsViewController {
     }
 
     func shareApp() {
-        //Set the default sharing message.
+        // Set the default sharing message.
         let message = "Meet SUSI.AI, Your Artificial Intelligence for Personal Assistants, Robots, Help Desks and Chatbots."
-        //Set the link to share.
+        // Set the link to share.
         if let link = NSURL(string: "http://susi.ai") {
             let objectsToShare = [message, link] as [Any]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
