@@ -94,7 +94,7 @@ extension SettingsViewController {
     }
 
     func presentTrainingController() {
-        let vc = ControllerConstants.Controllers.resetPasswordViewController
+        let vc = ControllerConstants.Controllers.trainingViewController
         let nvc = AppNavigationController(rootViewController: vc)
         present(nvc, animated: true, completion: nil)
     }
