@@ -56,6 +56,7 @@ extension ChatViewController: AVAudioRecorderDelegate {
             // print("Result: \(result)")
 
             if result == 1 {
+                print("Hotword detected")
                 startSpeechToText()
             }
         }
