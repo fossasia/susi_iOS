@@ -20,10 +20,9 @@ extension ResetPasswordViewController {
         navigationItem.title = ControllerConstants.resetPassword
         navigationItem.titleLabel.textColor = .white
 
-        guard let navBar = navigationController?.navigationBar as? NavigationBar else {
-            return
+        if let navbar = navigationController?.navigationBar {
+            navbar.barTintColor = UIColor.defaultColor()
         }
-        navBar.backgroundColor = UIColor.defaultColor()
     }
 
     func validatePassword() -> [Bool:String] {
