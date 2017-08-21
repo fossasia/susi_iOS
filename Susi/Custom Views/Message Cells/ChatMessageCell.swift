@@ -10,15 +10,17 @@ import UIKit
 
 class ChatMessageCell: BaseCell, UITextViewDelegate {
 
-    lazy var messageTextView: UITextView = {
-        let textView = UITextView()
+    lazy var messageTextView: LongPressToCopyTextView = {
+        let textView = LongPressToCopyTextView()
         textView.font = UIFont.systemFont(ofSize: 16)
         textView.text = ControllerConstants.defaultMessage
         textView.isEditable = false
         textView.backgroundColor = .clear
-        textView.isSelectable = true
+        textView.isSelectable = false
         textView.delegate = self
         textView.isScrollEnabled = false
+        textView.isUserInteractionEnabled = true
+        textView.addLongPressGesture()
         return textView
     }()
 
@@ -28,6 +30,7 @@ class ChatMessageCell: BaseCell, UITextViewDelegate {
         view.layer.masksToBounds = true
         return view
     }()
+
     let timeLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.italicSystemFont(ofSize: 8)
