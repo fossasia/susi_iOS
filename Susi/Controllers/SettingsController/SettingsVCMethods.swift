@@ -42,7 +42,8 @@ extension SettingsViewController {
         Client.sharedInstance.logoutUser { (success, error) in
             DispatchQueue.main.async {
                 if success {
-                    self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+                    self.presentingViewController?.presentingViewController?
+                        .presentingViewController?.dismiss(animated: true, completion: nil)
                 } else {
                     debugPrint(error)
                 }

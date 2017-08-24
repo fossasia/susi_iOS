@@ -63,18 +63,14 @@ extension ChatViewController {
     func setupNavbar() {
         navigationItem.title = ControllerConstants.susiTitle
         navigationItem.titleLabel.textAlignment = .left
-        navigationItem.rightViews = [settingsButton]
     }
 
     // setup view
     func setupView() {
         UIApplication.shared.statusBarStyle = .lightContent
-        settingsButton.tintColor = .white
         navigationItem.titleLabel.textColor = .black
         UIApplication.shared.statusBarView?.backgroundColor = UIColor.defaultColor()
-        settingsButton.backgroundColor = UIColor.defaultColor()
         view.backgroundColor = UIColor.chatBackgroundColor()
-
     }
 
     // setup send button
@@ -158,11 +154,11 @@ extension ChatViewController {
         messageInputContainerView.addConstraintsWithFormat(format: "V:|[v0(0.5)]", views: topBorderView)
     }
 
-    // setup settings button
-    func addSettingsButton() {
-        view.addSubview(settingsButton)
-        view.addConstraintsWithFormat(format: "H:[v0(36)]-8-|", views: settingsButton)
-        view.addConstraintsWithFormat(format: "V:|-28-[v0(36)]", views: settingsButton)
+    // setup skill listing button
+    func addSkillListingButton() {
+        view.addSubview(susiSkillListingButton)
+        view.addConstraintsWithFormat(format: "H:[v0(36)]-8-|", views: susiSkillListingButton)
+        view.addConstraintsWithFormat(format: "V:|-28-[v0(36)]", views: susiSkillListingButton)
     }
 
     // setup scroll button
@@ -290,10 +286,9 @@ extension ChatViewController {
         }
     }
 
-    // presents the settings controller
-    func presentSettingsController() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "SettingsController")
+    // present skill listing controller
+    func presentSkillListingController() {
+        let vc = ControllerConstants.Controllers.skillListingViewController
         let nvc = AppNavigationController(rootViewController: vc)
         present(nvc, animated: true, completion: nil)
     }

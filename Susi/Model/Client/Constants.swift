@@ -25,6 +25,7 @@ extension Client {
         static let ListUserSettings = "/aaa/listUserSettings.json"
         static let SendFeedback = "/cms/rateSkill.json"
         static let ChangePassword = "/aaa/changepassword.json"
+        static let GetGroups = "/cms/getGroups.json"
     }
 
     struct ResponseMessages {
@@ -131,6 +132,10 @@ extension Client {
         static let token = "1b286c615e95d848814144e6ffe0551505fe979c"
         static let microphone = "iphone microphone"
         static let language = "en"
+    }
+
+    struct SkillListing {
+        static let groups = "groups"
     }
 
 }

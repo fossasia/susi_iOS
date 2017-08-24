@@ -22,11 +22,11 @@ PODS:
   - ReachabilitySwift (3)
   - ReadabilityKit (0.6.1):
     - Ji (~> 2.0.1)
-  - Realm (2.9.1):
-    - Realm/Headers (= 2.9.1)
-  - Realm/Headers (2.9.1)
-  - RealmSwift (2.9.1):
-    - Realm (= 2.9.1)
+  - Realm (2.10.0):
+    - Realm/Headers (= 2.10.0)
+  - Realm/Headers (2.10.0)
+  - RealmSwift (2.10.0):
+    - Realm (= 2.10.0)
   - SnapKit (3.2.0)
   - SwiftDate (4.1.7)
   - SwiftValidators (6.0.0)
@@ -70,8 +70,8 @@ SPEC CHECKSUMS:
   NVActivityIndicatorView: d3738df7e2e476aca0ba6bf32a8c9fbcfc33d64b
   ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
   ReadabilityKit: 49c26a2da9708ae3b355854d5bee6a7edee2dfee
-  Realm: f91fb43bd474c4f731a116ebf7392c75dd015920
-  RealmSwift: 207f12a4a36b696c5183c60a1c06d70234a23e56
+  Realm: 98b3a25643cf6b3e07d2b99fb43fe0eb9c801dec
+  RealmSwift: 34073ad3a31232bbaf7c0db898c037940284cba2
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   SwiftDate: 029be76691ee89176da3a46c7df3415b6734bc5b
   SwiftValidators: 4ccbec749f61a36f7a922781bb09452e80cde396

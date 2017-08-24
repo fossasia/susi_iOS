@@ -372,4 +372,35 @@ extension Client {
 
     }
 
+    // MARK: - Skill Listing
+
+    func getAllGroups(_ completion: @escaping(_ groups: [String]?, _ success: Bool, _ error: String?) -> Void) {
+
+        let url = getApiUrl(UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.ipAddress) as! String, Methods.GetGroups)
+
+        _ = makeRequest(url, .get, [:], parameters: [:], completion: { (results, message) in
+
+            if let _ = message {
+                completion(nil, false, ResponseMessages.ServerError)
+            } else if let results = results {
+
+                guard let response = results as? [String : AnyObject] else {
+                    completion(nil, false, ResponseMessages.InvalidParams)
+                    return
+                }
+
+                if let accepted = response[ControllerConstants.accepted.lowercased()] as? Bool,
+                    let groups = response[Client.SkillListing.groups] as? [String],
+                    accepted {
+                    completion(groups, true, nil)
+                    return
+                }
+                completion(nil, false, ResponseMessages.ServerError)
+                return
+            }
+            return
+        })
+
+    }
+
 }

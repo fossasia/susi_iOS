@@ -19,14 +19,12 @@ class ChatViewController: UICollectionViewController {
 
     // MARK: - Variable Declarations
 
-    // for opening settings view controller
-    lazy var settingsButton: IconButton = {
+    lazy var susiSkillListingButton: IconButton = {
         let ib = IconButton()
-        ib.image = ControllerConstants.Images.settings
-        ib.tintColor = .white
+        ib.image = ControllerConstants.Images.susiSymbol
         ib.cornerRadius = 18.0
-        ib.addTarget(self, action: #selector(presentSettingsController), for: .touchUpInside)
-        ib.tintColor = .black
+        ib.addTarget(self, action: #selector(presentSkillListingController), for: .touchUpInside)
+        ib.backgroundColor = UIColor.defaultColor()
         return ib
     }()
 
@@ -146,7 +144,7 @@ class ChatViewController: UICollectionViewController {
         addGestures()
         configureLocationManager()
         loadMessages()
-        addSettingsButton()
+        addSkillListingButton()
         addScrollButton()
     }
 
