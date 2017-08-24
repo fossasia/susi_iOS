@@ -24,7 +24,7 @@ class Skill: NSObject {
         author = dictionary[Client.SkillListing.author] as? String ?? ""
         skillName = dictionary[Client.SkillListing.skillName] as? String ?? ""
         skillDescription = dictionary[Client.SkillListing.description] as? String ?? ""
-        imagePath = getImagePath(skillName, "en", (dictionary[Client.SkillListing.image] as? String ?? ""))
+        imagePath = getImagePath("model", skillName, "en", (dictionary[Client.SkillListing.image] as? String ?? ""))
     }
 
     static func getAllSkill(_ skills: [String : AnyObject]) -> [Skill] {
@@ -36,7 +36,7 @@ class Skill: NSObject {
         return skillData
     }
 
-    func getImagePath(_ skillName: String, _ language: String = "en", _ path: String) -> String {
+    func getImagePath(_ model: String, _ skillName: String, _ language: String, _ path: String) -> String {
         return "\(Client.Methods.baseSkillImagePath)\(skillName)/\(language)/\(path)"
     }
 

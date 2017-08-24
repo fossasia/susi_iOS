@@ -27,7 +27,7 @@ extension Client {
         static let ChangePassword = "/aaa/changepassword.json"
         static let GetGroups = "/cms/getGroups.json"
         static let GetSkillList = "/cms/getSkillList.json"
-        static let baseSkillImagePath = "https://raw.githubusercontent.com/fossasia/susi_skill_data/master/models/general/"
+        static let baseSkillImagePath = "https://raw.githubusercontent.com/fossasia/susi_skill_data/master/models/"
     }
 
     struct ResponseMessages {

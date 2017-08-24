@@ -18,7 +18,7 @@ class SkillCell: BaseCell {
                     print(url.absoluteString)
                     imageView.kf.setImage(with: url)
                 }
-                exampleQueryLabel.text = "\(String(describing: skill.examples.first))"
+                exampleQueryLabel.text = "\(skill.examples.first?.debugDescription ?? "")"
                 skillNameLabel.text = skill.skillName
                 skillDescription.text = skill.skillDescription
             }
@@ -38,7 +38,7 @@ class SkillCell: BaseCell {
         label.textAlignment = .center
         label.backgroundColor = .white
         label.numberOfLines = 2
-        label.font = UIFont.italicSystemFont(ofSize: 16.0)
+        label.font = UIFont.italicSystemFont(ofSize: 14.0)
         return label
     }()
 

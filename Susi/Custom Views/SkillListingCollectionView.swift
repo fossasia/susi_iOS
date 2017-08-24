@@ -28,6 +28,8 @@ class SkillListingCollectionView: UIView, UICollectionViewDelegateFlowLayout, UI
 
     var groupName: String? {
         didSet {
+            groupSkills = []
+            collectionView.reloadData()
             let params = [
                 Client.SkillListing.group: groupName
             ]
@@ -50,10 +52,9 @@ class SkillListingCollectionView: UIView, UICollectionViewDelegateFlowLayout, UI
         super.init(frame: frame)
 
         collectionView.register(SkillCell.self, forCellWithReuseIdentifier: cellId)
-        collectionView.backgroundColor = .red
         addSubview(collectionView)
         addConstraintsWithFormat(format: "H:|[v0]|", views: collectionView)
-        addConstraintsWithFormat(format: "V:|-8-[v0]-8-|", views: collectionView)
+        addConstraintsWithFormat(format: "V:|[v0]|", views: collectionView)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -75,11 +76,11 @@ class SkillListingCollectionView: UIView, UICollectionViewDelegateFlowLayout, UI
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: frame.width * 5 / 7, height: frame.height)
+        return CGSize(width: frame.width * 5 / 7, height: frame.height - 14)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        return UIEdgeInsets(top: 7, left: 8, bottom: 7, right: 8)
     }
 
 }
