@@ -38,11 +38,8 @@ class SkillListingCollectionView: UIView, UICollectionViewDelegateFlowLayout, UI
                 DispatchQueue.main.async {
                     if success {
                         self.groupSkills = skills
-                    } else {
-                        self.groupSkills = []
                     }
                     self.collectionView.reloadData()
-                    print(message ?? "No error")
                 }
             }
         }

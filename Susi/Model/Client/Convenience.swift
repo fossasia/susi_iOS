@@ -418,8 +418,11 @@ extension Client {
                 }
 
                 if let skills = response[Client.SkillListing.skills] as? [String : AnyObject],
+                    let model = response[Client.SkillListing.model] as? String,
+                    let group = response[Client.SkillListing.group] as? String,
+                    let language = response[Client.SkillListing.language] as? String,
                     skills.count > 0 {
-                    let skillData = Skill.getAllSkill(skills)
+                    let skillData = Skill.getAllSkill(skills, model, group, language)
                     completion(skillData, true, nil)
                     return
                 }

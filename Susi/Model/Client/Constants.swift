@@ -146,6 +146,8 @@ extension Client {
         static let author = "author"
         static let skillName = "skill_name"
         static let description = "descriptions"
+        static let model = "model"
+        static let language = "language"
     }
 
 }

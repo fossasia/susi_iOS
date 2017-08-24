@@ -30,7 +30,6 @@ class SkillListingTableCell: UITableViewCell {
         super.awakeFromNib()
 
         selectionStyle = .none
-        getSkills()
     }
 
     func setupCollectionView() {
@@ -38,10 +37,6 @@ class SkillListingTableCell: UITableViewCell {
         addConstraintsWithFormat(format: "H:|[v0]|", views: skillListingCollectionView)
         addConstraintsWithFormat(format: "V:|-40-[v0]|", views: skillListingCollectionView)
         skillListingCollectionView.groupName = groupName
-    }
-
-    func getSkills() {
-
     }
 
 }

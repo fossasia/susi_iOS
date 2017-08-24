@@ -13,9 +13,10 @@ class SkillCell: BaseCell {
 
     var skill: Skill? {
         didSet {
+            imageView.image = ControllerConstants.Images.placeholder
             if let skill = skill {
+                print(skill.imagePath)
                 if let url = URL(string: skill.imagePath) {
-                    print(url.absoluteString)
                     imageView.kf.setImage(with: url)
                 }
                 exampleQueryLabel.text = "\(skill.examples.first?.debugDescription ?? "")"
