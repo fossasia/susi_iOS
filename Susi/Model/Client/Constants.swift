@@ -26,6 +26,8 @@ extension Client {
         static let SendFeedback = "/cms/rateSkill.json"
         static let ChangePassword = "/aaa/changepassword.json"
         static let GetGroups = "/cms/getGroups.json"
+        static let GetSkillList = "/cms/getSkillList.json"
+        static let baseSkillImagePath = "https://raw.githubusercontent.com/fossasia/susi_skill_data/master/models/general/"
     }
 
     struct ResponseMessages {
@@ -135,7 +137,15 @@ extension Client {
     }
 
     struct SkillListing {
+        static let group = "group"
         static let groups = "groups"
+        static let skills = "skills"
+        static let image = "image"
+        static let authorURL = "author_url"
+        static let examples = "examples"
+        static let author = "author"
+        static let skillName = "skill_name"
+        static let description = "descriptions"
     }
 
 }

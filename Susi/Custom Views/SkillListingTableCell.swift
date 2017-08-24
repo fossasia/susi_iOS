@@ -7,21 +7,41 @@
 //
 
 import UIKit
+import Material
 
 class SkillListingTableCell: UITableViewCell {
 
-    @IBOutlet weak var groupName: UILabel!
-    @IBOutlet weak var collectionVIew: UICollectionView!
+    var groupName: String? {
+        didSet {
+            backgroundColor = Color.grey.lighten3
+            groupNameLabel.text = groupName
+            setupCollectionView()
+        }
+    }
+
+    @IBOutlet weak var groupNameLabel: UILabel!
+
+    let skillListingCollectionView: SkillListingCollectionView = {
+        let cv = SkillListingCollectionView()
+        return cv
+    }()
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
+        selectionStyle = .none
+        getSkills()
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    func setupCollectionView() {
+        addSubview(skillListingCollectionView)
+        addConstraintsWithFormat(format: "H:|[v0]|", views: skillListingCollectionView)
+        addConstraintsWithFormat(format: "V:|-40-[v0]|", views: skillListingCollectionView)
+        skillListingCollectionView.groupName = groupName
+    }
 
-        // Configure the view for the selected state
+    func getSkills() {
+
     }
 
 }

@@ -53,7 +53,7 @@ class SkillListingViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as? SkillListingTableCell {
-            cell.groupName.text = groups?[indexPath.row]
+            cell.groupName = groups?[indexPath.row]
             return cell
         }
 

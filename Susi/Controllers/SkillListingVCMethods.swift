@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Material
 
 extension SkillListingViewController {
 
@@ -22,6 +23,7 @@ extension SkillListingViewController {
         }
 
         tableView.separatorStyle = .none
+        tableView.backgroundColor = Color.grey.lighten3
     }
 
     // presents the settings controller

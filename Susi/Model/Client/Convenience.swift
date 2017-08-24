@@ -403,4 +403,31 @@ extension Client {
 
     }
 
+    func getSkillData(_ params: [String : AnyObject], _ completion: @escaping(_ skillData: [Skill]?, _ success: Bool, _ error: String?) -> Void) {
+        let url = getApiUrl(UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.ipAddress) as! String, Methods.GetSkillList)
+
+        _ = makeRequest(url, .get, [:], parameters: params, completion: { (results, message) in
+
+            if let _ = message {
+                completion(nil, false, ResponseMessages.ServerError)
+            } else if let results = results {
+
+                guard let response = results as? [String : AnyObject] else {
+                    completion(nil, false, ResponseMessages.InvalidParams)
+                    return
+                }
+
+                if let skills = response[Client.SkillListing.skills] as? [String : AnyObject],
+                    skills.count > 0 {
+                    let skillData = Skill.getAllSkill(skills)
+                    completion(skillData, true, nil)
+                    return
+                }
+                completion(nil, false, ResponseMessages.ServerError)
+                return
+            }
+            return
+        })
+    }
+
 }
