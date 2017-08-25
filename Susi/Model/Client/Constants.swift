@@ -35,6 +35,7 @@ extension Client {
         static let ServerError = "Problem connecting to server!"
         static let SignedOut = "Successfully logged out"
         static let PasswordInvalid = "Password chosen is invalid."
+        static let NoSkillsPresent = "No skills present."
     }
 
     struct UserKeys {

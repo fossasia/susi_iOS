@@ -38,8 +38,10 @@ class SkillListingCollectionView: UIView, UICollectionViewDelegateFlowLayout, UI
                 DispatchQueue.main.async {
                     if success {
                         self.groupSkills = skills
+                        self.collectionView.reloadData()
+                    } else {
+                        self.collectionView.frame = CGRect.zero
                     }
-                    self.collectionView.reloadData()
                 }
             }
         }

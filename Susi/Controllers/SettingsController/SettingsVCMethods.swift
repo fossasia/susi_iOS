@@ -19,6 +19,9 @@ extension SettingsViewController {
         navigationItem.titleLabel.textAlignment = .left
         navigationItem.titleLabel.textColor = .white
         navigationItem.leftViews = [backButton]
+        if let navbar = navigationController?.navigationBar {
+            navbar.barTintColor = UIColor.defaultColor()
+        }
     }
 
     func dismissView() {

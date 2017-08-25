@@ -426,7 +426,7 @@ extension Client {
                     completion(skillData, true, nil)
                     return
                 }
-                completion(nil, false, ResponseMessages.ServerError)
+                completion(nil, false, ResponseMessages.NoSkillsPresent)
                 return
             }
             return
