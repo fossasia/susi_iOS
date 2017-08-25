@@ -9,27 +9,18 @@
 import UIKit
 import Material
 
-class SkillListingCollectionView: UIView, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+class SkillListingCollectionView: UICollectionView, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
 
     let cellId = "cellId"
-
-    lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.delegate = self
-        cv.dataSource = self
-        cv.showsHorizontalScrollIndicator = true
-        cv.backgroundColor = .clear
-        return cv
-    }()
 
     var groupSkills: [Skill]?
 
     var groupName: String? {
         didSet {
+            delegate = self
+            dataSource = self
             groupSkills = []
-            collectionView.reloadData()
+            self.reloadData()
             let params = [
                 Client.SkillListing.group: groupName
             ]
@@ -38,26 +29,13 @@ class SkillListingCollectionView: UIView, UICollectionViewDelegateFlowLayout, UI
                 DispatchQueue.main.async {
                     if success {
                         self.groupSkills = skills
-                        self.collectionView.reloadData()
+                        self.reloadData()
                     } else {
-                        self.collectionView.frame = CGRect.zero
+                        print(message ?? "No error")
                     }
                 }
             }
         }
-    }
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-
-        collectionView.register(SkillCell.self, forCellWithReuseIdentifier: cellId)
-        addSubview(collectionView)
-        addConstraintsWithFormat(format: "H:|[v0]|", views: collectionView)
-        addConstraintsWithFormat(format: "V:|[v0]|", views: collectionView)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented.")
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

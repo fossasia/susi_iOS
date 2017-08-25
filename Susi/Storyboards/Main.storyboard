@@ -1232,29 +1232,125 @@
         <scene sceneID="5xE-mJ-Sg2">
             <objects>
                 <tableViewController storyboardIdentifier="SkillListingController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Jh1-c2-pzc" customClass="SkillListingViewController" customModule="Susi" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="210" sectionHeaderHeight="28" sectionFooterHeight="28" id="zEc-4J-5ef">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="200" sectionHeaderHeight="28" sectionFooterHeight="28" id="zEc-4J-5ef">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellId" rowHeight="180" id="oVV-e9-pRM" customClass="SkillListingTableCell" customModule="Susi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="180"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellId" rowHeight="200" id="oVV-e9-pRM" customClass="SkillListingTableCell" customModule="Susi" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oVV-e9-pRM" id="sGQ-xO-cmz">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="179.66666666666666"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="199.66666666666666"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Group Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2l0-Zw-FHL">
-                                            <rect key="frame" x="8" y="11" width="398" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2l0-Zw-FHL">
+                                            <rect key="frame" x="12" y="8" width="398" height="36"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="36" id="RVS-ck-arT"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kMH-zt-axi" customClass="SkillListingCollectionView" customModule="Susi" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="44" width="414" height="157.66666666666666"/>
+                                            <color key="backgroundColor" red="0.93323183059692383" green="0.9333917498588562" blue="0.93322181701660156" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ICM-DT-SG2">
+                                                <size key="itemSize" width="264" height="149.66666666666666"/>
+                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            </collectionViewFlowLayout>
+                                            <cells>
+                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellId" id="2Vo-tn-HoS" customClass="SkillCell" customModule="Susi" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="4" width="264" height="149.66666666666666"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                        <rect key="frame" x="0.0" y="0.0" width="264" height="149.66666666666666"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QG6-wv-s3u">
+                                                                <rect key="frame" x="4" y="4" width="256" height="77.666666666666671"/>
+                                                                <subviews>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="DcN-B8-SIq">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="70" height="77.666666666666671"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="70" id="jsd-WS-PZf"/>
+                                                                        </constraints>
+                                                                    </imageView>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJ4-jD-Cqd">
+                                                                        <rect key="frame" x="78" y="8" width="167" height="60.666666666666671"/>
+                                                                        <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="nJ4-jD-Cqd" firstAttribute="leading" secondItem="DcN-B8-SIq" secondAttribute="trailing" constant="8" symbolic="YES" id="2Cp-Ng-YDP"/>
+                                                                    <constraint firstItem="nJ4-jD-Cqd" firstAttribute="top" secondItem="QG6-wv-s3u" secondAttribute="topMargin" id="G1a-Iq-Tlt"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="DcN-B8-SIq" secondAttribute="bottom" id="H69-mU-p19"/>
+                                                                    <constraint firstItem="DcN-B8-SIq" firstAttribute="leading" secondItem="QG6-wv-s3u" secondAttribute="leading" id="V4R-8W-cQu"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="nJ4-jD-Cqd" secondAttribute="trailing" constant="11" id="VhG-8g-AwF"/>
+                                                                    <constraint firstItem="DcN-B8-SIq" firstAttribute="centerY" secondItem="nJ4-jD-Cqd" secondAttribute="centerY" id="YJC-yY-OJh"/>
+                                                                    <constraint firstItem="DcN-B8-SIq" firstAttribute="top" secondItem="QG6-wv-s3u" secondAttribute="top" id="xvb-zK-3SI"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skill Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lad-HQ-hOq">
+                                                                <rect key="frame" x="6" y="85.666666666666671" width="255" height="21"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="21" id="NV5-xA-vfK"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                                <color key="textColor" red="0.28627450980392155" green="0.54117647058823526" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skill Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VHw-6l-9gK">
+                                                                <rect key="frame" x="7" y="105.66666666666666" width="254" height="41.999999999999972"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </view>
+                                                    <color key="backgroundColor" red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottomMargin" secondItem="VHw-6l-9gK" secondAttribute="bottom" constant="-6" id="1KE-fr-QN6"/>
+                                                        <constraint firstItem="QG6-wv-s3u" firstAttribute="centerX" secondItem="2Vo-tn-HoS" secondAttribute="centerX" id="1QP-0B-qYW"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="lad-HQ-hOq" secondAttribute="trailing" constant="-5" id="Q7k-XS-MDT"/>
+                                                        <constraint firstItem="lad-HQ-hOq" firstAttribute="trailing" secondItem="VHw-6l-9gK" secondAttribute="trailing" id="RZh-5c-Lcm"/>
+                                                        <constraint firstItem="VHw-6l-9gK" firstAttribute="leading" secondItem="2Vo-tn-HoS" secondAttribute="leadingMargin" constant="-1" id="WPD-sr-JMb"/>
+                                                        <constraint firstAttribute="bottomMargin" secondItem="lad-HQ-hOq" secondAttribute="bottom" constant="35" id="ejt-16-iJ8"/>
+                                                        <constraint firstItem="QG6-wv-s3u" firstAttribute="leading" secondItem="2Vo-tn-HoS" secondAttribute="leadingMargin" constant="-4" id="gKY-Ly-eix"/>
+                                                        <constraint firstItem="VHw-6l-9gK" firstAttribute="top" secondItem="QG6-wv-s3u" secondAttribute="bottom" constant="24" id="gOE-Xt-SxT"/>
+                                                        <constraint firstItem="QG6-wv-s3u" firstAttribute="top" secondItem="2Vo-tn-HoS" secondAttribute="topMargin" constant="-4" id="jWT-Yi-AVR"/>
+                                                        <constraint firstItem="lad-HQ-hOq" firstAttribute="top" secondItem="QG6-wv-s3u" secondAttribute="bottom" constant="4" id="oIT-7I-kFu"/>
+                                                        <constraint firstItem="lad-HQ-hOq" firstAttribute="centerX" secondItem="VHw-6l-9gK" secondAttribute="centerX" id="yIR-Vq-dzT"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <outlet property="exampleQueryLabel" destination="nJ4-jD-Cqd" id="1hE-rm-lhL"/>
+                                                        <outlet property="skillDescription" destination="VHw-6l-9gK" id="B3y-cf-7pS"/>
+                                                        <outlet property="skillImage" destination="DcN-B8-SIq" id="5bH-zY-zrp"/>
+                                                        <outlet property="skillName" destination="lad-HQ-hOq" id="8Ua-d0-GKy"/>
+                                                    </connections>
+                                                </collectionViewCell>
+                                            </cells>
+                                        </collectionView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="kMH-zt-axi" firstAttribute="top" secondItem="2l0-Zw-FHL" secondAttribute="bottom" id="0pM-Ia-FyI"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="2l0-Zw-FHL" secondAttribute="trailing" constant="-4" id="HD0-n5-Deo"/>
+                                        <constraint firstItem="kMH-zt-axi" firstAttribute="leading" secondItem="sGQ-xO-cmz" secondAttribute="leading" id="PYh-kY-rim"/>
+                                        <constraint firstAttribute="trailing" secondItem="kMH-zt-axi" secondAttribute="trailing" id="XE5-Fr-6b6"/>
+                                        <constraint firstItem="2l0-Zw-FHL" firstAttribute="leading" secondItem="sGQ-xO-cmz" secondAttribute="leadingMargin" constant="4" id="XPY-AU-WDq"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="kMH-zt-axi" secondAttribute="bottom" constant="-10" id="b1P-Aw-eSx"/>
+                                        <constraint firstItem="2l0-Zw-FHL" firstAttribute="top" secondItem="sGQ-xO-cmz" secondAttribute="topMargin" id="lb4-9o-Dvq"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="groupNameLabel" destination="2l0-Zw-FHL" id="LPT-0R-M1D"/>
+                                    <outlet property="skillListingCollectionView" destination="kMH-zt-axi" id="Pdz-DH-fjW"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1272,6 +1368,7 @@
     <resources>
         <image name="back_arrow" width="24" height="24"/>
         <image name="manual_record" width="24" height="24"/>
+        <image name="placeholder" width="800" height="600"/>
         <image name="record" width="100" height="100"/>
         <image name="susi" width="1366" height="280"/>
     </resources>

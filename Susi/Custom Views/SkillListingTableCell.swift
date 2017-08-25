@@ -15,28 +15,17 @@ class SkillListingTableCell: UITableViewCell {
         didSet {
             backgroundColor = Color.grey.lighten3
             groupNameLabel.text = groupName
-            setupCollectionView()
-        }
+            skillListingCollectionView.groupName = groupName
+         }
     }
 
     @IBOutlet weak var groupNameLabel: UILabel!
-
-    let skillListingCollectionView: SkillListingCollectionView = {
-        let cv = SkillListingCollectionView()
-        return cv
-    }()
+    @IBOutlet weak var skillListingCollectionView: SkillListingCollectionView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
 
         selectionStyle = .none
-    }
-
-    func setupCollectionView() {
-        addSubview(skillListingCollectionView)
-        addConstraintsWithFormat(format: "H:|[v0]|", views: skillListingCollectionView)
-        addConstraintsWithFormat(format: "V:|-40-[v0]|", views: skillListingCollectionView)
-        skillListingCollectionView.groupName = groupName
     }
 
 }
