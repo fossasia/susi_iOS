@@ -16,15 +16,12 @@ class SkillCell: CollectionViewCell {
         didSet {
             skillImage.image = ControllerConstants.Images.placeholder
             if let skill = skill {
-                print(skill.imagePath)
-                if let url = URL(string: skill.imagePath) {
-                    skillImage.kf.setImage(with: url)
-                }
+                let url = URL(string: skill.imagePath)
+                skillImage.kf.setImage(with: url)
                 exampleQueryLabel.text = "\(skill.examples.first?.debugDescription ?? "")"
                 skillName.text = skill.skillName
                 skillDescription.text = skill.skillDescription
             }
-            
             configureShadow()
         }
     }
@@ -33,13 +30,13 @@ class SkillCell: CollectionViewCell {
     @IBOutlet weak var exampleQueryLabel: UILabel!
     @IBOutlet weak var skillName: UILabel!
     @IBOutlet weak var skillDescription: UILabel!
-    
+
     func configureShadow() {
         contentView.layer.cornerRadius = 2.0
         contentView.layer.borderWidth = 1.0
         contentView.layer.borderColor = UIColor.clear.cgColor
         contentView.layer.masksToBounds = true
-        
+
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOffset = CGSize(width: 0, height: 2.0)
         layer.shadowRadius = 2.0

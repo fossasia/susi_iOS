@@ -13,28 +13,11 @@ class SkillListingCollectionView: UICollectionView, UICollectionViewDelegateFlow
 
     let cellId = "cellId"
 
-    var groupSkills: [Skill]?
-
-    var groupName: String? {
+    var groupSkills: [Skill]? {
         didSet {
             delegate = self
             dataSource = self
-            groupSkills = []
             self.reloadData()
-            let params = [
-                Client.SkillListing.group: groupName
-            ]
-
-            Client.sharedInstance.getSkillData(params as [String : AnyObject]) { (skills, success, message) in
-                DispatchQueue.main.async {
-                    if success {
-                        self.groupSkills = skills
-                        self.reloadData()
-                    } else {
-                        print(message ?? "No error")
-                    }
-                }
-            }
         }
     }
 
@@ -45,7 +28,7 @@ class SkillListingCollectionView: UICollectionView, UICollectionViewDelegateFlow
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? SkillCell {
             cell.skill = groupSkills?[indexPath.item]
-            cell.backgroundColor = Color.grey.lighten2
+            cell.backgroundColor = Color.grey.lighten3
             cell.depthPreset = .depth4
             return cell
         }
@@ -53,7 +36,7 @@ class SkillListingCollectionView: UICollectionView, UICollectionViewDelegateFlow
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: frame.width * 5 / 7, height: frame.height - 14)
+        return CGSize(width: frame.width * 4 / 7, height: frame.height - 14)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

@@ -230,20 +230,22 @@
 		6D017B231F4EAF64004BDE7E /* SkillListingViewController */ = {
 			isa = PBXGroup;
 			children = (
-				6D017B241F4EAF86004BDE7E /* SkillListingViewController.swift */,
 				6D017B261F4EB641004BDE7E /* SkillListingVCMethods.swift */,
+				6D017B241F4EAF86004BDE7E /* SkillListingViewController.swift */,
 			);
 			name = SkillListingViewController;
+			path = SkillListingViewController;
 			sourceTree = "<group>";
 		};
 		6D017B2C1F4EC98E004BDE7E /* Skill Listing Cells */ = {
 			isa = PBXGroup;
 			children = (
-				6D017B281F4EC2D3004BDE7E /* SkillListingTableCell.swift */,
-				6D017B2A1F4EC941004BDE7E /* SkillListingCollectionView.swift */,
 				6D017B2D1F4ECA90004BDE7E /* SkillCell.swift */,
+				6D017B2A1F4EC941004BDE7E /* SkillListingCollectionView.swift */,
+				6D017B281F4EC2D3004BDE7E /* SkillListingTableCell.swift */,
 			);
 			name = "Skill Listing Cells";
+			path = "Skill Listing Cells";
 			sourceTree = "<group>";
 		};
 		6D0B28DA1F3D558300E273E1 /* ResetPasswordController */ = {
@@ -312,10 +314,10 @@
 			isa = PBXGroup;
 			children = (
 				6D3FB3471E8136640015E1D6 /* Message Cells */,
-				6D87A32D1EEE54CC00A6D763 /* WebsearchCollectionView.swift */,
+				6D017B2C1F4EC98E004BDE7E /* Skill Listing Cells */,
 				6D0B28DF1F3D8F6300E273E1 /* CustomTextField.swift */,
 				6D6F90471F4AF30800C84137 /* LongPressToCopyTextView.swift */,
-				6D017B2C1F4EC98E004BDE7E /* Skill Listing Cells */,
+				6D87A32D1EEE54CC00A6D763 /* WebsearchCollectionView.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -347,15 +349,15 @@
 			isa = PBXGroup;
 			children = (
 				6D3DACC41F25FB9900CEFBC7 /* ActivityIndicatorCell.swift */,
+				6DE0025A1F3FF93A0065DB85 /* AnchorCell.swift */,
 				6D2F984A1E76DF2200FE2B6F /* BaseCell.swift */,
 				6D3FB3481E813B900015E1D6 /* ChatMessageCell.swift */,
+				6D7CE2E11F40255700C6353F /* ImageCell.swift */,
 				6D0DB6271EE436FC00AD030D /* IncomingChatCell.swift */,
+				6DE002581F3FF5140065DB85 /* MapCell.swift */,
 				6D0DB6251EE4272300AD030D /* OutgoingChatCell.swift */,
 				6D87A3311EEE86CC00A6D763 /* RSSCell.swift */,
 				6D87A32F1EEE557000A6D763 /* WebsearchCell.swift */,
-				6DE002581F3FF5140065DB85 /* MapCell.swift */,
-				6DE0025A1F3FF93A0065DB85 /* AnchorCell.swift */,
-				6D7CE2E11F40255700C6353F /* ImageCell.swift */,
 			);
 			path = "Message Cells";
 			sourceTree = "<group>";
@@ -408,13 +410,13 @@
 		6D4D9B501E768F2E0067459C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				6D017B231F4EAF64004BDE7E /* SkillListingViewController */,
 				6D24B0971EE411A40097418A /* ChatViewController */,
 				6D24B08D1EE408F10097418A /* ForgotPasswordController */,
 				6D24B0881EE407760097418A /* LoginController */,
 				6D0B28DA1F3D558300E273E1 /* ResetPasswordController */,
 				6DEE71131F2CB03C00A512CF /* SettingsController */,
 				6D24B0921EE409860097418A /* SignUpController */,
+				6D017B231F4EAF64004BDE7E /* SkillListingViewController */,
 				6DE809CD1F34DBFD00CAE674 /* TrainingViewController */,
 				6DEE71111F2C9DC900A512CF /* AppNavigationController.swift */,
 			);
@@ -457,10 +459,10 @@
 				6D61B9B61EEBAB7000CD3536 /* MapAction.swift */,
 				6D61B9AA1EEBAA3900CD3536 /* Message.swift */,
 				6D61B9AE1EEBAAD700CD3536 /* RSSAction.swift */,
+				6D017B2F1F4ED651004BDE7E /* Skill.swift */,
 				6D61B9B21EEBAB4000CD3536 /* TableAction.swift */,
 				6D9C0D281E7B223A00199828 /* User.swift */,
 				6D61B9B01EEBAB0200CD3536 /* WebsearchAction.swift */,
-				6D017B2F1F4ED651004BDE7E /* Skill.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

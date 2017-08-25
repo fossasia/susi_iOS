@@ -28,26 +28,57 @@ extension SkillListingViewController {
 
     // presents the settings controller
     func presentSettingsController() {
-        let vc = ControllerConstants.Controllers.settingsController
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = mainStoryboard.instantiateViewController(withIdentifier: "SettingsController")
         let nvc = AppNavigationController(rootViewController: vc)
         present(nvc, animated: true, completion: nil)
     }
 
     // dismiss controller
     func dismissController() {
-        motionDismissViewController()
+        navigationController?.dismiss(animated: true, completion: nil)
+    }
+
+    // setup activity indicator
+    func prepareActivityIndicator() {
+        tableView.layout(activityIndicator).center()
     }
 
     // get all groups
     func getAllGroups() {
+        activityIndicator.startAnimating()
         Client.sharedInstance.getAllGroups { (groups, success, message) in
             DispatchQueue.main.async {
                 if success {
                     self.groups = groups
-                    self.tableView.reloadData()
+                    self.getAllSkills()
                 } else {
                     print(message ?? "error")
+                    self.activityIndicator.stopAnimating()
                 }
+            }
+        }
+    }
+
+    // get all skills and save them inside a list
+    func getAllSkills() {
+        if let groups = groups {
+            for group in groups {
+
+                let params = [
+                    Client.SkillListing.group: group
+                ]
+
+                Client.sharedInstance.getSkillData(params as [String : AnyObject], { (skill, success, _) in
+                    DispatchQueue.main.async {
+                        if success {
+                            self.skills[group] = skill
+                        } else {
+                            self.skills[group] = nil
+                        }
+                        self.count += 1
+                    }
+                })
             }
         }
     }

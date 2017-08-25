@@ -38,7 +38,7 @@ class Skill: NSObject {
     }
 
     static func getImagePath(_ model: String, _ group: String, _ language: String, _ path: String) -> String {
-        return "\(Client.Methods.baseSkillImagePath)\(model)/\(group)/\(language)/\(path)"
+        return "\(Client.Methods.baseSkillImagePath)\(model)/\(group)/\(language)/\(path)".replacingOccurrences(of: " ", with: "%20")
     }
 
 }

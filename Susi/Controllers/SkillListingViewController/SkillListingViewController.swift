@@ -32,9 +32,30 @@ class SkillListingViewController: UITableViewController {
 
     var groups: [String]?
 
+    // stores how many group's data fetched
+    var count = 0 {
+        didSet {
+            if count == groups?.count {
+                activityIndicator.stopAnimating()
+                print(skills)
+                tableView.reloadData()
+            }
+        }
+    }
+    var skills = [String: [Skill]]()
+
+    let activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        indicator.hidesWhenStopped = true
+        indicator.activityIndicatorViewStyle = .whiteLarge
+        indicator.color = UIColor.defaultColor()
+        return indicator
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        prepareActivityIndicator()
         getAllGroups()
     }
 
@@ -47,17 +68,27 @@ class SkillListingViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        // return the number of rows
         return groups?.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as? SkillListingTableCell {
-            cell.groupName = groups?[indexPath.row]
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "skillListCell", for: indexPath) as? SkillListingTableCell,
+            let group = groups?[indexPath.row] {
+            cell.groupName = group
+            cell.skills = skills[group]
             return cell
         }
-
         return UITableViewCell()
+    }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if let group = groups?[indexPath.row], let skills = self.skills[group] {
+            if skills.count > 0 {
+                return 200.0
+            }
+        }
+        return 0.0
     }
 
 }

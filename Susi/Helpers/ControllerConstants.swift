@@ -116,6 +116,7 @@ class ControllerConstants {
         static let chatCollectionView = "chatCollectionView"
         static let chatCells = "chatCell"
         static let settings = "settings"
+        static let susiSymbol = "susi symbol"
 
         struct TestAccount {
             static let emailId = "susi.ai@mail.com"
@@ -140,14 +141,6 @@ class ControllerConstants {
         static let thumbsUp = UIImage(named: "thumbs_up")
         static let thumbsDown = UIImage(named: "thumbs_down")
         static let susiSymbol = UIImage(named: "susi_symbol")
-    }
-
-    struct Controllers {
-        static let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        static let trainingViewController = mainStoryboard.instantiateViewController(withIdentifier: "TrainingViewController")
-        static let resetPasswordViewController = mainStoryboard.instantiateViewController(withIdentifier: "ResetPasswordController")
-        static let skillListingViewController = mainStoryboard.instantiateViewController(withIdentifier: "SkillListingController")
-        static let settingsController = mainStoryboard.instantiateViewController(withIdentifier: "SettingsController")
     }
 
 }

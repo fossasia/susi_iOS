@@ -15,8 +15,13 @@ class SkillListingTableCell: UITableViewCell {
         didSet {
             backgroundColor = Color.grey.lighten3
             groupNameLabel.text = groupName
-            skillListingCollectionView.groupName = groupName
          }
+    }
+
+    var skills: [Skill]? {
+        didSet {
+            skillListingCollectionView.groupSkills = skills
+        }
     }
 
     @IBOutlet weak var groupNameLabel: UILabel!

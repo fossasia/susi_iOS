@@ -288,7 +288,8 @@ extension ChatViewController {
 
     // present skill listing controller
     func presentSkillListingController() {
-        let vc = ControllerConstants.Controllers.skillListingViewController
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = mainStoryboard.instantiateViewController(withIdentifier: "SkillListingController")
         let nvc = AppNavigationController(rootViewController: vc)
         present(nvc, animated: true, completion: nil)
     }

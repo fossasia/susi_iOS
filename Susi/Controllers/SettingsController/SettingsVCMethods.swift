@@ -19,9 +19,6 @@ extension SettingsViewController {
         navigationItem.titleLabel.textAlignment = .left
         navigationItem.titleLabel.textColor = .white
         navigationItem.leftViews = [backButton]
-        if let navbar = navigationController?.navigationBar {
-            navbar.barTintColor = UIColor.defaultColor()
-        }
     }
 
     func dismissView() {
@@ -98,13 +95,15 @@ extension SettingsViewController {
     }
 
     func presentTrainingController() {
-        let vc = ControllerConstants.Controllers.trainingViewController
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = mainStoryboard.instantiateViewController(withIdentifier: "TrainingViewController")
         let nvc = AppNavigationController(rootViewController: vc)
         present(nvc, animated: true, completion: nil)
     }
 
     func presentResetPasswordController() {
-        let vc = ControllerConstants.Controllers.resetPasswordViewController
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = mainStoryboard.instantiateViewController(withIdentifier: "ResetPasswordController")
         let nvc = AppNavigationController(rootViewController: vc)
         present(nvc, animated: true, completion: nil)
     }
