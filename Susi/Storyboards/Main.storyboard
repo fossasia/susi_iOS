@@ -144,7 +144,7 @@
                                 <rect key="frame" x="146" y="442" width="123" height="37"/>
                             </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" red="0.16862745098039217" green="0.24313725490196078" blue="0.30980392156862746" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.25447925925254822" green="0.51828217506408691" blue="0.95430618524551392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="3Q5-rQ-6Ig" firstAttribute="leading" secondItem="eB9-M6-ocu" secondAttribute="leadingMargin" id="2dh-eX-WXR"/>
                             <constraint firstItem="a1R-Kp-3L1" firstAttribute="trailing" secondItem="eB9-M6-ocu" secondAttribute="trailingMargin" constant="-56" id="3CD-n4-10g"/>
@@ -324,7 +324,7 @@
                                 <rect key="frame" x="146" y="384" width="123" height="37"/>
                             </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" red="0.16862745100000001" green="0.24313725489999999" blue="0.30980392159999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.25447925925254822" green="0.51828217506408691" blue="0.95430618524551392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="8w1-Me-Ajd" firstAttribute="leading" secondItem="E81-H1-y6d" secondAttribute="leadingMargin" constant="126" id="331-KH-2Qa"/>
                             <constraint firstItem="8w1-Me-Ajd" firstAttribute="leading" secondItem="E81-H1-y6d" secondAttribute="leadingMargin" constant="126" id="4Kl-21-Nmj"/>
@@ -1190,7 +1190,7 @@
                                 <rect key="frame" x="146" y="190" width="123" height="37"/>
                             </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" red="0.16987413169999999" green="0.2420473397" blue="0.30863785739999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.25447925925254822" green="0.51828217506408691" blue="0.95430618524551392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="BRz-rB-H1u" firstAttribute="leading" secondItem="U1T-gl-beX" secondAttribute="leadingMargin" constant="126" id="0gB-Vh-teP"/>
                             <constraint firstItem="BRz-rB-H1u" firstAttribute="top" secondItem="9bQ-nT-dJk" secondAttribute="bottom" constant="15" id="6PL-DX-T9n"/>

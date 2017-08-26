@@ -71,14 +71,14 @@ class SettingsViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let user = UserDefaults.standard.dictionary(forKey: ControllerConstants.UserDefaultsKeys.user)
-        if indexPath.section == 5 && indexPath.row == 2 && user == nil {
+        if indexPath.section == 4 && indexPath.row == 2 && user == nil {
             cell.isHidden = true
         }
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let user = UserDefaults.standard.dictionary(forKey: ControllerConstants.UserDefaultsKeys.user)
-        if indexPath.section == 5 && indexPath.row == 2 && user == nil {
+        if indexPath.section == 4 && indexPath.row == 2 && user == nil {
             return 0
         } else {
             return super.tableView(tableView, heightForRowAt: indexPath)
