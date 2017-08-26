@@ -35,7 +35,7 @@ class ChatUITests: XCTestCase {
     func testAnswerAction() {
         let inputviewTextField = app.textFields[ControllerConstants.TestKeys.chatInputView]
         inputviewTextField.tap()
-        inputviewTextField.typeText("Hi there")
+        inputviewTextField.typeText("Hello")
         
         let sendButton = app.buttons[ControllerConstants.TestKeys.send]
         sendButton.tap()
@@ -49,7 +49,7 @@ class ChatUITests: XCTestCase {
     func testRSSAction() {
         let inputviewTextField = app.textFields[ControllerConstants.TestKeys.chatInputView]
         inputviewTextField.tap()
-        inputviewTextField.typeText("brazil")
+        inputviewTextField.typeText("amazon")
         app.buttons[ControllerConstants.TestKeys.send].tap()
         
         sleep(10)

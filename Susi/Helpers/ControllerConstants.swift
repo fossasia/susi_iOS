@@ -51,6 +51,7 @@ class ControllerConstants {
     static let thumbsDown = "thumbs_down"
     static let hotwordFileName = "susi.pmdl"
     static let settings = "Settings"
+    static let skillListing = "SUSI.AI Skills"
     static let trainHotword = "Let's train SUSI"
     static let passwordDoNotMatch = "Passwords do not match."
     static let resetPassword = "Reset Password"
@@ -115,6 +116,7 @@ class ControllerConstants {
         static let chatCollectionView = "chatCollectionView"
         static let chatCells = "chatCell"
         static let settings = "settings"
+        static let susiSymbol = "susi symbol"
 
         struct TestAccount {
             static let emailId = "susi.ai@mail.com"
@@ -138,12 +140,7 @@ class ControllerConstants {
         static let susiLogo = UIImage(named: "susi")
         static let thumbsUp = UIImage(named: "thumbs_up")
         static let thumbsDown = UIImage(named: "thumbs_down")
-    }
-
-    struct Controllers {
-        static let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        static let trainingViewController = mainStoryboard.instantiateViewController(withIdentifier: "TrainingViewController")
-        static let resetPasswordViewController = mainStoryboard.instantiateViewController(withIdentifier: "ResetPasswordController")
+        static let susiSymbol = UIImage(named: "susi_symbol")
     }
 
 }

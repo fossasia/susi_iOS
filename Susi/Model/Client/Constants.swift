@@ -25,6 +25,9 @@ extension Client {
         static let ListUserSettings = "/aaa/listUserSettings.json"
         static let SendFeedback = "/cms/rateSkill.json"
         static let ChangePassword = "/aaa/changepassword.json"
+        static let GetGroups = "/cms/getGroups.json"
+        static let GetSkillList = "/cms/getSkillList.json"
+        static let baseSkillImagePath = "https://raw.githubusercontent.com/fossasia/susi_skill_data/master/models/"
     }
 
     struct ResponseMessages {
@@ -32,6 +35,7 @@ extension Client {
         static let ServerError = "Problem connecting to server!"
         static let SignedOut = "Successfully logged out"
         static let PasswordInvalid = "Password chosen is invalid."
+        static let NoSkillsPresent = "No skills present."
     }
 
     struct UserKeys {
@@ -131,6 +135,20 @@ extension Client {
         static let token = "1b286c615e95d848814144e6ffe0551505fe979c"
         static let microphone = "iphone microphone"
         static let language = "en"
+    }
+
+    struct SkillListing {
+        static let group = "group"
+        static let groups = "groups"
+        static let skills = "skills"
+        static let image = "image"
+        static let authorURL = "author_url"
+        static let examples = "examples"
+        static let author = "author"
+        static let skillName = "skill_name"
+        static let description = "descriptions"
+        static let model = "model"
+        static let language = "language"
     }
 
 }

@@ -108,9 +108,8 @@ class WebsearchCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
                 }
             }
             return cell
-        } else {
-            return UICollectionViewCell()
         }
+        return UICollectionViewCell()
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

@@ -42,7 +42,8 @@ extension SettingsViewController {
         Client.sharedInstance.logoutUser { (success, error) in
             DispatchQueue.main.async {
                 if success {
-                    self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+                    self.presentingViewController?.presentingViewController?
+                        .presentingViewController?.dismiss(animated: true, completion: nil)
                 } else {
                     debugPrint(error)
                 }
@@ -94,13 +95,15 @@ extension SettingsViewController {
     }
 
     func presentTrainingController() {
-        let vc = ControllerConstants.Controllers.trainingViewController
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = mainStoryboard.instantiateViewController(withIdentifier: "TrainingViewController")
         let nvc = AppNavigationController(rootViewController: vc)
         present(nvc, animated: true, completion: nil)
     }
 
     func presentResetPasswordController() {
-        let vc = ControllerConstants.Controllers.resetPasswordViewController
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = mainStoryboard.instantiateViewController(withIdentifier: "ResetPasswordController")
         let nvc = AppNavigationController(rootViewController: vc)
         present(nvc, animated: true, completion: nil)
     }
