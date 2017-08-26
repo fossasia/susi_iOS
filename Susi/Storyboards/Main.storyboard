@@ -1279,7 +1279,7 @@
                                                                             <constraint firstAttribute="width" constant="70" id="jsd-WS-PZf"/>
                                                                         </constraints>
                                                                     </imageView>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJ4-jD-Cqd">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;example query&quot;" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJ4-jD-Cqd">
                                                                         <rect key="frame" x="78" y="8" width="167" height="60.666666666666671"/>
                                                                         <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
                                                                         <nil key="textColor"/>

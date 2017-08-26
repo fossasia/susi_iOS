@@ -22,8 +22,8 @@ class Skill: NSObject {
         authorUrl = dictionary[Client.SkillListing.authorURL] as? String ?? ""
         examples = dictionary[Client.SkillListing.examples] as? [String] ?? []
         author = dictionary[Client.SkillListing.author] as? String ?? ""
-        skillName = dictionary[Client.SkillListing.skillName] as? String ?? ""
-        skillDescription = dictionary[Client.SkillListing.description] as? String ?? ""
+        skillName = dictionary[Client.SkillListing.skillName] as? String ?? "Skill Name"
+        skillDescription = dictionary[Client.SkillListing.description] as? String ?? "Skill Description"
         imagePath = dictionary[Client.SkillListing.image] as? String ?? ""
     }
 

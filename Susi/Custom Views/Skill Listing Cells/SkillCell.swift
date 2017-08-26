@@ -17,8 +17,12 @@ class SkillCell: CollectionViewCell {
             skillImage.image = ControllerConstants.Images.placeholder
             if let skill = skill {
                 let url = URL(string: skill.imagePath)
-                skillImage.kf.setImage(with: url)
-                exampleQueryLabel.text = "\(skill.examples.first?.debugDescription ?? "")"
+                skillImage.kf.setImage(with: url, placeholder: nil, options: nil, progressBlock: nil, completionHandler: { (image, error, _, _) in
+                    if image == nil || error != nil {
+                        self.skillImage.image = ControllerConstants.Images.placeholder
+                    }
+                })
+                exampleQueryLabel.text = "\(skill.examples.first?.debugDescription ?? "example query")"
                 skillName.text = skill.skillName
                 skillDescription.text = skill.skillDescription
             }

@@ -69,6 +69,8 @@ extension SkillListingViewController {
                     Client.SkillListing.group: group
                 ]
 
+                // sleep 0.3 seconds to bypass server request failure
+                usleep(300000)
                 Client.sharedInstance.getSkillData(params as [String : AnyObject], { (skill, success, _) in
                     DispatchQueue.main.async {
                         if success {

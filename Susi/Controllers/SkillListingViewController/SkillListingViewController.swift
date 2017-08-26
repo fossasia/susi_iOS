@@ -37,7 +37,6 @@ class SkillListingViewController: UITableViewController {
         didSet {
             if count == groups?.count {
                 activityIndicator.stopAnimating()
-                print(skills)
                 tableView.reloadData()
             }
         }
