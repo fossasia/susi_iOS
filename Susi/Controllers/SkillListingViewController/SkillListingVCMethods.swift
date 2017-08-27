@@ -69,20 +69,24 @@ extension SkillListingViewController {
                     Client.SkillListing.group: group
                 ]
 
-                // sleep 0.3 seconds to bypass server request failure
-                usleep(300000)
-                Client.sharedInstance.getSkillData(params as [String : AnyObject], { (skill, success, _) in
-                    DispatchQueue.main.async {
-                        if success {
-                            self.skills[group] = skill
-                        } else {
-                            self.skills[group] = nil
-                        }
-                        self.count += 1
-                    }
-                })
+                getSkillData(params: params as [String : AnyObject], group: group)
             }
         }
+    }
+
+    func getSkillData(params: [String:AnyObject], group: String) {
+        // sleep 0.3 seconds to bypass server request failure
+        usleep(300000)
+        Client.sharedInstance.getSkillData(params, { (skill, success, _) in
+            DispatchQueue.main.async {
+                if success {
+                    self.skills[group] = skill
+                } else {
+                    self.skills[group] = nil
+                }
+                self.count += 1
+            }
+        })
     }
 
 }

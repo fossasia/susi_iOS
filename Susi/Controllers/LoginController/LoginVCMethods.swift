@@ -250,8 +250,6 @@ extension LoginViewController {
         let image = ControllerConstants.Images.susiLogo
         susiLogo.image = image
         susiLogo.tintColor = .white
-        UIApplication.shared.statusBarStyle = .lightContent
-        view.backgroundColor = UIColor.defaultColor()
     }
 
     func saveUserGlobally(user: User) {
