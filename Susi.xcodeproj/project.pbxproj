@@ -54,7 +54,6 @@
 		6D61B9B51EEBAB6000CD3536 /* AnchorAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D61B9B41EEBAB6000CD3536 /* AnchorAction.swift */; };
 		6D61B9B71EEBAB7000CD3536 /* MapAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D61B9B61EEBAB7000CD3536 /* MapAction.swift */; };
 		6D6F90481F4AF30800C84137 /* LongPressToCopyTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6F90471F4AF30800C84137 /* LongPressToCopyTextView.swift */; };
-		6D7865B41F1CB71F00BCD12F /* susi.pmdl in Resources */ = {isa = PBXBuildFile; fileRef = 6D7865B31F1CB71F00BCD12F /* susi.pmdl */; };
 		6D7CE2E21F40255700C6353F /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7CE2E11F40255700C6353F /* ImageCell.swift */; };
 		6D87A32E1EEE54CC00A6D763 /* WebsearchCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D87A32D1EEE54CC00A6D763 /* WebsearchCollectionView.swift */; };
 		6D87A3301EEE557000A6D763 /* WebsearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D87A32F1EEE557000A6D763 /* WebsearchCell.swift */; };
@@ -69,6 +68,7 @@
 		6DCA90661F1F0B660058CABB /* SpeechRecognizerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCA90651F1F0B660058CABB /* SpeechRecognizerDelegate.swift */; };
 		6DD3F0931F0A62FC00BD7AC9 /* ChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD3F0921F0A62FC00BD7AC9 /* ChatUITests.swift */; };
 		6DD5030E1F36656C008388E4 /* SpeechRecognitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD5030D1F36656C008388E4 /* SpeechRecognitionDelegate.swift */; };
+		6DDFAF231F520F8500128754 /* susi.pmdl in Resources */ = {isa = PBXBuildFile; fileRef = 6DDFAF221F520F8500128754 /* susi.pmdl */; };
 		6DE002591F3FF5140065DB85 /* MapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE002581F3FF5140065DB85 /* MapCell.swift */; };
 		6DE0025B1F3FF93A0065DB85 /* AnchorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE0025A1F3FF93A0065DB85 /* AnchorCell.swift */; };
 		6DE1B5EB1EDB89BF0032E711 /* Pods_Susi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DE1B5EA1EDB89BF0032E711 /* Pods_Susi.framework */; };
@@ -155,7 +155,6 @@
 		6D6F90471F4AF30800C84137 /* LongPressToCopyTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LongPressToCopyTextView.swift; sourceTree = "<group>"; };
 		6D767DEC1E79A9B600FF5485 /* Pods_Susi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Susi.framework; path = "Pods/../build/Release-iphoneos/Pods_Susi.framework"; sourceTree = "<group>"; };
 		6D767DEE1E79A9C800FF5485 /* Pods_Susi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Susi.framework; path = "Pods/../build/Release-iphoneos/Pods_Susi.framework"; sourceTree = "<group>"; };
-		6D7865B31F1CB71F00BCD12F /* susi.pmdl */ = {isa = PBXFileReference; lastKnownFileType = file; path = susi.pmdl; sourceTree = "<group>"; };
 		6D7CE2E11F40255700C6353F /* ImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		6D82ADF21E784A5A0094AA9E /* Pods_Susi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Susi.framework; path = "../../Library/Developer/Xcode/DerivedData/Susi-avbkhdntnaiijsctxkaeflbkpdbm/Build/Products/Debug-iphonesimulator/Pods_Susi.framework"; sourceTree = "<group>"; };
 		6D87A32D1EEE54CC00A6D763 /* WebsearchCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebsearchCollectionView.swift; sourceTree = "<group>"; };
@@ -171,6 +170,7 @@
 		6DCA90651F1F0B660058CABB /* SpeechRecognizerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechRecognizerDelegate.swift; sourceTree = "<group>"; };
 		6DD3F0921F0A62FC00BD7AC9 /* ChatUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatUITests.swift; sourceTree = "<group>"; };
 		6DD5030D1F36656C008388E4 /* SpeechRecognitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechRecognitionDelegate.swift; sourceTree = "<group>"; };
+		6DDFAF221F520F8500128754 /* susi.pmdl */ = {isa = PBXFileReference; lastKnownFileType = file; path = susi.pmdl; sourceTree = "<group>"; };
 		6DE002581F3FF5140065DB85 /* MapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapCell.swift; sourceTree = "<group>"; };
 		6DE0025A1F3FF93A0065DB85 /* AnchorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnchorCell.swift; sourceTree = "<group>"; };
 		6DE1B5E81EDB896F0032E711 /* Pods_Susi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Susi.framework; path = "Pods/../build/Debug-iphoneos/Pods_Susi.framework"; sourceTree = "<group>"; };
@@ -233,7 +233,6 @@
 				6D017B261F4EB641004BDE7E /* SkillListingVCMethods.swift */,
 				6D017B241F4EAF86004BDE7E /* SkillListingViewController.swift */,
 			);
-			name = SkillListingViewController;
 			path = SkillListingViewController;
 			sourceTree = "<group>";
 		};
@@ -244,7 +243,6 @@
 				6D017B2A1F4EC941004BDE7E /* SkillListingCollectionView.swift */,
 				6D017B281F4EC2D3004BDE7E /* SkillListingTableCell.swift */,
 			);
-			name = "Skill Listing Cells";
 			path = "Skill Listing Cells";
 			sourceTree = "<group>";
 		};
@@ -331,7 +329,7 @@
 				6D2898331F144E5C00B6151A /* common.res */,
 				6D2898381F144E5C00B6151A /* libsnowboy-detect.a */,
 				6D2898361F144E5C00B6151A /* snowboy-detect.h */,
-				6D7865B31F1CB71F00BCD12F /* susi.pmdl */,
+				6DDFAF221F520F8500128754 /* susi.pmdl */,
 			);
 			path = "Snowboy Files";
 			sourceTree = "<group>";
@@ -620,7 +618,7 @@
 				6D4D9B421E768E190067459C /* Assets.xcassets in Resources */,
 				6D389BEB1EDB912500DEAEA0 /* YTPlayer.html in Resources */,
 				6DAF3AF61F0E101200929D86 /* Main.storyboard in Resources */,
-				6D7865B41F1CB71F00BCD12F /* susi.pmdl in Resources */,
+				6DDFAF231F520F8500128754 /* susi.pmdl in Resources */,
 				6D28983A1F144E5C00B6151A /* common.res in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

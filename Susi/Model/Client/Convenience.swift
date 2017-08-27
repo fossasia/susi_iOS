@@ -104,7 +104,6 @@ extension Client {
     }
 
     func logoutUser(_ completion: @escaping(_ success: Bool, _ error: String) -> Void) {
-
         UserDefaults.standard.removeObject(forKey: ControllerConstants.UserDefaultsKeys.user)
         completion(true, ResponseMessages.SignedOut)
 

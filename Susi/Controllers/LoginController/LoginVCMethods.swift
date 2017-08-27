@@ -234,6 +234,7 @@ extension LoginViewController {
 
     func enterAnonymousMode() {
         resetDB()
+        deleteVoiceModel()
         resetSettings()
         UserDefaults.standard.set(Client.APIURLs.SusiAPI, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
         completeLogin()
@@ -268,5 +269,38 @@ extension LoginViewController {
         UserDefaults.standard.set(1.0, forKey: ControllerConstants.UserDefaultsKeys.speechPitch)
         UserDefaults.standard.set("en", forKey: ControllerConstants.UserDefaultsKeys.prefLanguage)
     }
-
+    
+    func checkIfFileExistsAndReturnPath(fileIdentifier: Int) -> URL? {
+        let recordingName = "recordedVoice\(fileIdentifier).wav"
+        
+        // Get directory
+        let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+        
+        let pathArray = [dirPath, recordingName]
+        let filePath = NSURL.fileURL(withPathComponents: pathArray)
+        if let path = filePath?.path {
+            if FileManager.default.fileExists(atPath: path) {
+                return filePath
+            }
+        }
+        return nil
+    }
+    
+    func deleteVoiceModel() {
+        do {
+            if let file1 = checkIfFileExistsAndReturnPath(fileIdentifier: 0) {
+                try FileManager.default.removeItem(at: file1)
+            }
+            if let file2 = checkIfFileExistsAndReturnPath(fileIdentifier: 1) {
+                try FileManager.default.removeItem(at: file2)
+            }
+            if let file3 = checkIfFileExistsAndReturnPath(fileIdentifier: 2) {
+                try FileManager.default.removeItem(at: file3)
+            }
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        self.view.makeToast("Model deleted successfully")
+    }
+    
 }

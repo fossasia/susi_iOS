@@ -91,7 +91,7 @@ extension ChatViewController: SFSpeechRecognizerDelegate, AVSpeechSynthesizerDel
                     self.handleSend()
                     isFinal = true
                     timer.invalidate()
-                    self.recognitionTask?.cancel()
+                    self.stopSpeechToText()
                 })
             }
 
@@ -146,7 +146,7 @@ extension ChatViewController: SFSpeechRecognizerDelegate, AVSpeechSynthesizerDel
         resetSpeechConfig()
 
         indicatorView.stopAnimating()
-        recognitionTask?.cancel()
+        recognitionTask = nil
         detectionTimer?.invalidate()
 
         isSpeechRecognitionRunning = false
