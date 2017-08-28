@@ -96,6 +96,7 @@ extension LoginViewController {
             Client.sharedInstance.loginUser(params as [String : AnyObject]) { (user, results, success, message) in
                 DispatchQueue.main.async {
                     self.toggleEditing()
+                    self.resetDB()
                     if success {
                         if var userData = results {
                             userData[Client.UserKeys.EmailOfAccount] = (message.components(separatedBy: " ").last ?? "") as AnyObject
@@ -269,13 +270,13 @@ extension LoginViewController {
         UserDefaults.standard.set(1.0, forKey: ControllerConstants.UserDefaultsKeys.speechPitch)
         UserDefaults.standard.set("en", forKey: ControllerConstants.UserDefaultsKeys.prefLanguage)
     }
-    
+
     func checkIfFileExistsAndReturnPath(fileIdentifier: Int) -> URL? {
         let recordingName = "recordedVoice\(fileIdentifier).wav"
-        
+
         // Get directory
         let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
-        
+
         let pathArray = [dirPath, recordingName]
         let filePath = NSURL.fileURL(withPathComponents: pathArray)
         if let path = filePath?.path {
@@ -285,7 +286,7 @@ extension LoginViewController {
         }
         return nil
     }
-    
+
     func deleteVoiceModel() {
         do {
             if let file1 = checkIfFileExistsAndReturnPath(fileIdentifier: 0) {
@@ -302,5 +303,5 @@ extension LoginViewController {
         }
         self.view.makeToast("Model deleted successfully")
     }
-    
+
 }

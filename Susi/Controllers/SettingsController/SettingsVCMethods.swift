@@ -37,7 +37,6 @@ extension SettingsViewController {
         let realm = try! Realm()
         try! realm.write {
             realm.deleteAll()
-            print(realm.isEmpty)
         }
         deleteVoiceModel()
 

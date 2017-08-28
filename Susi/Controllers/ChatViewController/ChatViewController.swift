@@ -156,7 +156,7 @@ class ChatViewController: UICollectionViewController {
         initSnowboy()
         checkAndRunHotwordRecognition()
     }
-    
+
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         stopHotwordRecognition()

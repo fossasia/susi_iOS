@@ -1,6 +1,6 @@
 PODS:
   - Alamofire (4.5.0)
-  - BouncyLayout (1.1.0)
+  - BouncyLayout (1.1.1)
   - Fakery (2.0.0)
   - Ji (2.0.1):
     - Ji/Ji (= 2.0.1)
@@ -59,7 +59,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
-  BouncyLayout: f91c6504437a61acd733404f55f75bd8154f5840
+  BouncyLayout: 417543c30ff30bedb094984f50a4972331c44a6e
   Fakery: 97b99c23937d2e025d9135c75e2b17351ccd5031
   Ji: 6bb602a28dd08b804158f64990e6051ed5de0110
   Kingfisher: c8911a7672c6217dec8c0520fb6e76ec4b7e0780
