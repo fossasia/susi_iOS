@@ -39,7 +39,7 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
     func setupCell(_ estimatedFrame: CGRect, _ viewFrame: CGRect) {
         if let message = message {
             if message.actionType == ActionType.answer.rawValue {
-                messageTextView.frame = CGRect(x: 12, y: 4, width: max(estimatedFrame.width + 30, viewFrame.width / 3), height: estimatedFrame.height + 20)
+                messageTextView.frame = CGRect(x: 12, y: 4, width: max(estimatedFrame.width + 26, viewFrame.width / 3), height: estimatedFrame.height + 10)
                 textBubbleView.frame = CGRect(x: 8, y: 0, width: max(estimatedFrame.width + 40, viewFrame.width / 3), height: estimatedFrame.height + 28)
 
                 let attributedString = NSMutableAttributedString(string: message.message)

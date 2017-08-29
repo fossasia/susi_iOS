@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="17A352a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0ek-IO-lKt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="17A358a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0ek-IO-lKt">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -1359,10 +1359,72 @@
                             <outlet property="delegate" destination="Jh1-c2-pzc" id="thk-He-8Cc"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="PIe-Nv-g5j" kind="show" identifier="skillDetail" id="d0x-QC-6Xv"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cvM-c2-nEc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2836.2318840579715" y="405.97826086956525"/>
+        </scene>
+        <!--Skill Detail View Controller-->
+        <scene sceneID="pab-3T-JER">
+            <objects>
+                <viewController id="PIe-Nv-g5j" customClass="SkillDetailViewController" customModule="Susi" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YdB-js-fXw"/>
+                        <viewControllerLayoutGuide type="bottom" id="NUT-dP-po9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QVl-Nt-KxT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="wHe-xI-Ovh">
+                                <rect key="frame" x="20" y="36" width="128" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="128" id="22c-Ir-8NZ"/>
+                                    <constraint firstAttribute="height" constant="128" id="obe-i3-ILE"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skill Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i6G-gZ-Q4r">
+                                <rect key="frame" x="156" y="44" width="238" height="59"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By: Author Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qES-uK-T6I">
+                                <rect key="frame" x="156" y="111" width="238" height="53"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="53" id="eWf-LM-Ryr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="i6G-gZ-Q4r" firstAttribute="top" secondItem="YdB-js-fXw" secondAttribute="bottom" constant="24" id="8B9-m6-lIt"/>
+                            <constraint firstItem="i6G-gZ-Q4r" firstAttribute="trailing" secondItem="QVl-Nt-KxT" secondAttribute="trailingMargin" id="KB4-ct-mRF"/>
+                            <constraint firstItem="qES-uK-T6I" firstAttribute="trailing" secondItem="i6G-gZ-Q4r" secondAttribute="trailing" id="RNW-e8-gMS"/>
+                            <constraint firstItem="qES-uK-T6I" firstAttribute="leading" secondItem="i6G-gZ-Q4r" secondAttribute="leading" id="TEW-ro-aZI"/>
+                            <constraint firstItem="qES-uK-T6I" firstAttribute="top" secondItem="i6G-gZ-Q4r" secondAttribute="bottom" constant="8" symbolic="YES" id="Xp8-Xy-gHU"/>
+                            <constraint firstItem="wHe-xI-Ovh" firstAttribute="leading" secondItem="QVl-Nt-KxT" secondAttribute="leadingMargin" id="dGT-pi-adZ"/>
+                            <constraint firstItem="wHe-xI-Ovh" firstAttribute="top" secondItem="YdB-js-fXw" secondAttribute="bottom" constant="16" id="gxd-JB-6z5"/>
+                            <constraint firstItem="i6G-gZ-Q4r" firstAttribute="leading" secondItem="wHe-xI-Ovh" secondAttribute="trailing" constant="8" id="lNt-4Z-aXe"/>
+                            <constraint firstItem="qES-uK-T6I" firstAttribute="bottom" secondItem="wHe-xI-Ovh" secondAttribute="bottom" id="qK6-hW-9ad"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="PA1-W6-wgT"/>
+                    <connections>
+                        <outlet property="skillAuthorLabel" destination="qES-uK-T6I" id="ifU-hR-nsY"/>
+                        <outlet property="skillImageView" destination="wHe-xI-Ovh" id="PGG-2f-MCq"/>
+                        <outlet property="skillLabel" destination="i6G-gZ-Q4r" id="scS-Fy-0tr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="575-W8-xrD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3778" y="406"/>
         </scene>
     </scenes>
     <resources>

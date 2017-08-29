@@ -263,7 +263,7 @@ extension LoginViewController {
     func resetSettings() {
         UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.enterToSend)
         UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.micInput)
-        UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.hotwordEnabled)
+        UserDefaults.standard.set(false, forKey: ControllerConstants.UserDefaultsKeys.hotwordEnabled)
         UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.speechOutput)
         UserDefaults.standard.set(false, forKey: ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn)
         UserDefaults.standard.set(0.5, forKey: ControllerConstants.UserDefaultsKeys.speechRate)
@@ -301,7 +301,6 @@ extension LoginViewController {
         } catch let error {
             print(error.localizedDescription)
         }
-        self.view.makeToast("Model deleted successfully")
     }
 
 }

@@ -11,6 +11,8 @@ import Material
 
 class SkillListingTableCell: UITableViewCell {
 
+    var skillListController: SkillListingViewController?
+
     var groupName: String? {
         didSet {
             backgroundColor = Color.grey.lighten3
@@ -20,6 +22,7 @@ class SkillListingTableCell: UITableViewCell {
 
     var skills: [Skill]? {
         didSet {
+            skillListingCollectionView.skillListController = skillListController
             skillListingCollectionView.groupSkills = skills
         }
     }

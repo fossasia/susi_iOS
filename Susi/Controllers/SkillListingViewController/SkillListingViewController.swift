@@ -51,6 +51,12 @@ class SkillListingViewController: UITableViewController {
         return indicator
     }()
 
+    var selectedSkill: Skill? {
+        didSet {
+            performSegue(withIdentifier: "skillDetail", sender: self)
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -75,6 +81,7 @@ class SkillListingViewController: UITableViewController {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "skillListCell", for: indexPath) as? SkillListingTableCell,
             let group = groups?[indexPath.row] {
             cell.groupName = group
+            cell.skillListController = self
             cell.skills = skills[group]
             return cell
         }
@@ -88,6 +95,12 @@ class SkillListingViewController: UITableViewController {
             }
         }
         return 0.0
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? SkillDetailViewController {
+            vc.skill = selectedSkill
+        }
     }
 
 }
