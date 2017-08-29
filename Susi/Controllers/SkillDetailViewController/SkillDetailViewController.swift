@@ -31,7 +31,7 @@ class SkillDetailViewController: UIViewController {
             }
             skillAuthorLabel.text = "By: \(skill.author)"
         }
-        self.navigationController?.navigationBar.tintColor = .white
+        navigationItem.backButton.tintColor = .white
     }
 
 }
