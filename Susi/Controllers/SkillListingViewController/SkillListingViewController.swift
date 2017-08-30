@@ -98,7 +98,7 @@ class SkillListingViewController: UITableViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? SkillDetailViewController {
+        if let vc = segue.destination as? SkillDetailViewController, segue.identifier == "skillDetail" {
             vc.skill = selectedSkill
         }
     }
