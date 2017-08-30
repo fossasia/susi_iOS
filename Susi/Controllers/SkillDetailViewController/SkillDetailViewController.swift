@@ -12,6 +12,13 @@ import Kingfisher
 class SkillDetailViewController: UIViewController {
 
     var skill: Skill?
+    var chatViewController: ChatViewController?
+
+    lazy var tryItButton: UIBarButtonItem = {
+        let item = UIBarButtonItem(title: "Try It", style: .plain, target: self, action: #selector(trySkillFromExample))
+        item.tintColor = .white
+        return item
+    }()
 
     @IBOutlet weak var skillLabel: UILabel!
     @IBOutlet weak var skillImageView: UIImageView!
@@ -21,6 +28,7 @@ class SkillDetailViewController: UIViewController {
         super.viewDidLoad()
 
         setupView()
+        navigationItem.rightBarButtonItems = [tryItButton]
     }
 
     func setupView() {
@@ -32,6 +40,13 @@ class SkillDetailViewController: UIViewController {
             skillAuthorLabel.text = "By: \(skill.author)"
         }
         navigationItem.backButton.tintColor = .white
+    }
+
+    func trySkillFromExample() {
+        navigationController?.dismiss(animated: true, completion: {
+            self.chatViewController?.inputTextField.text = self.skill?.examples.first
+            self.chatViewController?.handleSend()
+        })
     }
 
 }

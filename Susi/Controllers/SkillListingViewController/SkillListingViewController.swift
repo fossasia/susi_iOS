@@ -32,6 +32,8 @@ class SkillListingViewController: UITableViewController {
 
     var groups: [String]?
 
+    var chatViewController: ChatViewController?
+
     // stores how many group's data fetched
     var count = 0 {
         didSet {
@@ -99,6 +101,7 @@ class SkillListingViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? SkillDetailViewController, segue.identifier == "skillDetail" {
+            vc.chatViewController = chatViewController
             vc.skill = selectedSkill
         }
     }

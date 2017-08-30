@@ -289,9 +289,11 @@ extension ChatViewController {
     // present skill listing controller
     func presentSkillListingController() {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = mainStoryboard.instantiateViewController(withIdentifier: "SkillListingController")
-        let nvc = AppNavigationController(rootViewController: vc)
-        present(nvc, animated: true, completion: nil)
+        if let vc = mainStoryboard.instantiateViewController(withIdentifier: "SkillListingController") as? SkillListingViewController {
+            vc.chatViewController = self
+            let nvc = AppNavigationController(rootViewController: vc)
+            present(nvc, animated: true, completion: nil)
+        }
     }
 
     // checks if personal trained model exists
