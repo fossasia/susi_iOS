@@ -8,45 +8,27 @@
 
 import UIKit
 import Kingfisher
+import Material
 
 class SkillDetailViewController: UIViewController {
 
     var skill: Skill?
     var chatViewController: ChatViewController?
-
-    lazy var tryItButton: UIBarButtonItem = {
-        let item = UIBarButtonItem(title: "Try It", style: .plain, target: self, action: #selector(trySkillFromExample))
-        item.tintColor = .white
-        return item
-    }()
+    var selectedExample: String?
 
     @IBOutlet weak var skillLabel: UILabel!
     @IBOutlet weak var skillImageView: UIImageView!
     @IBOutlet weak var skillAuthorLabel: UILabel!
+    @IBOutlet weak var tryItButton: FlatButton!
+    @IBOutlet weak var skillDescription: UILabel!
+    @IBOutlet weak var examplesCollectionView: UICollectionView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupView()
-        navigationItem.rightBarButtonItems = [tryItButton]
-    }
-
-    func setupView() {
-        if let skill = skill {
-            skillLabel.text = skill.skillName
-            if let url = URL(string: skill.imagePath) {
-                skillImageView.kf.setImage(with: url)
-            }
-            skillAuthorLabel.text = "By: \(skill.author)"
-        }
-        navigationItem.backButton.tintColor = .white
-    }
-
-    func trySkillFromExample() {
-        navigationController?.dismiss(animated: true, completion: {
-            self.chatViewController?.inputTextField.text = self.skill?.examples.first
-            self.chatViewController?.handleSend()
-        })
+        setupTryItTarget()
+        addSkillDescription()
     }
 
 }

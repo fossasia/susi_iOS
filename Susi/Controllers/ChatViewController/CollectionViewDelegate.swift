@@ -87,7 +87,7 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
                 message.actionType == ActionType.websearch.rawValue {
                 return CGSize(width: view.frame.width, height: 145)
             }
-            return CGSize(width: view.frame.width, height: estimatedFrame.height + 34)
+            return CGSize(width: view.frame.width, height: estimatedFrame.height + 38)
         }
     }
 

@@ -24,7 +24,7 @@ class SkillListingViewController: UITableViewController {
     // for opening settings view controller
     lazy var backButton: IconButton = {
         let ib = IconButton()
-        ib.image = Icon.arrowBack
+        ib.image = Icon.cm.arrowBack
         ib.tintColor = .white
         ib.addTarget(self, action: #selector(dismissController), for: .touchUpInside)
         return ib

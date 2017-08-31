@@ -28,7 +28,7 @@ class AnchorCell: ChatMessageCell {
 
     func setupCell(_ frame: CGRect) {
         messageTextView.frame = CGRect(x: 12, y: 4, width: frame.width + 30, height: frame.height + 20)
-        textBubbleView.frame = CGRect(x: 8, y: 0, width: frame.width + 40, height: frame.height + 28)
+        textBubbleView.frame = CGRect(x: 8, y: 0, width: frame.width + 40, height: frame.height + 36)
         addBottomView()
     }
 

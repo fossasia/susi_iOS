@@ -162,9 +162,8 @@ extension ChatViewController: SFSpeechRecognizerDelegate, AVSpeechSynthesizerDel
     }
 
     func speakAction(_ message: Message) {
-        if UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.speechOutput) ||
-            UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn) ||
-            isSpeechRecognitionRunning {
+        if (UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.speechOutput) && isSpeechRecognitionRunning) ||
+            UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn) {
             let speechUtterance = AVSpeechUtterance(string: message.message)
             speechSynthesizer.delegate = self
 
