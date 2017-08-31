@@ -55,7 +55,7 @@ class SkillListingViewController: UITableViewController {
 
     var selectedSkill: Skill? {
         didSet {
-            performSegue(withIdentifier: "skillDetail", sender: self)
+            performSegue(withIdentifier: ControllerConstants.skillDetailControllerIdentifier, sender: self)
         }
     }
 
@@ -100,7 +100,7 @@ class SkillListingViewController: UITableViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? SkillDetailViewController, segue.identifier == "skillDetail" {
+        if let vc = segue.destination as? SkillDetailViewController, segue.identifier == ControllerConstants.skillDetailControllerIdentifier {
             vc.chatViewController = chatViewController
             vc.skill = selectedSkill
         }
