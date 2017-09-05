@@ -103,8 +103,10 @@ extension ChatViewController: AVAudioRecorderDelegate {
         Stops the audio recorder and the hotword timer
     **/
     func stopHotwordRecognition() {
-        if audioRecorder != nil && hotwordTimer != nil {
+        if audioRecorder != nil {
             audioRecorder.stop()
+        }
+        if hotwordTimer != nil {
             hotwordTimer.invalidate()
         }
     }

@@ -16,7 +16,7 @@ class SettingsViewController: UITableViewController {
 
     lazy var backButton: IconButton = {
         let button = IconButton()
-        button.image = Icon.arrowBack
+        button.image = Icon.cm.arrowBack
         button.tintColor = .white
         button.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
         return button

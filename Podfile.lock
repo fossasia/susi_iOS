@@ -1,13 +1,13 @@
 PODS:
   - Alamofire (4.5.0)
-  - BouncyLayout (1.1.0)
+  - BouncyLayout (1.1.1)
   - Fakery (2.0.0)
   - Ji (2.0.1):
     - Ji/Ji (= 2.0.1)
   - Ji/Ji (2.0.1):
     - Ji/Ji-libxml
   - Ji/Ji-libxml (2.0.1)
-  - Kingfisher (3.11.0)
+  - Kingfisher (3.12.1)
   - M13Checkbox (3.1.3)
   - MarqueeLabel/Swift (3.1.2)
   - Material (2.9.4):
@@ -59,10 +59,10 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
-  BouncyLayout: f91c6504437a61acd733404f55f75bd8154f5840
+  BouncyLayout: 417543c30ff30bedb094984f50a4972331c44a6e
   Fakery: 97b99c23937d2e025d9135c75e2b17351ccd5031
   Ji: 6bb602a28dd08b804158f64990e6051ed5de0110
-  Kingfisher: c8911a7672c6217dec8c0520fb6e76ec4b7e0780
+  Kingfisher: 7e87498c3b795c2b8f6430fd5853ae5b5548ff9c
   M13Checkbox: f7c514add90ed6457a05a98621bb9936f231c9b4
   MarqueeLabel: fcd7057a779422d86589be759036f1510b08c6a0
   Material: 06fa0a5f29c45c42608ae32f3be96f1c46558d13

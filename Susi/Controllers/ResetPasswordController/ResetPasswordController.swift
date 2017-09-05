@@ -34,31 +34,7 @@ class ResetPasswordViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
-            let checkValidity = validatePassword()
-            if let isValid = checkValidity.keys.first,
-                let message = checkValidity.values.first {
-                if isValid {
-                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                    setUIActive(active: true)
-                    if let user = appDelegate.currentUser, isActive {
-                        let params = [
-                            Client.UserKeys.AccessToken: user.accessToken,
-                            Client.UserKeys.EmailOfAccount: user.emailID,
-                            Client.UserKeys.Password: currentPasswordField.text ?? "",
-                            Client.UserKeys.NewPassword: newPasswordField.text ?? ""
-                        ]
-
-                        Client.sharedInstance.resetPassword(params as [String : AnyObject], { (_, message) in
-                            DispatchQueue.main.async {
-                                self.view.makeToast(message)
-                                self.setUIActive(active: false)
-                            }
-                        })
-                    }
-                } else {
-                    view.makeToast(message)
-                }
-            }
+            resetPassword()
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }

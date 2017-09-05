@@ -21,7 +21,6 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
         let button = IconButton()
         button.image = ControllerConstants.Images.thumbsUp
         button.addTarget(self, action: #selector(sendFeedback(sender:)), for: .touchUpInside)
-        button.tintColor = UIColor(white: 0.1, alpha: 0.7)
         return button
     }()
 
@@ -29,7 +28,6 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
         let button = IconButton()
         button.image = ControllerConstants.Images.thumbsDown
         button.addTarget(self, action: #selector(sendFeedback(sender:)), for: .touchUpInside)
-        button.tintColor = UIColor(white: 0.1, alpha: 0.7)
         return button
     }()
 
@@ -41,8 +39,8 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
     func setupCell(_ estimatedFrame: CGRect, _ viewFrame: CGRect) {
         if let message = message {
             if message.actionType == ActionType.answer.rawValue {
-                messageTextView.frame = CGRect(x: 12, y: 4, width: max(estimatedFrame.width + 30, viewFrame.width / 3), height: estimatedFrame.height + 20)
-                textBubbleView.frame = CGRect(x: 8, y: 0, width: max(estimatedFrame.width + 40, viewFrame.width / 3), height: estimatedFrame.height + 28)
+                messageTextView.frame = CGRect(x: 12, y: 4, width: max(estimatedFrame.width + 26, viewFrame.width / 3), height: estimatedFrame.height + 20)
+                textBubbleView.frame = CGRect(x: 8, y: 0, width: max(estimatedFrame.width + 40, viewFrame.width / 3), height: estimatedFrame.height + 36)
 
                 let attributedString = NSMutableAttributedString(string: message.message)
                 if message.message.containsURL() {
@@ -77,11 +75,13 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
         textBubbleView.addSubview(thumbDownIcon)
         thumbUpIcon.isUserInteractionEnabled = true
         thumbDownIcon.isUserInteractionEnabled = true
+        thumbUpIcon.tintColor = UIColor(white: 0.1, alpha: 0.7)
+        thumbDownIcon.tintColor = UIColor(white: 0.1, alpha: 0.7)
 
         // Constraints
-        textBubbleView.addConstraintsWithFormat(format: "H:[v0]-4-[v1(14)]-2-[v2(14)]-8-|", views: timeLabel, thumbUpIcon, thumbDownIcon)
-        textBubbleView.addConstraintsWithFormat(format: "V:[v0(14)]-2-|", views: thumbUpIcon)
-        textBubbleView.addConstraintsWithFormat(format: "V:[v0(14)]-2-|", views: thumbDownIcon)
+        textBubbleView.addConstraintsWithFormat(format: "H:[v0]-4-[v1(16)]-2-[v2(16)]-8-|", views: timeLabel, thumbUpIcon, thumbDownIcon)
+        textBubbleView.addConstraintsWithFormat(format: "V:[v0(16)]-2-|", views: thumbUpIcon)
+        textBubbleView.addConstraintsWithFormat(format: "V:[v0(16)]-2-|", views: thumbDownIcon)
         textBubbleView.addConstraintsWithFormat(format: "V:[v0]-4-|", views: timeLabel)
     }
 

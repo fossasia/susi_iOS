@@ -233,10 +233,8 @@ extension ChatViewController {
                     let indexPath = IndexPath(item: self.messages.count - 1, section: 0)
                     UIView.animate(withDuration: 1.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
                         self.collectionView?.insertItems(at: [indexPath])
-                        if message.actionType == ActionType.answer.rawValue
-                            && !message.fromUser
-                            && UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn) {
-                            self.speakAction(message.message, language: message.answerData?.language)
+                        if message.actionType == ActionType.answer.rawValue && !message.fromUser {
+                            self.speakAction(message)
                         }
                     }, completion: nil)
                 }
@@ -289,9 +287,11 @@ extension ChatViewController {
     // present skill listing controller
     func presentSkillListingController() {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = mainStoryboard.instantiateViewController(withIdentifier: "SkillListingController")
-        let nvc = AppNavigationController(rootViewController: vc)
-        present(nvc, animated: true, completion: nil)
+        if let vc = mainStoryboard.instantiateViewController(withIdentifier: "SkillListingController") as? SkillListingViewController {
+            vc.chatViewController = self
+            let nvc = AppNavigationController(rootViewController: vc)
+            present(nvc, animated: true, completion: nil)
+        }
     }
 
     // checks if personal trained model exists

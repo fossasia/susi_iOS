@@ -38,6 +38,7 @@ extension SettingsViewController {
         try! realm.write {
             realm.deleteAll()
         }
+        deleteVoiceModel()
 
         Client.sharedInstance.logoutUser { (success, error) in
             DispatchQueue.main.async {

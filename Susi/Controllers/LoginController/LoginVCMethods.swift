@@ -96,6 +96,7 @@ extension LoginViewController {
             Client.sharedInstance.loginUser(params as [String : AnyObject]) { (user, results, success, message) in
                 DispatchQueue.main.async {
                     self.toggleEditing()
+                    self.resetDB()
                     if success {
                         if var userData = results {
                             userData[Client.UserKeys.EmailOfAccount] = (message.components(separatedBy: " ").last ?? "") as AnyObject
@@ -234,6 +235,7 @@ extension LoginViewController {
 
     func enterAnonymousMode() {
         resetDB()
+        deleteVoiceModel()
         resetSettings()
         UserDefaults.standard.set(Client.APIURLs.SusiAPI, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
         completeLogin()
@@ -261,12 +263,44 @@ extension LoginViewController {
     func resetSettings() {
         UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.enterToSend)
         UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.micInput)
-        UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.hotwordEnabled)
+        UserDefaults.standard.set(false, forKey: ControllerConstants.UserDefaultsKeys.hotwordEnabled)
         UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.speechOutput)
         UserDefaults.standard.set(false, forKey: ControllerConstants.UserDefaultsKeys.speechOutputAlwaysOn)
         UserDefaults.standard.set(0.5, forKey: ControllerConstants.UserDefaultsKeys.speechRate)
         UserDefaults.standard.set(1.0, forKey: ControllerConstants.UserDefaultsKeys.speechPitch)
         UserDefaults.standard.set("en", forKey: ControllerConstants.UserDefaultsKeys.prefLanguage)
+    }
+
+    func checkIfFileExistsAndReturnPath(fileIdentifier: Int) -> URL? {
+        let recordingName = "recordedVoice\(fileIdentifier).wav"
+
+        // Get directory
+        let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+
+        let pathArray = [dirPath, recordingName]
+        let filePath = NSURL.fileURL(withPathComponents: pathArray)
+        if let path = filePath?.path {
+            if FileManager.default.fileExists(atPath: path) {
+                return filePath
+            }
+        }
+        return nil
+    }
+
+    func deleteVoiceModel() {
+        do {
+            if let file1 = checkIfFileExistsAndReturnPath(fileIdentifier: 0) {
+                try FileManager.default.removeItem(at: file1)
+            }
+            if let file2 = checkIfFileExistsAndReturnPath(fileIdentifier: 1) {
+                try FileManager.default.removeItem(at: file2)
+            }
+            if let file3 = checkIfFileExistsAndReturnPath(fileIdentifier: 2) {
+                try FileManager.default.removeItem(at: file3)
+            }
+        } catch let error {
+            print(error.localizedDescription)
+        }
     }
 
 }

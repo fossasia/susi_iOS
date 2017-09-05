@@ -157,10 +157,15 @@ class ChatViewController: UICollectionViewController {
         checkAndRunHotwordRecognition()
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        stopHotwordRecognition()
+        stopSpeechToText()
+    }
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         unsubscriveToKeyboardNotifications()
-        stopHotwordRecognition()
     }
 
     override func didReceiveMemoryWarning() {

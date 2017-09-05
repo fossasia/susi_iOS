@@ -53,4 +53,39 @@ extension ResetPasswordViewController {
         confirmPasswordField.isEnabled = !active
     }
 
+    func resetPassword() {
+        let checkValidity = validatePassword()
+        if let isValid = checkValidity.keys.first,
+            let _ = checkValidity.values.first,
+            let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+            let user = appDelegate.currentUser,
+            isValid && isActive {
+            setUIActive(active: true)
+            let params = [
+                Client.UserKeys.AccessToken: user.accessToken,
+                Client.UserKeys.EmailOfAccount: user.emailID,
+                Client.UserKeys.Password: currentPasswordField.text ?? "",
+                Client.UserKeys.NewPassword: newPasswordField.text ?? ""
+            ]
+
+            Client.sharedInstance.resetPassword(params as [String : AnyObject], { (success, message) in
+                DispatchQueue.main.async {
+                    if success {
+                        self.clearField()
+                    }
+                    self.view.makeToast(message)
+                    self.setUIActive(active: false)
+                }
+            })
+        } else {
+            view.makeToast(checkValidity.values.first ?? Client.ResponseMessages.PasswordInvalid)
+        }
+    }
+
+    func clearField() {
+        newPasswordField.text = ""
+        currentPasswordField.text = ""
+        confirmPasswordField.text = ""
+    }
+
 }

@@ -21,6 +21,8 @@ class SkillListingCollectionView: UICollectionView, UICollectionViewDelegateFlow
         }
     }
 
+    var skillListController: SkillListingViewController?
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return groupSkills?.count ?? 0
     }
@@ -41,6 +43,10 @@ class SkillListingCollectionView: UICollectionView, UICollectionViewDelegateFlow
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 7, left: 8, bottom: 7, right: 8)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        skillListController?.selectedSkill = groupSkills?[indexPath.row]
     }
 
 }

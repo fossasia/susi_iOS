@@ -24,13 +24,15 @@ class SkillListingViewController: UITableViewController {
     // for opening settings view controller
     lazy var backButton: IconButton = {
         let ib = IconButton()
-        ib.image = Icon.arrowBack
+        ib.image = Icon.cm.arrowBack
         ib.tintColor = .white
         ib.addTarget(self, action: #selector(dismissController), for: .touchUpInside)
         return ib
     }()
 
     var groups: [String]?
+
+    var chatViewController: ChatViewController?
 
     // stores how many group's data fetched
     var count = 0 {
@@ -50,6 +52,12 @@ class SkillListingViewController: UITableViewController {
         indicator.color = UIColor.defaultColor()
         return indicator
     }()
+
+    var selectedSkill: Skill? {
+        didSet {
+            performSegue(withIdentifier: ControllerConstants.skillDetailControllerIdentifier, sender: self)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +83,7 @@ class SkillListingViewController: UITableViewController {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "skillListCell", for: indexPath) as? SkillListingTableCell,
             let group = groups?[indexPath.row] {
             cell.groupName = group
+            cell.skillListController = self
             cell.skills = skills[group]
             return cell
         }
@@ -88,6 +97,13 @@ class SkillListingViewController: UITableViewController {
             }
         }
         return 0.0
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? SkillDetailViewController, segue.identifier == ControllerConstants.skillDetailControllerIdentifier {
+            vc.chatViewController = chatViewController
+            vc.skill = selectedSkill
+        }
     }
 
 }
