@@ -1,0 +1,100 @@
+/*
+  Localizable.strings
+  Susi
+
+  Created by Aleksei Cherepanov on 28.09.17.
+  Copyright © 2017 FOSSAsia. All rights reserved.
+*/
+
+// ForgotPasswordViewController
+"Forgot Password" = "Forgot Password";
+"Email Address" = "Email Address";
+"Custom Server URL" = "Custom Server URL";
+"Reset" = "Reset";
+
+// LoginViewController
+"Password" = "Password";
+"Login" = "Login";
+"Skip" = "Skip";
+"Sign Up for SUSI" = "Sign Up for SUSI";
+
+// ResetPasswordViewController
+"Current Password" = "Current Password";
+"New Password" = "New Password";
+"Confirm Password" = "Confirm Password";
+"Reset Password" = "Reset Password";
+
+// SettingsViewController
+"Model deleted successfully" = "Model deleted successfully";
+"Meet SUSI.AI, Your Artificial Intelligence for Personal Assistants, Robots, Help Desks and Chatbots." = "Meet SUSI.AI, Your Artificial Intelligence for Personal Assistants, Robots, Help Desks and Chatbots.";
+"Enter To Send" = "Enter To Send";
+"Send message by hitting return" = "Send message by hitting return";
+"Mic input" = "Mic input";
+"Enable mic to give voice input" = "Enable mic to give voice input";
+"Hotword Detection" = "Hotword Detection";
+"Enable hotword detection to interact with SUSI in handsfree mode" = "Enable hotword detection to interact with SUSI in handsfree mode";
+"Speech Output" = "Speech Output";
+"Enable speech output only for speech input" = "Enable speech output only for speech input";
+"Speech Output always ON" = "Speech Output always ON";
+"Enable speech output regardless of input type" = "Enable speech output regardless of input type";
+"Language" = "Language";
+"Set a language" = "Set a language";
+"Speech Rate" = "Speech Rate";
+"Speech Pitch" = "Speech Pitch";
+"Retrain Voice Model" = "Retrain Voice Model";
+"Delete Voice Model" = "Delete Voice Model";
+"Rate SUSI" = "Rate SUSI";
+"Rate SUSI on the App Store" = "Rate SUSI on the App Store";
+"Share SUSI" = "Share SUSI";
+"Share the SUSI App with your friends" = "Share the SUSI App with your friends";
+"Logout" = "Logout";
+"Cancel" = "Cancel";
+"Chat Settings" = "Chat Settings";
+"Mic Settings" = "Mic Settings";
+"Speech Settings" = "Speech Settings";
+"SUSI Voice Model" = "SUSI Voice Model";
+"Miscellaneous" = "Miscellaneous";
+
+// SignUpViewController
+"Sign Up" = "Sign Up";
+
+// SkillDetailViewController
+"Try It" = "Try It";
+"SUSI.AI Skills" = "SUSI.AI Skills";
+
+// TrainingViewController
+"To help the app respond to you better, you can teach SUSI the sound of your voice." = "To help the app respond to you better, you can teach SUSI the sound of your voice.";
+"Just say \"SUSI\" three times" = "Just say \"SUSI\" three times";
+"Listening... say \"SUSI\"" = "Listening... say \"SUSI\"";
+"Say \"SUSI\" again" = "Say \"SUSI\" again";
+"Say \"SUSI\" one last time" = "Say \"SUSI\" one last time";
+"Downloading Trained Model" = "Downloading Trained Model";
+"FINISH LATER" = "FINISH LATER";
+"Image Pick Error" = "Image Pick Error";
+"Cannot access photos in your albums" = "Cannot access photos in your albums";
+"Set Wallpaper" = "Set Wallpaper";
+"Toggle Theme" = "Toggle Theme";
+"Pick image from gallery" = "Pick image from gallery";
+"No wallpaper" = "No wallpaper";
+"Email Sent" = "Email Sent";
+"Ok" = "Ok";
+"Enter your Email ID" = "Enter your Email ID";
+"Invalid Email ID" = "Invalid Email ID";
+"Some error occured" = "Some error occured";
+"Ask Susi Something..." = "Ask Susi Something...";
+"Standard Server" = "Standard Server";
+"Custom Server" = "Custom Serve";
+"Address http://" = "Address http://";
+"Accepted" = "Accepted";
+"Settings" = "Settings";
+"Let's train SUSI" = "Let's train SUSI";
+"Passwords do not match." = "Passwords do not match.";
+"Passwords length should be atleast 6 characters" = "Passwords length should be atleast 6 characters";
+
+"Error, incorrect email" = "Error, incorrect email";
+"Error, Should be at least 8 characters" = "Error, Should be at least 8 characters";
+"LOGIN" = "LOGIN";
+"Forgot Password?" = "Forgot Password?";
+
+"Password should be 6 characters long with one uppercase, lowercase and a number" = "Password should be 6 characters long with one uppercase, lowercase and a number";
+"    Susi" = "    Susi";

@@ -1,0 +1,100 @@
+/*
+  Localizable.strings
+  Susi
+
+  Created by Aleksei Cherepanov on 28.09.17.
+  Copyright © 2017 FOSSAsia. All rights reserved.
+*/
+
+// ForgotPasswordViewController
+"Forgot Password" = "Забыл пароль";
+"Email Address" = "Email адрес";
+"Custom Server URL" = "Произвольный URL сервера";
+"Reset" = "Сбросить";
+
+// LoginViewController
+"Password" = "Пароль";
+"Login" = "Логин";
+"Skip" = "Пропустить";
+"Sign Up for SUSI" = "Зарегистрироваться в SUSI";
+
+// ResetPasswordViewController
+"Current Password" = "Текущий пароль";
+"New Password" = "Новый пароль";
+"Confirm Password" = "Подтвердить пароль";
+"Reset Password" = "Сбросить пароль";
+
+// SettingsViewController
+"Model deleted successfully" = "Модель успешно удалена";
+"Meet SUSI.AI, Your Artificial Intelligence for Personal Assistants, Robots, Help Desks and Chatbots." = "Встречайте SUSI.AI, ваш персональный асистен основаный на искусственном интелекте в роботах, справочниках и чатботах.";
+"Enter To Send" = "Ввод для отправки";
+"Send message by hitting return" = "Отправка сообщения по нажатию Ввод";
+"Mic input" = "Микрофон";
+"Enable mic to give voice input" = "Включить микрофон для голосового ввода";
+"Hotword Detection" = "Определение ключевого слова";
+"Enable hotword detection to interact with SUSI in handsfree mode" = "Определене ключевого слова для общеня с SUSI в режиме handsfree";
+"Speech Output" = "Голосовой вывод";
+"Enable speech output only for speech input" = "Голосовой вывод только при общении через микрофон";
+"Speech Output always ON" = "Голосовой вывод всегда включен";
+"Enable speech output regardless of input type" = "Голосовой вывод вне зависимости от типа ввода";
+"Language" = "Язык";
+"Set a language" = "Выбрать язык";
+"Speech Rate" = "Скорость речи";
+"Speech Pitch" = "Речевой шаг";
+"Retrain Voice Model" = "Тренировать голосовую модель";
+"Delete Voice Model" = "Удалить голосовую модель";
+"Rate SUSI" = "Оценить SUSI";
+"Rate SUSI on the App Store" = "Оценить SUSI в App Store";
+"Share SUSI" = "Поделиться SUSI";
+"Share the SUSI App with your friends" = "Расскажите о SUSI своим друзьям";
+"Logout" = "Выход";
+"Cancel" = "Отмена";
+"Chat Settings" = "Настройки чата";
+"Mic Settings" = "Настройки микрофона";
+"Speech Settings" = "Настройки речи";
+"SUSI Voice Model" = "Голосовая модель SUSI";
+"Miscellaneous" = "Прочее";
+
+// SignUpViewController
+"Sign Up" = "Зарегистрироваться";
+
+// SkillDetailViewController
+"Try It" = "Попробовать";
+"SUSI.AI Skills" = "Знания SUSI.AI";
+
+// TrainingViewController
+"To help the app respond to you better, you can teach SUSI the sound of your voice." = "Чтобы помочь приложению отвечать вам лучше, вы  можжете научить SUSI звуку своего голоса.";
+"Just say \"SUSI\" three times" = "Просто скажите \"SUSI\" три раза";
+"Listening... say \"SUSI\"" = "Слушаю... скажите \"SUSI\"";
+"Say \"SUSI\" again" = "Скажите \"SUSI\" еще раз";
+"Say \"SUSI\" one last time" = "Скажите \"SUSI\" последний раз";
+"Downloading Trained Model" = "Скачать натренерованую модель";
+"FINISH LATER" = "ЗАКОНЧИТЬ ПОЗЖЕ";
+"Image Pick Error" = "Ошибка выбора фото";
+"Cannot access photos in your albums" = "Нет доступа к фотоальбомам";
+"Set Wallpaper" = "Выбрать фон";
+"Toggle Theme" = "Переключить тему";
+"Pick image from gallery" = "Выбрать фото из галереи";
+"No wallpaper" = "Нет фона";
+"Email Sent" = "Отправка email";
+"Ok" = "Хорошо";
+"Enter your Email ID" = "Ввести Email ID";
+"Invalid Email ID" = "Неверный Email ID";
+"Some error occured" = "Произошла неизвестная ошибка";
+"Ask Susi Something..." = "Скажите что либо Susi";
+"Standard Server" = "Стандартный сервер";
+"Custom Server" = "Свой сервер";
+"Address http://" = "Адрес http://";
+"Accepted" = "Подтверждено";
+"Settings" = "Настройки";
+"Let's train SUSI" = "Потренеруем SUSI";
+"Passwords do not match." = "Пароли не совпадают.";
+"Passwords length should be atleast 6 characters" = "Длина пароля не должна быть менее 6 символов";
+
+"Error, incorrect email" = "Ошибка, неверный Email";
+"Error, Should be at least 8 characters" = "Длина Email не должна быть менее 8 символов";
+"LOGIN" = "LOGIN";
+"Forgot Password?" = "Забыли пароль?";
+
+"Password should be 6 characters long with one uppercase, lowercase and a number" = "Пароль должен быть длиной 6 символв хотябы с одной заглавной буквой, прописной и числом";
+"    Susi" = "    Susi";

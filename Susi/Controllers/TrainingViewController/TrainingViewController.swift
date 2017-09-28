@@ -11,13 +11,12 @@ import AVFoundation
 import Speech
 import Material
 
-class TrainingViewController: UIViewController {
+class TrainingViewController: GeneralViewController {
 
     var audioRecorder: AVAudioRecorder!
 
     // Get directory
     let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
-
     let audioSession = AVAudioSession.sharedInstance()
     var speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))
     var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
@@ -28,21 +27,19 @@ class TrainingViewController: UIViewController {
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(downloadModel))
 
     // MARK: - Outlets
+    @IBOutlet weak var helpDescriptionLabel: UILabel!
+    @IBOutlet weak var sayLabel: UILabel!
     @IBOutlet weak var micButton: UIButton!
     @IBOutlet weak var indicator1: UIActivityIndicatorView!
     @IBOutlet weak var indicator2: UIActivityIndicatorView!
     @IBOutlet weak var indicator3: UIActivityIndicatorView!
-
     @IBOutlet weak var recordingLabel1: UILabel!
     @IBOutlet weak var recordingLabel2: UILabel!
     @IBOutlet weak var recordingLabel3: UILabel!
-
     @IBOutlet weak var recordPhI1: UIImageView!
     @IBOutlet weak var recordPhI2: UIImageView!
     @IBOutlet weak var recordPhI3: UIImageView!
-
     @IBOutlet weak var finishLaterButton: FlatButton!
-
     @IBOutlet weak var downloadIndicator: UIActivityIndicatorView!
     @IBOutlet weak var downloadLabel: UILabel!
 
@@ -53,24 +50,24 @@ class TrainingViewController: UIViewController {
                 recordPhI1.isHidden = false
                 recordPhI1.image = ControllerConstants.Images.check
                 recordPhI1.tintColor = UIColor.defaultColor()
-                recordingLabel1.text = "Complete"
+                recordingLabel1.text = ControllerConstants.complete.localized()
                 recordingLabel1.isHidden = false
             } else if count == 2 {
                 indicator2.stopAnimating()
                 recordPhI2.isHidden = false
                 recordPhI2.image = ControllerConstants.Images.check
                 recordPhI2.tintColor = UIColor.defaultColor()
-                recordingLabel2.text = "Complete"
+                recordingLabel2.text = ControllerConstants.complete.localized()
                 recordingLabel2.isHidden = false
             } else if count == 3 {
                 indicator3.stopAnimating()
                 recordPhI3.isHidden = false
                 recordPhI3.image = ControllerConstants.Images.check
                 recordPhI3.tintColor = UIColor.defaultColor()
-                recordingLabel3.text = "Complete"
+                recordingLabel3.text = ControllerConstants.complete.localized()
                 recordingLabel3.isHidden = false
                 micButton.isEnabled = false
-                finishLaterButton.setTitle("Training Complete", for: .normal)
+                finishLaterButton.setTitle(ControllerConstants.trainingComplete.localized(), for: .normal)
                 finishLaterButton.isEnabled = false
             }
         }
@@ -87,6 +84,15 @@ class TrainingViewController: UIViewController {
         super.viewWillAppear(animated)
         checkRecordings()
         checkIfModelExists()
+    }
+    override func localizeStrings() {
+        helpDescriptionLabel.text = ControllerConstants.susiAdvice.localized()
+        sayLabel.text = ControllerConstants.saySusi.localized()
+        recordingLabel1.text = ControllerConstants.listentingSusi1.localized()
+        recordingLabel2.text = ControllerConstants.listentingSusi2.localized()
+        recordingLabel3.text = ControllerConstants.listentingSusi3.localized()
+        downloadLabel.text = ControllerConstants.downloadingTrainedModel.localized()
+        finishLaterButton.setTitle(ControllerConstants.finishLater.localized(), for: .normal)
     }
 
 }

@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 import Material
 
-class SkillDetailViewController: UIViewController {
+class SkillDetailViewController: GeneralViewController {
 
     var skill: Skill?
     var chatViewController: ChatViewController?
@@ -25,10 +25,12 @@ class SkillDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupView()
         setupTryItTarget()
         addSkillDescription()
+    }
+    override func localizeStrings() {
+        tryItButton.setTitle(ControllerConstants.tryIt.localized(), for: .normal)
     }
 
 }

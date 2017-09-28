@@ -19,10 +19,13 @@ extension TrainingViewController {
     }
 
     func addCancelNavItem() {
-        navigationItem.title = ControllerConstants.trainHotword
+        navigationItem.titleLabel.text = ControllerConstants.trainHotword.localized()
         navigationItem.titleLabel.textColor = .white
 
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelTapped(_:)))
+        let cancelButton = UIBarButtonItem(title: ControllerConstants.dialogCancelAction.localized(),
+                                           style: .plain,
+                                           target: self,
+                                           action: #selector(cancelTapped(_:)))
         cancelButton.tintColor = .white
         navigationItem.rightBarButtonItems = [cancelButton]
     }

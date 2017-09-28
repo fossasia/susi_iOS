@@ -55,7 +55,7 @@ class ChatViewController: UICollectionViewController {
     // chat input field
     lazy var inputTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = ControllerConstants.askSusi
+        textField.placeholder = ControllerConstants.askSusi.localized()
         textField.delegate = self
         textField.accessibilityIdentifier = ControllerConstants.TestKeys.chatInputView
         textField.font = UIFont.systemFont(ofSize: 16)

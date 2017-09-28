@@ -13,7 +13,7 @@ class ChatMessageCell: BaseCell, UITextViewDelegate {
     lazy var messageTextView: LongPressToCopyTextView = {
         let textView = LongPressToCopyTextView()
         textView.font = UIFont.systemFont(ofSize: 16)
-        textView.text = ControllerConstants.defaultMessage
+        textView.text = ControllerConstants.defaultMessage.localized()
         textView.isEditable = false
         textView.backgroundColor = .clear
         textView.isSelectable = false

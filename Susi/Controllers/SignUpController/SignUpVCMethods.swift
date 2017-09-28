@@ -87,7 +87,7 @@ extension SignUpViewController {
                 if let ipAddress = addressTextField.text, !ipAddress.isEmpty && Validator.isIP().apply(ipAddress) {
                     UserDefaults.standard.set(ipAddress, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
                 } else {
-                    view.makeToast("Invalid IP Address")
+                    view.makeToast(ControllerConstants.invalidIP.localized())
                     return
                 }
             }
@@ -103,11 +103,11 @@ extension SignUpViewController {
                 }
             }
         } else if let emailID = emailTextField.text, !emailID.isValidEmail() {
-            view.makeToast("Invalid email address")
+            view.makeToast(ControllerConstants.invalidEmailAddress.localized())
         } else if let password = passwordTextField.text, password.isEmpty {
-            view.makeToast("Password length too short")
+            view.makeToast(ControllerConstants.passwordLengthTooShort.localized())
         } else if let password = passwordTextField.text, let confirmPassword = confirmPasswordTextField.text, password != confirmPassword {
-            view.makeToast("Passwords do not match")
+            view.makeToast(ControllerConstants.passwordDoNotMatch.localized())
         }
 
     }

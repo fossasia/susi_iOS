@@ -55,8 +55,58 @@ class ControllerConstants {
     static let trainHotword = "Let's train SUSI"
     static let passwordDoNotMatch = "Passwords do not match."
     static let resetPassword = "Reset Password"
+    static let currentPassword = "Current Password"
+    static let newPassword = "New Password"
     static let passwordLengthShort = "Passwords length should be atleast 6 characters"
     static let skillDetailControllerIdentifier = "skillDetail"
+    static let customServerURL = "Custom Server URL"
+    static let tryIt = "Try It"
+    static let invalidIP = "Invalid IP Address"
+    static let invalidEmailAddress = "Invalid Email Address"
+    static let passwordLengthTooShort = "Password length too short"
+    static let meetSusi = "Meet SUSI.AI, Your Artificial Intelligence for Personal Assistants, Robots, Help Desks and Chatbots."
+    static let trainingSuccessful = "Training successful"
+    static let downloadFailed = "Download Failed!"
+    static let tapToRetryDownload = "Tap to retry download"
+    static let downloadingTrainedModel = "Downloading Trained Model"
+    static let complete = "Complete"
+    static let trainingComplete = "Training Complete"
+    static let susiAdvice = "To help the app respond to you better, you can teach SUSI the sound of your voice."
+    static let saySusi = "Just say \"SUSI\" three times"
+    static let listentingSusi1 = "Listening... say \"SUSI\""
+    static let listentingSusi2 = "Say \"SUSI\" again"
+    static let listentingSusi3 = "Say \"SUSI\" one last time"
+    static let finishLater = "FINISH LATER"
+    
+    struct Settings {
+        static let enterToSend = "Enter To Send"
+        static let enterToSendSubtitle = "Send message by hitting return"
+        static let micInput = "Mic input"
+        static let micInputSubtitle = "Enable mic to give voice input"
+        static let hotwordDirection = "Hotword Detection"
+        static let hotwordDirectionSubtitle = "Enable hotword detection to interact with SUSI in handsfree mode"
+        static let speechOutput = "Speech Output"
+        static let speechOutputSubtitle = "Enable speech output only for speech input"
+        static let speechOutputAlways = "Speech Output always ON"
+        static let speechOutputAlwaysSubtitle = "Enable speech output regardless of input type"
+        static let language = "Language"
+        static let languageSubtitle = "Set a language"
+        static let speechRate = "Speech Rate"
+        static let speechPitch = "Speech Pitch"
+        static let retrainVModel = "Retrain Voice Model"
+        static let deleteVModel = "Delete Voice Model"
+        static let rateSusi = "Rate SUSI"
+        static let rateSusiSubtitle = "Rate SUSI on the App Store"
+        static let shareSusi = "Share SUSI"
+        static let shareSusiSubtitle = "Share the SUSI App with your friends"
+        static let resetPass = "Reset Password"
+        static let logout = "Logout"
+        static let chatSettings = "Chat Settings";
+        static let micSettings = "Mic Settings";
+        static let speechSettings = "Speech Settings";
+        static let susiVoiceModel = "SUSI Voice Model";
+        static let miscellaneous = "Miscellaneous";
+    }
 
     struct Login {
         static let susiImage = "susi"
@@ -64,9 +114,9 @@ class ControllerConstants {
         static let invalidEmail = "Error, incorrect email"
         static let password = "Password"
         static let passwordLengthError = "Error, Should be at least 8 characters"
-        static let login = "LOGIN"
+        static let login = "Login"
         static let forgotPassword = "Forgot Password?"
-        static let signUpForSusi = "Sign up for SUSI"
+        static let signUpForSusi = "Sign Up for SUSI"
         static let skip = "Skip"
     }
 
@@ -77,7 +127,7 @@ class ControllerConstants {
         static let passwordError = "Password should be 6 characters long with one uppercase, lowercase and a number"
         static let confirmPassword = "Confirm Password"
         static let passwordDoNotMatch = "Passwords do not match"
-        static let signUp = "SIGN UP"
+        static let signUp = "Sign Up"
     }
 
     struct UserDefaultsKeys {
