@@ -17,7 +17,7 @@ extension ResetPasswordViewController {
 
     func setupView() {
         navigationItem.leftViews = [backButton]
-        navigationItem.title = ControllerConstants.resetPassword
+		navigationItem.titleLabel.text = ControllerConstants.resetPassword
         navigationItem.titleLabel.textColor = .white
 
         if let navbar = navigationController?.navigationBar {

@@ -15,7 +15,7 @@ extension SettingsViewController {
 
     // Setup Navigation Bar
     func setupTitle() {
-        navigationItem.title = ControllerConstants.settings
+        navigationItem.titleLabel.text = ControllerConstants.settings
         navigationItem.titleLabel.textAlignment = .left
         navigationItem.titleLabel.textColor = .white
         navigationItem.leftViews = [backButton]

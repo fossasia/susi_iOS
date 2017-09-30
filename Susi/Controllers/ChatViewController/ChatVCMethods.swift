@@ -61,7 +61,7 @@ extension ChatViewController {
 
     // setup navigation bar
     func setupNavbar() {
-        navigationItem.title = ControllerConstants.susiTitle
+        navigationItem.titleLabel.text = ControllerConstants.susiTitle
         navigationItem.titleLabel.textAlignment = .left
     }
 
