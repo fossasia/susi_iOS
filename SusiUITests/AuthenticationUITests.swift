@@ -67,18 +67,18 @@ class AuthenticationUITests: XCTestCase {
     
     func testLogoutSuccess() {
         testLoginSuccess()
-        
+		
         app.buttons[ControllerConstants.TestKeys.susiSymbol].tap()
         let button = app.navigationBars["Susi.SkillListingView"].children(matching: .other).element
                     .children(matching: .button).element(boundBy: 1)
         button.tap()
-        
+		
         let tablesQuery = app.tables
         tablesQuery.element.swipeUp()
         tablesQuery.element.swipeUp()
         tablesQuery.staticTexts[ControllerConstants.TestKeys.logout].tap()
    }
-    
+	
     func testSignUpFailure() {
         app.buttons[ControllerConstants.TestKeys.signUp].tap()
         

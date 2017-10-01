@@ -120,8 +120,8 @@ class ControllerConstants {
         static let susiSymbol = "susi symbol"
 
         struct TestAccount {
-            static let emailId = "susi.ai@mail.com"
-            static let password = "Password123"
+            static let emailId = "technologydiaries24@gmail.com"
+            static let password = "TestPassword"
             static let incorrectPassword = "password"
             static let invalidEmail = "susi.ai@mail"
         }
