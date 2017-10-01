@@ -9,6 +9,7 @@
 import XCTest
 
 extension XCUIElement {
+	
 	func forceTap() {
 		if self.isHittable {
 			self.tap()
@@ -17,6 +18,7 @@ extension XCUIElement {
 			coordinate.tap()
 		}
 	}
+	
 }
 
 class ForgotPasswordUITests: XCTestCase {
