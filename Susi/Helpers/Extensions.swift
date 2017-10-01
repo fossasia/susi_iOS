@@ -203,6 +203,7 @@ extension NSMutableAttributedString {
 
 }
 
+
 extension UIApplication {
     var statusBarView: UIView? {
         return value(forKey: "statusBar") as? UIView

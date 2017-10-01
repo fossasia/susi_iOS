@@ -8,6 +8,17 @@
 
 import XCTest
 
+extension XCUIElement {
+	func forceTap() {
+		if self.isHittable {
+			self.tap()
+		} else {
+			let coordinate: XCUICoordinate = self.coordinate(withNormalizedOffset: CGVector(dx: 0.0, dy: 0.0))
+			coordinate.tap()
+		}
+	}
+}
+
 class ForgotPasswordUITests: XCTestCase {
 
     private let app = XCUIApplication()
@@ -37,7 +48,7 @@ class ForgotPasswordUITests: XCTestCase {
         let textField = app.textFields[ControllerConstants.TestKeys.email]
         textField.tap()
         textField.typeText(ControllerConstants.TestKeys.TestAccount.emailId)
-        app.buttons[ControllerConstants.TestKeys.reset].tap()
+        app.buttons[ControllerConstants.TestKeys.reset].forceTap()
         
         sleep(5)
         
