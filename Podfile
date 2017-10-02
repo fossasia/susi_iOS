@@ -23,6 +23,7 @@ target 'Susi' do
   pod 'M13Checkbox', :git => 'https://github.com/Marxon13/M13Checkbox.git'
   pod 'NotificationBannerSwift'
   pod 'ReachabilitySwift'
+  pod 'Localize-Swift'
   shared_pods
 end
 

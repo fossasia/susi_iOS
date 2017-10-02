@@ -8,6 +8,7 @@
 
 import UIKit
 import Material
+import Localize_Swift
 
 class SettingsViewController: UITableViewController {
 
@@ -29,10 +30,38 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var speechOutputAlwaysOn: UISwitch!
     @IBOutlet weak var speechRate: UISlider!
     @IBOutlet weak var speechPitch: UISlider!
-
+    // TableView string content
+    @IBOutlet weak var enterToSendTitle: UILabel!
+    @IBOutlet weak var enterToSendSubtitle: UILabel!
+    @IBOutlet weak var micInputTitle: UILabel!
+    @IBOutlet weak var micInputSubtitle: UILabel!
+    @IBOutlet weak var hotwordDirectionTitle: UILabel!
+    @IBOutlet weak var hotwordDirectionSubtitle: UILabel!
+    @IBOutlet weak var speechOutputTitle: UILabel!
+    @IBOutlet weak var speechOutputSubtitle: UILabel!
+    @IBOutlet weak var speechOutputAlwaysTitle: UILabel!
+    @IBOutlet weak var speechOutputAlwaysSubtitle: UILabel!
+    @IBOutlet weak var languageTitle: UILabel!
+    @IBOutlet weak var languageSubtitle: UILabel!
+    @IBOutlet weak var speechRateTitle: UILabel!
+    @IBOutlet weak var speechPitchTitle: UILabel!
+    @IBOutlet weak var retrainVModelTitle: UILabel!
+    @IBOutlet weak var deleteVModelTitle: UILabel!
+    @IBOutlet weak var rateSusiTitle: UILabel!
+    @IBOutlet weak var rateSusiSubtitle: UILabel!
+    @IBOutlet weak var shareSusiTitle: UILabel!
+    @IBOutlet weak var shareSusiSubtitle: UILabel!
+    @IBOutlet weak var resetPassTitle: UILabel!
+    @IBOutlet weak var logoutTitle: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         assignDefaults()
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(localizeStrings),
+                                               name: NSNotification.Name(LCLLanguageChangeNotification),
+                                               object: nil)
+        localizeStrings()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -43,6 +72,21 @@ class SettingsViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let header = view as? UITableViewHeaderFooterView {
+            switch section {
+            case 0:
+                header.textLabel?.text = ControllerConstants.Settings.chatSettings.localized()
+            case 1:
+                header.textLabel?.text = ControllerConstants.Settings.micSettings.localized()
+            case 2:
+                header.textLabel?.text = ControllerConstants.Settings.speechSettings.localized()
+            case 3:
+                header.textLabel?.text = ControllerConstants.Settings.susiVoiceModel.localized()
+            case 4:
+                header.textLabel?.text = ControllerConstants.Settings.miscellaneous.localized()
+            default:
+                break
+            }
+            header.textLabel?.text = header.textLabel?.text?.uppercased()
             header.textLabel?.textColor = UIColor.hexStringToUIColor(hex: "#009688")
         }
     }
@@ -51,7 +95,11 @@ class SettingsViewController: UITableViewController {
         let section = indexPath.section
         let row = indexPath.row
 
-        if section == 3 {
+        if section == 2 {
+            if row == 2 {
+                doChangeLanguage()
+            }
+        } else if section == 3 {
             if row == 0 {
                 presentTrainingController()
             } else if row == 1 {
@@ -84,5 +132,29 @@ class SettingsViewController: UITableViewController {
             return super.tableView(tableView, heightForRowAt: indexPath)
         }
     }
-
+    func localizeStrings() {
+        enterToSendTitle.text = ControllerConstants.Settings.enterToSend.localized()
+        enterToSendSubtitle.text = ControllerConstants.Settings.enterToSendSubtitle.localized()
+        micInputTitle.text = ControllerConstants.Settings.micInput.localized()
+        micInputSubtitle.text = ControllerConstants.Settings.micInputSubtitle.localized()
+        hotwordDirectionTitle.text = ControllerConstants.Settings.hotwordDirection.localized()
+        hotwordDirectionSubtitle.text = ControllerConstants.Settings.hotwordDirectionSubtitle.localized()
+        speechOutputTitle.text = ControllerConstants.Settings.speechOutput.localized()
+        speechOutputSubtitle.text = ControllerConstants.Settings.speechOutputSubtitle.localized()
+        speechOutputAlwaysTitle.text = ControllerConstants.Settings.speechOutputAlways.localized()
+        speechOutputAlwaysSubtitle.text = ControllerConstants.Settings.speechOutputAlwaysSubtitle.localized()
+        languageTitle.text = ControllerConstants.Settings.language.localized()
+        languageSubtitle.text = ControllerConstants.Settings.languageSubtitle.localized()
+        speechRateTitle.text = ControllerConstants.Settings.speechRate.localized()
+        speechPitchTitle.text = ControllerConstants.Settings.speechPitch.localized()
+        retrainVModelTitle.text = ControllerConstants.Settings.retrainVModel.localized()
+        deleteVModelTitle.text = ControllerConstants.Settings.deleteVModel.localized()
+        rateSusiTitle.text = ControllerConstants.Settings.rateSusi.localized()
+        rateSusiSubtitle.text = ControllerConstants.Settings.rateSusiSubtitle.localized()
+        shareSusiTitle.text = ControllerConstants.Settings.shareSusi.localized()
+        shareSusiSubtitle.text = ControllerConstants.Settings.shareSusiSubtitle.localized()
+        resetPassTitle.text = ControllerConstants.Settings.resetPass.localized()
+        logoutTitle.text = ControllerConstants.Settings.logout.localized()
+        tableView.reloadData()
+    }
 }

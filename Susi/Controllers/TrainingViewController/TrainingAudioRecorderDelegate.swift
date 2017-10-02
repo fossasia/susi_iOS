@@ -82,11 +82,11 @@ extension TrainingViewController: AVAudioRecorderDelegate {
             Client.sharedInstance.trainHotwordUsingSnowboy(params) { (success, _) in
                 DispatchQueue.main.async {
                     if success {
-                        self.view.makeToast("Training successful")
+                        self.view.makeToast(ControllerConstants.trainingSuccessful.localized())
                         self.downloadActive(state: false)
                         self.dismiss(animated: true, completion: nil)
                     } else {
-                        self.view.makeToast("Download Failed!")
+                        self.view.makeToast(ControllerConstants.downloadFailed.localized())
                         self.downloadActive(state: false, failed: true)
                     }
                 }
@@ -98,10 +98,10 @@ extension TrainingViewController: AVAudioRecorderDelegate {
     func downloadActive(state: Bool, failed: Bool = false) {
         if failed {
             downloadIndicator.stopAnimating()
-            downloadLabel.text = "Tap to retry download"
+            downloadLabel.text = ControllerConstants.tapToRetryDownload.localized()
             downloadLabel.addGestureRecognizer(tapGesture)
         } else {
-            downloadLabel.text = "Downloading Trained Model"
+            downloadLabel.text =  ControllerConstants.downloadingTrainedModel.localized()
             downloadLabel.removeGestureRecognizer(tapGesture)
             downloadLabel.isHidden = !state
             downloadIndicator.isHidden = !state

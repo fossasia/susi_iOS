@@ -12,7 +12,7 @@ import M13Checkbox
 import RealmSwift
 import Toast_Swift
 
-class LoginViewController: UIViewController {
+class LoginViewController: GeneralViewController {
 
     @IBOutlet weak var susiLogo: UIImageView!
     @IBOutlet weak var emailTextField: TextField!
@@ -40,6 +40,16 @@ class LoginViewController: UIViewController {
 
         checkSession()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
+    }
+    override func localizeStrings() {
+        emailTextField.placeholder = ControllerConstants.Login.emailAddress.localized()
+        passwordTextField.placeholder = ControllerConstants.Login.password.localized()
+        addressTextField.placeholder = ControllerConstants.customServerURL.localized()
+        loginButton.setTitle(ControllerConstants.Login.login.localized(), for: .normal)
+        forgotPassword.setTitle(ControllerConstants.Login.forgotPassword.localized(), for: .normal)
+        skipButton.setTitle(ControllerConstants.Login.skip.localized(), for: .normal)
+        signUpButton.setTitle(ControllerConstants.Login.signUpForSusi.localized(), for: .normal)
+        
     }
 
 }

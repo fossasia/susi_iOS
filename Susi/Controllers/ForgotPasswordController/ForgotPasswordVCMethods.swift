@@ -77,7 +77,7 @@ extension ForgotPasswordViewController {
                 if let ipAddress = addressTextField.text, !ipAddress.isEmpty && Validator.isIP().apply(ipAddress) {
                     UserDefaults.standard.set(ipAddress, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
                 } else {
-                    view.makeToast("Invalid IP Address")
+                    view.makeToast(ControllerConstants.invalidIP.localized())
                     return
                 }
             }
@@ -90,8 +90,8 @@ extension ForgotPasswordViewController {
                     self.toggleEditing()
                     self.activityIndicator.stopAnimating()
 
-                    let errorDialog = UIAlertController(title: ControllerConstants.emailSent, message: message, preferredStyle: UIAlertControllerStyle.alert)
-                    errorDialog.addAction(UIAlertAction(title: ControllerConstants.ok, style: .cancel, handler: { (_: UIAlertAction!) in
+                    let errorDialog = UIAlertController(title: ControllerConstants.emailSent.localized(), message: message, preferredStyle: UIAlertControllerStyle.alert)
+                    errorDialog.addAction(UIAlertAction(title: ControllerConstants.ok.localized(), style: .cancel, handler: { (_: UIAlertAction!) in
                         errorDialog.dismiss(animated: true, completion: nil)
                     }))
                     self.present(errorDialog, animated: true, completion: nil)
@@ -101,7 +101,7 @@ extension ForgotPasswordViewController {
                 }
             }
         } else {
-            self.view.makeToast("Invalid email address")
+            self.view.makeToast(ControllerConstants.invalidEmailAddress.localized())
         }
 
     }

@@ -87,7 +87,7 @@ extension LoginViewController {
                 if let ipAddress = addressTextField.text, !ipAddress.isEmpty && Validator.isIP().apply(ipAddress) {
                     UserDefaults.standard.set(ipAddress, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
                 } else {
-                    view.makeToast("Invalid IP Address")
+                    view.makeToast(ControllerConstants.invalidIP.localized())
                     return
                 }
             }
@@ -113,9 +113,9 @@ extension LoginViewController {
                 }
             }
         } else if let emailID = emailTextField.text, !emailID.isValidEmail() {
-            view.makeToast("Invalid email address")
+            view.makeToast(ControllerConstants.invalidEmailAddress.localized())
         } else if let password = passwordTextField.text, password.isEmpty {
-            view.makeToast("Password length too short")
+            view.makeToast(ControllerConstants.passwordLengthTooShort.localized())
         }
 
     }
