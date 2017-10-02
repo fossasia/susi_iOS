@@ -17,7 +17,7 @@ extension ResetPasswordViewController {
 
     func setupView() {
         navigationItem.leftViews = [backButton]
-		navigationItem.titleLabel.text = ControllerConstants.resetPassword
+        navigationItem.titleLabel.text = ControllerConstants.resetPassword.localized()
         navigationItem.titleLabel.textColor = .white
 
         if let navbar = navigationController?.navigationBar {
@@ -32,13 +32,13 @@ extension ResetPasswordViewController {
                 if newPassword == confirmPassword {
                     return [true: ""]
                 } else {
-                    return [false: ControllerConstants.passwordDoNotMatch]
+                    return [false: ControllerConstants.passwordDoNotMatch.localized()]
                 }
             } else {
-                return [false: ControllerConstants.passwordLengthShort]
+                return [false: ControllerConstants.passwordLengthShort.localized()]
             }
         }
-        return [false: Client.ResponseMessages.ServerError]
+        return [false: Client.ResponseMessages.ServerError.localized()]
     }
 
     func setUIActive(active: Bool) {

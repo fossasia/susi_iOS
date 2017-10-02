@@ -88,6 +88,8 @@
 		6DEE71121F2C9DC900A512CF /* AppNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEE71111F2C9DC900A512CF /* AppNavigationController.swift */; };
 		6DFC75B91EE077E9002F92BA /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFC75B81EE077E9002F92BA /* ForgotPasswordViewController.swift */; };
 		892B50EC32D8A6569FD309D6 /* Pods_SusiUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13391E8E0AE2DD3D8688B85F /* Pods_SusiUITests.framework */; };
+		94889CA61F7CCD370028B8C3 /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94889CA51F7CCD370028B8C3 /* GeneralViewController.swift */; };
+		94889CAE1F7CEAA80028B8C3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 94889CB01F7CEAA80028B8C3 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -195,6 +197,9 @@
 		6DEE71111F2C9DC900A512CF /* AppNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNavigationController.swift; sourceTree = "<group>"; };
 		6DF591D31E817EC0003B2C6B /* Pods_Susi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Susi.framework; path = "../../Library/Developer/Xcode/DerivedData/Susi-diaqqbbkootsgpcfnbeooroyfjde/Build/Products/Debug-iphonesimulator/Pods_Susi.framework"; sourceTree = "<group>"; };
 		6DFC75B81EE077E9002F92BA /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		94889CA51F7CCD370028B8C3 /* GeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
+		94889CAF1F7CEAA80028B8C3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		94889CB11F7CEAAA0028B8C3 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		97955E10DCBDDA37F3FE9945 /* Pods-Susi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Susi.release.xcconfig"; path = "Pods/Target Support Files/Pods-Susi/Pods-Susi.release.xcconfig"; sourceTree = "<group>"; };
 		C26FA8CF8713A7F6B0B37876 /* Pods-SusiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SusiUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SusiUITests/Pods-SusiUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F0725CD4F3C4305D555E2D38 /* Pods-Susi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Susi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Susi/Pods-Susi.debug.xcconfig"; sourceTree = "<group>"; };
@@ -392,6 +397,7 @@
 		6D4D9B391E768E190067459C /* Susi */ = {
 			isa = PBXGroup;
 			children = (
+				94889CAB1F7CEA620028B8C3 /* Localization */,
 				6D4D9B511E768F390067459C /* Assets */,
 				6D4D9B501E768F2E0067459C /* Controllers */,
 				6D2F98471E76DED400FE2B6F /* Custom Views */,
@@ -427,6 +433,7 @@
 				6D017B231F4EAF64004BDE7E /* SkillListingViewController */,
 				6DE809CD1F34DBFD00CAE674 /* TrainingViewController */,
 				6DEE71111F2C9DC900A512CF /* AppNavigationController.swift */,
+				94889CA51F7CCD370028B8C3 /* GeneralViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -513,6 +520,14 @@
 				6D3E82451E7953B200D48776 /* SettingsViewController.swift */,
 			);
 			path = SettingsController;
+			sourceTree = "<group>";
+		};
+		94889CAB1F7CEA620028B8C3 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				94889CB01F7CEAA80028B8C3 /* Localizable.strings */,
+			);
+			path = Localization;
 			sourceTree = "<group>";
 		};
 		BD5FA220F268315B61F71523 /* Frameworks */ = {
@@ -610,6 +625,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 6D4D9B2E1E768E190067459C;
 			productRefGroup = 6D4D9B381E768E190067459C /* Products */;
@@ -637,6 +653,7 @@
 				6D4D9B451E768E190067459C /* LaunchScreen.storyboard in Resources */,
 				6D4D9B421E768E190067459C /* Assets.xcassets in Resources */,
 				6D389BEB1EDB912500DEAEA0 /* YTPlayer.html in Resources */,
+				94889CAE1F7CEAA80028B8C3 /* Localizable.strings in Resources */,
 				6DAF3AF61F0E101200929D86 /* Main.storyboard in Resources */,
 				6D28983A1F144E5C00B6151A /* common.res in Resources */,
 				6D47585A1F5625740067B3A4 /* susi.pmdl in Resources */,
@@ -761,7 +778,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		F91091C8AC7903E1C738CF90 /* [CP] Check Pods Manifest.lock */ = {
@@ -779,7 +796,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -818,6 +835,7 @@
 				6D017B251F4EAF86004BDE7E /* SkillListingViewController.swift in Sources */,
 				6D395D1D1F58966900BCC3C5 /* SkillDetailExampleCell.swift in Sources */,
 				6D395D1F1F589CC000BCC3C5 /* SkillDetailVCMethods.swift in Sources */,
+				94889CA61F7CCD370028B8C3 /* GeneralViewController.swift in Sources */,
 				6DEE71121F2C9DC900A512CF /* AppNavigationController.swift in Sources */,
 				6DE0025B1F3FF93A0065DB85 /* AnchorCell.swift in Sources */,
 				6D24B0961EE409DB0097418A /* SignUpVCMethods.swift in Sources */,
@@ -888,6 +906,15 @@
 			path = .;
 			sourceTree = "<group>";
 		};
+		94889CB01F7CEAA80028B8C3 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				94889CAF1F7CEAA80028B8C3 /* en */,
+				94889CB11F7CEAAA0028B8C3 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -933,6 +960,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -983,6 +1011,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

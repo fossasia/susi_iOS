@@ -10,7 +10,7 @@ import UIKit
 import Material
 import M13Checkbox
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: GeneralViewController {
 
     @IBOutlet weak var emailTextField: TextField!
     @IBOutlet weak var passwordTextField: TextField!
@@ -22,10 +22,16 @@ class SignUpViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         addTapGesture()
         prepareFields()
         prepareSignUpButton()
+    }
+    override func localizeStrings() {
+        emailTextField.placeholder = ControllerConstants.Login.emailAddress.localized()
+        passwordTextField.placeholder = ControllerConstants.Login.password.localized()
+        confirmPasswordTextField.placeholder = ControllerConstants.SignUp.confirmPassword.localized()
+        signUpButton.setTitle(ControllerConstants.SignUp.signUp.localized().uppercased(), for: .normal)
+        addressTextField.placeholder = ControllerConstants.customServerURL.localized()
     }
 
 }

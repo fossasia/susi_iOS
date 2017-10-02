@@ -517,6 +517,7 @@
                         <outlet property="downloadIndicator" destination="f2u-QX-cd8" id="RoM-Qh-heR"/>
                         <outlet property="downloadLabel" destination="2qB-LI-gco" id="32f-Rz-3se"/>
                         <outlet property="finishLaterButton" destination="kdT-85-b2q" id="PNd-8S-gBd"/>
+                        <outlet property="helpDescriptionLabel" destination="Yy3-65-91A" id="DEb-5l-2CO"/>
                         <outlet property="indicator1" destination="MkY-mN-xiY" id="Iwa-7j-Vwi"/>
                         <outlet property="indicator2" destination="kU6-Vs-OHY" id="gEF-FA-Xii"/>
                         <outlet property="indicator3" destination="grs-I7-eRe" id="O7T-qE-JTh"/>
@@ -527,6 +528,7 @@
                         <outlet property="recordingLabel1" destination="ZFw-Ph-8b4" id="6Yb-FK-Kam"/>
                         <outlet property="recordingLabel2" destination="cbj-q3-I0O" id="JSM-bc-fb8"/>
                         <outlet property="recordingLabel3" destination="tIR-x8-YXs" id="exj-Lr-5JE"/>
+                        <outlet property="sayLabel" destination="tb6-5d-FFq" id="v9p-89-LxT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="byW-pI-MEp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -942,13 +944,35 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="1200"/>
                     <connections>
+                        <outlet property="deleteVModelTitle" destination="QW1-ZR-nr2" id="VVV-bT-Fe3"/>
                         <outlet property="enterToSend" destination="UYb-A2-hlx" id="twB-9A-nKX"/>
+                        <outlet property="enterToSendSubtitle" destination="5X2-CM-LP3" id="NSg-9H-Q7y"/>
+                        <outlet property="enterToSendTitle" destination="Exi-Gn-y67" id="v0y-oM-RrL"/>
                         <outlet property="hotwordDetection" destination="wqx-Sl-n0R" id="BTn-sc-2Cp"/>
+                        <outlet property="hotwordDirectionSubtitle" destination="hfe-rd-FVo" id="27b-6q-aIk"/>
+                        <outlet property="hotwordDirectionTitle" destination="XLo-Na-Nx0" id="FuV-G4-eB4"/>
+                        <outlet property="languageSubtitle" destination="NY7-K0-MYN" id="hZf-t8-g6O"/>
+                        <outlet property="languageTitle" destination="4ic-48-bqm" id="E7r-2L-r2S"/>
+                        <outlet property="logoutTitle" destination="DmQ-aY-PhM" id="rlO-xd-yU1"/>
                         <outlet property="micInput" destination="aPa-gn-EkW" id="ibL-oC-fyg"/>
+                        <outlet property="micInputSubtitle" destination="e7f-A9-51c" id="Has-jl-fST"/>
+                        <outlet property="micInputTitle" destination="GSI-pQ-m4f" id="3WZ-kH-wP8"/>
+                        <outlet property="rateSusiSubtitle" destination="nf7-N7-d9T" id="dav-hS-V7D"/>
+                        <outlet property="rateSusiTitle" destination="FE6-Q5-NAb" id="aSY-ev-b92"/>
+                        <outlet property="resetPassTitle" destination="BcN-ht-Uyo" id="iCs-PU-MU1"/>
+                        <outlet property="retrainVModelTitle" destination="Bx8-gF-MZS" id="DUd-8O-SUQ"/>
+                        <outlet property="shareSusiSubtitle" destination="BeY-3G-A0L" id="KMj-QL-Zat"/>
+                        <outlet property="shareSusiTitle" destination="QAJ-hf-Eyi" id="9Ra-2k-y7W"/>
                         <outlet property="speechOutput" destination="OCZ-Am-iv8" id="fB0-WL-6GW"/>
                         <outlet property="speechOutputAlwaysOn" destination="sMg-EU-O7x" id="pOL-tt-YRB"/>
+                        <outlet property="speechOutputAlwaysSubtitle" destination="14w-J9-0oM" id="mfg-pu-fmx"/>
+                        <outlet property="speechOutputAlwaysTitle" destination="1dF-S6-FE8" id="Q1J-Px-cjQ"/>
+                        <outlet property="speechOutputSubtitle" destination="3wy-dV-h6x" id="PzT-E0-gVq"/>
+                        <outlet property="speechOutputTitle" destination="3E6-cL-G04" id="s8x-vw-YiG"/>
                         <outlet property="speechPitch" destination="Qx7-r5-5do" id="sty-xY-PFJ"/>
+                        <outlet property="speechPitchTitle" destination="nXx-gt-ziK" id="hZt-xe-VNT"/>
                         <outlet property="speechRate" destination="P5K-ZK-4kd" id="BPu-9a-7oe"/>
+                        <outlet property="speechRateTitle" destination="f3f-JB-9p0" id="xfk-7Q-DKp"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GIQ-RV-D6h" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1076,10 +1100,14 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="500"/>
                     <connections>
+                        <outlet property="confirmPasswordFLabel" destination="qAt-37-QII" id="BPb-Q3-Qr4"/>
                         <outlet property="confirmPasswordField" destination="E61-Wk-XAh" id="zt1-e5-wlK"/>
+                        <outlet property="currentPasswordFLabel" destination="nFv-mf-neT" id="jr2-jk-5yu"/>
                         <outlet property="currentPasswordField" destination="kt2-dB-WCM" id="rCZ-RY-dsu"/>
                         <outlet property="indicator" destination="phy-Xh-don" id="JO5-Sb-tTi"/>
+                        <outlet property="newPasswordFLabel" destination="Ypf-k4-eiB" id="Jde-66-T4q"/>
                         <outlet property="newPasswordField" destination="cXR-2h-YYh" id="Uhh-tS-qu4"/>
+                        <outlet property="resetPasswordFLabel" destination="e6e-YA-WLe" id="KXP-zT-pzo"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QKX-kj-wfz" userLabel="First Responder" sceneMemberID="firstResponder"/>

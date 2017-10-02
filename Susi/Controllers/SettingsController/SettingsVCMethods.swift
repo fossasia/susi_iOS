@@ -10,12 +10,13 @@ import UIKit
 import RealmSwift
 import Material
 import Toast_Swift
+import Localize_Swift
 
 extension SettingsViewController {
 
     // Setup Navigation Bar
     func setupTitle() {
-        navigationItem.titleLabel.text = ControllerConstants.settings
+        navigationItem.titleLabel.text = ControllerConstants.settings.localized()
         navigationItem.titleLabel.textAlignment = .left
         navigationItem.titleLabel.textColor = .white
         navigationItem.leftViews = [backButton]
@@ -108,6 +109,25 @@ extension SettingsViewController {
         let nvc = AppNavigationController(rootViewController: vc)
         present(nvc, animated: true, completion: nil)
     }
+    func doChangeLanguage() {
+        let languages = Localize.availableLanguages().flatMap { Localize.displayNameForLanguage($0).isEmpty ? nil : $0 }
+        let actionSheet = UIAlertController(title: nil, message: "Set a language".localized(), preferredStyle: UIAlertControllerStyle.actionSheet)
+        for language in languages {
+            let displayName = Localize.displayNameForLanguage(language)
+            let languageAction = UIAlertAction(title: displayName.capitalized, style: .default, handler: {
+                (alert: UIAlertAction!) -> Void in
+                Localize.setCurrentLanguage(language)
+            })
+            actionSheet.addAction(languageAction)
+        }
+        let cancelAction = UIAlertAction(title: ControllerConstants.dialogCancelAction.localized(),
+                                         style: UIAlertActionStyle.cancel,
+                                         handler: {
+            (alert: UIAlertAction) -> Void in
+        })
+        actionSheet.addAction(cancelAction)
+        present(actionSheet, animated: true, completion: nil)
+    }
 
     func deleteVoiceModel() {
         do {
@@ -123,7 +143,7 @@ extension SettingsViewController {
         } catch let error {
             print(error.localizedDescription)
         }
-        self.view.makeToast("Model deleted successfully")
+        self.view.makeToast("Model deleted successfully".localized())
     }
 
     func checkIfFileExistsAndReturnPath(fileIdentifier: Int) -> URL? {
@@ -150,7 +170,7 @@ extension SettingsViewController {
 
     func shareApp() {
         // Set the default sharing message.
-        let message = "Meet SUSI.AI, Your Artificial Intelligence for Personal Assistants, Robots, Help Desks and Chatbots."
+        let message = ControllerConstants.meetSusi.localized()
         // Set the link to share.
         if let link = NSURL(string: "http://susi.ai") {
             let objectsToShare = [message, link] as [Any]
@@ -159,5 +179,4 @@ extension SettingsViewController {
             self.present(activityVC, animated: true, completion: nil)
         }
     }
-
 }

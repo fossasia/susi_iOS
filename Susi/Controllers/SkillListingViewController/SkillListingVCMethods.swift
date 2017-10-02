@@ -13,7 +13,7 @@ extension SkillListingViewController {
 
     // setup view
     func setupView() {
-        navigationItem.titleLabel.text = ControllerConstants.skillListing
+        navigationItem.titleLabel.text = ControllerConstants.skillListing.localized()
         navigationItem.titleLabel.textAlignment = .left
         navigationItem.leftViews = [backButton]
         navigationItem.rightViews = [settingsButton]
