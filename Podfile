@@ -10,7 +10,7 @@ target 'Susi' do
 	use_frameworks!
 	
 	# Pods for Susi
-	pod 'Material'
+	pod 'Material', '2.10.2'
 	pod 'Toast-Swift'
 	pod 'SwiftValidators'
 	pod 'BouncyLayout'
