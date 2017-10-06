@@ -12,7 +12,7 @@ target 'Susi' do
 	# Pods for Susi
 	pod 'Material', '2.10.2'
 	pod 'Toast-Swift'
-	pod 'SwiftValidators'
+	pod 'SwiftValidators', '6.0.1'
 	pod 'BouncyLayout'
 	pod 'RealmSwift'
 	pod 'ReadabilityKit'
