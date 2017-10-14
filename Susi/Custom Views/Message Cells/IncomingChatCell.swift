@@ -102,7 +102,7 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
 
         let skillComponents = message?.skill.components(separatedBy: "/")
         if skillComponents?.count == 7 {
-            let params: [String : AnyObject] = [
+            let params: [String: AnyObject] = [
                 Client.FeedbackKeys.model: skillComponents![3] as AnyObject,
                 Client.FeedbackKeys.group: skillComponents![4] as AnyObject,
                 Client.FeedbackKeys.language: skillComponents![5] as AnyObject,

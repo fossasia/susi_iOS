@@ -46,16 +46,16 @@ class ChatUITests: XCTestCase {
         XCTAssertEqual(chatCells.count, 2)
     }
     
-    func testRSSAction() {
-        let inputviewTextField = app.textFields[ControllerConstants.TestKeys.chatInputView]
-        inputviewTextField.tap()
-        inputviewTextField.typeText("amazon")
-        app.buttons[ControllerConstants.TestKeys.send].tap()
-        
-        sleep(10)
-        
-        let chatCells = app.collectionViews.cells.matching(identifier: ControllerConstants.TestKeys.chatCells)
-        XCTAssertEqual(chatCells.count, 3)
-    }
+//    func testRSSAction() {
+//        let inputviewTextField = app.textFields[ControllerConstants.TestKeys.chatInputView]
+//        inputviewTextField.tap()
+//        inputviewTextField.typeText("brazil")
+//        app.buttons[ControllerConstants.TestKeys.send].tap()
+//
+//        sleep(10)
+//
+//        let chatCells = app.collectionViews.cells.matching(identifier: ControllerConstants.TestKeys.chatCells)
+//        XCTAssertEqual(chatCells.count, 3)
+//    }
     
 }

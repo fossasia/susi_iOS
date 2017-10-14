@@ -77,7 +77,7 @@ class ControllerConstants {
     static let listentingSusi2 = "Say \"SUSI\" again"
     static let listentingSusi3 = "Say \"SUSI\" one last time"
     static let finishLater = "FINISH LATER"
-    
+
     struct Settings {
         static let enterToSend = "Enter To Send"
         static let enterToSendSubtitle = "Send message by hitting return"
@@ -101,11 +101,11 @@ class ControllerConstants {
         static let shareSusiSubtitle = "Share the SUSI App with your friends"
         static let resetPass = "Reset Password"
         static let logout = "Logout"
-        static let chatSettings = "Chat Settings";
-        static let micSettings = "Mic Settings";
-        static let speechSettings = "Speech Settings";
-        static let susiVoiceModel = "SUSI Voice Model";
-        static let miscellaneous = "Miscellaneous";
+        static let chatSettings = "Chat Settings"
+        static let micSettings = "Mic Settings"
+        static let speechSettings = "Speech Settings"
+        static let susiVoiceModel = "SUSI Voice Model"
+        static let miscellaneous = "Miscellaneous"
     }
 
     struct Login {

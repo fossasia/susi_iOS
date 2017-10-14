@@ -115,7 +115,7 @@ extension SettingsViewController {
         for language in languages {
             let displayName = Localize.displayNameForLanguage(language)
             let languageAction = UIAlertAction(title: displayName.capitalized, style: .default, handler: {
-                (alert: UIAlertAction!) -> Void in
+                (_: UIAlertAction!) -> Void in
                 Localize.setCurrentLanguage(language)
             })
             actionSheet.addAction(languageAction)
@@ -123,7 +123,7 @@ extension SettingsViewController {
         let cancelAction = UIAlertAction(title: ControllerConstants.dialogCancelAction.localized(),
                                          style: UIAlertActionStyle.cancel,
                                          handler: {
-            (alert: UIAlertAction) -> Void in
+            (_: UIAlertAction) -> Void in
         })
         actionSheet.addAction(cancelAction)
         present(actionSheet, animated: true, completion: nil)

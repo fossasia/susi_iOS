@@ -18,7 +18,7 @@ class Client: NSObject {
         session = URLSession.shared
     }
 
-    func makeRequest(_ url: String, _ httpMethod: HTTPMethod, _ headers: HTTPHeaders, parameters: [String:AnyObject], completion: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) {
+    func makeRequest(_ url: String, _ httpMethod: HTTPMethod, _ headers: HTTPHeaders, parameters: [String: AnyObject], completion: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) {
 
         func sendError(_ error: String) {
             debugPrint(error)

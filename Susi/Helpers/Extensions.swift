@@ -43,7 +43,7 @@ extension String {
 
     func isValidEmail() -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,20}"
-        let emailTest  = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        let emailTest  = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: self)
     }
 
@@ -80,7 +80,7 @@ extension String {
 
             let urlRegEx = head+"+(.)+"+tail
 
-            let urlTest = NSPredicate(format:"SELF MATCHES %@", urlRegEx)
+            let urlTest = NSPredicate(format: "SELF MATCHES %@", urlRegEx)
             isValid = urlTest.evaluate(with: self.trimmed)
         }
         return isValid
@@ -116,15 +116,15 @@ extension String {
     var isTextSufficientComplexity: Bool {
 
         let capitalLetterRegEx  = ".*[A-Z]+.*"
-        var texttest = NSPredicate(format:"SELF MATCHES %@", capitalLetterRegEx)
+        var texttest = NSPredicate(format: "SELF MATCHES %@", capitalLetterRegEx)
         let capitalResult = texttest.evaluate(with: self)
 
         let numberRegEx  = ".*[0-9]+.*"
-        let texttest1 = NSPredicate(format:"SELF MATCHES %@", numberRegEx)
+        let texttest1 = NSPredicate(format: "SELF MATCHES %@", numberRegEx)
         let numberResult = texttest1.evaluate(with: self)
 
         let lowercaseLetterRegEx  = ".*[a-z]+.*"
-        texttest = NSPredicate(format:"SELF MATCHES %@", lowercaseLetterRegEx)
+        texttest = NSPredicate(format: "SELF MATCHES %@", lowercaseLetterRegEx)
         let lowercaseResult = texttest.evaluate(with: self)
 
         return capitalResult && numberResult && lowercaseResult
@@ -202,7 +202,6 @@ extension NSMutableAttributedString {
     }
 
 }
-
 
 extension UIApplication {
     var statusBarView: UIView? {

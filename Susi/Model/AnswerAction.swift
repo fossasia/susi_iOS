@@ -13,7 +13,7 @@ class AnswerAction: Object {
     dynamic var expression: String = ""
     dynamic var language: String?
 
-    convenience init(action: [String : AnyObject]) {
+    convenience init(action: [String: AnyObject]) {
         self.init()
         expression = action[Client.ChatKeys.Expression] as? String ?? ""
         language = action[Client.ChatKeys.Language] as? String

@@ -16,7 +16,7 @@ class User: NSObject {
     let expiryTime: Date
     let emailID: String
 
-    init(dictionary: [String:AnyObject]) {
+    init(dictionary: [String: AnyObject]) {
         accessToken = dictionary[Client.UserKeys.AccessToken] as? String ?? ""
         message = dictionary[Client.UserKeys.Message] as? String ?? ""
         expiryTime = Date() + (dictionary[Client.UserKeys.ValidSeconds] as? Int ?? 0).seconds

@@ -92,7 +92,7 @@ extension SignUpViewController {
                 }
             }
 
-            Client.sharedInstance.registerUser(params as [String : AnyObject]) { (success, message) in
+            Client.sharedInstance.registerUser(params as [String: AnyObject]) { (success, message) in
                 DispatchQueue.main.async {
                     self.activityIndicator.stopAnimating()
                     self.toggleEditing()

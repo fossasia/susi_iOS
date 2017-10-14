@@ -79,7 +79,7 @@ extension LoginViewController {
                 Client.UserKeys.Login: emailTextField.text!.lowercased(),
                 Client.UserKeys.Password: passwordTextField.text!,
                 Client.ChatKeys.ResponseType: Client.ChatKeys.AccessToken
-            ] as [String : Any]
+            ] as [String: Any]
 
             if personalServerButton.checkState == .unchecked {
                 UserDefaults.standard.set(Client.APIURLs.SusiAPI, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
@@ -93,7 +93,7 @@ extension LoginViewController {
             }
 
             indicatorView.startAnimating()
-            Client.sharedInstance.loginUser(params as [String : AnyObject]) { (user, results, success, message) in
+            Client.sharedInstance.loginUser(params as [String: AnyObject]) { (user, results, success, message) in
                 DispatchQueue.main.async {
                     self.toggleEditing()
                     self.resetDB()
@@ -125,7 +125,7 @@ extension LoginViewController {
             Client.UserKeys.AccessToken: accessToken
         ]
 
-        Client.sharedInstance.fetchUserSettings(params as [String : AnyObject]) { (success, message) in
+        Client.sharedInstance.fetchUserSettings(params as [String: AnyObject]) { (success, message) in
             DispatchQueue.global().async {
                 print("User settings fetch status: \(success) : \(message)")
             }
@@ -217,7 +217,7 @@ extension LoginViewController {
     // Check existing session
     func checkSession() {
         if let userDefaultValue = UserDefaults.standard.value(forKey: ControllerConstants.UserDefaultsKeys.user) {
-            if let userData = userDefaultValue as? [String : AnyObject] {
+            if let userData = userDefaultValue as? [String: AnyObject] {
                 let user = User(dictionary: userData)
                 saveUserGlobally(user: user)
 
