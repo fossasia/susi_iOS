@@ -16,6 +16,7 @@ import NVActivityIndicatorView
 import Realm
 
 class ChatViewController: UICollectionViewController {
+	
 
     // MARK: - Variable Declarations
 
@@ -68,6 +69,7 @@ class ChatViewController: UICollectionViewController {
 
     // send button
     lazy var sendButton: FABButton = {
+		
         let button = FABButton()
         button.setImage(ControllerConstants.Images.microphone, for: .normal)
         button.addTarget(self, action: #selector(setTargetForSendButton), for: .touchUpInside)
@@ -79,6 +81,8 @@ class ChatViewController: UICollectionViewController {
 
     // contains all the message
     var messages = List<Message>()
+	
+	
 
     // realm instance
     let realm = try! Realm()
@@ -109,7 +113,7 @@ class ChatViewController: UICollectionViewController {
 
     // used to stop STT when no input for a few seconds
     var detectionTimer: Timer?
-
+	
     // flag to check if STT running
     var isSpeechRecognitionRunning: Bool = false
 
