@@ -49,7 +49,7 @@ class LoginViewController: GeneralViewController {
         forgotPassword.setTitle(ControllerConstants.Login.forgotPassword.localized(), for: .normal)
         skipButton.setTitle(ControllerConstants.Login.skip.localized(), for: .normal)
         signUpButton.setTitle(ControllerConstants.Login.signUpForSusi.localized(), for: .normal)
-        
+
     }
 
 }

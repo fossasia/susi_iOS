@@ -20,7 +20,7 @@ class Column: Object {
         changed = value
     }
 
-    static func getColumns(columns: [String : String]) -> List<Column> {
+    static func getColumns(columns: [String: String]) -> List<Column> {
         let cData = List<Column>()
         for column in columns {
             cData.append(Column(key: column.key, value: column.value))
@@ -33,13 +33,13 @@ class Column: Object {
 class TableData: Object {
     dynamic var data: String = ""
 
-    convenience init(data: [String : AnyObject]) {
+    convenience init(data: [String: AnyObject]) {
         self.init()
 
         self.data = "\(data)"
     }
 
-    static func getTableData(data: [[String : AnyObject]]) -> List<TableData> {
+    static func getTableData(data: [[String: AnyObject]]) -> List<TableData> {
         let tData = List<TableData>()
         for record in data {
             let d = TableData(data: record)
@@ -55,14 +55,14 @@ class TableAction: Object {
     var columns = List<Column>()
     var tableData = List<TableData>()
 
-    convenience init(data: [[String : AnyObject]], actionObject: [String : AnyObject]) {
+    convenience init(data: [[String: AnyObject]], actionObject: [String: AnyObject]) {
         self.init()
 
         if let count = actionObject[Client.ChatKeys.Count] as? Int, count > 0 {
             size = count
         }
 
-        if let columns = actionObject[Client.ChatKeys.Columns] as? [String : String] {
+        if let columns = actionObject[Client.ChatKeys.Columns] as? [String: String] {
             self.columns = Column.getColumns(columns: columns)
         }
 

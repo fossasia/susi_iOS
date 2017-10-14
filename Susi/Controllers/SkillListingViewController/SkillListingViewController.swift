@@ -18,6 +18,7 @@ class SkillListingViewController: UITableViewController {
         ib.tintColor = .white
         ib.cornerRadius = 18.0
         ib.addTarget(self, action: #selector(presentSettingsController), for: .touchUpInside)
+        ib.accessibilityIdentifier = ControllerConstants.TestKeys.settings
         return ib
     }()
 
