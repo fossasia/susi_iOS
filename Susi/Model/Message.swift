@@ -42,16 +42,16 @@ class Message: Object {
         fromUser = true
     }
 
-    static func getAllAction(data: [String : AnyObject]) -> List<Message> {
+    static func getAllAction(data: [String: AnyObject]) -> List<Message> {
         let messages = List<Message>()
         var skill: String = ""
 
-        if let answers = data[Client.ChatKeys.Answers] as? [[String : AnyObject]] {
+        if let answers = data[Client.ChatKeys.Answers] as? [[String: AnyObject]] {
             if let skills = answers[0][Client.ChatKeys.Skills] as? [String], skills.count > 0 {
                 skill = skills.first!
             }
 
-            if let actions = answers[0][Client.ChatKeys.Actions] as? [[String : AnyObject]] {
+            if let actions = answers[0][Client.ChatKeys.Actions] as? [[String: AnyObject]] {
                 for action in actions {
 
                     let message = Message()
@@ -68,7 +68,7 @@ class Message: Object {
                     }
 
                     if let type = action[Client.ChatKeys.ResponseType] as? String,
-                        let data = answers[0][Client.ChatKeys.Data] as? [[String : AnyObject]] {
+                        let data = answers[0][Client.ChatKeys.Data] as? [[String: AnyObject]] {
                         if type == ActionType.answer.rawValue {
                             message.message = action[Client.ChatKeys.Expression] as? String ?? ""
                             message.actionType = ActionType.answer.rawValue
@@ -99,7 +99,7 @@ class Message: Object {
         return messages
     }
 
-    static func getMessagesFromMemory(_ cognitions: [[String : AnyObject]]) -> List<Message> {
+    static func getMessagesFromMemory(_ cognitions: [[String: AnyObject]]) -> List<Message> {
         let messages = List<Message>()
 
         for cognition in cognitions {

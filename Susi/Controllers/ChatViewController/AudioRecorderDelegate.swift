@@ -84,11 +84,11 @@ extension ChatViewController: AVAudioRecorderDelegate {
                 [AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue,
                  AVEncoderBitRateKey: 128000,
                  AVNumberOfChannelsKey: 1,
-                 AVSampleRateKey: 16000.0] as [String : Any]
+                 AVSampleRateKey: 16000.0] as [String: Any]
             let audioSession = AVAudioSession.sharedInstance()
             try audioSession.setCategory(AVAudioSessionCategoryRecord)
             try audioRecorder = AVAudioRecorder(url: soundFileURL,
-                                                settings: recordSettings as [String : AnyObject])
+                                                settings: recordSettings as [String: AnyObject])
             audioRecorder.delegate = self
             audioRecorder.prepareToRecord()
             audioRecorder.record(forDuration: 1.5)

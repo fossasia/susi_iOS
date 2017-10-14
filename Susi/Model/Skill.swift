@@ -17,7 +17,7 @@ class Skill: NSObject {
     var skillName: String = ""
     var skillDescription: String = ""
 
-    init(dictionary: [String:AnyObject]) {
+    init(dictionary: [String: AnyObject]) {
         super.init()
         authorUrl = dictionary[Client.SkillListing.authorURL] as? String ?? ""
         examples = dictionary[Client.SkillListing.examples] as? [String] ?? []
@@ -27,10 +27,10 @@ class Skill: NSObject {
         imagePath = dictionary[Client.SkillListing.image] as? String ?? ""
     }
 
-    static func getAllSkill(_ skills: [String : AnyObject], _ model: String, _ group: String, _ language: String) -> [Skill] {
+    static func getAllSkill(_ skills: [String: AnyObject], _ model: String, _ group: String, _ language: String) -> [Skill] {
         var skillData = [Skill]()
         for skill in skills {
-            let newSkill = Skill(dictionary: skill.value as! [String : AnyObject])
+            let newSkill = Skill(dictionary: skill.value as! [String: AnyObject])
             newSkill.imagePath = getImagePath(model, group, language, newSkill.imagePath)
             skillData.append(newSkill)
         }

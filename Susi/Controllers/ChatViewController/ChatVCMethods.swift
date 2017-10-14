@@ -174,7 +174,7 @@ extension ChatViewController {
     // handles the send action on the button
     func handleSend() {
         if let text = inputTextField.text, text.characters.count > 0 && !text.isEmpty {
-            var params: [String : AnyObject] = [
+            var params: [String: AnyObject] = [
                 Client.WebsearchKeys.Query: text as AnyObject,
                 Client.ChatKeys.TimeZoneOffset: ControllerConstants.timeZone as AnyObject,
                 Client.ChatKeys.Language: Locale.current.languageCode as AnyObject
@@ -213,7 +213,7 @@ extension ChatViewController {
                 Client.UserKeys.AccessToken: user.accessToken
             ]
 
-            Client.sharedInstance.getMessagesFromMemory(params as [String : AnyObject]) { (messages, _, _) in
+            Client.sharedInstance.getMessagesFromMemory(params as [String: AnyObject]) { (messages, _, _) in
                 DispatchQueue.main.async {
                     if let messages = messages {
                         self.addMessagesToCollectionView(messages: messages)

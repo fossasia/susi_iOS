@@ -33,7 +33,7 @@ class WebsearchCollectionView: UIView, UICollectionViewDelegate, UICollectionVie
                     Client.WebsearchKeys.Format: ControllerConstants.json
                 ]
 
-                Client.sharedInstance.websearch(params as [String : AnyObject]) { (results, success, message) in
+                Client.sharedInstance.websearch(params as [String: AnyObject]) { (results, success, message) in
                     DispatchQueue.global().async {
                         if success {
                             try! self.realm.write {

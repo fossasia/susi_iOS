@@ -39,7 +39,7 @@ extension ChatViewController: SFSpeechRecognizerDelegate, AVSpeechSynthesizerDel
             OperationQueue.main.addOperation {
                 // enable or disable mic button
                 print("Speech status: \(isEnabled)")
-
+				self.isSpeechRecognitionRunning = isEnabled
             }
 
         }

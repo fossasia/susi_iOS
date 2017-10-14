@@ -77,7 +77,7 @@ extension TrainingViewController: AVAudioRecorderDelegate {
         ]
         params.setValue(dict, forKey: Client.HotwordKeys.voiceSamples)
 
-        if let params = params as? [String : AnyObject] {
+        if let params = params as? [String: AnyObject] {
             downloadActive(state: true)
             Client.sharedInstance.trainHotwordUsingSnowboy(params) { (success, _) in
                 DispatchQueue.main.async {
