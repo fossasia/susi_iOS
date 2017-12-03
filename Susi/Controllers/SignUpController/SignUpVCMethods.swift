@@ -118,7 +118,7 @@ extension SignUpViewController {
         if textField == confirmPasswordTextField {
             performSignUp()
         }
-        return false
+        return true
     }
 
     func textFieldDidChange(textField: UITextField) {
@@ -129,7 +129,7 @@ extension SignUpViewController {
                 emailTextField.dividerActiveColor = .green
             }
         } else if textField == passwordTextField, let password = passwordTextField.text {
-            if password.isEmpty || password.characters.count < 5 {
+            if password.isEmpty && password.characters.count < 5 {
                 passwordTextField.dividerActiveColor = .red
             } else {
                 passwordTextField.dividerActiveColor = .green
@@ -162,7 +162,7 @@ extension SignUpViewController {
         if let emailID = emailTextField.text, !emailID.isValidEmail() {
             return false
         }
-        if let password = passwordTextField.text, password.isEmpty, let confirmPassword = confirmPasswordTextField.text, confirmPassword.isEmpty || password.isTextSufficientComplexity {
+        if let password = passwordTextField.text, password.isEmpty,password.characters.count < 5, let confirmPassword = confirmPasswordTextField.text, confirmPassword.isEmpty || password.isTextSufficientComplexity {
             return false
         }
         if let password = passwordTextField.text, let confirmPassword = confirmPasswordTextField.text, password != confirmPassword {
