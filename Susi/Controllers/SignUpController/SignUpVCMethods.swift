@@ -118,7 +118,7 @@ extension SignUpViewController {
         if textField == confirmPasswordTextField {
             performSignUp()
         }
-        return true
+        return false
     }
 
     func textFieldDidChange(textField: UITextField) {
