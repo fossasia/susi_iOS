@@ -106,7 +106,7 @@ extension SignUpViewController {
             view.makeToast(ControllerConstants.invalidEmailAddress.localized())
         } else if let password = passwordTextField.text, password.isEmpty {
             view.makeToast(ControllerConstants.passwordLengthTooShort.localized())
-        } else if let password= paswordTextField.text,password.isCapitalized{
+        } else if let password= paswordTextField.text,password.isCapitalized {
             view.makeToast(ControllerConstants.passwordNotStrong.localized())
         } else if let password = passwordTextField.text, let confirmPassword = confirmPasswordTextField.text, password != confirmPassword {
             view.makeToast(ControllerConstants.passwordDoNotMatch.localized())
@@ -167,7 +167,7 @@ extension SignUpViewController {
         if let password = passwordTextField.text, password.isEmpty, let confirmPassword = confirmPasswordTextField.text, confirmPassword.isEmpty || password.isTextSufficientComplexity {
             return false
         }
-        if let password = passwordTextField.text, password.isCapitalized,let confirmPassword = confirmPasswordTextField.text,confirmPassword.isCapitalized{
+        if let password = passwordTextField.text, password.isCapitalized,let confirmPassword = confirmPasswordTextField.text,confirmPassword.isCapitalized {
             return false
         }
         if let password = passwordTextField.text, let confirmPassword = confirmPasswordTextField.text, password != confirmPassword {
