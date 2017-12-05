@@ -131,7 +131,7 @@ extension SignUpViewController {
                 emailTextField.dividerActiveColor = .green
             }
         } else if textField == passwordTextField, let password = passwordTextField.text {
-            if ((password.isEmpty || password.characters.count < 5) && password.isCapitalized) {
+            if (password.isEmpty || password.characters.count < 5) && password.isCapitalized {
                 passwordTextField.dividerActiveColor = .red
             } else {
                 passwordTextField.dividerActiveColor = .green
