@@ -8,10 +8,12 @@
 
 import UIKit
 import RealmSwift
+import Alamofire
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    let reachabilityManager = Alamofire.NetworkReachabilityManager(host: "www.apple.com")
     var window: UIWindow?
 
     // user
@@ -21,9 +23,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         initializeRealm()
         resetStateIfUITesting()
         checkAndAssignDefaultIfFirstLaunch()
+        listenForReachability()
         return true
     }
-
+    
+    func listenForReachability() {
+        self.reachabilityManager?.listener = { status in
+            print("Network Status Changed: \(status)")
+            switch status {
+            case .notReachable:
+                UIApplication.shared.isNetworkActivityIndicatorVisible = true
+                break
+            case .reachable(_), .unknown:
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                break
+            }
+        }
+        
+        self.reachabilityManager?.startListening()
+    }
+    
     func initializeRealm() {
         var config = Realm.Configuration(schemaVersion: 1, migrationBlock: nil)
 
