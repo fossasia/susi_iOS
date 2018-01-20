@@ -158,7 +158,8 @@ extension ChatViewController {
     func addSkillListingButton() {
         view.addSubview(susiSkillListingButton)
         view.addConstraintsWithFormat(format: "H:[v0(36)]-8-|", views: susiSkillListingButton)
-        view.addConstraintsWithFormat(format: "V:|-28-[v0(36)]", views: susiSkillListingButton)
+        let height = UIApplication.shared.statusBarFrame.size.height
+        view.addConstraintsWithFormat(format: "V:|-\(Int(height)+4)-[v0(36)]", views: susiSkillListingButton)
     }
 
     // setup scroll button
