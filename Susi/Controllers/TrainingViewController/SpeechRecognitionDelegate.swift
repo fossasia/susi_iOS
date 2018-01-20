@@ -38,7 +38,15 @@ extension TrainingViewController: SFSpeechRecognizerDelegate {
 
             OperationQueue.main.addOperation {
                 // enable or disable mic button
+                if isSpeechRecognition.isEnabled
+                {
                 print("Speech status: \(isEnabled)")
+
+            }
+                else
+                {
+                    print("Speech status:\(disable)")
+                }
 
             }
 
