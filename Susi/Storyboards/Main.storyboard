@@ -568,7 +568,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UYb-A2-hlx">
-                                                    <rect key="frame" x="321" y="12" 1idth="51" height="31"/>
+                                                    <rect key="frame" x="321" y="11" width="51" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <connections>
                                                         <action selector="settingChangedWithSender:" destination="udn-am-D9Z" eventType="valueChanged" id="glb-U2-zP6"/>
