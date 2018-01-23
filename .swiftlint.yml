@@ -1,0 +1,22 @@
+line_length: 150
+
+disabled_rules:
+  - force_cast
+  - force_try
+  - variable_name
+  - type_name
+  - file_length
+  - type_body_length
+  - cyclomatic_complexity
+  - function_body_length
+  - valid_docs
+
+custom_rules:
+  smiley_face:
+    name: "Smiley Face"
+    regex: '( :\))'
+    match_kinds:
+      - comment
+      - string
+    message: "A closing parenthesis smiley :) creates a half-hearted smile, and thus is not preferred. Use :]"
+severity: warning
