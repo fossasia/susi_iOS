@@ -568,7 +568,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UYb-A2-hlx">
-                                                    <rect key="frame" x="357" y="12" width="51" height="31"/>
+                                                    <rect key="frame" x="321" y="11" width="51" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <connections>
                                                         <action selector="settingChangedWithSender:" destination="udn-am-D9Z" eventType="valueChanged" id="glb-U2-zP6"/>
@@ -603,7 +603,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aPa-gn-EkW">
-                                                    <rect key="frame" x="357" y="10" width="51" height="31"/>
+                                                    <rect key="frame" x="321" y="11" width="51" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <connections>
                                                         <action selector="settingChangedWithSender:" destination="udn-am-D9Z" eventType="valueChanged" id="cIP-FK-lrP"/>
@@ -634,7 +634,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wqx-Sl-n0R">
-                                                    <rect key="frame" x="357" y="10" width="51" height="31"/>
+                                                    <rect key="frame" x="321" y="11" width="51" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <connections>
                                                         <action selector="settingChangedWithSender:" destination="udn-am-D9Z" eventType="valueChanged" id="BmE-xQ-soE"/>
@@ -669,7 +669,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OCZ-Am-iv8">
-                                                    <rect key="frame" x="357" y="12" width="51" height="31"/>
+                                                    <rect key="frame" x="321" y="11" width="51" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <connections>
                                                         <action selector="settingChangedWithSender:" destination="udn-am-D9Z" eventType="valueChanged" id="BzK-aF-Ueh"/>
@@ -700,7 +700,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sMg-EU-O7x">
-                                                    <rect key="frame" x="357" y="10" width="51" height="31"/>
+                                                    <rect key="frame" x="321" y="11" width="51" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <connections>
                                                         <action selector="settingChangedWithSender:" destination="udn-am-D9Z" eventType="valueChanged" id="ypI-Yr-EhJ"/>
