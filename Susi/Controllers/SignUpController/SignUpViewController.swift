@@ -23,7 +23,8 @@ class SignUpViewController: GeneralViewController {
         didSet {
             closeButton.imageView?.transform = CGAffineTransform(rotationAngle:-(.pi/2))
         }
-    }    
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         addTapGesture()
