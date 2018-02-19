@@ -46,7 +46,7 @@ class ChatUITests: XCTestCase {
         XCTAssertEqual(chatCells.count, 2)
     }
 
-    /*func testRSSAction() {
+    /* func testRSSAction() {
         let inputviewTextField = app.textFields[ControllerConstants.TestKeys.chatInputView]
         inputviewTextField.tap()
         inputviewTextField.typeText("amazon")
@@ -56,6 +56,6 @@ class ChatUITests: XCTestCase {
         
         let chatCells = app.collectionViews.cells.matching(identifier: ControllerConstants.TestKeys.chatCells)
         XCTAssertEqual(chatCells.count, 3)
-    }*/
+    } */
 
 }
