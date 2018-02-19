@@ -14,10 +14,12 @@ import RealmSwift
 import Speech
 import NVActivityIndicatorView
 import Realm
+import ReachabilitySwift
 
 class ChatViewController: UICollectionViewController {
-
     // MARK: - Variable Declarations
+
+    let reachability = Reachability()!
 
     lazy var susiSkillListingButton: IconButton = {
         let ib = IconButton()
@@ -27,6 +29,8 @@ class ChatViewController: UICollectionViewController {
         ib.backgroundColor = UIColor.defaultColor()
         return ib
     }()
+
+    let alert = UIAlertController(title: "Warning", message: "Please Connect to Internet", preferredStyle: .alert)
 
     // youtube player
     lazy var youtubePlayer: YouTubePlayerView = {
@@ -146,6 +150,21 @@ class ChatViewController: UICollectionViewController {
         loadMessages()
         addSkillListingButton()
         addScrollButton()
+
+        reachability.whenReachable = {reachability in
+            DispatchQueue.main.async {
+                self.inputTextField.isEnabled = true
+                self.alert.dismiss(animated: true, completion: nil)
+            }
+        }
+
+        reachability.whenUnreachable = {reachability in
+            DispatchQueue.main.async {
+                self.inputTextField.isEnabled = false
+                self.present(self.alert, animated: true, completion: nil)
+            }
+        }
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -157,10 +176,30 @@ class ChatViewController: UICollectionViewController {
         checkAndRunHotwordRecognition()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(internetConnection), name: ReachabilityChangedNotification, object: reachability)
+
+        do {
+            try reachability.startNotifier()
+        } catch {
+            print(error)
+        }
+    }
+
+    @objc func internetConnection(notification: NSNotification) {
+        guard let reachability = notification.object as? Reachability else { return }
+        if reachability.isReachable {
+            print("internet is available")
+        } else {
+            print("internet is not available")
+        }
+    }
+
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         stopHotwordRecognition()
         stopSpeechToText()
+        NotificationCenter.default.removeObserver(self)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -173,4 +212,5 @@ class ChatViewController: UICollectionViewController {
         print("memory issue")
         initSnowboy()
     }
+
 }

@@ -11,8 +11,13 @@ import Material
 import M13Checkbox
 import RealmSwift
 import Toast_Swift
+import ReachabilitySwift
 
 class LoginViewController: GeneralViewController {
+
+    let reachability = Reachability()!
+
+    let alert = UIAlertController(title: "Warning", message: "Please Connect to Internet", preferredStyle: .alert)
 
     @IBOutlet weak var susiLogo: UIImageView!
     @IBOutlet weak var emailTextField: TextField!
@@ -38,9 +43,64 @@ class LoginViewController: GeneralViewController {
         prepareSkipButton()
         prepareAddressField()
 
+        reachability.whenReachable = { reachability in
+
+            DispatchQueue.main.async {
+
+                self.loginButton.isEnabled = true
+                self.forgotPassword.isEnabled = true
+                self.skipButton.isEnabled = true
+                self.forgotPassword.isEnabled = true
+                self.skipButton.isEnabled = true
+                self.signUpButton.isEnabled = true
+                self.alert.dismiss(animated: true, completion: nil)
+
+            }
+
+        }
+
+        reachability.whenUnreachable = { reachability in
+
+            DispatchQueue.main.async {
+
+                self.loginButton.isEnabled = false
+                self.forgotPassword.isEnabled = false
+                self.skipButton.isEnabled = false
+                self.forgotPassword.isEnabled = false
+                self.skipButton.isEnabled = false
+                self.signUpButton.isEnabled = false
+                self.present(self.alert, animated: true, completion: nil)
+            }
+
+        }
+
         checkSession()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
+
+    override func viewDidAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(internetConnection), name: ReachabilityChangedNotification, object: reachability)
+        do {
+            try reachability.startNotifier()
+        } catch {
+            print(error)
+        }
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    @objc func internetConnection(notification: NSNotification) {
+        guard let reachability = notification.object as? Reachability else { return }
+        if reachability.isReachable {
+            print("internet connection is available")
+        } else {
+            print("internet connection is not available")
+        }
+    }
+
     override func localizeStrings() {
         emailTextField.placeholder = ControllerConstants.Login.emailAddress.localized()
         passwordTextField.placeholder = ControllerConstants.Login.password.localized()
@@ -49,7 +109,6 @@ class LoginViewController: GeneralViewController {
         forgotPassword.setTitle(ControllerConstants.Login.forgotPassword.localized(), for: .normal)
         skipButton.setTitle(ControllerConstants.Login.skip.localized(), for: .normal)
         signUpButton.setTitle(ControllerConstants.Login.signUpForSusi.localized(), for: .normal)
-        
-    }
 
+    }
 }

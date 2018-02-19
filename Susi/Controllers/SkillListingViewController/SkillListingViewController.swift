@@ -8,10 +8,15 @@
 
 import UIKit
 import Material
+import ReachabilitySwift
 
 class SkillListingViewController: UITableViewController {
 
     // for opening settings view controller
+
+    let reachability = Reachability()!
+    var dismissChecker: Bool?
+
     lazy var settingsButton: IconButton = {
         let ib = IconButton()
         ib.image = Icon.moreVertical
@@ -69,10 +74,31 @@ class SkillListingViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        setupView()
+        reachability.whenUnreachable = {reachability in
+            DispatchQueue.main.async {
+                let noConnection = noConnectionViewController()
+
+                let view = UINavigationController(rootViewController: noConnection)
+                self.present(view, animated: true, completion: {
+                    noConnection.skillListingInstance = self
+                })
+
+            }
+
+            self.dismissingTheController()
+            self.setupView()
+        }
+
     }
 
     // MARK: - Table view data source
+
+    func dismissingTheController() {
+        if dismissChecker ?? false {
+
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // return the number of rows
@@ -90,6 +116,26 @@ class SkillListingViewController: UITableViewController {
         return UITableViewCell()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(internetConnection), name: ReachabilityChangedNotification, object: reachability)
+
+        do {
+            try reachability.startNotifier()
+        } catch {
+            print(error)
+        }
+    }
+
+    @objc func internetConnection(notification: NSNotification) {
+        guard let reachability = notification.object as? Reachability else {return}
+        if reachability.isReachable {
+            print("internet is available")
+        } else {
+
+            print("internet is not available")
+        }
+    }
+
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if let group = groups?[indexPath.row], let skills = self.skills[group] {
             if skills.count > 0 {
@@ -105,5 +151,4 @@ class SkillListingViewController: UITableViewController {
             vc.skill = selectedSkill
         }
     }
-
 }
