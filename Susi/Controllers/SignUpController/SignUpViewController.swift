@@ -19,6 +19,11 @@ class SignUpViewController: GeneralViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var personalServerButton: M13Checkbox!
     @IBOutlet weak var addressTextField: TextField!
+    @IBOutlet weak var closeButton: UIButton! {
+        didSet {
+            closeButton.imageView?.transform = CGAffineTransform(rotationAngle:-(.pi/2))
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
