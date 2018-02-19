@@ -73,7 +73,7 @@ class SkillListingViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         self.setupView()
 
         reachability.whenUnreachable = {reachability in
@@ -86,9 +86,9 @@ class SkillListingViewController: UITableViewController {
                 })
 
             }
-            
+
             self.dismissingTheController()
-            
+
         }
 
     }
