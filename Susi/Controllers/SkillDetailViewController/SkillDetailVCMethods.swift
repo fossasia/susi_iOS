@@ -40,4 +40,42 @@ extension SkillDetailViewController {
         skillDescription.text = skill?.skillDescription
     }
 
+    func addRating() {
+
+        view.addSubview(positiveRating)
+        positiveRating.leftAnchor.constraint(equalTo: rating.leftAnchor).isActive = true
+        positiveRating.rightAnchor.constraint(equalTo: rating.rightAnchor).isActive = true
+        positiveRating.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        positiveRating.topAnchor.constraint(equalTo: rating.bottomAnchor).isActive = true
+
+        guard let positiveRatingCount = skill?.skill_rating["positive"] else { return }
+        positiveRating.text = "Positive: \(positiveRatingCount)"
+
+        view.addSubview(negativeRating)
+        negativeRating.leftAnchor.constraint(equalTo: positiveRating.leftAnchor).isActive = true
+        negativeRating.rightAnchor.constraint(equalTo: positiveRating.rightAnchor).isActive = true
+        negativeRating.heightAnchor.constraint(equalToConstant: 35)
+        negativeRating.topAnchor.constraint(equalTo: positiveRating.bottomAnchor).isActive = true
+
+        guard let negativeRatingCount = skill?.skill_rating["negative"] else { return }
+        negativeRating.text = "Negative: \(negativeRatingCount)"
+
+    }
+
+    func addContentType() {
+        view.addSubview(contentType)
+        contentType.leftAnchor.constraint(equalTo: negativeRating.leftAnchor).isActive = true
+        contentType.rightAnchor.constraint(equalTo: negativeRating.rightAnchor).isActive = true
+        contentType.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        contentType.topAnchor.constraint(equalTo: negativeRating.bottomAnchor, constant: 25).isActive = true
+
+        guard let content = skill?.dynamic_content else { return }
+        if content {
+            contentType.text = "Content Type: Dynamic"
+        } else {
+            contentType.text = "Content Type: Non-Dynamic"
+        }
+
+    }
+
 }
