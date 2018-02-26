@@ -65,15 +65,21 @@ extension SkillDetailViewController {
     func addContentType() {
         view.addSubview(contentType)
         contentType.leftAnchor.constraint(equalTo: negativeRating.leftAnchor).isActive = true
-        contentType.rightAnchor.constraint(equalTo: negativeRating.rightAnchor).isActive = true
+        contentType.widthAnchor.constraint(equalToConstant: 140).isActive = true
         contentType.heightAnchor.constraint(equalToConstant: 35).isActive = true
         contentType.topAnchor.constraint(equalTo: negativeRating.bottomAnchor, constant: 25).isActive = true
 
-        guard let content = skill?.dynamic_content else { return }
-        if content {
-            contentType.text = "Content Type: Dynamic"
+        view.addSubview(content)
+        content.leftAnchor.constraint(equalTo: contentType.rightAnchor, constant: -6).isActive = true
+        content.topAnchor.constraint(equalTo: contentType.topAnchor, constant: 8).isActive = true
+        content.widthAnchor.constraint(equalToConstant: 140).isActive = true
+        content.heightAnchor.constraint(equalToConstant: 22).isActive = true
+
+        guard let contents = skill?.dynamic_content else { return }
+        if contents {
+            content.text = "Dynamic"
         } else {
-            contentType.text = "Content Type: Non-Dynamic"
+            content.text = "Non-Dynamic"
         }
 
     }
