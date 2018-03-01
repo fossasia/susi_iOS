@@ -18,7 +18,7 @@ class Client: NSObject {
         session = URLSession.shared
     }
 
-    func makeRequest(_ url: String, _ httpMethod: HTTPMethod, _ headers: HTTPHeaders, parameters: [String:AnyObject], completion: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) {
+    func makeRequest(_ url: String, _ httpMethod: HTTPMethod, _ headers: HTTPHeaders, parameters: [String: AnyObject], completion: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) {
 
         func sendError(_ error: String) {
             debugPrint(error)
@@ -28,10 +28,12 @@ class Client: NSObject {
 
         Alamofire.request(url, method: httpMethod, parameters: parameters, encoding: URLEncoding(destination: .methodDependent), headers: headers).validate().responseJSON { (response: DataResponse<Any>) in
             print(response.request?.url ?? "Error: invalid URL")
+
             switch(response.result) {
 
             case .success(_):
                 if let data = response.result.value as? Dictionary<String, Any> {
+
                     completion(data as AnyObject?, nil)
                 } else {
                     completion(nil, NSError(domain: ResponseMessages.ServerError, code: 1))

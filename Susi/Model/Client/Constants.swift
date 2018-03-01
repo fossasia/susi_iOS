@@ -149,6 +149,8 @@ extension Client {
         static let description = "descriptions"
         static let model = "model"
         static let language = "language"
+        static let dynamicContent = "dynamic_content"
+        static let skillRating = "skill_rating"
     }
 
 }

@@ -14,7 +14,7 @@ extension Client {
 
     // MARK: - Auth Methods
 
-    func loginUser(_ params: [String : AnyObject], _ completion: @escaping(_ user: User?, _ results: [String:AnyObject]?, _ success: Bool, _ error: String) -> Void) {
+    func loginUser(_ params: [String: AnyObject], _ completion: @escaping(_ user: User?, _ results: [String: AnyObject]?, _ success: Bool, _ error: String) -> Void) {
 
         let url = getApiUrl(UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.ipAddress) as! String, Methods.Login)
 
@@ -22,7 +22,7 @@ extension Client {
 
             if let _ = message {
                 completion(nil, nil, false, ResponseMessages.InvalidParams)
-            } else if let results = results as? [String : AnyObject] {
+            } else if let results = results as? [String: AnyObject] {
 
                 let user = User(dictionary: results)
 
@@ -33,7 +33,7 @@ extension Client {
 
     }
 
-    func registerUser(_ params: [String : AnyObject], _ completion: @escaping(_ success: Bool, _ error: String) -> Void) {
+    func registerUser(_ params: [String: AnyObject], _ completion: @escaping(_ success: Bool, _ error: String) -> Void) {
 
         let url = getApiUrl(UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.ipAddress) as! String, Methods.Register)
 
@@ -56,7 +56,7 @@ extension Client {
 
     }
 
-    func recoverPassword(_ params: [String : AnyObject], _ completion: @escaping(_ success: Bool, _ error: String) -> Void) {
+    func recoverPassword(_ params: [String: AnyObject], _ completion: @escaping(_ success: Bool, _ error: String) -> Void) {
 
         let url = getApiUrl(UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.ipAddress) as! String, Methods.RecoverPassword)
 
@@ -78,7 +78,7 @@ extension Client {
 
     }
 
-    func getMessagesFromMemory(_ params: [String : AnyObject], _ completion: @escaping(_ messages: List<Message>?, _ success: Bool, _ error: String?) -> Void) {
+    func getMessagesFromMemory(_ params: [String: AnyObject], _ completion: @escaping(_ messages: List<Message>?, _ success: Bool, _ error: String?) -> Void) {
 
         let url = getApiUrl(UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.ipAddress) as! String, Methods.Memory)
 
@@ -88,7 +88,7 @@ extension Client {
                 completion(nil, false, error!.localizedDescription)
             } else if let results = results {
 
-                guard let cognitions = results[Client.ChatKeys.Cognitions] as? [[String : AnyObject]] else {
+                guard let cognitions = results[Client.ChatKeys.Cognitions] as? [[String: AnyObject]] else {
                     completion(nil, false, ResponseMessages.ServerError)
                     return
                 }
@@ -109,7 +109,7 @@ extension Client {
 
     }
 
-    func changeUserSettings(_ params: [String : AnyObject], _ completion: @escaping(_ success: Bool, _ error: String) -> Void) {
+    func changeUserSettings(_ params: [String: AnyObject], _ completion: @escaping(_ success: Bool, _ error: String) -> Void) {
 
         let url = getApiUrl(UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.ipAddress) as! String, Methods.UserSettings)
 
@@ -119,7 +119,7 @@ extension Client {
                 completion(false, ResponseMessages.ServerError)
             } else if let results = results {
 
-                guard let response = results as? [String : AnyObject] else {
+                guard let response = results as? [String: AnyObject] else {
                     completion(false, ResponseMessages.ServerError)
                     return
                 }
@@ -139,7 +139,7 @@ extension Client {
 
     }
 
-    func fetchUserSettings(_ params: [String : AnyObject], _ completion: @escaping(_ success: Bool, _ error: String) -> Void) {
+    func fetchUserSettings(_ params: [String: AnyObject], _ completion: @escaping(_ success: Bool, _ error: String) -> Void) {
 
         let url = getApiUrl(UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.ipAddress) as! String, Methods.ListUserSettings)
 
@@ -149,12 +149,12 @@ extension Client {
                 completion(false, ResponseMessages.ServerError)
             } else if let results = results {
 
-                guard let response = results as? [String : AnyObject] else {
+                guard let response = results as? [String: AnyObject] else {
                     completion(false, ResponseMessages.ServerError)
                     return
                 }
 
-                guard let settings = response[ControllerConstants.settings.lowercased()] as? [String:String] else {
+                guard let settings = response[ControllerConstants.settings.lowercased()] as? [String: String] else {
                     completion(false, ResponseMessages.ServerError)
                     return
                 }
@@ -176,7 +176,7 @@ extension Client {
 
     }
 
-    func resetPassword(_ params: [String : AnyObject], _ completion: @escaping(_ success: Bool, _ error: String) -> Void) {
+    func resetPassword(_ params: [String: AnyObject], _ completion: @escaping(_ success: Bool, _ error: String) -> Void) {
 
         let url = getApiUrl(UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.ipAddress) as! String, Methods.ChangePassword)
 
@@ -186,7 +186,7 @@ extension Client {
                 completion(false, ResponseMessages.ServerError)
             } else if let results = results {
 
-                guard let response = results as? [String : AnyObject] else {
+                guard let response = results as? [String: AnyObject] else {
                     completion(false, ResponseMessages.PasswordInvalid)
                     return
                 }
@@ -194,7 +194,7 @@ extension Client {
                 if let accepted = response[ControllerConstants.accepted.lowercased()] as? Bool,
                     let message = response[Client.UserKeys.Message] as? String {
                     if accepted {
-                            completion(true, message)
+                        completion(true, message)
                     } else {
                         completion(false, message)
                     }
@@ -210,7 +210,7 @@ extension Client {
 
     // MARK: - Chat Methods
 
-    func queryResponse(_ params: [String : AnyObject], _ completion: @escaping(_ messages: List<Message>?, _ success: Bool, _ error: String?) -> Void) {
+    func queryResponse(_ params: [String: AnyObject], _ completion: @escaping(_ messages: List<Message>?, _ success: Bool, _ error: String?) -> Void) {
 
         let url = getApiUrl(UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.ipAddress) as! String, Methods.Chat)
 
@@ -220,7 +220,7 @@ extension Client {
                 completion(nil, false, ResponseMessages.ServerError)
             } else if let results = results {
 
-                guard let response = results as? [String : AnyObject] else {
+                guard let response = results as? [String: AnyObject] else {
                     completion(nil, false, ResponseMessages.InvalidParams)
                     return
                 }
@@ -233,7 +233,7 @@ extension Client {
 
     }
 
-    func sendFeedback(_ params: [String : AnyObject], _ completion: @escaping(_ success: Bool, _ error: String?) -> Void) {
+    func sendFeedback(_ params: [String: AnyObject], _ completion: @escaping(_ success: Bool, _ error: String?) -> Void) {
 
         let url = getApiUrl(UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.ipAddress) as! String, Methods.SendFeedback)
 
@@ -243,7 +243,7 @@ extension Client {
                 completion(false, ResponseMessages.ServerError)
             } else if let results = results {
 
-                guard let response = results as? [String : AnyObject] else {
+                guard let response = results as? [String: AnyObject] else {
                     completion(false, ResponseMessages.InvalidParams)
                     return
                 }
@@ -264,7 +264,7 @@ extension Client {
 
     // MARK: - Web Search by DuckDuckGo
 
-    func websearch(_ params: [String : AnyObject], _ completion: @escaping(_ response: List<WebsearchAction>?, _ success: Bool, _ error: String?) -> Void) {
+    func websearch(_ params: [String: AnyObject], _ completion: @escaping(_ response: List<WebsearchAction>?, _ success: Bool, _ error: String?) -> Void) {
 
         let url = getApiUrl(APIURLs.DuckDuckGo)
 
@@ -274,12 +274,12 @@ extension Client {
                 completion(nil, false, ResponseMessages.ServerError)
             } else if let results = results {
 
-                guard let response = results as? [String : AnyObject] else {
+                guard let response = results as? [String: AnyObject] else {
                     completion(nil, false, ResponseMessages.InvalidParams)
                     return
                 }
 
-                if let result = response[Client.WebsearchKeys.RelatedTopics] as? [[String : AnyObject]] {
+                if let result = response[Client.WebsearchKeys.RelatedTopics] as? [[String: AnyObject]] {
                     let results = WebsearchAction.getSearchResults(result)
                     completion(results, true, nil)
                 } else {
@@ -309,14 +309,14 @@ extension Client {
                 completion(nil, false, ResponseMessages.ServerError)
             } else if let results = results {
 
-                guard let response = results as? [String : AnyObject] else {
+                guard let response = results as? [String: AnyObject] else {
                     completion(nil, false, ResponseMessages.InvalidParams)
                     return
                 }
 
-                if let itemsObject = response[Client.YoutubeResponseKeys.Items] as? [[String : AnyObject]] {
+                if let itemsObject = response[Client.YoutubeResponseKeys.Items] as? [[String: AnyObject]] {
                     if itemsObject.count > 0 {
-                        if let items = itemsObject[0][Client.YoutubeResponseKeys.ID] as? [String : AnyObject] {
+                        if let items = itemsObject[0][Client.YoutubeResponseKeys.ID] as? [String: AnyObject] {
                             let videoID = items[Client.YoutubeResponseKeys.VideoID] as? String
                             completion(videoID, true, nil)
                         }
@@ -332,7 +332,7 @@ extension Client {
 
     // MARK: - Train hotword using Snowboy API
 
-    func trainHotwordUsingSnowboy(_ params: [String : AnyObject], _ completion: @escaping(_ success: Bool, _ error: String?) -> Void) {
+    func trainHotwordUsingSnowboy(_ params: [String: AnyObject], _ completion: @escaping(_ success: Bool, _ error: String?) -> Void) {
 
         let urlString = getApiUrl(APIURLs.SnowboyTrain)
 
@@ -383,7 +383,7 @@ extension Client {
                 completion(nil, false, ResponseMessages.ServerError)
             } else if let results = results {
 
-                guard let response = results as? [String : AnyObject] else {
+                guard let response = results as? [String: AnyObject] else {
                     completion(nil, false, ResponseMessages.InvalidParams)
                     return
                 }
@@ -402,21 +402,20 @@ extension Client {
 
     }
 
-    func getSkillData(_ params: [String : AnyObject], _ completion: @escaping(_ skillData: [Skill]?, _ success: Bool, _ error: String?) -> Void) {
+    func getSkillData(_ params: [String: AnyObject], _ completion: @escaping(_ skillData: [Skill]?, _ success: Bool, _ error: String?) -> Void) {
         let url = getApiUrl(UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.ipAddress) as! String, Methods.GetSkillList)
-
         _ = makeRequest(url, .get, [:], parameters: params, completion: { (results, message) in
 
             if let _ = message {
                 completion(nil, false, ResponseMessages.ServerError)
             } else if let results = results {
 
-                guard let response = results as? [String : AnyObject] else {
+                guard let response = results as? [String: AnyObject] else {
                     completion(nil, false, ResponseMessages.InvalidParams)
                     return
                 }
 
-                if let skills = response[Client.SkillListing.skills] as? [String : AnyObject],
+                if let skills = response[Client.SkillListing.skills] as? [String: AnyObject],
                     let model = response[Client.SkillListing.model] as? String,
                     let group = response[Client.SkillListing.group] as? String,
                     let language = response[Client.SkillListing.language] as? String,
