@@ -21,7 +21,7 @@ class SignUpViewController: GeneralViewController {
     @IBOutlet weak var addressTextField: TextField!
     @IBOutlet weak var closeButton: UIButton! {
         didSet {
-            closeButton.imageView?.transform = CGAffineTransform(rotationAngle:-(.pi/2))
+            closeButton.imageView?.transform = CGAffineTransform(rotationAngle: -(.pi/2))
         }
     }
 

@@ -76,7 +76,7 @@ class AuthenticationUITests: XCTestCase {
         button.tap()
 =======
         app.navigationBars["Susi.SkillListingView"].buttons["ic more vert white"].tap()
->>>>>>> fecc931... Revamping for Xcode 9, Swift 4 migration, Pods update (#268)
+>>>>>>> master
 
         let tablesQuery = app.tables
         tablesQuery.sliders["0%"].swipeUp()

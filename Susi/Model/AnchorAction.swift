@@ -10,10 +10,10 @@ import Foundation
 import RealmSwift
 
 class AnchorAction: Object {
-    dynamic var link: String = ""
-    dynamic var text: String = ""
+    @objc dynamic var link: String = ""
+    @objc dynamic var text: String = ""
 
-    convenience init(action: [String : AnyObject]) {
+    convenience init(action: [String: AnyObject]) {
         self.init()
         link = action[Client.ChatKeys.Link] as? String ?? ""
         text = action[Client.ChatKeys.Text] as? String ?? ""

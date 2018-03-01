@@ -7,12 +7,12 @@
 //
 
 import UIKit
-import ReachabilitySwift
+import Reachability
 
 extension noConnectionViewController {
 
     override func viewDidAppear(_ animated: Bool) {
-        NotificationCenter.default.addObserver(self, selector: #selector(internetConnection), name: ReachabilityChangedNotification, object: reachability)
+        NotificationCenter.default.addObserver(self, selector: #selector(internetConnection), name: Notification.Name.reachabilityChanged, object: reachability)
         do {
             try reachability.startNotifier()
         } catch {
@@ -27,7 +27,7 @@ extension noConnectionViewController {
 
     @objc func internetConnection(notification: NSNotification) {
         guard let reachability = notification.object as? Reachability else {return}
-        if reachability.isReachable {
+        if reachability.connection != .none {
             print("internet connection is available")
             connectionStatus = true
         } else {

@@ -11,7 +11,7 @@ import Material
 import M13Checkbox
 import RealmSwift
 import Toast_Swift
-import ReachabilitySwift
+import Reachability
 
 class LoginViewController: GeneralViewController {
 
@@ -79,7 +79,7 @@ class LoginViewController: GeneralViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        NotificationCenter.default.addObserver(self, selector: #selector(internetConnection), name: ReachabilityChangedNotification, object: reachability)
+        NotificationCenter.default.addObserver(self, selector: #selector(internetConnection), name: Notification.Name.reachabilityChanged, object: reachability)
         do {
             try reachability.startNotifier()
         } catch {
@@ -94,7 +94,7 @@ class LoginViewController: GeneralViewController {
 
     @objc func internetConnection(notification: NSNotification) {
         guard let reachability = notification.object as? Reachability else { return }
-        if reachability.isReachable {
+        if reachability.connection != .none {
             print("internet connection is available")
         } else {
             print("internet connection is not available")

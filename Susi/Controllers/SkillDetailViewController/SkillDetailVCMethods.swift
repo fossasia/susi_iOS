@@ -28,7 +28,7 @@ extension SkillDetailViewController {
         tryItButton.addTarget(self, action: #selector(trySkillFromExample), for: .touchUpInside)
     }
 
-    func trySkillFromExample() {
+    @objc func trySkillFromExample() {
         let query = selectedExample ?? self.skill?.examples.first
         navigationController?.dismiss(animated: true, completion: {
             self.chatViewController?.inputTextField.text = query

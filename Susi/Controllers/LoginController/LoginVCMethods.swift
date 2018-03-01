@@ -71,7 +71,7 @@ extension LoginViewController {
     }
 
     // Call Login API
-    func performLogin() {
+    @objc func performLogin() {
         if isValid() {
             toggleEditing()
 
@@ -79,7 +79,7 @@ extension LoginViewController {
                 Client.UserKeys.Login: emailTextField.text!.lowercased(),
                 Client.UserKeys.Password: passwordTextField.text!,
                 Client.ChatKeys.ResponseType: Client.ChatKeys.AccessToken
-            ] as [String : Any]
+            ] as [String: Any]
 
             if personalServerButton.checkState == .unchecked {
                 UserDefaults.standard.set(Client.APIURLs.SusiAPI, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
@@ -93,7 +93,7 @@ extension LoginViewController {
             }
 
             indicatorView.startAnimating()
-            Client.sharedInstance.loginUser(params as [String : AnyObject]) { (user, results, success, message) in
+            Client.sharedInstance.loginUser(params as [String: AnyObject]) { (user, results, success, message) in
                 DispatchQueue.main.async {
                     self.toggleEditing()
                     self.resetDB()
@@ -125,7 +125,7 @@ extension LoginViewController {
             Client.UserKeys.AccessToken: accessToken
         ]
 
-        Client.sharedInstance.fetchUserSettings(params as [String : AnyObject]) { (success, message) in
+        Client.sharedInstance.fetchUserSettings(params as [String: AnyObject]) { (success, message) in
             DispatchQueue.global().async {
                 print("User settings fetch status: \(success) : \(message)")
             }
@@ -144,7 +144,7 @@ extension LoginViewController {
         return false
     }
 
-    func textFieldDidChange(textField: UITextField) {
+    @objc func textFieldDidChange(textField: UITextField) {
         if textField == emailTextField, let emailID = emailTextField.text {
             if !emailID.isValidEmail() {
                 emailTextField.dividerActiveColor = .red
@@ -152,7 +152,7 @@ extension LoginViewController {
                 emailTextField.dividerActiveColor = .green
             }
         } else if textField == passwordTextField, let password = passwordTextField.text {
-            if password.isEmpty || password.characters.count < 5 {
+            if password.isEmpty || password.count < 5 {
                 passwordTextField.dividerActiveColor = .red
             } else {
                 passwordTextField.dividerActiveColor = .green
@@ -161,7 +161,7 @@ extension LoginViewController {
     }
 
     // force dismiss keyboard if open.
-    func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         view.endEditing(true)
     }
 
@@ -217,7 +217,7 @@ extension LoginViewController {
     // Check existing session
     func checkSession() {
         if let userDefaultValue = UserDefaults.standard.value(forKey: ControllerConstants.UserDefaultsKeys.user) {
-            if let userData = userDefaultValue as? [String : AnyObject] {
+            if let userData = userDefaultValue as? [String: AnyObject] {
                 let user = User(dictionary: userData)
                 saveUserGlobally(user: user)
 
@@ -233,7 +233,7 @@ extension LoginViewController {
         }
     }
 
-    func enterAnonymousMode() {
+    @objc func enterAnonymousMode() {
         resetDB()
         deleteVoiceModel()
         resetSettings()

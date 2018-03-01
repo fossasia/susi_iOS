@@ -10,7 +10,7 @@ import UIKit
 
 extension ChatViewController: UITextFieldDelegate {
 
-    func textFieldDidChange(_ textField: UITextField) {
+    @objc func textFieldDidChange(_ textField: UITextField) {
         if let text = inputTextField.text, text.isEmpty {
             sendButton.tag = 0
             sendButton.setImage(ControllerConstants.Images.microphone, for: .normal)

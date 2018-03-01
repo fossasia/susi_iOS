@@ -70,7 +70,7 @@ extension SignUpViewController {
     }
 
     // Sign Up User
-    func performSignUp() {
+    @objc func performSignUp() {
         if isValid() {
 
             toggleEditing()
@@ -92,7 +92,7 @@ extension SignUpViewController {
                 }
             }
 
-            Client.sharedInstance.registerUser(params as [String : AnyObject]) { (success, message) in
+            Client.sharedInstance.registerUser(params as [String: AnyObject]) { (success, message) in
                 DispatchQueue.main.async {
                     self.activityIndicator.stopAnimating()
                     self.toggleEditing()
@@ -121,7 +121,7 @@ extension SignUpViewController {
         return false
     }
 
-    func textFieldDidChange(textField: UITextField) {
+    @objc func textFieldDidChange(textField: UITextField) {
         if textField == emailTextField, let emailID = emailTextField.text {
             if !emailID.isValidEmail() {
                 emailTextField.dividerActiveColor = .red
@@ -129,7 +129,7 @@ extension SignUpViewController {
                 emailTextField.dividerActiveColor = .green
             }
         } else if textField == passwordTextField, let password = passwordTextField.text {
-            if password.isEmpty || password.characters.count < 5 {
+            if password.isEmpty || password.count < 5 {
                 passwordTextField.dividerActiveColor = .red
             } else {
                 passwordTextField.dividerActiveColor = .green
