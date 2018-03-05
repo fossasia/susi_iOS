@@ -19,7 +19,7 @@ class SkillDetailViewController: GeneralViewController {
     let rating: UILabel = {
         let label = UILabel()
         label.text = "Rating"
-        label.font = UIFont.systemFont(ofSize: 20, weight: UIFontWeightSemibold)
+        label.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.semibold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -41,7 +41,7 @@ class SkillDetailViewController: GeneralViewController {
     let contentType: UILabel = {
         let label = UILabel()
         label.text = "Content Type:"
-        label.font = UIFont.systemFont(ofSize: 20, weight: UIFontWeightSemibold)
+        label.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.semibold)
 
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

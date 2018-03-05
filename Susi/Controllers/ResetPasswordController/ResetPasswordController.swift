@@ -48,7 +48,7 @@ class ResetPasswordViewController: UITableViewController {
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    func localizeStrings() {
+    @objc func localizeStrings() {
         currentPasswordFLabel.text = ControllerConstants.currentPassword.localized()
         newPasswordFLabel.text = ControllerConstants.newPassword.localized()
         confirmPasswordFLabel.text = ControllerConstants.SignUp.confirmPassword.localized()

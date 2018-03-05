@@ -8,7 +8,7 @@
 
 import UIKit
 import Material
-import ReachabilitySwift
+import Reachability
 
 class SkillListingViewController: UITableViewController {
 
@@ -21,7 +21,7 @@ class SkillListingViewController: UITableViewController {
         let ib = IconButton()
         ib.image = Icon.moreVertical
         ib.tintColor = .white
-        ib.cornerRadius = 18.0
+        ib.layer.cornerRadius = 18.0
         ib.addTarget(self, action: #selector(presentSettingsController), for: .touchUpInside)
         return ib
     }()
@@ -119,7 +119,7 @@ class SkillListingViewController: UITableViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        NotificationCenter.default.addObserver(self, selector: #selector(internetConnection), name: ReachabilityChangedNotification, object: reachability)
+        NotificationCenter.default.addObserver(self, selector: #selector(internetConnection), name: Notification.Name.reachabilityChanged, object: reachability)
 
         do {
             try reachability.startNotifier()
@@ -130,7 +130,7 @@ class SkillListingViewController: UITableViewController {
 
     @objc func internetConnection(notification: NSNotification) {
         guard let reachability = notification.object as? Reachability else {return}
-        if reachability.isReachable {
+        if reachability.connection != .none {
             print("internet is available")
         } else {
 

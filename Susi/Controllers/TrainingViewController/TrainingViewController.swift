@@ -41,7 +41,7 @@ class TrainingViewController: GeneralViewController {
     @IBOutlet weak var recordPhI3: UIImageView!
     @IBOutlet weak var finishLaterButton: FlatButton!
     @IBOutlet weak var downloadIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var downloadLabel: UILabel!
+    @objc @IBOutlet weak var downloadLabel: UILabel!
 
     var count: Int = 0 {
         didSet {

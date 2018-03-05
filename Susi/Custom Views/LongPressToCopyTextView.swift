@@ -32,7 +32,7 @@ class LongPressToCopyTextView: UITextView {
 
     // MARK: - UIGestureRecognizer
 
-    func handleLongPressGesture(recognizer: UIGestureRecognizer) {
+    @objc func handleLongPressGesture(recognizer: UIGestureRecognizer) {
         guard recognizer.state == .recognized else { return }
 
         if let recognizerView = recognizer.view,

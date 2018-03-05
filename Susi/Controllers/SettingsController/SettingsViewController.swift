@@ -53,7 +53,7 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var shareSusiSubtitle: UILabel!
     @IBOutlet weak var resetPassTitle: UILabel!
     @IBOutlet weak var logoutTitle: UILabel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         assignDefaults()
@@ -132,7 +132,7 @@ class SettingsViewController: UITableViewController {
             return super.tableView(tableView, heightForRowAt: indexPath)
         }
     }
-    func localizeStrings() {
+    @objc func localizeStrings() {
         enterToSendTitle.text = ControllerConstants.Settings.enterToSend.localized()
         enterToSendSubtitle.text = ControllerConstants.Settings.enterToSendSubtitle.localized()
         micInputTitle.text = ControllerConstants.Settings.micInput.localized()

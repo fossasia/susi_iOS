@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import ReachabilitySwift
+import Reachability
 
 class noConnectionViewController: UIViewController {
     var skillListingInstance: SkillListingViewController?
@@ -74,6 +74,8 @@ class noConnectionViewController: UIViewController {
 
         var timer = Timer()
         timer = Timer.scheduledTimer(timeInterval: 0.4, target: self, selector: #selector(enableDisable), userInfo: nil, repeats: true)
+        // Written this line just to remove warning - It should be removed after implementation of timer.
+        _ = timer.timeInterval
 
         //        checkingForConnection()
 

@@ -21,7 +21,7 @@ class GeneralViewController: UIViewController {
         localizeStrings()
     }
     /// Localize all avaible strings in VC
-    func localizeStrings() {
+    @objc func localizeStrings() {
         print("VC localization")
     }
 }

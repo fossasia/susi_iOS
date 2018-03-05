@@ -10,19 +10,19 @@ import Foundation
 import RealmSwift
 
 class RSSFeed: Object {
-    dynamic var title: String = "No title"
-    dynamic var desc: String = "No description"
-    dynamic var link: String = "http://google.com"
-    dynamic var webData: WebsearchAction?
+    @objc dynamic var title: String = "No title"
+    @objc dynamic var desc: String = "No description"
+    @objc dynamic var link: String = "http://google.com"
+    @objc dynamic var webData: WebsearchAction?
 
-    convenience init(data: [String : AnyObject], title: String, description: String, link: String) {
+    convenience init(data: [String: AnyObject], title: String, description: String, link: String) {
         self.init()
         self.title = (data[title] as? String ?? "No title").trimmed
         self.desc = (data[description] as? String ?? "No description").trimmed
         self.link = (data[link] as? String ?? "http://google.com")
     }
 
-    static func getRSSFeeds(data: [[String : AnyObject]], title: String, description: String, link: String, count: Int) -> List<RSSFeed> {
+    static func getRSSFeeds(data: [[String: AnyObject]], title: String, description: String, link: String, count: Int) -> List<RSSFeed> {
         let feeds = List<RSSFeed>()
         for index in (0..<count) {
             let feed = RSSFeed(data: data[index], title: title, description: description, link: link)
@@ -34,10 +34,10 @@ class RSSFeed: Object {
 }
 
 class RSSAction: Object {
-    dynamic var count = 0
+    @objc dynamic var count = 0
     var rssFeed = List<RSSFeed>()
 
-    convenience init(data: [[String : AnyObject]], actionObject: [String : AnyObject]) {
+    convenience init(data: [[String: AnyObject]], actionObject: [String: AnyObject]) {
         self.init()
         count = actionObject[Client.ChatKeys.Count] as? Int ?? 0
 

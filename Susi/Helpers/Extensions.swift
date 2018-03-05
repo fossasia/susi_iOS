@@ -22,7 +22,7 @@ extension UIColor {
             cString.remove(at: cString.startIndex)
         }
 
-        if cString.characters.count != 6 {
+        if cString.count != 6 {
             return UIColor.gray
         }
 
@@ -43,7 +43,7 @@ extension String {
 
     func isValidEmail() -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,20}"
-        let emailTest  = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        let emailTest  = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: self)
     }
 
@@ -80,7 +80,7 @@ extension String {
 
             let urlRegEx = head+"+(.)+"+tail
 
-            let urlTest = NSPredicate(format:"SELF MATCHES %@", urlRegEx)
+            let urlTest = NSPredicate(format: "SELF MATCHES %@", urlRegEx)
             isValid = urlTest.evaluate(with: self.trimmed)
         }
         return isValid
@@ -89,7 +89,7 @@ extension String {
     func extractFirstURL() -> String {
         if self.containsURL() {
             let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
-            let matches = detector.matches(in: self, options: [], range: NSMakeRange(0, self.characters.count))
+            let matches = detector.matches(in: self, options: [], range: NSMakeRange(0, self.count))
 
             for match in matches {
                 let url = (self as NSString).substring(with: match.range)
@@ -101,7 +101,7 @@ extension String {
 
     var html2AttributedString: NSAttributedString? {
         do {
-            return try NSAttributedString(data: Data(utf8), options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: String.Encoding.utf8.rawValue], documentAttributes: nil)
+            return try NSAttributedString(data: Data(utf8), options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html, NSAttributedString.DocumentReadingOptionKey.characterEncoding: String.Encoding.utf8.rawValue], documentAttributes: nil)
         } catch {
             print("error:", error)
             return nil
@@ -116,15 +116,15 @@ extension String {
     var isTextSufficientComplexity: Bool {
 
         let capitalLetterRegEx  = ".*[A-Z]+.*"
-        var texttest = NSPredicate(format:"SELF MATCHES %@", capitalLetterRegEx)
+        var texttest = NSPredicate(format: "SELF MATCHES %@", capitalLetterRegEx)
         let capitalResult = texttest.evaluate(with: self)
 
         let numberRegEx  = ".*[0-9]+.*"
-        let texttest1 = NSPredicate(format:"SELF MATCHES %@", numberRegEx)
+        let texttest1 = NSPredicate(format: "SELF MATCHES %@", numberRegEx)
         let numberResult = texttest1.evaluate(with: self)
 
         let lowercaseLetterRegEx  = ".*[a-z]+.*"
-        texttest = NSPredicate(format:"SELF MATCHES %@", lowercaseLetterRegEx)
+        texttest = NSPredicate(format: "SELF MATCHES %@", lowercaseLetterRegEx)
         let lowercaseResult = texttest.evaluate(with: self)
 
         return capitalResult && numberResult && lowercaseResult
@@ -194,8 +194,8 @@ extension NSMutableAttributedString {
 
         let foundRange = self.mutableString.range(of: textToFind)
         if foundRange.location != NSNotFound {
-            self.addAttribute(NSLinkAttributeName, value: linkURL, range: foundRange)
-            self.addAttributes([NSFontAttributeName: UIFont.systemFont(ofSize: 16.0)], range: self.mutableString.range(of: text))
+            self.addAttribute(NSAttributedStringKey.link, value: linkURL, range: foundRange)
+            self.addAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16.0)], range: self.mutableString.range(of: text))
             return true
         }
         return false
