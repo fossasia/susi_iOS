@@ -132,6 +132,7 @@ class SettingsViewController: UITableViewController {
             return super.tableView(tableView, heightForRowAt: indexPath)
         }
     }
+
     @objc func localizeStrings() {
         enterToSendTitle.text = ControllerConstants.Settings.enterToSend.localized()
         enterToSendSubtitle.text = ControllerConstants.Settings.enterToSendSubtitle.localized()

@@ -20,7 +20,7 @@ class GeneralViewController: UIViewController {
                                                object: nil)
         localizeStrings()
     }
-    /// Localize all avaible strings in VC
+
     @objc func localizeStrings() {
         print("VC localization")
     }
