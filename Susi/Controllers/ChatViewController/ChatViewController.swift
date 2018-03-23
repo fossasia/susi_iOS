@@ -82,7 +82,7 @@ class ChatViewController: UICollectionViewController {
     }()
 
     // contains all the message
-    var messages = List<Message>()
+    var messages = [Message]()
 
     // realm instance
     let realm = try! Realm()

@@ -348,12 +348,7 @@ extension ChatViewController {
 
     // loads all messages from database
     func loadMessages() {
-        let results: Results<Message> = realm.objects(Message.self)
-        let convertedMessages = results.reduce(List<Message>()) { (messageList, element) -> List<Message> in
-            messageList.append(element)
-            return messageList
-        }
-        messages = convertedMessages
+        messages = Array(realm.objects(Message.self))
         collectionView?.reloadData()
         scrollToLast()
     }
