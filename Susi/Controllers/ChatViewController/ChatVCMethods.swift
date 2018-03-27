@@ -174,11 +174,7 @@ extension ChatViewController {
 
     // handles the send action on the button
     func handleSend() {
-<<<<<<< HEAD
-        if let text = inputTextField.text, text.characters.count > 0 && !text.isEmpty {
-=======
         if let text = inputTextField.text, text.count > 0 && !text.isEmpty {
->>>>>>> fecc931... Revamping for Xcode 9, Swift 4 migration, Pods update (#268)
             var params: [String: AnyObject] = [
                 Client.WebsearchKeys.Query: text as AnyObject,
                 Client.ChatKeys.TimeZoneOffset: ControllerConstants.timeZone as AnyObject,

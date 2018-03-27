@@ -69,14 +69,7 @@ class AuthenticationUITests: XCTestCase {
         testLoginSuccess()
 
         app.buttons[ControllerConstants.TestKeys.susiSymbol].tap()
-<<<<<<< HEAD
-
-        let button = app.navigationBars["Susi.SkillListingView"].children(matching: .other).element
-                    .children(matching: .button).element(boundBy: 1)
-        button.tap()
-=======
         app.navigationBars["Susi.SkillListingView"].buttons["ic more vert white"].tap()
->>>>>>> fecc931... Revamping for Xcode 9, Swift 4 migration, Pods update (#268)
 
         let tablesQuery = app.tables
         tablesQuery.sliders["0%"].swipeUp()
