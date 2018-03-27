@@ -134,7 +134,12 @@ extension ChatViewController {
         view.addConstraintsWithFormat(format: "H:|[v0]|", views: messageInputContainerView)
         view.addConstraintsWithFormat(format: "V:[v0(48)]", views: messageInputContainerView)
 
-        bottomConstraint = NSLayoutConstraint(item: messageInputContainerView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
+        if #available(iOS 11.0, *) {
+            bottomConstraint = NSLayoutConstraint(item: messageInputContainerView, attribute: .bottom, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, attribute: .bottom, multiplier: 1, constant: 0)
+        } else {
+            // Fallback on earlier versions
+            bottomConstraint = NSLayoutConstraint(item: messageInputContainerView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
+        }
         view.addConstraint(bottomConstraint!)
 
         // chat container view configuration
