@@ -21,20 +21,20 @@ enum ActionType: String {
 }
 
 class Message: Object {
-    dynamic var queryDate = NSDate()
-    dynamic var answerDate = NSDate()
-    dynamic var message: String = ""
-    dynamic var isSent = false
-    dynamic var isMarked = false
-    dynamic var fromUser = true
-    dynamic var actionType = ActionType.answer.rawValue
-    dynamic var answerData: AnswerAction?
-    dynamic var rssData: RSSAction?
-    dynamic var mapData: MapAction?
-    dynamic var anchorData: AnchorAction?
-    dynamic var tableData: TableAction?
+    @objc dynamic var queryDate = NSDate()
+    @objc dynamic var answerDate = NSDate()
+    @objc dynamic var message: String = ""
+    @objc dynamic var isSent = false
+    @objc dynamic var isMarked = false
+    @objc dynamic var fromUser = true
+    @objc dynamic var actionType = ActionType.answer.rawValue
+    @objc dynamic var answerData: AnswerAction?
+    @objc dynamic var rssData: RSSAction?
+    @objc dynamic var mapData: MapAction?
+    @objc dynamic var anchorData: AnchorAction?
+    @objc dynamic var tableData: TableAction?
     var websearchData = List<WebsearchAction>()
-    dynamic var skill: String = ""
+    @objc dynamic var skill: String = ""
 
     convenience init(message: String) {
         self.init()
@@ -42,16 +42,16 @@ class Message: Object {
         fromUser = true
     }
 
-    static func getAllAction(data: [String : AnyObject]) -> List<Message> {
+    static func getAllAction(data: [String: AnyObject]) -> List<Message> {
         let messages = List<Message>()
         var skill: String = ""
 
-        if let answers = data[Client.ChatKeys.Answers] as? [[String : AnyObject]] {
+        if let answers = data[Client.ChatKeys.Answers] as? [[String: AnyObject]] {
             if let skills = answers[0][Client.ChatKeys.Skills] as? [String], skills.count > 0 {
                 skill = skills.first!
             }
 
-            if let actions = answers[0][Client.ChatKeys.Actions] as? [[String : AnyObject]] {
+            if let actions = answers[0][Client.ChatKeys.Actions] as? [[String: AnyObject]] {
                 for action in actions {
 
                     let message = Message()
@@ -68,7 +68,7 @@ class Message: Object {
                     }
 
                     if let type = action[Client.ChatKeys.ResponseType] as? String,
-                        let data = answers[0][Client.ChatKeys.Data] as? [[String : AnyObject]] {
+                        let data = answers[0][Client.ChatKeys.Data] as? [[String: AnyObject]] {
                         if type == ActionType.answer.rawValue {
                             message.message = action[Client.ChatKeys.Expression] as? String ?? ""
                             message.actionType = ActionType.answer.rawValue
@@ -99,7 +99,7 @@ class Message: Object {
         return messages
     }
 
-    static func getMessagesFromMemory(_ cognitions: [[String : AnyObject]]) -> List<Message> {
+    static func getMessagesFromMemory(_ cognitions: [[String: AnyObject]]) -> List<Message> {
         let messages = List<Message>()
 
         for cognition in cognitions {

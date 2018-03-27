@@ -27,7 +27,7 @@ extension SkillListingViewController {
     }
 
     // presents the settings controller
-    func presentSettingsController() {
+    @objc func presentSettingsController() {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = mainStoryboard.instantiateViewController(withIdentifier: "SettingsController")
         let nvc = AppNavigationController(rootViewController: vc)
@@ -35,7 +35,7 @@ extension SkillListingViewController {
     }
 
     // dismiss controller
-    func dismissController() {
+    @objc func dismissController() {
         navigationController?.dismiss(animated: true, completion: nil)
     }
 

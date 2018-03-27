@@ -33,7 +33,7 @@ extension ForgotPasswordViewController {
         resetButton.addTarget(self, action: #selector(resetPassword), for: .touchUpInside)
     }
 
-    func textFieldDidChange(textField: UITextField) {
+    @objc func textFieldDidChange(textField: UITextField) {
         if textField == emailTextField, let emailID = emailTextField.text {
             if !emailID.isValidEmail() {
                 emailTextField.dividerActiveColor = .red
@@ -63,7 +63,7 @@ extension ForgotPasswordViewController {
     }
 
     // Call Reset Password API
-    func resetPassword() {
+    @objc func resetPassword() {
 
         if let emailID = emailTextField.text, !emailID.isEmpty && emailID.isValidEmail() {
 
@@ -85,7 +85,7 @@ extension ForgotPasswordViewController {
             self.toggleEditing()
             self.activityIndicator.startAnimating()
 
-            Client.sharedInstance.recoverPassword(params as [String : AnyObject]) { (_, message) in
+            Client.sharedInstance.recoverPassword(params as [String: AnyObject]) { (_, message) in
                 DispatchQueue.main.async {
                     self.toggleEditing()
                     self.activityIndicator.stopAnimating()

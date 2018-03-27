@@ -26,7 +26,7 @@ extension ChatViewController {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
 
-    func handleKeyboardNotification(notification: NSNotification) {
+    @objc func handleKeyboardNotification(notification: NSNotification) {
 
         if let userInfo = notification.userInfo {
 
@@ -55,7 +55,7 @@ extension ChatViewController {
     // MARK: - Configure Views
 
     // Resign responders
-    func resignResponders() {
+    @objc func resignResponders() {
         view.endEditing(true)
     }
 
@@ -174,8 +174,8 @@ extension ChatViewController {
 
     // handles the send action on the button
     func handleSend() {
-        if let text = inputTextField.text, text.characters.count > 0 && !text.isEmpty {
-            var params: [String : AnyObject] = [
+        if let text = inputTextField.text, text.count > 0 && !text.isEmpty {
+            var params: [String: AnyObject] = [
                 Client.WebsearchKeys.Query: text as AnyObject,
                 Client.ChatKeys.TimeZoneOffset: ControllerConstants.timeZone as AnyObject,
                 Client.ChatKeys.Language: Locale.current.languageCode as AnyObject
@@ -214,7 +214,7 @@ extension ChatViewController {
                 Client.UserKeys.AccessToken: user.accessToken
             ]
 
-            Client.sharedInstance.getMessagesFromMemory(params as [String : AnyObject]) { (messages, _, _) in
+            Client.sharedInstance.getMessagesFromMemory(params as [String: AnyObject]) { (messages, _, _) in
                 DispatchQueue.main.async {
                     if let messages = messages {
                         self.addMessagesToCollectionView(messages: messages)
@@ -258,7 +258,7 @@ extension ChatViewController {
 
     // MARK: - Miscellaneous
 
-    func setTargetForSendButton() {
+    @objc func setTargetForSendButton() {
         if isSpeechRecognitionRunning {
             stopSpeechToText()
             setImageForSendButton()
@@ -286,7 +286,7 @@ extension ChatViewController {
     }
 
     // present skill listing controller
-    func presentSkillListingController() {
+    @objc func presentSkillListingController() {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         if let vc = mainStoryboard.instantiateViewController(withIdentifier: "SkillListingController") as? SkillListingViewController {
             vc.chatViewController = self
@@ -323,14 +323,14 @@ extension ChatViewController {
     }
 
     // dismiss the overlay for the video
-    func handleDismiss() {
+    @objc func handleDismiss() {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.blackView.removeFromSuperview()
         }, completion: nil)
     }
 
     // scroll to last message
-    func scrollToLast() {
+    @objc func scrollToLast() {
         if messages.count > 0 {
             let lastItem = messages.count - 1
             let indexPath = IndexPath(item: lastItem, section: 0)
@@ -343,12 +343,12 @@ extension ChatViewController {
     func estimatedFrame(message: String) -> CGRect {
         let size = CGSize(width: 250, height: 1000)
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
-        return NSString(string: message).boundingRect(with: size, options: options, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 16)], context: nil)
+        return NSString(string: message).boundingRect(with: size, options: options, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16)], context: nil)
     }
 
     // loads all messages from database
     func loadMessages() {
-        messages = List<Message>(realm.objects(Message.self))
+        messages = Array(realm.objects(Message.self))
         collectionView?.reloadData()
         scrollToLast()
     }

@@ -39,66 +39,62 @@ class AuthenticationUITests: XCTestCase {
         let secureTextField = app.secureTextFields[ControllerConstants.TestKeys.password]
         secureTextField.tap()
         secureTextField.typeText(ControllerConstants.TestKeys.TestAccount.password)
-        
+
         app.buttons[ControllerConstants.TestKeys.login].tap()
-        
+
         sleep(5)
-        
+
         let sendButton = app.buttons[ControllerConstants.TestKeys.send]
         XCTAssertTrue(sendButton.exists)
     }
-    
+
     func testLoginFailure() {
         let emailField = app.textFields[ControllerConstants.TestKeys.email]
         emailField.tap()
         emailField.typeText(ControllerConstants.TestKeys.TestAccount.emailId)
-        
+
         let secureTextField = app.secureTextFields[ControllerConstants.TestKeys.password]
         secureTextField.tap()
         secureTextField.typeText(ControllerConstants.TestKeys.TestAccount.incorrectPassword)
-        
+
         app.buttons[ControllerConstants.TestKeys.login].tap()
-        
+
         sleep(2)
-        
+
         let toast = app.staticTexts[ControllerConstants.TestKeys.incorrectLogin]
         XCTAssertTrue(toast.exists)
     }
-    
+
     func testLogoutSuccess() {
         testLoginSuccess()
-        
+
         app.buttons[ControllerConstants.TestKeys.susiSymbol].tap()
-        
-        let button = app.navigationBars["Susi.SkillListingView"].children(matching: .other).element
-                    .children(matching: .button).element(boundBy: 1)
-        button.tap()
-        
+        app.navigationBars["Susi.SkillListingView"].buttons["ic more vert white"].tap()
+
         let tablesQuery = app.tables
-        tablesQuery.element.swipeUp()
-        tablesQuery.element.swipeUp()
+        tablesQuery.sliders["0%"].swipeUp()
         tablesQuery.staticTexts[ControllerConstants.TestKeys.logout].tap()
    }
-    
+
     func testSignUpFailure() {
         app.buttons[ControllerConstants.TestKeys.signUp].tap()
-        
+
         let emailTextField = app.textFields[ControllerConstants.TestKeys.email]
         emailTextField.tap()
         emailTextField.typeText(ControllerConstants.TestKeys.TestAccount.emailId)
-        
+
         let passwordTextField = app.secureTextFields[ControllerConstants.TestKeys.password]
         passwordTextField.tap()
         passwordTextField.typeText(ControllerConstants.TestKeys.TestAccount.password)
-        
+
         let confirmpasswordTextField = app.secureTextFields[ControllerConstants.TestKeys.confirmPassword]
         confirmpasswordTextField.tap()
         confirmpasswordTextField.typeText(ControllerConstants.TestKeys.TestAccount.password)
-        
+
         app.buttons[ControllerConstants.TestKeys.signUp].tap()
-        
+
         sleep(2)
-        
+
         let toast = app.staticTexts[Client.ResponseMessages.ServerError]
         XCTAssertTrue(toast.exists)
     }

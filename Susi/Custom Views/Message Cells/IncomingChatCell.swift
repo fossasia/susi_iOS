@@ -47,8 +47,8 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
                     _ = attributedString.setAsLink(textToFind: message.message.extractFirstURL(),
                                                    linkURL: message.message.extractFirstURL(), text: message.message)
                 } else {
-                    attributedString.addAttributes([NSFontAttributeName: UIFont.systemFont(ofSize: 16.0)],
-                                                   range: NSRange(location: 0, length: message.message.characters.count))
+                    attributedString.addAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16.0)],
+                                                   range: NSRange(location: 0, length: message.message.count))
                 }
 
                 messageTextView.attributedText = attributedString
@@ -58,7 +58,7 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
     }
 
     func setupTheme() {
-        textBubbleView.borderWidth = 0.2
+        textBubbleView.layer.borderWidth = 0.2
         textBubbleView.backgroundColor = .white
         messageTextView.textColor = .black
         timeLabel.textColor = .black
@@ -85,7 +85,7 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
         textBubbleView.addConstraintsWithFormat(format: "V:[v0]-4-|", views: timeLabel)
     }
 
-    func sendFeedback(sender: IconButton) {
+    @objc func sendFeedback(sender: IconButton) {
         let feedback: String
         if sender == thumbUpIcon {
             thumbDownIcon.tintColor = UIColor(white: 0.1, alpha: 0.7)
@@ -102,7 +102,7 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
 
         let skillComponents = message?.skill.components(separatedBy: "/")
         if skillComponents?.count == 7 {
-            let params: [String : AnyObject] = [
+            let params: [String: AnyObject] = [
                 Client.FeedbackKeys.model: skillComponents![3] as AnyObject,
                 Client.FeedbackKeys.group: skillComponents![4] as AnyObject,
                 Client.FeedbackKeys.language: skillComponents![5] as AnyObject,

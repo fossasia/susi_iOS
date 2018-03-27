@@ -11,7 +11,7 @@ import Material
 
 extension ResetPasswordViewController {
 
-    func dismissView() {
+    @objc func dismissView() {
         self.dismiss(animated: true, completion: nil)
     }
 
@@ -25,10 +25,10 @@ extension ResetPasswordViewController {
         }
     }
 
-    func validatePassword() -> [Bool:String] {
+    func validatePassword() -> [Bool: String] {
         if let newPassword = newPasswordField.text,
             let confirmPassword = confirmPasswordField.text {
-            if newPassword.characters.count > 5 {
+            if newPassword.count > 5 {
                 if newPassword == confirmPassword {
                     return [true: ""]
                 } else {
@@ -68,7 +68,7 @@ extension ResetPasswordViewController {
                 Client.UserKeys.NewPassword: newPasswordField.text ?? ""
             ]
 
-            Client.sharedInstance.resetPassword(params as [String : AnyObject], { (success, message) in
+            Client.sharedInstance.resetPassword(params as [String: AnyObject], { (success, message) in
                 DispatchQueue.main.async {
                     if success {
                         self.clearField()

@@ -56,9 +56,7 @@ extension TrainingViewController: SFSpeechRecognizerDelegate {
 
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
 
-        guard let inputNode = audioEngine.inputNode else {
-            fatalError("Audio engine has no input node")
-        }
+        let inputNode = audioEngine.inputNode
 
         guard let recognitionRequest = recognitionRequest else {
             fatalError("Unable to create an SFSpeechAudioBufferRecognitionRequest object")
@@ -102,7 +100,7 @@ extension TrainingViewController: SFSpeechRecognizerDelegate {
     }
 
     func stopRecognition() {
-        audioEngine.inputNode?.removeTap(onBus: 0)
+        audioEngine.inputNode.removeTap(onBus: 0)
         audioEngine.stop()
         recognitionTask?.cancel()
     }

@@ -14,7 +14,7 @@ import RealmSwift
 import Speech
 import NVActivityIndicatorView
 import Realm
-import ReachabilitySwift
+import Reachability
 
 class ChatViewController: UICollectionViewController {
     // MARK: - Variable Declarations
@@ -24,7 +24,7 @@ class ChatViewController: UICollectionViewController {
     lazy var susiSkillListingButton: IconButton = {
         let ib = IconButton()
         ib.image = ControllerConstants.Images.susiSymbol
-        ib.cornerRadius = 18.0
+        ib.layer.cornerRadius = 18.0
         ib.addTarget(self, action: #selector(presentSkillListingController), for: .touchUpInside)
         ib.backgroundColor = UIColor.defaultColor()
         return ib
@@ -45,7 +45,7 @@ class ChatViewController: UICollectionViewController {
         button.setImage(ControllerConstants.Images.scrollDown, for: .normal)
         button.backgroundColor = .white
         button.addTarget(self, action: #selector(scrollToLast), for: .touchUpInside)
-        button.cornerRadius = 8
+        button.layer.cornerRadius = 8
         return button
     }()
 
@@ -82,7 +82,7 @@ class ChatViewController: UICollectionViewController {
     }()
 
     // contains all the message
-    var messages = List<Message>()
+    var messages = [Message]()
 
     // realm instance
     let realm = try! Realm()
@@ -177,7 +177,7 @@ class ChatViewController: UICollectionViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        NotificationCenter.default.addObserver(self, selector: #selector(internetConnection), name: ReachabilityChangedNotification, object: reachability)
+        NotificationCenter.default.addObserver(self, selector: #selector(internetConnection), name: Notification.Name.reachabilityChanged, object: reachability)
 
         do {
             try reachability.startNotifier()
@@ -188,7 +188,7 @@ class ChatViewController: UICollectionViewController {
 
     @objc func internetConnection(notification: NSNotification) {
         guard let reachability = notification.object as? Reachability else { return }
-        if reachability.isReachable {
+        if reachability.connection != .none {
             print("internet is available")
         } else {
             print("internet is not available")

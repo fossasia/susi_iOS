@@ -30,7 +30,7 @@ extension TrainingViewController {
         navigationItem.rightBarButtonItems = [cancelButton]
     }
 
-    func cancelTapped(_ sender: Any) {
+    @objc func cancelTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
 

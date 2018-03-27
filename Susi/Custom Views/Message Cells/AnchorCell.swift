@@ -20,7 +20,7 @@ class AnchorCell: ChatMessageCell {
     override func setupViews() {
         super.setupViews()
 
-        textBubbleView.borderWidth = 0.2
+        textBubbleView.layer.borderWidth = 0.2
         textBubbleView.backgroundColor = .white
         messageTextView.textColor = .black
         timeLabel.textColor = .black

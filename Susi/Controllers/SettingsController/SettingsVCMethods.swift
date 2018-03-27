@@ -22,7 +22,7 @@ extension SettingsViewController {
         navigationItem.leftViews = [backButton]
     }
 
-    func dismissView() {
+    @objc func dismissView() {
         self.dismiss(animated: true, completion: nil)
     }
 
