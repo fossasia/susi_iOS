@@ -156,6 +156,9 @@ class SettingsViewController: UITableViewController {
         shareSusiSubtitle.text = ControllerConstants.Settings.shareSusiSubtitle.localized()
         resetPassTitle.text = ControllerConstants.Settings.resetPass.localized()
         logoutTitle.text = ControllerConstants.Settings.logout.localized()
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            logoutTitle.text = (appDelegate.currentUser != nil) ? ControllerConstants.Settings.logout.localized() : ControllerConstants.Settings.login.localized()
+        }
         tableView.reloadData()
     }
 }
