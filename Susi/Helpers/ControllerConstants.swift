@@ -101,6 +101,7 @@ class ControllerConstants {
         static let shareSusiSubtitle = "Share the SUSI App with your friends"
         static let resetPass = "Reset Password"
         static let logout = "Logout"
+        static let login = "Login"
         static let chatSettings = "Chat Settings"
         static let micSettings = "Mic Settings"
         static let speechSettings = "Speech Settings"
