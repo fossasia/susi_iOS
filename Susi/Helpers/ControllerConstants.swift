@@ -136,6 +136,7 @@ class ControllerConstants {
         static let enterToSend = "enterAsSend"
         static let micInput = "micInput"
         static let speechOutput = "speechOutput"
+        static let speechToTextAvailable = "speechToTextAvailable"
         static let speechOutputAlwaysOn = "speechOutputAlways"
         static let speechRate = "speechRate"
         static let speechPitch = "speechPitch"

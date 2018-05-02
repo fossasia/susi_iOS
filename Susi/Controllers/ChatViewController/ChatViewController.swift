@@ -73,11 +73,21 @@ class ChatViewController: UICollectionViewController {
     // send button
     lazy var sendButton: FABButton = {
         let button = FABButton()
-        button.setImage(ControllerConstants.Images.microphone, for: .normal)
-        button.addTarget(self, action: #selector(setTargetForSendButton), for: .touchUpInside)
-        button.accessibilityIdentifier = ControllerConstants.TestKeys.send
-        button.tintColor = UIColor.defaultColor()
-        button.backgroundColor = .clear
+        isSpeechToTextAvailable = UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.speechToTextAvailable)
+        if let _ = speechRecognizer?.isAvailable, isSpeechToTextAvailable {
+            button.setImage(ControllerConstants.Images.microphone, for: .normal)
+            button.addTarget(self, action: #selector(setTargetForSendButton), for: .touchUpInside)
+            button.accessibilityIdentifier = ControllerConstants.TestKeys.send
+            button.tintColor = UIColor.defaultColor()
+            button.backgroundColor = .clear
+        }
+        else {
+            button.setImage(ControllerConstants.Images.send, for: .normal)
+            button.addTarget(self, action: #selector(setTargetForSendButton), for: .touchUpInside)
+            button.accessibilityIdentifier = ControllerConstants.TestKeys.send
+            button.tintColor = .white
+            button.backgroundColor = UIColor.defaultColor()
+        }
         return button
     }()
 
@@ -116,6 +126,7 @@ class ChatViewController: UICollectionViewController {
 
     // flag to check if STT running
     var isSpeechRecognitionRunning: Bool = false
+    var isSpeechToTextAvailable: Bool = false
 
     let audioSession = AVAudioSession.sharedInstance()
     let speechSynthesizer = AVSpeechSynthesizer()
@@ -151,14 +162,14 @@ class ChatViewController: UICollectionViewController {
         addSkillListingButton()
         addScrollButton()
 
-        reachability.whenReachable = {reachability in
+        reachability.whenReachable = { reachability in
             DispatchQueue.main.async {
                 self.inputTextField.isEnabled = true
                 self.alert.dismiss(animated: true, completion: nil)
             }
         }
 
-        reachability.whenUnreachable = {reachability in
+        reachability.whenUnreachable = { reachability in
             DispatchQueue.main.async {
                 self.inputTextField.isEnabled = false
                 self.present(self.alert, animated: true, completion: nil)
