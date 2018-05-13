@@ -54,6 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.set(1.0, forKey: ControllerConstants.UserDefaultsKeys.speechPitch)
             UserDefaults.standard.set("en", forKey: ControllerConstants.UserDefaultsKeys.prefLanguage)
             UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.lanuchedBefore)
+            UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.speechToTextAvailable)
         }
     }
 

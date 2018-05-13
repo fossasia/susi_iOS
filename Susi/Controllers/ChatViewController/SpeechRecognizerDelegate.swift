@@ -38,6 +38,13 @@ extension ChatViewController: SFSpeechRecognizerDelegate, AVSpeechSynthesizerDel
 
             OperationQueue.main.addOperation {
                 // enable or disable mic button
+                if !isEnabled {
+                    self.stopSpeechToText()
+                    self.sendButton.setImage(ControllerConstants.Images.send, for: .normal)
+                    self.sendButton.tintColor = .white
+                    self.sendButton.backgroundColor = UIColor.defaultColor()
+                }
+                UserDefaults.standard.set(isEnabled, forKey: ControllerConstants.UserDefaultsKeys.speechToTextAvailable)
                 print("Speech status: \(isEnabled)")
 
             }
