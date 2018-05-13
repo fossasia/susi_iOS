@@ -554,7 +554,6 @@
 				6D215B8F1EB0BE7300CD2C1D /* Frameworks */,
 				6D215B901EB0BE7300CD2C1D /* Resources */,
 				B0C2866CE33C31CF9F8BA064 /* [CP] Embed Pods Frameworks */,
-				5531B62DF411CC514DF4610C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -575,7 +574,6 @@
 				6D4D9B341E768E190067459C /* Frameworks */,
 				6D4D9B351E768E190067459C /* Resources */,
 				945053A39E200D7E967B5153 /* [CP] Embed Pods Frameworks */,
-				9BD42E3091648225F7119EB6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -691,21 +689,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5531B62DF411CC514DF4610C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SusiUITests/Pods-SusiUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		945053A39E200D7E967B5153 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -760,21 +743,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Susi/Pods-Susi-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9BD42E3091648225F7119EB6 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Susi/Pods-Susi-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B0C2866CE33C31CF9F8BA064 /* [CP] Embed Pods Frameworks */ = {
