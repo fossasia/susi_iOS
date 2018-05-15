@@ -1,14 +1,14 @@
 //
-//  ForgotPasswordUITests.swift
-//  Susi
+//  OnboardingUITests.swift
+//  SusiUITests
 //
-//  Created by Chashmeet Singh on 2017-07-03.
-//  Copyright © 2017 FOSSAsia. All rights reserved.
+//  Created by JOGENDRA on 17/05/18.
+//  Copyright © 2018 FOSSAsia. All rights reserved.
 //
 
 import XCTest
 
-class ForgotPasswordUITests: XCTestCase {
+class OnboardingUITests: XCTestCase {
 
     private let app = XCUIApplication()
 
@@ -24,10 +24,6 @@ class ForgotPasswordUITests: XCTestCase {
         app.launch()
 
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-        app.swipeLeft()
-        app.swipeLeft()
-        app.swipeLeft()
-        app.buttons["Login/Skip"].tap()
     }
 
     override func tearDown() {
@@ -35,18 +31,13 @@ class ForgotPasswordUITests: XCTestCase {
         super.tearDown()
     }
 
-    func testForgotPassword() {
-        app.buttons[ControllerConstants.TestKeys.forgotPassword].tap()
+    func testGoingThroughOnboarding() {
+        // Swipe left three times to go through the pages
+        app.swipeLeft()
+        app.swipeLeft()
+        app.swipeLeft()
 
-        let textField = app.textFields[ControllerConstants.TestKeys.email]
-        textField.tap()
-        textField.typeText(ControllerConstants.TestKeys.TestAccount.emailId)
-        app.buttons[ControllerConstants.TestKeys.reset].tap()
-
-        sleep(5)
-
-        let alert = app.alerts[ControllerConstants.TestKeys.emailSent].buttons[ControllerConstants.TestKeys.ok]
-        XCTAssertTrue(alert.exists)
+        // Tap the "Skip" button
+        app.buttons["Login/Skip"].tap()
     }
-
 }

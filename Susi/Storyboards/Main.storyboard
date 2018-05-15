@@ -1,15 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0ek-IO-lKt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0ek-IO-lKt">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Onboarding View Controller-->
+        <scene sceneID="qIa-w2-bWq">
+            <objects>
+                <viewController storyboardIdentifier="OnboardingVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uQX-R8-MCZ" customClass="OnboardingViewController" customModule="Susi" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CTK-mR-PTp"/>
+                        <viewControllerLayoutGuide type="bottom" id="Hfo-Vv-l3w"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zIq-7A-c35">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PV3-GI-8yh">
+                                <rect key="frame" x="348" y="52" width="34" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Skip">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="dividerThickness">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didSkipOnboardings:" destination="uQX-R8-MCZ" eventType="touchUpInside" id="MIA-Oi-1cl"/>
+                                    <segue destination="0ek-IO-lKt" kind="show" id="Nhs-2c-uVv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oBV-ao-qm6">
+                                <rect key="frame" x="301" y="671" width="81" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Login/Skip">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="didSkipOnboardings:" destination="uQX-R8-MCZ" eventType="touchUpInside" id="v4G-VN-apN"/>
+                                    <segue destination="0ek-IO-lKt" kind="show" id="cta-Zl-fjA"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="PV3-GI-8yh" secondAttribute="trailing" constant="32" id="7zO-z0-e1H"/>
+                            <constraint firstAttribute="trailing" secondItem="oBV-ao-qm6" secondAttribute="trailing" constant="32" id="AHb-0Q-4Bd"/>
+                            <constraint firstItem="PV3-GI-8yh" firstAttribute="top" secondItem="CTK-mR-PTp" secondAttribute="bottom" constant="32" id="EzP-uN-TIr"/>
+                            <constraint firstItem="Hfo-Vv-l3w" firstAttribute="top" secondItem="oBV-ao-qm6" secondAttribute="bottom" constant="32" id="dvF-d0-LfD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bottomLoginSkipButton" destination="oBV-ao-qm6" id="mcc-2A-1As"/>
+                        <outlet property="skipButton" destination="PV3-GI-8yh" id="hSU-Dg-cuq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hZ5-tk-dS8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-777" y="41"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="stJ-RQ-98a">
             <objects>
@@ -548,7 +605,7 @@
                             <tableViewSection headerTitle="Chat Settings" id="l5r-d5-gRd">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="52" id="Z7z-Xh-NP1">
-                                        <rect key="frame" x="0.0" y="55.333333333333336" width="414" height="52"/>
+                                        <rect key="frame" x="0.0" y="55.333333333333343" width="414" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z7z-Xh-NP1" id="YwX-Ce-UOF">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="51.666666666666664"/>
@@ -614,7 +671,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="56" id="fjY-VA-kaO">
-                                        <rect key="frame" x="0.0" y="215.33333333333334" width="414" height="56"/>
+                                        <rect key="frame" x="0.0" y="215.33333333333334" width="414" height="56.000000000000028"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fjY-VA-kaO" id="W4S-4b-g5f">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="55.666666666666664"/>
@@ -1300,16 +1357,16 @@
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QG6-wv-s3u">
-                                                                <rect key="frame" x="4" y="4" width="256" height="77.666666666666671"/>
+                                                                <rect key="frame" x="12" y="16" width="240" height="73.666666666666671"/>
                                                                 <subviews>
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="DcN-B8-SIq">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="70" height="77.666666666666671"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="70" height="73.666666666666671"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="70" id="jsd-WS-PZf"/>
                                                                         </constraints>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;example query&quot;" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJ4-jD-Cqd">
-                                                                        <rect key="frame" x="78" y="7.9999999999999964" width="167" height="60.666666666666657"/>
+                                                                        <rect key="frame" x="78" y="11.999999999999996" width="151" height="48.666666666666657"/>
                                                                         <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -1327,7 +1384,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skill Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lad-HQ-hOq">
-                                                                <rect key="frame" x="6" y="85.666666666666671" width="255" height="21"/>
+                                                                <rect key="frame" x="14" y="93.666666666666671" width="239" height="21"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="21" id="NV5-xA-vfK"/>
                                                                 </constraints>
@@ -1336,7 +1393,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skill Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VHw-6l-9gK">
-                                                                <rect key="frame" x="7" y="105.66666666666667" width="254" height="42.000000000000014"/>
+                                                                <rect key="frame" x="15" y="113.66666666666669" width="238" height="42"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -1565,4 +1622,7 @@
         <image name="record" width="100" height="100"/>
         <image name="susi" width="1366" height="280"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Nhs-2c-uVv"/>
+    </inferredMetricsTieBreakers>
 </document>

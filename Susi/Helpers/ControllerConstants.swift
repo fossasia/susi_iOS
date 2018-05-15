@@ -180,6 +180,17 @@ class ControllerConstants {
 
     }
 
+    struct Onboarding {
+        static let login = "Login"
+        static let chatInterface = "Chat Interface"
+        static let skillListing = "Skill Listing"
+        static let chatSettings = "Chat Settings"
+        static let loginDescription = "Login into the app using SUSI.AI account or else signup to create a new account or just skip login"
+        static let chatInterfaceDescription = "Interact with SUSI.AI asking queries. Use microphone button for voice interaction"
+        static let skillListingDescription = "Browse and try your favorite SUSI.AI Skill"
+        static let chatSettingsDescription = "Personalize your chat settings for better experience"
+    }
+
     struct Images {
         static let backArrow = UIImage(named: "back_arrow")
         static let check = UIImage(named: "check")
