@@ -54,6 +54,28 @@ DEPENDENCIES:
   - SwiftValidators
   - Toast-Swift (~> 3.0.0)
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - BouncyLayout
+    - Fakery
+    - Ji
+    - Kingfisher
+    - Localize-Swift
+    - MarqueeLabel
+    - Material
+    - Motion
+    - NotificationBannerSwift
+    - NVActivityIndicatorView
+    - ReachabilitySwift
+    - ReadabilityKit
+    - Realm
+    - RealmSwift
+    - SnapKit
+    - SwiftDate
+    - SwiftValidators
+    - Toast-Swift
+
 EXTERNAL SOURCES:
   M13Checkbox:
     :git: https://github.com/Marxon13/M13Checkbox.git
@@ -88,4 +110,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 4bdbd04c6f6eb4a3303a81452234849fd67e68b4
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.2
