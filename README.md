@@ -84,6 +84,7 @@ Please help us follow the best practice to make it easy for the reviewer as well
 * If the PR is related to any front end change, please attach relevant screenshots in the pull request description.
 * Please follow the guides and code standards: [Swift Style Guide](https://github.com/linkedin/swift-style-guide)
 * Please follow the good iOS development practices: [iOS Good Practices](https://github.com/futurice/ios-good-practices)
+* For contributors new to Git please have a look at the [Git Configuration commands](docs/gitconfiguration.md) .
 
 ## License
 
