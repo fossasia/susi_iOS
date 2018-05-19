@@ -54,6 +54,8 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var resetPassTitle: UILabel!
     @IBOutlet weak var logoutTitle: UILabel!
 
+    var chatViewController: ChatViewController?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         assignDefaults()

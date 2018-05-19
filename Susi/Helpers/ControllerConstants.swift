@@ -205,6 +205,7 @@ class ControllerConstants {
         static let thumbsUp = UIImage(named: "thumbs_up")
         static let thumbsDown = UIImage(named: "thumbs_down")
         static let susiSymbol = UIImage(named: "susi_symbol")
+        static let settingsIcon = UIImage(named: "settings_icon")
     }
 
 }
