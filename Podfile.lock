@@ -1,19 +1,19 @@
 PODS:
-  - Alamofire (4.7.0)
-  - BouncyLayout (2.0.0)
+  - Alamofire (4.7.2)
+  - BouncyLayout (2.1.0)
   - Fakery (3.3.0)
   - Ji (2.1.0):
     - Ji/Ji (= 2.1.0)
   - Ji/Ji (2.1.0):
     - Ji/Ji-libxml
   - Ji/Ji-libxml (2.1.0)
-  - Kingfisher (4.6.3)
+  - Kingfisher (4.8.0)
   - Localize-Swift (2.0.0)
   - M13Checkbox (3.2.2)
   - MarqueeLabel/Swift (3.1.4)
-  - Material (2.13.6):
-    - Material/Core (= 2.13.6)
-  - Material/Core (2.13.6):
+  - Material (2.15.0):
+    - Material/Core (= 2.15.0)
+  - Material/Core (2.15.0):
     - Motion (~> 1.3.0)
   - Motion (1.3.5):
     - Motion/Core (= 1.3.5)
@@ -21,17 +21,18 @@ PODS:
   - NotificationBannerSwift (1.6.2):
     - MarqueeLabel/Swift
     - SnapKit (~> 4.0)
-  - NVActivityIndicatorView (4.1.1):
-    - NVActivityIndicatorView/Presenter (= 4.1.1)
-  - NVActivityIndicatorView/Presenter (4.1.1)
+  - NVActivityIndicatorView (4.2.1):
+    - NVActivityIndicatorView/Presenter (= 4.2.1)
+  - NVActivityIndicatorView/Presenter (4.2.1)
+  - paper-onboarding (4.1.0)
   - ReachabilitySwift (4.1.0)
   - ReadabilityKit (0.7.1):
     - Ji
-  - Realm (3.1.1):
-    - Realm/Headers (= 3.1.1)
-  - Realm/Headers (3.1.1)
-  - RealmSwift (3.1.1):
-    - Realm (= 3.1.1)
+  - Realm (3.5.0):
+    - Realm/Headers (= 3.5.0)
+  - Realm/Headers (3.5.0)
+  - RealmSwift (3.5.0):
+    - Realm (= 3.5.0)
   - SnapKit (4.0.0)
   - SwiftDate (4.5.1)
   - SwiftValidators (7.0.3)
@@ -47,6 +48,7 @@ DEPENDENCIES:
   - Material
   - NotificationBannerSwift
   - NVActivityIndicatorView
+  - paper-onboarding
   - ReachabilitySwift
   - ReadabilityKit
   - RealmSwift
@@ -67,6 +69,7 @@ SPEC REPOS:
     - Motion
     - NotificationBannerSwift
     - NVActivityIndicatorView
+    - paper-onboarding
     - ReachabilitySwift
     - ReadabilityKit
     - Realm
@@ -87,27 +90,28 @@ CHECKOUT OPTIONS:
     :tag: 3.2.2
 
 SPEC CHECKSUMS:
-  Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
-  BouncyLayout: f64872d6b2a3e41bb8c89e24d0ff08e2dbeeb304
+  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  BouncyLayout: a7955879861375cc4e88bb64d42bcf622cd2694c
   Fakery: 3aae11a87721c807c18c6456500d088c1230d3e5
   Ji: 21946da4e13425485ddd424edfaeeced0d80ad28
-  Kingfisher: 98e6d5b5e807645743e8ed5ececd25d688d38452
+  Kingfisher: 976d828df2b24834c6a3f2fc4d82cdbd26552be1
   Localize-Swift: c798ec9286494866f7068f85f7c71283ac5bdab4
   M13Checkbox: cd5b4a35f0e37616c627ec6a8d0a2060e7b4516f
   MarqueeLabel: bf768455fe88d427f71476ebb23f9092b660f40b
-  Material: ef704dcc1bced32ab7c91ece2ba734da557e3f36
+  Material: 00e32bb5e61b3f749044897b2d93acd8bf33faa4
   Motion: 9f74d115d7f72bb5380a8e3cde2f8a1fc898ac36
   NotificationBannerSwift: 4eceb2add9d5eaa0596c63d49690b4d6476e74ec
-  NVActivityIndicatorView: 60109b9bf46efc2e71ab81453196ccdfdfeea870
+  NVActivityIndicatorView: 8068ba3ad39cb44cbaab25d89ff2546b3f092681
+  paper-onboarding: 344780cbb0bfc229cd1862f5b9bba446b23c5185
   ReachabilitySwift: 6849231cd4e06559f3b9ef4a97a0a0f96d41e09f
   ReadabilityKit: 45e79725f6d0377c555f38d9df7a6d4435898c04
-  Realm: 42d1c38a5b1bbcc828b48a7ce702cb86fc68adf4
-  RealmSwift: d31937ca6a6ee54acde64ec839523c0a3c04924b
+  Realm: 0378021c424e4e2bd6a0e63b27881e929d9b9ad1
+  RealmSwift: 3322562622fda2ad596985ead4d8d8be30cf838c
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SwiftDate: 7b56d42a221f582047287deb256b23fc5ed49a60
   SwiftValidators: 660ce9ef3f0358c25c3a6154f7edc02c7d4a0578
   Toast-Swift: ba0b01b095aada709d915f9beb1d38184a2721c3
 
-PODFILE CHECKSUM: 4bdbd04c6f6eb4a3303a81452234849fd67e68b4
+PODFILE CHECKSUM: 685a75a46dea55bf0e30c875c369376f08cbf355
 
 COCOAPODS: 1.5.2

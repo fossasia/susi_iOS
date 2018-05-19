@@ -35,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if ProcessInfo.processInfo.arguments.contains("UI-Testing") {
             UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
             UserDefaults.standard.set(Client.APIURLs.SusiAPI, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
+            UserDefaults.standard.set(false, forKey: ControllerConstants.UserDefaultsKeys.lanuchedBefore)
             let realm = try! Realm()
             try! realm.write {
                 realm.deleteAll()
@@ -55,7 +56,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.set("en", forKey: ControllerConstants.UserDefaultsKeys.prefLanguage)
             UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.lanuchedBefore)
             UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.speechToTextAvailable)
+
+            self.presentOnboardingScreens()
         }
+    }
+
+    func presentOnboardingScreens() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let onboardingViewController = storyboard.instantiateViewController(withIdentifier: "OnboardingVC")
+
+        self.window?.rootViewController = onboardingViewController
+        self.window?.makeKeyAndVisible()
     }
 
 }

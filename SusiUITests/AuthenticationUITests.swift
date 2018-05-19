@@ -24,6 +24,10 @@ class AuthenticationUITests: XCTestCase {
         app.launch()
 
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        app.swipeLeft()
+        app.swipeLeft()
+        app.swipeLeft()
+        app.buttons["Login/Skip"].tap()
     }
 
     override func tearDown() {

@@ -30,4 +30,24 @@ extension UIColor {
         return UIColor.hexStringToUIColor(hex: "#E0E0E0")
     }
 
+    class func loginOnboardingColor() -> UIColor {
+        return UIColor.hexStringToUIColor(hex: "#4479F7")
+    }
+
+    class func chatOnboardingColor() -> UIColor {
+        return UIColor.hexStringToUIColor(hex: "#4A90E2")
+    }
+
+    class func skillOnboardingColor() -> UIColor {
+        return UIColor.hexStringToUIColor(hex: "#638FBA")
+    }
+
+    class func settingsOnboardingColor() -> UIColor {
+        return UIColor.hexStringToUIColor(hex: "#53B5B9")
+    }
+
+    class func iOSBlue() -> UIColor {
+        return UIColor.hexStringToUIColor(hex: "#116AFF")
+    }
+
 }

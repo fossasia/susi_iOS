@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		3BC1D8D5203B177E003E62F9 /* noConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC1D8D3203B177E003E62F9 /* noConnectionViewController.swift */; };
 		3BC1D8D6203B177E003E62F9 /* noConnectionNetworkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC1D8D4203B177E003E62F9 /* noConnectionNetworkStatus.swift */; };
+		406F100620ADFEED00808E4C /* OnboardingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406F100520ADFEED00808E4C /* OnboardingUITests.swift */; };
+		40F17FA820AC39F9008E7305 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F17FA720AC39F8008E7305 /* Images.swift */; };
+		40F17FAC20ACA28A008E7305 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F17FAB20ACA28A008E7305 /* OnboardingViewController.swift */; };
 		4CD0AA5F1EDF2CB700BC8FD5 /* ControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD0AA5E1EDF2CB700BC8FD5 /* ControllerConstants.swift */; };
 		6D017B251F4EAF86004BDE7E /* SkillListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D017B241F4EAF86004BDE7E /* SkillListingViewController.swift */; };
 		6D017B271F4EB641004BDE7E /* SkillListingVCMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D017B261F4EB641004BDE7E /* SkillListingVCMethods.swift */; };
@@ -107,6 +110,9 @@
 		262BC7CF14D165C735BF16FA /* Pods-SusiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SusiUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SusiUITests/Pods-SusiUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3BC1D8D3203B177E003E62F9 /* noConnectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = noConnectionViewController.swift; sourceTree = "<group>"; };
 		3BC1D8D4203B177E003E62F9 /* noConnectionNetworkStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = noConnectionNetworkStatus.swift; sourceTree = "<group>"; };
+		406F100520ADFEED00808E4C /* OnboardingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingUITests.swift; sourceTree = "<group>"; };
+		40F17FA720AC39F8008E7305 /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		40F17FAB20ACA28A008E7305 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		4CD0AA5E1EDF2CB700BC8FD5 /* ControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControllerConstants.swift; sourceTree = "<group>"; };
 		5994B8E49F09387802A1EB7A /* Pods_SusiUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SusiUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BC83894DC5BB478E862B696 /* Pods-Susi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Susi.release.xcconfig"; path = "Pods/Target Support Files/Pods-Susi/Pods-Susi.release.xcconfig"; sourceTree = "<group>"; };
@@ -225,6 +231,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		40F17FAD20ACA296008E7305 /* OnboardingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				40F17FAB20ACA28A008E7305 /* OnboardingViewController.swift */,
+			);
+			path = OnboardingViewController;
+			sourceTree = "<group>";
+		};
 		60718B0807D9008B495F2F1A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,6 +284,7 @@
 		6D215B931EB0BE7300CD2C1D /* SusiUITests */ = {
 			isa = PBXGroup;
 			children = (
+				406F100520ADFEED00808E4C /* OnboardingUITests.swift */,
 				6D58707E1F0A30A300EFFF0C /* AnonymousModeUITests.swift */,
 				6D215B941EB0BE7300CD2C1D /* AuthenticationUITests.swift */,
 				6DD3F0921F0A62FC00BD7AC9 /* ChatUITests.swift */,
@@ -421,6 +436,7 @@
 		6D4D9B501E768F2E0067459C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				40F17FAD20ACA296008E7305 /* OnboardingViewController */,
 				6D24B0971EE411A40097418A /* ChatViewController */,
 				6D24B08D1EE408F10097418A /* ForgotPasswordController */,
 				6D24B0881EE407760097418A /* LoginController */,
@@ -447,6 +463,7 @@
 		6D4D9B521E768FF40067459C /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				40F17FA720AC39F8008E7305 /* Images.swift */,
 				6DE44E0E1E769AD300215B85 /* Color.swift */,
 				4CD0AA5E1EDF2CB700BC8FD5 /* ControllerConstants.swift */,
 				6D4D9B531E7690160067459C /* Extensions.swift */,
@@ -591,7 +608,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = FOSSAsia;
 				TargetAttributes = {
 					6D215B911EB0BE7300CD2C1D = {
@@ -716,6 +733,7 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftValidators/SwiftValidators.framework",
 				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
+				"${BUILT_PRODUCTS_DIR}/paper-onboarding/paper_onboarding.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -739,6 +757,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftValidators.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/paper_onboarding.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -776,6 +795,7 @@
 				6D5356831F07CF82003B97A5 /* ControllerConstants.swift in Sources */,
 				6DD3F0931F0A62FC00BD7AC9 /* ChatUITests.swift in Sources */,
 				6D3527141F083F9100395BD5 /* Client.swift in Sources */,
+				406F100620ADFEED00808E4C /* OnboardingUITests.swift in Sources */,
 				6D3527131F083F8E00395BD5 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -809,6 +829,8 @@
 				6DCA905C1F1F09910058CABB /* LocationDelegate.swift in Sources */,
 				6D0B28DC1F3D55B100E273E1 /* ResetPasswordController.swift in Sources */,
 				6DB440401F55FA4F00C2A405 /* SkillDetailViewController.swift in Sources */,
+				40F17FAC20ACA28A008E7305 /* OnboardingViewController.swift in Sources */,
+				40F17FA820AC39F9008E7305 /* Images.swift in Sources */,
 				6D3FB3491E813B900015E1D6 /* ChatMessageCell.swift in Sources */,
 				6D61B9AF1EEBAAD700CD3536 /* RSSAction.swift in Sources */,
 				6D0DB6281EE436FC00AD030D /* IncomingChatCell.swift in Sources */,
@@ -936,6 +958,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -943,6 +966,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -994,6 +1018,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1001,6 +1026,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

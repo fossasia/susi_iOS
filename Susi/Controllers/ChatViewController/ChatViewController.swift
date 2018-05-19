@@ -80,8 +80,7 @@ class ChatViewController: UICollectionViewController {
             button.accessibilityIdentifier = ControllerConstants.TestKeys.send
             button.tintColor = UIColor.defaultColor()
             button.backgroundColor = .clear
-        }
-        else {
+        } else {
             button.setImage(ControllerConstants.Images.send, for: .normal)
             button.addTarget(self, action: #selector(setTargetForSendButton), for: .touchUpInside)
             button.accessibilityIdentifier = ControllerConstants.TestKeys.send
