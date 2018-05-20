@@ -93,7 +93,7 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
 
     // Set Edge Insets
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 2, left: 0, bottom: 2, right: 0)
+        return UIEdgeInsets(top: view.frame.height - 68, left: 0, bottom: 0, right: 0)
     }
 
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
