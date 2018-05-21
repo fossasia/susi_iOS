@@ -30,7 +30,7 @@ class SkillListingCollectionView: UICollectionView, UICollectionViewDelegateFlow
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? SkillCell {
             cell.skill = groupSkills?[indexPath.item]
-            cell.backgroundColor = Color.grey.lighten3
+            cell.backgroundColor = Color.grey.lighten4
             cell.depthPreset = .depth4
             return cell
         }
