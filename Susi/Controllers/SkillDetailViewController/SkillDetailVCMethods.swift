@@ -16,7 +16,7 @@ extension SkillDetailViewController {
             if let url = URL(string: skill.imagePath) {
                 skillImageView.kf.setImage(with: url)
             }
-            skillAuthorLabel.text = "By: \(skill.author)"
+            skillAuthorLabel.text = "Author: \(skill.author)"
         }
         navigationItem.backButton.tintColor = .white
 

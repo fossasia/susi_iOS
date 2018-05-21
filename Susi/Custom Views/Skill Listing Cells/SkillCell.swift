@@ -27,26 +27,34 @@ class SkillCell: CollectionViewCell {
                 skillDescription.text = skill.skillDescription
             }
             configureShadow()
+            roundedCorner()
         }
     }
 
+    @IBOutlet weak var iconTitleView: UIView!
     @IBOutlet weak var skillImage: UIImageView!
     @IBOutlet weak var exampleQueryLabel: UILabel!
     @IBOutlet weak var skillName: UILabel!
     @IBOutlet weak var skillDescription: UILabel!
 
     func configureShadow() {
-        contentView.layer.cornerRadius = 2.0
+        contentView.layer.cornerRadius = 16.0
         contentView.layer.borderWidth = 1.0
-        contentView.layer.borderColor = UIColor.clear.cgColor
+        contentView.layer.borderColor = UIColor.black.withAlphaComponent(0.16).cgColor
         contentView.layer.masksToBounds = true
 
-        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowColor = UIColor.black.withAlphaComponent(0.2).cgColor
         layer.shadowOffset = CGSize(width: 0, height: 2.0)
-        layer.shadowRadius = 2.0
-        layer.shadowOpacity = 1.0
+        layer.shadowRadius = 1.0
+        layer.shadowOpacity = 0.5
         layer.masksToBounds = false
         layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: contentView.layer.cornerRadius).cgPath
+    }
+
+    func roundedCorner() {
+        iconTitleView.layer.cornerRadius = 16.0
+        skillImage.layer.cornerRadius = 0.5 * skillImage.frame.width
+        skillImage.clipsToBounds = true
     }
 
 }
