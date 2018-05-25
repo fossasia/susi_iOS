@@ -180,7 +180,6 @@ class ChatViewController: UICollectionViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
-
         checkAndAssignIfModelExists()
         initSnowboy()
         checkAndRunHotwordRecognition()
@@ -196,6 +195,12 @@ class ChatViewController: UICollectionViewController {
         }
     }
 
+
+    override func viewWillLayoutSubviews() {
+         setCollectionViewOffset()
+    }
+    
+    
     @objc func internetConnection(notification: NSNotification) {
         guard let reachability = notification.object as? Reachability else { return }
         if reachability.connection != .none {
