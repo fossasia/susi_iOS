@@ -11,7 +11,6 @@
 		3BC1D8D6203B177E003E62F9 /* noConnectionNetworkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC1D8D4203B177E003E62F9 /* noConnectionNetworkStatus.swift */; };
 		406F100620ADFEED00808E4C /* OnboardingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406F100520ADFEED00808E4C /* OnboardingUITests.swift */; };
 		40DEE59120B8624D00FE7356 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DEE59020B8624D00FE7356 /* RatingView.swift */; };
-		40F17E0020B80DED00728870 /* FiveStarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F17DFF20B80DED00728870 /* FiveStarRatingView.swift */; };
 		40F17FA820AC39F9008E7305 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F17FA720AC39F8008E7305 /* Images.swift */; };
 		40F17FAC20ACA28A008E7305 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F17FAB20ACA28A008E7305 /* OnboardingViewController.swift */; };
 		4CD0AA5F1EDF2CB700BC8FD5 /* ControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD0AA5E1EDF2CB700BC8FD5 /* ControllerConstants.swift */; };
@@ -114,7 +113,6 @@
 		3BC1D8D4203B177E003E62F9 /* noConnectionNetworkStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = noConnectionNetworkStatus.swift; sourceTree = "<group>"; };
 		406F100520ADFEED00808E4C /* OnboardingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingUITests.swift; sourceTree = "<group>"; };
 		40DEE59020B8624D00FE7356 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
-		40F17DFF20B80DED00728870 /* FiveStarRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveStarRatingView.swift; sourceTree = "<group>"; };
 		40F17FA720AC39F8008E7305 /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		40F17FAB20ACA28A008E7305 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		4CD0AA5E1EDF2CB700BC8FD5 /* ControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControllerConstants.swift; sourceTree = "<group>"; };
@@ -235,14 +233,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		40F17E0120B80DF900728870 /* FiveStarRatingView */ = {
-			isa = PBXGroup;
-			children = (
-				40F17DFF20B80DED00728870 /* FiveStarRatingView.swift */,
-			);
-			path = FiveStarRatingView;
-			sourceTree = "<group>";
-		};
 		40F17FAD20ACA296008E7305 /* OnboardingViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -350,7 +340,6 @@
 		6D2F98471E76DED400FE2B6F /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
-				40F17E0120B80DF900728870 /* FiveStarRatingView */,
 				6D3FB3471E8136640015E1D6 /* Message Cells */,
 				6D017B2C1F4EC98E004BDE7E /* Skill Listing Cells */,
 				6D0B28DF1F3D8F6300E273E1 /* CustomTextField.swift */,
@@ -823,7 +812,6 @@
 				6D4D9B4D1E768E650067459C /* LoginViewController.swift in Sources */,
 				6D389BEA1EDB912500DEAEA0 /* YouTubePlayer.swift in Sources */,
 				6D61B9AB1EEBAA3900CD3536 /* Message.swift in Sources */,
-				40F17E0020B80DED00728870 /* FiveStarRatingView.swift in Sources */,
 				6D0B28DE1F3D873D00E273E1 /* ResetPasswordVCMethods.swift in Sources */,
 				6DCA90621F1F0AD70058CABB /* AudioRecorderDelegate.swift in Sources */,
 				6DCA90661F1F0B660058CABB /* SpeechRecognizerDelegate.swift in Sources */,
