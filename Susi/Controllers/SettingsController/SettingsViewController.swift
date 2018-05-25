@@ -53,6 +53,9 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var shareSusiSubtitle: UILabel!
     @IBOutlet weak var resetPassTitle: UILabel!
     @IBOutlet weak var logoutTitle: UILabel!
+    @IBOutlet weak var devicesTitle: UILabel!
+    @IBOutlet weak var devicesSubtitle: UILabel!
+    @IBOutlet weak var setupDeviceTitle: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,6 +85,8 @@ class SettingsViewController: UITableViewController {
             case 3:
                 header.textLabel?.text = ControllerConstants.Settings.susiVoiceModel.localized()
             case 4:
+                header.textLabel?.text = ControllerConstants.Settings.devices.localized()
+            case 5:
                 header.textLabel?.text = ControllerConstants.Settings.miscellaneous.localized()
             default:
                 break
@@ -106,6 +111,12 @@ class SettingsViewController: UITableViewController {
                 deleteVoiceModel()
             }
         } else if section == 4 {
+            if row == 1 {
+                // Connected device info
+            } else if row == 2 {
+                // Tap to setup device methos
+            }
+        } else if section == 5 {
             if row == 1 {
                 shareApp()
             } else if row == 2 {
