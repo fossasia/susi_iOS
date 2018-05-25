@@ -50,4 +50,24 @@ extension UIColor {
         return UIColor.hexStringToUIColor(hex: "#116AFF")
     }
 
+    class func iOSOrange() -> UIColor {
+        return UIColor.hexStringToUIColor(hex: "#FF8D00")
+    }
+
+    class func iOSTealBlue() -> UIColor {
+        return UIColor.hexStringToUIColor(hex: "#31C9FE")
+    }
+
+    class func iOSGreen() -> UIColor {
+        return UIColor.hexStringToUIColor(hex: "#00E664")
+    }
+
+    class func iOSYellow() -> UIColor {
+        return UIColor.hexStringToUIColor(hex: "#FFCF00")
+    }
+
+    class func iOSRed() -> UIColor {
+        return UIColor.hexStringToUIColor(hex: "#FF0000")
+    }
+
 }

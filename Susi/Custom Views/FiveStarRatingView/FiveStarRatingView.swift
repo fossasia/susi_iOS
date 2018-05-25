@@ -15,17 +15,11 @@ class FiveStarRatingView: UIView {
 
     fileprivate static let alpha: CGFloat = 1.0
     let colors = [
-        UIColor.yellow.withAlphaComponent(alpha),
-        UIColor.green.withAlphaComponent(alpha),
-        UIColor.purple.withAlphaComponent(alpha),
-        UIColor.cyan.withAlphaComponent(alpha),
-        UIColor.darkGray.withAlphaComponent(alpha),
-        UIColor.red.withAlphaComponent(alpha),
-        UIColor.magenta.withAlphaComponent(alpha),
-        UIColor.orange.withAlphaComponent(alpha),
-        UIColor.brown.withAlphaComponent(alpha),
-        UIColor.lightGray.withAlphaComponent(alpha),
-        UIColor.gray.withAlphaComponent(alpha),
+        UIColor.iOSGreen(),
+        UIColor.iOSTealBlue(),
+        UIColor.iOSYellow(),
+        UIColor.iOSOrange(),
+        UIColor.iOSRed()
         ]
     fileprivate var currentColorIndex = 0
 
@@ -42,10 +36,10 @@ class FiveStarRatingView: UIView {
     fileprivate func createModels() -> [PieSliceModel] {
 
         let models = [
-            PieSliceModel(value: 1, color: colors[0]),
-            PieSliceModel(value: 2, color: colors[1]),
+            PieSliceModel(value: 10, color: colors[0]),
+            PieSliceModel(value: 7, color: colors[1]),
             PieSliceModel(value: 3, color: colors[2]),
-            PieSliceModel(value: 4, color: colors[3]),
+            PieSliceModel(value: 8, color: colors[3]),
             PieSliceModel(value: 5, color: colors[4])
         ]
 
@@ -60,8 +54,8 @@ class FiveStarRatingView: UIView {
     fileprivate func createPlainTextLayer() -> PiePlainTextLayer {
 
         let textLayerSettings = PiePlainTextLayerSettings()
-        textLayerSettings.viewRadius = 55
-        textLayerSettings.hideOnOverflow = true
+        textLayerSettings.viewRadius = 30
+        textLayerSettings.hideOnOverflow = false
         textLayerSettings.label.font = UIFont.systemFont(ofSize: 12.0)
 
         let formatter = NumberFormatter()

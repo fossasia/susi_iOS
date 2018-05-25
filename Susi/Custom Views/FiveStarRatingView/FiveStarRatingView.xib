@@ -12,12 +12,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FiveStarRatingView" customModule="Susi" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+        <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" id="iN0-l3-epB" customClass="FiveStarRatingView" customModule="Susi" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="228" height="392"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mYj-9m-gsI" customClass="PieChart" customModule="PieCharts">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mYj-9m-gsI" customClass="PieChart" customModule="PieCharts">
+                    <rect key="frame" x="0.0" y="0.0" width="772" height="300"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="300" id="w3v-16-Cye"/>
                     </constraints>
@@ -29,7 +29,7 @@
                             <real key="value" value="80"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="selectedOffset">
-                            <real key="value" value="30"/>
+                            <real key="value" value="5"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="animDuration">
                             <real key="value" value="1"/>
@@ -38,12 +38,11 @@
                             <real key="value" value="270"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="strokeWidth">
-                            <real key="value" value="1"/>
+                            <real key="value" value="0.0"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="mYj-9m-gsI" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="I6C-wn-AxB"/>
                 <constraint firstItem="mYj-9m-gsI" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Kz4-Ay-3vW"/>
@@ -55,7 +54,7 @@
             <connections>
                 <outlet property="pieChartView" destination="mYj-9m-gsI" id="ge2-PD-wSS"/>
             </connections>
-            <point key="canvasLocation" x="33.5" y="54"/>
+            <point key="canvasLocation" x="33" y="54"/>
         </view>
     </objects>
 </document>

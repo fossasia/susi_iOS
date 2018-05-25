@@ -67,6 +67,7 @@ class SkillDetailViewController: GeneralViewController {
     var chatViewController: ChatViewController?
     var selectedExample: String?
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var skillLabel: UILabel!
     @IBOutlet weak var skillImageView: UIImageView!
     @IBOutlet weak var skillAuthorLabel: UILabel!
@@ -91,6 +92,11 @@ class SkillDetailViewController: GeneralViewController {
         addRating()
         addContentType()
         addFiveStarRating()
+    }
+
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 1500)
     }
     override func localizeStrings() {
         tryItButton.setTitle(ControllerConstants.tryIt.localized(), for: .normal)
