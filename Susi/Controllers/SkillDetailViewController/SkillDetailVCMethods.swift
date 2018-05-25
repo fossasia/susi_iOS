@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PieCharts
 
 extension SkillDetailViewController {
 
@@ -40,34 +41,34 @@ extension SkillDetailViewController {
         skillDescription.text = skill?.skillDescription
     }
 
-    func addRating() {
-
-        view.addSubview(positiveRating)
-        positiveRating.leftAnchor.constraint(equalTo: rating.leftAnchor).isActive = true
-        positiveRating.rightAnchor.constraint(equalTo: rating.rightAnchor).isActive = true
-        positiveRating.heightAnchor.constraint(equalToConstant: 35).isActive = true
-        positiveRating.topAnchor.constraint(equalTo: rating.bottomAnchor).isActive = true
-
-        guard let positiveRatingCount = skill?.skill_rating["positive"] else { return }
-        positiveRating.text = "Positive: \(positiveRatingCount)"
-
-        view.addSubview(negativeRating)
-        negativeRating.leftAnchor.constraint(equalTo: positiveRating.leftAnchor).isActive = true
-        negativeRating.rightAnchor.constraint(equalTo: positiveRating.rightAnchor).isActive = true
-        negativeRating.heightAnchor.constraint(equalToConstant: 35)
-        negativeRating.topAnchor.constraint(equalTo: positiveRating.bottomAnchor).isActive = true
-
-        guard let negativeRatingCount = skill?.skill_rating["negative"] else { return }
-        negativeRating.text = "Negative: \(negativeRatingCount)"
-
-    }
+//    func addRating() {
+//
+//        view.addSubview(positiveRating)
+//        positiveRating.leftAnchor.constraint(equalTo: rating.leftAnchor).isActive = true
+//        positiveRating.rightAnchor.constraint(equalTo: rating.rightAnchor).isActive = true
+//        positiveRating.heightAnchor.constraint(equalToConstant: 35).isActive = true
+//        positiveRating.topAnchor.constraint(equalTo: rating.bottomAnchor).isActive = true
+//
+//        guard let positiveRatingCount = skill?.skill_rating["positive"] else { return }
+//        positiveRating.text = "Positive: \(positiveRatingCount)"
+//
+//        view.addSubview(negativeRating)
+//        negativeRating.leftAnchor.constraint(equalTo: positiveRating.leftAnchor).isActive = true
+//        negativeRating.rightAnchor.constraint(equalTo: positiveRating.rightAnchor).isActive = true
+//        negativeRating.heightAnchor.constraint(equalToConstant: 35)
+//        negativeRating.topAnchor.constraint(equalTo: positiveRating.bottomAnchor).isActive = true
+//
+//        guard let negativeRatingCount = skill?.skill_rating["negative"] else { return }
+//        negativeRating.text = "Negative: \(negativeRatingCount)"
+//
+//    }
 
     func addContentType() {
         view.addSubview(contentType)
-        contentType.leftAnchor.constraint(equalTo: negativeRating.leftAnchor).isActive = true
+        contentType.leftAnchor.constraint(equalTo: ratingView.leftAnchor).isActive = true
         contentType.widthAnchor.constraint(equalToConstant: 140).isActive = true
         contentType.heightAnchor.constraint(equalToConstant: 35).isActive = true
-        contentType.topAnchor.constraint(equalTo: negativeRating.bottomAnchor, constant: 25).isActive = true
+        contentType.topAnchor.constraint(equalTo: ratingView.bottomAnchor, constant: 25).isActive = true
 
         view.addSubview(content)
         content.leftAnchor.constraint(equalTo: contentType.rightAnchor, constant: -6).isActive = true
@@ -84,13 +85,12 @@ extension SkillDetailViewController {
 
     }
 
-    func addFiveStarRating() {
-        view.addSubview(fiveStarRatingView)
-        fiveStarRatingView.translatesAutoresizingMaskIntoConstraints = false
-        fiveStarRatingView.leftAnchor.constraint(equalTo: contentType.leftAnchor).isActive = true
-        fiveStarRatingView.heightAnchor.constraint(equalToConstant: 300.0).isActive = true
-        fiveStarRatingView.widthAnchor.constraint(equalToConstant: view.frame.width - 32.0).isActive = true
-        fiveStarRatingView.topAnchor.constraint(equalTo: contentType.bottomAnchor, constant: 25).isActive = true
+}
+
+extension SkillDetailViewController: PieChartDelegate {
+
+    func onSelected(slice: PieSlice, selected: Bool) {
+        print("Selected: \(selected), slice: \(slice)")
     }
 
 }
