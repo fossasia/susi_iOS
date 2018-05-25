@@ -84,4 +84,13 @@ extension SkillDetailViewController {
 
     }
 
+    func addFiveStarRating() {
+        view.addSubview(fiveStarRatingView)
+        fiveStarRatingView.translatesAutoresizingMaskIntoConstraints = false
+        fiveStarRatingView.leftAnchor.constraint(equalTo: contentType.leftAnchor).isActive = true
+        fiveStarRatingView.heightAnchor.constraint(equalToConstant: 300.0).isActive = true
+        fiveStarRatingView.widthAnchor.constraint(equalToConstant: view.frame.width - 32.0).isActive = true
+        fiveStarRatingView.topAnchor.constraint(equalTo: contentType.bottomAnchor, constant: 25).isActive = true
+    }
+
 }

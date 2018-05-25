@@ -55,6 +55,14 @@ class SkillDetailViewController: GeneralViewController {
         return label
     }()
 
+    var fiveStarRatingView: FiveStarRatingView = {
+        if let view = Bundle.main.loadNibNamed("FiveStarRatingView", owner: self, options: nil)?.first as? FiveStarRatingView {
+            return view
+        } else {
+            fatalError("FiveStarRatingView unable to load from nib")
+        }
+    }()
+
     var skill: Skill?
     var chatViewController: ChatViewController?
     var selectedExample: String?
@@ -82,6 +90,7 @@ class SkillDetailViewController: GeneralViewController {
 
         addRating()
         addContentType()
+        addFiveStarRating()
     }
     override func localizeStrings() {
         tryItButton.setTitle(ControllerConstants.tryIt.localized(), for: .normal)
