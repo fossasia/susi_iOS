@@ -431,4 +431,6 @@ extension Client {
         })
     }
 
+    //func fiveStarRating(_ param: [String: AnyObject], _ completion: @escaping(_ ))
+
 }

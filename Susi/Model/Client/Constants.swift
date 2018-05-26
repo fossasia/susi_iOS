@@ -27,6 +27,7 @@ extension Client {
         static let ChangePassword = "/aaa/changepassword.json"
         static let GetGroups = "/cms/getGroups.json"
         static let GetSkillList = "/cms/getSkillList.json"
+        static let fiveStarRateSkill = "/cms/fiveStarRateSkill.json"
         static let baseSkillImagePath = "https://raw.githubusercontent.com/fossasia/susi_skill_data/master/models/"
     }
 
@@ -151,6 +152,17 @@ extension Client {
         static let language = "language"
         static let dynamicContent = "dynamic_content"
         static let skillRating = "skill_rating"
+    }
+
+    struct FiveStarRating {
+        static let oneStar = "one_star"
+        static let twoStar = "two_star"
+        static let threeStar = "three_star"
+        static let fourStar = "four_star"
+        static let fiveSatr = "five_star"
+        static let average = "avg_star"
+        static let positive = "positive"
+        static let negative = "negative"
     }
 
 }
