@@ -431,6 +431,27 @@ extension Client {
         })
     }
 
-    //func fiveStarRating(_ param: [String: AnyObject], _ completion: @escaping(_ ))
+    func getRatings(_ param: [String: AnyObject], _ completion: @escaping(_ fiveStarRating: FiveStarRating?, _ success: Bool, _ error: String?) -> Void) {
+        let url = getApiUrl(UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.ipAddress) as! String, Methods.fiveStarRateSkill)
+        _ = makeRequest(url, .get, [:], parameters: params, completion: { (results, message) in
+            if let _ = message {
+                completion(nil, false, ResponseMessages.ServerError)
+            } else if let results = results {
+
+                guard let response = results as? [String: AnyObject] else {
+                    completion(nil, false, ResponseMessages.InvalidParams)
+                    return
+                }
+
+                if let ratings = response[Client.SkillListing.skills] as? [String: AnyObject] {
+                    completion(ratings, true, nil)
+                    return
+                }
+                completion(nil, false, ResponseMessages.NoSkillsPresent)
+                return
+            }
+            return
+        })
+    }
 
 }

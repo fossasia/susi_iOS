@@ -14,6 +14,7 @@ class FiveStarRating: NSObject {
     var threeStar: Int = 0
     var fourStar: Int = 0
     var fiveStar: Int = 0
+    var totalStar: Int = 0
     var positive: Int = 0
     var negative: Int = 0
     var average: Double = 0.0
@@ -25,6 +26,7 @@ class FiveStarRating: NSObject {
         threeStar = Int(dictionary[Client.FiveStarRating.threeStar] as? String ?? "0")
         fourStar = Int(dictionary[Client.FiveStarRating.fourStar] as? String ?? "0")
         fiveStar = Int(dictionary[Client.FiveStarRating.fiveSatr] as? String ?? "0")
+        totalStar = Int(dictionary[Client.FiveStarRating.totalStar] as? String ?? "0")
         positive = Int(dictionary[Client.FiveStarRating.positive] as? String ?? "0")
         negative = Int(dictionary[Client.FiveStarRating.negative] as? String ?? "0")
         average = Double(dictionary[Client.FiveStarRating.average] as? String ?? "0.0")

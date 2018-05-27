@@ -37,6 +37,7 @@ extension Client {
         static let SignedOut = "Successfully logged out"
         static let PasswordInvalid = "Password chosen is invalid."
         static let NoSkillsPresent = "No skills present."
+        static let NoRatingsPresent = "No ratings present."
     }
 
     struct UserKeys {
@@ -160,6 +161,7 @@ extension Client {
         static let threeStar = "three_star"
         static let fourStar = "four_star"
         static let fiveSatr = "five_star"
+        static let totalStar = "total_star"
         static let average = "avg_star"
         static let positive = "positive"
         static let negative = "negative"
