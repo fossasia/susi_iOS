@@ -57,6 +57,8 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var devicesSubtitle: UILabel!
     @IBOutlet weak var setupDeviceTitle: UILabel!
 
+    var chatViewController: ChatViewController?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         assignDefaults()
