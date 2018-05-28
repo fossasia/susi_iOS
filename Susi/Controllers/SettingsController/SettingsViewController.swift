@@ -114,7 +114,10 @@ class SettingsViewController: UITableViewController {
             }
         } else if section == 4 {
             if row == 0 {
-                // Connected device info
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let devicesActivityController = storyboard.instantiateViewController(withIdentifier: "DevicesActivityController")
+                let nvc = AppNavigationController(rootViewController: devicesActivityController)
+                present(nvc, animated: true, completion: nil)
             } else if row == 1 {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let deviceInstructionsViewController = storyboard.instantiateViewController(withIdentifier: "DeviceInstructionsViewController")
