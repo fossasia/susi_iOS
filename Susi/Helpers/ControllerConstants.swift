@@ -77,6 +77,7 @@ class ControllerConstants {
     static let listentingSusi2 = "Say \"SUSI\" again"
     static let listentingSusi3 = "Say \"SUSI\" one last time"
     static let finishLater = "FINISH LATER"
+    static let addNewDevice = "Add New Device"
 
     struct Settings {
         static let enterToSend = "Enter To Send"

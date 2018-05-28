@@ -113,10 +113,13 @@ class SettingsViewController: UITableViewController {
                 deleteVoiceModel()
             }
         } else if section == 4 {
-            if row == 1 {
+            if row == 0 {
                 // Connected device info
-            } else if row == 2 {
-                // Tap to setup device methos
+            } else if row == 1 {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let deviceInstructionsViewController = storyboard.instantiateViewController(withIdentifier: "DeviceInstructionsViewController")
+                let nvc = AppNavigationController(rootViewController: deviceInstructionsViewController)
+                present(nvc, animated: true, completion: nil)
             }
         } else if section == 5 {
             if row == 1 {
