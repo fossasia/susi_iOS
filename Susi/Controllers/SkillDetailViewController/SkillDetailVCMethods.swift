@@ -16,7 +16,7 @@ extension SkillDetailViewController {
             if let url = URL(string: skill.imagePath) {
                 skillImageView.kf.setImage(with: url)
             }
-            skillAuthorLabel.text = "By: \(skill.author)"
+            skillAuthorLabel.text = "Author: \(skill.author)"
         }
         navigationItem.backButton.tintColor = .white
 
@@ -67,7 +67,7 @@ extension SkillDetailViewController {
         contentType.leftAnchor.constraint(equalTo: negativeRating.leftAnchor).isActive = true
         contentType.widthAnchor.constraint(equalToConstant: 140).isActive = true
         contentType.heightAnchor.constraint(equalToConstant: 35).isActive = true
-        contentType.topAnchor.constraint(equalTo: negativeRating.bottomAnchor, constant: 25).isActive = true
+        contentType.topAnchor.constraint(equalTo: negativeRating.bottomAnchor, constant: 16).isActive = true
 
         view.addSubview(content)
         content.leftAnchor.constraint(equalTo: contentType.rightAnchor, constant: -6).isActive = true

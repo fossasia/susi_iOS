@@ -15,7 +15,7 @@ class SkillListingTableCell: UITableViewCell {
 
     var groupName: String? {
         didSet {
-            backgroundColor = Color.grey.lighten3
+            backgroundColor = Color.grey.lighten4
             groupNameLabel.text = groupName
          }
     }
