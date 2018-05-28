@@ -907,10 +907,55 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Devices" id="PbW-Ej-qel">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="DevicesCell" textLabel="zm3-8i-YtR" detailTextLabel="nh7-mJ-59j" style="IBUITableViewCellStyleSubtitle" id="Ooo-nS-VKp">
+                                        <rect key="frame" x="0.0" y="823.33333333333337" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ooo-nS-VKp" id="OmI-eE-vX9">
+                                            <rect key="frame" x="0.0" y="0.0" width="362" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="No connected device" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zm3-8i-YtR">
+                                                    <rect key="frame" x="20" y="5" width="162.66666666666666" height="20.333333333333332"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Your device will be shown here when it is connected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nh7-mJ-59j">
+                                                    <rect key="frame" x="20" y="25.333333333333332" width="294.33333333333331" height="14.333333333333334"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="pX6-a0-6Qc">
+                                        <rect key="frame" x="0.0" y="867.33333333333337" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pX6-a0-6Qc" id="8Pt-KJ-OVg">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Click here to setup a device" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wTJ-x9-2tE">
+                                                    <rect key="frame" x="20" y="11" width="386" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection headerTitle="Miscellaneous" id="KOG-QM-j1m">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="52" id="ADA-BW-uQI">
-                                        <rect key="frame" x="0.0" y="823.33333333333337" width="414" height="52"/>
+                                        <rect key="frame" x="0.0" y="967.33333333333337" width="414" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ADA-BW-uQI" id="P6L-fa-40B">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="51.666666666666664"/>
@@ -934,7 +979,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="52" id="hYB-Qn-vta">
-                                        <rect key="frame" x="0.0" y="875.33333333333337" width="414" height="52"/>
+                                        <rect key="frame" x="0.0" y="1019.3333333333335" width="414" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hYB-Qn-vta" id="9V1-mG-LMe">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="51.666666666666664"/>
@@ -958,7 +1003,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="Dju-Yu-JU3">
-                                        <rect key="frame" x="0.0" y="927.33333333333337" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="1071.3333333333335" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dju-Yu-JU3" id="Hhx-9W-xFY">
                                             <rect key="frame" x="0.0" y="0.0" width="376" height="43.666666666666664"/>
@@ -975,7 +1020,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="i2q-I4-HJc">
-                                        <rect key="frame" x="0.0" y="971.33333333333337" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="1115.3333333333335" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="i2q-I4-HJc" id="N4i-8a-kfs">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
@@ -1003,6 +1048,8 @@
                     <size key="freeformSize" width="414" height="1200"/>
                     <connections>
                         <outlet property="deleteVModelTitle" destination="QW1-ZR-nr2" id="VVV-bT-Fe3"/>
+                        <outlet property="devicesSubtitle" destination="nh7-mJ-59j" id="XgH-f0-hyc"/>
+                        <outlet property="devicesTitle" destination="zm3-8i-YtR" id="myr-md-fCb"/>
                         <outlet property="enterToSend" destination="UYb-A2-hlx" id="twB-9A-nKX"/>
                         <outlet property="enterToSendSubtitle" destination="5X2-CM-LP3" id="NSg-9H-Q7y"/>
                         <outlet property="enterToSendTitle" destination="Exi-Gn-y67" id="v0y-oM-RrL"/>
@@ -1019,6 +1066,7 @@
                         <outlet property="rateSusiTitle" destination="FE6-Q5-NAb" id="aSY-ev-b92"/>
                         <outlet property="resetPassTitle" destination="BcN-ht-Uyo" id="iCs-PU-MU1"/>
                         <outlet property="retrainVModelTitle" destination="Bx8-gF-MZS" id="DUd-8O-SUQ"/>
+                        <outlet property="setupDeviceTitle" destination="wTJ-x9-2tE" id="ytS-hB-MQK"/>
                         <outlet property="shareSusiSubtitle" destination="BeY-3G-A0L" id="KMj-QL-Zat"/>
                         <outlet property="shareSusiTitle" destination="QAJ-hf-Eyi" id="9Ra-2k-y7W"/>
                         <outlet property="speechOutput" destination="OCZ-Am-iv8" id="fB0-WL-6GW"/>
