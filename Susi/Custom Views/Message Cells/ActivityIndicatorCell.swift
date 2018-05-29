@@ -26,7 +26,7 @@ class ActivityIndicatorCell: ChatMessageCell {
         textBubbleView.addConstraintsWithFormat(format: "V:|[v0]|", views: activityIndicator)
 
         activityIndicator.startAnimating()
-        textBubbleView.layer.borderWidth = 0.2
+        textBubbleView.layer.borderWidth = 0.5
     }
 
     func setupTheme() {
