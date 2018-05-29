@@ -113,7 +113,7 @@ extension SettingsViewController {
         present(nvc, animated: true, completion: nil)
     }
     func doChangeLanguage() {
-        let languages = Localize.availableLanguages().flatMap { Localize.displayNameForLanguage($0).isEmpty ? nil : $0 }
+        let languages = Localize.availableLanguages().compactMap { Localize.displayNameForLanguage($0).isEmpty ? nil : $0 }
         let actionSheet = UIAlertController(title: nil, message: "Set a language".localized(), preferredStyle: UIAlertControllerStyle.actionSheet)
         for language in languages {
             let displayName = Localize.displayNameForLanguage(language)
