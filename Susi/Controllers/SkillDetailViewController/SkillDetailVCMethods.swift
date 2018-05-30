@@ -43,10 +43,10 @@ extension SkillDetailViewController {
 
     func addContentType() {
         view.addSubview(contentType)
-        contentType.leftAnchor.constraint(equalTo: ratingView.leftAnchor).isActive = true
+        contentType.leftAnchor.constraint(equalTo: positiveRatingLabel.leftAnchor).isActive = true
         contentType.widthAnchor.constraint(equalToConstant: 140).isActive = true
         contentType.heightAnchor.constraint(equalToConstant: 35).isActive = true
-        contentType.topAnchor.constraint(equalTo: ratingView.bottomAnchor, constant: 25).isActive = true
+        contentType.topAnchor.constraint(equalTo: positiveRatingLabel.bottomAnchor, constant: 16).isActive = true
 
         view.addSubview(content)
         content.leftAnchor.constraint(equalTo: contentType.rightAnchor, constant: -6).isActive = true

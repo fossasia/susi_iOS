@@ -2050,15 +2050,19 @@
                     <navigationItem key="navigationItem" id="PA1-W6-wgT"/>
                     <size key="freeformSize" width="414" height="800"/>
                     <connections>
+                        <outlet property="averageRatingLabel" destination="dtK-71-QPv" id="iwm-i2-Twr"/>
                         <outlet property="exampleHeading" destination="5TK-r0-e8G" id="hjQ-mG-I4S"/>
                         <outlet property="examplesCollectionView" destination="k2K-Ep-os5" id="RdK-c5-Piu"/>
+                        <outlet property="negativeRatingLabel" destination="6bk-Dv-0Ph" id="Psv-4E-C8n"/>
                         <outlet property="pieChartView" destination="C1u-Gc-IVz" id="sEx-ah-iRi"/>
+                        <outlet property="positiveRatingLabel" destination="7MS-nH-Wdj" id="xZR-j3-YEI"/>
                         <outlet property="ratingView" destination="e0u-Qb-6wI" id="Hfx-GD-0q2"/>
                         <outlet property="scrollView" destination="DiX-KG-d8K" id="cLB-LF-kbO"/>
                         <outlet property="skillAuthorLabel" destination="qES-uK-T6I" id="ifU-hR-nsY"/>
                         <outlet property="skillDescription" destination="4wB-JH-dJK" id="MeJ-9x-Gmg"/>
                         <outlet property="skillImageView" destination="wHe-xI-Ovh" id="PGG-2f-MCq"/>
                         <outlet property="skillLabel" destination="i6G-gZ-Q4r" id="scS-Fy-0tr"/>
+                        <outlet property="totalRatingsLabel" destination="uZ1-oA-bcU" id="agj-b0-8dB"/>
                         <outlet property="tryItButton" destination="dhG-5L-gZ2" id="A2J-iP-7bJ"/>
                     </connections>
                 </viewController>

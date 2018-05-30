@@ -44,6 +44,10 @@ class SkillDetailViewController: GeneralViewController {
     @IBOutlet weak var exampleHeading: UILabel!
     @IBOutlet weak var pieChartView: PieChart!
     @IBOutlet weak var ratingView: RatingView!
+    @IBOutlet weak var averageRatingLabel: UILabel!
+    @IBOutlet weak var totalRatingsLabel: UILabel!
+    @IBOutlet weak var positiveRatingLabel: UILabel!
+    @IBOutlet weak var negativeRatingLabel: UILabel!
 
     static let alpha: CGFloat = 1.0
     let colors = [
@@ -72,7 +76,7 @@ class SkillDetailViewController: GeneralViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         // ScrollView content size
-        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 200)
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 300)
     }
 
     override func localizeStrings() {
