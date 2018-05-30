@@ -1172,7 +1172,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <activityIndicatorView key="tableFooterView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="whiteLarge" id="phy-Xh-don">
+                        <activityIndicatorView key="tableFooterView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" id="phy-Xh-don">
                             <rect key="frame" x="0.0" y="265" width="414" height="37"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="color" red="0.25447925925254822" green="0.51828217506408691" blue="0.95430618524551392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1715,9 +1715,8 @@
                                         <color key="textColor" name="TextGray"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="C1u-Gc-IVz">
+                                    <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="C1u-Gc-IVz" customClass="PieChart" customModule="PieCharts">
                                         <rect key="frame" x="164" y="514" width="250" height="250"/>
-                                        <color key="backgroundColor" name="iOSYellow"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="250" id="229-n5-wAc"/>
                                             <constraint firstAttribute="height" constant="250" id="xgp-Ky-d2l"/>
@@ -1743,45 +1742,85 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Vdt-Na-QPN">
                                         <rect key="frame" x="40" y="514" width="20" height="132"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="78y-iZ-Xwm">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="78y-iZ-Xwm" customClass="DesignableView" customModule="Susi" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
                                                 <color key="backgroundColor" name="iOSGreen"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="0cC-HV-W5A"/>
                                                     <constraint firstAttribute="width" constant="20" id="AbK-s0-0lN"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRedius">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerViewRedius">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U0z-eT-Esl">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U0z-eT-Esl" customClass="DesignableView" customModule="Susi" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="20" height="20"/>
                                                 <color key="backgroundColor" name="iOSTealBlue"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="20" id="6aS-CA-0Xg"/>
                                                     <constraint firstAttribute="height" constant="20" id="cS3-Tp-1dh"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRedius">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerViewRedius">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TK1-v3-DK8">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TK1-v3-DK8" customClass="DesignableView" customModule="Susi" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="56" width="20" height="20"/>
                                                 <color key="backgroundColor" name="iOSYellow"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="20" id="FfF-eO-ET0"/>
                                                     <constraint firstAttribute="height" constant="20" id="UpO-T1-aur"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRedius">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerViewRedius">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z7C-R8-4UK">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z7C-R8-4UK" customClass="DesignableView" customModule="Susi" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="84" width="20" height="20"/>
                                                 <color key="backgroundColor" name="iOSOrange"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="sTW-46-Pgi"/>
                                                     <constraint firstAttribute="width" constant="20" id="u1Y-ER-SNi"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRedius">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerViewRedius">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T8q-SL-Ya1">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T8q-SL-Ya1" customClass="DesignableView" customModule="Susi" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="112" width="20" height="20"/>
                                                 <color key="backgroundColor" name="iOSRed"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="Ljt-kC-kNx"/>
                                                     <constraint firstAttribute="width" constant="20" id="MXS-Ef-oxk"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRedius">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerViewRedius">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
                                         <constraints>
@@ -1855,9 +1894,8 @@
                                             <constraint firstAttribute="height" constant="2" id="EST-zz-un0"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e0u-Qb-6wI">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e0u-Qb-6wI" customClass="RatingView" customModule="Susi" customModuleProvider="target">
                                         <rect key="frame" x="40" y="452" width="200" height="30"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="IZc-51-f01"/>
                                             <constraint firstAttribute="height" constant="30" id="Zzb-xr-e4s"/>
@@ -2055,9 +2093,6 @@
         </namedColor>
         <namedColor name="iOSTealBlue">
             <color red="0.19200000166893005" green="0.78799998760223389" blue="0.99599999189376831" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="iOSYellow">
-            <color red="1" green="0.81199997663497925" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="iOSYellow">
             <color red="1" green="0.81199997663497925" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

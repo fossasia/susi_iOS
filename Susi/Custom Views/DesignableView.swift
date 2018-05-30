@@ -11,21 +11,21 @@ import UIKit
 @IBDesignable
 class DesignableView: UIView {
 
-    @IBInspectable var borderWidth: CGFloat = 0.0 {
+    @IBInspectable var borderViewWidth: CGFloat = 0.0 {
         didSet {
-            self.layer.borderWidth = borderWidth
+            self.layer.borderWidth = borderViewWidth
         }
     }
 
-    @IBInspectable var borderColor: UIColor = UIColor.clear {
+    @IBInspectable var borderViewColor: UIColor = UIColor.clear {
         didSet {
-            self.layer.borderColor = borderColor.cgColor
+            self.layer.borderColor = borderViewColor.cgColor
         }
     }
 
-    @IBInspectable var cornerRedius: CGFloat = 0.0 {
+    @IBInspectable var cornerViewRedius: CGFloat = 0.0 {
         didSet {
-            self.layer.cornerRadius = cornerRedius
+            self.layer.cornerRadius = cornerViewRedius
         }
     }
 
