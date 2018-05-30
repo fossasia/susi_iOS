@@ -70,4 +70,8 @@ extension UIColor {
         return UIColor.hexStringToUIColor(hex: "#FF0000")
     }
 
+    class func iOSGray() -> UIColor {
+        return UIColor.hexStringToUIColor(hex: "#5F6368")
+    }
+
 }

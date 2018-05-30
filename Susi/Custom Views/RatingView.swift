@@ -26,10 +26,10 @@ open class RatingView: UIView {
     open weak var delegate: FloatRatingViewDelegate?
 
     /// Array of empty image views
-    private var emptyImageViews: [UIImageView] = []
+    var emptyImageViews: [UIImageView] = []
 
     /// Array of full image views
-    private var fullImageViews: [UIImageView] = []
+    var fullImageViews: [UIImageView] = []
 
     /// Sets the empty image (e.g. a star outline)
     @IBInspectable open var emptyImage: UIImage? {
@@ -142,6 +142,7 @@ open class RatingView: UIView {
             let emptyImageView = UIImageView()
             emptyImageView.contentMode = imageContentMode
             emptyImageView.image = emptyImage
+            emptyImageView.tintColor = UIColor.iOSGray()
             emptyImageViews.append(emptyImageView)
             addSubview(emptyImageView)
 

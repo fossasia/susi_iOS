@@ -76,9 +76,9 @@ extension SkillDetailViewController: PieChartDelegate {
     func createPlainTextLayer() -> PiePlainTextLayer {
 
         let textLayerSettings = PiePlainTextLayerSettings()
-        textLayerSettings.viewRadius = 35.0
+        textLayerSettings.viewRadius = 45.0
         textLayerSettings.hideOnOverflow = false
-        textLayerSettings.label.font = UIFont.systemFont(ofSize: 10.0)
+        textLayerSettings.label.font = UIFont.systemFont(ofSize: 12.0)
 
         let formatter = NumberFormatter()
         formatter.maximumFractionDigits = 1
@@ -96,10 +96,10 @@ extension SkillDetailViewController: PieChartDelegate {
         var lineTextLayerSettings = PieLineTextLayerSettings()
         lineTextLayerSettings.lineColor = UIColor.lightGray
         lineTextLayerSettings.segment1Length = 10.0
-        lineTextLayerSettings.segment2Length = 5.0
+        lineTextLayerSettings.segment2Length = 10.0
         let formatter = NumberFormatter()
         formatter.maximumFractionDigits = 1
-        lineTextLayerSettings.label.font = UIFont.systemFont(ofSize: 12)
+        lineTextLayerSettings.label.font = UIFont.systemFont(ofSize: 14)
         lineTextLayerSettings.label.textGenerator = {slice in
             return formatter.string(from: slice.data.model.value as NSNumber).map{"\($0)"} ?? ""
         }
@@ -114,8 +114,8 @@ extension SkillDetailViewController: PieChartDelegate {
 
         let models = [
             PieSliceModel(value: 10, color: colors[0]),
-            PieSliceModel(value: 7, color: colors[1]),
-            PieSliceModel(value: 3, color: colors[2]),
+            PieSliceModel(value: 8, color: colors[1]),
+            PieSliceModel(value: 6, color: colors[2]),
             PieSliceModel(value: 8, color: colors[3]),
             PieSliceModel(value: 5, color: colors[4])
         ]

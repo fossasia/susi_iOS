@@ -25,6 +25,7 @@ class SkillDetailViewController: GeneralViewController {
     let content: UILabel = {
        let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18)
+        label.textColor = UIColor.iOSGray()
         label.translatesAutoresizingMaskIntoConstraints = false
 
         return label
@@ -48,6 +49,7 @@ class SkillDetailViewController: GeneralViewController {
     @IBOutlet weak var totalRatingsLabel: UILabel!
     @IBOutlet weak var positiveRatingLabel: UILabel!
     @IBOutlet weak var negativeRatingLabel: UILabel!
+    @IBOutlet weak var submitButton: UIButton!
 
     static let alpha: CGFloat = 1.0
     let colors = [
@@ -65,6 +67,7 @@ class SkillDetailViewController: GeneralViewController {
 
         setupView()
         roundedCorner()
+        setupSubmitButton()
         setupTryItTarget()
         addSkillDescription()
         addContentType()
@@ -76,7 +79,7 @@ class SkillDetailViewController: GeneralViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         // ScrollView content size
-        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 300)
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 258)
     }
 
     override func localizeStrings() {
@@ -89,5 +92,11 @@ class SkillDetailViewController: GeneralViewController {
         tryItButton.layer.cornerRadius = 18.0
         tryItButton.layer.borderWidth = 2.0
         tryItButton.borderColor = UIColor.iOSBlue()
+    }
+
+    func setupSubmitButton() {
+        submitButton.layer.borderColor = UIColor.iOSGray().cgColor
+        submitButton.layer.borderWidth = 2.0
+        submitButton.layer.cornerRadius = 15.0
     }
 }

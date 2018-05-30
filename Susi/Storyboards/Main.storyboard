@@ -1700,6 +1700,13 @@
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ozk-lp-baG">
+                                        <rect key="frame" x="40" y="377" width="374" height="2"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="EST-zz-un0"/>
+                                        </constraints>
+                                    </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfb-ea-fHp">
                                         <rect key="frame" x="40" y="395.33333333333331" width="374" height="22"/>
                                         <constraints>
@@ -1715,30 +1722,38 @@
                                         <color key="textColor" name="TextGray"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="C1u-Gc-IVz" customClass="PieChart" customModule="PieCharts">
-                                        <rect key="frame" x="164" y="514" width="250" height="250"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e0u-Qb-6wI" customClass="RatingView" customModule="Susi" customModuleProvider="target">
+                                        <rect key="frame" x="40" y="452" width="200" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="250" id="229-n5-wAc"/>
-                                            <constraint firstAttribute="height" constant="250" id="xgp-Ky-d2l"/>
+                                            <constraint firstAttribute="width" constant="200" id="IZc-51-f01"/>
+                                            <constraint firstAttribute="height" constant="30" id="Zzb-xr-e4s"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="innerRadius">
-                                                <real key="value" value="50"/>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="star_empty"/>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="fullImage" value="star_full"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="minRating">
+                                                <integer key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="outerRadius">
-                                                <real key="value" value="80"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="maxRating">
+                                                <integer key="value" value="5"/>
                                             </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="selectedOffset">
-                                                <real key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="animDuration">
-                                                <real key="value" value="1"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="referenceAngle">
-                                                <real key="value" value="270"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                                <real key="value" value="0.0"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1wX-1g-MLW">
+                                        <rect key="frame" x="316" y="452" width="72" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="72" id="FUT-Gt-acx"/>
+                                            <constraint firstAttribute="height" constant="30" id="H3o-ah-RS6"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="tintColor" name="TextGray"/>
+                                        <state key="normal" title="SUBMIT">
+                                            <color key="titleColor" name="TextGray"/>
+                                        </state>
+                                    </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Vdt-Na-QPN">
                                         <rect key="frame" x="40" y="514" width="20" height="132"/>
                                         <subviews>
@@ -1887,30 +1902,27 @@
                                             <constraint firstAttribute="height" constant="132" id="zWM-9X-2dM"/>
                                         </constraints>
                                     </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ozk-lp-baG">
-                                        <rect key="frame" x="40" y="377.33333333333331" width="374" height="2"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="C1u-Gc-IVz" customClass="PieChart" customModule="PieCharts">
+                                        <rect key="frame" x="164" y="514" width="250" height="250"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="2" id="EST-zz-un0"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e0u-Qb-6wI" customClass="RatingView" customModule="Susi" customModuleProvider="target">
-                                        <rect key="frame" x="40" y="452" width="200" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="200" id="IZc-51-f01"/>
-                                            <constraint firstAttribute="height" constant="30" id="Zzb-xr-e4s"/>
+                                            <constraint firstAttribute="width" constant="250" id="229-n5-wAc"/>
+                                            <constraint firstAttribute="height" constant="250" id="xgp-Ky-d2l"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="star_empty"/>
-                                            <userDefinedRuntimeAttribute type="image" keyPath="fullImage" value="star_full"/>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="minRating">
-                                                <integer key="value" value="1"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="innerRadius">
+                                                <real key="value" value="70"/>
                                             </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="maxRating">
-                                                <integer key="value" value="5"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="outerRadius">
+                                                <real key="value" value="100"/>
                                             </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="rating">
-                                                <real key="value" value="0.0"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="selectedOffset">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="animDuration">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="referenceAngle">
+                                                <real key="value" value="270"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
@@ -1998,6 +2010,7 @@
                                     <constraint firstItem="4wB-JH-dJK" firstAttribute="trailing" secondItem="DiX-KG-d8K" secondAttribute="trailingMargin" constant="-40" id="Bp9-7Q-D3w"/>
                                     <constraint firstItem="ByD-Ps-Zqc" firstAttribute="top" secondItem="hfb-ea-fHp" secondAttribute="bottom" constant="8" id="Cm9-2C-E0W"/>
                                     <constraint firstItem="qES-uK-T6I" firstAttribute="top" secondItem="i6G-gZ-Q4r" secondAttribute="bottom" constant="6" id="EI8-P5-XXX"/>
+                                    <constraint firstItem="1wX-1g-MLW" firstAttribute="leading" secondItem="e0u-Qb-6wI" secondAttribute="trailing" constant="32" id="EeZ-I3-1qS"/>
                                     <constraint firstItem="k2K-Ep-os5" firstAttribute="leading" secondItem="DiX-KG-d8K" secondAttribute="leading" constant="28" id="Gcj-Vb-aKH"/>
                                     <constraint firstItem="k2K-Ep-os5" firstAttribute="top" secondItem="5TK-r0-e8G" secondAttribute="bottom" constant="8" id="I97-eF-SHv"/>
                                     <constraint firstItem="Vdt-Na-QPN" firstAttribute="leading" secondItem="DiX-KG-d8K" secondAttribute="leading" constant="40" id="IEP-pO-FTw"/>
@@ -2013,11 +2026,13 @@
                                     <constraint firstAttribute="trailing" secondItem="C1u-Gc-IVz" secondAttribute="trailing" constant="40" id="VfG-OR-hQ3"/>
                                     <constraint firstItem="dhG-5L-gZ2" firstAttribute="trailing" secondItem="DiX-KG-d8K" secondAttribute="trailingMargin" constant="-40" id="WGh-oL-WWl"/>
                                     <constraint firstItem="NaF-pl-M8F" firstAttribute="trailing" secondItem="DiX-KG-d8K" secondAttribute="trailingMargin" constant="-40" id="Weu-Oq-JWP"/>
+                                    <constraint firstItem="1wX-1g-MLW" firstAttribute="centerY" secondItem="e0u-Qb-6wI" secondAttribute="centerY" id="aun-u4-AHH"/>
                                     <constraint firstAttribute="trailing" secondItem="hfb-ea-fHp" secondAttribute="trailing" constant="40" id="bRm-7e-102"/>
                                     <constraint firstItem="qES-uK-T6I" firstAttribute="trailing" secondItem="i6G-gZ-Q4r" secondAttribute="trailing" id="d2n-K0-f3I"/>
                                     <constraint firstItem="Ozk-lp-baG" firstAttribute="top" secondItem="k2K-Ep-os5" secondAttribute="bottom" constant="16" id="dHg-Td-N8g"/>
                                     <constraint firstItem="wHe-xI-Ovh" firstAttribute="leading" secondItem="DiX-KG-d8K" secondAttribute="leadingMargin" constant="40" id="ecD-rd-Bhy"/>
                                     <constraint firstAttribute="bottom" secondItem="k2K-Ep-os5" secondAttribute="bottom" constant="20" id="fsP-Rd-qUQ"/>
+                                    <constraint firstItem="1wX-1g-MLW" firstAttribute="top" secondItem="ByD-Ps-Zqc" secondAttribute="bottom" constant="8" id="gQP-t8-PAx"/>
                                     <constraint firstAttribute="trailing" secondItem="Ozk-lp-baG" secondAttribute="trailing" constant="40" id="gkY-3v-VgK"/>
                                     <constraint firstItem="ByD-Ps-Zqc" firstAttribute="leading" secondItem="DiX-KG-d8K" secondAttribute="leading" constant="40" id="hIw-ZL-Nzm"/>
                                     <constraint firstItem="Ozk-lp-baG" firstAttribute="leading" secondItem="DiX-KG-d8K" secondAttribute="leading" constant="40" id="i0t-5x-c3m"/>
@@ -2062,6 +2077,7 @@
                         <outlet property="skillDescription" destination="4wB-JH-dJK" id="MeJ-9x-Gmg"/>
                         <outlet property="skillImageView" destination="wHe-xI-Ovh" id="PGG-2f-MCq"/>
                         <outlet property="skillLabel" destination="i6G-gZ-Q4r" id="scS-Fy-0tr"/>
+                        <outlet property="submitButton" destination="1wX-1g-MLW" id="LuR-4X-wYX"/>
                         <outlet property="totalRatingsLabel" destination="uZ1-oA-bcU" id="agj-b0-8dB"/>
                         <outlet property="tryItButton" destination="dhG-5L-gZ2" id="A2J-iP-7bJ"/>
                     </connections>
