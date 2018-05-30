@@ -83,7 +83,7 @@ extension SkillDetailViewController: PieChartDelegate {
         let formatter = NumberFormatter()
         formatter.maximumFractionDigits = 1
         textLayerSettings.label.textGenerator = {slice in
-            return formatter.string(from: slice.data.percentage * 100 as NSNumber).map{"\($0)%"} ?? ""
+            return formatter.string(from: slice.data.percentage * 100 as NSNumber).map { "\($0)%"} ?? ""
         }
 
         let textLayer = PiePlainTextLayer()
@@ -101,7 +101,7 @@ extension SkillDetailViewController: PieChartDelegate {
         formatter.maximumFractionDigits = 1
         lineTextLayerSettings.label.font = UIFont.systemFont(ofSize: 14)
         lineTextLayerSettings.label.textGenerator = {slice in
-            return formatter.string(from: slice.data.model.value as NSNumber).map{"\($0)"} ?? ""
+            return formatter.string(from: slice.data.model.value as NSNumber).map { "\($0)"} ?? ""
         }
 
         lineTextLayer.settings = lineTextLayerSettings

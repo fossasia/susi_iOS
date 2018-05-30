@@ -111,6 +111,7 @@ open class RatingView: UIView {
         func supportsFractions() -> Bool {
             return self == .halfRatings || self == .floatRatings
         }
+
     }
 
     /// Float rating view type
@@ -182,7 +183,7 @@ open class RatingView: UIView {
                 imageView.layer.mask = maskLayer
                 imageView.isHidden = false
             } else {
-                imageView.layer.mask = nil;
+                imageView.layer.mask = nil
                 imageView.isHidden = true
             }
         }
@@ -301,4 +302,5 @@ open class RatingView: UIView {
         // Update delegate
         delegate?.floatRatingView?(self, didUpdate: rating)
     }
+
 }

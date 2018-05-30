@@ -60,7 +60,7 @@ class SkillDetailViewController: GeneralViewController {
         UIColor.iOSOrange(),
         UIColor.iOSRed()
     ]
-    
+
     var currentColorIndex = 0
 
     override func viewDidLoad() {
