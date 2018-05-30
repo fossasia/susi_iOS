@@ -908,10 +908,55 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Devices" id="PbW-Ej-qel">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="DevicesCell" textLabel="zm3-8i-YtR" detailTextLabel="nh7-mJ-59j" style="IBUITableViewCellStyleSubtitle" id="Ooo-nS-VKp">
+                                        <rect key="frame" x="0.0" y="823.33333333333337" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ooo-nS-VKp" id="OmI-eE-vX9">
+                                            <rect key="frame" x="0.0" y="0.0" width="362" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="No connected device" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zm3-8i-YtR">
+                                                    <rect key="frame" x="20" y="5" width="162.66666666666666" height="20.333333333333332"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Your device will be shown here when it is connected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nh7-mJ-59j">
+                                                    <rect key="frame" x="20" y="25.333333333333332" width="294.33333333333331" height="14.333333333333334"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="pX6-a0-6Qc">
+                                        <rect key="frame" x="0.0" y="867.33333333333337" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pX6-a0-6Qc" id="8Pt-KJ-OVg">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Click here to setup a device" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wTJ-x9-2tE">
+                                                    <rect key="frame" x="20" y="11" width="386" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection headerTitle="Miscellaneous" id="KOG-QM-j1m">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="52" id="ADA-BW-uQI">
-                                        <rect key="frame" x="0.0" y="823.33333333333337" width="414" height="52"/>
+                                        <rect key="frame" x="0.0" y="967.33333333333337" width="414" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ADA-BW-uQI" id="P6L-fa-40B">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="51.666666666666664"/>
@@ -935,7 +980,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="52" id="hYB-Qn-vta">
-                                        <rect key="frame" x="0.0" y="875.33333333333337" width="414" height="52"/>
+                                        <rect key="frame" x="0.0" y="1019.3333333333335" width="414" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hYB-Qn-vta" id="9V1-mG-LMe">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="51.666666666666664"/>
@@ -959,7 +1004,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="Dju-Yu-JU3">
-                                        <rect key="frame" x="0.0" y="927.33333333333337" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="1071.3333333333335" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dju-Yu-JU3" id="Hhx-9W-xFY">
                                             <rect key="frame" x="0.0" y="0.0" width="376" height="43.666666666666664"/>
@@ -976,7 +1021,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="i2q-I4-HJc">
-                                        <rect key="frame" x="0.0" y="971.33333333333337" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="1115.3333333333335" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="i2q-I4-HJc" id="N4i-8a-kfs">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
@@ -1004,6 +1049,8 @@
                     <size key="freeformSize" width="414" height="1200"/>
                     <connections>
                         <outlet property="deleteVModelTitle" destination="QW1-ZR-nr2" id="VVV-bT-Fe3"/>
+                        <outlet property="devicesSubtitle" destination="nh7-mJ-59j" id="XgH-f0-hyc"/>
+                        <outlet property="devicesTitle" destination="zm3-8i-YtR" id="myr-md-fCb"/>
                         <outlet property="enterToSend" destination="UYb-A2-hlx" id="twB-9A-nKX"/>
                         <outlet property="enterToSendSubtitle" destination="5X2-CM-LP3" id="NSg-9H-Q7y"/>
                         <outlet property="enterToSendTitle" destination="Exi-Gn-y67" id="v0y-oM-RrL"/>
@@ -1020,6 +1067,7 @@
                         <outlet property="rateSusiTitle" destination="FE6-Q5-NAb" id="aSY-ev-b92"/>
                         <outlet property="resetPassTitle" destination="BcN-ht-Uyo" id="iCs-PU-MU1"/>
                         <outlet property="retrainVModelTitle" destination="Bx8-gF-MZS" id="DUd-8O-SUQ"/>
+                        <outlet property="setupDeviceTitle" destination="wTJ-x9-2tE" id="ytS-hB-MQK"/>
                         <outlet property="shareSusiSubtitle" destination="BeY-3G-A0L" id="KMj-QL-Zat"/>
                         <outlet property="shareSusiTitle" destination="QAJ-hf-Eyi" id="9Ra-2k-y7W"/>
                         <outlet property="speechOutput" destination="OCZ-Am-iv8" id="fB0-WL-6GW"/>
@@ -1037,6 +1085,84 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GIQ-RV-D6h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2852" y="-505"/>
+        </scene>
+        <!--Device Instructions View Controller-->
+        <scene sceneID="4j2-k0-G3S">
+            <objects>
+                <viewController storyboardIdentifier="DeviceInstructionsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bty-ll-6xZ" customClass="DeviceInstructionsViewController" customModule="Susi" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ydH-rQ-xaE"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZaT-S7-XE8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XxD-0y-xEp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect to your device in Wi-Fi settings for setup" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XbQ-Op-99s">
+                                <rect key="frame" x="20" y="36" width="374" height="48"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G47-eP-9zO">
+                                <rect key="frame" x="20" y="99.999999999999986" width="374" height="57.333333333333329"/>
+                                <string key="text">Your device has created a temporary Wi-Fi hotspot. To set it up, connect to it in Wi-Fi settings by following the instructions below.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" name="TextGray"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Tap the Home button, and go to your iPhone Settings &gt; Wi-Fi" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZ3-w3-oby">
+                                <rect key="frame" x="20" y="173.33333333333334" width="374" height="38.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" name="TextGray"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ios-wifi-hotspot" translatesAutoresizingMaskIntoConstraints="NO" id="Qmt-jb-vyc">
+                                <rect key="frame" x="52" y="301" width="310" height="130"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="Tva-CG-IVf"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3. Come back to the SUSI app to proceed with setup." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J4y-Fw-mMP">
+                                <rect key="frame" x="20" y="447" width="374" height="38.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" name="TextGray"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9rQ-rF-JuK">
+                                <rect key="frame" x="20" y="227.66666666666666" width="374" height="57.333333333333343"/>
+                                <string key="text">2. Connect to the Wi-Fi hotspot for the device that you are setting up. It will have a 4-digit number on the end, like the example below.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.37254901960784315" green="0.38823529411764707" blue="0.40784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9rQ-rF-JuK" firstAttribute="trailing" secondItem="XxD-0y-xEp" secondAttribute="trailingMargin" id="0Tm-dM-Z8G"/>
+                            <constraint firstItem="J4y-Fw-mMP" firstAttribute="trailing" secondItem="XxD-0y-xEp" secondAttribute="trailingMargin" id="35x-Zk-I1m"/>
+                            <constraint firstItem="XbQ-Op-99s" firstAttribute="trailing" secondItem="XxD-0y-xEp" secondAttribute="trailingMargin" id="5pP-c2-AIa"/>
+                            <constraint firstItem="XbQ-Op-99s" firstAttribute="top" secondItem="ydH-rQ-xaE" secondAttribute="bottom" constant="16" id="GaK-92-cXF"/>
+                            <constraint firstItem="G47-eP-9zO" firstAttribute="leading" secondItem="XxD-0y-xEp" secondAttribute="leadingMargin" id="Npj-TP-Pjv"/>
+                            <constraint firstItem="9rQ-rF-JuK" firstAttribute="top" secondItem="CZ3-w3-oby" secondAttribute="bottom" constant="16" id="O6H-UQ-gAP"/>
+                            <constraint firstItem="9rQ-rF-JuK" firstAttribute="leading" secondItem="XxD-0y-xEp" secondAttribute="leadingMargin" id="Xc6-ET-fcu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Qmt-jb-vyc" secondAttribute="trailing" constant="32" id="buO-lv-Q7D"/>
+                            <constraint firstItem="CZ3-w3-oby" firstAttribute="top" secondItem="G47-eP-9zO" secondAttribute="bottom" constant="16" id="haB-2U-lIu"/>
+                            <constraint firstItem="CZ3-w3-oby" firstAttribute="trailing" secondItem="XxD-0y-xEp" secondAttribute="trailingMargin" id="i95-35-oWK"/>
+                            <constraint firstItem="Qmt-jb-vyc" firstAttribute="top" secondItem="9rQ-rF-JuK" secondAttribute="bottom" constant="16" id="nan-Wq-uCh"/>
+                            <constraint firstItem="CZ3-w3-oby" firstAttribute="leading" secondItem="XxD-0y-xEp" secondAttribute="leadingMargin" id="oHx-4W-7lc"/>
+                            <constraint firstItem="G47-eP-9zO" firstAttribute="top" secondItem="XbQ-Op-99s" secondAttribute="bottom" constant="16" id="v0U-CF-jmw"/>
+                            <constraint firstItem="J4y-Fw-mMP" firstAttribute="top" secondItem="Qmt-jb-vyc" secondAttribute="bottom" constant="16" id="vSb-gE-eaJ"/>
+                            <constraint firstItem="XbQ-Op-99s" firstAttribute="leading" secondItem="XxD-0y-xEp" secondAttribute="leadingMargin" id="vi7-gP-ynY"/>
+                            <constraint firstItem="G47-eP-9zO" firstAttribute="trailing" secondItem="XxD-0y-xEp" secondAttribute="trailingMargin" id="xUD-nN-J9I"/>
+                            <constraint firstItem="J4y-Fw-mMP" firstAttribute="leading" secondItem="XxD-0y-xEp" secondAttribute="leadingMargin" id="z4d-ut-85I"/>
+                            <constraint firstItem="Qmt-jb-vyc" firstAttribute="leading" secondItem="XxD-0y-xEp" secondAttribute="leadingMargin" constant="32" id="zKS-cR-B4q"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="UP5-fg-S2P"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ksJ-cZ-aPC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4304" y="-175"/>
         </scene>
         <!--Reset Password View Controller-->
         <scene sceneID="vcj-X4-GG0">
@@ -1171,7 +1297,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QKX-kj-wfz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3669.5652173913045" y="-479.34782608695656"/>
+            <point key="canvasLocation" x="3635" y="-762"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="H6a-qx-OLK">
@@ -1453,7 +1579,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cvM-c2-nEc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2836.2318840579715" y="405.97826086956525"/>
+            <point key="canvasLocation" x="2838" y="570"/>
         </scene>
         <!--Skill Detail View Controller-->
         <scene sceneID="pab-3T-JER">
@@ -1867,17 +1993,21 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="575-W8-xrD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3776.811594202899" y="405.97826086956525"/>
+            <point key="canvasLocation" x="3777" y="569"/>
         </scene>
     </scenes>
     <resources>
         <image name="back_arrow" width="24" height="24"/>
+        <image name="ios-wifi-hotspot" width="599" height="227"/>
         <image name="manual_record" width="24" height="24"/>
         <image name="placeholder" width="800" height="600"/>
         <image name="record" width="100" height="100"/>
         <image name="star_empty" width="22" height="22"/>
         <image name="star_full" width="22" height="22"/>
         <image name="susi" width="1366" height="280"/>
+        <namedColor name="TextGray">
+            <color red="0.37299999594688416" green="0.3880000114440918" blue="0.40799999237060547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="iOSGreen">
             <color red="0.0" green="0.90200001001358032" blue="0.3919999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

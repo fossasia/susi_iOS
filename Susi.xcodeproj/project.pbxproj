@@ -10,6 +10,8 @@
 		3BC1D8D5203B177E003E62F9 /* noConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC1D8D3203B177E003E62F9 /* noConnectionViewController.swift */; };
 		3BC1D8D6203B177E003E62F9 /* noConnectionNetworkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC1D8D4203B177E003E62F9 /* noConnectionNetworkStatus.swift */; };
 		406F100620ADFEED00808E4C /* OnboardingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406F100520ADFEED00808E4C /* OnboardingUITests.swift */; };
+		406F100820B0E48A00808E4C /* SettingsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406F100720B0E48A00808E4C /* SettingsUITests.swift */; };
+		40799A7620BBAD9800271718 /* DeviceInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40799A7520BBAD9800271718 /* DeviceInstructionsViewController.swift */; };
 		40799A7420B9A37300271718 /* FiveStarRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40799A7320B9A37200271718 /* FiveStarRating.swift */; };
 		40DEE59120B8624D00FE7356 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DEE59020B8624D00FE7356 /* RatingView.swift */; };
 		40F17FA820AC39F9008E7305 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F17FA720AC39F8008E7305 /* Images.swift */; };
@@ -113,6 +115,8 @@
 		3BC1D8D3203B177E003E62F9 /* noConnectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = noConnectionViewController.swift; sourceTree = "<group>"; };
 		3BC1D8D4203B177E003E62F9 /* noConnectionNetworkStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = noConnectionNetworkStatus.swift; sourceTree = "<group>"; };
 		406F100520ADFEED00808E4C /* OnboardingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingUITests.swift; sourceTree = "<group>"; };
+		406F100720B0E48A00808E4C /* SettingsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUITests.swift; sourceTree = "<group>"; };
+		40799A7520BBAD9800271718 /* DeviceInstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInstructionsViewController.swift; sourceTree = "<group>"; };
 		40799A7320B9A37200271718 /* FiveStarRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveStarRating.swift; sourceTree = "<group>"; };
 		40DEE59020B8624D00FE7356 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		40F17FA720AC39F8008E7305 /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
@@ -235,6 +239,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		40799A7720BBAD9F00271718 /* DeviceInstructionsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				40799A7520BBAD9800271718 /* DeviceInstructionsViewController.swift */,
+			);
+			path = DeviceInstructionsViewController;
+			sourceTree = "<group>";
+		};
 		40F17FAD20ACA296008E7305 /* OnboardingViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,6 +305,7 @@
 				6D215B941EB0BE7300CD2C1D /* AuthenticationUITests.swift */,
 				6DD3F0921F0A62FC00BD7AC9 /* ChatUITests.swift */,
 				6D8DF3EF1F0A2CAF0070DE1D /* ForgotPasswordUITests.swift */,
+				406F100720B0E48A00808E4C /* SettingsUITests.swift */,
 				6D215B961EB0BE7300CD2C1D /* Info.plist */,
 			);
 			path = SusiUITests;
@@ -441,6 +454,7 @@
 		6D4D9B501E768F2E0067459C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				40799A7720BBAD9F00271718 /* DeviceInstructionsViewController */,
 				40F17FAD20ACA296008E7305 /* OnboardingViewController */,
 				6D24B0971EE411A40097418A /* ChatViewController */,
 				6D24B08D1EE408F10097418A /* ForgotPasswordController */,
@@ -804,6 +818,7 @@
 				6DD3F0931F0A62FC00BD7AC9 /* ChatUITests.swift in Sources */,
 				6D3527141F083F9100395BD5 /* Client.swift in Sources */,
 				406F100620ADFEED00808E4C /* OnboardingUITests.swift in Sources */,
+				406F100820B0E48A00808E4C /* SettingsUITests.swift in Sources */,
 				6D3527131F083F8E00395BD5 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -841,7 +856,7 @@
 				40F17FA820AC39F9008E7305 /* Images.swift in Sources */,
 				6D3FB3491E813B900015E1D6 /* ChatMessageCell.swift in Sources */,
 				6D61B9AF1EEBAAD700CD3536 /* RSSAction.swift in Sources */,
-				40DEE59120B8624D00FE7356 /* RatingView.swift in Sources */,
+				40799A7620BBAD9800271718 /* DeviceInstructionsViewController.swift in Sources */,
 				6D0DB6281EE436FC00AD030D /* IncomingChatCell.swift in Sources */,
 				6D4D9B541E7690160067459C /* Extensions.swift in Sources */,
 				6D395D211F589CFE00BCC3C5 /* SkillDetailVCCollectionView.swift in Sources */,
