@@ -50,6 +50,7 @@ class SkillDetailViewController: GeneralViewController {
     @IBOutlet weak var positiveRatingLabel: UILabel!
     @IBOutlet weak var negativeRatingLabel: UILabel!
     @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var topAvgRatingLabel: UILabel!
 
     static let alpha: CGFloat = 1.0
     let colors = [
@@ -79,7 +80,8 @@ class SkillDetailViewController: GeneralViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         // ScrollView content size
-        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 258)
+        let labelHeight = skillDescription.heightForLabel(text: skillDescription.text!, font: UIFont.systemFont(ofSize: 16.0), width: self.view.frame.width - 64)
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 258 + labelHeight)
     }
 
     override func localizeStrings() {
