@@ -430,8 +430,8 @@ extension Client {
             return
         })
     }
-
-    func getRatings(_ param: [String: AnyObject], _ completion: @escaping(_ fiveStarRating: FiveStarRating?, _ success: Bool, _ error: String?) -> Void) {
+/*
+    func getRatings(_ params: [String: AnyObject], _ completion: @escaping(_ fiveStarRating: FiveStarRating?, _ success: Bool, _ error: String?) -> Void) {
         let url = getApiUrl(UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.ipAddress) as! String, Methods.fiveStarRateSkill)
         _ = makeRequest(url, .get, [:], parameters: params, completion: { (results, message) in
             if let _ = message {
@@ -453,5 +453,6 @@ extension Client {
             return
         })
     }
+ */
 
 }

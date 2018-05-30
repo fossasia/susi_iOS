@@ -10,16 +10,16 @@ import UIKit
 
 @objc public protocol FloatRatingViewDelegate {
     /// Returns the rating value when touch events end
-    @objc optional func floatRatingView(_ ratingView: FloatRatingView, didUpdate rating: Double)
+    @objc optional func floatRatingView(_ ratingView: RatingView, didUpdate rating: Double)
 
     /// Returns the rating value as the user pans
-    @objc optional func floatRatingView(_ ratingView: FloatRatingView, isUpdating rating: Double)
+    @objc optional func floatRatingView(_ ratingView: RatingView, isUpdating rating: Double)
 }
 
 /// A simple rating view that can set whole, half or floating point ratings.
 @IBDesignable
 @objcMembers
-open class FloatRatingView: UIView {
+open class RatingView: UIView {
 
     // MARK: Properties
 

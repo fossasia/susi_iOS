@@ -19,16 +19,16 @@ class FiveStarRating: NSObject {
     var negative: Int = 0
     var average: Double = 0.0
 
-    init(dictionary: [String: AnyObject]) {
-        super.init()
-        oneStar = Int(dictionary[Client.FiveStarRating.oneStar] as? String ?? "0")
-        twoStar = Int(dictionary[Client.FiveStarRating.twoStar] as? String ?? "0")
-        threeStar = Int(dictionary[Client.FiveStarRating.threeStar] as? String ?? "0")
-        fourStar = Int(dictionary[Client.FiveStarRating.fourStar] as? String ?? "0")
-        fiveStar = Int(dictionary[Client.FiveStarRating.fiveSatr] as? String ?? "0")
-        totalStar = Int(dictionary[Client.FiveStarRating.totalStar] as? String ?? "0")
-        positive = Int(dictionary[Client.FiveStarRating.positive] as? String ?? "0")
-        negative = Int(dictionary[Client.FiveStarRating.negative] as? String ?? "0")
-        average = Double(dictionary[Client.FiveStarRating.average] as? String ?? "0.0")
+    convenience init(dictionary: [String: AnyObject]) {
+        self.init()
+        oneStar = Int(dictionary[Client.FiveStarRating.oneStar] as? String ?? "0")!
+        twoStar = Int(dictionary[Client.FiveStarRating.twoStar] as? String ?? "0")!
+        threeStar = Int(dictionary[Client.FiveStarRating.threeStar] as? String ?? "0")!
+        fourStar = Int(dictionary[Client.FiveStarRating.fourStar] as? String ?? "0")!
+        fiveStar = Int(dictionary[Client.FiveStarRating.fiveSatr] as? String ?? "0")!
+        totalStar = Int(dictionary[Client.FiveStarRating.totalStar] as? String ?? "0")!
+        positive = Int(dictionary[Client.FiveStarRating.positive] as? String ?? "0")!
+        negative = Int(dictionary[Client.FiveStarRating.negative] as? String ?? "0")!
+        average = Double(dictionary[Client.FiveStarRating.average] as? String ?? "0.0")!
     }
 }

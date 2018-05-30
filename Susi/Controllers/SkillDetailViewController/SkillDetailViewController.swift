@@ -43,6 +43,7 @@ class SkillDetailViewController: GeneralViewController {
     @IBOutlet weak var examplesCollectionView: UICollectionView!
     @IBOutlet weak var exampleHeading: UILabel!
     @IBOutlet weak var pieChartView: PieChart!
+    @IBOutlet weak var ratingView: RatingView!
 
     static let alpha: CGFloat = 1.0
     let colors = [
@@ -55,7 +56,6 @@ class SkillDetailViewController: GeneralViewController {
     
     var currentColorIndex = 0
 
-    @IBOutlet weak var ratingView: FloatRatingView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
