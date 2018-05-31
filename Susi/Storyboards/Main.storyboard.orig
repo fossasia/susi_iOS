@@ -600,7 +600,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Xu4-Tj-FhA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
                             <tableViewSection headerTitle="Chat Settings" id="l5r-d5-gRd">
                                 <cells>
@@ -1129,9 +1129,15 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9rQ-rF-JuK">
                                 <rect key="frame" x="20" y="227.66666666666666" width="374" height="57.333333333333343"/>
+<<<<<<< HEAD
                                 <string key="text">2. Connect to the Wi-Fi hotspot for the device that you are setting up. It will have a 4-digit number on the end, like the example below.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.37254901960784315" green="0.38823529411764707" blue="0.40784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+=======
+                                <string key="text">2. Connect to the Wi-Fi hotspot for the device that you are setting up. It will have a 4-digit number on the end, like the examole below.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" name="TextGray"/>
+>>>>>>> Added setup new device instruction screen
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -1297,42 +1303,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QKX-kj-wfz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3635" y="-762"/>
-        </scene>
-        <!--Devices Activity View Controller-->
-        <scene sceneID="g7J-IJ-fJ8">
-            <objects>
-                <viewController storyboardIdentifier="DevicesActivityController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="thB-kR-6YM" customClass="DevicesActivityViewController" customModule="Susi" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="LhI-UI-vea"/>
-                        <viewControllerLayoutGuide type="bottom" id="v3v-OJ-fYh"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="lAx-it-FXL">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You haven't added any devices yet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eqf-Il-rTX">
-                                <rect key="frame" x="82" y="28" width="251" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="Mi6-Sa-wmR"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="textColor" name="TextGray"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="Eqf-Il-rTX" firstAttribute="top" secondItem="LhI-UI-vea" secondAttribute="bottom" constant="8" id="FO7-Ui-DZU"/>
-                            <constraint firstItem="Eqf-Il-rTX" firstAttribute="centerX" secondItem="lAx-it-FXL" secondAttribute="centerX" id="WN5-dD-Jhb"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="noDeviceInfoLabel" destination="Eqf-Il-rTX" id="w2d-0s-uKZ"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pW1-Nt-PXC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3776.811594202899" y="-166.30434782608697"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="H6a-qx-OLK">
