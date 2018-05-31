@@ -185,6 +185,10 @@ extension ChatViewController: SFSpeechRecognizerDelegate, AVSpeechSynthesizerDel
         }
     }
 
+    func stopSpeakAction() {
+        speechSynthesizer.stopSpeaking(at: AVSpeechBoundary.immediate)
+    }
+
     func checkAndRunHotwordRecognition() {
         if UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.hotwordEnabled) {
             startHotwordRecognition()
