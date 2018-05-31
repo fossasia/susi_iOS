@@ -252,6 +252,8 @@ extension ChatViewController {
                         self.collectionView?.insertItems(at: [indexPath])
                         if message.actionType == ActionType.answer.rawValue && !message.fromUser {
                             self.speakAction(message)
+                        } else if message.actionType == ActionType.stop.rawValue && !message.fromUser {
+                            self.stopSpeakAction()
                         }
                     }, completion: nil)
                 }

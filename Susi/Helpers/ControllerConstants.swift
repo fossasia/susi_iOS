@@ -38,6 +38,8 @@ class ControllerConstants {
     static let indicatorCell = "indicatorCell"
     static let mapCell = "mapCell"
     static let anchorCell = "anchorCell"
+    static let stopCell = "stopCell"
+    static let stopMessage = "Stopped"
     static let defaultMessage = ""
     static let defaultWebSearchImage = "no-image"
     static let standardServer = "Standard Server"
