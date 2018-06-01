@@ -70,6 +70,14 @@ extension LoginViewController {
         addressTextField.textColor = .white
     }
 
+    func assignEmailToForgotPassword() {
+        forgotPassword.addTarget(self, action: #selector(assignEmail), for: .touchUpInside)
+    }
+
+    @objc func assignEmail() {
+        UserDefaults.standard.setValue(emailTextField.text, forKey: ControllerConstants.UserDefaultsKeys.typedEmailAdress)
+    }
+
     // Call Login API
     @objc func performLogin() {
         if isValid() {
@@ -174,7 +182,6 @@ extension LoginViewController {
 
     // Clear field after login
     func clearFields() {
-        emailTextField.text = ""
         passwordTextField.text = ""
     }
 
@@ -182,6 +189,7 @@ extension LoginViewController {
     func presentSignUpController() {
         clearFields()
 
+        UserDefaults.standard.setValue(emailTextField.text, forKey: ControllerConstants.UserDefaultsKeys.typedEmailAdress)
         let vc = SignUpViewController()
         present(vc, animated: true, completion: nil)
     }
