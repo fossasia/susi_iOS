@@ -18,6 +18,7 @@ enum ActionType: String {
     case map
     case anchor
     case indicatorView
+    case stop
 }
 
 class Message: Object {
@@ -89,6 +90,10 @@ class Message: Object {
                         } else if type == ActionType.websearch.rawValue {
                             message.actionType = ActionType.websearch.rawValue
                             message.message = action[Client.ChatKeys.Query] as? String ?? ""
+                        } else if type == ActionType.stop.rawValue {
+                            message.actionType = ActionType.stop.rawValue
+                            message.message = ControllerConstants.stopMessage
+                            message.answerData = AnswerAction(action: action)
                         }
                     }
                     messages.append(message)

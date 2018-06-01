@@ -38,6 +38,8 @@ class ControllerConstants {
     static let indicatorCell = "indicatorCell"
     static let mapCell = "mapCell"
     static let anchorCell = "anchorCell"
+    static let stopCell = "stopCell"
+    static let stopMessage = "Stopped"
     static let defaultMessage = ""
     static let defaultWebSearchImage = "no-image"
     static let standardServer = "Standard Server"
@@ -78,6 +80,7 @@ class ControllerConstants {
     static let listentingSusi3 = "Say \"SUSI\" one last time"
     static let finishLater = "FINISH LATER"
     static let addNewDevice = "Add New Device"
+    static let devices = "Devices"
 
     struct Settings {
         static let enterToSend = "Enter To Send"
@@ -208,6 +211,7 @@ class ControllerConstants {
         static let thumbsDown = UIImage(named: "thumbs_down")
         static let susiSymbol = UIImage(named: "susi_symbol")
         static let settingsIcon = UIImage(named: "settings_icon")
+        static let plusIcon = UIImage(named: "plus_icon")
     }
 
 }
