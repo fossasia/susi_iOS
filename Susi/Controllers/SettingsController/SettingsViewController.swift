@@ -56,6 +56,7 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var devicesTitle: UILabel!
     @IBOutlet weak var devicesSubtitle: UILabel!
     @IBOutlet weak var setupDeviceTitle: UILabel!
+    @IBOutlet weak var susiVoiceLanguageLabel: UILabel!
 
     var chatViewController: ChatViewController?
 
@@ -73,6 +74,7 @@ class SettingsViewController: UITableViewController {
         super.viewWillAppear(animated)
         setupTitle()
         setupTheme()
+        setLanguageLabel()
     }
 
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
