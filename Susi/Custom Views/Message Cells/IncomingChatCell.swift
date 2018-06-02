@@ -58,7 +58,7 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
     }
 
     func setupTheme() {
-        textBubbleView.layer.borderWidth = 0.2
+        textBubbleView.layer.borderWidth = 0.5
         textBubbleView.backgroundColor = .white
         messageTextView.textColor = .black
         timeLabel.textColor = .black

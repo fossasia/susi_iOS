@@ -524,7 +524,7 @@
                                 <rect key="frame" x="20" y="644" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" red="0.96460121870040894" green="0.96476620435714722" blue="0.96459084749221802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="cbj-q3-I0O" firstAttribute="leading" secondItem="kU6-Vs-OHY" secondAttribute="trailing" constant="25" id="0MX-i5-OA9"/>
                             <constraint firstItem="tIR-x8-YXs" firstAttribute="leading" secondItem="grs-I7-eRe" secondAttribute="trailing" constant="25" id="12W-Ik-5w9"/>
@@ -1171,8 +1171,8 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="G4I-hs-5m0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <activityIndicatorView key="tableFooterView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" id="phy-Xh-don">
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <activityIndicatorView key="tableFooterView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="whiteLarge" id="phy-Xh-don">
                             <rect key="frame" x="0.0" y="265" width="414" height="37"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="color" red="0.25447925925254822" green="0.51828217506408691" blue="0.95430618524551392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
