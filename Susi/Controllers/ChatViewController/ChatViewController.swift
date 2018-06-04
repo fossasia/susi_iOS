@@ -30,15 +30,6 @@ class ChatViewController: UICollectionViewController {
         return ib
     }()
 
-    lazy var settingsButton: IconButton = {
-        let settingButton = IconButton()
-        settingButton.image = ControllerConstants.Images.settings?.tint(with: UIColor.white)
-        settingButton.layer.cornerRadius = 18.0
-        settingButton.addTarget(self, action: #selector(presentSettingsController), for: .touchUpInside)
-        settingButton.backgroundColor = UIColor.defaultColor()
-        return settingButton
-    }()
-
     let alert = UIAlertController(title: "Warning", message: "Please Connect to Internet", preferredStyle: .alert)
 
     // youtube player
@@ -168,7 +159,6 @@ class ChatViewController: UICollectionViewController {
         configureLocationManager()
         loadMessages()
         addSkillListingButton()
-        addSettingsButton()
         addScrollButton()
 
         reachability.whenReachable = { reachability in
