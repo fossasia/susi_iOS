@@ -151,6 +151,7 @@ class ControllerConstants {
         static let ttsLanguage = "ttsLanguage"
         static let prefLanguage = "prefLanguage"
         static let lanuchedBefore = "lanuchedBefore"
+        static let typedEmailAdress = "typedEmailAdress"
     }
 
     struct TestKeys {
