@@ -9,9 +9,16 @@
 /* Begin PBXBuildFile section */
 		3BC1D8D5203B177E003E62F9 /* noConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC1D8D3203B177E003E62F9 /* noConnectionViewController.swift */; };
 		3BC1D8D6203B177E003E62F9 /* noConnectionNetworkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC1D8D4203B177E003E62F9 /* noConnectionNetworkStatus.swift */; };
+		403E7F4220BCBCFB00D7B48B /* DevicesActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E7F4120BCBCFB00D7B48B /* DevicesActivityViewController.swift */; };
 		406F100620ADFEED00808E4C /* OnboardingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406F100520ADFEED00808E4C /* OnboardingUITests.swift */; };
+		406F100820B0E48A00808E4C /* SettingsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406F100720B0E48A00808E4C /* SettingsUITests.swift */; };
+		40701E7F20BEAC8100B92D81 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40701E7E20BEAC8100B92D81 /* RatingView.swift */; };
+		40799A7420B9A37300271718 /* FiveStarRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40799A7320B9A37200271718 /* FiveStarRating.swift */; };
+		40799A7620BBAD9800271718 /* DeviceInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40799A7520BBAD9800271718 /* DeviceInstructionsViewController.swift */; };
+		407ED1DB20BEC6C3007AEE34 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407ED1DA20BEC6C3007AEE34 /* DesignableView.swift */; };
 		40F17FA820AC39F9008E7305 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F17FA720AC39F8008E7305 /* Images.swift */; };
 		40F17FAC20ACA28A008E7305 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F17FAB20ACA28A008E7305 /* OnboardingViewController.swift */; };
+		40FB527520C037C6005D4ACD /* StopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FB527420C037C6005D4ACD /* StopCell.swift */; };
 		4CD0AA5F1EDF2CB700BC8FD5 /* ControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD0AA5E1EDF2CB700BC8FD5 /* ControllerConstants.swift */; };
 		6D017B251F4EAF86004BDE7E /* SkillListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D017B241F4EAF86004BDE7E /* SkillListingViewController.swift */; };
 		6D017B271F4EB641004BDE7E /* SkillListingVCMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D017B261F4EB641004BDE7E /* SkillListingVCMethods.swift */; };
@@ -110,9 +117,16 @@
 		262BC7CF14D165C735BF16FA /* Pods-SusiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SusiUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SusiUITests/Pods-SusiUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3BC1D8D3203B177E003E62F9 /* noConnectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = noConnectionViewController.swift; sourceTree = "<group>"; };
 		3BC1D8D4203B177E003E62F9 /* noConnectionNetworkStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = noConnectionNetworkStatus.swift; sourceTree = "<group>"; };
+		403E7F4120BCBCFB00D7B48B /* DevicesActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesActivityViewController.swift; sourceTree = "<group>"; };
 		406F100520ADFEED00808E4C /* OnboardingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingUITests.swift; sourceTree = "<group>"; };
+		406F100720B0E48A00808E4C /* SettingsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUITests.swift; sourceTree = "<group>"; };
+		40701E7E20BEAC8100B92D81 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		40799A7320B9A37200271718 /* FiveStarRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveStarRating.swift; sourceTree = "<group>"; };
+		40799A7520BBAD9800271718 /* DeviceInstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInstructionsViewController.swift; sourceTree = "<group>"; };
+		407ED1DA20BEC6C3007AEE34 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		40F17FA720AC39F8008E7305 /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		40F17FAB20ACA28A008E7305 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		40FB527420C037C6005D4ACD /* StopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopCell.swift; sourceTree = "<group>"; };
 		4CD0AA5E1EDF2CB700BC8FD5 /* ControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControllerConstants.swift; sourceTree = "<group>"; };
 		5994B8E49F09387802A1EB7A /* Pods_SusiUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SusiUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BC83894DC5BB478E862B696 /* Pods-Susi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Susi.release.xcconfig"; path = "Pods/Target Support Files/Pods-Susi/Pods-Susi.release.xcconfig"; sourceTree = "<group>"; };
@@ -231,6 +245,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		403E7F4320BCBD1100D7B48B /* DevicesActivityController */ = {
+			isa = PBXGroup;
+			children = (
+				403E7F4120BCBCFB00D7B48B /* DevicesActivityViewController.swift */,
+			);
+			path = DevicesActivityController;
+			sourceTree = "<group>";
+		};
+		40799A7720BBAD9F00271718 /* DeviceInstructionsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				40799A7520BBAD9800271718 /* DeviceInstructionsViewController.swift */,
+			);
+			path = DeviceInstructionsViewController;
+			sourceTree = "<group>";
+		};
 		40F17FAD20ACA296008E7305 /* OnboardingViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -289,6 +319,7 @@
 				6D215B941EB0BE7300CD2C1D /* AuthenticationUITests.swift */,
 				6DD3F0921F0A62FC00BD7AC9 /* ChatUITests.swift */,
 				6D8DF3EF1F0A2CAF0070DE1D /* ForgotPasswordUITests.swift */,
+				406F100720B0E48A00808E4C /* SettingsUITests.swift */,
 				6D215B961EB0BE7300CD2C1D /* Info.plist */,
 			);
 			path = SusiUITests;
@@ -343,6 +374,8 @@
 				6D0B28DF1F3D8F6300E273E1 /* CustomTextField.swift */,
 				6D6F90471F4AF30800C84137 /* LongPressToCopyTextView.swift */,
 				6D87A32D1EEE54CC00A6D763 /* WebsearchCollectionView.swift */,
+				40701E7E20BEAC8100B92D81 /* RatingView.swift */,
+				407ED1DA20BEC6C3007AEE34 /* DesignableView.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -383,6 +416,7 @@
 				6D0DB6251EE4272300AD030D /* OutgoingChatCell.swift */,
 				6D87A3311EEE86CC00A6D763 /* RSSCell.swift */,
 				6D87A32F1EEE557000A6D763 /* WebsearchCell.swift */,
+				40FB527420C037C6005D4ACD /* StopCell.swift */,
 			);
 			path = "Message Cells";
 			sourceTree = "<group>";
@@ -436,6 +470,8 @@
 		6D4D9B501E768F2E0067459C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				403E7F4320BCBD1100D7B48B /* DevicesActivityController */,
+				40799A7720BBAD9F00271718 /* DeviceInstructionsViewController */,
 				40F17FAD20ACA296008E7305 /* OnboardingViewController */,
 				6D24B0971EE411A40097418A /* ChatViewController */,
 				6D24B08D1EE408F10097418A /* ForgotPasswordController */,
@@ -503,6 +539,7 @@
 				6D61B9B21EEBAB4000CD3536 /* TableAction.swift */,
 				6D9C0D281E7B223A00199828 /* User.swift */,
 				6D61B9B01EEBAB0200CD3536 /* WebsearchAction.swift */,
+				40799A7320B9A37200271718 /* FiveStarRating.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -725,6 +762,7 @@
 				"${BUILT_PRODUCTS_DIR}/Motion/Motion.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/NotificationBannerSwift/NotificationBannerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/PieCharts/PieCharts.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/ReadabilityKit/ReadabilityKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
@@ -749,6 +787,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Motion.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NotificationBannerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PieCharts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReadabilityKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
@@ -796,6 +835,7 @@
 				6DD3F0931F0A62FC00BD7AC9 /* ChatUITests.swift in Sources */,
 				6D3527141F083F9100395BD5 /* Client.swift in Sources */,
 				406F100620ADFEED00808E4C /* OnboardingUITests.swift in Sources */,
+				406F100820B0E48A00808E4C /* SettingsUITests.swift in Sources */,
 				6D3527131F083F8E00395BD5 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -805,6 +845,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D4D9B4D1E768E650067459C /* LoginViewController.swift in Sources */,
+				403E7F4220BCBCFB00D7B48B /* DevicesActivityViewController.swift in Sources */,
 				6D389BEA1EDB912500DEAEA0 /* YouTubePlayer.swift in Sources */,
 				6D61B9AB1EEBAA3900CD3536 /* Message.swift in Sources */,
 				6D0B28DE1F3D873D00E273E1 /* ResetPasswordVCMethods.swift in Sources */,
@@ -817,6 +858,7 @@
 				6D0DB6241EE41D1000AD030D /* ChatVCMethods.swift in Sources */,
 				6D017B2E1F4ECA90004BDE7E /* SkillCell.swift in Sources */,
 				6DE44E0F1E769AD300215B85 /* Color.swift in Sources */,
+				40701E7F20BEAC8100B92D81 /* RatingView.swift in Sources */,
 				6D017B251F4EAF86004BDE7E /* SkillListingViewController.swift in Sources */,
 				6D395D1D1F58966900BCC3C5 /* SkillDetailExampleCell.swift in Sources */,
 				3BC1D8D5203B177E003E62F9 /* noConnectionViewController.swift in Sources */,
@@ -833,11 +875,13 @@
 				40F17FA820AC39F9008E7305 /* Images.swift in Sources */,
 				6D3FB3491E813B900015E1D6 /* ChatMessageCell.swift in Sources */,
 				6D61B9AF1EEBAAD700CD3536 /* RSSAction.swift in Sources */,
+				40799A7620BBAD9800271718 /* DeviceInstructionsViewController.swift in Sources */,
 				6D0DB6281EE436FC00AD030D /* IncomingChatCell.swift in Sources */,
 				6D4D9B541E7690160067459C /* Extensions.swift in Sources */,
 				6D395D211F589CFE00BCC3C5 /* SkillDetailVCCollectionView.swift in Sources */,
 				6DE44E171E76ACD900215B85 /* Convenience.swift in Sources */,
 				6D87A32E1EEE54CC00A6D763 /* WebsearchCollectionView.swift in Sources */,
+				40FB527520C037C6005D4ACD /* StopCell.swift in Sources */,
 				6DFC75B91EE077E9002F92BA /* ForgotPasswordViewController.swift in Sources */,
 				6DE44E111E76ACAF00215B85 /* Client.swift in Sources */,
 				6D3DACC51F25FB9900CEFBC7 /* ActivityIndicatorCell.swift in Sources */,
@@ -850,6 +894,7 @@
 				6D6F90481F4AF30800C84137 /* LongPressToCopyTextView.swift in Sources */,
 				6D2F984B1E76DF2200FE2B6F /* BaseCell.swift in Sources */,
 				6D0B9CED1F2CF75B0060262A /* SettingsVCMethods.swift in Sources */,
+				40799A7420B9A37300271718 /* FiveStarRating.swift in Sources */,
 				6D7CE2E21F40255700C6353F /* ImageCell.swift in Sources */,
 				6DE44E1B1E76B5D600215B85 /* SignUpViewController.swift in Sources */,
 				6D9C0D291E7B223A00199828 /* User.swift in Sources */,
@@ -866,6 +911,7 @@
 				6DE44E191E76AF8100215B85 /* ChatViewController.swift in Sources */,
 				6D61B9B31EEBAB4000CD3536 /* TableAction.swift in Sources */,
 				6D87A3321EEE86CC00A6D763 /* RSSCell.swift in Sources */,
+				407ED1DB20BEC6C3007AEE34 /* DesignableView.swift in Sources */,
 				6D5DDFF61F3378D80078BB97 /* TrainingViewController.swift in Sources */,
 				6DD5030E1F36656C008388E4 /* SpeechRecognitionDelegate.swift in Sources */,
 				6D017B271F4EB641004BDE7E /* SkillListingVCMethods.swift in Sources */,
@@ -1067,7 +1113,7 @@
 				DEVELOPMENT_TEAM = 7P4K4M8A4Q;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "Susi/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1093,7 +1139,7 @@
 				DEVELOPMENT_TEAM = 7P4K4M8A4Q;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "Susi/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

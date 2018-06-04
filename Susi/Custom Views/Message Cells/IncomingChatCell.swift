@@ -58,19 +58,21 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
     }
 
     func setupTheme() {
-        textBubbleView.layer.borderWidth = 0.2
+        textBubbleView.layer.borderWidth = 0.5
         textBubbleView.backgroundColor = .white
         messageTextView.textColor = .black
         timeLabel.textColor = .black
     }
 
     func addBottomView() {
-        let date = DateInRegion(absoluteDate: message?.answerDate as Date!)
-        let dateString = date.string(format: .custom("h:mm a"))
-        timeLabel.text = dateString
+        if let absoluteQueryDate = message?.queryDate as Date? {
+            let date = DateInRegion(absoluteDate: absoluteQueryDate)
+            let dateString = date.string(format: .custom("h:mm a"))
+            timeLabel.text = dateString
+            textBubbleView.addSubview(timeLabel)
+        }
 
         // Add subviews
-        textBubbleView.addSubview(timeLabel)
         textBubbleView.addSubview(thumbUpIcon)
         textBubbleView.addSubview(thumbDownIcon)
         thumbUpIcon.isUserInteractionEnabled = true

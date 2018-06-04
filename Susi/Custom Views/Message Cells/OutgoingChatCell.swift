@@ -22,12 +22,15 @@ class OutgoingChatCell: ChatMessageCell {
     }
 
     func setupDate() {
-        let date = DateInRegion(absoluteDate: message?.queryDate as Date!)
-        let str = date.string(format: .custom("h:mm a"))
-        timeLabel.text = str
-        textBubbleView.addSubview(timeLabel)
-        textBubbleView.addConstraintsWithFormat(format: "H:[v0]-8-|", views: timeLabel)
-        textBubbleView.addConstraintsWithFormat(format: "V:[v0]-4-|", views: timeLabel)
+        if let absoluteQueryDate = message?.queryDate as Date? {
+            let date = DateInRegion(absoluteDate: absoluteQueryDate)
+            let str = date.string(format: .custom("h:mm a"))
+            timeLabel.text = str
+            textBubbleView.addSubview(timeLabel)
+            textBubbleView.addConstraintsWithFormat(format: "H:[v0]-8-|", views: timeLabel)
+            textBubbleView.addConstraintsWithFormat(format: "V:[v0]-4-|", views: timeLabel)
+        }
+
     }
 
     func setupCell(_ estimatedFrame: CGRect, _ viewFrame: CGRect) {

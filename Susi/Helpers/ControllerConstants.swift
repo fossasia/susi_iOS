@@ -38,6 +38,8 @@ class ControllerConstants {
     static let indicatorCell = "indicatorCell"
     static let mapCell = "mapCell"
     static let anchorCell = "anchorCell"
+    static let stopCell = "stopCell"
+    static let stopMessage = "Stopped"
     static let defaultMessage = ""
     static let defaultWebSearchImage = "no-image"
     static let standardServer = "Standard Server"
@@ -77,6 +79,8 @@ class ControllerConstants {
     static let listentingSusi2 = "Say \"SUSI\" again"
     static let listentingSusi3 = "Say \"SUSI\" one last time"
     static let finishLater = "FINISH LATER"
+    static let addNewDevice = "Add New Device"
+    static let devices = "Devices"
 
     struct Settings {
         static let enterToSend = "Enter To Send"
@@ -107,6 +111,7 @@ class ControllerConstants {
         static let speechSettings = "Speech Settings"
         static let susiVoiceModel = "SUSI Voice Model"
         static let miscellaneous = "Miscellaneous"
+        static let devices = "Devices"
     }
 
     struct Login {
@@ -146,6 +151,7 @@ class ControllerConstants {
         static let ttsLanguage = "ttsLanguage"
         static let prefLanguage = "prefLanguage"
         static let lanuchedBefore = "lanuchedBefore"
+        static let typedEmailAdress = "typedEmailAdress"
     }
 
     struct TestKeys {
@@ -205,6 +211,8 @@ class ControllerConstants {
         static let thumbsUp = UIImage(named: "thumbs_up")
         static let thumbsDown = UIImage(named: "thumbs_down")
         static let susiSymbol = UIImage(named: "susi_symbol")
+        static let settingsIcon = UIImage(named: "settings_icon")
+        static let plusIcon = UIImage(named: "plus_icon")
     }
 
 }

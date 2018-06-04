@@ -21,6 +21,7 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
         collectionView?.register(ActivityIndicatorCell.self, forCellWithReuseIdentifier: ControllerConstants.indicatorCell)
         collectionView?.register(MapCell.self, forCellWithReuseIdentifier: ControllerConstants.mapCell)
         collectionView?.register(AnchorCell.self, forCellWithReuseIdentifier: ControllerConstants.anchorCell)
+        collectionView?.register(StopCell.self, forCellWithReuseIdentifier: ControllerConstants.stopCell)
         collectionView?.accessibilityIdentifier = ControllerConstants.TestKeys.chatCollectionView
 
     }
@@ -62,6 +63,14 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
                 let estimatedFrame = self.estimatedFrame(message: message.message)
                 cell.message = message
                 cell.setupCell(estimatedFrame)
+                return cell
+            }
+        } else if message.actionType == ActionType.stop.rawValue {
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.stopCell, for: indexPath) as? StopCell {
+                cell.message = message
+                let message = ControllerConstants.stopMessage
+                let estimatedFrame = self.estimatedFrame(message: message)
+                cell.setupCell(estimatedFrame, view.frame)
                 return cell
             }
         } else if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.incomingCell, for: indexPath) as? IncomingBubbleCell {

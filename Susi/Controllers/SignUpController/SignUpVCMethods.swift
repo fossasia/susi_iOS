@@ -20,6 +20,7 @@ extension SignUpViewController {
     func prepareFields() {
         emailTextField.placeholderNormalColor = .white
         emailTextField.placeholderActiveColor = .white
+        emailTextField.text = UserDefaults.standard.value(forKey: ControllerConstants.UserDefaultsKeys.typedEmailAdress) as? String ?? ""
         emailTextField.dividerNormalColor = .white
         emailTextField.dividerActiveColor = .white
         emailTextField.textColor = .white

@@ -53,6 +53,11 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var shareSusiSubtitle: UILabel!
     @IBOutlet weak var resetPassTitle: UILabel!
     @IBOutlet weak var logoutTitle: UILabel!
+    @IBOutlet weak var devicesTitle: UILabel!
+    @IBOutlet weak var devicesSubtitle: UILabel!
+    @IBOutlet weak var setupDeviceTitle: UILabel!
+
+    var chatViewController: ChatViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,6 +87,8 @@ class SettingsViewController: UITableViewController {
             case 3:
                 header.textLabel?.text = ControllerConstants.Settings.susiVoiceModel.localized()
             case 4:
+                header.textLabel?.text = ControllerConstants.Settings.devices.localized()
+            case 5:
                 header.textLabel?.text = ControllerConstants.Settings.miscellaneous.localized()
             default:
                 break
@@ -106,6 +113,18 @@ class SettingsViewController: UITableViewController {
                 deleteVoiceModel()
             }
         } else if section == 4 {
+            if row == 0 {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let devicesActivityController = storyboard.instantiateViewController(withIdentifier: "DevicesActivityController")
+                let nvc = AppNavigationController(rootViewController: devicesActivityController)
+                present(nvc, animated: true, completion: nil)
+            } else if row == 1 {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let deviceInstructionsViewController = storyboard.instantiateViewController(withIdentifier: "DeviceInstructionsViewController")
+                let nvc = AppNavigationController(rootViewController: deviceInstructionsViewController)
+                present(nvc, animated: true, completion: nil)
+            }
+        } else if section == 5 {
             if row == 1 {
                 shareApp()
             } else if row == 2 {

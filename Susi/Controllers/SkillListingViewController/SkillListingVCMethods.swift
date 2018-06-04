@@ -23,7 +23,7 @@ extension SkillListingViewController {
         }
 
         tableView.separatorStyle = .none
-        tableView.backgroundColor = Color.grey.lighten3
+        tableView.backgroundColor = Color.grey.lighten4
     }
 
     // presents the settings controller

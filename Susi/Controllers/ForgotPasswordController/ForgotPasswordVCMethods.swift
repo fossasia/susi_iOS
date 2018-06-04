@@ -24,6 +24,7 @@ extension ForgotPasswordViewController {
         emailTextField.placeholderActiveColor = .white
         emailTextField.dividerNormalColor = .white
         emailTextField.dividerActiveColor = .red
+        emailTextField.text = UserDefaults.standard.value(forKey: ControllerConstants.UserDefaultsKeys.typedEmailAdress) as? String ?? ""
         emailTextField.textColor = .white
         emailTextField.clearIconButton?.tintColor = .white
         emailTextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
