@@ -25,6 +25,7 @@ target 'Susi' do
   pod 'ReachabilitySwift'
   pod 'Localize-Swift'
   pod 'paper-onboarding'
+  pod 'AudioKit', '~> 4.0'
   shared_pods
 end
 

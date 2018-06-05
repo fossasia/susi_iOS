@@ -6,9 +6,13 @@
 //  Copyright © 2017 FOSSAsia. All rights reserved.
 //
 
-import AVFoundation
+import AudioKit
 
-extension ChatViewController: AVAudioRecorderDelegate {
+extension ChatViewController: EZMicrophoneDelegate {
+
+    func initPermissions() {
+        AVCaptureDevice.requestAccess(for: AVMediaType.audio, completionHandler: { _ in })
+    }
 
     /**
         Used to initialise the snowboy wrapper
@@ -16,98 +20,47 @@ extension ChatViewController: AVAudioRecorderDelegate {
     func initSnowboy() {
         wrapper = SnowboyWrapper(resources: RESOURCE, modelStr: MODEL)
         wrapper.setSensitivity("0.5")
-        wrapper.setAudioGain(1.0)
+        wrapper.setAudioGain(2.0)
         //  print("Sample rate: \(wrapper?.sampleRate()); channels: \(wrapper?.numChannels()); bits: \(wrapper?.bitsPerSample())")
     }
 
-    /**
-        Starts a 2 seconds timer 
-        calling the startRecording method
-    **/
-    func startHotwordRecognition() {
-        hotwordTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(startRecording), userInfo: nil, repeats: true)
-        hotwordTimer.fire()
+    func initMic() {
+        var audioStreamBasicDescription: AudioStreamBasicDescription = EZAudioUtilities.monoFloatFormat(withSampleRate: 44100.0)
+        audioStreamBasicDescription.mFormatID = kAudioFormatLinearPCM
+        audioStreamBasicDescription.mSampleRate = 44100.0
+        audioStreamBasicDescription.mFramesPerPacket = 1
+        audioStreamBasicDescription.mBytesPerPacket = 2
+        audioStreamBasicDescription.mBytesPerFrame = 2
+        audioStreamBasicDescription.mChannelsPerFrame = 1
+        audioStreamBasicDescription.mBitsPerChannel = 16
+        audioStreamBasicDescription.mFormatFlags = kAudioFormatFlagIsSignedInteger | kAudioFormatFlagsNativeEndian | kAudioFormatFlagIsPacked
+        audioStreamBasicDescription.mReserved = 0
+
+        self.microphone = EZMicrophone.init(delegate: self, with: audioStreamBasicDescription)
+        let inputs: [Any] = EZAudioDevice.inputDevices()
+        microphone.device = inputs.last as? EZAudioDevice
     }
 
-    /**
-        Reads the recorded sound
-        and runs detection to check if the
-        buffer contains the hotword
-        and starts speech to text if it does
-    **/
-    func runSnowboy() {
-        let file = try! AVAudioFile(forReading: soundFileURL)
-        let format = AVAudioFormat(commonFormat: .pcmFormatFloat32, sampleRate: 16000.0, channels: 1, interleaved: false)
+    func microphone(_ microphone: EZMicrophone!, hasAudioReceived buffer: UnsafeMutablePointer<UnsafeMutablePointer<Float>?>!, withBufferSize bufferSize: UInt32, withNumberOfChannels numberOfChannels: UInt32) {
+        DispatchQueue.main.async(execute: {() -> Void in
 
-        let audioFrameCount = AVAudioFrameCount(file.length)
-        if audioFrameCount > 0 {
-            let buffer = AVAudioPCMBuffer(pcmFormat: format!, frameCapacity: audioFrameCount)
-            do {
-                try file.read(into: buffer!)
-            } catch let error {
-                print(error.localizedDescription)
-            }
-            let array = Array(UnsafeBufferPointer(start: buffer?.floatChannelData![0], count: Int(UInt32(buffer!.frameLength))))
+            let array = Array(UnsafeBufferPointer(start: buffer.pointee, count:Int(bufferSize)))
 
-            // print("Frame capacity: \(AVAudioFrameCount(file.length))")
-            // print("Buffer frame length: \(buffer.frameLength)")
-
-            let result = wrapper.runDetection(array, length: Int32(buffer!.frameLength))
-            // print("Result: \(result)")
-
+            let result: Int =  Int(self.wrapper.runDetection(array, length: Int32(bufferSize)))
             if result == 1 {
-                print("Hotword detected")
-                startSpeechToText()
+                print("Hotword Detected")
             }
-        }
+            print(result)
+        })
     }
 
-    /**
-        Detection runs only after recording is complete
-    **/
-    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
-        // print("Audio Recorder did finish recording.")
-        runSnowboy()
+    func startHotwordRecognition() {
+        microphone.startFetchingAudio()
     }
 
-    /**
-        Configures settings for the recorder
-        and records for 1.5 seconds
-    **/
-    @objc func startRecording() {
-        do {
-            let fileMgr = FileManager.default
-            let dirPaths = fileMgr.urls(for: .documentDirectory,
-                                        in: .userDomainMask)
-            soundFileURL = dirPaths[0].appendingPathComponent("temp.wav")
-            let recordSettings =
-                [AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue,
-                 AVEncoderBitRateKey: 128000,
-                 AVNumberOfChannelsKey: 1,
-                 AVSampleRateKey: 16000.0] as [String: Any]
-            let audioSession = AVAudioSession.sharedInstance()
-            try audioSession.setCategory(AVAudioSessionCategoryRecord)
-            try audioRecorder = AVAudioRecorder(url: soundFileURL,
-                                                settings: recordSettings as [String: AnyObject])
-            audioRecorder.delegate = self
-            audioRecorder.prepareToRecord()
-            audioRecorder.record(forDuration: 1.5)
-
-            //print("Started recording...")
-        } catch let error {
-            print("Audio session error: \(error.localizedDescription)")
-        }
-    }
-
-    /**
-        Stops the audio recorder and the hotword timer
-    **/
     func stopHotwordRecognition() {
-        if audioRecorder != nil {
-            audioRecorder.stop()
-        }
-        if hotwordTimer != nil {
-            hotwordTimer.invalidate()
+        if microphone != nil {
+            microphone.stopFetchingAudio()
         }
     }
 
