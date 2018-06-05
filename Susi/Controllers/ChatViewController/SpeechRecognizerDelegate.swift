@@ -172,8 +172,12 @@ extension ChatViewController: SFSpeechRecognizerDelegate, AVSpeechSynthesizerDel
             let speechUtterance = AVSpeechUtterance(string: message.message)
             speechSynthesizer.delegate = self
 
-            if let language = message.answerData?.language {
-                speechUtterance.voice = AVSpeechSynthesisVoice(language: language)
+            if let selectedLanguage = UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.languageCode) as? String {
+                speechUtterance.voice = AVSpeechSynthesisVoice(language: selectedLanguage)
+            } else {
+                if let language = message.answerData?.language {
+                    speechUtterance.voice = AVSpeechSynthesisVoice(language: language)
+                }
             }
 
             speechUtterance.rate = UserDefaults.standard.float(forKey: ControllerConstants.UserDefaultsKeys.speechRate)

@@ -81,6 +81,7 @@ class ControllerConstants {
     static let finishLater = "FINISH LATER"
     static let addNewDevice = "Add New Device"
     static let devices = "Devices"
+    static let selectALanguage = "Select a Language"
 
     struct Settings {
         static let enterToSend = "Enter To Send"
@@ -152,6 +153,8 @@ class ControllerConstants {
         static let prefLanguage = "prefLanguage"
         static let lanuchedBefore = "lanuchedBefore"
         static let typedEmailAdress = "typedEmailAdress"
+        static let languageName = "languageName"
+        static let languageCode = "languageCode"
     }
 
     struct TestKeys {
@@ -195,6 +198,11 @@ class ControllerConstants {
         static let chatInterfaceDescription = "Interact with SUSI.AI asking queries. Use microphone button for voice interaction"
         static let skillListingDescription = "Browse and try your favorite SUSI.AI Skill"
         static let chatSettingsDescription = "Personalize your chat settings for better experience"
+    }
+
+    struct ChooseLanguage {
+        static let languageName = "languageName"
+        static let languageCode = "languageCode"
     }
 
     struct Images {

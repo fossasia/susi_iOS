@@ -15,6 +15,7 @@
 		40799A7420B9A37300271718 /* FiveStarRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40799A7320B9A37200271718 /* FiveStarRating.swift */; };
 		40799A7620BBAD9800271718 /* DeviceInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40799A7520BBAD9800271718 /* DeviceInstructionsViewController.swift */; };
 		407ED1DB20BEC6C3007AEE34 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407ED1DA20BEC6C3007AEE34 /* DesignableView.swift */; };
+		407EFAC020C34C0000675A0B /* LanguagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407EFABF20C34C0000675A0B /* LanguagePickerController.swift */; };
 		40F17FA820AC39F9008E7305 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F17FA720AC39F8008E7305 /* Images.swift */; };
 		40F17FAC20ACA28A008E7305 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F17FAB20ACA28A008E7305 /* OnboardingViewController.swift */; };
 		40FB527520C037C6005D4ACD /* StopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FB527420C037C6005D4ACD /* StopCell.swift */; };
@@ -122,6 +123,7 @@
 		40799A7320B9A37200271718 /* FiveStarRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveStarRating.swift; sourceTree = "<group>"; };
 		40799A7520BBAD9800271718 /* DeviceInstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInstructionsViewController.swift; sourceTree = "<group>"; };
 		407ED1DA20BEC6C3007AEE34 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
+		407EFABF20C34C0000675A0B /* LanguagePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePickerController.swift; sourceTree = "<group>"; };
 		40F17FA720AC39F8008E7305 /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		40F17FAB20ACA28A008E7305 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		40FB527420C037C6005D4ACD /* StopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopCell.swift; sourceTree = "<group>"; };
@@ -257,6 +259,14 @@
 				40799A7520BBAD9800271718 /* DeviceInstructionsViewController.swift */,
 			);
 			path = DeviceInstructionsViewController;
+			sourceTree = "<group>";
+		};
+		407EFAC120C34C1D00675A0B /* LanguagePickerController */ = {
+			isa = PBXGroup;
+			children = (
+				407EFABF20C34C0000675A0B /* LanguagePickerController.swift */,
+			);
+			path = LanguagePickerController;
 			sourceTree = "<group>";
 		};
 		40F17FAD20ACA296008E7305 /* OnboardingViewController */ = {
@@ -467,6 +477,7 @@
 		6D4D9B501E768F2E0067459C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				407EFAC120C34C1D00675A0B /* LanguagePickerController */,
 				403E7F4320BCBD1100D7B48B /* DevicesActivityController */,
 				40799A7720BBAD9F00271718 /* DeviceInstructionsViewController */,
 				40F17FAD20ACA296008E7305 /* OnboardingViewController */,
@@ -863,6 +874,7 @@
 				6DEE71121F2C9DC900A512CF /* AppNavigationController.swift in Sources */,
 				6DE0025B1F3FF93A0065DB85 /* AnchorCell.swift in Sources */,
 				6D24B0961EE409DB0097418A /* SignUpVCMethods.swift in Sources */,
+				407EFAC020C34C0000675A0B /* LanguagePickerController.swift in Sources */,
 				6D87A3301EEE557000A6D763 /* WebsearchCell.swift in Sources */,
 				6DCA905C1F1F09910058CABB /* LocationDelegate.swift in Sources */,
 				6D0B28DC1F3D55B100E273E1 /* ResetPasswordController.swift in Sources */,
