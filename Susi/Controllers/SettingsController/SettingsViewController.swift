@@ -58,8 +58,6 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var setupDeviceTitle: UILabel!
     @IBOutlet weak var susiVoiceLanguageLabel: UILabel!
 
-    var chatViewController: ChatViewController?
-
     override func viewDidLoad() {
         super.viewDidLoad()
         assignDefaults()

@@ -167,17 +167,6 @@ extension ChatViewController {
         view.addConstraintsWithFormat(format: "V:|-\(Int(height) + 4)-[v0(36)]", views: susiSkillListingButton)
     }
 
-    // setup skill listing button
-    func addSettingsButton() {
-        view.addSubview(settingsButton)
-        let height = UIApplication.shared.statusBarFrame.size.height
-        settingsButton.translatesAutoresizingMaskIntoConstraints = false
-        settingsButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8.0).isActive = true
-        settingsButton.topAnchor.constraint(equalTo: view.topAnchor, constant: height + 4.0).isActive = true
-        settingsButton.heightAnchor.constraint(equalToConstant: 36.0).isActive = true
-        settingsButton.widthAnchor.constraint(equalToConstant: 36.0).isActive = true
-    }
-
     // setup scroll button
     func addScrollButton() {
         view.addSubview(scrollButton)
@@ -307,16 +296,6 @@ extension ChatViewController {
     @objc func presentSkillListingController() {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         if let vc = mainStoryboard.instantiateViewController(withIdentifier: "SkillListingController") as? SkillListingViewController {
-            vc.chatViewController = self
-            let nvc = AppNavigationController(rootViewController: vc)
-            present(nvc, animated: true, completion: nil)
-        }
-    }
-
-    // present settings controller
-    @objc func presentSettingsController() {
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        if let vc = mainStoryboard.instantiateViewController(withIdentifier: "SettingsController") as? SettingsViewController {
             vc.chatViewController = self
             let nvc = AppNavigationController(rootViewController: vc)
             present(nvc, animated: true, completion: nil)
