@@ -34,6 +34,16 @@ extension SettingsViewController {
         UIApplication.shared.statusBarView?.backgroundColor = UIColor.defaultColor()
     }
 
+    func setLanguageLabel() {
+        let languageName = UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.languageName) as? String
+        let languageCode = UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.languageCode) as? String
+        if languageName != nil && languageCode != nil {
+            susiVoiceLanguageLabel.text = "\(languageName!) (\(languageCode!))"
+        } else {
+            susiVoiceLanguageLabel.text = "English (en-US)"
+        }
+    }
+
     func logoutUser() {
         let realm = try! Realm()
         try! realm.write {
@@ -182,4 +192,5 @@ extension SettingsViewController {
             self.present(activityVC, animated: true, completion: nil)
         }
     }
+
 }
