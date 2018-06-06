@@ -23,6 +23,7 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
         collectionView?.register(AnchorCell.self, forCellWithReuseIdentifier: ControllerConstants.anchorCell)
         collectionView?.register(StopCell.self, forCellWithReuseIdentifier: ControllerConstants.stopCell)
         collectionView?.accessibilityIdentifier = ControllerConstants.TestKeys.chatCollectionView
+
     }
 
     // Number of items

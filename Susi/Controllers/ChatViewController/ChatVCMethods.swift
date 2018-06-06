@@ -316,11 +316,10 @@ extension ChatViewController {
     // sets content offset so that messages start displaying from bottom
     func setCollectionViewOffset() {
         view.layoutIfNeeded()
-
         let contentSize = collectionView?.collectionViewLayout.collectionViewContentSize
         if let contentHeight = contentSize?.height, let collectionViewHeight = collectionView?.bounds.size.height {
-            let targetContentOffset = CGPoint(x: 0, y: contentHeight - collectionViewHeight)
-            collectionView?.setContentOffset(targetContentOffset, animated: true)
+            let targetContentOffset = CGPoint(x: 0, y: contentHeight-collectionViewHeight)
+            collectionView?.setContentOffset(targetContentOffset, animated: false)
         }
     }
 
