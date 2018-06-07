@@ -113,6 +113,7 @@ class ControllerConstants {
         static let susiVoiceModel = "SUSI Voice Model"
         static let miscellaneous = "Miscellaneous"
         static let devices = "Devices"
+        static let appSettings = "App Settings"
     }
 
     struct Login {
