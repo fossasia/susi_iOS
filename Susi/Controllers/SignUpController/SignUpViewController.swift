@@ -28,6 +28,7 @@ class SignUpViewController: GeneralViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addTapGesture()
+        addRightSwipeGestureToView()
         prepareFields()
         prepareSignUpButton()
     }

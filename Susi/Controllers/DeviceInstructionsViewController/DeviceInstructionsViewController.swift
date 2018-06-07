@@ -21,6 +21,7 @@ class DeviceInstructionsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        addRightSwipeGestureToView()
         setupTitle()
     }
 
@@ -33,6 +34,13 @@ class DeviceInstructionsViewController: UIViewController {
         if let navbar = navigationController?.navigationBar {
             navbar.barTintColor = UIColor.defaultColor()
         }
+    }
+
+    // Swipe right to go back
+    func addRightSwipeGestureToView() {
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(dismissView))
+        rightSwipe.direction = .right
+        self.view.addGestureRecognizer(rightSwipe)
     }
 
     @objc func dismissView() {

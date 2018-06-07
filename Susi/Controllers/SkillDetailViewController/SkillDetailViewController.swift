@@ -67,6 +67,7 @@ class SkillDetailViewController: GeneralViewController {
         super.viewDidLoad()
 
         setupView()
+        addRightSwipeGestureToView()
         roundedCorner()
         setupSubmitButton()
         setupTryItTarget()

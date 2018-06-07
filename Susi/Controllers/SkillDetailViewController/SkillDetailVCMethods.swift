@@ -29,6 +29,16 @@ extension SkillDetailViewController {
         tryItButton.addTarget(self, action: #selector(trySkillFromExample), for: .touchUpInside)
     }
 
+    func addRightSwipeGestureToView() {
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(dismissController))
+        rightSwipe.direction = .right
+        self.view.addGestureRecognizer(rightSwipe)
+    }
+
+    @objc func dismissController() {
+        navigationController?.popViewController(animated: true)
+    }
+
     @objc func trySkillFromExample() {
         let query = selectedExample ?? self.skill?.examples.first
         navigationController?.dismiss(animated: true, completion: {

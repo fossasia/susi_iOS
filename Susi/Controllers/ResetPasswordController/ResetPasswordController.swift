@@ -35,6 +35,7 @@ class ResetPasswordViewController: UITableViewController {
         super.viewDidLoad()
 
         setupView()
+        addRightSwipeGestureToView()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(localizeStrings),
                                                name: NSNotification.Name(LCLLanguageChangeNotification),
