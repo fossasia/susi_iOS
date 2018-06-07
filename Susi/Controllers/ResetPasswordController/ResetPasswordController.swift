@@ -10,7 +10,7 @@ import UIKit
 import Material
 import Localize_Swift
 
-class ResetPasswordViewController: UITableViewController {
+class ResetPasswordViewController: UIViewController {
 
     lazy var backButton: IconButton = {
         let button = IconButton()
@@ -27,7 +27,8 @@ class ResetPasswordViewController: UITableViewController {
     @IBOutlet weak var currentPasswordFLabel: UILabel!
     @IBOutlet weak var newPasswordFLabel: UILabel!
     @IBOutlet weak var confirmPasswordFLabel: UILabel!
-    @IBOutlet weak var resetPasswordFLabel: UILabel!
+    @IBOutlet weak var resetPasswordButton: UIButton!
+
 
     var isActive = false
 
@@ -42,17 +43,15 @@ class ResetPasswordViewController: UITableViewController {
         localizeStrings()
     }
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 1 {
-            resetPassword()
-        }
-        tableView.deselectRow(at: indexPath, animated: true)
+    @IBAction func didResetPassword(_ sender: Any) {
+        resetPassword()
     }
+
 
     @objc func localizeStrings() {
         currentPasswordFLabel.text = ControllerConstants.currentPassword.localized()
         newPasswordFLabel.text = ControllerConstants.newPassword.localized()
         confirmPasswordFLabel.text = ControllerConstants.SignUp.confirmPassword.localized()
-        resetPasswordFLabel.text = ControllerConstants.resetPassword.localized()
+        resetPasswordButton.setTitle(ControllerConstants.resetPassword.localized(), for: .normal)
     }
 }

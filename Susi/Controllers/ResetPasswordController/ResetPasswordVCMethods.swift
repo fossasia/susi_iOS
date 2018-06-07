@@ -23,6 +23,8 @@ extension ResetPasswordViewController {
         if let navbar = navigationController?.navigationBar {
             navbar.barTintColor = UIColor.defaultColor()
         }
+
+        resetPasswordButton.layer.cornerRadius = 4.0
     }
 
     func validatePassword() -> [Bool: String] {
