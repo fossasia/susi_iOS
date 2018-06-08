@@ -10,5 +10,6 @@
 #define Susi_Bridging_Header_h
 
 #import "SnowboyWrapper.h"
+#import "TEAChart.h"
 
 #endif /* Susi_Bridging_Header_h */

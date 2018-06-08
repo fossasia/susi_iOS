@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import PieCharts
 
 extension SkillDetailViewController {
 
@@ -43,10 +42,10 @@ extension SkillDetailViewController {
 
     func addContentType() {
         view.addSubview(contentType)
-        contentType.leftAnchor.constraint(equalTo: positiveRatingLabel.leftAnchor).isActive = true
+        contentType.leftAnchor.constraint(equalTo: ratingBackView.leftAnchor).isActive = true
         contentType.widthAnchor.constraint(equalToConstant: 140).isActive = true
         contentType.heightAnchor.constraint(equalToConstant: 35).isActive = true
-        contentType.topAnchor.constraint(equalTo: positiveRatingLabel.bottomAnchor, constant: 16).isActive = true
+        contentType.topAnchor.constraint(equalTo: ratingBackView.bottomAnchor, constant: 16).isActive = true
 
         view.addSubview(content)
         content.leftAnchor.constraint(equalTo: contentType.rightAnchor, constant: -6).isActive = true
@@ -63,65 +62,13 @@ extension SkillDetailViewController {
 
     }
 
-}
-
-extension SkillDetailViewController: PieChartDelegate {
-
-    func onSelected(slice: PieSlice, selected: Bool) {
-        print("Selected: \(selected), slice: \(slice)")
-    }
-
-    // MARK: - Layers
-
-    func createPlainTextLayer() -> PiePlainTextLayer {
-
-        let textLayerSettings = PiePlainTextLayerSettings()
-        textLayerSettings.viewRadius = 45.0
-        textLayerSettings.hideOnOverflow = false
-        textLayerSettings.label.font = UIFont.systemFont(ofSize: 12.0)
-
-        let formatter = NumberFormatter()
-        formatter.maximumFractionDigits = 1
-        textLayerSettings.label.textGenerator = {slice in
-            return formatter.string(from: slice.data.percentage * 100 as NSNumber).map { "\($0)%"} ?? ""
-        }
-
-        let textLayer = PiePlainTextLayer()
-        textLayer.settings = textLayerSettings
-        return textLayer
-    }
-
-    func createTextWithLinesLayer() -> PieLineTextLayer {
-        let lineTextLayer = PieLineTextLayer()
-        var lineTextLayerSettings = PieLineTextLayerSettings()
-        lineTextLayerSettings.lineColor = UIColor.lightGray
-        lineTextLayerSettings.segment1Length = 10.0
-        lineTextLayerSettings.segment2Length = 10.0
-        let formatter = NumberFormatter()
-        formatter.maximumFractionDigits = 1
-        lineTextLayerSettings.label.font = UIFont.systemFont(ofSize: 14)
-        lineTextLayerSettings.label.textGenerator = {slice in
-            return formatter.string(from: slice.data.model.value as NSNumber).map { "\($0)"} ?? ""
-        }
-
-        lineTextLayer.settings = lineTextLayerSettings
-        return lineTextLayer
-    }
-
-    // MARK: - Models
-
-    func createModels() -> [PieSliceModel] {
-
-        let models = [
-            PieSliceModel(value: 10, color: colors[0]),
-            PieSliceModel(value: 8, color: colors[1]),
-            PieSliceModel(value: 6, color: colors[2]),
-            PieSliceModel(value: 8, color: colors[3]),
-            PieSliceModel(value: 5, color: colors[4])
-        ]
-
-        currentColorIndex = models.count
-        return models
+    // Setup Bar Chart
+    func setupBarChart() {
+        barChartView.barColors = barChartColors
+        barChartView.data = [5, 1, 1, 1, 2]
+        barChartView.transform = CGAffineTransform(rotationAngle: .pi/2.0)
+        barChartView.barSpacing = 3
+        barChartView.backgroundColor = UIColor.barBackgroundColor()
     }
 
 }

@@ -9,7 +9,6 @@
 import UIKit
 import Kingfisher
 import Material
-import PieCharts
 
 class SkillDetailViewController: GeneralViewController {
 
@@ -43,45 +42,37 @@ class SkillDetailViewController: GeneralViewController {
     @IBOutlet weak var skillDescription: UILabel!
     @IBOutlet weak var examplesCollectionView: UICollectionView!
     @IBOutlet weak var exampleHeading: UILabel!
-    @IBOutlet weak var pieChartView: PieChart!
     @IBOutlet weak var ratingView: RatingView!
     @IBOutlet weak var averageRatingLabel: UILabel!
     @IBOutlet weak var totalRatingsLabel: UILabel!
-    @IBOutlet weak var positiveRatingLabel: UILabel!
-    @IBOutlet weak var negativeRatingLabel: UILabel!
-    @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var topAvgRatingLabel: UILabel!
+    @IBOutlet weak var barChartView: TEABarChart!
+    @IBOutlet weak var ratingBackView: UIView!
 
-    static let alpha: CGFloat = 1.0
-    let colors = [
-        UIColor.iOSGreen(),
-        UIColor.iOSTealBlue(),
-        UIColor.iOSYellow(),
-        UIColor.iOSOrange(),
-        UIColor.iOSRed()
+    let barChartColors = [
+        UIColor.fiveStarRating(),
+        UIColor.fourStarRating(),
+        UIColor.threeStarRating(),
+        UIColor.twoStarRating(),
+        UIColor.oneStarRating()
     ]
-
-    var currentColorIndex = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupView()
         roundedCorner()
-        setupSubmitButton()
         setupTryItTarget()
         addSkillDescription()
+        setupBarChart()
         addContentType()
-        pieChartView.layers = [createPlainTextLayer(), createTextWithLinesLayer()]
-        pieChartView.delegate = self
-        pieChartView.models = createModels()
     }
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         // ScrollView content size
         let labelHeight = skillDescription.heightForLabel(text: skillDescription.text!, font: UIFont.systemFont(ofSize: 16.0), width: self.view.frame.width - 64)
-        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 258 + labelHeight)
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 64.0 + labelHeight)
     }
 
     override func localizeStrings() {
@@ -94,11 +85,7 @@ class SkillDetailViewController: GeneralViewController {
         tryItButton.layer.cornerRadius = 18.0
         tryItButton.layer.borderWidth = 2.0
         tryItButton.borderColor = UIColor.iOSBlue()
+        ratingBackView.layer.cornerRadius = 8.0
     }
 
-    func setupSubmitButton() {
-        submitButton.layer.borderColor = UIColor.iOSGray().cgColor
-        submitButton.layer.borderWidth = 2.0
-        submitButton.layer.cornerRadius = 15.0
-    }
 }
