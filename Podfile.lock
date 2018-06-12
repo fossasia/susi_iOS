@@ -25,7 +25,6 @@ PODS:
     - NVActivityIndicatorView/Presenter (= 4.2.1)
   - NVActivityIndicatorView/Presenter (4.2.1)
   - paper-onboarding (4.1.0)
-  - PieCharts (0.0.6)
   - ReachabilitySwift (4.1.0)
   - ReadabilityKit (0.7.1):
     - Ji
@@ -50,7 +49,6 @@ DEPENDENCIES:
   - NotificationBannerSwift
   - NVActivityIndicatorView
   - paper-onboarding
-  - PieCharts
   - ReachabilitySwift
   - ReadabilityKit
   - RealmSwift
@@ -72,7 +70,6 @@ SPEC REPOS:
     - NotificationBannerSwift
     - NVActivityIndicatorView
     - paper-onboarding
-    - PieCharts
     - ReachabilitySwift
     - ReadabilityKit
     - Realm
@@ -106,7 +103,6 @@ SPEC CHECKSUMS:
   NotificationBannerSwift: 4eceb2add9d5eaa0596c63d49690b4d6476e74ec
   NVActivityIndicatorView: 8068ba3ad39cb44cbaab25d89ff2546b3f092681
   paper-onboarding: 344780cbb0bfc229cd1862f5b9bba446b23c5185
-  PieCharts: f4f866b3ed45dbeda355cc64664091024a9819ee
   ReachabilitySwift: 6849231cd4e06559f3b9ef4a97a0a0f96d41e09f
   ReadabilityKit: 45e79725f6d0377c555f38d9df7a6d4435898c04
   Realm: 0378021c424e4e2bd6a0e63b27881e929d9b9ad1
@@ -116,6 +112,6 @@ SPEC CHECKSUMS:
   SwiftValidators: 660ce9ef3f0358c25c3a6154f7edc02c7d4a0578
   Toast-Swift: ba0b01b095aada709d915f9beb1d38184a2721c3
 
-PODFILE CHECKSUM: 8f78823ed6468a6eb23880ebe62c337940a551df
+PODFILE CHECKSUM: 685a75a46dea55bf0e30c875c369376f08cbf355
 
 COCOAPODS: 1.5.2

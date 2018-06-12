@@ -25,7 +25,6 @@ target 'Susi' do
   pod 'ReachabilitySwift'
   pod 'Localize-Swift'
   pod 'paper-onboarding'
-  pod 'PieCharts'
   shared_pods
 end
 

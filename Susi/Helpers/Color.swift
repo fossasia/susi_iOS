@@ -74,4 +74,28 @@ extension UIColor {
         return UIColor.hexStringToUIColor(hex: "#5F6368")
     }
 
+    class func oneStarRating() -> UIColor {
+        return UIColor.hexStringToUIColor(hex: "#E57373")
+    }
+
+    class func twoStarRating() -> UIColor {
+        return UIColor.hexStringToUIColor(hex: "#FFB74D")
+    }
+
+    class func threeStarRating() -> UIColor {
+        return UIColor.hexStringToUIColor(hex: "#FFF176")
+    }
+
+    class func fourStarRating() -> UIColor {
+        return UIColor.hexStringToUIColor(hex: "#AED581")
+    }
+
+    class func fiveStarRating() -> UIColor {
+        return UIColor.hexStringToUIColor(hex: "#81C784")
+    }
+
+    class func barBackgroundColor() -> UIColor {
+        return UIColor.hexStringToUIColor(hex: "#EFEFEF")
+    }
+
 }
