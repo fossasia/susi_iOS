@@ -16,6 +16,7 @@
 		40799A7620BBAD9800271718 /* DeviceInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40799A7520BBAD9800271718 /* DeviceInstructionsViewController.swift */; };
 		407ED1DB20BEC6C3007AEE34 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407ED1DA20BEC6C3007AEE34 /* DesignableView.swift */; };
 		407EFAC020C34C0000675A0B /* LanguagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407EFABF20C34C0000675A0B /* LanguagePickerController.swift */; };
+		40D8882120CA9DBA006226EE /* TEABarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D8881720CA9DB9006226EE /* TEABarChart.m */; };
 		40F17FA820AC39F9008E7305 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F17FA720AC39F8008E7305 /* Images.swift */; };
 		40F17FAC20ACA28A008E7305 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F17FAB20ACA28A008E7305 /* OnboardingViewController.swift */; };
 		40FB527520C037C6005D4ACD /* StopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FB527420C037C6005D4ACD /* StopCell.swift */; };
@@ -124,6 +125,9 @@
 		40799A7520BBAD9800271718 /* DeviceInstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInstructionsViewController.swift; sourceTree = "<group>"; };
 		407ED1DA20BEC6C3007AEE34 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		407EFABF20C34C0000675A0B /* LanguagePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePickerController.swift; sourceTree = "<group>"; };
+		40D8881720CA9DB9006226EE /* TEABarChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEABarChart.m; sourceTree = "<group>"; };
+		40D8881C20CA9DB9006226EE /* TEAChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEAChart.h; sourceTree = "<group>"; };
+		40D8881F20CA9DBA006226EE /* TEABarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEABarChart.h; sourceTree = "<group>"; };
 		40F17FA720AC39F8008E7305 /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		40F17FAB20ACA28A008E7305 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		40FB527420C037C6005D4ACD /* StopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopCell.swift; sourceTree = "<group>"; };
@@ -269,6 +273,16 @@
 			path = LanguagePickerController;
 			sourceTree = "<group>";
 		};
+		40D8882620CA9DD1006226EE /* TeaChart */ = {
+			isa = PBXGroup;
+			children = (
+				40D8881F20CA9DBA006226EE /* TEABarChart.h */,
+				40D8881720CA9DB9006226EE /* TEABarChart.m */,
+				40D8881C20CA9DB9006226EE /* TEAChart.h */,
+			);
+			path = TeaChart;
+			sourceTree = "<group>";
+		};
 		40F17FAD20ACA296008E7305 /* OnboardingViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -376,6 +390,7 @@
 		6D2F98471E76DED400FE2B6F /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				40D8882620CA9DD1006226EE /* TeaChart */,
 				6D3FB3471E8136640015E1D6 /* Message Cells */,
 				6D017B2C1F4EC98E004BDE7E /* Skill Listing Cells */,
 				6D0B28DF1F3D8F6300E273E1 /* CustomTextField.swift */,
@@ -770,7 +785,6 @@
 				"${BUILT_PRODUCTS_DIR}/Motion/Motion.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/NotificationBannerSwift/NotificationBannerSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/PieCharts/PieCharts.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/ReadabilityKit/ReadabilityKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
@@ -795,7 +809,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Motion.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NotificationBannerSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PieCharts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReadabilityKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
@@ -913,6 +926,7 @@
 				6DE44E161E76ACD900215B85 /* Constants.swift in Sources */,
 				4CD0AA5F1EDF2CB700BC8FD5 /* ControllerConstants.swift in Sources */,
 				6D2898391F144E5C00B6151A /* SnowboyWrapper.mm in Sources */,
+				40D8882120CA9DBA006226EE /* TEABarChart.m in Sources */,
 				6D8AC7BA1F205F7F00FAA335 /* CollectionViewDelegate.swift in Sources */,
 				6DE809D11F34DC6500CAE674 /* TrainingAudioRecorderDelegate.swift in Sources */,
 				6DCA90641F1F0B320058CABB /* TextFieldDelegate.swift in Sources */,
