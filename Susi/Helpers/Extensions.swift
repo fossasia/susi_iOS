@@ -234,3 +234,19 @@ extension UIButton {
     }
 
 }
+
+extension Int {
+
+    func percentage(outOf totalNumber: Int) -> Double {
+        return ((Double(self)/Double(totalNumber)) * 100).truncate(places: 1)
+    }
+
+}
+
+extension Double {
+
+    func truncate(places: Int) -> Double {
+        return Double(floor(pow(10.0, Double(places)) * self)/pow(10.0, Double(places)))
+    }
+
+}

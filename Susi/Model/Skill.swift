@@ -18,6 +18,14 @@ class Skill: NSObject {
     var skillDescription: String = ""
     var dynamic_content: Bool = false
     var skill_rating: [String: Any] = [:]
+    var stars: [String: Any] = [:]
+    var oneStar: Int = 0
+    var twoStar: Int = 0
+    var threeStar: Int = 0
+    var fourStar: Int = 0
+    var fiveStar: Int = 0
+    var totalRatings: Int = 0
+    var averageRating: Double = 0.0
 
     init(dictionary: [String: AnyObject]) {
         super.init()
@@ -28,7 +36,15 @@ class Skill: NSObject {
         skillDescription = dictionary[Client.SkillListing.description] as? String ?? "Skill Description"
         imagePath = dictionary[Client.SkillListing.image] as? String ?? ""
         dynamic_content = dictionary[Client.SkillListing.dynamicContent] as? Bool ?? false
-        skill_rating = dictionary[Client.SkillListing.skillRating] as? [String: Any] ?? ["positive": 0, "negative": 0]
+        skill_rating = dictionary[Client.SkillListing.skillRating] as? [String: Any] ?? [:]
+        stars = skill_rating[Client.FiveStarRating.stars] as? [String: Any] ?? [:]
+        oneStar = stars[Client.FiveStarRating.oneStar] as? Int ?? 0
+        twoStar = stars[Client.FiveStarRating.twoStar] as? Int ?? 0
+        threeStar = stars[Client.FiveStarRating.threeStar] as? Int ?? 0
+        fourStar = stars[Client.FiveStarRating.fourStar] as? Int ?? 0
+        fiveStar = stars[Client.FiveStarRating.fiveSatr] as? Int ?? 0
+        totalRatings = stars[Client.FiveStarRating.totalStar] as? Int ?? 0
+        averageRating = stars[Client.FiveStarRating.average] as? Double ?? 0.0
     }
 
     static func getAllSkill(_ skills: [String: AnyObject], _ model: String, _ group: String, _ language: String) -> [Skill] {

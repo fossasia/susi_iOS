@@ -165,6 +165,7 @@ extension Client {
         static let average = "avg_star"
         static let positive = "positive"
         static let negative = "negative"
+        static let stars = "stars"
     }
 
 }

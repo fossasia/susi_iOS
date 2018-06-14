@@ -48,6 +48,15 @@ class SkillDetailViewController: GeneralViewController {
     @IBOutlet weak var topAvgRatingLabel: UILabel!
     @IBOutlet weak var barChartView: TEABarChart!
     @IBOutlet weak var ratingBackView: UIView!
+    @IBOutlet weak var fiveStarLabel: UILabel!
+    @IBOutlet weak var fourStarLabel: UILabel!
+    @IBOutlet weak var threeStarLabel: UILabel!
+    @IBOutlet weak var twoStarLabel: UILabel!
+    @IBOutlet weak var oneStarLabel: UILabel!
+    @IBOutlet weak var ratingsBackViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topAvgRatingStackView: UIStackView!
+    @IBOutlet weak var ratingsBackStackView: UIStackView!
+    @IBOutlet weak var notRatedLabel: UILabel!
 
     let barChartColors = [
         UIColor.fiveStarRating(),
@@ -64,6 +73,7 @@ class SkillDetailViewController: GeneralViewController {
         roundedCorner()
         setupTryItTarget()
         addSkillDescription()
+        setupFiveStarData()
         setupBarChart()
         addContentType()
     }
