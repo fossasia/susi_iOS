@@ -27,7 +27,8 @@ extension Client {
         static let ChangePassword = "/aaa/changepassword.json"
         static let GetGroups = "/cms/getGroups.json"
         static let GetSkillList = "/cms/getSkillList.json"
-        static let fiveStarRateSkill = "/cms/fiveStarRateSkill.json"
+        static let FiveStarRateSkill = "/cms/fiveStarRateSkill.json"
+        static let GetRatingByUser = "/cms/getRatingByUser.json"
         static let baseSkillImagePath = "https://raw.githubusercontent.com/fossasia/susi_skill_data/master/models/"
     }
 
@@ -38,6 +39,10 @@ extension Client {
         static let PasswordInvalid = "Password chosen is invalid."
         static let NoSkillsPresent = "No skills present."
         static let NoRatingsPresent = "No ratings present."
+        static let NotSubmittedRatings = "Problem submitting ratings"
+        static let SuccessSubmitRating = "Rating submitted successfully"
+        static let UserRatingNotFetched = "Problem fetching user rating"
+        static let SuccessUserRating = "Fetched user rating successfully"
     }
 
     struct UserKeys {
@@ -143,6 +148,7 @@ extension Client {
         static let group = "group"
         static let groups = "groups"
         static let skills = "skills"
+        static let skill = "skill"
         static let image = "image"
         static let authorURL = "author_url"
         static let examples = "examples"
@@ -166,6 +172,8 @@ extension Client {
         static let positive = "positive"
         static let negative = "negative"
         static let stars = "stars"
+        static let ratings = "ratings"
+        static let AccessToken = "access_token"
     }
 
 }

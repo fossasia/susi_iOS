@@ -33,6 +33,8 @@ class SkillDetailViewController: GeneralViewController {
     var skill: Skill?
     var chatViewController: ChatViewController?
     var selectedExample: String?
+    var submitRatingParams: [String: AnyObject] = [:]
+    var getRatingParam: [String: AnyObject] = [:]
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var skillLabel: UILabel!
@@ -42,7 +44,11 @@ class SkillDetailViewController: GeneralViewController {
     @IBOutlet weak var skillDescription: UILabel!
     @IBOutlet weak var examplesCollectionView: UICollectionView!
     @IBOutlet weak var exampleHeading: UILabel!
-    @IBOutlet weak var ratingView: RatingView!
+    @IBOutlet weak var ratingView: RatingView! {
+        didSet {
+            ratingView.delegate = self
+        }
+    }
     @IBOutlet weak var averageRatingLabel: UILabel!
     @IBOutlet weak var totalRatingsLabel: UILabel!
     @IBOutlet weak var topAvgRatingLabel: UILabel!
@@ -73,6 +79,11 @@ class SkillDetailViewController: GeneralViewController {
         roundedCorner()
         setupTryItTarget()
         addSkillDescription()
+        getRatingByUser()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         setupFiveStarData()
         setupBarChart()
         addContentType()

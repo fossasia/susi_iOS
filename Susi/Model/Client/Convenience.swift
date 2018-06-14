@@ -430,9 +430,9 @@ extension Client {
             return
         })
     }
-/*
-    func getRatings(_ params: [String: AnyObject], _ completion: @escaping(_ fiveStarRating: FiveStarRating?, _ success: Bool, _ error: String?) -> Void) {
-        let url = getApiUrl(UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.ipAddress) as! String, Methods.fiveStarRateSkill)
+
+    func submitRating(_ params: [String: AnyObject], _ completion: @escaping(_ updatedRatings: Ratings?, _ success: Bool, _ error: String?) -> Void) {
+        let url = getApiUrl(UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.ipAddress) as! String, Methods.FiveStarRateSkill)
         _ = makeRequest(url, .get, [:], parameters: params, completion: { (results, message) in
             if let _ = message {
                 completion(nil, false, ResponseMessages.ServerError)
@@ -443,16 +443,40 @@ extension Client {
                     return
                 }
 
-                if let ratings = response[Client.SkillListing.skills] as? [String: AnyObject] {
-                    completion(ratings, true, nil)
+                if let ratings = response[Client.FiveStarRating.ratings] as? [String: AnyObject] {
+                    let newRatings = Ratings(dictionary: ratings)
+                    completion(newRatings, true, ResponseMessages.SuccessSubmitRating)
                     return
                 }
-                completion(nil, false, ResponseMessages.NoSkillsPresent)
+                completion(nil, false, ResponseMessages.NotSubmittedRatings)
                 return
             }
             return
         })
     }
- */
+
+    func getRatingByUser(_ params: [String: AnyObject], _ completion: @escaping(_ userRating: Int?, _ success: Bool, _ error: String?) -> Void) {
+        let url = getApiUrl(UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.ipAddress) as! String, Methods.GetRatingByUser)
+        _ = makeRequest(url, .get, [:], parameters: params, completion: { (results, message) in
+            if let _ = message {
+                completion(nil, false, ResponseMessages.ServerError)
+            } else if let results = results {
+
+                guard let response = results as? [String: AnyObject] else {
+                    completion(nil, false, ResponseMessages.InvalidParams)
+                    return
+                }
+
+                if let ratings = response[Client.FiveStarRating.ratings] as? [String: AnyObject] {
+                    let ratingByUser = ratings[Client.FiveStarRating.stars] as? Int
+                    completion(ratingByUser, true, ResponseMessages.SuccessUserRating)
+                    return
+                }
+                completion(nil, false, ResponseMessages.UserRatingNotFetched)
+                return
+            }
+            return
+        })
+    }
 
 }

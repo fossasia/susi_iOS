@@ -10,6 +10,7 @@
 		3BC1D8D5203B177E003E62F9 /* noConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC1D8D3203B177E003E62F9 /* noConnectionViewController.swift */; };
 		3BC1D8D6203B177E003E62F9 /* noConnectionNetworkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC1D8D4203B177E003E62F9 /* noConnectionNetworkStatus.swift */; };
 		403E7F4220BCBCFB00D7B48B /* DevicesActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E7F4120BCBCFB00D7B48B /* DevicesActivityViewController.swift */; };
+		40623B7F20D243910013FE60 /* Ratings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40623B7E20D243910013FE60 /* Ratings.swift */; };
 		406F100620ADFEED00808E4C /* OnboardingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406F100520ADFEED00808E4C /* OnboardingUITests.swift */; };
 		40701E7F20BEAC8100B92D81 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40701E7E20BEAC8100B92D81 /* RatingView.swift */; };
 		40799A7620BBAD9800271718 /* DeviceInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40799A7520BBAD9800271718 /* DeviceInstructionsViewController.swift */; };
@@ -97,9 +98,9 @@
 		6DE809D11F34DC6500CAE674 /* TrainingAudioRecorderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE809D01F34DC6500CAE674 /* TrainingAudioRecorderDelegate.swift */; };
 		6DEE71121F2C9DC900A512CF /* AppNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEE71111F2C9DC900A512CF /* AppNavigationController.swift */; };
 		6DFC75B91EE077E9002F92BA /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFC75B81EE077E9002F92BA /* ForgotPasswordViewController.swift */; };
+		71DF0561EA8079C5C53174C1 /* Pods_Susi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C564B012515FE5529232089A /* Pods_Susi.framework */; };
 		94889CA61F7CCD370028B8C3 /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94889CA51F7CCD370028B8C3 /* GeneralViewController.swift */; };
 		94889CAE1F7CEAA80028B8C3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 94889CB01F7CEAA80028B8C3 /* Localizable.strings */; };
-		A51AEC7AB0CB0D73341602BA /* Pods_Susi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C564B012515FE5529232089A /* Pods_Susi.framework */; };
 		F09A34A3B776419996088BB5 /* Pods_SusiUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5994B8E49F09387802A1EB7A /* Pods_SusiUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -118,6 +119,7 @@
 		3BC1D8D3203B177E003E62F9 /* noConnectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = noConnectionViewController.swift; sourceTree = "<group>"; };
 		3BC1D8D4203B177E003E62F9 /* noConnectionNetworkStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = noConnectionNetworkStatus.swift; sourceTree = "<group>"; };
 		403E7F4120BCBCFB00D7B48B /* DevicesActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesActivityViewController.swift; sourceTree = "<group>"; };
+		40623B7E20D243910013FE60 /* Ratings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ratings.swift; sourceTree = "<group>"; };
 		406F100520ADFEED00808E4C /* OnboardingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingUITests.swift; sourceTree = "<group>"; };
 		40701E7E20BEAC8100B92D81 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		40799A7520BBAD9800271718 /* DeviceInstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInstructionsViewController.swift; sourceTree = "<group>"; };
@@ -240,7 +242,7 @@
 				6D2898421F14507700B6151A /* libsnowboy-detect.a in Frameworks */,
 				6DE264911F0278A900EBAD13 /* Speech.framework in Frameworks */,
 				6D35E4881EE70F9000188E1F /* Accelerate.framework in Frameworks */,
-				A51AEC7AB0CB0D73341602BA /* Pods_Susi.framework in Frameworks */,
+				71DF0561EA8079C5C53174C1 /* Pods_Susi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -560,6 +562,7 @@
 				6D61B9B21EEBAB4000CD3536 /* TableAction.swift */,
 				6D9C0D281E7B223A00199828 /* User.swift */,
 				6D61B9B01EEBAB0200CD3536 /* WebsearchAction.swift */,
+				40623B7E20D243910013FE60 /* Ratings.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -877,6 +880,7 @@
 				6DE44E0F1E769AD300215B85 /* Color.swift in Sources */,
 				40701E7F20BEAC8100B92D81 /* RatingView.swift in Sources */,
 				6D017B251F4EAF86004BDE7E /* SkillListingViewController.swift in Sources */,
+				40623B7F20D243910013FE60 /* Ratings.swift in Sources */,
 				6D395D1D1F58966900BCC3C5 /* SkillDetailExampleCell.swift in Sources */,
 				3BC1D8D5203B177E003E62F9 /* noConnectionViewController.swift in Sources */,
 				6D395D1F1F589CC000BCC3C5 /* SkillDetailVCMethods.swift in Sources */,

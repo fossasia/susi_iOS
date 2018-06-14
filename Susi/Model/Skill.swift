@@ -26,8 +26,11 @@ class Skill: NSObject {
     var fiveStar: Int = 0
     var totalRatings: Int = 0
     var averageRating: Double = 0.0
+    var skillKeyName: String = ""
+    var model: String = ""
+    var group: String = ""
 
-    init(dictionary: [String: AnyObject]) {
+    init(dictionary: [String: AnyObject], skillKey: String) {
         super.init()
         authorUrl = dictionary[Client.SkillListing.authorURL] as? String ?? ""
         examples = dictionary[Client.SkillListing.examples] as? [String] ?? []
@@ -45,6 +48,9 @@ class Skill: NSObject {
         fiveStar = stars[Client.FiveStarRating.fiveSatr] as? Int ?? 0
         totalRatings = stars[Client.FiveStarRating.totalStar] as? Int ?? 0
         averageRating = stars[Client.FiveStarRating.average] as? Double ?? 0.0
+        skillKeyName = skillKey
+        model = dictionary[Client.SkillListing.model] as? String ?? ""
+        group = dictionary[Client.SkillListing.group] as? String ?? ""
     }
 
     static func getAllSkill(_ skills: [String: AnyObject], _ model: String, _ group: String, _ language: String) -> [Skill] {
@@ -52,7 +58,10 @@ class Skill: NSObject {
         for skill in skills {
 
             print(skill)
-            let newSkill = Skill(dictionary: skill.value as! [String: AnyObject])
+            guard let skillValueDictionary = skill.value as? [String: AnyObject] else {
+                return skillData
+            }
+            let newSkill = Skill(dictionary: skillValueDictionary, skillKey: skill.0)
             newSkill.imagePath = getImagePath(model, group, language, newSkill.imagePath)
             guard let dict = skill.value as? [String: AnyObject] else {return skillData}
             if let skillRating = dict["skill_rating"] as? [String: AnyObject] {
