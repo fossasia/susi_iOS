@@ -89,6 +89,8 @@ class SettingsViewController: UITableViewController {
             case 4:
                 header.textLabel?.text = ControllerConstants.Settings.devices.localized()
             case 5:
+                header.textLabel?.text = ControllerConstants.Settings.appSettings.localized()
+            case 6:
                 header.textLabel?.text = ControllerConstants.Settings.miscellaneous.localized()
             default:
                 break
@@ -102,11 +104,7 @@ class SettingsViewController: UITableViewController {
         let section = indexPath.section
         let row = indexPath.row
 
-        if section == 2 {
-            if row == 2 {
-                doChangeLanguage()
-            }
-        } else if section == 3 {
+        if section == 3 {
             if row == 0 {
                 presentTrainingController()
             } else if row == 1 {
@@ -125,12 +123,16 @@ class SettingsViewController: UITableViewController {
                 present(nvc, animated: true, completion: nil)
             }
         } else if section == 5 {
+            if row == 0 {
+                doChangeLanguage()
+            } else if row == 1 {
+                presentResetPasswordController()
+            } else if row == 2 {
+                logoutUser()
+            }
+        } else if section == 6 {
             if row == 1 {
                 shareApp()
-            } else if row == 2 {
-                presentResetPasswordController()
-            } else if row == 3 {
-                logoutUser()
             }
         }
         tableView.deselectRow(at: indexPath, animated: true)
@@ -138,14 +140,14 @@ class SettingsViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let user = UserDefaults.standard.dictionary(forKey: ControllerConstants.UserDefaultsKeys.user)
-        if indexPath.section == 4 && indexPath.row == 2 && user == nil {
+        if indexPath.section == 5 && indexPath.row == 1 && user == nil {
             cell.isHidden = true
         }
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let user = UserDefaults.standard.dictionary(forKey: ControllerConstants.UserDefaultsKeys.user)
-        if indexPath.section == 4 && indexPath.row == 2 && user == nil {
+        if indexPath.section == 5 && indexPath.row == 1 && user == nil {
             return 0
         } else {
             return super.tableView(tableView, heightForRowAt: indexPath)
