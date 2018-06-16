@@ -34,6 +34,13 @@ extension SkillListingViewController {
         present(nvc, animated: true, completion: nil)
     }
 
+    // Swipe right to go back
+    func addRightSwipeGestureToView() {
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(dismissController))
+        rightSwipe.direction = .right
+        self.view.addGestureRecognizer(rightSwipe)
+    }
+
     // dismiss controller
     @objc func dismissController() {
         navigationController?.dismiss(animated: true, completion: nil)

@@ -24,6 +24,7 @@ class LanguagePickerController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        addRightSwipeGestureToView()
         self.navigationItem.rightBarButtonItem?.isEnabled = false
         prepareVoiceList()
     }
@@ -47,6 +48,13 @@ class LanguagePickerController: UITableViewController {
         UserDefaults.standard.set(voiceLanguagesList[selectedVoiceLanguage][ControllerConstants.ChooseLanguage.languageCode], forKey: ControllerConstants.UserDefaultsKeys.languageCode)
         UserDefaults.standard.set(voiceLanguagesList[selectedVoiceLanguage][ControllerConstants.ChooseLanguage.languageName], forKey: ControllerConstants.UserDefaultsKeys.languageName)
         self.dismiss(animated: true, completion: nil)
+    }
+
+    // Swipe right to go back
+    func addRightSwipeGestureToView() {
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(cancleChoosingLanguage))
+        rightSwipe.direction = .right
+        self.view.addGestureRecognizer(rightSwipe)
     }
 
     @IBAction func cancleChoosingLanguage(_ sender: Any) {

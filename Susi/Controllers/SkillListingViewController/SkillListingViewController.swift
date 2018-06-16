@@ -67,6 +67,7 @@ class SkillListingViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        addRightSwipeGestureToView()
         prepareActivityIndicator()
         getAllGroups()
     }

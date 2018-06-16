@@ -30,6 +30,13 @@ extension TrainingViewController {
         navigationItem.rightBarButtonItems = [cancelButton]
     }
 
+    // Swipe right to go back
+    func addRightSwipeGestureToView() {
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(cancelTapped))
+        rightSwipe.direction = .right
+        self.view.addGestureRecognizer(rightSwipe)
+    }
+
     @objc func cancelTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }

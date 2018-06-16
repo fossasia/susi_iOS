@@ -40,6 +40,7 @@ class DevicesActivityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        addRightSwipeGestureToView()
         setupTitle()
         setupAddDeviceButton()
     }
@@ -61,6 +62,13 @@ class DevicesActivityViewController: UIViewController {
         addDeviceButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -32.0).isActive = true
         addDeviceButton.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
         addDeviceButton.topAnchor.constraint(equalTo: noDeviceInfoLabel.topAnchor, constant: 32).isActive = true
+    }
+
+    // Swipe right to go back
+    func addRightSwipeGestureToView() {
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(dismissView))
+        rightSwipe.direction = .right
+        self.view.addGestureRecognizer(rightSwipe)
     }
 
     @objc func dismissView() {

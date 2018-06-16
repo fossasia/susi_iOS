@@ -54,6 +54,13 @@ extension SignUpViewController {
         signUpButton.addTarget(self, action: #selector(performSignUp), for: .touchUpInside)
     }
 
+    // Swipe right to go back
+    func addRightSwipeGestureToView() {
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(dismissView))
+        rightSwipe.direction = .right
+        self.view.addGestureRecognizer(rightSwipe)
+    }
+
     // Dismiss View Controller
     @IBAction func dismissView() {
         self.dismiss(animated: true, completion: nil)

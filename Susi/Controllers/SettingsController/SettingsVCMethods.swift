@@ -22,6 +22,13 @@ extension SettingsViewController {
         navigationItem.leftViews = [backButton]
     }
 
+    // Swipe right to go back
+    func addRightSwipeGestureToView() {
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(dismissView))
+        rightSwipe.direction = .right
+        self.view.addGestureRecognizer(rightSwipe)
+    }
+
     @objc func dismissView() {
         self.dismiss(animated: true, completion: nil)
     }

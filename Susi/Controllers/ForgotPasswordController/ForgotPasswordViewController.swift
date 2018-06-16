@@ -20,7 +20,7 @@ class ForgotPasswordViewController: GeneralViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        addRightSwipeGestureToView()
         prepareEmailField()
         prepareAddressField()
         prepareResetButton()

@@ -53,6 +53,13 @@ extension ResetPasswordViewController {
         confirmPasswordField.isEnabled = !active
     }
 
+    // Swipe right to go back
+    func addRightSwipeGestureToView() {
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(dismissView))
+        rightSwipe.direction = .right
+        self.view.addGestureRecognizer(rightSwipe)
+    }
+
     func resetPassword() {
         let checkValidity = validatePassword()
         if let isValid = checkValidity.keys.first,

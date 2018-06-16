@@ -75,6 +75,7 @@ class TrainingViewController: GeneralViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        addRightSwipeGestureToView()
         setupNavBar()
         addCancelNavItem()
         addTargets()

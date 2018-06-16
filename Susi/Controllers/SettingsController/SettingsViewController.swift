@@ -70,6 +70,7 @@ class SettingsViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        addRightSwipeGestureToView()
         setupTitle()
         setupTheme()
         setLanguageLabel()

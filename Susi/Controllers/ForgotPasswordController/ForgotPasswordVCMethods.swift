@@ -63,6 +63,13 @@ extension ForgotPasswordViewController {
         addressTextField.textColor = .white
     }
 
+    // Swipe right to go back
+    func addRightSwipeGestureToView() {
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(dismissView))
+        rightSwipe.direction = .right
+        self.view.addGestureRecognizer(rightSwipe)
+    }
+
     // Call Reset Password API
     @objc func resetPassword() {
 
