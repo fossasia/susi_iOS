@@ -183,7 +183,8 @@ extension ChatViewController {
             var params: [String: AnyObject] = [
                 Client.WebsearchKeys.Query: text as AnyObject,
                 Client.ChatKeys.TimeZoneOffset: ControllerConstants.timeZone as AnyObject,
-                Client.ChatKeys.Language: Locale.current.languageCode as AnyObject
+                Client.ChatKeys.Language: Locale.current.languageCode as AnyObject,
+                Client.ChatKeys.deviceType: ControllerConstants.deviceType as AnyObject
             ]
 
             saveMessage(text)
