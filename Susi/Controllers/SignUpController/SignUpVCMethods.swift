@@ -79,7 +79,7 @@ extension SignUpViewController {
 
             let params = [
                 Client.UserKeys.SignUp: emailTextField.text!.lowercased(),
-                Client.UserKeys.Password: emailTextField.text!
+                Client.UserKeys.Password: passwordTextField.text!
             ]
 
             if personalServerButton.checkState == .unchecked {
@@ -98,7 +98,10 @@ extension SignUpViewController {
                     self.activityIndicator.stopAnimating()
                     self.toggleEditing()
                     if success {
-                        self.dismissView()
+                        self.view.makeToast(ControllerConstants.SignUp.successSignup)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+                            self.dismissView()
+                        })
                     }
                     self.view.makeToast(message)
                 }

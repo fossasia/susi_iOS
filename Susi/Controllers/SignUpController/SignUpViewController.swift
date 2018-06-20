@@ -31,6 +31,7 @@ class SignUpViewController: GeneralViewController {
         prepareFields()
         prepareSignUpButton()
     }
+
     override func localizeStrings() {
         emailTextField.placeholder = ControllerConstants.Login.emailAddress.localized()
         passwordTextField.placeholder = ControllerConstants.Login.password.localized()
