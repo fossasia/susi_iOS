@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Toast_Swift
 
 extension SkillDetailViewController {
 
@@ -90,12 +91,100 @@ extension SkillDetailViewController {
 
     }
 
+    func getRatingByUser() {
+        getRatingParam = [
+            Client.SkillListing.model: skill?.model as AnyObject,
+            Client.SkillListing.group: skill?.group as AnyObject,
+            Client.SkillListing.language: Locale.current.languageCode as AnyObject,
+            Client.SkillListing.skill: skill?.skillKeyName as AnyObject
+        ]
+
+        if let delegate = UIApplication.shared.delegate as? AppDelegate, let user = delegate.currentUser {
+            getRatingParam[Client.FiveStarRating.AccessToken] = user.accessToken as AnyObject
+        }
+
+        Client.sharedInstance.getRatingByUser(getRatingParam) { (userRating, success, _) in
+            DispatchQueue.main.async {
+                if success {
+                    guard let userRating = userRating else {
+                        return
+                    }
+                    self.ratingView.rating = Double(userRating)
+                }
+            }
+        }
+    }
+
     // Setup Bar Chart
     func setupBarChart() {
         barChartView.barColors = barChartColors
         barChartView.transform = CGAffineTransform(rotationAngle: .pi/2.0)
         barChartView.barSpacing = 3
         barChartView.backgroundColor = UIColor.barBackgroundColor()
+    }
+
+}
+
+extension SkillDetailViewController: FloatRatingViewDelegate {
+
+    func floatRatingView(_ ratingView: RatingView, didUpdate rating: Double) {
+
+        submitRatingParams = [
+            Client.SkillListing.model: skill?.model as AnyObject,
+            Client.SkillListing.group: skill?.group as AnyObject,
+            Client.SkillListing.language: Locale.current.languageCode as AnyObject,
+            Client.SkillListing.skill: skill?.skillKeyName as AnyObject,
+            Client.FiveStarRating.stars: Int(rating) as AnyObject
+        ]
+
+        if let delegate = UIApplication.shared.delegate as? AppDelegate, let user = delegate.currentUser {
+            submitRatingParams[Client.FiveStarRating.AccessToken] = user.accessToken as AnyObject
+        }
+
+        Client.sharedInstance.submitRating(submitRatingParams) { (ratings, success, responseMessage) in
+            DispatchQueue.main.async {
+                if success {
+                    guard let ratings = ratings else {
+                        return
+                    }
+                    if self.ratingsBackViewHeightConstraint.constant == 0 {
+                        self.ratingsBackViewHeightConstraint.constant = 128.0
+                        self.contentType.topAnchor.constraint(equalTo: self.ratingBackView.bottomAnchor, constant: 16).isActive = true
+                        self.ratingsBackStackView.isHidden = false
+                        self.topAvgRatingStackView.isHidden = false
+                        self.notRatedLabel.isHidden = true
+                    }
+                    self.updateFiveStarData(with: ratings)
+                    self.setupBarChart()
+                    self.view.makeToast(responseMessage)
+                    self.updateSkill(with: ratings)
+                } else {
+                    self.view.makeToast(responseMessage)
+                }
+            }
+        }
+    }
+
+    func updateFiveStarData(with ratings: Ratings) {
+        self.barChartView.data = [ratings.fiveStar, ratings.fourStar, ratings.threeStar, ratings.twoStar, ratings.oneStar]
+        self.fiveStarLabel.text = "\(ratings.fiveStar) (\(ratings.fiveStar.percentage(outOf: ratings.totalStar)))%"
+        self.fourStarLabel.text = "\(ratings.fourStar) (\(ratings.fourStar.percentage(outOf: ratings.totalStar)))%"
+        self.threeStarLabel.text = "\(ratings.threeStar) (\(ratings.threeStar.percentage(outOf: ratings.totalStar)))%"
+        self.twoStarLabel.text = "\(ratings.twoStar) (\(ratings.twoStar.percentage(outOf: ratings.totalStar)))%"
+        self.oneStarLabel.text = "\(ratings.oneStar) (\(ratings.oneStar.percentage(outOf: ratings.totalStar)))%"
+        self.averageRatingLabel.text = "\(ratings.average.truncate(places: 1))"
+        self.topAvgRatingLabel.text = "\(ratings.average.truncate(places: 1))"
+        self.totalRatingsLabel.text = "\(ratings.totalStar)"
+    }
+
+    func updateSkill(with ratings: Ratings) {
+        skill?.fiveStar = ratings.fiveStar
+        skill?.fourStar = ratings.fourStar
+        skill?.threeStar = ratings.threeStar
+        skill?.twoStar = ratings.twoStar
+        skill?.oneStar = ratings.oneStar
+        skill?.totalRatings = ratings.totalStar
+        skill?.averageRating = ratings.average
     }
 
 }
