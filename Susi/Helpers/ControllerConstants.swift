@@ -136,6 +136,7 @@ class ControllerConstants {
         static let confirmPassword = "Confirm Password"
         static let passwordDoNotMatch = "Passwords do not match"
         static let signUp = "Sign Up"
+        static let successSignup = "You successfully signed-up! An email with a verification link was sent to your address."
     }
 
     struct UserDefaultsKeys {
