@@ -183,7 +183,8 @@ extension ChatViewController {
             var params: [String: AnyObject] = [
                 Client.WebsearchKeys.Query: text as AnyObject,
                 Client.ChatKeys.TimeZoneOffset: ControllerConstants.timeZone as AnyObject,
-                Client.ChatKeys.Language: Locale.current.languageCode as AnyObject
+                Client.ChatKeys.Language: Locale.current.languageCode as AnyObject,
+                Client.ChatKeys.deviceType: ControllerConstants.deviceType as AnyObject
             ]
 
             saveMessage(text)
@@ -198,6 +199,13 @@ extension ChatViewController {
                 params[Client.ChatKeys.AccessToken] = user.accessToken as AnyObject
             }
 
+            if let countryCode = Locale.current.regionCode {
+                params[Client.ChatKeys.CountryCode] = countryCode as AnyObject
+                if let countryName = countryName(from: countryCode) {
+                    params[Client.ChatKeys.CountryName] = countryName as AnyObject
+                }
+            }
+
             Client.sharedInstance.queryResponse(params) { (messages, success, _) in
                 DispatchQueue.main.async {
                     if let messages = messages, success {
@@ -210,6 +218,13 @@ extension ChatViewController {
                 }
             }
         }
+    }
+
+    // Get county name from country code
+    func countryName(from countryCode: String) -> String? {
+        let name = (Locale.current as NSLocale).displayName(forKey: .countryCode, value: countryCode)
+            // Country name was found
+            return name
     }
 
     // downloads messages from user history

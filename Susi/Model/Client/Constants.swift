@@ -82,6 +82,9 @@ extension Client {
         static let ShortenedUrl = "finalUrl"
         static let Image = "image"
         static let Cognitions = "cognitions"
+        static let CountryName = "country_name"
+        static let CountryCode = "country_code"
+        static let deviceType = "device_type"
     }
 
     struct WebsearchKeys {
