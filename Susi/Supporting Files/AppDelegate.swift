@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import BouncyLayout
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -59,14 +60,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             self.presentOnboardingScreens()
         }
+
+        self.checkSession()
     }
 
     func presentOnboardingScreens() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let onboardingViewController = storyboard.instantiateViewController(withIdentifier: "OnboardingVC")
-
         self.window?.rootViewController = onboardingViewController
         self.window?.makeKeyAndVisible()
+    }
+
+    func presetChatScreen() {
+        let layout = BouncyLayout()
+        let vc = ChatViewController(collectionViewLayout: layout)
+        self.window?.rootViewController = vc
+        self.window?.makeKeyAndVisible()
+    }
+
+    // Check existing session
+    func checkSession() {
+        if let userDefaultValue = UserDefaults.standard.value(forKey: ControllerConstants.UserDefaultsKeys.user) {
+            if let userData = userDefaultValue as? [String: AnyObject] {
+                let user = User(dictionary: userData)
+                currentUser = user
+
+                    if user.expiryTime > Date() {
+                        self.presetChatScreen()
+                    } else {
+                        self.resetDB()
+                    }
+            }
+        }
+    }
+
+    func resetDB() {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.deleteAll()
+        }
     }
 
 }
