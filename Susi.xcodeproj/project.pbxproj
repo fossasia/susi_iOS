@@ -10,6 +10,7 @@
 		3BC1D8D5203B177E003E62F9 /* noConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC1D8D3203B177E003E62F9 /* noConnectionViewController.swift */; };
 		3BC1D8D6203B177E003E62F9 /* noConnectionNetworkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC1D8D4203B177E003E62F9 /* noConnectionNetworkStatus.swift */; };
 		403E7F4220BCBCFB00D7B48B /* DevicesActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E7F4120BCBCFB00D7B48B /* DevicesActivityViewController.swift */; };
+		405C463820E0D3750091A78E /* DeviceActivityMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C463720E0D3750091A78E /* DeviceActivityMethods.swift */; };
 		40623B7F20D243910013FE60 /* Ratings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40623B7E20D243910013FE60 /* Ratings.swift */; };
 		406F100620ADFEED00808E4C /* OnboardingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406F100520ADFEED00808E4C /* OnboardingUITests.swift */; };
 		40701E7F20BEAC8100B92D81 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40701E7E20BEAC8100B92D81 /* RatingView.swift */; };
@@ -119,6 +120,7 @@
 		3BC1D8D3203B177E003E62F9 /* noConnectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = noConnectionViewController.swift; sourceTree = "<group>"; };
 		3BC1D8D4203B177E003E62F9 /* noConnectionNetworkStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = noConnectionNetworkStatus.swift; sourceTree = "<group>"; };
 		403E7F4120BCBCFB00D7B48B /* DevicesActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesActivityViewController.swift; sourceTree = "<group>"; };
+		405C463720E0D3750091A78E /* DeviceActivityMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceActivityMethods.swift; sourceTree = "<group>"; };
 		40623B7E20D243910013FE60 /* Ratings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ratings.swift; sourceTree = "<group>"; };
 		406F100520ADFEED00808E4C /* OnboardingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingUITests.swift; sourceTree = "<group>"; };
 		40701E7E20BEAC8100B92D81 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				403E7F4120BCBCFB00D7B48B /* DevicesActivityViewController.swift */,
+				405C463720E0D3750091A78E /* DeviceActivityMethods.swift */,
 			);
 			path = DevicesActivityController;
 			sourceTree = "<group>";
@@ -935,6 +938,7 @@
 				6D87A3321EEE86CC00A6D763 /* RSSCell.swift in Sources */,
 				407ED1DB20BEC6C3007AEE34 /* DesignableView.swift in Sources */,
 				6D5DDFF61F3378D80078BB97 /* TrainingViewController.swift in Sources */,
+				405C463820E0D3750091A78E /* DeviceActivityMethods.swift in Sources */,
 				6DD5030E1F36656C008388E4 /* SpeechRecognitionDelegate.swift in Sources */,
 				6D017B271F4EB641004BDE7E /* SkillListingVCMethods.swift in Sources */,
 				6D24B08A1EE4079E0097418A /* LoginVCMethods.swift in Sources */,
