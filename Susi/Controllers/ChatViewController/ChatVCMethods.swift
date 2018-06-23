@@ -35,7 +35,7 @@ extension ChatViewController {
 
             bottomConstraint?.constant = isKeyboardShowing ? -keyboardFrame!.height : 0
 
-            collectionView?.frame = isKeyboardShowing ? CGRect(x: 0, y: 20, width: view.frame.width, height: view.frame.height - keyboardFrame!.height - 71) :
+            tableView?.frame = isKeyboardShowing ? CGRect(x: 0, y: 20, width: view.frame.width, height: view.frame.height - keyboardFrame!.height - 71) :
                 CGRect(x: 0, y: 20, width: view.frame.width, height: view.frame.height - 71)
 
             UIView.animate(withDuration: 0, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
@@ -116,14 +116,16 @@ extension ChatViewController {
         message.actionType = ActionType.indicatorView.rawValue
         messages.append(message)
         let indexPath = IndexPath(item: messages.count - 1, section: 0)
-        collectionView?.insertItems(at: [indexPath])
+        tableView?.beginUpdates()
+        tableView?.insertRows(at: [indexPath], with: .automatic)
+        tableView?.endUpdates()
         scrollToLast()
     }
 
     func removeActivityIndicator() {
         if messages.last?.actionType == ActionType.indicatorView.rawValue {
             let item = IndexPath(item: messages.count - 1, section: 0)
-            collectionView?.deleteItems(at: [item])
+            tableView?.deleteRows(at: [item], with: .automatic)
             messages.removeLast()
         }
     }
@@ -209,9 +211,9 @@ extension ChatViewController {
             Client.sharedInstance.queryResponse(params) { (messages, success, _) in
                 DispatchQueue.main.async {
                     if let messages = messages, success {
-                        self.addMessagesToCollectionView(messages: messages)
+                        self.addMessagesToTableView(messages: messages)
                     } else {
-                        self.collectionView?.performBatchUpdates({
+                        self.tableView?.performBatchUpdates({
                             self.removeActivityIndicator()
                         }, completion: nil)
                     }
@@ -237,15 +239,15 @@ extension ChatViewController {
             Client.sharedInstance.getMessagesFromMemory(params as [String: AnyObject]) { (messages, _, _) in
                 DispatchQueue.main.async {
                     if let messages = messages {
-                        self.addMessagesToCollectionView(messages: messages)
+                        self.addMessagesToTableView(messages: messages)
                     }
                 }
             }
         }
     }
 
-    func addMessagesToCollectionView(messages: List<Message>) {
-        self.collectionView?.performBatchUpdates({
+    func addMessagesToTableView(messages: List<Message>) {
+        self.tableView?.performBatchUpdates({
             self.removeActivityIndicator()
             for message in messages {
                 try! self.realm.write {
@@ -253,7 +255,9 @@ extension ChatViewController {
                     self.messages.append(message)
                     let indexPath = IndexPath(item: self.messages.count - 1, section: 0)
                     UIView.animate(withDuration: 1.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-                        self.collectionView?.insertItems(at: [indexPath])
+                        self.tableView?.beginUpdates()
+                        self.tableView?.insertRows(at: [indexPath], with: .automatic)
+                        self.tableView?.endUpdates()
                         if message.actionType == ActionType.answer.rawValue && !message.fromUser {
                             self.speakAction(message)
                         } else if message.actionType == ActionType.stop.rawValue && !message.fromUser {
@@ -272,7 +276,7 @@ extension ChatViewController {
         let message = Message(message: message.trimmed)
         let list = List<Message>()
         list.append(message)
-        addMessagesToCollectionView(messages: list)
+        addMessagesToTableView(messages: list)
         self.sendButton.tag = 0
         self.inputTextField.text = ""
         setImageForSendButton()
@@ -329,15 +333,7 @@ extension ChatViewController {
     }
 
     // sets content offset so that messages start displaying from bottom
-    func setCollectionViewOffset() {
-        view.layoutIfNeeded()
-
-        let contentSize = collectionView?.collectionViewLayout.collectionViewContentSize
-        if let contentHeight = contentSize?.height, let collectionViewHeight = collectionView?.bounds.size.height {
-            let targetContentOffset = CGPoint(x: 0, y: contentHeight - collectionViewHeight)
-            collectionView?.setContentOffset(targetContentOffset, animated: true)
-        }
-    }
+   
 
     // dismiss keyboard when touched anywhere in CV
     func addGestures() {
@@ -356,7 +352,7 @@ extension ChatViewController {
         if messages.count > 0 {
             let lastItem = messages.count - 1
             let indexPath = IndexPath(item: lastItem, section: 0)
-            collectionView?.scrollToItem(at: indexPath, at: .top, animated: true)
+            tableView?.scrollToRow(at: indexPath, at: .top, animated: true)
             scrollButton.isHidden = true
         }
     }
@@ -371,7 +367,7 @@ extension ChatViewController {
     // loads all messages from database
     func loadMessages() {
         messages = Array(realm.objects(Message.self))
-        collectionView?.reloadData()
+        tableView?.reloadData()
         scrollToLast()
     }
 

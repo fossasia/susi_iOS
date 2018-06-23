@@ -18,7 +18,7 @@ class ImageCell: ChatMessageCell {
         }
     }
 
-    let imageView: AnimatedImageView = {
+    let imagView: AnimatedImageView = {
         let imageView = AnimatedImageView()
         imageView.layer.cornerRadius = 16
         imageView.layer.masksToBounds = true
@@ -32,9 +32,9 @@ class ImageCell: ChatMessageCell {
 
     func addImageView() {
         messageTextView.text = ""
-        textBubbleView.addSubview(imageView)
-        textBubbleView.addConstraintsWithFormat(format: "H:|-8-[v0]-5-|", views: imageView)
-        textBubbleView.addConstraintsWithFormat(format: "V:|-4-[v0]-5-|", views: imageView)
+        textBubbleView.addSubview(imagView)
+        textBubbleView.addConstraintsWithFormat(format: "H:|-8-[v0]-5-|", views: imagView)
+        textBubbleView.addConstraintsWithFormat(format: "V:|-4-[v0]-5-|", views: imagView)
     }
 
     func setupView() {
@@ -47,7 +47,7 @@ class ImageCell: ChatMessageCell {
     func downloadImage() {
         if let imageString = message?.message, imageString.isImage() {
             if let url = URL(string: imageString) {
-                imageView.kf.setImage(with: url, placeholder: ControllerConstants.Images.placeholder, options: nil, progressBlock: nil, completionHandler: nil)
+                imagView.kf.setImage(with: url, placeholder: ControllerConstants.Images.placeholder, options: nil, progressBlock: nil, completionHandler: nil)
             }
         }
     }
