@@ -213,7 +213,7 @@ extension LoginViewController {
     // Present Main View Controller
     func completeLogin(_ firstLogin: Bool = true) {
         _ = BouncyLayout()
-        let vc = ChatViewController(style: .plain)
+        let vc = ChatViewController(style: .grouped)
         present(vc, animated: true, completion: {
             self.clearFields()
             if firstLogin {
