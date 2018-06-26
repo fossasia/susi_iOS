@@ -98,4 +98,8 @@ extension UIColor {
         return UIColor.hexStringToUIColor(hex: "#EFEFEF")
     }
 
+    class func skillFeedbackColor() -> UIColor {
+        return UIColor.hexStringToUIColor(hex: "#00BCD4")
+    }
+
 }
