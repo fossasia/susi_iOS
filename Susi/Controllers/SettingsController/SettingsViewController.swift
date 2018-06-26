@@ -114,15 +114,9 @@ class SettingsViewController: UITableViewController {
             }
         } else if section == 4 {
             if row == 0 {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let devicesActivityController = storyboard.instantiateViewController(withIdentifier: "DevicesActivityController")
-                let nvc = AppNavigationController(rootViewController: devicesActivityController)
-                present(nvc, animated: true, completion: nil)
+                presentDeviceActivity()
             } else if row == 1 {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let deviceInstructionsViewController = storyboard.instantiateViewController(withIdentifier: "DeviceInstructionsViewController")
-                let nvc = AppNavigationController(rootViewController: deviceInstructionsViewController)
-                present(nvc, animated: true, completion: nil)
+                presentDeviceInstruction()
             }
         } else if section == 5 {
             if row == 1 {
