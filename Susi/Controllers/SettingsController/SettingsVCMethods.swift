@@ -122,6 +122,42 @@ extension SettingsViewController {
         let nvc = AppNavigationController(rootViewController: vc)
         present(nvc, animated: true, completion: nil)
     }
+
+    func presentDeviceActivity() {
+        if let delegate = UIApplication.shared.delegate as? AppDelegate, delegate.currentUser != nil {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let devicesActivityController = storyboard.instantiateViewController(withIdentifier: "DevicesActivityController")
+            let nvc = AppNavigationController(rootViewController: devicesActivityController)
+            present(nvc, animated: true, completion: nil)
+        } else {
+            presentLoginAlert()
+        }
+    }
+
+    func presentLoginAlert() {
+        let loginAlertController = UIAlertController(title: "You are not logged-in", message: "Please login to connect device", preferredStyle: .alert)
+        let loginAction = UIAlertAction(title: "Login", style: .default, handler: { action in
+            self.presentLoginScreen()
+        })
+        let cancleAction = UIAlertAction(title: "Cancle", style: .cancel, handler: nil)
+        loginAlertController.addAction(cancleAction)
+        loginAlertController.addAction(loginAction)
+        self.present(loginAlertController, animated: true, completion: nil)
+    }
+
+    func presentDeviceInstruction() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let deviceInstructionsViewController = storyboard.instantiateViewController(withIdentifier: "DeviceInstructionsViewController")
+        let nvc = AppNavigationController(rootViewController: deviceInstructionsViewController)
+        present(nvc, animated: true, completion: nil)
+    }
+
+    func presentLoginScreen() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginController")
+        present(loginVC, animated: true, completion: nil)
+    }
+
     func doChangeLanguage() {
         let languages = Localize.availableLanguages().compactMap { Localize.displayNameForLanguage($0).isEmpty ? nil : $0 }
         let actionSheet = UIAlertController(title: nil, message: "Set a language".localized(), preferredStyle: UIAlertControllerStyle.actionSheet)
@@ -136,7 +172,7 @@ extension SettingsViewController {
         let cancelAction = UIAlertAction(title: ControllerConstants.dialogCancelAction.localized(),
                                          style: UIAlertActionStyle.cancel,
                                          handler: {
-            (alert: UIAlertAction) -> Void in
+                                            (alert: UIAlertAction) -> Void in
         })
         actionSheet.addAction(cancelAction)
         present(actionSheet, animated: true, completion: nil)

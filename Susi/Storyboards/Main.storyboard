@@ -71,7 +71,7 @@
         <!--Login View Controller-->
         <scene sceneID="stJ-RQ-98a">
             <objects>
-                <viewController id="0ek-IO-lKt" customClass="LoginViewController" customModule="Susi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0ek-IO-lKt" customClass="LoginViewController" customModule="Susi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YPg-SH-GPq"/>
                         <viewControllerLayoutGuide type="bottom" id="qeg-ec-MXB"/>
@@ -1172,6 +1172,43 @@
             </objects>
             <point key="canvasLocation" x="4510.144927536232" y="-202.17391304347828"/>
         </scene>
+        <!--Devices Activity View Controller-->
+        <scene sceneID="vFt-eH-YID">
+            <objects>
+                <tableViewController storyboardIdentifier="DevicesActivityController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="erm-S0-xUe" customClass="DevicesActivityViewController" customModule="Susi" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="U75-Su-3he">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="DeviceCell" textLabel="8Wq-e4-5mw" style="IBUITableViewCellStyleDefault" id="LtN-jE-Taq">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LtN-jE-Taq" id="CB4-Ew-79Z">
+                                    <rect key="frame" x="0.0" y="0.0" width="376" height="43.666666666666664"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Wq-e4-5mw">
+                                            <rect key="frame" x="20" y="0.0" width="356" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="erm-S0-xUe" id="BDE-ai-yv8"/>
+                            <outlet property="delegate" destination="erm-S0-xUe" id="7HK-fR-hLX"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vAA-by-9qX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5286" y="181"/>
+        </scene>
         <!--Device Instructions View Controller-->
         <scene sceneID="4j2-k0-G3S">
             <objects>
@@ -1384,42 +1421,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QKX-kj-wfz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3635" y="-762"/>
-        </scene>
-        <!--Devices Activity View Controller-->
-        <scene sceneID="g7J-IJ-fJ8">
-            <objects>
-                <viewController storyboardIdentifier="DevicesActivityController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="thB-kR-6YM" customClass="DevicesActivityViewController" customModule="Susi" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="LhI-UI-vea"/>
-                        <viewControllerLayoutGuide type="bottom" id="v3v-OJ-fYh"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="lAx-it-FXL">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You haven't added any devices yet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eqf-Il-rTX">
-                                <rect key="frame" x="82" y="28" width="251" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="Mi6-Sa-wmR"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="textColor" name="TextGray"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="Eqf-Il-rTX" firstAttribute="top" secondItem="LhI-UI-vea" secondAttribute="bottom" constant="8" id="FO7-Ui-DZU"/>
-                            <constraint firstItem="Eqf-Il-rTX" firstAttribute="centerX" secondItem="lAx-it-FXL" secondAttribute="centerX" id="WN5-dD-Jhb"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="noDeviceInfoLabel" destination="Eqf-Il-rTX" id="w2d-0s-uKZ"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pW1-Nt-PXC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5231.884057971015" y="188.31521739130437"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="H6a-qx-OLK">
