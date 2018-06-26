@@ -29,6 +29,7 @@ extension Client {
         static let GetSkillList = "/cms/getSkillList.json"
         static let FiveStarRateSkill = "/cms/fiveStarRateSkill.json"
         static let GetRatingByUser = "/cms/getRatingByUser.json"
+        static let FeedbackSkill = "/cms/feedbackSkill.json"
         static let baseSkillImagePath = "https://raw.githubusercontent.com/fossasia/susi_skill_data/master/models/"
     }
 
@@ -43,6 +44,8 @@ extension Client {
         static let SuccessSubmitRating = "Rating submitted successfully"
         static let UserRatingNotFetched = "Problem fetching user rating"
         static let SuccessUserRating = "Fetched user rating successfully"
+        static let SuccessPostFeedback = "Skill feedback updated"
+        static let UnablePostFeedback = "Problem posting skill feedback"
     }
 
     struct UserKeys {
@@ -129,6 +132,7 @@ extension Client {
         static let skill = "skill"
         static let language = "language"
         static let rating = "rating"
+        static let feedback = "feedback"
     }
 
     struct HotwordKeys {

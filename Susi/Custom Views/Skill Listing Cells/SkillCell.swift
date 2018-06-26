@@ -25,6 +25,8 @@ class SkillCell: CollectionViewCell {
                 exampleQueryLabel.text = "\(skill.examples.first?.debugDescription ?? "example query")"
                 skillName.text = skill.skillName
                 skillDescription.text = skill.skillDescription
+                ratingsCard.rating = skill.averageRating
+                totalRatingsLabel.text = "\(skill.totalRatings)"
             }
             configureShadow()
             roundedCorner()
@@ -36,6 +38,8 @@ class SkillCell: CollectionViewCell {
     @IBOutlet weak var exampleQueryLabel: UILabel!
     @IBOutlet weak var skillName: UILabel!
     @IBOutlet weak var skillDescription: UILabel!
+    @IBOutlet weak var ratingsCard: RatingView!
+    @IBOutlet weak var totalRatingsLabel: UILabel!
 
     func configureShadow() {
         contentView.layer.cornerRadius = 16.0

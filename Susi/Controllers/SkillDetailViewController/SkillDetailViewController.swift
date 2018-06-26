@@ -35,6 +35,7 @@ class SkillDetailViewController: GeneralViewController {
     var selectedExample: String?
     var submitRatingParams: [String: AnyObject] = [:]
     var getRatingParam: [String: AnyObject] = [:]
+    var postFeedbackParam: [String: AnyObject] = [:]
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var skillLabel: UILabel!
@@ -63,6 +64,14 @@ class SkillDetailViewController: GeneralViewController {
     @IBOutlet weak var topAvgRatingStackView: UIStackView!
     @IBOutlet weak var ratingsBackStackView: UIStackView!
     @IBOutlet weak var notRatedLabel: UILabel!
+    @IBOutlet weak var skillFeedbackTextField: TextField! {
+        didSet {
+            skillFeedbackTextField.delegate = self
+        }
+    }
+    @IBOutlet weak var postButton: UIButton!
+    @IBOutlet weak var feedbackLabelTopConstraintToRatings: NSLayoutConstraint!
+    @IBOutlet weak var feedbackLabelToContraintToNoRated: NSLayoutConstraint!
 
     let barChartColors = [
         UIColor.fiveStarRating(),
@@ -74,26 +83,34 @@ class SkillDetailViewController: GeneralViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        addTapGesture()
         setupView()
+        setupPostButton()
         roundedCorner()
         setupTryItTarget()
         addSkillDescription()
         getRatingByUser()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
         setupFiveStarData()
         setupBarChart()
         addContentType()
+        setupFeedbackTextField()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        registerKeyboardNotifications()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
     }
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         // ScrollView content size
         let labelHeight = skillDescription.heightForLabel(text: skillDescription.text!, font: UIFont.systemFont(ofSize: 16.0), width: self.view.frame.width - 64)
-        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 64.0 + labelHeight)
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 264.0 + labelHeight)
     }
 
     override func localizeStrings() {
@@ -107,6 +124,7 @@ class SkillDetailViewController: GeneralViewController {
         tryItButton.layer.borderWidth = 2.0
         tryItButton.borderColor = UIColor.iOSBlue()
         ratingBackView.layer.cornerRadius = 8.0
+        postButton.layer.cornerRadius = 4.0
     }
 
 }

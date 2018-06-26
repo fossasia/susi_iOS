@@ -11,6 +11,42 @@ import Toast_Swift
 
 extension SkillDetailViewController {
 
+    func addTapGesture() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+
+    // force dismiss keyboard if open.
+    @objc func dismissKeyboard() {
+        self.skillFeedbackTextField.resignFirstResponder()
+    }
+
+    func registerKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow(notification:)),
+                                               name: NSNotification.Name.UIKeyboardWillShow,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide(notification:)),
+                                               name: NSNotification.Name.UIKeyboardWillHide,
+                                               object: nil)
+    }
+
+    @objc func keyboardWillShow(notification: NSNotification) {
+        let userInfo: NSDictionary = notification.userInfo! as NSDictionary
+        if let keyboardInfo = userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue {
+            let keyboardSize = keyboardInfo.cgRectValue.size
+            let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+            scrollView.contentInset = contentInsets
+            scrollView.scrollIndicatorInsets = contentInsets
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        scrollView.contentInset = .zero
+        scrollView.scrollIndicatorInsets = .zero
+    }
+
     func setupView() {
         if let skill = skill {
             skillLabel.text = skill.skillName
@@ -32,7 +68,8 @@ extension SkillDetailViewController {
                 topAvgRatingStackView.isHidden = true
                 notRatedLabel.isHidden = false
                 ratingsBackViewHeightConstraint.constant = 0.0
-                self.view.layoutIfNeeded()
+                feedbackLabelToContraintToNoRated.priority = UILayoutPriority(rawValue: 750)
+                feedbackLabelTopConstraintToRatings.priority = UILayoutPriority(rawValue: 250)
             } else {
                 barChartView.data = [skill.fiveStar, skill.fourStar, skill.threeStar, skill.twoStar, skill.oneStar]
                 fiveStarLabel.text = "\(skill.fiveStar) (\(skill.fiveStar.percentage(outOf: skill.totalRatings)))%"
@@ -67,14 +104,8 @@ extension SkillDetailViewController {
         view.addSubview(contentType)
         contentType.widthAnchor.constraint(equalToConstant: 140).isActive = true
         contentType.heightAnchor.constraint(equalToConstant: 35).isActive = true
-
-        if ratingsBackViewHeightConstraint.constant == 0 {
-            contentType.leftAnchor.constraint(equalTo: ratingBackView.leftAnchor).isActive = true
-            contentType.topAnchor.constraint(equalTo: notRatedLabel.bottomAnchor, constant: 16).isActive = true
-        } else {
-            contentType.leftAnchor.constraint(equalTo: ratingBackView.leftAnchor).isActive = true
-            contentType.topAnchor.constraint(equalTo: ratingBackView.bottomAnchor, constant: 16).isActive = true
-        }
+        contentType.leftAnchor.constraint(equalTo: ratingBackView.leftAnchor).isActive = true
+        contentType.topAnchor.constraint(equalTo: skillFeedbackTextField.bottomAnchor, constant: 16).isActive = true
 
         view.addSubview(content)
         content.leftAnchor.constraint(equalTo: contentType.rightAnchor, constant: -6).isActive = true
@@ -91,25 +122,31 @@ extension SkillDetailViewController {
 
     }
 
+    func setupFeedbackTextField() {
+        skillFeedbackTextField.placeholderActiveColor = UIColor.skillFeedbackColor()
+        skillFeedbackTextField.dividerActiveColor = UIColor.skillFeedbackColor()
+    }
+
     func getRatingByUser() {
-        getRatingParam = [
-            Client.SkillListing.model: skill?.model as AnyObject,
-            Client.SkillListing.group: skill?.group as AnyObject,
-            Client.SkillListing.language: Locale.current.languageCode as AnyObject,
-            Client.SkillListing.skill: skill?.skillKeyName as AnyObject
-        ]
+
 
         if let delegate = UIApplication.shared.delegate as? AppDelegate, let user = delegate.currentUser {
-            getRatingParam[Client.FiveStarRating.AccessToken] = user.accessToken as AnyObject
-        }
+            getRatingParam = [
+                Client.SkillListing.model: skill?.model as AnyObject,
+                Client.SkillListing.group: skill?.group as AnyObject,
+                Client.SkillListing.language: Locale.current.languageCode as AnyObject,
+                Client.SkillListing.skill: skill?.skillKeyName as AnyObject,
+                Client.FiveStarRating.AccessToken: user.accessToken as AnyObject
+            ]
 
-        Client.sharedInstance.getRatingByUser(getRatingParam) { (userRating, success, _) in
-            DispatchQueue.main.async {
-                if success {
-                    guard let userRating = userRating else {
-                        return
+            Client.sharedInstance.getRatingByUser(getRatingParam) { (userRating, success, _) in
+                DispatchQueue.main.async {
+                    if success {
+                        guard let userRating = userRating else {
+                            return
+                        }
+                        self.ratingView.rating = Double(userRating)
                     }
-                    self.ratingView.rating = Double(userRating)
                 }
             }
         }
@@ -149,10 +186,12 @@ extension SkillDetailViewController: FloatRatingViewDelegate {
                     }
                     if self.ratingsBackViewHeightConstraint.constant == 0 {
                         self.ratingsBackViewHeightConstraint.constant = 128.0
-                        self.contentType.topAnchor.constraint(equalTo: self.ratingBackView.bottomAnchor, constant: 16).isActive = true
+                        self.view.layoutIfNeeded()
                         self.ratingsBackStackView.isHidden = false
                         self.topAvgRatingStackView.isHidden = false
                         self.notRatedLabel.isHidden = true
+                        self.feedbackLabelTopConstraintToRatings.priority = UILayoutPriority(rawValue: 750)
+                        self.feedbackLabelToContraintToNoRated.priority = UILayoutPriority(rawValue: 250)
                     }
                     self.updateFiveStarData(with: ratings)
                     self.setupBarChart()
@@ -185,6 +224,68 @@ extension SkillDetailViewController: FloatRatingViewDelegate {
         skill?.oneStar = ratings.oneStar
         skill?.totalRatings = ratings.totalStar
         skill?.averageRating = ratings.average
+    }
+
+}
+
+extension SkillDetailViewController: UITextFieldDelegate {
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+
+    func setupPostButton() {
+        postButton.addTarget(self, action: #selector(didPostFeedback), for: .touchUpInside)
+    }
+
+    @objc func didPostFeedback() {
+
+        if let delegate = UIApplication.shared.delegate as? AppDelegate, let user = delegate.currentUser {
+            if let feedbackText = skillFeedbackTextField.text, feedbackText.count > 0 {
+                self.submitSkillFeedback(for: user.accessToken)
+            }
+        } else {
+            let loginAlertController = UIAlertController(title: "You are not logged-in", message: "Please login to post skill feedback", preferredStyle: .alert)
+            let loginAction = UIAlertAction(title: "Login", style: .default, handler: { action in
+                self.presentLoginScreen()
+            })
+            let cancleAction = UIAlertAction(title: "Cancle", style: .cancel, handler: nil)
+            loginAlertController.addAction(cancleAction)
+            loginAlertController.addAction(loginAction)
+            self.present(loginAlertController, animated: true, completion: {
+                self.skillFeedbackTextField.text = ""
+                self.skillFeedbackTextField.resignFirstResponder()
+            })
+        }
+    }
+
+    func submitSkillFeedback(for accessToken: String) {
+        postFeedbackParam = [
+            Client.SkillListing.model: skill?.model as AnyObject,
+            Client.SkillListing.group: skill?.group as AnyObject,
+            Client.SkillListing.skill: skill?.skillKeyName as AnyObject,
+            Client.FeedbackKeys.feedback: skillFeedbackTextField.text! as AnyObject,
+            Client.FiveStarRating.AccessToken: accessToken as AnyObject
+        ]
+
+        Client.sharedInstance.postSkillFeedback(postFeedbackParam) { (feedback, success, responseMessage) in
+            DispatchQueue.main.async {
+                if success {
+                    self.skillFeedbackTextField.text = ""
+                    self.skillFeedbackTextField.resignFirstResponder()
+                    self.view.makeToast(responseMessage)
+                } else {
+                    self.view.makeToast(responseMessage)
+                }
+            }
+        }
+    }
+
+    func presentLoginScreen() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginController")
+        present(loginVC, animated: true, completion: nil)
     }
 
 }

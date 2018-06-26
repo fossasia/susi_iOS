@@ -479,4 +479,27 @@ extension Client {
         })
     }
 
+    func postSkillFeedback(_ params: [String: AnyObject], _ completion: @escaping(_ feedback: String?, _ success: Bool, _ error: String?) -> Void) {
+        let url = getApiUrl(UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.ipAddress) as! String, Methods.FeedbackSkill)
+        _ = makeRequest(url, .get, [:], parameters: params, completion: { (results, message) in
+            if let _ = message {
+                completion(nil, false, ResponseMessages.ServerError)
+            } else if let results = results {
+
+                guard let response = results as? [String: AnyObject] else {
+                    completion(nil, false, ResponseMessages.InvalidParams)
+                    return
+                }
+
+                if let postFeedback = response[Client.FeedbackKeys.feedback] as? String {
+                    completion(postFeedback, true, ResponseMessages.SuccessPostFeedback)
+                    return
+                }
+                completion(nil, false, ResponseMessages.UnablePostFeedback)
+                return
+            }
+            return
+        })
+    }
+
 }
