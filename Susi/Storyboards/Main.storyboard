@@ -1258,7 +1258,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <activityIndicatorView key="tableFooterView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="whiteLarge" id="phy-Xh-don">
+                        <activityIndicatorView key="tableFooterView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" id="phy-Xh-don">
                             <rect key="frame" x="0.0" y="265" width="414" height="37"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="color" red="0.25447925925254822" green="0.51828217506408691" blue="0.95430618524551392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1567,16 +1567,16 @@
         <scene sceneID="5xE-mJ-Sg2">
             <objects>
                 <tableViewController storyboardIdentifier="SkillListingController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Jh1-c2-pzc" customClass="SkillListingViewController" customModule="Susi" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="200" sectionHeaderHeight="28" sectionFooterHeight="28" id="zEc-4J-5ef">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="251" sectionHeaderHeight="28" sectionFooterHeight="28" id="zEc-4J-5ef">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="skillListCell" rowHeight="200" id="oVV-e9-pRM" customClass="SkillListingTableCell" customModule="Susi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="200"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="skillListCell" rowHeight="251" id="oVV-e9-pRM" customClass="SkillListingTableCell" customModule="Susi" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="251"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oVV-e9-pRM" id="sGQ-xO-cmz">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="199.66666666666666"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="250.66666666666666"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2l0-Zw-FHL">
@@ -1590,20 +1590,20 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kMH-zt-axi" customClass="SkillListingCollectionView" customModule="Susi" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="47" width="414" height="152"/>
+                                            <rect key="frame" x="0.0" y="47" width="414" height="203"/>
                                             <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ICM-DT-SG2">
-                                                <size key="itemSize" width="264" height="149.66666666666666"/>
+                                                <size key="itemSize" width="264" height="166.66666666666666"/>
                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                             </collectionViewFlowLayout>
                                             <cells>
                                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellId" id="2Vo-tn-HoS" customClass="SkillCell" customModule="Susi" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="1.3333333333333333" width="264" height="149.66666666666666"/>
+                                                    <rect key="frame" x="0.0" y="18.333333333333332" width="264" height="166.66666666666666"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                        <rect key="frame" x="0.0" y="0.0" width="264" height="149.66666666666666"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="264" height="166.66666666666666"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QG6-wv-s3u">
@@ -1627,6 +1627,7 @@
                                                                     <constraint firstItem="nJ4-jD-Cqd" firstAttribute="leading" secondItem="DcN-B8-SIq" secondAttribute="trailing" constant="8" symbolic="YES" id="2Cp-Ng-YDP"/>
                                                                     <constraint firstItem="nJ4-jD-Cqd" firstAttribute="top" secondItem="QG6-wv-s3u" secondAttribute="topMargin" id="G1a-Iq-Tlt"/>
                                                                     <constraint firstAttribute="bottom" secondItem="DcN-B8-SIq" secondAttribute="bottom" constant="2" id="H69-mU-p19"/>
+                                                                    <constraint firstAttribute="height" constant="73.670000000000002" id="IKS-A1-12R"/>
                                                                     <constraint firstItem="DcN-B8-SIq" firstAttribute="leading" secondItem="QG6-wv-s3u" secondAttribute="leading" constant="2" id="V4R-8W-cQu"/>
                                                                     <constraint firstAttribute="trailing" secondItem="nJ4-jD-Cqd" secondAttribute="trailing" constant="11" id="VhG-8g-AwF"/>
                                                                     <constraint firstItem="DcN-B8-SIq" firstAttribute="centerY" secondItem="nJ4-jD-Cqd" secondAttribute="centerY" id="YJC-yY-OJh"/>
@@ -1643,32 +1644,64 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skill Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VHw-6l-9gK">
-                                                                <rect key="frame" x="15" y="113.66666666666669" width="238" height="42"/>
+                                                                <rect key="frame" x="15" y="116.66666666666667" width="238" height="14.333333333333329"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                 <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XU6-F0-Qcp" customClass="RatingView" customModule="Susi" customModuleProvider="target">
+                                                                <rect key="frame" x="7" y="138.66666666666666" width="120" height="20"/>
+                                                                <color key="tintColor" name="iOSYellow"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="20" id="csV-T0-HHP"/>
+                                                                    <constraint firstAttribute="width" constant="120" id="iKx-an-KaV"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="star_empty"/>
+                                                                    <userDefinedRuntimeAttribute type="image" keyPath="fullImage" value="star_full"/>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="minRating">
+                                                                        <integer key="value" value="1"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxRating">
+                                                                        <integer key="value" value="5"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="editable" value="NO"/>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </view>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rpR-LT-2Wh">
+                                                                <rect key="frame" x="135" y="138.66666666666666" width="11" height="20"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="20" id="icu-m7-Goo"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <color key="textColor" red="0.28627450980000002" green="0.54117647059999996" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
                                                     </view>
                                                     <constraints>
-                                                        <constraint firstAttribute="bottomMargin" secondItem="VHw-6l-9gK" secondAttribute="bottom" constant="-6" id="1KE-fr-QN6"/>
+                                                        <constraint firstItem="XU6-F0-Qcp" firstAttribute="leading" secondItem="2Vo-tn-HoS" secondAttribute="leading" constant="7" id="1DT-Rc-wGZ"/>
                                                         <constraint firstItem="QG6-wv-s3u" firstAttribute="centerX" secondItem="2Vo-tn-HoS" secondAttribute="centerX" id="1QP-0B-qYW"/>
+                                                        <constraint firstItem="rpR-LT-2Wh" firstAttribute="leading" secondItem="XU6-F0-Qcp" secondAttribute="trailing" constant="8" id="LOT-aU-PeD"/>
                                                         <constraint firstAttribute="trailingMargin" secondItem="lad-HQ-hOq" secondAttribute="trailing" constant="-5" id="Q7k-XS-MDT"/>
                                                         <constraint firstItem="lad-HQ-hOq" firstAttribute="trailing" secondItem="VHw-6l-9gK" secondAttribute="trailing" id="RZh-5c-Lcm"/>
                                                         <constraint firstItem="VHw-6l-9gK" firstAttribute="leading" secondItem="2Vo-tn-HoS" secondAttribute="leadingMargin" constant="-1" id="WPD-sr-JMb"/>
-                                                        <constraint firstAttribute="bottomMargin" secondItem="lad-HQ-hOq" secondAttribute="bottom" constant="35" id="ejt-16-iJ8"/>
+                                                        <constraint firstItem="rpR-LT-2Wh" firstAttribute="centerY" secondItem="XU6-F0-Qcp" secondAttribute="centerY" id="fGc-uV-Viq"/>
                                                         <constraint firstItem="QG6-wv-s3u" firstAttribute="leading" secondItem="2Vo-tn-HoS" secondAttribute="leadingMargin" constant="-4" id="gKY-Ly-eix"/>
-                                                        <constraint firstItem="VHw-6l-9gK" firstAttribute="top" secondItem="QG6-wv-s3u" secondAttribute="bottom" constant="24" id="gOE-Xt-SxT"/>
                                                         <constraint firstItem="QG6-wv-s3u" firstAttribute="top" secondItem="2Vo-tn-HoS" secondAttribute="topMargin" constant="-4" id="jWT-Yi-AVR"/>
+                                                        <constraint firstItem="VHw-6l-9gK" firstAttribute="top" secondItem="lad-HQ-hOq" secondAttribute="bottom" constant="2" id="mSS-oM-O7h"/>
                                                         <constraint firstItem="lad-HQ-hOq" firstAttribute="top" secondItem="QG6-wv-s3u" secondAttribute="bottom" constant="4" id="oIT-7I-kFu"/>
                                                         <constraint firstItem="lad-HQ-hOq" firstAttribute="centerX" secondItem="VHw-6l-9gK" secondAttribute="centerX" id="yIR-Vq-dzT"/>
+                                                        <constraint firstAttribute="bottom" secondItem="XU6-F0-Qcp" secondAttribute="bottom" constant="8" id="ypc-tB-xi2"/>
                                                     </constraints>
                                                     <connections>
                                                         <outlet property="exampleQueryLabel" destination="nJ4-jD-Cqd" id="1hE-rm-lhL"/>
                                                         <outlet property="iconTitleView" destination="QG6-wv-s3u" id="wfY-t0-NEN"/>
+                                                        <outlet property="ratingsCard" destination="XU6-F0-Qcp" id="26j-BR-bpc"/>
                                                         <outlet property="skillDescription" destination="VHw-6l-9gK" id="B3y-cf-7pS"/>
                                                         <outlet property="skillImage" destination="DcN-B8-SIq" id="5bH-zY-zrp"/>
                                                         <outlet property="skillName" destination="lad-HQ-hOq" id="8Ua-d0-GKy"/>
+                                                        <outlet property="totalRatingsLabel" destination="rpR-LT-2Wh" id="nXR-2M-jWT"/>
                                                     </connections>
                                                 </collectionViewCell>
                                             </cells>
@@ -1701,7 +1734,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cvM-c2-nEc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2838" y="570"/>
+            <point key="canvasLocation" x="2837.68115942029" y="569.02173913043487"/>
         </scene>
         <!--Skill Detail View Controller-->
         <scene sceneID="pab-3T-JER">
@@ -2270,6 +2303,9 @@
         <image name="susi" width="1366" height="280"/>
         <namedColor name="TextGray">
             <color red="0.37299999594688416" green="0.3880000114440918" blue="0.40799999237060547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="iOSYellow">
+            <color red="1" green="0.81199997663497925" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="iOSYellow">
             <color red="1" green="0.81199997663497925" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

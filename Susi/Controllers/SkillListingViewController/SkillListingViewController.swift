@@ -141,7 +141,7 @@ class SkillListingViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if let group = groups?[indexPath.row], let skills = self.skills[group] {
             if skills.count > 0 {
-                return 200.0
+                return 224.0
             }
         }
         return 0.0
