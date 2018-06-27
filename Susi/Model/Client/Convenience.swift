@@ -502,4 +502,28 @@ extension Client {
         })
     }
 
+    func getFeedbackData(_ params: [String: AnyObject], _ completion: @escaping(_ feedbacks: [Feedback]?, _ success: Bool, _ error: String?) -> Void) {
+        let url = getApiUrl(UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.ipAddress) as! String, Methods.GetSkillFeedback)
+        _ = makeRequest(url, .get, [:], parameters: params, completion: { (results, message) in
+            if let _ = message {
+                completion(nil, false, ResponseMessages.ServerError)
+            } else if let results = results {
+
+                guard let response = results as? [String: AnyObject] else {
+                    completion(nil, false, ResponseMessages.InvalidParams)
+                    return
+                }
+
+                if let feedbacks = response[Client.FeedbackKeys.feedback] as? [Dictionary<String, AnyObject>], feedbacks.count > 0 {
+                    let feedbackData = Feedback.getAllFeedback(feedbacks)
+                    completion(feedbackData, true, nil)
+                    return
+                }
+                completion(nil, false, ResponseMessages.ServerError)
+                return
+            }
+            return
+        })
+    }
+
 }

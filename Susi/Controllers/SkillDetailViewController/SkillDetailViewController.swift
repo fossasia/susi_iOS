@@ -36,6 +36,12 @@ class SkillDetailViewController: GeneralViewController {
     var submitRatingParams: [String: AnyObject] = [:]
     var getRatingParam: [String: AnyObject] = [:]
     var postFeedbackParam: [String: AnyObject] = [:]
+    var getFeedbackParam: [String: AnyObject] = [:]
+    var feedbacks: [Feedback]? {
+        didSet {
+            feedbackDisplayTableView.reloadData()
+        }
+    }
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var skillLabel: UILabel!
@@ -72,6 +78,13 @@ class SkillDetailViewController: GeneralViewController {
     @IBOutlet weak var postButton: UIButton!
     @IBOutlet weak var feedbackLabelTopConstraintToRatings: NSLayoutConstraint!
     @IBOutlet weak var feedbackLabelToContraintToNoRated: NSLayoutConstraint!
+    @IBOutlet weak var feedbackDisplayTableView: UITableView! {
+        didSet {
+            feedbackDisplayTableView.dataSource = self
+            feedbackDisplayTableView.delegate = self
+        }
+    }
+    @IBOutlet weak var feedbackTableHeighConstraint: NSLayoutConstraint!
 
     let barChartColors = [
         UIColor.fiveStarRating(),
@@ -83,6 +96,7 @@ class SkillDetailViewController: GeneralViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        getAllFeedback()
         addTapGesture()
         setupView()
         setupPostButton()
@@ -110,7 +124,7 @@ class SkillDetailViewController: GeneralViewController {
         super.viewWillLayoutSubviews()
         // ScrollView content size
         let labelHeight = skillDescription.heightForLabel(text: skillDescription.text!, font: UIFont.systemFont(ofSize: 16.0), width: self.view.frame.width - 64)
-        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 264.0 + labelHeight)
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 200.0 + feedbackTableHeighConstraint.constant + labelHeight)
     }
 
     override func localizeStrings() {

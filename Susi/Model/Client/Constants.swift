@@ -30,6 +30,7 @@ extension Client {
         static let FiveStarRateSkill = "/cms/fiveStarRateSkill.json"
         static let GetRatingByUser = "/cms/getRatingByUser.json"
         static let FeedbackSkill = "/cms/feedbackSkill.json"
+        static let GetSkillFeedback = "/cms/getSkillFeedback.json"
         static let baseSkillImagePath = "https://raw.githubusercontent.com/fossasia/susi_skill_data/master/models/"
     }
 
