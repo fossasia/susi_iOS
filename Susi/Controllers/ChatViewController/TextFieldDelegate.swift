@@ -8,9 +8,9 @@
 
 import UIKit
 
-extension ChatViewController: UITextFieldDelegate {
+extension ChatViewController: UITextViewDelegate {
 
-    @objc func textFieldDidChange(_ textField: UITextField) {
+    @objc func textViewDidChange(_ textField: UITextView) {
         if let text = inputTextField.text, text.isEmpty {
             sendButton.tag = 0
             sendButton.setImage(ControllerConstants.Images.microphone, for: .normal)
@@ -24,10 +24,26 @@ extension ChatViewController: UITextFieldDelegate {
         }
     }
 
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.enterToSend) {
-            handleSend()
-            return false
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if inputTextField.textColor == UIColor.lightGray {
+            inputTextField.text = nil
+            inputTextField.textColor = UIColor.black
+        }
+    }
+
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if inputTextField.text.isEmpty {
+            inputTextField.text = ControllerConstants.askSusi.localized()
+            inputTextField.textColor = UIColor.lightGray
+        }
+    }
+
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            if UserDefaults.standard.bool(forKey: ControllerConstants.UserDefaultsKeys.enterToSend) {
+                handleSend()
+                return false
+            }
         }
         return true
     }
