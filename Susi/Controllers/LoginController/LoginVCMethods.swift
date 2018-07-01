@@ -92,7 +92,7 @@ extension LoginViewController {
             if personalServerButton.checkState == .unchecked {
                 UserDefaults.standard.set(Client.APIURLs.SusiAPI, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
             } else {
-                if let ipAddress = addressTextField.text, !ipAddress.isEmpty && Validator.isIP().apply(ipAddress) {
+                if let ipAddress = addressTextField.text, !ipAddress.isEmpty && Validator.isIP().apply(ipAddress) || ipAddress.isValidURL() {
                     UserDefaults.standard.set(ipAddress, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
                 } else {
                     view.makeToast(ControllerConstants.invalidIP.localized())
@@ -177,7 +177,6 @@ extension LoginViewController {
     func toggleEditing() {
         emailTextField.isEnabled = !emailTextField.isEnabled
         passwordTextField.isEnabled = !passwordTextField.isEnabled
-        loginButton.isEnabled = !loginButton.isEnabled
     }
 
     // Clear field after login
