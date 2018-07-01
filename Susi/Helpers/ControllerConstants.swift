@@ -83,6 +83,7 @@ class ControllerConstants {
     static let devices = "Devices"
     static let selectALanguage = "Select a Language"
     static let deviceType = "iOS"
+    static let skillFeedback = "Skill Feedback"
 
     struct Settings {
         static let enterToSend = "Enter To Send"

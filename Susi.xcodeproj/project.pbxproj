@@ -18,6 +18,10 @@
 		407ED1DB20BEC6C3007AEE34 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407ED1DA20BEC6C3007AEE34 /* DesignableView.swift */; };
 		407EFAC020C34C0000675A0B /* LanguagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407EFABF20C34C0000675A0B /* LanguagePickerController.swift */; };
 		40D8882120CA9DBA006226EE /* TEABarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D8881720CA9DB9006226EE /* TEABarChart.m */; };
+		40DE743620E39E52003C0116 /* FeedbackDisplayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DE743520E39E52003C0116 /* FeedbackDisplayCell.swift */; };
+		40DE743920E49F3A003C0116 /* AllFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DE743820E49F3A003C0116 /* AllFeedbackViewController.swift */; };
+		40DE743C20E4F759003C0116 /* AllFeedbackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DE743B20E4F759003C0116 /* AllFeedbackCell.swift */; };
+		40DE743E20E50281003C0116 /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DE743D20E50281003C0116 /* Feedback.swift */; };
 		40F17FA820AC39F9008E7305 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F17FA720AC39F8008E7305 /* Images.swift */; };
 		40F17FAC20ACA28A008E7305 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F17FAB20ACA28A008E7305 /* OnboardingViewController.swift */; };
 		40FB527520C037C6005D4ACD /* StopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FB527420C037C6005D4ACD /* StopCell.swift */; };
@@ -130,6 +134,10 @@
 		40D8881720CA9DB9006226EE /* TEABarChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEABarChart.m; sourceTree = "<group>"; };
 		40D8881C20CA9DB9006226EE /* TEAChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEAChart.h; sourceTree = "<group>"; };
 		40D8881F20CA9DBA006226EE /* TEABarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEABarChart.h; sourceTree = "<group>"; };
+		40DE743520E39E52003C0116 /* FeedbackDisplayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackDisplayCell.swift; sourceTree = "<group>"; };
+		40DE743820E49F3A003C0116 /* AllFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllFeedbackViewController.swift; sourceTree = "<group>"; };
+		40DE743B20E4F759003C0116 /* AllFeedbackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllFeedbackCell.swift; sourceTree = "<group>"; };
+		40DE743D20E50281003C0116 /* Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
 		40F17FA720AC39F8008E7305 /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		40F17FAB20ACA28A008E7305 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		40FB527420C037C6005D4ACD /* StopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopCell.swift; sourceTree = "<group>"; };
@@ -286,6 +294,23 @@
 			path = TeaChart;
 			sourceTree = "<group>";
 		};
+		40DE743720E3A182003C0116 /* Feedback Display Cell */ = {
+			isa = PBXGroup;
+			children = (
+				40DE743520E39E52003C0116 /* FeedbackDisplayCell.swift */,
+				40DE743B20E4F759003C0116 /* AllFeedbackCell.swift */,
+			);
+			path = "Feedback Display Cell";
+			sourceTree = "<group>";
+		};
+		40DE743A20E49F48003C0116 /* AllFeedbackController */ = {
+			isa = PBXGroup;
+			children = (
+				40DE743820E49F3A003C0116 /* AllFeedbackViewController.swift */,
+			);
+			path = AllFeedbackController;
+			sourceTree = "<group>";
+		};
 		40F17FAD20ACA296008E7305 /* OnboardingViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -401,6 +426,7 @@
 				6D87A32D1EEE54CC00A6D763 /* WebsearchCollectionView.swift */,
 				40701E7E20BEAC8100B92D81 /* RatingView.swift */,
 				407ED1DA20BEC6C3007AEE34 /* DesignableView.swift */,
+				40DE743720E3A182003C0116 /* Feedback Display Cell */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -495,6 +521,7 @@
 		6D4D9B501E768F2E0067459C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				40DE743A20E49F48003C0116 /* AllFeedbackController */,
 				407EFAC120C34C1D00675A0B /* LanguagePickerController */,
 				403E7F4320BCBD1100D7B48B /* DevicesActivityController */,
 				40799A7720BBAD9F00271718 /* DeviceInstructionsViewController */,
@@ -562,6 +589,7 @@
 				6D61B9AA1EEBAA3900CD3536 /* Message.swift */,
 				6D61B9AE1EEBAAD700CD3536 /* RSSAction.swift */,
 				6D017B2F1F4ED651004BDE7E /* Skill.swift */,
+				40DE743D20E50281003C0116 /* Feedback.swift */,
 				6D61B9B21EEBAB4000CD3536 /* TableAction.swift */,
 				6D9C0D281E7B223A00199828 /* User.swift */,
 				6D61B9B01EEBAB0200CD3536 /* WebsearchAction.swift */,
@@ -868,12 +896,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D4D9B4D1E768E650067459C /* LoginViewController.swift in Sources */,
+				40DE743C20E4F759003C0116 /* AllFeedbackCell.swift in Sources */,
 				403E7F4220BCBCFB00D7B48B /* DevicesActivityViewController.swift in Sources */,
 				6D389BEA1EDB912500DEAEA0 /* YouTubePlayer.swift in Sources */,
 				6D61B9AB1EEBAA3900CD3536 /* Message.swift in Sources */,
 				6D0B28DE1F3D873D00E273E1 /* ResetPasswordVCMethods.swift in Sources */,
 				6DCA90621F1F0AD70058CABB /* AudioRecorderDelegate.swift in Sources */,
 				6DCA90661F1F0B660058CABB /* SpeechRecognizerDelegate.swift in Sources */,
+				40DE743620E39E52003C0116 /* FeedbackDisplayCell.swift in Sources */,
 				6DE809CF1F34DC1D00CAE674 /* TrainingVCMethods.swift in Sources */,
 				6D0B28E01F3D8F6300E273E1 /* CustomTextField.swift in Sources */,
 				3BC1D8D6203B177E003E62F9 /* noConnectionNetworkStatus.swift in Sources */,
@@ -891,6 +921,7 @@
 				6DEE71121F2C9DC900A512CF /* AppNavigationController.swift in Sources */,
 				6DE0025B1F3FF93A0065DB85 /* AnchorCell.swift in Sources */,
 				6D24B0961EE409DB0097418A /* SignUpVCMethods.swift in Sources */,
+				40DE743920E49F3A003C0116 /* AllFeedbackViewController.swift in Sources */,
 				407EFAC020C34C0000675A0B /* LanguagePickerController.swift in Sources */,
 				6D87A3301EEE557000A6D763 /* WebsearchCell.swift in Sources */,
 				6DCA905C1F1F09910058CABB /* LocationDelegate.swift in Sources */,
@@ -926,6 +957,7 @@
 				6D24B0911EE4093C0097418A /* ForgotPasswordVCMethods.swift in Sources */,
 				6D61B9B11EEBAB0200CD3536 /* WebsearchAction.swift in Sources */,
 				6DE002591F3FF5140065DB85 /* MapCell.swift in Sources */,
+				40DE743E20E50281003C0116 /* Feedback.swift in Sources */,
 				6DE44E161E76ACD900215B85 /* Constants.swift in Sources */,
 				4CD0AA5F1EDF2CB700BC8FD5 /* ControllerConstants.swift in Sources */,
 				6D2898391F144E5C00B6151A /* SnowboyWrapper.mm in Sources */,

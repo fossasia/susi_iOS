@@ -13,12 +13,14 @@ extension SkillDetailViewController {
 
     func addTapGesture() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tap)
+        ratingsBackStackView.addGestureRecognizer(tap)
     }
 
-    // force dismiss keyboard if open.
+     // force dismiss keyboard if open.
     @objc func dismissKeyboard() {
-        self.skillFeedbackTextField.resignFirstResponder()
+        if self.skillFeedbackTextField.isFirstResponder {
+            self.skillFeedbackTextField.resignFirstResponder()
+        }
     }
 
     func registerKeyboardNotifications() {
@@ -105,7 +107,7 @@ extension SkillDetailViewController {
         contentType.widthAnchor.constraint(equalToConstant: 140).isActive = true
         contentType.heightAnchor.constraint(equalToConstant: 35).isActive = true
         contentType.leftAnchor.constraint(equalTo: ratingBackView.leftAnchor).isActive = true
-        contentType.topAnchor.constraint(equalTo: skillFeedbackTextField.bottomAnchor, constant: 16).isActive = true
+        contentType.topAnchor.constraint(equalTo: feedbackDisplayTableView.bottomAnchor, constant: 16).isActive = true
 
         view.addSubview(content)
         content.leftAnchor.constraint(equalTo: contentType.rightAnchor, constant: -6).isActive = true
@@ -286,6 +288,95 @@ extension SkillDetailViewController: UITextFieldDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginController")
         present(loginVC, animated: true, completion: nil)
+    }
+
+}
+
+extension SkillDetailViewController: UITableViewDelegate, UITableViewDataSource {
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let feedbacks = feedbacks, feedbacks.count > 0 else {
+            feedbackTableHeighConstraint.constant = 0.0
+            return 0
+        }
+        if feedbacks.count < 4 {
+            feedbackTableHeighConstraint.constant = CGFloat(72 * feedbacks.count)
+            return feedbacks.count
+        } else {
+            feedbackTableHeighConstraint.constant = 260.0
+            return 4
+        }
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 3 {
+            return 44.0
+        } else {
+            return 72.0
+        }
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let feedbacks = feedbacks, feedbacks.count > 0 else {
+            feedbackTableHeighConstraint.constant = 0.0
+            return UITableViewCell()
+        }
+        if feedbacks.count < 4 {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "feedbackDisplayCell", for: indexPath) as? FeedbackDisplayCell {
+                cell.feedback = feedbacks[indexPath.row - Int(indexPath.row/2)]
+                return cell
+            }
+        } else if feedbacks.count > 3 {
+            if indexPath.row == 3 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "allFeedbackCell", for: indexPath)
+                return cell
+            } else {
+                if let cell = tableView.dequeueReusableCell(withIdentifier: "feedbackDisplayCell", for: indexPath) as? FeedbackDisplayCell {
+                    cell.feedback = feedbacks[indexPath.row]
+                    return cell
+                }
+            }
+        }
+        return UITableViewCell()
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 3, let feedbacks = feedbacks, feedbacks.count > 3 {
+            self.seeAllReviews()
+        }
+    }
+
+    func seeAllReviews() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let allFeedbackVC = storyboard.instantiateViewController(withIdentifier: "AllFeedbackController") as? AllFeedbackViewController {
+            allFeedbackVC.feedbacks = self.feedbacks
+            let nvc = AppNavigationController(rootViewController: allFeedbackVC)
+            self.present(nvc, animated: true, completion: nil)
+        }
+    }
+
+    func getAllFeedback() {
+
+        getFeedbackParam = [
+            Client.SkillListing.model: skill?.model as AnyObject,
+            Client.SkillListing.group: skill?.group as AnyObject,
+            Client.SkillListing.language: Locale.current.languageCode as AnyObject,
+            Client.SkillListing.skill: skill?.skillKeyName as AnyObject
+        ]
+
+        Client.sharedInstance.getFeedbackData(getFeedbackParam) { (feedbacks, success, message) in
+            DispatchQueue.main.async {
+                if success {
+                    self.feedbacks = feedbacks
+                } else {
+                }
+                self.feedbackDisplayTableView.reloadData()
+            }
+        }
     }
 
 }

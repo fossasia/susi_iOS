@@ -142,6 +142,14 @@ extension String {
         }
     }
 
+    func getFirstTwoChar() -> String {
+        return String(self.prefix(2))
+    }
+
+    func getFirstChar(_ char: Int) -> String {
+        return String(self.prefix(char))
+    }
+
 }
 
 extension UIView {
