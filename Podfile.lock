@@ -1,5 +1,8 @@
 PODS:
   - Alamofire (4.7.2)
+  - AudioKit (4.2.4):
+    - AudioKit/UI (= 4.2.4)
+  - AudioKit/UI (4.2.4)
   - BouncyLayout (2.1.0)
   - Fakery (3.3.0)
   - Ji (2.1.0):
@@ -40,6 +43,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
+  - AudioKit (~> 4.0)
   - BouncyLayout
   - Fakery (~> 3.3.0)
   - Kingfisher
@@ -59,6 +63,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - AudioKit
     - BouncyLayout
     - Fakery
     - Ji
@@ -91,6 +96,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  AudioKit: 90ed0de2bc50ab68306f4b424ae1622fc9149b8e
   BouncyLayout: a7955879861375cc4e88bb64d42bcf622cd2694c
   Fakery: 3aae11a87721c807c18c6456500d088c1230d3e5
   Ji: 21946da4e13425485ddd424edfaeeced0d80ad28

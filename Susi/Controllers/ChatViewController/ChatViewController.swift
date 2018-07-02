@@ -15,6 +15,7 @@ import Speech
 import NVActivityIndicatorView
 import Realm
 import Reachability
+import AudioKit
 
 class ChatViewController: UICollectionViewController {
     // MARK: - Variable Declarations
@@ -111,11 +112,7 @@ class ChatViewController: UICollectionViewController {
     // snowboy wrapper
     var wrapper: SnowboyWrapper! = nil
 
-    // records audio
-    var audioRecorder: AVAudioRecorder!
-
-    // saves the recorded sound
-    var soundFileURL: URL!
+    var microphone: EZMicrophone!
 
     // used to start and stop the hotword recognition timer
     var hotwordTimer: Timer!
@@ -182,7 +179,9 @@ class ChatViewController: UICollectionViewController {
         subscribeToKeyboardNotifications()
 
         checkAndAssignIfModelExists()
+        initPermissions()
         initSnowboy()
+        initMic()
         checkAndRunHotwordRecognition()
     }
 
