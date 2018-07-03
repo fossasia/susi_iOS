@@ -71,6 +71,13 @@ extension String {
         return URL(string: self) != nil
     }
 
+    func isValidURL() -> Bool {
+        if let url = URL(string: self) {
+            return UIApplication.shared.canOpenURL(url)
+        }
+        return false
+    }
+
     func containsURL() -> Bool {
         var isValid = false
 
