@@ -63,7 +63,7 @@ class ControllerConstants {
     static let skillDetailControllerIdentifier = "skillDetail"
     static let customServerURL = "Custom Server URL"
     static let tryIt = "Try It"
-    static let invalidIP = "Invalid IP Address"
+    static let invalidIP = "Invalid IP Address or URL"
     static let invalidEmailAddress = "Invalid Email Address"
     static let passwordLengthTooShort = "Password length too short"
     static let meetSusi = "Meet SUSI.AI, Your Artificial Intelligence for Personal Assistants, Robots, Help Desks and Chatbots."
