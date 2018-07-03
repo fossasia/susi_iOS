@@ -33,7 +33,11 @@ extension ChatViewController {
             let keyboardFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
             let isKeyboardShowing = notification.name == NSNotification.Name.UIKeyboardWillShow
 
-            bottomConstraint?.constant = isKeyboardShowing ? -keyboardFrame!.height : 0
+            if #available(iOS 11.0, *) {
+                bottomConstraint?.constant = isKeyboardShowing ? -keyboardFrame!.height + view.safeAreaInsets.bottom : 0
+            } else {
+                bottomConstraint?.constant = isKeyboardShowing ? -keyboardFrame!.height : 0
+            }
 
             collectionView?.frame = isKeyboardShowing ? CGRect(x: 0, y: 20, width: view.frame.width, height: view.frame.height - keyboardFrame!.height - 71) :
                 CGRect(x: 0, y: 20, width: view.frame.width, height: view.frame.height - 71)

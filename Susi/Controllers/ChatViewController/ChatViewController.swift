@@ -57,13 +57,13 @@ class ChatViewController: UICollectionViewController {
     }()
 
     // chat input field
-    lazy var inputTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = ControllerConstants.askSusi.localized()
+    lazy var inputTextField: UITextView = {
+        let textField = UITextView()
+        textField.text = ControllerConstants.askSusi.localized()
+        textField.textColor = UIColor.lightGray
         textField.delegate = self
         textField.accessibilityIdentifier = ControllerConstants.TestKeys.chatInputView
         textField.font = UIFont.systemFont(ofSize: 16)
-        textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         return textField
     }()
 
@@ -163,14 +163,14 @@ class ChatViewController: UICollectionViewController {
 
         reachability.whenReachable = { reachability in
             DispatchQueue.main.async {
-                self.inputTextField.isEnabled = true
+                self.inputTextField.isEditable = true
                 self.alert.dismiss(animated: true, completion: nil)
             }
         }
 
         reachability.whenUnreachable = { reachability in
             DispatchQueue.main.async {
-                self.inputTextField.isEnabled = false
+                self.inputTextField.isEditable = false
                 self.present(self.alert, animated: true, completion: nil)
             }
         }
