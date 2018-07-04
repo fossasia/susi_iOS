@@ -9,14 +9,18 @@
 /* Begin PBXBuildFile section */
 		3BC1D8D5203B177E003E62F9 /* noConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC1D8D3203B177E003E62F9 /* noConnectionViewController.swift */; };
 		3BC1D8D6203B177E003E62F9 /* noConnectionNetworkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC1D8D4203B177E003E62F9 /* noConnectionNetworkStatus.swift */; };
+		40172A8520ECAA49006B462C /* YouTubePlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40172A8420ECAA49006B462C /* YouTubePlayerCell.swift */; };
 		403E7F4220BCBCFB00D7B48B /* DevicesActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E7F4120BCBCFB00D7B48B /* DevicesActivityViewController.swift */; };
 		405C463820E0D3750091A78E /* DeviceActivityMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C463720E0D3750091A78E /* DeviceActivityMethods.swift */; };
 		40623B7F20D243910013FE60 /* Ratings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40623B7E20D243910013FE60 /* Ratings.swift */; };
 		406F100620ADFEED00808E4C /* OnboardingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406F100520ADFEED00808E4C /* OnboardingUITests.swift */; };
+		406F8BA020EE72CA00D9C6AC /* VideoPlayAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406F8B9F20EE72CA00D9C6AC /* VideoPlayAction.swift */; };
 		40701E7F20BEAC8100B92D81 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40701E7E20BEAC8100B92D81 /* RatingView.swift */; };
 		40799A7620BBAD9800271718 /* DeviceInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40799A7520BBAD9800271718 /* DeviceInstructionsViewController.swift */; };
 		407ED1DB20BEC6C3007AEE34 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407ED1DA20BEC6C3007AEE34 /* DesignableView.swift */; };
 		407EFAC020C34C0000675A0B /* LanguagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407EFABF20C34C0000675A0B /* LanguagePickerController.swift */; };
+		40801EE320F33B4C0071860E /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40801EE220F33B4C0071860E /* VideoPlayerView.swift */; };
+		40801EE520F33BBB0071860E /* YTPlayer.html in Resources */ = {isa = PBXBuildFile; fileRef = 40801EE420F33BBB0071860E /* YTPlayer.html */; };
 		40D8882120CA9DBA006226EE /* TEABarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D8881720CA9DB9006226EE /* TEABarChart.m */; };
 		40DE743620E39E52003C0116 /* FeedbackDisplayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DE743520E39E52003C0116 /* FeedbackDisplayCell.swift */; };
 		40DE743920E49F3A003C0116 /* AllFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DE743820E49F3A003C0116 /* AllFeedbackViewController.swift */; };
@@ -49,8 +53,6 @@
 		6D3527131F083F8E00395BD5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE44E141E76ACD900215B85 /* Constants.swift */; };
 		6D3527141F083F9100395BD5 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE44E101E76ACAF00215B85 /* Client.swift */; };
 		6D35E4881EE70F9000188E1F /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D35E4871EE70F9000188E1F /* Accelerate.framework */; };
-		6D389BEA1EDB912500DEAEA0 /* YouTubePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D389BE81EDB912500DEAEA0 /* YouTubePlayer.swift */; };
-		6D389BEB1EDB912500DEAEA0 /* YTPlayer.html in Resources */ = {isa = PBXBuildFile; fileRef = 6D389BE91EDB912500DEAEA0 /* YTPlayer.html */; };
 		6D395D1D1F58966900BCC3C5 /* SkillDetailExampleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D395D1C1F58966900BCC3C5 /* SkillDetailExampleCell.swift */; };
 		6D395D1F1F589CC000BCC3C5 /* SkillDetailVCMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D395D1E1F589CC000BCC3C5 /* SkillDetailVCMethods.swift */; };
 		6D395D211F589CFE00BCC3C5 /* SkillDetailVCCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D395D201F589CFE00BCC3C5 /* SkillDetailVCCollectionView.swift */; };
@@ -122,14 +124,18 @@
 		262BC7CF14D165C735BF16FA /* Pods-SusiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SusiUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SusiUITests/Pods-SusiUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3BC1D8D3203B177E003E62F9 /* noConnectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = noConnectionViewController.swift; sourceTree = "<group>"; };
 		3BC1D8D4203B177E003E62F9 /* noConnectionNetworkStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = noConnectionNetworkStatus.swift; sourceTree = "<group>"; };
+		40172A8420ECAA49006B462C /* YouTubePlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubePlayerCell.swift; sourceTree = "<group>"; };
 		403E7F4120BCBCFB00D7B48B /* DevicesActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesActivityViewController.swift; sourceTree = "<group>"; };
 		405C463720E0D3750091A78E /* DeviceActivityMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceActivityMethods.swift; sourceTree = "<group>"; };
 		40623B7E20D243910013FE60 /* Ratings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ratings.swift; sourceTree = "<group>"; };
 		406F100520ADFEED00808E4C /* OnboardingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingUITests.swift; sourceTree = "<group>"; };
+		406F8B9F20EE72CA00D9C6AC /* VideoPlayAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayAction.swift; sourceTree = "<group>"; };
 		40701E7E20BEAC8100B92D81 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		40799A7520BBAD9800271718 /* DeviceInstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInstructionsViewController.swift; sourceTree = "<group>"; };
 		407ED1DA20BEC6C3007AEE34 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		407EFABF20C34C0000675A0B /* LanguagePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePickerController.swift; sourceTree = "<group>"; };
+		40801EE220F33B4C0071860E /* VideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
+		40801EE420F33BBB0071860E /* YTPlayer.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = YTPlayer.html; sourceTree = "<group>"; };
 		40D8881720CA9DB9006226EE /* TEABarChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEABarChart.m; sourceTree = "<group>"; };
 		40D8881C20CA9DB9006226EE /* TEAChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEAChart.h; sourceTree = "<group>"; };
 		40D8881F20CA9DBA006226EE /* TEABarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEABarChart.h; sourceTree = "<group>"; };
@@ -172,8 +178,6 @@
 		6D2F984A1E76DF2200FE2B6F /* BaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 		6D35E4871EE70F9000188E1F /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		6D35E4891EE70F9C00188E1F /* libsnowboy-detect.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libsnowboy-detect.a"; path = "../../Downloads/libsnowboy-detect.a"; sourceTree = "<group>"; };
-		6D389BE81EDB912500DEAEA0 /* YouTubePlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouTubePlayer.swift; sourceTree = "<group>"; };
-		6D389BE91EDB912500DEAEA0 /* YTPlayer.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = YTPlayer.html; sourceTree = "<group>"; };
 		6D395D1C1F58966900BCC3C5 /* SkillDetailExampleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillDetailExampleCell.swift; sourceTree = "<group>"; };
 		6D395D1E1F589CC000BCC3C5 /* SkillDetailVCMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillDetailVCMethods.swift; sourceTree = "<group>"; };
 		6D395D201F589CFE00BCC3C5 /* SkillDetailVCCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillDetailVCCollectionView.swift; sourceTree = "<group>"; };
@@ -280,6 +284,15 @@
 				407EFABF20C34C0000675A0B /* LanguagePickerController.swift */,
 			);
 			path = LanguagePickerController;
+			sourceTree = "<group>";
+		};
+		40801EE120F33B170071860E /* Youtube-Player */ = {
+			isa = PBXGroup;
+			children = (
+				40801EE220F33B4C0071860E /* VideoPlayerView.swift */,
+				40801EE420F33BBB0071860E /* YTPlayer.html */,
+			);
+			path = "Youtube-Player";
 			sourceTree = "<group>";
 		};
 		40D8882620CA9DD1006226EE /* TeaChart */ = {
@@ -418,12 +431,12 @@
 				40D8882620CA9DD1006226EE /* TeaChart */,
 				6D3FB3471E8136640015E1D6 /* Message Cells */,
 				6D017B2C1F4EC98E004BDE7E /* Skill Listing Cells */,
+				40DE743720E3A182003C0116 /* Feedback Display Cell */,
 				6D0B28DF1F3D8F6300E273E1 /* CustomTextField.swift */,
 				6D6F90471F4AF30800C84137 /* LongPressToCopyTextView.swift */,
 				6D87A32D1EEE54CC00A6D763 /* WebsearchCollectionView.swift */,
 				40701E7E20BEAC8100B92D81 /* RatingView.swift */,
 				407ED1DA20BEC6C3007AEE34 /* DesignableView.swift */,
-				40DE743720E3A182003C0116 /* Feedback Display Cell */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -442,15 +455,6 @@
 			path = "Snowboy Files";
 			sourceTree = "<group>";
 		};
-		6D389BE71EDB90E800DEAEA0 /* Youtube-Player */ = {
-			isa = PBXGroup;
-			children = (
-				6D389BE91EDB912500DEAEA0 /* YTPlayer.html */,
-				6D389BE81EDB912500DEAEA0 /* YouTubePlayer.swift */,
-			);
-			path = "Youtube-Player";
-			sourceTree = "<group>";
-		};
 		6D3FB3471E8136640015E1D6 /* Message Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -465,6 +469,7 @@
 				6D87A3311EEE86CC00A6D763 /* RSSCell.swift */,
 				6D87A32F1EEE557000A6D763 /* WebsearchCell.swift */,
 				40FB527420C037C6005D4ACD /* StopCell.swift */,
+				40172A8420ECAA49006B462C /* YouTubePlayerCell.swift */,
 			);
 			path = "Message Cells";
 			sourceTree = "<group>";
@@ -492,6 +497,7 @@
 		6D4D9B391E768E190067459C /* Susi */ = {
 			isa = PBXGroup;
 			children = (
+				40801EE120F33B170071860E /* Youtube-Player */,
 				94889CAB1F7CEA620028B8C3 /* Localization */,
 				6D4D9B511E768F390067459C /* Assets */,
 				6D4D9B501E768F2E0067459C /* Controllers */,
@@ -501,7 +507,6 @@
 				6D35E4811EE70F4700188E1F /* Snowboy Files */,
 				6DAF3AF41F0E0FF700929D86 /* Storyboards */,
 				6D4D9B4F1E768F250067459C /* Supporting Files */,
-				6D389BE71EDB90E800DEAEA0 /* Youtube-Player */,
 			);
 			path = Susi;
 			sourceTree = "<group>";
@@ -585,6 +590,7 @@
 				6D61B9B61EEBAB7000CD3536 /* MapAction.swift */,
 				6D61B9AA1EEBAA3900CD3536 /* Message.swift */,
 				6D61B9AE1EEBAAD700CD3536 /* RSSAction.swift */,
+				406F8B9F20EE72CA00D9C6AC /* VideoPlayAction.swift */,
 				6D017B2F1F4ED651004BDE7E /* Skill.swift */,
 				40DE743D20E50281003C0116 /* Feedback.swift */,
 				6D61B9B21EEBAB4000CD3536 /* TableAction.swift */,
@@ -747,9 +753,9 @@
 			files = (
 				6D4D9B451E768E190067459C /* LaunchScreen.storyboard in Resources */,
 				6D4D9B421E768E190067459C /* Assets.xcassets in Resources */,
-				6D389BEB1EDB912500DEAEA0 /* YTPlayer.html in Resources */,
 				94889CAE1F7CEAA80028B8C3 /* Localizable.strings in Resources */,
 				6DAF3AF61F0E101200929D86 /* Main.storyboard in Resources */,
+				40801EE520F33BBB0071860E /* YTPlayer.html in Resources */,
 				6D28983A1F144E5C00B6151A /* common.res in Resources */,
 				6D47585A1F5625740067B3A4 /* susi.pmdl in Resources */,
 			);
@@ -895,7 +901,6 @@
 				6D4D9B4D1E768E650067459C /* LoginViewController.swift in Sources */,
 				40DE743C20E4F759003C0116 /* AllFeedbackCell.swift in Sources */,
 				403E7F4220BCBCFB00D7B48B /* DevicesActivityViewController.swift in Sources */,
-				6D389BEA1EDB912500DEAEA0 /* YouTubePlayer.swift in Sources */,
 				6D61B9AB1EEBAA3900CD3536 /* Message.swift in Sources */,
 				6D0B28DE1F3D873D00E273E1 /* ResetPasswordVCMethods.swift in Sources */,
 				6DCA90621F1F0AD70058CABB /* AudioRecorderDelegate.swift in Sources */,
@@ -916,6 +921,7 @@
 				6D395D1F1F589CC000BCC3C5 /* SkillDetailVCMethods.swift in Sources */,
 				94889CA61F7CCD370028B8C3 /* GeneralViewController.swift in Sources */,
 				6DEE71121F2C9DC900A512CF /* AppNavigationController.swift in Sources */,
+				40801EE320F33B4C0071860E /* VideoPlayerView.swift in Sources */,
 				6DE0025B1F3FF93A0065DB85 /* AnchorCell.swift in Sources */,
 				6D24B0961EE409DB0097418A /* SignUpVCMethods.swift in Sources */,
 				40DE743920E49F3A003C0116 /* AllFeedbackViewController.swift in Sources */,
@@ -932,9 +938,11 @@
 				6D0DB6281EE436FC00AD030D /* IncomingChatCell.swift in Sources */,
 				6D4D9B541E7690160067459C /* Extensions.swift in Sources */,
 				6D395D211F589CFE00BCC3C5 /* SkillDetailVCCollectionView.swift in Sources */,
+				40172A8520ECAA49006B462C /* YouTubePlayerCell.swift in Sources */,
 				6DE44E171E76ACD900215B85 /* Convenience.swift in Sources */,
 				6D87A32E1EEE54CC00A6D763 /* WebsearchCollectionView.swift in Sources */,
 				40FB527520C037C6005D4ACD /* StopCell.swift in Sources */,
+				406F8BA020EE72CA00D9C6AC /* VideoPlayAction.swift in Sources */,
 				6DFC75B91EE077E9002F92BA /* ForgotPasswordViewController.swift in Sources */,
 				6DE44E111E76ACAF00215B85 /* Client.swift in Sources */,
 				6D3DACC51F25FB9900CEFBC7 /* ActivityIndicatorCell.swift in Sources */,

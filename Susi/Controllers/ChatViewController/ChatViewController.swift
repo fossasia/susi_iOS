@@ -32,13 +32,6 @@ class ChatViewController: UICollectionViewController {
 
     let alert = UIAlertController(title: "Warning", message: "Please Connect to Internet", preferredStyle: .alert)
 
-    // youtube player
-    lazy var youtubePlayer: YouTubePlayerView = {
-        let frame = CGRect(x: 0, y: 0, width: self.view.frame.width - 16, height: self.view.frame.height * 1 / 3)
-        let player = YouTubePlayerView(frame: frame)
-        return player
-    }()
-
     // scroll down button
     lazy var scrollButton: UIButton = {
         let button = UIButton()
@@ -47,6 +40,22 @@ class ChatViewController: UICollectionViewController {
         button.addTarget(self, action: #selector(scrollToLast), for: .touchUpInside)
         button.layer.cornerRadius = 8
         return button
+    }()
+
+    // youtube player
+    lazy var youtubePlayer: YouTubePlayerView = {
+        let frame = CGRect(x: 0, y: 0, width: self.view.frame.width - 16, height: self.view.frame.height * 1 / 3)
+        let player = YouTubePlayerView(frame: frame)
+        player.delegate = self
+        return player
+    }()
+
+    // youtube player loader
+    lazy var playerIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        indicator.activityIndicatorViewStyle = .whiteLarge
+        indicator.hidesWhenStopped = true
+        return indicator
     }()
 
     // container view

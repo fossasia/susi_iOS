@@ -77,30 +77,24 @@ extension ChatViewController {
         view.backgroundColor = UIColor.chatBackgroundColor()
     }
 
-    // setup send button
-    func setupSendButton() {
-        indicatorView.stopAnimating()
-        sendButton.addSubview(indicatorView)
-        sendButton.addConstraintsWithFormat(format: "V:|-12-[v0(16)]-12-|", views: indicatorView)
-        sendButton.addConstraintsWithFormat(format: "H:|-12-[v0(16)]-12-|", views: indicatorView)
-
-        // add gesture recogniser
-        let gesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(setTargetForSendButton))
-        gesture.numberOfTapsRequired = 1
-        indicatorView.addGestureRecognizer(gesture)
-    }
-
     // shows youtube player
     func addYotubePlayer(_ videoID: String) {
+        self.resignResponders()
         if let window = UIApplication.shared.keyWindow {
             blackView.frame = window.frame
             view.addSubview(blackView)
             blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
             blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
 
-            blackView.addSubview(youtubePlayer)
+
             let centerX = UIScreen.main.bounds.size.width / 2
-            let centerY = UIScreen.main.bounds.size.height / 3
+            let centerY = UIScreen.main.bounds.size.height / 2
+
+            blackView.addSubview(playerIndicator)
+            playerIndicator.center = CGPoint(x: centerX, y: centerY)
+            playerIndicator.startAnimating()
+
+            blackView.addSubview(youtubePlayer)
             youtubePlayer.center = CGPoint(x: centerX, y: centerY)
             youtubePlayer.loadVideoID(videoID)
 
@@ -112,6 +106,19 @@ extension ChatViewController {
                 self.youtubePlayer.alpha = 1
             }, completion: nil)
         }
+    }
+
+    // setup send button
+    func setupSendButton() {
+        indicatorView.stopAnimating()
+        sendButton.addSubview(indicatorView)
+        sendButton.addConstraintsWithFormat(format: "V:|-12-[v0(16)]-12-|", views: indicatorView)
+        sendButton.addConstraintsWithFormat(format: "H:|-12-[v0(16)]-12-|", views: indicatorView)
+
+        // add gesture recogniser
+        let gesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(setTargetForSendButton))
+        gesture.numberOfTapsRequired = 1
+        indicatorView.addGestureRecognizer(gesture)
     }
 
     func addActivityIndicatorMessage() {
@@ -351,6 +358,7 @@ extension ChatViewController {
     // dismiss the overlay for the video
     @objc func handleDismiss() {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.youtubePlayer.removeFromSuperview()
             self.blackView.removeFromSuperview()
         }, completion: nil)
     }
@@ -377,6 +385,23 @@ extension ChatViewController {
         messages = Array(realm.objects(Message.self))
         collectionView?.reloadData()
         scrollToLast()
+    }
+
+}
+
+extension ChatViewController: YouTubePlayerDelegate {
+
+    func playerReady(_ videoPlayer: YouTubePlayerView) {
+        self.playerIndicator.stopAnimating()
+        youtubePlayer.play()
+    }
+
+    func playerStateChanged(_ videoPlayer: YouTubePlayerView, playerState: YouTubePlayerState) {
+
+    }
+
+    func playerQualityChanged(_ videoPlayer: YouTubePlayerView, playbackQuality: YouTubePlaybackQuality) {
+
     }
 
 }

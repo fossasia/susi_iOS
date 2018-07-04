@@ -23,6 +23,7 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
         collectionView?.register(AnchorCell.self, forCellWithReuseIdentifier: ControllerConstants.anchorCell)
         collectionView?.register(StopCell.self, forCellWithReuseIdentifier: ControllerConstants.stopCell)
         collectionView?.register(ImageCell.self, forCellWithReuseIdentifier: ControllerConstants.imageCell)
+        collectionView?.register(YouTubePlayerCell.self, forCellWithReuseIdentifier: ControllerConstants.youtubePlayerCell)
         collectionView?.accessibilityIdentifier = ControllerConstants.TestKeys.chatCollectionView
     }
 
@@ -78,6 +79,13 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
                 cell.message = message
                 return cell
             }
+        } else if message.actionType == ActionType.video_play.rawValue {
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.youtubePlayerCell, for: indexPath) as? YouTubePlayerCell {
+                if let videoID = message.videoData?.identifier {
+                    self.addYotubePlayer(videoID)
+                }
+                return cell
+            }
         } else if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.incomingCell, for: indexPath) as? IncomingBubbleCell {
             cell.message = message
             let message = message.message
@@ -103,6 +111,8 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
                 return CGSize(width: view.frame.width, height: 145)
             } else if let expression = message.answerData?.expression, expression.isValidURL(), expression.isImage() {
                 return CGSize(width: view.frame.width, height: 220)
+            } else if message.actionType == ActionType.video_play.rawValue {
+                return CGSize(width: view.frame.width, height: 1.0)
             }
             return CGSize(width: view.frame.width, height: estimatedFrame.height + 38)
         }
