@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChatMessageCell: BaseCell, UITextViewDelegate {
+class ChatMessageCell: BaseCellTableViewTableViewCell, UITextViewDelegate {
 
     lazy var messageTextView: LongPressToCopyTextView = {
         let textView = LongPressToCopyTextView()

@@ -16,7 +16,7 @@ import NVActivityIndicatorView
 import Realm
 import Reachability
 
-class ChatViewController: UICollectionViewController {
+class ChatViewController: UITableViewController {
     // MARK: - Variable Declarations
 
     let reachability = Reachability()!
@@ -153,7 +153,7 @@ class ChatViewController: UICollectionViewController {
         setupNavbar()
         setupView()
         setupSendButton()
-        setupCollectionView()
+        setupTableView()
         setupInputComponents()
         addGestures()
         configureLocationManager()

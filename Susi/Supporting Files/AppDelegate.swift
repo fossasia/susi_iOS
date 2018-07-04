@@ -73,7 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func presetChatScreen() {
         let layout = BouncyLayout()
-        let vc = ChatViewController(collectionViewLayout: layout)
+        let vc = ChatViewController(style: .grouped)
         self.window?.rootViewController = vc
         self.window?.makeKeyAndVisible()
     }
