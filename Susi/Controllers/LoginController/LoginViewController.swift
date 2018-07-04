@@ -43,7 +43,7 @@ class LoginViewController: GeneralViewController {
         prepareLoginButton()
         prepareSkipButton()
         prepareAddressField()
-        assignEmailToForgotPassword()
+        addForgotPasswordAction()
 
         reachability.whenReachable = { reachability in
 

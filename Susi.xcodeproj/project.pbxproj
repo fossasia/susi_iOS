@@ -41,7 +41,6 @@
 		6D0DB6281EE436FC00AD030D /* IncomingChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0DB6271EE436FC00AD030D /* IncomingChatCell.swift */; };
 		6D215B951EB0BE7300CD2C1D /* AuthenticationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D215B941EB0BE7300CD2C1D /* AuthenticationUITests.swift */; };
 		6D24B08A1EE4079E0097418A /* LoginVCMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D24B0891EE4079E0097418A /* LoginVCMethods.swift */; };
-		6D24B0911EE4093C0097418A /* ForgotPasswordVCMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D24B0901EE4093C0097418A /* ForgotPasswordVCMethods.swift */; };
 		6D24B0961EE409DB0097418A /* SignUpVCMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D24B0951EE409DB0097418A /* SignUpVCMethods.swift */; };
 		6D2898391F144E5C00B6151A /* SnowboyWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6D2898321F144E5C00B6151A /* SnowboyWrapper.mm */; };
 		6D28983A1F144E5C00B6151A /* common.res in Resources */ = {isa = PBXBuildFile; fileRef = 6D2898331F144E5C00B6151A /* common.res */; };
@@ -161,7 +160,6 @@
 		6D215B941EB0BE7300CD2C1D /* AuthenticationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationUITests.swift; sourceTree = "<group>"; };
 		6D215B961EB0BE7300CD2C1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D24B0891EE4079E0097418A /* LoginVCMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVCMethods.swift; sourceTree = "<group>"; };
-		6D24B0901EE4093C0097418A /* ForgotPasswordVCMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVCMethods.swift; sourceTree = "<group>"; };
 		6D24B0951EE409DB0097418A /* SignUpVCMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVCMethods.swift; sourceTree = "<group>"; };
 		6D2898321F144E5C00B6151A /* SnowboyWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SnowboyWrapper.mm; sourceTree = "<group>"; };
 		6D2898331F144E5C00B6151A /* common.res */ = {isa = PBXFileReference; lastKnownFileType = file; path = common.res; sourceTree = "<group>"; };
@@ -386,7 +384,6 @@
 		6D24B08D1EE408F10097418A /* ForgotPasswordController */ = {
 			isa = PBXGroup;
 			children = (
-				6D24B0901EE4093C0097418A /* ForgotPasswordVCMethods.swift */,
 				6DFC75B81EE077E9002F92BA /* ForgotPasswordViewController.swift */,
 			);
 			path = ForgotPasswordController;
@@ -954,7 +951,6 @@
 				6DE44E1B1E76B5D600215B85 /* SignUpViewController.swift in Sources */,
 				6D9C0D291E7B223A00199828 /* User.swift in Sources */,
 				6D017B2B1F4EC941004BDE7E /* SkillListingCollectionView.swift in Sources */,
-				6D24B0911EE4093C0097418A /* ForgotPasswordVCMethods.swift in Sources */,
 				6D61B9B11EEBAB0200CD3536 /* WebsearchAction.swift in Sources */,
 				6DE002591F3FF5140065DB85 /* MapCell.swift in Sources */,
 				40DE743E20E50281003C0116 /* Feedback.swift in Sources */,

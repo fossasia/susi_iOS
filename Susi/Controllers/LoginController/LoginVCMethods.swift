@@ -70,12 +70,50 @@ extension LoginViewController {
         addressTextField.textColor = .white
     }
 
-    func assignEmailToForgotPassword() {
-        forgotPassword.addTarget(self, action: #selector(assignEmail), for: .touchUpInside)
+    func addForgotPasswordAction() {
+        forgotPassword.addTarget(self, action: #selector(resetPassword), for: .touchUpInside)
     }
 
-    @objc func assignEmail() {
-        UserDefaults.standard.setValue(emailTextField.text, forKey: ControllerConstants.UserDefaultsKeys.typedEmailAdress)
+    // Call Reset Password API
+    @objc func resetPassword() {
+        if let emailID = emailTextField.text, !emailID.isEmpty && emailID.isValidEmail() {
+
+            let params = [
+                Client.UserKeys.ForgotEmail: emailTextField.text?.lowercased()
+            ]
+
+            if personalServerButton.checkState == .unchecked {
+                UserDefaults.standard.set(Client.APIURLs.SusiAPI, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
+            } else {
+                if let ipAddress = addressTextField.text, !ipAddress.isEmpty && Validator.isIP().apply(ipAddress) || ipAddress.isValidURL() {
+                    UserDefaults.standard.set(ipAddress, forKey: ControllerConstants.UserDefaultsKeys.ipAddress)
+                } else {
+                    view.makeToast(ControllerConstants.invalidIP.localized())
+                    return
+                }
+            }
+
+            self.indicatorView.startAnimating()
+
+            Client.sharedInstance.recoverPassword(params as [String: AnyObject]) { (_, message) in
+                DispatchQueue.main.async {
+                    self.indicatorView.stopAnimating()
+
+                    self.presentMailConfirmationScreen()
+
+                    self.emailTextField.text = ""
+                    self.emailTextField.endEditing(true)
+                }
+            }
+        } else {
+            self.view.makeToast(ControllerConstants.invalidEmailAddress.localized())
+        }
+    }
+
+    func presentMailConfirmationScreen() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mailConfirmationVC = storyboard.instantiateViewController(withIdentifier: "ForgotPassowrdVC")
+        present(mailConfirmationVC, animated: true, completion: nil)
     }
 
     // Call Login API

@@ -133,9 +133,6 @@
                                 <rect key="frame" x="20" y="358" width="374" height="34"/>
                                 <accessibility key="accessibilityConfiguration" identifier="forgotPassword"/>
                                 <state key="normal" title="Forgot Password"/>
-                                <connections>
-                                    <segue destination="hF4-Pz-cCO" kind="show" identifier="forgotPassword" id="eZr-1Q-eyn"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0l-NZ-Q5Q" customClass="FlatButton" customModule="Material">
                                 <rect key="frame" x="20" y="682" width="374" height="34"/>
@@ -182,7 +179,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="toggleRadioButtons:" destination="Azo-Yr-Z9r" eventType="valueChanged" id="3gw-ee-SPM"/>
-                                    <action selector="toggleRadioButtons:" destination="Fit-NA-UMn" eventType="valueChanged" id="Xs6-ao-Hak"/>
                                     <action selector="toggleRadioButtons:" destination="0ek-IO-lKt" eventType="valueChanged" id="vJT-cL-ff4"/>
                                 </connections>
                             </view>
@@ -253,6 +249,62 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ib-rp-qeC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="31.884057971014496" y="40.760869565217398"/>
+        </scene>
+        <!--Forgot Password View Controller-->
+        <scene sceneID="0V4-5p-CgS">
+            <objects>
+                <viewController storyboardIdentifier="ConfirmationMailVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="N2g-k5-GFc" customClass="ForgotPasswordViewController" customModule="Susi" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KgM-UO-1i4"/>
+                        <viewControllerLayoutGuide type="bottom" id="TL5-Zz-Xrd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ube-BQ-sMT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mail-icon" translatesAutoresizingMaskIntoConstraints="NO" id="M4z-CL-Y2p">
+                                <rect key="frame" x="167" y="118" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="AmE-Rf-4nv"/>
+                                    <constraint firstAttribute="width" constant="80" id="kuf-6l-XwD"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check your email!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KNd-S7-JOR">
+                                <rect key="frame" x="20" y="270" width="374" height="28.666666666666686"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We just sent you an email with a link to reset your password." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wEC-xs-PA0">
+                                <rect key="frame" x="20" y="314.66666666666669" width="374" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" name="TextGray"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="M4z-CL-Y2p" firstAttribute="top" secondItem="KgM-UO-1i4" secondAttribute="bottom" constant="118" id="6FU-oy-5I4"/>
+                            <constraint firstItem="wEC-xs-PA0" firstAttribute="leading" secondItem="ube-BQ-sMT" secondAttribute="leadingMargin" id="97e-ka-V9S"/>
+                            <constraint firstItem="KNd-S7-JOR" firstAttribute="top" secondItem="M4z-CL-Y2p" secondAttribute="bottom" constant="72" id="9ih-uZ-lU9"/>
+                            <constraint firstItem="wEC-xs-PA0" firstAttribute="top" secondItem="KNd-S7-JOR" secondAttribute="bottom" constant="16" id="FQO-Ko-en7"/>
+                            <constraint firstItem="wEC-xs-PA0" firstAttribute="trailing" secondItem="ube-BQ-sMT" secondAttribute="trailingMargin" id="U9o-Nj-ovW"/>
+                            <constraint firstItem="M4z-CL-Y2p" firstAttribute="centerX" secondItem="ube-BQ-sMT" secondAttribute="centerX" id="ib8-dn-awh"/>
+                            <constraint firstItem="KNd-S7-JOR" firstAttribute="leading" secondItem="ube-BQ-sMT" secondAttribute="leadingMargin" id="mli-K0-BSZ"/>
+                            <constraint firstItem="KNd-S7-JOR" firstAttribute="trailing" secondItem="ube-BQ-sMT" secondAttribute="trailingMargin" id="yfV-i4-TZn"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="inO-oR-T0M">
+                        <barButtonItem key="leftBarButtonItem" image="back_arrow" id="cgS-xZ-sjq">
+                            <connections>
+                                <action selector="dismissView:" destination="N2g-k5-GFc" id="srW-Hx-ioN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gLT-hm-VSS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2471.0144927536235" y="353.804347826087"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="rLb-1y-kPn">
@@ -361,7 +413,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="toggleRadioButtons:" destination="Fit-NA-UMn" eventType="valueChanged" id="LpL-Ib-oc5"/>
                                     <action selector="toggleRadioButtons:" destination="Azo-Yr-Z9r" eventType="valueChanged" id="qzy-bV-JgH"/>
                                 </connections>
                             </view>
@@ -1170,7 +1221,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d0i-Y5-QVw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4510.144927536232" y="-202.17391304347828"/>
+            <point key="canvasLocation" x="5417.3913043478269" y="-202.17391304347828"/>
         </scene>
         <!--Devices Activity View Controller-->
         <scene sceneID="vFt-eH-YID">
@@ -1207,7 +1258,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vAA-by-9qX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5286" y="181"/>
+            <point key="canvasLocation" x="6192.753623188406" y="180.97826086956522"/>
         </scene>
         <!--Device Instructions View Controller-->
         <scene sceneID="4j2-k0-G3S">
@@ -1295,7 +1346,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <activityIndicatorView key="tableFooterView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="whiteLarge" id="phy-Xh-don">
+                        <activityIndicatorView key="tableFooterView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" id="phy-Xh-don">
                             <rect key="frame" x="0.0" y="265" width="414" height="37"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="color" red="0.25447925925254822" green="0.51828217506408691" blue="0.95430618524551392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1421,148 +1472,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QKX-kj-wfz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3635" y="-762"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="H6a-qx-OLK">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hF4-Pz-cCO" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="414" height="736"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="jgu-nc-Cv5">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.25490196078431371" green="0.51764705882352935" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Fit-NA-UMn" kind="relationship" relationship="rootViewController" id="59Z-eh-tsp"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Sjd-dq-hpC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1045" y="180"/>
-        </scene>
-        <!--Forgot Password-->
-        <scene sceneID="BCX-3y-eQI">
-            <objects>
-                <viewController id="Fit-NA-UMn" customClass="ForgotPasswordViewController" customModule="Susi" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="MY1-jM-TPp"/>
-                        <viewControllerLayoutGuide type="bottom" id="DGr-8h-EN0"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="U1T-gl-beX">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xUr-5V-fz5" customClass="TextField" customModule="Material">
-                                <rect key="frame" x="20" y="24" width="374" height="30"/>
-                                <accessibility key="accessibilityConfiguration" identifier="email"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Email Address"/>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9bQ-nT-dJk" customClass="FlatButton" customModule="Material">
-                                <rect key="frame" x="20" y="131" width="374" height="44"/>
-                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <accessibility key="accessibilityConfiguration" identifier="reset"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="ylF-7d-boh"/>
-                                </constraints>
-                                <state key="normal" title="Reset">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1us-0p-C2t" customClass="M13Checkbox" customModule="M13Checkbox">
-                                <rect key="frame" x="20" y="81" width="24" height="24"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="3RU-fy-SIn"/>
-                                    <constraint firstAttribute="width" constant="24" id="hDW-wz-KsW"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="checkmarkLineWidth">
-                                        <real key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="boxLineWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="_IBMarkType" value=".checkmark"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hideBox" value="NO"/>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="_IBStateChangeAnimation" value=".fill"/>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="secondaryTintColor">
-                                        <color key="value" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="secondaryCheckmarkTintColor">
-                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="toggleRadioButtons:" destination="Fit-NA-UMn" eventType="valueChanged" id="R6a-JW-5qa"/>
-                                </connections>
-                            </view>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oc7-BM-6Ff" customClass="TextField" customModule="Material">
-                                <rect key="frame" x="52" y="77" width="342" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="BcI-qB-twG"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="xf1-wR-6TS"/>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="30" id="y50-Z1-mzZ"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Custom Server URL"/>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="BRz-rB-H1u">
-                                <rect key="frame" x="146" y="190" width="123" height="37"/>
-                            </activityIndicatorView>
-                        </subviews>
-                        <color key="backgroundColor" red="0.25447925925254822" green="0.51828217506408691" blue="0.95430618524551392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="BRz-rB-H1u" firstAttribute="leading" secondItem="U1T-gl-beX" secondAttribute="leadingMargin" constant="126" id="0gB-Vh-teP"/>
-                            <constraint firstItem="BRz-rB-H1u" firstAttribute="top" secondItem="9bQ-nT-dJk" secondAttribute="bottom" constant="15" id="6PL-DX-T9n"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="BRz-rB-H1u" secondAttribute="trailing" constant="125" id="Bgr-CM-sv1"/>
-                            <constraint firstItem="9bQ-nT-dJk" firstAttribute="top" secondItem="1us-0p-C2t" secondAttribute="bottom" constant="26" id="D0X-7k-SBU"/>
-                            <constraint firstItem="xUr-5V-fz5" firstAttribute="top" secondItem="MY1-jM-TPp" secondAttribute="bottom" constant="24" id="GqJ-6a-6dx"/>
-                            <constraint firstItem="9bQ-nT-dJk" firstAttribute="leading" secondItem="U1T-gl-beX" secondAttribute="leadingMargin" id="JhV-5i-rZK"/>
-                            <constraint firstItem="xUr-5V-fz5" firstAttribute="trailing" secondItem="U1T-gl-beX" secondAttribute="trailingMargin" id="K3s-N6-h2M"/>
-                            <constraint firstItem="oc7-BM-6Ff" firstAttribute="trailing" secondItem="U1T-gl-beX" secondAttribute="trailingMargin" id="OHe-h2-EcJ"/>
-                            <constraint firstItem="oc7-BM-6Ff" firstAttribute="top" secondItem="xUr-5V-fz5" secondAttribute="bottom" constant="23" id="aj6-hu-Die"/>
-                            <constraint firstItem="oc7-BM-6Ff" firstAttribute="leading" secondItem="1us-0p-C2t" secondAttribute="trailing" constant="8" id="ccG-d2-a2y"/>
-                            <constraint firstItem="9bQ-nT-dJk" firstAttribute="trailing" secondItem="U1T-gl-beX" secondAttribute="trailingMargin" id="dMM-iS-gZZ"/>
-                            <constraint firstItem="1us-0p-C2t" firstAttribute="leading" secondItem="U1T-gl-beX" secondAttribute="leadingMargin" id="lta-1L-Np4"/>
-                            <constraint firstItem="xUr-5V-fz5" firstAttribute="leading" secondItem="U1T-gl-beX" secondAttribute="leadingMargin" id="zTT-wK-H02"/>
-                            <constraint firstItem="1us-0p-C2t" firstAttribute="top" secondItem="xUr-5V-fz5" secondAttribute="bottom" constant="27" id="zTY-S1-0Et"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Forgot Password" id="cc2-rG-5hm">
-                        <barButtonItem key="leftBarButtonItem" image="back_arrow" id="hMs-qn-EGF">
-                            <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <action selector="dismissView" destination="Fit-NA-UMn" id="e8d-go-GnO"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="activityIndicator" destination="BRz-rB-H1u" id="7u2-oO-Jgt"/>
-                        <outlet property="addressTextField" destination="oc7-BM-6Ff" id="kwa-e2-suG"/>
-                        <outlet property="emailTextField" destination="xUr-5V-fz5" id="sm6-tx-pbD"/>
-                        <outlet property="personalServerButton" destination="1us-0p-C2t" id="poa-My-wz4"/>
-                        <outlet property="resetButton" destination="9bQ-nT-dJk" id="8Qw-og-o3t"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dGF-1C-qe5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2017" y="405"/>
         </scene>
         <!--Skill Listing View Controller-->
         <scene sceneID="5xE-mJ-Sg2">
@@ -1735,7 +1644,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cvM-c2-nEc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2837.68115942029" y="569.02173913043487"/>
+            <point key="canvasLocation" x="3744.9275362318845" y="569.02173913043487"/>
         </scene>
         <!--Skill Detail View Controller-->
         <scene sceneID="pab-3T-JER">
@@ -2257,13 +2166,13 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="jogendra.iitbhu@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zgr-Z4-RlE">
-                                                            <rect key="frame" x="64" y="11" width="290" height="21"/>
+                                                            <rect key="frame" x="60" y="19" width="294" height="19.333333333333329"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lore ipsum donor sit amet" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DXs-pa-yWv">
-                                                            <rect key="frame" x="60" y="59" width="294" height="17"/>
+                                                            <rect key="frame" x="60" y="59.333333333333343" width="294" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" name="TextGray"/>
                                                             <nil key="highlightedColor"/>
@@ -2429,7 +2338,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="575-W8-xrD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3776.811594202899" y="568.20652173913049"/>
+            <point key="canvasLocation" x="4684.057971014493" y="568.20652173913049"/>
         </scene>
         <!--All Feedback View Controller-->
         <scene sceneID="DcV-SN-pyd">
@@ -2509,7 +2418,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eie-UJ-len" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4559" y="699"/>
+            <point key="canvasLocation" x="5465.217391304348" y="698.64130434782612"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="g15-3o-WgW">
@@ -2531,12 +2440,36 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RFH-jV-2W3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3602.898550724638" y="-202.17391304347828"/>
+            <point key="canvasLocation" x="4510.144927536232" y="-202.17391304347828"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="We2-oq-r1a">
+            <objects>
+                <navigationController storyboardIdentifier="ForgotPassowrdVC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GyY-Le-yLY" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" backIndicatorImage="back_arrow" id="DtX-s8-4BK">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.25882352941176473" green="0.47450980392156861" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="N2g-k5-GFc" kind="relationship" relationship="rootViewController" id="Wro-OI-CDM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LWk-he-A7e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1563.768115942029" y="353.804347826087"/>
         </scene>
     </scenes>
     <resources>
         <image name="back_arrow" width="24" height="24"/>
         <image name="ios-wifi-hotspot" width="599" height="227"/>
+        <image name="mail-icon" width="80" height="64"/>
         <image name="manual_record" width="24" height="24"/>
         <image name="placeholder" width="800" height="600"/>
         <image name="record" width="100" height="100"/>
@@ -2545,7 +2478,13 @@
         <image name="star_full_gray" width="12" height="12"/>
         <image name="susi" width="1366" height="280"/>
         <namedColor name="TextGray">
+            <color red="0.37299999594688416" green="0.3880000114440918" blue="0.40799999237060547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TextGray">
             <color red="0.37299999589999999" green="0.38800001140000001" blue="0.40799999240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="iOSYellow">
+            <color red="1" green="0.81199997663497925" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>

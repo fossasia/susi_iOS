@@ -7,31 +7,19 @@
 //
 
 import UIKit
-import Material
-import M13Checkbox
 
 class ForgotPasswordViewController: GeneralViewController {
 
-    @IBOutlet weak var emailTextField: TextField!
-    @IBOutlet weak var resetButton: FlatButton!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var personalServerButton: M13Checkbox!
-    @IBOutlet weak var addressTextField: TextField!
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        prepareEmailField()
-        prepareAddressField()
-        prepareResetButton()
-        setupTheme()
     }
+
+    @IBAction func dismissView(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+
     override func localizeStrings() {
-        navigationItem.titleLabel.text = ControllerConstants.forgotPassword.localized()
         title = ControllerConstants.forgotPassword.localized()
-        emailTextField.placeholder = ControllerConstants.Login.emailAddress.localized()
-        addressTextField.placeholder = ControllerConstants.customServerURL.localized()
-        resetButton.setTitle(ControllerConstants.reset.localized(), for: .normal)
     }
 
 }
