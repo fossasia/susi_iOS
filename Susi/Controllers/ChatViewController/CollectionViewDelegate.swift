@@ -22,6 +22,7 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
         collectionView?.register(MapCell.self, forCellWithReuseIdentifier: ControllerConstants.mapCell)
         collectionView?.register(AnchorCell.self, forCellWithReuseIdentifier: ControllerConstants.anchorCell)
         collectionView?.register(StopCell.self, forCellWithReuseIdentifier: ControllerConstants.stopCell)
+        collectionView?.register(ImageCell.self, forCellWithReuseIdentifier: ControllerConstants.imageCell)
         collectionView?.accessibilityIdentifier = ControllerConstants.TestKeys.chatCollectionView
     }
 
@@ -72,6 +73,11 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
                 cell.setupCell(estimatedFrame, view.frame)
                 return cell
             }
+        } else if let expression = message.answerData?.expression, expression.isValidURL(), expression.isImage() {
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.imageCell, for: indexPath) as? ImageCell {
+                cell.message = message
+                return cell
+            }
         } else if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.incomingCell, for: indexPath) as? IncomingBubbleCell {
             cell.message = message
             let message = message.message
@@ -95,6 +101,8 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
             } else if message.actionType == ActionType.rss.rawValue ||
                 message.actionType == ActionType.websearch.rawValue {
                 return CGSize(width: view.frame.width, height: 145)
+            } else if let expression = message.answerData?.expression, expression.isValidURL(), expression.isImage() {
+                return CGSize(width: view.frame.width, height: 220)
             }
             return CGSize(width: view.frame.width, height: estimatedFrame.height + 38)
         }
