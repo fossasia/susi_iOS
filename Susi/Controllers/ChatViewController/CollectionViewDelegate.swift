@@ -102,7 +102,7 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
                 message.actionType == ActionType.websearch.rawValue {
                 return CGSize(width: view.frame.width, height: 145)
             } else if let expression = message.answerData?.expression, expression.isValidURL(), expression.isImage() {
-                return CGSize(width: view.frame.width, height: 220)
+                return CGSize(width: view.frame.width, height: 173)
             }
             return CGSize(width: view.frame.width, height: estimatedFrame.height + 38)
         }
