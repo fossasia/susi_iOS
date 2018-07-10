@@ -81,8 +81,9 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
             }
         } else if message.actionType == ActionType.video_play.rawValue {
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.youtubePlayerCell, for: indexPath) as? YouTubePlayerCell {
-                if let videoID = message.videoData?.identifier {
-                    self.addYotubePlayer(videoID)
+                self.resignResponders()
+                if let videoId = message.videoData?.identifier {
+                    cell.loadVideo(with: videoId)
                 }
                 return cell
             }
@@ -120,7 +121,7 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
 
     // Set Edge Insets
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 2, left: 0, bottom: 2, right: 0)
+        return UIEdgeInsets(top: 2, left: 0, bottom: 16, right: 0)
     }
 
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {

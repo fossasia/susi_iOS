@@ -40,6 +40,7 @@ public protocol YouTubePlayerDelegate {
 }
 
 private extension URL {
+
     func queryStringComponents() -> [String: AnyObject] {
 
         var dict = [String: AnyObject]()
@@ -59,10 +60,11 @@ private extension URL {
 
         return dict
     }
+
 }
 
 public func videoIDFromYouTubeURL(_ videoURL: URL) -> String? {
-    return videoURL.queryStringComponents()["v"] as! String?
+    return videoURL.queryStringComponents()["v"] as? String
 }
 
 /** Embed and control YouTube videos */
@@ -328,7 +330,9 @@ open class YouTubePlayerView: UIView, UIWebViewDelegate {
         let url = request.url
 
         // Check if ytplayer event and, if so, pass to handleJSEvent
-        if url!.scheme == "ytplayer" { handleJSEvent(url!) }
+        if url!.scheme == "ytplayer" {
+            handleJSEvent(url!)
+        }
 
         return true
     }

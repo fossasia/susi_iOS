@@ -339,17 +339,6 @@ extension ChatViewController {
         MODEL = Bundle.main.path(forResource: "susi", ofType: "pmdl")!
     }
 
-    // sets content offset so that messages start displaying from bottom
-    func setCollectionViewOffset() {
-        view.layoutIfNeeded()
-
-        let contentSize = collectionView?.collectionViewLayout.collectionViewContentSize
-        if let contentHeight = contentSize?.height, let collectionViewHeight = collectionView?.bounds.size.height {
-            let targetContentOffset = CGPoint(x: 0, y: contentHeight - collectionViewHeight)
-            collectionView?.setContentOffset(targetContentOffset, animated: true)
-        }
-    }
-
     // dismiss keyboard when touched anywhere in CV
     func addGestures() {
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(resignResponders)))
@@ -393,7 +382,6 @@ extension ChatViewController: YouTubePlayerDelegate {
 
     func playerReady(_ videoPlayer: YouTubePlayerView) {
         self.playerIndicator.stopAnimating()
-        youtubePlayer.play()
     }
 
     func playerStateChanged(_ videoPlayer: YouTubePlayerView, playerState: YouTubePlayerState) {
