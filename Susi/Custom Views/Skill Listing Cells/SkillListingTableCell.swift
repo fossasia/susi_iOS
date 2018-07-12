@@ -22,8 +22,10 @@ class SkillListingTableCell: UITableViewCell {
 
     var skills: [Skill]? {
         didSet {
+            // Sort skills in descending order of average ratings
+            let sortedSkill = skills?.sorted(by: {$0.averageRating > $1.averageRating})
             skillListingCollectionView.skillListController = skillListController
-            skillListingCollectionView.groupSkills = skills
+            skillListingCollectionView.groupSkills = sortedSkill
         }
     }
 
