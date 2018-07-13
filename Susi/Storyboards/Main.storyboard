@@ -1221,7 +1221,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d0i-Y5-QVw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5417.3913043478269" y="-202.17391304347828"/>
+            <point key="canvasLocation" x="5326" y="157"/>
         </scene>
         <!--Devices Activity View Controller-->
         <scene sceneID="vFt-eH-YID">
@@ -1290,7 +1290,7 @@
                                 <color key="textColor" name="TextGray"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ios-wifi-hotspot" translatesAutoresizingMaskIntoConstraints="NO" id="Qmt-jb-vyc">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="susiai-wifi" translatesAutoresizingMaskIntoConstraints="NO" id="Qmt-jb-vyc">
                                 <rect key="frame" x="52" y="301" width="310" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="130" id="Tva-CG-IVf"/>
@@ -1302,9 +1302,8 @@
                                 <color key="textColor" name="TextGray"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9rQ-rF-JuK">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. Connect to the Wi-Fi hotspot for the device that you are setting up. It will have 'susi.ai' named, like the example below." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9rQ-rF-JuK">
                                 <rect key="frame" x="20" y="227.66666666666666" width="374" height="57.333333333333343"/>
-                                <string key="text">2. Connect to the Wi-Fi hotspot for the device that you are setting up. It will have a 4-digit number on the end, like the example below.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.37254901960784315" green="0.38823529411764707" blue="0.40784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1346,7 +1345,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <activityIndicatorView key="tableFooterView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" id="phy-Xh-don">
+                        <activityIndicatorView key="tableFooterView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="whiteLarge" id="phy-Xh-don">
                             <rect key="frame" x="0.0" y="265" width="414" height="37"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="color" red="0.25447925925254822" green="0.51828217506408691" blue="0.95430618524551392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2468,7 +2467,6 @@
     </scenes>
     <resources>
         <image name="back_arrow" width="24" height="24"/>
-        <image name="ios-wifi-hotspot" width="599" height="227"/>
         <image name="mail-icon" width="80" height="64"/>
         <image name="manual_record" width="24" height="24"/>
         <image name="placeholder" width="800" height="600"/>
@@ -2477,11 +2475,9 @@
         <image name="star_full" width="22" height="22"/>
         <image name="star_full_gray" width="12" height="12"/>
         <image name="susi" width="1366" height="280"/>
+        <image name="susiai-wifi" width="599" height="227"/>
         <namedColor name="TextGray">
             <color red="0.37299999594688416" green="0.3880000114440918" blue="0.40799999237060547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="TextGray">
-            <color red="0.37299999589999999" green="0.38800001140000001" blue="0.40799999240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="iOSYellow">
             <color red="1" green="0.81199997663497925" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
