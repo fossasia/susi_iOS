@@ -1,23 +1,14 @@
 //
-//  PlayerView.swift
+//  PlayerViewController.swift
 //  Susi
 //
-//  Created by JOGENDRA on 10/07/18.
+//  Created by JOGENDRA on 16/07/18.
 //  Copyright © 2018 FOSSAsia. All rights reserved.
 //
 
 import UIKit
 
-class PlayerView: UIView, YouTubePlayerDelegate {
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        addYotubePlayer()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+class PlayerViewController: UIViewController {
 
     // youtube player
     lazy var youtubePlayer: YouTubePlayerView = {
@@ -38,11 +29,25 @@ class PlayerView: UIView, YouTubePlayerDelegate {
         return indicator
     }()
 
+    init(videoID: String) {
+        super.init(nibName: nil, bundle: nil)
+        addYotubePlayer()
+        play(videoID)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+
     // shows youtube player
     func addYotubePlayer() {
         if let window = UIApplication.shared.keyWindow {
             blackView.frame = window.frame
-            self.addSubview(blackView)
+            view.addSubview(blackView)
             blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
             let tap = UITapGestureRecognizer(target: self, action: #selector(handleDismiss))
             tap.numberOfTapsRequired = 1
@@ -76,12 +81,16 @@ class PlayerView: UIView, YouTubePlayerDelegate {
 
     @objc func handleDismiss() {
         blackView.removeFromSuperview()
-        UIApplication.shared.keyWindow?.viewWithTag(24)?.removeFromSuperview()
-        UIApplication.shared.keyWindow?.removeFromSuperview()
+        self.dismiss(animated: true, completion: nil)
     }
+
+}
+
+extension PlayerViewController: YouTubePlayerDelegate {
 
     func playerReady(_ videoPlayer: YouTubePlayerView) {
         self.playerIndicator.stopAnimating()
+        videoPlayer.play()
     }
 
     func playerStateChanged(_ videoPlayer: YouTubePlayerView, playerState: YouTubePlayerState) {

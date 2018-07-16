@@ -82,6 +82,7 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
         } else if message.actionType == ActionType.video_play.rawValue {
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.youtubePlayerCell, for: indexPath) as? YouTubePlayerCell {
                 cell.message = message
+                cell.delegate = self
                 return cell
             }
         } else if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.incomingCell, for: indexPath) as? IncomingBubbleCell {

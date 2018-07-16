@@ -9,15 +9,19 @@
 import UIKit
 import Kingfisher
 
+protocol PresentControllerDelegate: class {
+    func loadNewScreen(controller: UIViewController) -> Void
+}
+
 class YouTubePlayerCell: ChatMessageCell {
+
+    weak var delegate: PresentControllerDelegate?
 
     var message: Message? {
         didSet {
             addThumbnail()
         }
     }
-
-    var player = PlayerView(frame: UIScreen.main.bounds)
 
     lazy var thumbnailView: UIImageView = {
         let imageView = UIImageView()
@@ -52,9 +56,7 @@ class YouTubePlayerCell: ChatMessageCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        player.removeFromSuperview()
-        UIApplication.shared.keyWindow?.viewWithTag(24)?.removeFromSuperview()
-        UIApplication.shared.keyWindow?.removeFromSuperview()
+        thumbnailView.image = nil
     }
 
     func addThumbnail() {
@@ -83,9 +85,9 @@ class YouTubePlayerCell: ChatMessageCell {
 
     @objc func playVideo() {
         if let videoID = message?.videoData?.identifier {
-            player.tag = 24
-            UIApplication.shared.keyWindow?.addSubview(player)
-            player.play(videoID)
+            let playerVC = PlayerViewController(videoID: videoID)
+            playerVC.modalPresentationStyle = .overFullScreen
+            delegate?.loadNewScreen(controller: playerVC)
         }
     }
 

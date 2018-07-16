@@ -42,22 +42,6 @@ class ChatViewController: UICollectionViewController {
         return button
     }()
 
-    // youtube player
-    lazy var youtubePlayer: YouTubePlayerView = {
-        let frame = CGRect(x: 0, y: 0, width: self.view.frame.width - 16, height: self.view.frame.height * 1 / 3)
-        let player = YouTubePlayerView(frame: frame)
-        player.delegate = self
-        return player
-    }()
-
-    // youtube player loader
-    lazy var playerIndicator: UIActivityIndicatorView = {
-        let indicator = UIActivityIndicatorView()
-        indicator.activityIndicatorViewStyle = .whiteLarge
-        indicator.hidesWhenStopped = true
-        return indicator
-    }()
-
     // container view
     let messageInputContainerView: UIView = {
         let view = UIView()
@@ -107,9 +91,6 @@ class ChatViewController: UICollectionViewController {
 
     // used to send user's location to the server
     var locationManager = CLLocationManager()
-
-    // used as an overlay to dismiss the youtube player
-    let blackView = UIView()
 
     // snowboy resource
     let RESOURCE = Bundle.main.path(forResource: "common", ofType: "res")
