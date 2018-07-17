@@ -13,6 +13,7 @@ extension Client {
         static let DuckDuckGo = "http://api.duckduckgo.com"
         static let YoutubeSearch = "https://www.googleapis.com/youtube/v3/search"
         static let SnowboyTrain = "https://snowboy.kitt.ai/api/v1/train/"
+        static let SpeakerBaseURL = "http://10.0.0.1:5000"
     }
 
     struct Methods {
@@ -32,6 +33,9 @@ extension Client {
         static let FeedbackSkill = "/cms/feedbackSkill.json"
         static let GetSkillFeedback = "/cms/getSkillFeedback.json"
         static let baseSkillImagePath = "https://raw.githubusercontent.com/fossasia/susi_skill_data/master/models/"
+        static let WifiCredentials = "wifi_credentials"
+        static let Auth = "auth"
+        static let Config = "config"
     }
 
     struct ResponseMessages {
