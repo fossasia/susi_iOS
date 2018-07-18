@@ -19,6 +19,7 @@ enum ActionType: String {
     case anchor
     case indicatorView
     case stop
+    case video_play
 }
 
 class Message: Object {
@@ -34,6 +35,7 @@ class Message: Object {
     @objc dynamic var mapData: MapAction?
     @objc dynamic var anchorData: AnchorAction?
     @objc dynamic var tableData: TableAction?
+    @objc dynamic var videoData: VideoPlayAction?
     var websearchData = List<WebsearchAction>()
     @objc dynamic var skill: String = ""
 
@@ -94,6 +96,9 @@ class Message: Object {
                             message.actionType = ActionType.stop.rawValue
                             message.message = ControllerConstants.stopMessage
                             message.answerData = AnswerAction(action: action)
+                        } else if type == ActionType.video_play.rawValue {
+                            message.actionType = ActionType.video_play.rawValue
+                            message.videoData = VideoPlayAction(action: action)
                         }
                     }
                     messages.append(message)

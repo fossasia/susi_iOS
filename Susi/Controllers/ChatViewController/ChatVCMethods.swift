@@ -90,30 +90,6 @@ extension ChatViewController {
         indicatorView.addGestureRecognizer(gesture)
     }
 
-    // shows youtube player
-    func addYotubePlayer(_ videoID: String) {
-        if let window = UIApplication.shared.keyWindow {
-            blackView.frame = window.frame
-            view.addSubview(blackView)
-            blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
-            blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
-
-            blackView.addSubview(youtubePlayer)
-            let centerX = UIScreen.main.bounds.size.width / 2
-            let centerY = UIScreen.main.bounds.size.height / 3
-            youtubePlayer.center = CGPoint(x: centerX, y: centerY)
-            youtubePlayer.loadVideoID(videoID)
-
-            blackView.alpha = 0
-            youtubePlayer.alpha = 0
-
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-                self.blackView.alpha = 1
-                self.youtubePlayer.alpha = 1
-            }, completion: nil)
-        }
-    }
-
     func addActivityIndicatorMessage() {
         removeActivityIndicator()
         let message = Message()
@@ -332,27 +308,9 @@ extension ChatViewController {
         MODEL = Bundle.main.path(forResource: "susi", ofType: "pmdl")!
     }
 
-    // sets content offset so that messages start displaying from bottom
-    func setCollectionViewOffset() {
-        view.layoutIfNeeded()
-
-        let contentSize = collectionView?.collectionViewLayout.collectionViewContentSize
-        if let contentHeight = contentSize?.height, let collectionViewHeight = collectionView?.bounds.size.height {
-            let targetContentOffset = CGPoint(x: 0, y: contentHeight - collectionViewHeight)
-            collectionView?.setContentOffset(targetContentOffset, animated: true)
-        }
-    }
-
     // dismiss keyboard when touched anywhere in CV
     func addGestures() {
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(resignResponders)))
-    }
-
-    // dismiss the overlay for the video
-    @objc func handleDismiss() {
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.blackView.removeFromSuperview()
-        }, completion: nil)
     }
 
     // scroll to last message
@@ -377,6 +335,14 @@ extension ChatViewController {
         messages = Array(realm.objects(Message.self))
         collectionView?.reloadData()
         scrollToLast()
+    }
+
+}
+
+extension ChatViewController: PresentControllerDelegate {
+
+    func loadNewScreen(controller: UIViewController) {
+        self.present(controller, animated: true, completion: nil)
     }
 
 }

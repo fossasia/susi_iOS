@@ -40,6 +40,7 @@ class ControllerConstants {
     static let anchorCell = "anchorCell"
     static let stopCell = "stopCell"
     static let imageCell = "imageCell"
+    static let youtubePlayerCell = "youtubePlayerCell"
     static let stopMessage = "Stopped"
     static let defaultMessage = ""
     static let defaultWebSearchImage = "no-image"
@@ -225,6 +226,7 @@ class ControllerConstants {
         static let susiSymbol = UIImage(named: "susi_symbol")
         static let settingsIcon = UIImage(named: "settings_icon")
         static let plusIcon = UIImage(named: "plus_icon")
+        static let youtubePlayButton = UIImage(named: "youtube_play_button")
     }
 
 }
