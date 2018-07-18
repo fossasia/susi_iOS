@@ -1654,7 +1654,7 @@
                         <viewControllerLayoutGuide type="bottom" id="NUT-dP-po9"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QVl-Nt-KxT">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="DiX-KG-d8K">

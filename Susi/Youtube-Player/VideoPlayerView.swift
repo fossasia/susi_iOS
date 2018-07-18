@@ -33,27 +33,10 @@ public enum YouTubePlaybackQuality: String {
     case HighResolution = "highres"
 }
 
-public protocol YouTubePlayerDelegate: class {
+public protocol YouTubePlayerDelegate {
     func playerReady(_ videoPlayer: YouTubePlayerView)
     func playerStateChanged(_ videoPlayer: YouTubePlayerView, playerState: YouTubePlayerState)
     func playerQualityChanged(_ videoPlayer: YouTubePlayerView, playbackQuality: YouTubePlaybackQuality)
-}
-
-// Make delegate methods optional by providing default implementations
-public extension YouTubePlayerDelegate {
-
-    func playerReady(_ videoPlayer: YouTubePlayerView) {
-
-    }
-
-    func playerStateChanged(_ videoPlayer: YouTubePlayerView, playerState: YouTubePlayerState) {
-
-    }
-
-    func playerQualityChanged(_ videoPlayer: YouTubePlayerView, playbackQuality: YouTubePlaybackQuality) {
-
-    }
-
 }
 
 private extension URL {
@@ -70,20 +53,17 @@ private extension URL {
 
                 // Pull key, val from from pair parts (separated by =) and set dict[key] = value
                 let components = pair.components(separatedBy: "=")
-                if components.count > 1 {
-                    dict[components[0]] = components[1] as AnyObject?
-                }
+                dict[components[0]] = components[1] as AnyObject?
             }
+
         }
+
         return dict
     }
 
 }
 
 public func videoIDFromYouTubeURL(_ videoURL: URL) -> String? {
-    if videoURL.pathComponents.count > 1 && (videoURL.host?.hasSuffix("youtu.be"))! {
-        return videoURL.pathComponents[1]
-    }
     return videoURL.queryStringComponents()["v"] as? String
 }
 
@@ -107,10 +87,15 @@ open class YouTubePlayerView: UIView, UIWebViewDelegate {
     open var playerVars = YouTubePlayerParameters()
 
     /** Used to respond to player events */
-    open weak var delegate: YouTubePlayerDelegate?
+    open var delegate: YouTubePlayerDelegate?
 
     // MARK: Various methods for initialization
-
+    /*
+     public init() {
+     super.init()
+     self.buildWebView(playerParameters())
+     }
+     */
     override public init(frame: CGRect) {
         super.init(frame: frame)
         buildWebView(playerParameters())
@@ -130,17 +115,20 @@ open class YouTubePlayerView: UIView, UIWebViewDelegate {
         addSubview(webView)
     }
 
+
     // MARK: Web view initialization
 
     fileprivate func buildWebView(_ parameters: [String: AnyObject]) {
         webView = UIWebView()
-        webView.isOpaque = false
-        webView.backgroundColor = UIColor.clear
         webView.allowsInlineMediaPlayback = true
         webView.mediaPlaybackRequiresUserAction = false
         webView.delegate = self
+        webView.backgroundColor = UIColor.clear
+        webView.isOpaque = false
+        webView.scrollView.bounces = false
         webView.scrollView.isScrollEnabled = false
     }
+
 
     // MARK: Load player
 
@@ -165,58 +153,44 @@ open class YouTubePlayerView: UIView, UIWebViewDelegate {
         loadWebViewWithParameters(playerParameters())
     }
 
+
     // MARK: Player controls
 
-    open func mute() {
-        _ = evaluatePlayerCommand("mute()")
-    }
-
-    open func unMute() {
-        _ = evaluatePlayerCommand("unMute()")
-    }
-
     open func play() {
-        _ = evaluatePlayerCommand("playVideo()")
+        evaluatePlayerCommand("playVideo()")
     }
 
     open func pause() {
-        _ = evaluatePlayerCommand("pauseVideo()")
+        evaluatePlayerCommand("pauseVideo()")
     }
 
     open func stop() {
-        _ = evaluatePlayerCommand("stopVideo()")
+        evaluatePlayerCommand("stopVideo()")
     }
 
     open func clear() {
-        _ = evaluatePlayerCommand("clearVideo()")
+        evaluatePlayerCommand("clearVideo()")
     }
 
     open func seekTo(_ seconds: Float, seekAhead: Bool) {
-        _ = evaluatePlayerCommand("seekTo(\(seconds), \(seekAhead))")
-    }
-
-    open func getDuration() -> String? {
-        return evaluatePlayerCommand("getDuration()")
-    }
-
-    open func getCurrentTime() -> String? {
-        return evaluatePlayerCommand("getCurrentTime()")
+        evaluatePlayerCommand("seekTo(\(seconds), \(seekAhead))")
     }
 
     // MARK: Playlist controls
 
     open func previousVideo() {
-        _ = evaluatePlayerCommand("previousVideo()")
+        evaluatePlayerCommand("previousVideo()")
     }
 
     open func nextVideo() {
-        _ = evaluatePlayerCommand("nextVideo()")
+        evaluatePlayerCommand("nextVideo()")
     }
 
-    fileprivate func evaluatePlayerCommand(_ command: String) -> String? {
+    fileprivate func evaluatePlayerCommand(_ command: String) {
         let fullCommand = "player." + command + ";"
-        return webView.stringByEvaluatingJavaScript(from: fullCommand)
+        webView.stringByEvaluatingJavaScript(from: fullCommand)
     }
+
 
     // MARK: Player setup
 
@@ -229,33 +203,38 @@ open class YouTubePlayerView: UIView, UIWebViewDelegate {
         let jsonParameters = serializedJSON(parameters as AnyObject)!
 
         // Replace %@ in rawHTMLString with jsonParameters string
-        let htmlString = rawHTMLString.replacingOccurrences(of: "%@", with: jsonParameters)
+        let htmlString = rawHTMLString.replacingOccurrences(of: "%@", with: jsonParameters, options: [], range: nil)
 
         // Load HTML in web view
         webView.loadHTMLString(htmlString, baseURL: URL(string: "https://www.youtube.com/"))
     }
 
     fileprivate func playerHTMLPath() -> String {
-        return Bundle(for: YouTubePlayerView.self).path(forResource: "YTPlayer", ofType: "html")!
+        return Bundle(for: self.classForCoder).path(forResource: "YTPlayer", ofType: "html")!
     }
 
     fileprivate func htmlStringWithFilePath(_ path: String) -> String? {
 
+        // Error optional for error handling
+        var error: NSError?
+
+        // Get HTML string from path
+        let htmlString: NSString?
         do {
-
-            // Get HTML string from path
-            let htmlString = try NSString(contentsOfFile: path, encoding: String.Encoding.utf8.rawValue)
-
-            return htmlString as String
-
-        } catch _ {
-
-            // Error fetching HTML
-            printLog("Lookup error: no HTML file found for path")
-
-            return nil
+            htmlString = try NSString(contentsOfFile: path, encoding: String.Encoding.utf8.rawValue)
+        } catch let error1 as NSError {
+            error = error1
+            htmlString = nil
         }
+
+        // Check for error
+        if let _ = error {
+            print("Lookup error: no HTML file found for path, \(path)")
+        }
+
+        return htmlString! as String
     }
+
 
     // MARK: Player parameters and defaults
 
@@ -280,22 +259,28 @@ open class YouTubePlayerView: UIView, UIWebViewDelegate {
 
     fileprivate func serializedJSON(_ object: AnyObject) -> String? {
 
+        // Empty error
+        var error: NSError?
+
+        // Serialize json into NSData
+        let jsonData: Data?
         do {
-            // Serialize to JSON string
-            let jsonData = try JSONSerialization.data(withJSONObject: object, options: JSONSerialization.WritingOptions.prettyPrinted)
+            jsonData = try JSONSerialization.data(withJSONObject: object, options: JSONSerialization.WritingOptions.prettyPrinted)
+        } catch let error1 as NSError {
+            error = error1
+            jsonData = nil
+        }
 
-            // Succeeded
-            return NSString(data: jsonData, encoding: String.Encoding.utf8.rawValue) as String?
-
-        } catch let jsonError {
-
-            // JSON serialization failed
-            print(jsonError)
-            printLog("Error parsing JSON")
-
+        // Check for error and return nil
+        if let _ = error {
+            print("Error parsing JSON")
             return nil
         }
+
+        // Success, return JSON string
+        return NSString(data: jsonData!, encoding: String.Encoding.utf8.rawValue) as? String
     }
+
 
     // MARK: JS Event Handling
 
@@ -304,37 +289,39 @@ open class YouTubePlayerView: UIView, UIWebViewDelegate {
         // Grab the last component of the queryString as string
         let data: String? = eventURL.queryStringComponents()["data"] as? String
 
-        if let host = eventURL.host, let event = YouTubePlayerEvents(rawValue: host) {
+        if let host = eventURL.host {
+            if let event = YouTubePlayerEvents(rawValue: host) {
+                // Check event type and handle accordingly
+                switch event {
+                case .YouTubeIframeAPIReady:
+                    ready = true
+                    break
 
-            // Check event type and handle accordingly
-            switch event {
-            case .YouTubeIframeAPIReady:
-                ready = true
-                break
+                case .Ready:
+                    delegate?.playerReady(self)
 
-            case .Ready:
-                delegate?.playerReady(self)
+                    break
 
-                break
+                case .StateChange:
+                    if let newState = YouTubePlayerState(rawValue: data!) {
+                        playerState = newState
+                        delegate?.playerStateChanged(self, playerState: newState)
+                    }
 
-            case .StateChange:
-                if let newState = YouTubePlayerState(rawValue: data!) {
-                    playerState = newState
-                    delegate?.playerStateChanged(self, playerState: newState)
+                    break
+
+                case .PlaybackQualityChange:
+                    if let newQuality = YouTubePlaybackQuality(rawValue: data!) {
+                        playbackQuality = newQuality
+                        delegate?.playerQualityChanged(self, playbackQuality: newQuality)
+                    }
+
+                    break
                 }
-
-                break
-
-            case .PlaybackQualityChange:
-                if let newQuality = YouTubePlaybackQuality(rawValue: data!) {
-                    playbackQuality = newQuality
-                    delegate?.playerQualityChanged(self, playbackQuality: newQuality)
-                }
-
-                break
             }
         }
     }
+
 
     // MARK: UIWebViewDelegate
 
@@ -343,16 +330,10 @@ open class YouTubePlayerView: UIView, UIWebViewDelegate {
         let url = request.url
 
         // Check if ytplayer event and, if so, pass to handleJSEvent
-        if let url = url, url.scheme == "ytplayer" {
-            handleJSEvent(url)
+        if url!.scheme == "ytplayer" {
+            handleJSEvent(url!)
         }
 
         return true
     }
-
-}
-
-private func printLog(_ strings: CustomStringConvertible...) {
-    let toPrint = ["[YouTubePlayer]"] + strings
-    print(toPrint, separator: " ", terminator: "\n")
 }

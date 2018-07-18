@@ -23,6 +23,7 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
         collectionView?.register(AnchorCell.self, forCellWithReuseIdentifier: ControllerConstants.anchorCell)
         collectionView?.register(StopCell.self, forCellWithReuseIdentifier: ControllerConstants.stopCell)
         collectionView?.register(ImageCell.self, forCellWithReuseIdentifier: ControllerConstants.imageCell)
+        collectionView?.register(YouTubePlayerCell.self, forCellWithReuseIdentifier: ControllerConstants.youtubePlayerCell)
         collectionView?.accessibilityIdentifier = ControllerConstants.TestKeys.chatCollectionView
     }
 
@@ -78,6 +79,12 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
                 cell.message = message
                 return cell
             }
+        } else if message.actionType == ActionType.video_play.rawValue {
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.youtubePlayerCell, for: indexPath) as? YouTubePlayerCell {
+                cell.message = message
+                cell.delegate = self
+                return cell
+            }
         } else if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.incomingCell, for: indexPath) as? IncomingBubbleCell {
             cell.message = message
             let message = message.message
@@ -103,6 +110,8 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
                 return CGSize(width: view.frame.width, height: 145)
             } else if let expression = message.answerData?.expression, expression.isValidURL(), expression.isImage() {
                 return CGSize(width: view.frame.width, height: 220)
+            } else if message.actionType == ActionType.video_play.rawValue {
+                return CGSize(width: view.frame.width, height: 158)
             }
             return CGSize(width: view.frame.width, height: estimatedFrame.height + 38)
         }
@@ -110,7 +119,7 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
 
     // Set Edge Insets
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 2, left: 0, bottom: 2, right: 0)
+        return UIEdgeInsets(top: 2, left: 0, bottom: 16, right: 0)
     }
 
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
