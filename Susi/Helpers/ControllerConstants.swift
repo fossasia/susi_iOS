@@ -210,6 +210,21 @@ class ControllerConstants {
         static let languageCode = "languageCode"
     }
 
+    struct DeviceActivity {
+        static let susiSSID = "SUSI.AI"
+        static let deviceCellIndentifier = "DeviceCell"
+        static let connectedDetailText = "Click here to procceed with setup"
+        static let notConnectedDetailText = "Click on '+' icon to add new device"
+        static let noDeviceTitle = "No device connected yet"
+        static let wifiAlertTitle = "Enter Wifi Credentials"
+        static let wifiAlertMessage = "Enter your previous connected wifi credentials"
+        static let passwordAlertTitle = "Enter Password"
+        static let passwordAlertMessage = "Enter your SUSI account password to procceed further"
+        static let wifiSSIDPlaceholder = "Enter wifi SSID"
+        static let wifiPasswordPlaceholder = "Enter wifi password"
+        static let userPasswordPlaceholder = "Enter password"
+    }
+
     struct Images {
         static let backArrow = UIImage(named: "back_arrow")
         static let check = UIImage(named: "check")
@@ -227,6 +242,8 @@ class ControllerConstants {
         static let settingsIcon = UIImage(named: "settings_icon")
         static let plusIcon = UIImage(named: "plus_icon")
         static let youtubePlayButton = UIImage(named: "youtube_play_button")
+        static let availableDevice = UIImage(named: "available_device_icon")
+        static let deviceIcon = UIImage(named: "device_icon")
     }
 
 }

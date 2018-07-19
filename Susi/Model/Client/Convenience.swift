@@ -526,4 +526,45 @@ extension Client {
         })
     }
 
+    // MARK: - Smart Speaker Methods
+
+    func sendWifiCredentials(wifiSSID: String, wifiPassword: String, _ completion: @escaping(_ success: Bool, _ error: String?) -> Void) {
+        let url = "\(APIURLs.SpeakerBaseURL)/\(Methods.WifiCredentials)/\(wifiSSID)/\(wifiPassword)"
+        _ = makeRequest(url, .get, [:], parameters: [:], completion: { (results, message) in
+            if let _ = message {
+                completion(false, ResponseMessages.ServerError)
+            } else if results != nil {
+                completion(true, nil)
+            }
+            completion(false, ResponseMessages.ServerError)
+            return
+        })
+    }
+
+    func sendAuthCredentials(choice: String, email: String, password: String, _ completion: @escaping(_ success: Bool, _ error: String?) -> Void) {
+        let url = "\(APIURLs.SpeakerBaseURL)/\(Methods.Auth)/\(choice)/\(email)/\(password)"
+        _ = makeRequest(url, .get, [:], parameters: [:], completion: { (results, message) in
+            if let _ = message {
+                completion(false, ResponseMessages.ServerError)
+            } else if results != nil {
+                completion(true, nil)
+            }
+            completion(false, ResponseMessages.ServerError)
+            return
+        })
+    }
+
+    func setConfiguration(stt: String, tts: String, hotword: String, wake: String, _ completion: @escaping(_ success: Bool, _ error: String?) -> Void) {
+        let url = "\(APIURLs.SpeakerBaseURL)/\(Methods.Config)/\(stt)/\(tts)/\(hotword)/\(wake)"
+        _ = makeRequest(url, .get, [:], parameters: [:], completion: { (results, message) in
+            if let _ = message {
+                completion(false, ResponseMessages.ServerError)
+            } else if results != nil {
+                completion(true, nil)
+            }
+            completion(false, ResponseMessages.ServerError)
+            return
+        })
+    }
+
 }

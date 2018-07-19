@@ -26,9 +26,21 @@ class DevicesActivityViewController: UITableViewController {
         return button
     }()
 
+    let activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        indicator.hidesWhenStopped = true
+        indicator.activityIndicatorViewStyle = .whiteLarge
+        indicator.color = UIColor.defaultColor()
+        return indicator
+    }()
+
+    var wifiAlertController = UIAlertController()
+    var passwordAlertController = UIAlertController()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTitle()
+        prepareActivityIndicator()
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -41,16 +53,26 @@ class DevicesActivityViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         tableView.tableFooterView = UIView(frame: .zero)
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DeviceCell", for: indexPath)
-        cell.imageView?.image = UIImage(named: "device_icon")
-        if let speakerSSID = fetchSSIDInfo(), speakerSSID == "susi.ai" {
+        let cell = tableView.dequeueReusableCell(withIdentifier: ControllerConstants.DeviceActivity.deviceCellIndentifier, for: indexPath)
+        if let speakerSSID = fetchSSIDInfo(), speakerSSID == ControllerConstants.DeviceActivity.susiSSID {
             cell.accessoryType = .disclosureIndicator
+            cell.imageView?.image = ControllerConstants.Images.availableDevice
             cell.textLabel?.text = speakerSSID
+            cell.detailTextLabel?.text = ControllerConstants.DeviceActivity.connectedDetailText
         } else {
             cell.accessoryType = .none
-            cell.textLabel?.text = "No device connected yet"
+            cell.textLabel?.text = ControllerConstants.DeviceActivity.noDeviceTitle
+            cell.detailTextLabel?.text = ControllerConstants.DeviceActivity.notConnectedDetailText
+            cell.imageView?.image = ControllerConstants.Images.deviceIcon
         }
         return cell
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0, let speakerSSID = fetchSSIDInfo(), speakerSSID == ControllerConstants.DeviceActivity.susiSSID {
+            // Open a popup to submit wifi credentials
+            presentWifiCredentialsPopup()
+        }
     }
 
 }
