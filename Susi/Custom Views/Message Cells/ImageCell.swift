@@ -23,10 +23,8 @@ class ImageCell: ChatMessageCell {
     let imageView: AnimatedImageView = {
         let imageView = AnimatedImageView()
         imageView.image = ControllerConstants.Images.placeholder
-        imageView.contentMode = .scaleAspectFill
-        imageView.layer.borderWidth = 2.0
-        imageView.layer.borderColor = UIColor.white.cgColor
-        imageView.layer.cornerRadius = 16
+        imageView.contentMode = .scaleAspectFit
+        imageView.layer.cornerRadius = 15
         imageView.layer.masksToBounds = true
         imageView.isUserInteractionEnabled = true
         return imageView
@@ -53,7 +51,8 @@ class ImageCell: ChatMessageCell {
 
     func addImageView() {
         textBubbleView.addSubview(imageView)
-        imageView.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
+        textBubbleView.addConstraintsWithFormat(format: "H:|-4-[v0]-4-|", views: imageView)
+        textBubbleView.addConstraintsWithFormat(format: "V:|-4-[v0]-20-|", views: imageView)
         let gesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(openImage))
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(gesture)
@@ -70,7 +69,9 @@ class ImageCell: ChatMessageCell {
 
     func setupView() {
         messageTextView.frame = CGRect.zero
-        textBubbleView.frame = CGRect(x: 8, y: 0, width: 200, height: 220)
+        textBubbleView.frame = CGRect(x: 8, y: 0, width: 228, height: 173)
+        textBubbleView.backgroundColor = .white
+        textBubbleView.layer.borderWidth = 0.2
     }
 
     func downloadImage() {

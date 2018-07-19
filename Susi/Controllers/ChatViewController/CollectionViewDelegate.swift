@@ -109,7 +109,7 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
                 message.actionType == ActionType.websearch.rawValue {
                 return CGSize(width: view.frame.width, height: 145)
             } else if let expression = message.answerData?.expression, expression.isValidURL(), expression.isImage() {
-                return CGSize(width: view.frame.width, height: 220)
+                return CGSize(width: view.frame.width, height: 173)
             } else if message.actionType == ActionType.video_play.rawValue {
                 return CGSize(width: view.frame.width, height: 158)
             }
