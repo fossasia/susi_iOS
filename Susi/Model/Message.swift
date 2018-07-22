@@ -20,6 +20,7 @@ enum ActionType: String {
     case indicatorView
     case stop
     case video_play
+    case audio_play
 }
 
 class Message: Object {
@@ -98,6 +99,9 @@ class Message: Object {
                             message.answerData = AnswerAction(action: action)
                         } else if type == ActionType.video_play.rawValue {
                             message.actionType = ActionType.video_play.rawValue
+                            message.videoData = VideoPlayAction(action: action)
+                        } else if type == ActionType.audio_play.rawValue {
+                            message.actionType = ActionType.audio_play.rawValue
                             message.videoData = VideoPlayAction(action: action)
                         }
                     }
