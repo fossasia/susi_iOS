@@ -79,7 +79,7 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
                 cell.message = message
                 return cell
             }
-        } else if message.actionType == ActionType.video_play.rawValue {
+        } else if message.actionType == ActionType.video_play.rawValue || message.actionType == ActionType.audio_play.rawValue {
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ControllerConstants.youtubePlayerCell, for: indexPath) as? YouTubePlayerCell {
                 cell.message = message
                 cell.delegate = self
@@ -110,7 +110,7 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
                 return CGSize(width: view.frame.width, height: 145)
             } else if let expression = message.answerData?.expression, expression.isValidURL(), expression.isImage() {
                 return CGSize(width: view.frame.width, height: 173)
-            } else if message.actionType == ActionType.video_play.rawValue {
+            } else if message.actionType == ActionType.video_play.rawValue || message.actionType == ActionType.audio_play.rawValue {
                 return CGSize(width: view.frame.width, height: 158)
             }
             return CGSize(width: view.frame.width, height: estimatedFrame.height + 38)
