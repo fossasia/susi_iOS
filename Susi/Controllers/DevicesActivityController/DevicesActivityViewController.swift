@@ -26,21 +26,13 @@ class DevicesActivityViewController: UITableViewController {
         return button
     }()
 
-    let activityIndicator: UIActivityIndicatorView = {
-        let indicator = UIActivityIndicatorView()
-        indicator.hidesWhenStopped = true
-        indicator.activityIndicatorViewStyle = .whiteLarge
-        indicator.color = UIColor.defaultColor()
-        return indicator
-    }()
-
     var wifiAlertController = UIAlertController()
     var passwordAlertController = UIAlertController()
+    var alertController = UIAlertController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTitle()
-        prepareActivityIndicator()
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
