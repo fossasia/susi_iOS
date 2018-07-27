@@ -86,7 +86,12 @@ extension DevicesActivityViewController {
         self.activityIndicator.startAnimating()
         UIApplication.shared.beginIgnoringInteractionEvents()
 
-        Client.sharedInstance.sendWifiCredentials(wifiSSID: SSID, wifiPassword: password) { (success, message) in
+        let params = [
+            Client.SmartSpeaker.wifiSSID: SSID as AnyObject,
+            Client.SmartSpeaker.wifiPassword: password as AnyObject
+        ]
+
+        Client.sharedInstance.sendWifiCredentials(params) { (success, message) in
             DispatchQueue.main.async {
                 if success {
                     self.presentUserPasswordPopup()
@@ -130,7 +135,14 @@ extension DevicesActivityViewController {
         let choice: String = "y"
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate, let currentuser = appDelegate.currentUser {
             let userEmail = currentuser.emailID
-            Client.sharedInstance.sendAuthCredentials(choice: choice, email: userEmail, password: userPassword) { (success, message) in
+
+            let params = [
+                Client.SmartSpeaker.auth: choice as AnyObject,
+                Client.SmartSpeaker.email: userEmail as AnyObject,
+                Client.SmartSpeaker.password: userPassword as AnyObject
+            ]
+
+            Client.sharedInstance.sendAuthCredentials(params) { (success, message) in
                 DispatchQueue.main.async {
                     if success {
                         self.setConfiguration()
@@ -150,10 +162,22 @@ extension DevicesActivityViewController {
         self.activityIndicator.startAnimating()
         UIApplication.shared.beginIgnoringInteractionEvents()
 
-        Client.sharedInstance.setConfiguration(stt: "google", tts: "google", hotword: "y", wake: "n") { (success, message) in
+        let defaultSTT = "google"
+        let defaultTTS = "google"
+        let defaultHotword = "y"
+        let defaultWake = "n"
+
+        let params = [
+            Client.SmartSpeaker.STT: defaultSTT as AnyObject,
+            Client.SmartSpeaker.TTS: defaultTTS as AnyObject,
+            Client.SmartSpeaker.hotword: defaultHotword as AnyObject,
+            Client.SmartSpeaker.wake: defaultWake as AnyObject
+        ]
+
+        Client.sharedInstance.setConfiguration(params) { (success, message) in
             DispatchQueue.main.async {
                 if success {
-                    print("Success!")
+                    // Successfully Configured
                 } else {
                     self.activityIndicator.stopAnimating()
                     self.view.makeToast("", point: self.view.center, title: message, image: nil, completion: { didTap in

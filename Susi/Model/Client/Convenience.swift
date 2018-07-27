@@ -528,9 +528,9 @@ extension Client {
 
     // MARK: - Smart Speaker Methods
 
-    func sendWifiCredentials(wifiSSID: String, wifiPassword: String, _ completion: @escaping(_ success: Bool, _ error: String?) -> Void) {
-        let url = "\(APIURLs.SpeakerBaseURL)/\(Methods.WifiCredentials)/\(wifiSSID)/\(wifiPassword)"
-        _ = makeRequest(url, .get, [:], parameters: [:], completion: { (results, message) in
+    func sendWifiCredentials(_ params: [String: AnyObject], _ completion: @escaping(_ success: Bool, _ error: String?) -> Void) {
+        let url = getApiUrl(APIURLs.SpeakerBaseURL, Methods.WifiCredentials)
+        _ = makeRequest(url, .get, [:], parameters: params, completion: { (results, message) in
             if let _ = message {
                 completion(false, ResponseMessages.ServerError)
             } else if results != nil {
@@ -541,9 +541,9 @@ extension Client {
         })
     }
 
-    func sendAuthCredentials(choice: String, email: String, password: String, _ completion: @escaping(_ success: Bool, _ error: String?) -> Void) {
-        let url = "\(APIURLs.SpeakerBaseURL)/\(Methods.Auth)/\(choice)/\(email)/\(password)"
-        _ = makeRequest(url, .get, [:], parameters: [:], completion: { (results, message) in
+    func sendAuthCredentials(_ params: [String: AnyObject], _ completion: @escaping(_ success: Bool, _ error: String?) -> Void) {
+        let url = getApiUrl(APIURLs.SpeakerBaseURL, Methods.Auth)
+        _ = makeRequest(url, .get, [:], parameters: params, completion: { (results, message) in
             if let _ = message {
                 completion(false, ResponseMessages.ServerError)
             } else if results != nil {
@@ -554,9 +554,9 @@ extension Client {
         })
     }
 
-    func setConfiguration(stt: String, tts: String, hotword: String, wake: String, _ completion: @escaping(_ success: Bool, _ error: String?) -> Void) {
-        let url = "\(APIURLs.SpeakerBaseURL)/\(Methods.Config)/\(stt)/\(tts)/\(hotword)/\(wake)"
-        _ = makeRequest(url, .get, [:], parameters: [:], completion: { (results, message) in
+    func setConfiguration(_ params: [String: AnyObject], _ completion: @escaping(_ success: Bool, _ error: String?) -> Void) {
+        let url = getApiUrl(APIURLs.SpeakerBaseURL, Methods.Config)
+        _ = makeRequest(url, .get, [:], parameters: params, completion: { (results, message) in
             if let _ = message {
                 completion(false, ResponseMessages.ServerError)
             } else if results != nil {
