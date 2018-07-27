@@ -50,7 +50,7 @@ class ControllerConstants {
     static let key = "key1"
     static let value = "value1"
     static let count = "count"
-    static let accepted = "Accepted"
+    static let accepted = "accepted"
     static let thumbsUp = "thumbs_up"
     static let thumbsDown = "thumbs_down"
     static let hotwordFileName = "susi.pmdl"
