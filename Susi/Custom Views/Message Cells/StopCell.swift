@@ -114,14 +114,19 @@ class StopCell: ChatMessageCell, MKMapViewDelegate {
             ]
 
             Client.sharedInstance.sendFeedback(params) { (success, error) in
-                DispatchQueue.global().async {
-                    if let error = error {
-                        print(error)
+                DispatchQueue.main.async {
+                    if success {
+                        self.removeUpDownThumbs()
                     }
-                    print("Skill rated: \(success)")
                 }
             }
         }
+    }
+
+    func removeUpDownThumbs() {
+        thumbUpIcon.removeFromSuperview()
+        thumbDownIcon.removeFromSuperview()
+        timeLabel.rightAnchor.constraint(equalTo: textBubbleView.rightAnchor, constant: -16).isActive = true
     }
 
 }
