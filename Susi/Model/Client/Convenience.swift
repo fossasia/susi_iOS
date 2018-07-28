@@ -535,6 +535,7 @@ extension Client {
                 completion(false, ResponseMessages.ServerError)
             } else if results != nil {
                 completion(true, nil)
+                return
             }
             completion(false, ResponseMessages.ServerError)
             return
@@ -548,6 +549,7 @@ extension Client {
                 completion(false, ResponseMessages.ServerError)
             } else if results != nil {
                 completion(true, nil)
+                return
             }
             completion(false, ResponseMessages.ServerError)
             return
@@ -561,6 +563,7 @@ extension Client {
                 completion(false, ResponseMessages.ServerError)
             } else if results != nil {
                 completion(true, nil)
+                return
             }
             completion(false, ResponseMessages.ServerError)
             return
