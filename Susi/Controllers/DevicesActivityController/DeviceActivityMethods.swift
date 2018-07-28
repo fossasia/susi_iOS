@@ -34,11 +34,6 @@ extension DevicesActivityViewController {
         present(nvc, animated: true, completion: nil)
     }
 
-    func prepareActivityIndicator() {
-        self.view.addSubview(activityIndicator)
-        activityIndicator.center = view.center
-    }
-
     func fetchSSIDInfo() -> String? {
         var ssid: String?
         if let interfaces = CNCopySupportedInterfaces() as? [String] {
@@ -83,15 +78,15 @@ extension DevicesActivityViewController {
 
     func sendWifiCredentials(for SSID: String, password: String) {
         self.wifiAlertController.dismiss(animated: true, completion: nil)
-        self.activityIndicator.startAnimating()
-        UIApplication.shared.beginIgnoringInteractionEvents()
+        self.loadAlertIndicator(with: "Sending credentials..")
 
         Client.sharedInstance.sendWifiCredentials(wifiSSID: SSID, wifiPassword: password) { (success, message) in
             DispatchQueue.main.async {
                 if success {
+                    self.alertController.dismiss(animated: true, completion: nil)
                     self.presentUserPasswordPopup()
                 } else {
-                    self.activityIndicator.stopAnimating()
+                    self.alertController.dismiss(animated: true, completion: nil)
                     self.view.makeToast("", point: self.view.center, title: message, image: nil, completion: { didTap in
                         UIApplication.shared.endIgnoringInteractionEvents()
                         self.presentWifiCredentialsPopup()
@@ -124,8 +119,7 @@ extension DevicesActivityViewController {
 
     func sendAuthCredentials(userPassword: String) {
         self.passwordAlertController.dismiss(animated: true, completion: nil)
-        self.activityIndicator.startAnimating()
-        UIApplication.shared.beginIgnoringInteractionEvents()
+        self.loadAlertIndicator(with: "Authorizing..")
 
         let choice: String = "y"
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate, let currentuser = appDelegate.currentUser {
@@ -133,9 +127,10 @@ extension DevicesActivityViewController {
             Client.sharedInstance.sendAuthCredentials(choice: choice, email: userEmail, password: userPassword) { (success, message) in
                 DispatchQueue.main.async {
                     if success {
+                        self.alertController.dismiss(animated: true, completion: nil)
                         self.setConfiguration()
                     } else {
-                        self.activityIndicator.stopAnimating()
+                        self.alertController.dismiss(animated: true, completion: nil)
                         self.view.makeToast("", point: self.view.center, title: message, image: nil, completion: { didTap in
                             UIApplication.shared.endIgnoringInteractionEvents()
                             self.presentUserPasswordPopup()
@@ -147,15 +142,16 @@ extension DevicesActivityViewController {
     }
 
     func setConfiguration() {
-        self.activityIndicator.startAnimating()
-        UIApplication.shared.beginIgnoringInteractionEvents()
+        self.passwordAlertController.dismiss(animated: true, completion: nil)
+        self.loadAlertIndicator(with: "Configuring..")
 
         Client.sharedInstance.setConfiguration(stt: "google", tts: "google", hotword: "y", wake: "n") { (success, message) in
             DispatchQueue.main.async {
                 if success {
+                    self.alertController.dismiss(animated: true, completion: nil)
                     print("Success!")
                 } else {
-                    self.activityIndicator.stopAnimating()
+                    self.alertController.dismiss(animated: true, completion: nil)
                     self.view.makeToast("", point: self.view.center, title: message, image: nil, completion: { didTap in
                         UIApplication.shared.endIgnoringInteractionEvents()
                     })
@@ -173,6 +169,23 @@ extension DevicesActivityViewController {
                 effectView?.removeFromSuperview()
             }
         }
+    }
+
+    func loadAlertIndicator(with message: String) {
+        alertController = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        alertController.view.tintColor = UIColor.black
+
+        let attributedString = NSAttributedString(string: message, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 18), NSAttributedStringKey.foregroundColor: UIColor.iOSGray()])
+        alertController.setValue(attributedString, forKey: "attributedMessage")
+
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 8, y: 2, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        loadingIndicator.color = UIColor.iOSGray()
+        loadingIndicator.startAnimating()
+        alertController.view.addSubview(loadingIndicator)
+
+        self.present(alertController, animated: true, completion: nil)
     }
 
 }
