@@ -32,6 +32,7 @@ extension Client {
         static let GetRatingByUser = "/cms/getRatingByUser.json"
         static let FeedbackSkill = "/cms/feedbackSkill.json"
         static let GetSkillFeedback = "/cms/getSkillFeedback.json"
+        static let FeedbackLog = "/cms/feedbackLog.json"
         static let WifiCredentials = "/wifi_credentials"
         static let Auth = "/auth"
         static let Config = "/config"
