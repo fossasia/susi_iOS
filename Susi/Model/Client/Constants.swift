@@ -32,7 +32,7 @@ extension Client {
         static let GetRatingByUser = "/cms/getRatingByUser.json"
         static let FeedbackSkill = "/cms/feedbackSkill.json"
         static let GetSkillFeedback = "/cms/getSkillFeedback.json"
-        static let baseSkillImagePath = "https://raw.githubusercontent.com/fossasia/susi_skill_data/master/models/"
+        static let baseSkillImagePath = "/cms/getImage.png"
         static let WifiCredentials = "wifi_credentials"
         static let Auth = "auth"
         static let Config = "config"
