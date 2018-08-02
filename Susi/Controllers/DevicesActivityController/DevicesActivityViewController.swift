@@ -29,6 +29,7 @@ class DevicesActivityViewController: UITableViewController {
     var wifiAlertController = UIAlertController()
     var passwordAlertController = UIAlertController()
     var alertController = UIAlertController()
+    var roomAlertController = UIAlertController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,8 +63,8 @@ class DevicesActivityViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0, let speakerSSID = fetchSSIDInfo(), speakerSSID == ControllerConstants.DeviceActivity.susiSSID {
-            // Open a popup to submit wifi credentials
-            presentWifiCredentialsPopup()
+            // Open a popup to select Rooms
+            presentRoomsPopup()
         }
     }
 
