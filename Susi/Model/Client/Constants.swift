@@ -32,10 +32,10 @@ extension Client {
         static let GetRatingByUser = "/cms/getRatingByUser.json"
         static let FeedbackSkill = "/cms/feedbackSkill.json"
         static let GetSkillFeedback = "/cms/getSkillFeedback.json"
+        static let WifiCredentials = "/wifi_credentials"
+        static let Auth = "/auth"
+        static let Config = "/config"
         static let baseSkillImagePath = "/cms/getImage.png"
-        static let WifiCredentials = "wifi_credentials"
-        static let Auth = "auth"
-        static let Config = "config"
     }
 
     struct ResponseMessages {
@@ -187,6 +187,18 @@ extension Client {
         static let stars = "stars"
         static let ratings = "ratings"
         static let AccessToken = "access_token"
+    }
+
+    struct SmartSpeaker {
+        static let wifiSSID = "wifissid"
+        static let wifiPassword = "wifipassd"
+        static let auth = "auth"
+        static let email = "email"
+        static let password = "password"
+        static let STT = "stt"
+        static let TTS = "tts"
+        static let hotword = "hotword"
+        static let wake = "wake"
     }
 
 }
