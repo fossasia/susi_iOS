@@ -49,6 +49,65 @@ extension DevicesActivityViewController {
 
     // MARK: - Smart Speaker UI Flow
 
+    func presentRoomsPicker() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let roomVC = storyboard.instantiateViewController(withIdentifier: "RoomPickerVC") as? RoomPickerController {
+            roomVC.deviceActivityVC = self
+            let roomNVC = AppNavigationController(rootViewController: roomVC)
+            self.present(roomNVC, animated: true)
+        }
+    }
+
+    func presentRoomsPopup() {
+        roomAlertController = UIAlertController(title: "Where is this device?", message: "Choose a location for your SUSI smart speaker. This will help name and organize your devcies.", preferredStyle: .alert)
+        roomAlertController.addTextField(configurationHandler: { (textfield: UITextField) in
+            textfield.placeholder = "Enter Room Location"
+            textfield.borderStyle = .roundedRect
+        })
+        let nextAction = UIAlertAction(title: "Next", style: .default, handler: { alert -> Void in
+            let roomNameTextField = self.roomAlertController.textFields![0] as UITextField
+            if let roomName = roomNameTextField.text {
+                self.setDeviceRoom(for: roomName)
+            }
+        })
+        let chooseRoomAction = UIAlertAction(title: "Choose Room", style: .default, handler: { alert -> Void in
+            self.presentRoomsPicker()
+        })
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action : UIAlertAction) -> Void in
+        })
+        roomAlertController.addAction(cancelAction)
+        roomAlertController.addAction(nextAction)
+        roomAlertController.addAction(chooseRoomAction)
+
+        self.present(roomAlertController, animated: true, completion: nil)
+        removeTextBorder(for: roomAlertController)
+    }
+
+    func presentSelectedRoomPopup() {
+        roomAlertController = UIAlertController(title: "Where is this device?", message: "Choose a location for your SUSI smart speaker. This will help name and organize your devcies.", preferredStyle: .alert)
+        roomAlertController.addTextField(configurationHandler: { (textfield: UITextField) in
+            textfield.text = UserDefaults.standard.value(forKey: ControllerConstants.UserDefaultsKeys.room) as? String
+            textfield.borderStyle = .roundedRect
+        })
+        let nextAction = UIAlertAction(title: "Next", style: .default, handler: { alert -> Void in
+            let roomNameTextField = self.roomAlertController.textFields![0] as UITextField
+            if let roomName = roomNameTextField.text {
+                self.setDeviceRoom(for: roomName)
+            }
+        })
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action : UIAlertAction) -> Void in
+        })
+        roomAlertController.addAction(cancelAction)
+        roomAlertController.addAction(nextAction)
+
+        self.present(roomAlertController, animated: true, completion: nil)
+        removeTextBorder(for: roomAlertController)
+    }
+
+    func setDeviceRoom(for room: String) {
+        // TODO: - Make API call for selecting room and proceed further
+    }
+
     func presentWifiCredentialsPopup() {
         wifiAlertController = UIAlertController(title: ControllerConstants.DeviceActivity.wifiAlertTitle, message: ControllerConstants.DeviceActivity.wifiAlertMessage, preferredStyle: .alert)
         wifiAlertController.addTextField(configurationHandler: { (textfield: UITextField) in

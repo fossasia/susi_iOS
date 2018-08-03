@@ -56,6 +56,7 @@ class ControllerConstants {
     static let hotwordFileName = "susi.pmdl"
     static let settings = "Settings"
     static let skillListing = "SUSI.AI Skills"
+    static let chooseRoom = "Choose Room"
     static let trainHotword = "Let's train SUSI"
     static let passwordDoNotMatch = "Passwords do not match."
     static let resetPassword = "Reset Password"
@@ -160,6 +161,7 @@ class ControllerConstants {
         static let typedEmailAdress = "typedEmailAdress"
         static let languageName = "languageName"
         static let languageCode = "languageCode"
+        static let room = "room"
     }
 
     struct TestKeys {
@@ -244,6 +246,7 @@ class ControllerConstants {
         static let youtubePlayButton = UIImage(named: "youtube_play_button")
         static let availableDevice = UIImage(named: "available_device_icon")
         static let deviceIcon = UIImage(named: "device_icon")
+        static let roomsIcon = UIImage(named: "room-icon")
     }
 
 }

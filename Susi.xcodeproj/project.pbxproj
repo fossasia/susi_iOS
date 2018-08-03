@@ -17,6 +17,7 @@
 		406F100620ADFEED00808E4C /* OnboardingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406F100520ADFEED00808E4C /* OnboardingUITests.swift */; };
 		406F8BA020EE72CA00D9C6AC /* VideoPlayAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406F8B9F20EE72CA00D9C6AC /* VideoPlayAction.swift */; };
 		40701E7F20BEAC8100B92D81 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40701E7E20BEAC8100B92D81 /* RatingView.swift */; };
+		4075B35F210E3CAC00672C6A /* RoomPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4075B35E210E3CAC00672C6A /* RoomPickerController.swift */; };
 		40799A7620BBAD9800271718 /* DeviceInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40799A7520BBAD9800271718 /* DeviceInstructionsViewController.swift */; };
 		407ED1DB20BEC6C3007AEE34 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407ED1DA20BEC6C3007AEE34 /* DesignableView.swift */; };
 		407EFAC020C34C0000675A0B /* LanguagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407EFABF20C34C0000675A0B /* LanguagePickerController.swift */; };
@@ -133,6 +134,7 @@
 		406F100520ADFEED00808E4C /* OnboardingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingUITests.swift; sourceTree = "<group>"; };
 		406F8B9F20EE72CA00D9C6AC /* VideoPlayAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayAction.swift; sourceTree = "<group>"; };
 		40701E7E20BEAC8100B92D81 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		4075B35E210E3CAC00672C6A /* RoomPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomPickerController.swift; sourceTree = "<group>"; };
 		40799A7520BBAD9800271718 /* DeviceInstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInstructionsViewController.swift; sourceTree = "<group>"; };
 		407ED1DA20BEC6C3007AEE34 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		407EFABF20C34C0000675A0B /* LanguagePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePickerController.swift; sourceTree = "<group>"; };
@@ -278,6 +280,14 @@
 				406482FF20FCF3220014EB47 /* PlayerViewController.swift */,
 			);
 			path = PlayerViewController;
+			sourceTree = "<group>";
+		};
+		4075B360210E3CB300672C6A /* RoomPickerController */ = {
+			isa = PBXGroup;
+			children = (
+				4075B35E210E3CAC00672C6A /* RoomPickerController.swift */,
+			);
+			path = RoomPickerController;
 			sourceTree = "<group>";
 		};
 		40799A7720BBAD9F00271718 /* DeviceInstructionsViewController */ = {
@@ -533,6 +543,7 @@
 		6D4D9B501E768F2E0067459C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4075B360210E3CB300672C6A /* RoomPickerController */,
 				406482FE20FCF2EF0014EB47 /* PlayerViewController */,
 				40DE743A20E49F48003C0116 /* AllFeedbackController */,
 				407EFAC120C34C1D00675A0B /* LanguagePickerController */,
@@ -951,6 +962,7 @@
 				6D395D211F589CFE00BCC3C5 /* SkillDetailVCCollectionView.swift in Sources */,
 				40172A8520ECAA49006B462C /* YouTubePlayerCell.swift in Sources */,
 				6DE44E171E76ACD900215B85 /* Convenience.swift in Sources */,
+				4075B35F210E3CAC00672C6A /* RoomPickerController.swift in Sources */,
 				6D87A32E1EEE54CC00A6D763 /* WebsearchCollectionView.swift in Sources */,
 				40FB527520C037C6005D4ACD /* StopCell.swift in Sources */,
 				406F8BA020EE72CA00D9C6AC /* VideoPlayAction.swift in Sources */,
