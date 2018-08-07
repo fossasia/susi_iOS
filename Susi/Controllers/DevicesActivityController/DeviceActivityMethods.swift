@@ -111,19 +111,14 @@ extension DevicesActivityViewController {
     func presentWifiCredentialsPopup() {
         wifiAlertController = UIAlertController(title: ControllerConstants.DeviceActivity.wifiAlertTitle, message: ControllerConstants.DeviceActivity.wifiAlertMessage, preferredStyle: .alert)
         wifiAlertController.addTextField(configurationHandler: { (textfield: UITextField) in
-            textfield.placeholder = ControllerConstants.DeviceActivity.wifiSSIDPlaceholder
-            textfield.borderStyle = .roundedRect
-        })
-        wifiAlertController.addTextField(configurationHandler: { (textfield: UITextField) in
             textfield.placeholder = ControllerConstants.DeviceActivity.wifiPasswordPlaceholder
             textfield.borderStyle = .roundedRect
             textfield.isSecureTextEntry = true
         })
         let nextAction = UIAlertAction(title: "Next", style: .default, handler: { alert -> Void in
-            let ssidTextField = self.wifiAlertController.textFields![0] as UITextField
             let passwordTextField = self.wifiAlertController.textFields![1] as UITextField
-            if let ssid = ssidTextField.text, let password = passwordTextField.text {
-                self.sendWifiCredentials(for: ssid, password: password)
+            if let password = passwordTextField.text {
+                self.sendWifiCredentials(for: password)
             }
         })
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action : UIAlertAction) -> Void in
@@ -135,10 +130,14 @@ extension DevicesActivityViewController {
         removeTextBorder(for: wifiAlertController)
     }
 
-    func sendWifiCredentials(for SSID: String, password: String) {
+    func sendWifiCredentials(for password: String) {
         self.wifiAlertController.dismiss(animated: true, completion: nil)
         self.loadAlertIndicator(with: "Sending credentials..")
 
+        guard let SSID = fetchSSIDInfo() else {
+            self.view.makeToast("Device is not connected to SUSI.AI Wi-Fi")
+            return
+        }
         let params = [
             Client.SmartSpeaker.wifiSSID: SSID as AnyObject,
             Client.SmartSpeaker.wifiPassword: password as AnyObject
