@@ -162,6 +162,7 @@ class ControllerConstants {
         static let languageName = "languageName"
         static let languageCode = "languageCode"
         static let room = "room"
+        static let userQuery = "userQuery"
     }
 
     struct TestKeys {

@@ -137,6 +137,33 @@ class ImageCell: ChatMessageCell {
                     }
                 }
             }
+
+            var feedbackLogParams: [String: AnyObject] = [
+                Client.FeedbackKeys.model: skillComponents![3] as AnyObject,
+                Client.FeedbackKeys.group: skillComponents![4] as AnyObject,
+                Client.FeedbackKeys.language: skillComponents![5] as AnyObject,
+                Client.FeedbackKeys.skill: skillComponents![6].components(separatedBy: ".").first as AnyObject,
+                Client.FeedbackKeys.rating: feedback as AnyObject,
+                Client.FeedbackKeys.countryCode: Locale.current.regionCode as AnyObject,
+                Client.FeedbackKeys.deviceType: ControllerConstants.deviceType as AnyObject,
+                Client.FeedbackKeys.susiReply: message?.message as AnyObject
+            ]
+
+            if let userQuery = UserDefaults.standard.value(forKey: ControllerConstants.UserDefaultsKeys.userQuery) {
+                feedbackLogParams[Client.FeedbackKeys.userQuery] = userQuery as AnyObject
+            }
+
+            if let countryName = (Locale.current as NSLocale).displayName(forKey: .countryCode, value: Locale.current.regionCode as Any) {
+                feedbackLogParams[Client.FeedbackKeys.countryName] = countryName as AnyObject
+            }
+
+            Client.sharedInstance.sendFeedbackLog(feedbackLogParams) { (success, error) in
+                DispatchQueue.main.async {
+                    if success {
+                        self.removeUpDownThumbs()
+                    }
+                }
+            }
         }
     }
 
