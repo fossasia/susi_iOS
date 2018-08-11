@@ -32,11 +32,12 @@ extension Client {
         static let GetRatingByUser = "/cms/getRatingByUser.json"
         static let FeedbackSkill = "/cms/feedbackSkill.json"
         static let GetSkillFeedback = "/cms/getSkillFeedback.json"
+        static let baseSkillImagePath = "/cms/getImage.png"
         static let FeedbackLog = "/cms/feedbackLog.json"
         static let WifiCredentials = "/wifi_credentials"
         static let Auth = "/auth"
         static let Config = "/config"
-        static let baseSkillImagePath = "/cms/getImage.png"
+        static let SpeakerConfig = "/speaker_config"
     }
 
     struct ResponseMessages {
@@ -200,6 +201,7 @@ extension Client {
         static let TTS = "tts"
         static let hotword = "hotword"
         static let wake = "wake"
+        static let roomName = "room_name"
     }
 
 }

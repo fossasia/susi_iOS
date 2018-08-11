@@ -105,7 +105,26 @@ extension DevicesActivityViewController {
     }
 
     func setDeviceRoom(for room: String) {
-        // TODO: - Make API call for selecting room and proceed further
+        self.roomAlertController.dismiss(animated: true, completion: nil)
+        self.loadAlertIndicator(with: "Adding Room..")
+
+        let params = [
+            Client.SmartSpeaker.roomName: room as AnyObject
+        ]
+
+        Client.sharedInstance.speakerConfiguration(params) { (success, message) in
+            DispatchQueue.main.async {
+                self.alertController.dismiss(animated: true, completion: nil)
+                if success {
+                    self.presentWifiCredentialsPopup()
+                } else {
+                    self.view.makeToast("", point: self.view.center, title: message, image: nil, completion: { didTap in
+                        UIApplication.shared.endIgnoringInteractionEvents()
+                        self.presentRoomsPopup()
+                    })
+                }
+            }
+        }
     }
 
     func presentWifiCredentialsPopup() {

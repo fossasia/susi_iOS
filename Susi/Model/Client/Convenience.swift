@@ -597,4 +597,18 @@ extension Client {
         })
     }
 
+    func speakerConfiguration(_ params: [String: AnyObject], _ completion: @escaping(_ success: Bool, _ error: String?) -> Void) {
+        let url = getApiUrl(APIURLs.SpeakerBaseURL, Methods.SpeakerConfig)
+        _ = makeRequest(url, .get, [:], parameters: params, completion: { (results, message) in
+            if let _ = message {
+                completion(false, ResponseMessages.ServerError)
+            } else if results != nil {
+                completion(true, nil)
+                return
+            }
+            completion(false, ResponseMessages.ServerError)
+            return
+        })
+    }
+
 }
