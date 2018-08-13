@@ -59,9 +59,9 @@ extension DevicesActivityViewController {
     }
 
     func presentRoomsPopup() {
-        roomAlertController = UIAlertController(title: "Where is this device?", message: "Choose a location for your SUSI smart speaker. This will help name and organize your devcies.", preferredStyle: .alert)
+        roomAlertController = UIAlertController(title: ControllerConstants.DeviceActivity.roomAlertTitle, message: ControllerConstants.DeviceActivity.roomAlertMessage, preferredStyle: .alert)
         roomAlertController.addTextField(configurationHandler: { (textfield: UITextField) in
-            textfield.placeholder = "Enter Room Location"
+            textfield.placeholder = ControllerConstants.DeviceActivity.enterRoomPlaceholder
             textfield.borderStyle = .roundedRect
         })
         let nextAction = UIAlertAction(title: "Next", style: .default, handler: { alert -> Void in
@@ -84,7 +84,7 @@ extension DevicesActivityViewController {
     }
 
     func presentSelectedRoomPopup() {
-        roomAlertController = UIAlertController(title: "Where is this device?", message: "Choose a location for your SUSI smart speaker. This will help name and organize your devcies.", preferredStyle: .alert)
+        roomAlertController = UIAlertController(title: ControllerConstants.DeviceActivity.roomAlertTitle, message: ControllerConstants.DeviceActivity.roomAlertMessage, preferredStyle: .alert)
         roomAlertController.addTextField(configurationHandler: { (textfield: UITextField) in
             textfield.text = UserDefaults.standard.value(forKey: ControllerConstants.UserDefaultsKeys.room) as? String
             textfield.borderStyle = .roundedRect
@@ -151,7 +151,7 @@ extension DevicesActivityViewController {
 
     func sendWifiCredentials(for password: String) {
         self.wifiAlertController.dismiss(animated: true, completion: nil)
-        self.loadAlertIndicator(with: "Sending credentials..")
+        self.loadAlertIndicator(with: "Sharing credentials..")
 
         guard let SSID = fetchSSIDInfo() else {
             self.view.makeToast("Device is not connected to SUSI.AI Wi-Fi")
@@ -232,7 +232,6 @@ extension DevicesActivityViewController {
 
     func setConfiguration() {
         self.passwordAlertController.dismiss(animated: true, completion: nil)
-        self.loadAlertIndicator(with: "Configuring..")
 
         let defaultSTT = "google"
         let defaultTTS = "google"
@@ -248,7 +247,6 @@ extension DevicesActivityViewController {
 
         Client.sharedInstance.setConfiguration(params) { (success, message) in
             DispatchQueue.main.async {
-              self.alertController.dismiss(animated: true, completion: nil)
                 if success {
                     // Successfully Configured
                 } else {
