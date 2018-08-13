@@ -167,6 +167,8 @@ extension ChatViewController {
                 Client.ChatKeys.deviceType: ControllerConstants.deviceType as AnyObject
             ]
 
+            UserDefaults.standard.set(text, forKey: ControllerConstants.UserDefaultsKeys.userQuery)
+
             saveMessage(text)
             addActivityIndicatorMessage()
 

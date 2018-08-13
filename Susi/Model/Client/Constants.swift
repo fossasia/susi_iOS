@@ -141,6 +141,11 @@ extension Client {
         static let language = "language"
         static let rating = "rating"
         static let feedback = "feedback"
+        static let userQuery = "user_query"
+        static let susiReply = "susi_reply"
+        static let countryName = "country_name"
+        static let countryCode = "country_code"
+        static let deviceType = "device_type"
     }
 
     struct HotwordKeys {
