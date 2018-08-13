@@ -164,11 +164,10 @@ extension DevicesActivityViewController {
 
         Client.sharedInstance.sendWifiCredentials(params) { (success, message) in
             DispatchQueue.main.async {
+                self.alertController.dismiss(animated: true, completion: nil)
                 if success {
-                    self.alertController.dismiss(animated: true, completion: nil)
                     self.presentUserPasswordPopup()
                 } else {
-                    self.alertController.dismiss(animated: true, completion: nil)
                     self.view.makeToast("", point: self.view.center, title: message, image: nil, completion: { didTap in
                         UIApplication.shared.endIgnoringInteractionEvents()
                         self.presentWifiCredentialsPopup()
@@ -215,11 +214,10 @@ extension DevicesActivityViewController {
 
             Client.sharedInstance.sendAuthCredentials(params) { (success, message) in
                 DispatchQueue.main.async {
+                    self.alertController.dismiss(animated: true, completion: nil)
                     if success {
-                        self.alertController.dismiss(animated: true, completion: nil)
                         self.setConfiguration()
                     } else {
-                        self.alertController.dismiss(animated: true, completion: nil)
                         self.view.makeToast("", point: self.view.center, title: message, image: nil, completion: { didTap in
                             UIApplication.shared.endIgnoringInteractionEvents()
                             self.presentUserPasswordPopup()
@@ -249,6 +247,8 @@ extension DevicesActivityViewController {
             DispatchQueue.main.async {
                 if success {
                     // Successfully Configured
+                    self.isSetupDone = true
+                    self.view.makeToast(ControllerConstants.DeviceActivity.doneSetupDetailText)
                 } else {
                     self.view.makeToast("", point: self.view.center, title: message, image: nil, completion: { didTap in
                         UIApplication.shared.endIgnoringInteractionEvents()

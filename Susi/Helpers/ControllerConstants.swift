@@ -217,6 +217,8 @@ class ControllerConstants {
         static let susiSSID = "SUSI.AI"
         static let deviceCellIndentifier = "DeviceCell"
         static let connectedDetailText = "Click here to procceed with setup"
+        static let doneSetupDetailText = "The Smart Speaker is successfully connected to your Wi-Fi and was added to your SUSI.AI user account"
+        static let successfullyConnected = "Successfully Connected"
         static let notConnectedDetailText = "Click on '+' icon to add new device"
         static let noDeviceTitle = "No device connected yet"
         static let wifiAlertTitle = "Enter Wi-Fi Password"
