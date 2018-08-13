@@ -304,10 +304,10 @@ extension SkillDetailViewController: UITableViewDelegate, UITableViewDataSource 
             return 0
         }
         if feedbacks.count < 4 {
-            feedbackTableHeighConstraint.constant = CGFloat(72 * feedbacks.count)
+            feedbackTableHeighConstraint.constant = CGFloat(75 * feedbacks.count)
             return feedbacks.count
         } else {
-            feedbackTableHeighConstraint.constant = 260.0
+            feedbackTableHeighConstraint.constant = 269.0
             return 4
         }
     }
@@ -316,7 +316,7 @@ extension SkillDetailViewController: UITableViewDelegate, UITableViewDataSource 
         if indexPath.row == 3 {
             return 44.0
         } else {
-            return 72.0
+            return 75.0
         }
     }
 

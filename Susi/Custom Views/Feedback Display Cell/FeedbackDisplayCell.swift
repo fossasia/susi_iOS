@@ -10,24 +10,36 @@ import UIKit
 
 class FeedbackDisplayCell: UITableViewCell {
 
-    @IBOutlet weak var userPlaceHolderLabel: UILabel!
+    @IBOutlet weak var gravatarImageView: UIImageView!
     @IBOutlet weak var userEmailLabel: UILabel!
     @IBOutlet weak var userFeedbackLabel: UILabel!
     @IBOutlet weak var feedbackDateLabel: UILabel!
 
     var feedback: Feedback? {
         didSet {
-            userPlaceHolderLabel.text = feedback?.email.getFirstTwoChar().uppercased()
             userEmailLabel.text = feedback?.email
             feedbackDateLabel.text = feedback?.timeStamp.getFirstChar(10)
             userFeedbackLabel.text = feedback?.feedbackString
-            initialUISetups()
+            if let userEmail = feedback?.email {
+                setGravatar(from: userEmail)
+            }
+            roundedCorner()
         }
     }
 
-    func initialUISetups() {
-        userPlaceHolderLabel.layer.cornerRadius = 22.0
-        userPlaceHolderLabel.layer.masksToBounds = true
+    func roundedCorner() {
+        gravatarImageView.layer.cornerRadius = 22.0
+        gravatarImageView.layer.borderWidth = 1.0
+        gravatarImageView.layer.borderColor = UIColor.iOSGray().cgColor
+        gravatarImageView.layer.masksToBounds = true
+    }
+
+    func setGravatar(from emailString: String) {
+        let baseGravatarURL = "https://www.gravatar.com/avatar/"
+        let emailMD5 = emailString.utf8.md5.rawValue
+        let imageString = baseGravatarURL + emailMD5 + ".jpg"
+        let imageURL = URL(string: imageString)
+        gravatarImageView.kf.setImage(with: imageURL)
     }
 
 }
