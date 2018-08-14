@@ -219,13 +219,16 @@ class ControllerConstants {
         static let connectedDetailText = "Click here to procceed with setup"
         static let notConnectedDetailText = "Click on '+' icon to add new device"
         static let noDeviceTitle = "No device connected yet"
-        static let wifiAlertTitle = "Enter Wifi Credentials"
-        static let wifiAlertMessage = "Enter your previous connected wifi credentials"
+        static let wifiAlertTitle = "Enter Wi-Fi Password"
+        static let wifiAlertMessage = "Please enter the password of the Wi-Fi network you would like to use with your smart speaker."
         static let passwordAlertTitle = "Enter Password"
-        static let passwordAlertMessage = "Enter your SUSI account password to procceed further"
-        static let wifiSSIDPlaceholder = "Enter wifi SSID"
-        static let wifiPasswordPlaceholder = "Enter wifi password"
-        static let userPasswordPlaceholder = "Enter password"
+        static let passwordAlertMessage = "This is the final step, please enter your SUSI.AI account's password to successfully connect to the speaker"
+        static let wifiSSIDPlaceholder = "Enter Wi-Fi SSID"
+        static let wifiPasswordPlaceholder = "Enter Wi-Fi Password"
+        static let userPasswordPlaceholder = "Enter Password"
+        static let roomAlertTitle = "What room is your SUSI Smart Speaker in?"
+        static let roomAlertMessage = "Choose a location for your SUSI smart speaker. This helps name your SUSI Smart Speaker so it's easier to identify in the SUSI App."
+        static let enterRoomPlaceholder = "Enter Room Location"
     }
 
     struct Images {
