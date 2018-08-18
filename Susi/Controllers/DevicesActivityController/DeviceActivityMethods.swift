@@ -135,7 +135,7 @@ extension DevicesActivityViewController {
             textfield.isSecureTextEntry = true
         })
         let nextAction = UIAlertAction(title: "Next", style: .default, handler: { alert -> Void in
-            let passwordTextField = self.wifiAlertController.textFields![1] as UITextField
+            let passwordTextField = self.wifiAlertController.textFields![0] as UITextField
             if let password = passwordTextField.text {
                 self.sendWifiCredentials(for: password)
             }

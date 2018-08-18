@@ -18,7 +18,9 @@ class AllFeedbackCell: UITableViewCell {
 
     var feedback: Feedback? {
         didSet {
-            userEmailLabel.text = feedback?.email
+            if let userEmail = feedback?.email, let emailIndex = userEmail.range(of: "@")?.upperBound {
+                userEmailLabel.text = String(userEmail.prefix(upTo: emailIndex)) + "..."
+            }
             feedbackDateLabel.text = feedback?.timeStamp.getFirstChar(10)
             userFeedbackLabel.text = feedback?.feedbackString
             if let userEmail = feedback?.email {
