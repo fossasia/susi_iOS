@@ -46,34 +46,11 @@ class LoginViewController: GeneralViewController {
         addForgotPasswordAction()
 
         reachability.whenReachable = { reachability in
-
-            DispatchQueue.main.async {
-
-                self.loginButton.isEnabled = true
-                self.forgotPassword.isEnabled = true
-                self.skipButton.isEnabled = true
-                self.forgotPassword.isEnabled = true
-                self.skipButton.isEnabled = true
-                self.signUpButton.isEnabled = true
-                self.alert.dismiss(animated: true, completion: nil)
-
-            }
-
+            self.setUIBasedOnInternetConnection(enableValue: true)
         }
-
+        
         reachability.whenUnreachable = { reachability in
-
-            DispatchQueue.main.async {
-
-                self.loginButton.isEnabled = false
-                self.forgotPassword.isEnabled = false
-                self.skipButton.isEnabled = false
-                self.forgotPassword.isEnabled = false
-                self.skipButton.isEnabled = false
-                self.signUpButton.isEnabled = false
-                self.present(self.alert, animated: true, completion: nil)
-            }
-
+            self.setUIBasedOnInternetConnection(enableValue: false)
         }
 
         checkSession()

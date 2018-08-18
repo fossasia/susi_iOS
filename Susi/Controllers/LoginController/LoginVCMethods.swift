@@ -277,6 +277,23 @@ extension LoginViewController {
             }
         }
     }
+    
+    // Changes the UI based on the Internet Connection
+    func setUIBasedOnInternetConnection ( enableValue : Bool = true){
+        DispatchQueue.main.async {
+            self.loginButton.isEnabled = enableValue
+            self.forgotPassword.isEnabled = enableValue
+            self.skipButton.isEnabled = enableValue
+            self.forgotPassword.isEnabled = enableValue
+            self.skipButton.isEnabled = enableValue
+            self.signUpButton.isEnabled = enableValue
+            if enableValue{
+                self.alert.dismiss(animated: true, completion: nil)
+            } else {
+                self.present(self.alert, animated: true, completion: nil)
+            }
+        }
+    }
 
     @objc func enterAnonymousMode() {
         resetDB()
