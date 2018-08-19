@@ -44,7 +44,19 @@ class LoginViewController: GeneralViewController {
         prepareSkipButton()
         prepareAddressField()
         addForgotPasswordAction()
+<<<<<<< HEAD
         checkReachability()
+=======
+
+        reachability.whenReachable = { reachability in
+            self.setUIBasedOnInternetConnection(enableValue: true)
+        }
+        
+        reachability.whenUnreachable = { reachability in
+            self.setUIBasedOnInternetConnection(enableValue: false)
+        }
+
+>>>>>>> 46278eb... refactor: refactoring Reachability code
         checkSession()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
