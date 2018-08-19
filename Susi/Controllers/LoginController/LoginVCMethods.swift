@@ -277,7 +277,7 @@ extension LoginViewController {
             }
         }
     }
-    
+
     // Checks the Internet Connection
     func checkReachability() {
         reachability.whenReachable = { reachability in
