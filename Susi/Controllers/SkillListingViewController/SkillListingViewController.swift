@@ -75,21 +75,7 @@ class SkillListingViewController: UITableViewController {
         super.viewWillAppear(animated)
 
         self.setupView()
-
-        reachability.whenUnreachable = {reachability in
-            DispatchQueue.main.async {
-                let noConnection = noConnectionViewController()
-
-                let view = UINavigationController(rootViewController: noConnection)
-                self.present(view, animated: true, completion: {
-                    noConnection.skillListingInstance = self
-                })
-
-            }
-
-            self.dismissingTheController()
-
-        }
+        checkReachability()
 
     }
 

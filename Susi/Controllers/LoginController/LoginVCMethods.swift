@@ -278,8 +278,20 @@ extension LoginViewController {
         }
     }
     
-    // Changes the UI based on the Internet Connection
-    func setUIBasedOnInternetConnection ( enableValue : Bool = true){
+    // Checks the Internet Connection
+    func checkReachability(){
+        reachability.whenReachable = { reachability in
+            self.setUIBasedOnReachability(enableValue: true)
+        }
+        
+        reachability.whenUnreachable = { reachability in
+            self.setUIBasedOnReachability(enableValue: false)
+        }
+    }
+    
+    
+    // Changes the UI based on the Internet Connection (Reachability)
+    func setUIBasedOnReachability(enableValue: Bool) {
         DispatchQueue.main.async {
             self.loginButton.isEnabled = enableValue
             self.forgotPassword.isEnabled = enableValue
@@ -287,7 +299,7 @@ extension LoginViewController {
             self.forgotPassword.isEnabled = enableValue
             self.skipButton.isEnabled = enableValue
             self.signUpButton.isEnabled = enableValue
-            if enableValue{
+            if enableValue {
                 self.alert.dismiss(animated: true, completion: nil)
             } else {
                 self.present(self.alert, animated: true, completion: nil)
