@@ -283,7 +283,7 @@ extension LoginViewController {
         reachability.whenReachable = { reachability in
             self.setUIBasedOnReachability(enableValue: true)
         }
-        
+
         reachability.whenUnreachable = { reachability in
             self.setUIBasedOnReachability(enableValue: false)
         }

@@ -97,7 +97,7 @@ extension SkillListingViewController {
                 self.present(view, animated: true, completion: {
                     noConnection.skillListingInstance = self
                 })
-                
+
             }
             
             self.dismissingTheController()
