@@ -289,7 +289,7 @@ extension LoginViewController {
         }
     }
 
-    
+
     // Changes the UI based on the Internet Connection (Reachability)
     func setUIBasedOnReachability(enableValue: Bool) {
         DispatchQueue.main.async {
