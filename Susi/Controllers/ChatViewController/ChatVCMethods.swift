@@ -338,7 +338,7 @@ extension ChatViewController {
         collectionView?.reloadData()
         scrollToLast()
     }
-    
+
     // Checks the Internet Connection
     func checkReachability() {
         reachability.whenReachable = { reachability in

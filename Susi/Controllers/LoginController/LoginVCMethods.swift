@@ -279,7 +279,7 @@ extension LoginViewController {
     }
     
     // Checks the Internet Connection
-    func checkReachability(){
+    func checkReachability() {
         reachability.whenReachable = { reachability in
             self.setUIBasedOnReachability(enableValue: true)
         }
