@@ -339,6 +339,28 @@ extension ChatViewController {
         scrollToLast()
     }
 
+    // Checks the Internet Connection
+    func checkReachability() {
+        reachability.whenReachable = { reachability in
+            self.setUIBasedOnReachability(value: true)
+        }
+        reachability.whenUnreachable = { reachability in
+            self.setUIBasedOnReachability(value: false)
+        }
+    }
+
+    // Changes UI based on Reachability
+    func setUIBasedOnReachability(value: Bool) {
+        DispatchQueue.main.async {
+            self.inputTextField.isEditable = value
+            if value {
+                self.alert.dismiss(animated: true, completion: nil)
+            } else {
+                self.present(self.alert, animated: true, completion: nil)
+            }
+        }
+    }
+
 }
 
 extension ChatViewController: PresentControllerDelegate {

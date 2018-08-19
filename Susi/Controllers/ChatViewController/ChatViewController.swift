@@ -150,21 +150,7 @@ class ChatViewController: UICollectionViewController {
         loadMessages()
         addSkillListingButton()
         addScrollButton()
-
-        reachability.whenReachable = { reachability in
-            DispatchQueue.main.async {
-                self.inputTextField.isEditable = true
-                self.alert.dismiss(animated: true, completion: nil)
-            }
-        }
-
-        reachability.whenUnreachable = { reachability in
-            DispatchQueue.main.async {
-                self.inputTextField.isEditable = false
-                self.present(self.alert, animated: true, completion: nil)
-            }
-        }
-
+        checkReachability()
     }
 
     override func viewWillAppear(_ animated: Bool) {
