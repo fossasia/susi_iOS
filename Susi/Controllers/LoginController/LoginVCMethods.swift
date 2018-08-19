@@ -277,19 +277,19 @@ extension LoginViewController {
             }
         }
     }
-    
+
     // Checks the Internet Connection
     func checkReachability() {
         reachability.whenReachable = { reachability in
             self.setUIBasedOnReachability(enableValue: true)
         }
-        
+
         reachability.whenUnreachable = { reachability in
             self.setUIBasedOnReachability(enableValue: false)
         }
     }
-    
-    
+
+
     // Changes the UI based on the Internet Connection (Reachability)
     func setUIBasedOnReachability(enableValue: Bool) {
         DispatchQueue.main.async {

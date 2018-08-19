@@ -88,21 +88,20 @@ extension SkillListingViewController {
             }
         })
     }
-    
+
     func checkReachability() {
         reachability.whenUnreachable = {reachability in
             DispatchQueue.main.async {
                 let noConnection = noConnectionViewController()
-                
                 let view = UINavigationController(rootViewController: noConnection)
                 self.present(view, animated: true, completion: {
                     noConnection.skillListingInstance = self
                 })
-                
+
             }
-            
+
             self.dismissingTheController()
-            
+
         }
     }
 

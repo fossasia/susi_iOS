@@ -348,7 +348,7 @@ extension ChatViewController {
             self.setUIBasedOnReachability(value: false)
         }
     }
-    
+
     // Changes UI based on Reachability
     func setUIBasedOnReachability(value: Bool) {
         DispatchQueue.main.async {
