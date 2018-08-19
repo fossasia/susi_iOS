@@ -288,7 +288,7 @@ extension LoginViewController {
             self.setUIBasedOnReachability(enableValue: false)
         }
     }
-    
+
     
     // Changes the UI based on the Internet Connection (Reachability)
     func setUIBasedOnReachability(enableValue: Bool) {
