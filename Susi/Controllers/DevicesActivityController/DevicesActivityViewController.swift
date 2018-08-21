@@ -26,6 +26,12 @@ class DevicesActivityViewController: UITableViewController {
         return button
     }()
 
+    var isSetupDone: Bool = false {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+
     var wifiAlertController = UIAlertController()
     var passwordAlertController = UIAlertController()
     var alertController = UIAlertController()
@@ -52,6 +58,10 @@ class DevicesActivityViewController: UITableViewController {
             cell.imageView?.image = ControllerConstants.Images.availableDevice
             cell.textLabel?.text = speakerSSID
             cell.detailTextLabel?.text = ControllerConstants.DeviceActivity.connectedDetailText
+            if isSetupDone {
+                cell.textLabel?.text = ControllerConstants.DeviceActivity.successfullyConnected
+                cell.detailTextLabel?.text = ControllerConstants.DeviceActivity.doneSetupDetailText
+            }
         } else {
             cell.accessoryType = .none
             cell.textLabel?.text = ControllerConstants.DeviceActivity.noDeviceTitle
@@ -62,7 +72,7 @@ class DevicesActivityViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0, let speakerSSID = fetchSSIDInfo(), speakerSSID == ControllerConstants.DeviceActivity.susiSSID {
+        if indexPath.row == 0, let speakerSSID = fetchSSIDInfo(), speakerSSID == ControllerConstants.DeviceActivity.susiSSID, !isSetupDone {
             // Open a popup to select Rooms
             presentRoomsPopup()
         }
