@@ -42,6 +42,31 @@ extension LoginViewController {
         passwordTextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
     }
 
+    func checkReachability() {
+        reachability.whenReachable = { reachability in
+            self.setUIBasedOnReachability(value: true)
+        }
+        reachability.whenUnreachable = { reachability in
+            self.setUIBasedOnReachability(value: false)
+        }
+    }
+
+    func setUIBasedOnReachability(value: Bool) {
+        DispatchQueue.main.async {
+            self.loginButton.isEnabled = value
+            self.forgotPassword.isEnabled = value
+            self.skipButton.isEnabled = value
+            self.forgotPassword.isEnabled = value
+            self.skipButton.isEnabled = value
+            self.signUpButton.isEnabled = value
+            if value {
+                self.alert.dismiss(animated: true, completion: nil)
+            } else {
+                self.present(self.alert, animated: true, completion: nil)
+            }
+        }
+    }
+
     @IBAction func toggleRadioButtons(_ sender: M13Checkbox) {
         if sender.checkState == .checked {
             addressTextField.tag = 1
