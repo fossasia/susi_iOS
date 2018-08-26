@@ -38,6 +38,7 @@ extension Client {
         static let Auth = "/auth"
         static let Config = "/config"
         static let SpeakerConfig = "/speaker_config"
+        static let CheckRegistration = "/aaa/checkRegistration.json"
     }
 
     struct ResponseMessages {
@@ -65,6 +66,8 @@ extension Client {
         static let ValidSeconds = "valid_seconds"
         static let EmailOfAccount = "changepassword"
         static let NewPassword = "newpassword"
+        static let EmailExists = "exists"
+        static let CheckEmail = "check_email"
     }
 
     struct ChatKeys {

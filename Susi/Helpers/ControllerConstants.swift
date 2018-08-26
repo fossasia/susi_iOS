@@ -87,6 +87,7 @@ class ControllerConstants {
     static let selectALanguage = "Select a Language"
     static let deviceType = "iOS"
     static let skillFeedback = "Skill Feedback"
+    static let emailAlreadyExists = "Email is already registered!"
 
     struct Settings {
         static let enterToSend = "Enter To Send"
