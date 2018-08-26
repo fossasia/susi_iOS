@@ -168,7 +168,6 @@ extension ChatViewController {
             ]
 
             UserDefaults.standard.set(text, forKey: ControllerConstants.UserDefaultsKeys.userQuery)
-
             saveMessage(text)
             addActivityIndicatorMessage()
 
@@ -285,6 +284,26 @@ extension ChatViewController {
                 sendButton.setImage(ControllerConstants.Images.send, for: .normal)
                 sendButton.tintColor = .white
                 sendButton.backgroundColor = UIColor.defaultColor()
+            }
+        }
+    }
+
+    func checkReachability() {
+        reachability.whenReachable = { reachability in
+            self.setUIBasedOnReachability(value: true)
+        }
+        reachability.whenUnreachable = { reachability in
+            self.setUIBasedOnReachability(value: false)
+        }
+    }
+
+    func setUIBasedOnReachability(value: Bool) {
+        DispatchQueue.main.async {
+            self.inputTextField.isEditable = value
+            if value {
+                self.alert.dismiss(animated: true, completion: nil)
+            } else {
+                self.present(self.alert, animated: true, completion: nil)
             }
         }
     }
