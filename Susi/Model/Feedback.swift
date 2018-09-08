@@ -12,12 +12,14 @@ class Feedback: NSObject {
     var feedbackString: String = ""
     var email: String = ""
     var timeStamp: String = ""
+    var username: String?
 
     convenience init(dictionary: [String: AnyObject]) {
         self.init()
         feedbackString = dictionary["feedback"] as? String ?? ""
         email = dictionary["email"] as? String ?? ""
         timeStamp = dictionary["timestamp"] as? String ?? ""
+        username = dictionary["user_name"] as? String
     }
 
     static func getAllFeedback(_ feedbacks: [Dictionary<String, AnyObject>]) -> [Feedback] {
