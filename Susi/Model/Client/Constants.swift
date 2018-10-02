@@ -39,6 +39,7 @@ extension Client {
         static let Config = "/config"
         static let SpeakerConfig = "/speaker_config"
         static let CheckRegistration = "/aaa/checkRegistration.json"
+        static let ReportSkill = "/cms/reportSkill.json"
     }
 
     struct ResponseMessages {
@@ -182,6 +183,8 @@ extension Client {
         static let language = "language"
         static let dynamicContent = "dynamic_content"
         static let skillRating = "skill_rating"
+        static let accessToken = "access_token"
+        static let feedback = "feedback"
     }
 
     struct FiveStarRating {

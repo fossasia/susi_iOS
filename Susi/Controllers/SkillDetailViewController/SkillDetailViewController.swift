@@ -30,6 +30,17 @@ class SkillDetailViewController: GeneralViewController {
         return label
     }()
 
+    let reportSkillButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.contentHorizontalAlignment = .left
+        button.setTitle("Report Skill", for: .normal)
+        button.setTitleColor(UIColor.iOSGray(), for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        button.translatesAutoresizingMaskIntoConstraints = false
+
+        return button
+    }()
+
     var skill: Skill?
     var chatViewController: ChatViewController?
     var selectedExample: String?
@@ -107,6 +118,7 @@ class SkillDetailViewController: GeneralViewController {
         setupFiveStarData()
         setupBarChart()
         addContentType()
+        setupReportSkillButton()
         setupFeedbackTextField()
     }
 
@@ -124,7 +136,7 @@ class SkillDetailViewController: GeneralViewController {
         super.viewWillLayoutSubviews()
         // ScrollView content size
         let labelHeight = skillDescription.heightForLabel(text: skillDescription.text!, font: UIFont.systemFont(ofSize: 16.0), width: self.view.frame.width - 64)
-        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 200.0 + feedbackTableHeighConstraint.constant + labelHeight)
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 240.0 + feedbackTableHeighConstraint.constant + labelHeight)
     }
 
     override func localizeStrings() {
