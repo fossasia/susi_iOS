@@ -26,8 +26,9 @@ class FeedbackDisplayCell: UITableViewCell {
             }
             feedbackDateLabel.text = feedback?.timeStamp.getFirstChar(10)
             userFeedbackLabel.text = feedback?.feedbackString
-            if let userEmail = feedback?.email {
-                setGravatar(from: userEmail)
+            if let avatarURLString = feedback?.avatar {
+                let imageURL = URL(string: avatarURLString)
+                gravatarImageView.kf.setImage(with: imageURL)
             }
             roundedCorner()
         }
@@ -38,14 +39,6 @@ class FeedbackDisplayCell: UITableViewCell {
         gravatarImageView.layer.borderWidth = 1.0
         gravatarImageView.layer.borderColor = UIColor.iOSGray().cgColor
         gravatarImageView.layer.masksToBounds = true
-    }
-
-    func setGravatar(from emailString: String) {
-        let baseGravatarURL = "https://www.gravatar.com/avatar/"
-        let emailMD5 = emailString.utf8.md5.rawValue
-        let imageString = baseGravatarURL + emailMD5 + ".jpg"
-        let imageURL = URL(string: imageString)
-        gravatarImageView.kf.setImage(with: imageURL)
     }
 
 }
