@@ -56,9 +56,8 @@ extension SettingsViewController {
                 if success {
                     if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
                         appDelegate.currentUser = nil
+                        self.presentLoginScreen()
                     }
-                    self.presentingViewController?.presentingViewController?
-                        .presentingViewController?.dismiss(animated: true, completion: nil)
                 } else {
                     debugPrint(error)
                 }
