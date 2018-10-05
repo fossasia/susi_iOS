@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var currentUser: User?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        UIApplication.shared.isStatusBarHidden = false
         initializeRealm()
         resetStateIfUITesting()
         checkAndAssignDefaultIfFirstLaunch()
@@ -71,6 +72,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
     }
 
+    func presentLoginScreens() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginController")
+        self.window?.rootViewController = loginViewController
+        self.window?.makeKeyAndVisible()
+    }
+
     func presetChatScreen() {
         let layout = BouncyLayout()
         let vc = ChatViewController(collectionViewLayout: layout)
@@ -89,6 +97,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         self.presetChatScreen()
                     } else {
                         self.resetDB()
+                        self.presentLoginScreens()
                     }
             }
         }

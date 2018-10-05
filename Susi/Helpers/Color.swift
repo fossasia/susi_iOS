@@ -11,7 +11,7 @@ import UIKit
 extension UIColor {
 
     class func defaultColor() -> UIColor {
-        return UIColor.hexStringToUIColor(hex: "#4184F3")
+        return UIColor.hexStringToUIColor(hex: "#4285f4")
     }
 
     class func chatBackgroundColor() -> UIColor {
@@ -47,7 +47,7 @@ extension UIColor {
     }
 
     class func iOSBlue() -> UIColor {
-        return UIColor.hexStringToUIColor(hex: "#116AFF")
+        return UIColor.hexStringToUIColor(hex: "#4285f4")
     }
 
     class func iOSOrange() -> UIColor {

@@ -124,6 +124,62 @@ extension SkillDetailViewController {
 
     }
 
+    func setupReportSkillButton() {
+        if let delegate = UIApplication.shared.delegate as? AppDelegate, let _ = delegate.currentUser {
+            view.addSubview(reportSkillButton)
+            reportSkillButton.widthAnchor.constraint(equalToConstant: 140).isActive = true
+            reportSkillButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
+            reportSkillButton.leftAnchor.constraint(equalTo: contentType.leftAnchor).isActive = true
+            reportSkillButton.topAnchor.constraint(equalTo: contentType.bottomAnchor, constant: 8).isActive = true
+
+            reportSkillButton.addTarget(self, action: #selector(reportSkillAction), for: .touchUpInside)
+        }
+    }
+
+    @objc func reportSkillAction() {
+        let reportSkillAlert = UIAlertController(title: "Report Skill", message: "Flag as inappropriate", preferredStyle: .alert)
+        reportSkillAlert.addTextField(configurationHandler: { (textfield: UITextField) in
+            textfield.placeholder = "Feedback message"
+            textfield.borderStyle = .roundedRect
+        })
+        let reportAction = UIAlertAction(title: "Report", style: .default, handler: { alert -> Void in
+            let feedbackTextField = reportSkillAlert.textFields![0] as UITextField
+            if let feedbackMessage = feedbackTextField.text {
+                self.reportSkill(feedbackMessage: feedbackMessage)
+            }
+        })
+        let cancleAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action : UIAlertAction) -> Void in
+        })
+        reportSkillAlert.addAction(cancleAction)
+        reportSkillAlert.addAction(reportAction)
+        self.present(reportSkillAlert, animated: true, completion: nil)
+        removeTextBorder(for: reportSkillAlert)
+    }
+
+    func reportSkill(feedbackMessage: String) {
+        if let delegate = UIApplication.shared.delegate as? AppDelegate, let user = delegate.currentUser {
+
+            let params = [
+                Client.SkillListing.model: skill?.model as AnyObject,
+                Client.SkillListing.group: skill?.group as AnyObject,
+                Client.SkillListing.skill: skill?.skillKeyName as AnyObject,
+                Client.SkillListing.language: Locale.current.languageCode as AnyObject,
+                Client.SkillListing.accessToken: user.accessToken as AnyObject,
+                Client.SkillListing.feedback: feedbackMessage as AnyObject
+            ]
+
+            Client.sharedInstance.reportSkill(params) { (success, error) in
+                DispatchQueue.main.async {
+                    if success {
+                        self.view.makeToast("Skill reported successfully")
+                    } else if let error = error {
+                        self.view.makeToast(error)
+                    }
+                }
+            }
+        }
+    }
+
     func setupFeedbackTextField() {
         skillFeedbackTextField.placeholderActiveColor = UIColor.skillFeedbackColor()
         skillFeedbackTextField.dividerActiveColor = UIColor.skillFeedbackColor()
@@ -160,6 +216,17 @@ extension SkillDetailViewController {
         barChartView.transform = CGAffineTransform(rotationAngle: .pi/2.0)
         barChartView.barSpacing = 3
         barChartView.backgroundColor = UIColor.barBackgroundColor()
+    }
+
+    func removeTextBorder(for alterController: UIAlertController) {
+        for textfield: UIView in alterController.textFields! {
+            let container: UIView? = textfield.superview
+            let effectView = container?.superview?.subviews[0]
+            if effectView != nil {
+                container?.backgroundColor = UIColor.clear
+                effectView?.removeFromSuperview()
+            }
+        }
     }
 
 }

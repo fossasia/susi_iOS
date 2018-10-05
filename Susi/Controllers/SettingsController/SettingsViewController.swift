@@ -132,7 +132,7 @@ class SettingsViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let user = UserDefaults.standard.dictionary(forKey: ControllerConstants.UserDefaultsKeys.user)
-        if indexPath.section == 4 && indexPath.row == 2 && user == nil {
+        if indexPath.section == 5 && indexPath.row == 2 && user == nil {
             cell.isHidden = true
         }
     }
