@@ -24,7 +24,7 @@ class PlayerViewController: UIViewController {
     // youtube player loader
     lazy var playerIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView()
-        indicator.activityIndicatorViewStyle = .whiteLarge
+        indicator.style = .whiteLarge
         indicator.hidesWhenStopped = true
         return indicator
     }()

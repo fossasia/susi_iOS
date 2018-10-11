@@ -54,8 +54,8 @@ class OnboardingViewController: UIViewController {
         setupPaperOnboardingView()
         skipButton.isHidden = false
         bottomLoginSkipButton.isHidden = true
-        view.bringSubview(toFront: skipButton)
-        view.bringSubview(toFront: bottomLoginSkipButton)
+        view.bringSubviewToFront(skipButton)
+        view.bringSubviewToFront(bottomLoginSkipButton)
     }
 
     private func setupPaperOnboardingView() {
@@ -66,7 +66,7 @@ class OnboardingViewController: UIViewController {
         view.addSubview(onboarding)
 
         // Add constraints
-        for attribute: NSLayoutAttribute in [.left, .right, .top, .bottom] {
+        for attribute: NSLayoutConstraint.Attribute in [.left, .right, .top, .bottom] {
             let constraint = NSLayoutConstraint(item: onboarding,
                                                 attribute: attribute,
                                                 relatedBy: .equal,
