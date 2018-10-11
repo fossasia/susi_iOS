@@ -32,7 +32,7 @@ extension SkillDetailViewController: UICollectionViewDelegateFlowLayout, UIColle
     func estimatedFrame(query: String) -> CGRect {
         let size = CGSize(width: 450, height: 44)
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
-        return NSString(string: query).boundingRect(with: size, options: options, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17)], context: nil)
+        return NSString(string: query).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17)], context: nil)
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

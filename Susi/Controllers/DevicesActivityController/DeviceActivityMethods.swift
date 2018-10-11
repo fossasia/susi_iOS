@@ -273,12 +273,12 @@ extension DevicesActivityViewController {
         alertController = UIAlertController(title: "", message: "", preferredStyle: .alert)
         alertController.view.tintColor = UIColor.black
 
-        let attributedString = NSAttributedString(string: message, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 18), NSAttributedStringKey.foregroundColor: UIColor.iOSGray()])
+        let attributedString = NSAttributedString(string: message, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: UIColor.iOSGray()])
         alertController.setValue(attributedString, forKey: "attributedMessage")
 
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 8, y: 2, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
         loadingIndicator.color = UIColor.iOSGray()
         loadingIndicator.startAnimating()
         alertController.view.addSubview(loadingIndicator)

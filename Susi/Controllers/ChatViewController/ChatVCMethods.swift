@@ -17,21 +17,21 @@ extension ChatViewController {
     // MARK: - Keyboard Notifications
 
     func subscribeToKeyboardNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     func unsubscriveToKeyboardNotifications() {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     @objc func handleKeyboardNotification(notification: NSNotification) {
 
         if let userInfo = notification.userInfo {
 
-            let keyboardFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
-            let isKeyboardShowing = notification.name == NSNotification.Name.UIKeyboardWillShow
+            let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
+            let isKeyboardShowing = notification.name == UIResponder.keyboardWillShowNotification
 
             if #available(iOS 11.0, *) {
                 bottomConstraint?.constant = isKeyboardShowing ? -keyboardFrame!.height + view.safeAreaInsets.bottom : 0
@@ -42,7 +42,7 @@ extension ChatViewController {
             collectionView?.frame = isKeyboardShowing ? CGRect(x: 0, y: 20, width: view.frame.width, height: view.frame.height - keyboardFrame!.height - 71) :
                 CGRect(x: 0, y: 20, width: view.frame.width, height: view.frame.height - 71)
 
-            UIView.animate(withDuration: 0, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+            UIView.animate(withDuration: 0, delay: 0, options: UIView.AnimationOptions.curveEaseOut, animations: {
 
                 self.view.layoutIfNeeded()
 
@@ -348,7 +348,7 @@ extension ChatViewController {
     func estimatedFrame(message: String) -> CGRect {
         let size = CGSize(width: 250, height: 1000)
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
-        return NSString(string: message).boundingRect(with: size, options: options, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16)], context: nil)
+        return NSString(string: message).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)], context: nil)
     }
 
     // loads all messages from database
