@@ -11,7 +11,7 @@ target 'Susi' do
 
   # Pods for Susi
   pod 'Material'
-  pod 'Toast-Swift', '~> 3.0.0'
+  pod 'Toast-Swift', '~> 4.0.0'
   pod 'SwiftValidators'
   pod 'BouncyLayout'
   pod 'RealmSwift'
@@ -20,7 +20,7 @@ target 'Susi' do
   pod 'SwiftDate', '~> 4.5.0'
   pod 'NVActivityIndicatorView'
   pod 'Fakery', '~> 3.3.0'
-  pod 'M13Checkbox', :git => 'https://github.com/Marxon13/M13Checkbox.git', :tag => '3.2.2'
+  pod 'M13Checkbox', :git => 'https://github.com/Marxon13/M13Checkbox.git', :branch => 'swift_4_2'
   pod 'NotificationBannerSwift'
   pod 'ReachabilitySwift'
   pod 'Localize-Swift'
