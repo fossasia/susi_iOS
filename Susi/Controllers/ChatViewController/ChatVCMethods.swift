@@ -11,6 +11,7 @@ import CoreLocation
 import AVFoundation
 import RealmSwift
 import Material
+import SnapKit
 
 extension ChatViewController {
 
@@ -39,7 +40,7 @@ extension ChatViewController {
                 bottomConstraint?.constant = isKeyboardShowing ? -keyboardFrame!.height : 0
             }
 
-            collectionView?.frame = isKeyboardShowing ? CGRect(x: 0, y: 20, width: view.frame.width, height: view.frame.height - keyboardFrame!.height - 71) :
+            tableView.frame = isKeyboardShowing ? CGRect(x: 0, y: 20, width: view.frame.width, height: view.frame.height - keyboardFrame!.height - 71) :
                 CGRect(x: 0, y: 20, width: view.frame.width, height: view.frame.height - 71)
 
             UIView.animate(withDuration: 0, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
@@ -96,31 +97,45 @@ extension ChatViewController {
         message.actionType = ActionType.indicatorView.rawValue
         messages.append(message)
         let indexPath = IndexPath(item: messages.count - 1, section: 0)
-        collectionView?.insertItems(at: [indexPath])
+		tableView.insertRows(at: [indexPath], with: .automatic)
         scrollToLast()
     }
 
     func removeActivityIndicator() {
         if messages.last?.actionType == ActionType.indicatorView.rawValue {
             let item = IndexPath(item: messages.count - 1, section: 0)
-            collectionView?.deleteItems(at: [item])
+			tableView.deleteRows(at: [item], with: .automatic)
             messages.removeLast()
         }
     }
 
+	func setupTableView() {
+		view.addSubview(tableView)
+		tableView.translatesAutoresizingMaskIntoConstraints = false
+		tableView.snp.makeConstraints { (make) in
+			make.left.right.equalTo(self.view)
+			if #available(iOS 11.0, *) {
+				make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
+			} else {
+				make.top.equalTo(self.view)
+			}
+		}
+	}
+
     // setup input components
     func setupInputComponents() {
         view.addSubview(messageInputContainerView)
-        view.addConstraintsWithFormat(format: "H:|[v0]|", views: messageInputContainerView)
-        view.addConstraintsWithFormat(format: "V:[v0(48)]", views: messageInputContainerView)
-
-        if #available(iOS 11.0, *) {
-            bottomConstraint = NSLayoutConstraint(item: messageInputContainerView, attribute: .bottom, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, attribute: .bottom, multiplier: 1, constant: 0)
-        } else {
-            // Fallback on earlier versions
-            bottomConstraint = NSLayoutConstraint(item: messageInputContainerView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
-        }
-        view.addConstraint(bottomConstraint!)
+		messageInputContainerView.translatesAutoresizingMaskIntoConstraints = false
+		messageInputContainerView.snp.makeConstraints { (make) in
+			make.left.right.equalTo(self.view)
+			make.height.equalTo(48.0)
+			make.top.equalTo(tableView.snp.bottom)
+			if #available(iOS 11.0, *) {
+				make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
+			} else {
+				make.bottom.equalTo(self.view)
+			}
+		}
 
         // chat container view configuration
         let topBorderView = UIView()
@@ -190,9 +205,9 @@ extension ChatViewController {
             Client.sharedInstance.queryResponse(params) { (messages, success, _) in
                 DispatchQueue.main.async {
                     if let messages = messages, success {
-                        self.addMessagesToCollectionView(messages: messages)
+                        self.addMessagesToTableView(messages: messages)
                     } else {
-                        self.collectionView?.performBatchUpdates({
+                        self.tableView.performBatchUpdates({
                             self.removeActivityIndicator()
                         }, completion: nil)
                     }
@@ -218,15 +233,15 @@ extension ChatViewController {
             Client.sharedInstance.getMessagesFromMemory(params as [String: AnyObject]) { (messages, _, _) in
                 DispatchQueue.main.async {
                     if let messages = messages {
-                        self.addMessagesToCollectionView(messages: messages)
+                        self.addMessagesToTableView(messages: messages)
                     }
                 }
             }
         }
     }
 
-    func addMessagesToCollectionView(messages: List<Message>) {
-        self.collectionView?.performBatchUpdates({
+    func addMessagesToTableView(messages: List<Message>) {
+        self.tableView.performBatchUpdates({
             self.removeActivityIndicator()
             for message in messages {
                 try! self.realm.write {
@@ -234,7 +249,7 @@ extension ChatViewController {
                     self.messages.append(message)
                     let indexPath = IndexPath(item: self.messages.count - 1, section: 0)
                     UIView.animate(withDuration: 1.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-                        self.collectionView?.insertItems(at: [indexPath])
+						self.tableView.insertRows(at: [indexPath], with: .automatic)
                         if message.actionType == ActionType.answer.rawValue && !message.fromUser {
                             self.speakAction(message)
                         } else if message.actionType == ActionType.stop.rawValue && !message.fromUser {
@@ -253,7 +268,7 @@ extension ChatViewController {
         let message = Message(message: message.trimmed)
         let list = List<Message>()
         list.append(message)
-        addMessagesToCollectionView(messages: list)
+        addMessagesToTableView(messages: list)
         self.sendButton.tag = 0
         self.inputTextField.text = ""
         setImageForSendButton()
@@ -339,7 +354,7 @@ extension ChatViewController {
         if messages.count > 0 {
             let lastItem = messages.count - 1
             let indexPath = IndexPath(item: lastItem, section: 0)
-            collectionView?.scrollToItem(at: indexPath, at: .top, animated: true)
+			tableView.scrollToRow(at: indexPath, at: .top, animated: true)
             scrollButton.isHidden = true
         }
     }
@@ -354,7 +369,7 @@ extension ChatViewController {
     // loads all messages from database
     func loadMessages() {
         messages = Array(realm.objects(Message.self))
-        collectionView?.reloadData()
+        tableView.reloadData()
         scrollToLast()
     }
 

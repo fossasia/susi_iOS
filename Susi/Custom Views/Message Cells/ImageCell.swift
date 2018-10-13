@@ -20,15 +20,15 @@ class ImageCell: ChatMessageCell {
         }
     }
 
-    let imageView: AnimatedImageView = {
-        let imageView = AnimatedImageView()
-        imageView.image = ControllerConstants.Images.placeholder
-        imageView.contentMode = .scaleAspectFit
-        imageView.layer.cornerRadius = 15
-        imageView.layer.masksToBounds = true
-        imageView.isUserInteractionEnabled = true
-        return imageView
-    }()
+	let customImageView: UIImageView = {
+		let imageView = AnimatedImageView()
+		imageView.image = ControllerConstants.Images.placeholder
+		imageView.contentMode = .scaleAspectFit
+		imageView.layer.cornerRadius = 15
+		imageView.layer.masksToBounds = true
+		imageView.isUserInteractionEnabled = true
+		return imageView
+	}()
 
     lazy var thumbUpIcon: IconButton = {
         let button = IconButton()
@@ -50,12 +50,12 @@ class ImageCell: ChatMessageCell {
     }
 
     func addImageView() {
-        textBubbleView.addSubview(imageView)
-        textBubbleView.addConstraintsWithFormat(format: "H:|-4-[v0]-4-|", views: imageView)
-        textBubbleView.addConstraintsWithFormat(format: "V:|-4-[v0]-20-|", views: imageView)
+        textBubbleView.addSubview(customImageView)
+        textBubbleView.addConstraintsWithFormat(format: "H:|-4-[v0]-4-|", views: customImageView)
+        textBubbleView.addConstraintsWithFormat(format: "V:|-4-[v0]-20-|", views: customImageView)
         let gesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(openImage))
-        imageView.isUserInteractionEnabled = true
-        imageView.addGestureRecognizer(gesture)
+        customImageView.isUserInteractionEnabled = true
+        customImageView.addGestureRecognizer(gesture)
         addBottomView()
     }
 
@@ -75,11 +75,10 @@ class ImageCell: ChatMessageCell {
     }
 
     func downloadImage() {
-        if let imageString = message?.answerData?.expression, imageString.isImage() {
-            if let url = URL(string: imageString) {
-                imageView.kf.setImage(with: url, placeholder: ControllerConstants.Images.placeholder, options: nil, progressBlock: nil, completionHandler: nil)
-            }
-        }
+		guard let imageString = message?.answerData?.expression, imageString.isImage(),
+			let url = URL(string: imageString) else { return }
+
+		customImageView.kf.setImage(with: url, placeholder: ControllerConstants.Images.placeholder, options: nil, progressBlock: nil, completionHandler: nil)
     }
 
     func addBottomView() {

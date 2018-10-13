@@ -16,10 +16,11 @@ import NVActivityIndicatorView
 import Realm
 import Reachability
 
-class ChatViewController: UICollectionViewController {
+class ChatViewController: UIViewController {
     // MARK: - Variable Declarations
 
     let reachability = Reachability()!
+	let tableView = UITableView()
 
     lazy var susiSkillListingButton: IconButton = {
         let ib = IconButton()
@@ -143,7 +144,8 @@ class ChatViewController: UICollectionViewController {
         setupNavbar()
         setupView()
         setupSendButton()
-        setupCollectionView()
+		setupTableView()
+        configureTableView()
         setupInputComponents()
         addGestures()
         configureLocationManager()
