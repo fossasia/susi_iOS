@@ -57,7 +57,7 @@ DEPENDENCIES:
   - Toast-Swift (~> 3.0.0)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - BouncyLayout
     - Fakery
@@ -114,4 +114,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 685a75a46dea55bf0e30c875c369376f08cbf355
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.5.0

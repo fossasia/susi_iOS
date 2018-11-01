@@ -37,6 +37,17 @@
 	<string>Susi needs to request your gallery access to select wallpaper</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>Speech recognition will be used to determine which words you speak into this device&amp;apos;s microphone.</string>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeLove</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Open Skills</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>OpenSkillAction</string>
+		</dict>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -45,6 +56,8 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIStatusBarHidden</key>
+	<true/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -56,8 +69,6 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>UIStatusBarHidden</key>
-	<true/>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>
