@@ -20,6 +20,8 @@ class LoginViewController: GeneralViewController {
 
     let alert = UIAlertController(title: "Warning", message: "Please Connect to Internet", preferredStyle: .alert)
 
+    var window: UIWindow?
+    
     @IBOutlet weak var susiLogo: UIImageView!
     @IBOutlet weak var emailTextField: TextField!
     @IBOutlet weak var passwordTextField: TextField!

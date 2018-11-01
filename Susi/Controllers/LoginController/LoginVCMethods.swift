@@ -290,7 +290,6 @@ extension LoginViewController {
             if let userData = userDefaultValue as? [String: AnyObject] {
                 let user = User(dictionary: userData)
                 saveUserGlobally(user: user)
-
                 DispatchQueue.main.async {
                     if user.expiryTime > Date() {
                         self.completeLogin(false)

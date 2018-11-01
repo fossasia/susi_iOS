@@ -18,13 +18,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // user
     var currentUser: User?
 
+    //home screen dynamic quick action
+    var shortcutItemToProcess: UIApplicationShortcutItem?
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         UIApplication.shared.isStatusBarHidden = false
         initializeRealm()
         resetStateIfUITesting()
         checkAndAssignDefaultIfFirstLaunch()
+
+        if let shortcutItem = launchOptions?[UIApplicationLaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
+            shortcutItemToProcess = shortcutItem
+            handleShortcut(shortcutItem: shortcutItem)
+        }
+
         return true
     }
+
 
     func initializeRealm() {
         var config = Realm.Configuration(schemaVersion: 1, migrationBlock: nil)
@@ -107,6 +117,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let realm = try! Realm()
         try! realm.write {
             realm.deleteAll()
+        }
+    }
+
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+
+        shortcutItemToProcess = shortcutItem
+    }
+
+    func applicationDidBecomeActive(_ application: UIApplication) {
+
+        guard let shortcut = shortcutItemToProcess else { return }
+
+        handleShortcut(shortcutItem: shortcut)
+
+    }
+    func handleShortcut( shortcutItem:UIApplicationShortcutItem ) {
+
+        // Construct an alert using the details of the shortcut used to open the application.
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let shortcutItem = shortcutItemToProcess {
+            print("\(shortcutItem.type) triggered")
+            if let controller = storyboard.instantiateViewController(withIdentifier: "SkillListingController") as? SkillListingViewController {
+                let navController = AppNavigationController(rootViewController: controller)
+                window?.rootViewController?.present(navController, animated: true, completion: nil)
+            }
+            // Reset the shorcut item so it's never processed twice.
+            shortcutItemToProcess = nil
         }
     }
 
