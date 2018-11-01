@@ -16,7 +16,7 @@ Before you begin, you should already have the Xcode downloaded and set up correc
 
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Steps to install Cocoapods (one time installation)
 
-- Run `sudo gem install cocoapods` to install the latest version of cocoapods
+- Run `sudo gem install cocoapods` to install the latest version of cocoapods. To install cocoapods from HomeBrew, `brew install cocoapods`.
 
 -  Next, run `pod setup` for setting up cocoapods master repo. You may include `--verbose` for more descriptive logs.
 **NOTE:** This might take a while to setup depending on your network speed.
