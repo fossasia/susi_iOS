@@ -151,7 +151,7 @@ extension ChatViewController {
     func addScrollButton() {
         view.addSubview(scrollButton)
         view.addConstraintsWithFormat(format: "H:[v0(44)]|", views: scrollButton)
-        view.addConstraintsWithFormat(format: "V:[v0(44)]-70-|", views: scrollButton)
+        view.addConstraintsWithFormat(format: "V:[v0(44)]-85-|", views: scrollButton)
         scrollButton.isHidden = true
     }
 
