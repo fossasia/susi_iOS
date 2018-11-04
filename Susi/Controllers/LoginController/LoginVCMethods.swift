@@ -223,7 +223,7 @@ extension LoginViewController {
                 emailTextField.dividerActiveColor = .green
             }
         } else if textField == passwordTextField, let password = passwordTextField.text {
-            if password.isEmpty || password.count < 5 {
+            if password.isEmpty || password.count < 6 || password.count > 64{
                 passwordTextField.dividerActiveColor = .red
             } else {
                 passwordTextField.dividerActiveColor = .green
