@@ -340,7 +340,6 @@ extension ChatViewController {
             let lastItem = messages.count - 1
             let indexPath = IndexPath(item: lastItem, section: 0)
             collectionView?.scrollToItem(at: indexPath, at: .top, animated: true)
-            scrollButton.isHidden = true
         }
     }
 
