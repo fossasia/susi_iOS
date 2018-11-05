@@ -113,7 +113,7 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
             } else if message.actionType == ActionType.video_play.rawValue || message.actionType == ActionType.audio_play.rawValue {
                 return CGSize(width: view.frame.width, height: 158)
             }
-            return CGSize(width: view.frame.width, height: estimatedFrame.height + 38)
+            return CGSize(width: view.frame.width, height: estimatedFrame.height + 60)
         }
     }
 
