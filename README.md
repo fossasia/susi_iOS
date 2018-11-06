@@ -47,14 +47,14 @@ A native iOS app.
 
 <table>
   <tr>
-    <td><img src="docs/_static/Screen1.png" height = "480" width="270"></td>
-    <td><img src="docs/_static/Screen2.png" height = "480" width="270"></td>
-    <td><img src="docs/_static/Screen3.png" height = "480" width="270"></td>
+    <td><img src="docs/_static/Screen1.png" height = "545" width="271.25"></td>
+    <td><img src="docs/_static/Screen2.png" height = "545" width="271.25"></td>
+    <td><img src="docs/_static/Screen3.png" height = "545" width="271.25"></td>
   </tr>
   <tr>
-    <td><img src="docs/_static/Screen4.png" height = "480" width="270"></td>
-    <td><img src="docs/_static/Screen5.png" height = "480" width="270"></td>
-    <td><img src="docs/_static/Screen6.png" height = "480" width="270"></td>
+    <td><img src="docs/_static/Screen4.png" height = "545" width="271.25"></td>
+    <td><img src="docs/_static/Screen5.png" height = "545" width="271.25"></td>
+    <td><img src="docs/_static/Screen6.png" height = "545" width="271.25"></td>
   </tr>
 </table>
 
