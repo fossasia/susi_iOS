@@ -16,7 +16,7 @@ extension SkillDetailViewController {
         ratingsBackStackView.addGestureRecognizer(tap)
     }
 
-     // force dismiss keyboard if open.
+    // force dismiss keyboard if open.
     @objc func dismissKeyboard() {
         if self.skillFeedbackTextField.isFirstResponder {
             self.skillFeedbackTextField.resignFirstResponder()
@@ -96,6 +96,13 @@ extension SkillDetailViewController {
             self.chatViewController?.inputTextField.text = query
             self.chatViewController?.handleSend()
         })
+        // In-case of 3D-touch home action
+        if let chatVC = self.chatViewController {
+            present(chatVC, animated: true, completion: {
+                chatVC.inputTextField.text = query
+                chatVC.handleSend()
+            })
+        }
     }
 
     func addSkillDescription() {
