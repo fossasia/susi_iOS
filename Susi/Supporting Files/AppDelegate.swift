@@ -14,6 +14,8 @@ import BouncyLayout
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var shortcutHandled: Bool!
+    var shortcutIdentifier: String?
 
     // user
     var currentUser: User?
@@ -23,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         initializeRealm()
         resetStateIfUITesting()
         checkAndAssignDefaultIfFirstLaunch()
+
         return true
     }
 
@@ -93,12 +96,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let user = User(dictionary: userData)
                 currentUser = user
 
-                    if user.expiryTime > Date() {
-                        self.presetChatScreen()
-                    } else {
-                        self.resetDB()
-                        self.presentLoginScreens()
-                    }
+                if user.expiryTime > Date() {
+                    self.presetChatScreen()
+                } else {
+                    self.resetDB()
+                    self.presentLoginScreens()
+                }
             }
         }
     }
@@ -110,4 +113,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+    func application(_ application: UIApplication,
+                     performActionFor shortcutItem: UIApplicationShortcutItem,
+                     completionHandler: @escaping (Bool) -> Void) {
+        shortcutIdentifier = shortcutItem.type
+        shortcutHandled = true
+        completionHandler(shortcutHandled)
+    }
+
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        if shortcutHandled == true {
+            shortcutHandled = false
+            if shortcutIdentifier == "OpenSkillAction" {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                if let skillsVC = storyboard.instantiateViewController(withIdentifier: "SkillListingController") as? SkillListingViewController {
+                    let layout = BouncyLayout()
+                    let chatViewController = ChatViewController(collectionViewLayout: layout)
+                    skillsVC.chatViewController = chatViewController
+                    let nvc = AppNavigationController(rootViewController: skillsVC)
+                    self.window?.rootViewController = nvc
+                    self.window?.makeKeyAndVisible()
+                }
+            }
+        }
+    }
 }

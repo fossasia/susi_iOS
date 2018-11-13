@@ -37,6 +37,10 @@ extension SkillListingViewController {
     // dismiss controller
     @objc func dismissController() {
         navigationController?.dismiss(animated: true, completion: nil)
+        // In-case of 3D-touch home action
+        if let chatVC = self.chatViewController {
+            present(chatVC, animated: true, completion: nil)
+        }
     }
 
     // setup activity indicator
