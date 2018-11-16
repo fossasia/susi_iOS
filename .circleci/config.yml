@@ -1,6 +1,18 @@
 version: 2
 
 jobs:
+  lint:
+    macos:
+      xcode: "9.3.0"
+    steps:
+      - checkout
+      - run:
+          name: Install Swiftlint
+          command: sh ./Scripts/install_swiftlint.sh
+      - run:
+          name: Lint
+          command: swiftlint
+          
   build-and-test:
     macos:
       xcode: "9.3.0"
@@ -26,7 +38,15 @@ workflows:
   version: 2
   build-and-deploy:
     jobs:
+    - lint:
+         filters:
+           branches:
+             ignore:
+               - /^docs[-\/].*$/
+               - /^.*-docs$/
       - build-and-test:
+         requires:
+            - lint
          filters:
            branches:
              ignore:
