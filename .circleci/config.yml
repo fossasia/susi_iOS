@@ -12,7 +12,7 @@ jobs:
       - run:
           name: Lint
           command: swiftlint
-          
+
     test:
       macos:
         xcode: "9.3.0"
@@ -33,7 +33,7 @@ jobs:
         - run:
             name: Deploy ipa
             command: sh ./Scripts/upload_ipa.sh
-          
+
 workflows:
   version: 2
   build-test-deploy:
@@ -47,7 +47,7 @@ workflows:
       - test:
           requires:
             - lint
-    - deploy:
+      - deploy:
           filters:
             branches:
               only: master
