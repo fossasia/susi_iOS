@@ -45,8 +45,8 @@ workflows:
                  - /^docs[-\/].*$/
                  - /^.*-docs$/
       - test:
-           requires:
-             - lint
+          requires:
+            - lint
     - deploy:
           filters:
             branches:
