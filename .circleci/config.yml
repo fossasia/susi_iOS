@@ -14,16 +14,16 @@ jobs:
           command: swiftlint
           
   build-and-test:
-    macos:
-      xcode: "9.3.0"
-    steps:
-      - checkout
-      - run:
-          name: Update Dependencies
-          command: sh ./Scripts/update_dependencies.sh
-      - run:
-          name: Build for testing
-          command: sh ./Scripts/build_for_testing.sh
+            macos:
+              xcode: "9.3.0"
+            steps:
+              - checkout
+              - run:
+                  name: Update Dependencies
+                  command: sh ./Scripts/update_dependencies.sh
+              - run:
+                  name: Build for testing
+                  command: sh ./Scripts/build_for_testing.sh
 
   deploy:
     macos:
@@ -45,12 +45,12 @@ workflows:
                - /^docs[-\/].*$/
                - /^.*-docs$/
       - build-and-test:
-         requires:
-            - lint
-         filters:
-           branches:
-             ignore:
-               - ipa
+               requires:
+                  - lint
+               filters:
+                 branches:
+                   ignore:
+                     - ipa
       - deploy:
           filters:
             branches:
