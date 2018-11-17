@@ -36,14 +36,14 @@ jobs:
           
 workflows:
   version: 2
-  build-and-deploy:
+  build-test-deploy:
     jobs:
       - lint:
-           filters:
-             branches:
-               ignore:
-                 - /^docs[-\/].*$/
-                 - /^.*-docs$/
+          filters:
+            branches:
+              ignore:
+                - /^docs[-\/].*$/
+                - /^.*-docs$/
       - test:
           requires:
             - lint
