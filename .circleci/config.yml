@@ -25,14 +25,14 @@ jobs:
             name: Build for testing
             command: sh ./Scripts/build_for_testing.sh
 
-  deploy:
+    deploy:
       macos:
         xcode: "9.3.0"
       steps:
         - checkout
         - run:
-            name: Deploy ipa
-            command: sh ./Scripts/upload_ipa.sh
+          name: Deploy ipa
+          command: sh ./Scripts/upload_ipa.sh
 
 workflows:
   version: 2
