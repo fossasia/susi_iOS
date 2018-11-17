@@ -47,10 +47,10 @@ workflows:
       - test:
            requires:
               - lint
-               filters:
-                 branches:
-                   ignore:
-                     - ipa
+              filters:
+                branches:
+                  ignore:
+                    - ipa
     - deploy:
           filters:
             branches:
