@@ -46,7 +46,7 @@ workflows:
                  - /^.*-docs$/
       - test:
            requires:
-             - lint
+              - lint
                filters:
                  branches:
                    ignore:
