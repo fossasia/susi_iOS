@@ -13,40 +13,40 @@ jobs:
           name: Lint
           command: swiftlint
           
-  build-and-test:
-            macos:
-              xcode: "9.3.0"
-            steps:
-              - checkout
-              - run:
-                  name: Update Dependencies
-                  command: sh ./Scripts/update_dependencies.sh
-              - run:
-                  name: Build for testing
-                  command: sh ./Scripts/build_for_testing.sh
+    test:
+      macos:
+        xcode: "9.3.0"
+      steps:
+        - checkout
+        - run:
+            name: Update Dependencies
+            command: sh ./Scripts/update_dependencies.sh
+        - run:
+            name: Build for testing
+            command: sh ./Scripts/build_for_testing.sh
 
   deploy:
-    macos:
-      xcode: "9.3.0"
-    steps:
-      - checkout
-      - run:
-          name: Deploy ipa
-          command: sh ./Scripts/upload_ipa.sh
+      macos:
+        xcode: "9.3.0"
+      steps:
+        - checkout
+        - run:
+            name: Deploy ipa
+            command: sh ./Scripts/upload_ipa.sh
           
 workflows:
   version: 2
   build-and-deploy:
     jobs:
-    - lint:
-         filters:
-           branches:
-             ignore:
-               - /^docs[-\/].*$/
-               - /^.*-docs$/
-      - build-and-test:
-               requires:
-                  - lint
+      - lint:
+           filters:
+             branches:
+               ignore:
+                 - /^docs[-\/].*$/
+                 - /^.*-docs$/
+      - test:
+         requires:
+              - lint
                filters:
                  branches:
                    ignore:
