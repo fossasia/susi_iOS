@@ -256,4 +256,11 @@ class ControllerConstants {
         static let roomsIcon = UIImage(named: "room-icon")
     }
 
+    struct HomeActions {
+        static let openSkillAction: String = "OpenSkillAction"
+        static let setupDeviceAction: String = "SetupDeviceAction"
+        static let changeVoiceAction: String = "ChangeVoiceAction"
+        static let customizeSettingsAction: String = "CustomizeSettingsAction"
+    }
+
 }

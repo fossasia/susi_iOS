@@ -122,15 +122,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
+        // Handel Home Screen Quick Actions
+        handelHomeActions()
+    }
+
+    func handelHomeActions() {
         if shortcutHandled == true {
             shortcutHandled = false
-            if shortcutIdentifier == "OpenSkillAction" {
+            if shortcutIdentifier == ControllerConstants.HomeActions.openSkillAction {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 if let skillsVC = storyboard.instantiateViewController(withIdentifier: "SkillListingController") as? SkillListingViewController {
                     let layout = BouncyLayout()
+                    // Assigned chatViewController to SkillListing so that Try-It can work
                     let chatViewController = ChatViewController(collectionViewLayout: layout)
                     skillsVC.chatViewController = chatViewController
                     let nvc = AppNavigationController(rootViewController: skillsVC)
+                    self.window?.rootViewController = nvc
+                    self.window?.makeKeyAndVisible()
+                }
+            } else if shortcutIdentifier == ControllerConstants.HomeActions.customizeSettingsAction {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                if let settingsVC = storyboard.instantiateViewController(withIdentifier: "SettingsViewController") as? SettingsViewController {
+                    let nvc = AppNavigationController(rootViewController: settingsVC)
+                    self.window?.rootViewController = nvc
+                    self.window?.makeKeyAndVisible()
+                }
+            } else if shortcutIdentifier == ControllerConstants.HomeActions.setupDeviceAction {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                if let setupDeviceVC = storyboard.instantiateViewController(withIdentifier: "DeviceInstructionsViewController") as? DeviceInstructionsViewController {
+                    let nvc = AppNavigationController(rootViewController: setupDeviceVC)
+                    self.window?.rootViewController = nvc
+                    self.window?.makeKeyAndVisible()
+                }
+            } else if shortcutIdentifier == ControllerConstants.HomeActions.changeVoiceAction {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                if let voiceVC = storyboard.instantiateViewController(withIdentifier: "LanguagePickerController") as? LanguagePickerController {
+                    let nvc = AppNavigationController(rootViewController: voiceVC)
                     self.window?.rootViewController = nvc
                     self.window?.makeKeyAndVisible()
                 }

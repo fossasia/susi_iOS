@@ -41,9 +41,33 @@
     <array>
         <dict>
             <key>UIApplicationShortcutItemIconType</key>
-            <string>UIApplicationShortcutIconTypeLove</string>
+            <string>UIApplicationShortcutIconTypeAudio</string>
             <key>UIApplicationShortcutItemTitle</key>
-            <string>Open Skills</string>
+            <string>Change SUSI’s Voice</string>
+            <key>UIApplicationShortcutItemType</key>
+            <string>ChangeVoiceAction</string>
+        </dict>
+        <dict>
+            <key>UIApplicationShortcutItemIconFile</key>
+            <string>setup-device-action</string>
+            <key>UIApplicationShortcutItemTitle</key>
+            <string>Setup A Device</string>
+            <key>UIApplicationShortcutItemType</key>
+            <string>SetupDeviceAction</string>
+        </dict>
+        <dict>
+            <key>UIApplicationShortcutItemIconFile</key>
+            <string>open-settings-action</string>
+            <key>UIApplicationShortcutItemTitle</key>
+            <string>Customize Settings</string>
+            <key>UIApplicationShortcutItemType</key>
+            <string>CustomizeSettingsAction</string>
+        </dict>
+        <dict>
+            <key>UIApplicationShortcutItemIconFile</key>
+            <string>susi-skills-action</string>
+            <key>UIApplicationShortcutItemTitle</key>
+            <string>Open SUSI Skills</string>
             <key>UIApplicationShortcutItemType</key>
             <string>OpenSkillAction</string>
         </dict>
