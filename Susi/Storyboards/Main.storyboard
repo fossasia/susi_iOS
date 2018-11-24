@@ -2506,7 +2506,7 @@
         <!--Navigation Controller-->
         <scene sceneID="g15-3o-WgW">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="54a-4I-S9a" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SUSILanguageNavVC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="54a-4I-S9a" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Ddb-zy-JmY">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>

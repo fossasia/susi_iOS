@@ -11,6 +11,7 @@ import RealmSwift
 import Material
 import Toast_Swift
 import Localize_Swift
+import BouncyLayout
 
 extension SettingsViewController {
 
@@ -24,6 +25,17 @@ extension SettingsViewController {
 
     @objc func dismissView() {
         self.dismiss(animated: true, completion: nil)
+
+        // In case so Home screen quick actions
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let skillsVC = storyboard.instantiateViewController(withIdentifier: "SkillListingController") as? SkillListingViewController {
+            let layout = BouncyLayout()
+            // Assigned chatViewController to SkillListing so that Try-It can work
+            let chatViewController = ChatViewController(collectionViewLayout: layout)
+            skillsVC.chatViewController = chatViewController
+            let nvc = AppNavigationController(rootViewController: skillsVC)
+            present(nvc, animated: true, completion: nil)
+        }
     }
 
     func setupTheme() {

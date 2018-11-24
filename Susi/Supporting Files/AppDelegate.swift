@@ -141,12 +141,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     self.window?.makeKeyAndVisible()
                 }
             } else if shortcutIdentifier == ControllerConstants.HomeActions.customizeSettingsAction {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                if let settingsVC = storyboard.instantiateViewController(withIdentifier: "SettingsViewController") as? SettingsViewController {
-                    let nvc = AppNavigationController(rootViewController: settingsVC)
-                    self.window?.rootViewController = nvc
+                let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let settingsVC = mainStoryboard.instantiateViewController(withIdentifier: "SettingsController")
+                let settingsNVC = AppNavigationController(rootViewController: settingsVC)
+                    self.window?.rootViewController = settingsNVC
                     self.window?.makeKeyAndVisible()
-                }
             } else if shortcutIdentifier == ControllerConstants.HomeActions.setupDeviceAction {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 if let setupDeviceVC = storyboard.instantiateViewController(withIdentifier: "DeviceInstructionsViewController") as? DeviceInstructionsViewController {
@@ -156,7 +155,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             } else if shortcutIdentifier == ControllerConstants.HomeActions.changeVoiceAction {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                if let voiceVC = storyboard.instantiateViewController(withIdentifier: "LanguagePickerController") as? LanguagePickerController {
+                if let voiceVC = storyboard.instantiateViewController(withIdentifier: "SUSILanguageNavVC") as? LanguagePickerController {
                     let nvc = AppNavigationController(rootViewController: voiceVC)
                     self.window?.rootViewController = nvc
                     self.window?.makeKeyAndVisible()
