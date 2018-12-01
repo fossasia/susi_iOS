@@ -21,9 +21,11 @@ extension SkillListingViewController {
         if let navbar = navigationController?.navigationBar {
             navbar.barTintColor = UIColor.defaultColor()
         }
-
         tableView.separatorStyle = .none
         tableView.backgroundColor = Color.grey.lighten4
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.tintColor = UIColor.defaultColor()
+        tableView.refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
     }
 
     // presents the settings controller
@@ -48,9 +50,19 @@ extension SkillListingViewController {
         tableView.layout(activityIndicator).center()
     }
 
+    func shouldAnimateIndicators(_ animate: Bool) {
+        DispatchQueue.main.async {
+            if(animate) {
+                self.activityIndicator.startAnimating()
+            } else {
+                self.activityIndicator.stopAnimating()
+                self.tableView.refreshControl?.endRefreshing()
+            }
+        }
+    }
+
     // get all groups
     func getAllGroups() {
-        activityIndicator.startAnimating()
         Client.sharedInstance.getAllGroups { (groups, success, message) in
             DispatchQueue.main.async {
                 if success {
@@ -58,7 +70,7 @@ extension SkillListingViewController {
                     self.getAllSkills()
                 } else {
                     print(message ?? "error")
-                    self.activityIndicator.stopAnimating()
+                    self.shouldAnimateIndicators(false)
                 }
             }
         }
@@ -77,20 +89,29 @@ extension SkillListingViewController {
             }
         }
     }
+    @objc func pullToRefresh() {
+        if(!self.activityIndicator.isAnimating) {
+            self.count = 0
+            getAllGroups()
+        } else {
+            shouldAnimateIndicators(false)
+        }
+    }
 
     func getSkillData(params: [String: AnyObject], group: String) {
-        // sleep 0.3 seconds to bypass server request failure
-        usleep(300000)
-        Client.sharedInstance.getSkillData(params, { (skill, success, _) in
-            DispatchQueue.main.async {
-                if success {
-                    self.skills[group] = skill
-                } else {
-                    self.skills[group] = nil
+        // sleep 0.3 seconds to bypass server  request failure
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            Client.sharedInstance.getSkillData(params, { (skill, success, _) in
+                DispatchQueue.main.async {
+                    if success {
+                        self.skills[group] = skill
+                    } else {
+                        self.skills[group] = nil
+                    }
+                    self.count += 1
                 }
-                self.count += 1
-            }
-        })
+            })
+        }
     }
 
     func checkReachability() {
