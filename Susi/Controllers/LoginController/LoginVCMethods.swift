@@ -62,7 +62,9 @@ extension LoginViewController {
             if value {
                 self.alert.dismiss(animated: true, completion: nil)
             } else {
-                self.present(self.alert, animated: true, completion: nil)
+                self.alert.addAction(UIAlertAction(title: ControllerConstants.ReachabilityResponse.alertAction, style: .default) { (action:UIAlertAction!) in
+                })
+                self.present(self.alert, animated: true)
             }
         }
     }
@@ -372,5 +374,5 @@ extension LoginViewController {
             print(error.localizedDescription)
         }
     }
-
+    
 }

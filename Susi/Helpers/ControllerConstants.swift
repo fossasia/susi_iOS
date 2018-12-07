@@ -255,5 +255,10 @@ class ControllerConstants {
         static let deviceIcon = UIImage(named: "device_icon")
         static let roomsIcon = UIImage(named: "room-icon")
     }
+    struct ReachabilityResponse {
+        static let title = "Warning"
+        static let message = "Please Connect To Interet"
+        static let alertAction = "Ok"
+    }
 
 }

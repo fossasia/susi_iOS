@@ -18,8 +18,8 @@ class LoginViewController: GeneralViewController {
 
     let reachability = Reachability()!
 
-    let alert = UIAlertController(title: "Warning", message: "Please Connect to Internet", preferredStyle: .alert)
-
+    let alert = UIAlertController(title: ControllerConstants.ReachabilityResponse.title, message: ControllerConstants.ReachabilityResponse.message, preferredStyle: .alert)
+    
     @IBOutlet weak var susiLogo: UIImageView!
     @IBOutlet weak var emailTextField: TextField!
     @IBOutlet weak var passwordTextField: TextField!

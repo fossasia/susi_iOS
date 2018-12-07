@@ -30,7 +30,8 @@ class ChatViewController: UICollectionViewController {
         return ib
     }()
 
-    let alert = UIAlertController(title: "Warning", message: "Please Connect to Internet", preferredStyle: .alert)
+    let alert = UIAlertController(title: ControllerConstants.ReachabilityResponse.title, message: ControllerConstants.ReachabilityResponse.message, preferredStyle: .alert)
+
 
     // scroll down button
     lazy var scrollButton: UIButton = {
