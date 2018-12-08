@@ -53,7 +53,7 @@ class SkillListingViewController: UITableViewController {
     let activityIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView()
         indicator.hidesWhenStopped = true
-        indicator.activityIndicatorViewStyle = .whiteLarge
+        indicator.style = .whiteLarge
         indicator.color = UIColor.defaultColor()
         return indicator
     }()

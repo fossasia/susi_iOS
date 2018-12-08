@@ -170,7 +170,7 @@ extension UIView {
             view.translatesAutoresizingMaskIntoConstraints = false
         }
 
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: viewsDictionary))
     }
 
     // Define UI margin constants
@@ -209,8 +209,8 @@ extension NSMutableAttributedString {
 
         let foundRange = self.mutableString.range(of: textToFind)
         if foundRange.location != NSNotFound {
-            self.addAttribute(NSAttributedStringKey.link, value: linkURL, range: foundRange)
-            self.addAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16.0)], range: self.mutableString.range(of: text))
+            self.addAttribute(NSAttributedString.Key.link, value: linkURL, range: foundRange)
+            self.addAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16.0)], range: self.mutableString.range(of: text))
             return true
         }
         return false
