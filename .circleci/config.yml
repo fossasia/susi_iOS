@@ -3,7 +3,7 @@ version: 2
 jobs:
   build-and-test:
     macos:
-      xcode: "9.3.0"
+      xcode: "10.0.0"
     steps:
       - checkout
       - run:
@@ -15,7 +15,7 @@ jobs:
 
   deploy:
     macos:
-      xcode: "9.3.0"
+      xcode: "10.0.0"
     steps:
       - checkout
       - run:

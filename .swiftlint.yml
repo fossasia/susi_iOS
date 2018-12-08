@@ -1,5 +1,3 @@
-line_length: 150
-
 disabled_rules:
   - force_cast
   - force_try
