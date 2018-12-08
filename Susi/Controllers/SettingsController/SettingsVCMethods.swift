@@ -160,7 +160,7 @@ extension SettingsViewController {
 
     func doChangeLanguage() {
         let languages = Localize.availableLanguages().compactMap { Localize.displayNameForLanguage($0).isEmpty ? nil : $0 }
-        let actionSheet = UIAlertController(title: nil, message: "Set a language".localized(), preferredStyle: UIAlertControllerStyle.actionSheet)
+        let actionSheet = UIAlertController(title: nil, message: "Set a language".localized(), preferredStyle: UIAlertController.Style.actionSheet)
         for language in languages {
             let displayName = Localize.displayNameForLanguage(language)
             let languageAction = UIAlertAction(title: displayName.capitalized, style: .default, handler: {
@@ -170,7 +170,7 @@ extension SettingsViewController {
             actionSheet.addAction(languageAction)
         }
         let cancelAction = UIAlertAction(title: ControllerConstants.dialogCancelAction.localized(),
-                                         style: UIAlertActionStyle.cancel,
+                                         style: UIAlertAction.Style.cancel,
                                          handler: {
                                             (alert: UIAlertAction) -> Void in
         })
@@ -224,7 +224,7 @@ extension SettingsViewController {
         if let link = NSURL(string: "http://susi.ai") {
             let objectsToShare = [message, link] as [Any]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-            activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+            activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
             self.present(activityVC, animated: true, completion: nil)
         }
     }

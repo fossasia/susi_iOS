@@ -123,13 +123,13 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
     }
 
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        UIView.animate(withDuration: 2.5, delay: 0, options: UIViewAnimationOptions(), animations: {
+        UIView.animate(withDuration: 2.5, delay: 0, options: UIView.AnimationOptions(), animations: {
             self.susiSkillListingButton.isHidden = true
         }, completion: nil)
     }
 
     override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        UIView.animate(withDuration: 2.5, delay: 0, options: UIViewAnimationOptions(), animations: {
+        UIView.animate(withDuration: 2.5, delay: 0, options: UIView.AnimationOptions(), animations: {
             self.susiSkillListingButton.isHidden = false
         }, completion: nil)
     }
