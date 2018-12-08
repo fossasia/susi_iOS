@@ -46,7 +46,7 @@ class MapCell: ChatMessageCell, MKMapViewDelegate {
 
             let center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
             let zoomLevel = 360 / pow(2, Double(mapData.zoom - 1)) * Double(frame.width) / 256
-            let span = MKCoordinateSpanMake(0, zoomLevel)
+            let span = MKCoordinateSpan.init(latitudeDelta: 0, longitudeDelta: zoomLevel)
             let region = MKCoordinateRegion(center: center, span: span)
 
             mapView.setRegion(region, animated: true)

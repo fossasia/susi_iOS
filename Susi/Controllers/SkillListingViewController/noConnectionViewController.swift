@@ -46,7 +46,7 @@ class noConnectionViewController: UIViewController {
         trackPath.path = circularPath.cgPath
         trackPath.strokeColor = UIColor.lightGray.cgColor
         trackPath.lineWidth = 10
-        trackPath.lineCap = kCALineCapRound
+        trackPath.lineCap = CAShapeLayerLineCap.round
         trackPath.fillColor = UIColor.clear.cgColor
         view.layer.addSublayer(trackPath)
 
@@ -54,7 +54,7 @@ class noConnectionViewController: UIViewController {
         shapelayer.strokeColor = UIColor.defaultColor().cgColor
         shapelayer.lineWidth = 10
         shapelayer.strokeEnd = 0
-        shapelayer.lineCap = kCALineCapRound
+        shapelayer.lineCap = CAShapeLayerLineCap.round
         shapelayer.fillColor = UIColor.clear.cgColor
         view.layer.addSublayer(shapelayer)
 
@@ -98,7 +98,7 @@ class noConnectionViewController: UIViewController {
         let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
         basicAnimation.toValue = 1
         basicAnimation.duration = 2
-        basicAnimation.fillMode = kCAFillModeForwards
+        basicAnimation.fillMode = CAMediaTimingFillMode.forwards
         basicAnimation.isRemovedOnCompletion = false
         shapelayer.add(basicAnimation, forKey: "howdie")
         checkingForConnection()

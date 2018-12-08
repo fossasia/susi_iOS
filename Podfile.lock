@@ -7,24 +7,20 @@ PODS:
   - Ji/Ji (2.1.0):
     - Ji/Ji-libxml
   - Ji/Ji-libxml (2.1.0)
-  - Kingfisher (4.8.0)
+  - Kingfisher (4.10.1)
   - Localize-Swift (2.0.0)
   - M13Checkbox (3.2.2)
-  - MarqueeLabel/Swift (3.1.6)
-  - Material (2.15.0):
-    - Material/Core (= 2.15.0)
-  - Material/Core (2.15.0):
-    - Motion (~> 1.3.0)
-  - Motion (1.3.5):
-    - Motion/Core (= 1.3.5)
-  - Motion/Core (1.3.5)
-  - NotificationBannerSwift (1.6.3):
-    - MarqueeLabel/Swift
-    - SnapKit (~> 4.0)
-  - NVActivityIndicatorView (4.2.1):
-    - NVActivityIndicatorView/Presenter (= 4.2.1)
-  - NVActivityIndicatorView/Presenter (4.2.1)
-  - paper-onboarding (4.1.0)
+  - Material (2.17.0):
+    - Material/Core (= 2.17.0)
+  - Material/Core (2.17.0):
+    - Motion (~> 1.5.0)
+  - Motion (1.5.0):
+    - Motion/Core (= 1.5.0)
+  - Motion/Core (1.5.0)
+  - NVActivityIndicatorView (4.4.0):
+    - NVActivityIndicatorView/Presenter (= 4.4.0)
+  - NVActivityIndicatorView/Presenter (4.4.0)
+  - paper-onboarding (5.0.0)
   - ReachabilitySwift (4.1.0)
   - ReadabilityKit (0.7.1):
     - Ji
@@ -33,20 +29,19 @@ PODS:
   - Realm/Headers (3.7.2)
   - RealmSwift (3.7.2):
     - Realm (= 3.7.2)
-  - SnapKit (4.0.0)
   - SwiftDate (4.5.1)
   - SwiftValidators (7.0.3)
-  - Toast-Swift (3.0.1)
+  - Toast-Swift (4.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
   - BouncyLayout
   - Fakery (~> 3.3.0)
-  - Kingfisher
+  - Kingfisher (~> 4.10.0)
   - Localize-Swift
-  - M13Checkbox (from `https://github.com/Marxon13/M13Checkbox.git`, tag `3.2.2`)
-  - Material
-  - NotificationBannerSwift
+  - M13Checkbox (from `https://github.com/Marxon13/M13Checkbox.git`, branch `swift_4_2`)
+  - Material (from `https://github.com/CosmicMind/Material.git`, branch `development`)
+  - Motion (from `https://github.com/CosmicMind/Motion.git`, branch `development`)
   - NVActivityIndicatorView
   - paper-onboarding
   - ReachabilitySwift
@@ -54,7 +49,7 @@ DEPENDENCIES:
   - RealmSwift
   - SwiftDate (~> 4.5.0)
   - SwiftValidators
-  - Toast-Swift (~> 3.0.0)
+  - Toast-Swift (~> 4.0.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -64,54 +59,58 @@ SPEC REPOS:
     - Ji
     - Kingfisher
     - Localize-Swift
-    - MarqueeLabel
-    - Material
-    - Motion
-    - NotificationBannerSwift
     - NVActivityIndicatorView
     - paper-onboarding
     - ReachabilitySwift
     - ReadabilityKit
     - Realm
     - RealmSwift
-    - SnapKit
     - SwiftDate
     - SwiftValidators
     - Toast-Swift
 
 EXTERNAL SOURCES:
   M13Checkbox:
+    :branch: swift_4_2
     :git: https://github.com/Marxon13/M13Checkbox.git
-    :tag: 3.2.2
+  Material:
+    :branch: development
+    :git: https://github.com/CosmicMind/Material.git
+  Motion:
+    :branch: development
+    :git: https://github.com/CosmicMind/Motion.git
 
 CHECKOUT OPTIONS:
   M13Checkbox:
+    :commit: c26efb918e40ae4662dc6659b60f7c5493e94807
     :git: https://github.com/Marxon13/M13Checkbox.git
-    :tag: 3.2.2
+  Material:
+    :commit: 4ab1b08c3365a00f409a210162ae72ed8425f299
+    :git: https://github.com/CosmicMind/Material.git
+  Motion:
+    :commit: 3141bdb87e30b4aa899a22562194a221ea2da388
+    :git: https://github.com/CosmicMind/Motion.git
 
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   BouncyLayout: a7955879861375cc4e88bb64d42bcf622cd2694c
   Fakery: 3aae11a87721c807c18c6456500d088c1230d3e5
   Ji: 21946da4e13425485ddd424edfaeeced0d80ad28
-  Kingfisher: 976d828df2b24834c6a3f2fc4d82cdbd26552be1
+  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   Localize-Swift: c798ec9286494866f7068f85f7c71283ac5bdab4
-  M13Checkbox: cd5b4a35f0e37616c627ec6a8d0a2060e7b4516f
-  MarqueeLabel: 0c41f08ef5773e29c0f71064a8fa788a2fd8b365
-  Material: 00e32bb5e61b3f749044897b2d93acd8bf33faa4
-  Motion: 9f74d115d7f72bb5380a8e3cde2f8a1fc898ac36
-  NotificationBannerSwift: b231e4c3244848ef300e1c53ce027b9756b9b06f
-  NVActivityIndicatorView: 8068ba3ad39cb44cbaab25d89ff2546b3f092681
-  paper-onboarding: 344780cbb0bfc229cd1862f5b9bba446b23c5185
+  M13Checkbox: 82182615a76646475b451ebe448a998f77f8cc6e
+  Material: 856e0168ab93fc477f875577c152c9e62f4ab869
+  Motion: 3acabedc5a499f6b12deaa34deb68b425b005720
+  NVActivityIndicatorView: ec7440a57af2450319d3a4181cca7da6fc127064
+  paper-onboarding: a2e3a710fd27ac0b5635ec5490660e7ec09289b5
   ReachabilitySwift: 6849231cd4e06559f3b9ef4a97a0a0f96d41e09f
   ReadabilityKit: 45e79725f6d0377c555f38d9df7a6d4435898c04
   Realm: dd18c3014e8d90df300b83c6da740067436089c5
   RealmSwift: 79917cae59a0c43ef8118b233a5978891dd50b4a
-  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SwiftDate: 7b56d42a221f582047287deb256b23fc5ed49a60
   SwiftValidators: 660ce9ef3f0358c25c3a6154f7edc02c7d4a0578
-  Toast-Swift: ba0b01b095aada709d915f9beb1d38184a2721c3
+  Toast-Swift: 594b5c5e5129f15438e410207e43287f027b3c00
 
-PODFILE CHECKSUM: 685a75a46dea55bf0e30c875c369376f08cbf355
+PODFILE CHECKSUM: f180a406836915113d97ddd3ea7f6a12c9f36cb2
 
 COCOAPODS: 1.5.3
