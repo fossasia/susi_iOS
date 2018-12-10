@@ -199,7 +199,7 @@ extension SignUpViewController {
 
 extension SignUpViewController: UITextFieldDelegate {
 
-    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
         if textField.accessibilityIdentifier == "email" {
             checkIfEmailAlreadyExists()
         }

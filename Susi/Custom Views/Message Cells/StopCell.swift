@@ -47,7 +47,7 @@ class StopCell: ChatMessageCell, MKMapViewDelegate {
                     _ = attributedString.setAsLink(textToFind: message.message.extractFirstURL(),
                                                    linkURL: message.message.extractFirstURL(), text: message.message)
                 } else {
-                    attributedString.addAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16.0)],
+                    attributedString.addAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16.0)],
                                                    range: NSRange(location: 0, length: message.message.count))
                 }
 
