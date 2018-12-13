@@ -51,6 +51,8 @@ workflows:
               ignore:
                 - ipa
       - deploy:
+          requires:
+            - test
           filters:
             branches:
               only: master
