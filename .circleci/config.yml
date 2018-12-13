@@ -3,7 +3,7 @@ version: 2
 jobs:
   lint:
     macos:
-      xcode: "9.3.0"
+      xcode: "10.0.0"
     steps:
       - checkout
       - run:

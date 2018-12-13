@@ -245,7 +245,6 @@ open class RatingView: UIView {
         delegate?.floatRatingView?(self, isUpdating: rating)
     }
 
-
     // MARK: UIView
 
     // Override to calculate ImageView frames
@@ -275,7 +274,6 @@ open class RatingView: UIView {
 
         refresh()
     }
-
 
     // MARK: Touch events
 
