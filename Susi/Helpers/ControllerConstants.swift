@@ -257,7 +257,7 @@ class ControllerConstants {
     }
     struct ReachabilityResponse {
         static let title = "Warning"
-        static let message = "Please Connect To Interet"
+        static let message = "Please Connect To Internet"
         static let alertAction = "Ok"
     }
 
