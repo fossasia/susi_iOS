@@ -25,6 +25,7 @@ target 'Susi' do
   pod 'ReachabilitySwift'
   pod 'Localize-Swift'
   pod 'paper-onboarding'
+  pod 'NotificationBannerSwift'
   shared_pods
 end
 

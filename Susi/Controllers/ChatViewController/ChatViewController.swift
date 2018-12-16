@@ -15,6 +15,7 @@ import Speech
 import NVActivityIndicatorView
 import Realm
 import Reachability
+import NotificationBannerSwift
 
 class ChatViewController: UICollectionViewController {
     // MARK: - Variable Declarations
@@ -30,7 +31,8 @@ class ChatViewController: UICollectionViewController {
         return ib
     }()
 
-    let alert = UIAlertController(title: "Warning", message: "Please Connect to Internet", preferredStyle: .alert)
+    let dangerBanner  = StatusBarNotificationBanner(title: ControllerConstants.BannerNotification.dangerTitle, style: .danger, colors: CustomBannerColors())
+    let successBanner  = StatusBarNotificationBanner(title: ControllerConstants.BannerNotification.successTitle, style: .success,colors: CustomBannerColors())
 
     // scroll down button
     lazy var scrollButton: UIButton = {

@@ -303,9 +303,11 @@ extension ChatViewController {
         DispatchQueue.main.async {
             self.inputTextField.isEditable = value
             if value {
-                self.alert.dismiss(animated: true, completion: nil)
+                self.successBanner.bannerHeight = 47
+                self.successBanner.show()
             } else {
-                self.present(self.alert, animated: true, completion: nil)
+                self.dangerBanner.bannerHeight = 47
+                self.dangerBanner.show()
             }
         }
     }

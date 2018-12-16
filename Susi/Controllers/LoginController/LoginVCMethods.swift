@@ -11,6 +11,7 @@ import BouncyLayout
 import M13Checkbox
 import RealmSwift
 import SwiftValidators
+import NotificationBannerSwift
 
 extension LoginViewController {
 
@@ -60,9 +61,11 @@ extension LoginViewController {
             self.skipButton.isEnabled = value
             self.signUpButton.isEnabled = value
             if value {
-                self.alert.dismiss(animated: true, completion: nil)
+                
             } else {
-                self.present(self.alert, animated: true, completion: nil)
+                let banner = StatusBarNotificationBanner(title: ControllerConstants.BannerNotification.dangerTitle, style: .danger, colors: CustomBannerColors())
+                banner.bannerHeight = 47
+                banner.show()
             }
         }
     }

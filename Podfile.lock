@@ -10,6 +10,7 @@ PODS:
   - Kingfisher (4.10.1)
   - Localize-Swift (2.0.0)
   - M13Checkbox (3.2.2)
+  - MarqueeLabel/Swift (3.2.0)
   - Material (2.17.0):
     - Material/Core (= 2.17.0)
   - Material/Core (2.17.0):
@@ -17,6 +18,9 @@ PODS:
   - Motion (1.5.0):
     - Motion/Core (= 1.5.0)
   - Motion/Core (1.5.0)
+  - NotificationBannerSwift (1.8.0):
+    - MarqueeLabel/Swift (~> 3.2.0)
+    - SnapKit (~> 4.0.1)
   - NVActivityIndicatorView (4.4.0):
     - NVActivityIndicatorView/Presenter (= 4.4.0)
   - NVActivityIndicatorView/Presenter (4.4.0)
@@ -29,6 +33,7 @@ PODS:
   - Realm/Headers (3.7.2)
   - RealmSwift (3.7.2):
     - Realm (= 3.7.2)
+  - SnapKit (4.0.1)
   - SwiftDate (4.5.1)
   - SwiftValidators (7.0.3)
   - Toast-Swift (4.0.0)
@@ -42,6 +47,7 @@ DEPENDENCIES:
   - M13Checkbox (from `https://github.com/Marxon13/M13Checkbox.git`, branch `swift_4_2`)
   - Material (from `https://github.com/CosmicMind/Material.git`, branch `development`)
   - Motion (from `https://github.com/CosmicMind/Motion.git`, branch `development`)
+  - NotificationBannerSwift
   - NVActivityIndicatorView
   - paper-onboarding
   - ReachabilitySwift
@@ -59,12 +65,15 @@ SPEC REPOS:
     - Ji
     - Kingfisher
     - Localize-Swift
+    - MarqueeLabel
+    - NotificationBannerSwift
     - NVActivityIndicatorView
     - paper-onboarding
     - ReachabilitySwift
     - ReadabilityKit
     - Realm
     - RealmSwift
+    - SnapKit
     - SwiftDate
     - SwiftValidators
     - Toast-Swift
@@ -99,18 +108,21 @@ SPEC CHECKSUMS:
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   Localize-Swift: c798ec9286494866f7068f85f7c71283ac5bdab4
   M13Checkbox: 82182615a76646475b451ebe448a998f77f8cc6e
+  MarqueeLabel: 440a502b91a9179bd98f9fff00ba1150650a1c0e
   Material: 856e0168ab93fc477f875577c152c9e62f4ab869
   Motion: 3acabedc5a499f6b12deaa34deb68b425b005720
+  NotificationBannerSwift: 49fc4be7fabada55b189b50e72184c92edd5f7f7
   NVActivityIndicatorView: ec7440a57af2450319d3a4181cca7da6fc127064
   paper-onboarding: a2e3a710fd27ac0b5635ec5490660e7ec09289b5
   ReachabilitySwift: 6849231cd4e06559f3b9ef4a97a0a0f96d41e09f
   ReadabilityKit: 45e79725f6d0377c555f38d9df7a6d4435898c04
   Realm: dd18c3014e8d90df300b83c6da740067436089c5
   RealmSwift: 79917cae59a0c43ef8118b233a5978891dd50b4a
+  SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
   SwiftDate: 7b56d42a221f582047287deb256b23fc5ed49a60
   SwiftValidators: 660ce9ef3f0358c25c3a6154f7edc02c7d4a0578
   Toast-Swift: 594b5c5e5129f15438e410207e43287f027b3c00
 
-PODFILE CHECKSUM: f180a406836915113d97ddd3ea7f6a12c9f36cb2
+PODFILE CHECKSUM: 20a1344a3d3aeb14118f6c42fa77801769b41007
 
 COCOAPODS: 1.5.3

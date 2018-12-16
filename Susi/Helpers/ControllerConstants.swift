@@ -255,5 +255,9 @@ class ControllerConstants {
         static let deviceIcon = UIImage(named: "device_icon")
         static let roomsIcon = UIImage(named: "room-icon")
     }
+    struct BannerNotification {
+        static let dangerTitle =  "No Internet Connection! Connect to Internet"
+        static let successTitle = "Connected To Internet 😀, Welcome Back"
+    }
 
 }

@@ -18,8 +18,6 @@ class LoginViewController: GeneralViewController {
 
     let reachability = Reachability()!
 
-    let alert = UIAlertController(title: "Warning", message: "Please Connect to Internet", preferredStyle: .alert)
-
     @IBOutlet weak var susiLogo: UIImageView!
     @IBOutlet weak var emailTextField: TextField!
     @IBOutlet weak var passwordTextField: TextField!
@@ -33,7 +31,7 @@ class LoginViewController: GeneralViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         UIApplication.shared.statusBarStyle = .lightContent
 
         setupTheme()
