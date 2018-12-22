@@ -62,7 +62,7 @@ class ControllerConstants {
     static let resetPassword = "Reset Password"
     static let currentPassword = "Current Password"
     static let newPassword = "New Password"
-    static let passwordLengthShort = "Passwords length should be atleast 6 characters"
+    static let passwordLengthShort = "Allowed password length is 6 to 64 characters"
     static let skillDetailControllerIdentifier = "skillDetail"
     static let customServerURL = "Custom Server URL"
     static let tryIt = "Try It"
