@@ -34,8 +34,16 @@ class OutgoingChatCell: ChatMessageCell {
     }
 
     func setupCell(_ estimatedFrame: CGRect, _ viewFrame: CGRect) {
-        messageTextView.frame = CGRect(x: viewFrame.width - max(estimatedFrame.width + 34, viewFrame.width / 4), y: 4, width: max(estimatedFrame.width + 16, viewFrame.width / 4 - 16), height: estimatedFrame.height + 20)
-        textBubbleView.frame = CGRect(x: viewFrame.width - max(estimatedFrame.width + 40, viewFrame.width / 4 + 8), y: 0, width: max(estimatedFrame.width + 34, viewFrame.width / 4), height: estimatedFrame.height + 36)
+        messageTextView.frame = CGRect(x: viewFrame.width - max(estimatedFrame.width + 34,
+                                                                viewFrame.width / 4),
+                                       y: 4, width: max(estimatedFrame.width + 16,
+                                                        viewFrame.width / 4 - 16),
+                                       height: estimatedFrame.height + 20)
+        textBubbleView.frame = CGRect(x: viewFrame.width - max(estimatedFrame.width + 40,
+                                                               viewFrame.width / 4 + 8), y: 0,
+                                                                                         width: max(estimatedFrame.width + 34,
+                                                                                                    viewFrame.width / 4),
+                                                                                         height: estimatedFrame.height + 36)
 
         setupDate()
         setupTheme()

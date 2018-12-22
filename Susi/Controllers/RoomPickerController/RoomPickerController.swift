@@ -10,7 +10,20 @@ import UIKit
 
 class RoomPickerController: UITableViewController {
 
-    let rooms: [String] = ["Bedroom", "Kitchen", "Family Room", "Entryway", "Living Room", "Front Yard", "Guest Room", "Dining Room", "Computer Room", "Downstairs", "Front Porch", "Garage", "Hallway", "Driveway"]
+    let rooms: [String] = ["Bedroom",
+                           "Kitchen",
+                           "Family Room",
+                           "Entryway",
+                           "Living Room",
+                           "Front Yard",
+                           "Guest Room",
+                           "Dining Room",
+                           "Computer Room",
+                           "Downstairs",
+                           "Front Porch",
+                           "Garage",
+                           "Hallway",
+                           "Driveway"]
 
     var selectedRoom: String?
     var deviceActivityVC: DevicesActivityViewController?
@@ -42,7 +55,6 @@ class RoomPickerController: UITableViewController {
             self.deviceActivityVC?.presentSelectedRoomPopup()
         })
     }
-
 
     // MARK: - Table view data source
 

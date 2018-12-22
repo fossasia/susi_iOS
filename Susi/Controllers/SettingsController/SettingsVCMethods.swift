@@ -136,7 +136,7 @@ extension SettingsViewController {
 
     func presentLoginAlert() {
         let loginAlertController = UIAlertController(title: "You are not logged-in", message: "Please login to connect device", preferredStyle: .alert)
-        let loginAction = UIAlertAction(title: "Login", style: .default, handler: { action in
+        let loginAction = UIAlertAction(title: "Login", style: .default, handler: { _ in
             self.presentLoginScreen()
         })
         let cancleAction = UIAlertAction(title: "Cancle", style: .cancel, handler: nil)
@@ -164,7 +164,7 @@ extension SettingsViewController {
         for language in languages {
             let displayName = Localize.displayNameForLanguage(language)
             let languageAction = UIAlertAction(title: displayName.capitalized, style: .default, handler: {
-                (alert: UIAlertAction!) -> Void in
+                (_: UIAlertAction!) -> Void in
                 Localize.setCurrentLanguage(language)
             })
             actionSheet.addAction(languageAction)
@@ -172,7 +172,7 @@ extension SettingsViewController {
         let cancelAction = UIAlertAction(title: ControllerConstants.dialogCancelAction.localized(),
                                          style: UIAlertAction.Style.cancel,
                                          handler: {
-                                            (alert: UIAlertAction) -> Void in
+                                            (_: UIAlertAction) -> Void in
         })
         actionSheet.addAction(cancelAction)
         present(actionSheet, animated: true, completion: nil)

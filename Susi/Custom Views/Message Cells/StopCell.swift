@@ -113,7 +113,7 @@ class StopCell: ChatMessageCell, MKMapViewDelegate {
                 Client.FeedbackKeys.rating: feedback as AnyObject
             ]
 
-            Client.sharedInstance.sendFeedback(params) { (success, error) in
+            Client.sharedInstance.sendFeedback(params) { (success, _) in
                 DispatchQueue.main.async {
                     if success {
                         self.removeUpDownThumbs()
@@ -140,7 +140,7 @@ class StopCell: ChatMessageCell, MKMapViewDelegate {
                 feedbackLogParams[Client.FeedbackKeys.countryName] = countryName as AnyObject
             }
 
-            Client.sharedInstance.sendFeedbackLog(feedbackLogParams) { (success, error) in
+            Client.sharedInstance.sendFeedbackLog(feedbackLogParams) { (success, _) in
                 DispatchQueue.main.async {
                     if success {
                         self.removeUpDownThumbs()
