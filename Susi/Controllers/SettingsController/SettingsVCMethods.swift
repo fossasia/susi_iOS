@@ -228,5 +228,5 @@ extension SettingsViewController {
             self.present(activityVC, animated: true, completion: nil)
         }
     }
-
+    
 }
