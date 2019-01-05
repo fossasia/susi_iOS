@@ -134,7 +134,11 @@ class SettingsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let user = UserDefaults.standard.dictionary(forKey: ControllerConstants.UserDefaultsKeys.user)
         if indexPath.section == 5 && indexPath.row == 2 && user == nil {
-            cell.isHidden = true
+            cell.isUserInteractionEnabled = false
+            cell.textLabel?.isEnabled = false
+            cell.textLabel?.text = ControllerConstants.Settings.resetPass.localized()
+            cell.textLabel?.textColor = .lightGray
+            cell.selectionStyle = .none
         }
     }
 
