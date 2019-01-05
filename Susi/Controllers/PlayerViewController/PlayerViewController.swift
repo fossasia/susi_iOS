@@ -24,7 +24,7 @@ class PlayerViewController: UIViewController {
     // youtube player loader
     lazy var playerIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView()
-        indicator.activityIndicatorViewStyle = .whiteLarge
+        indicator.style = .whiteLarge
         indicator.hidesWhenStopped = true
         return indicator
     }()
@@ -53,7 +53,6 @@ class PlayerViewController: UIViewController {
             tap.numberOfTapsRequired = 1
             tap.cancelsTouchesInView = false
             blackView.addGestureRecognizer(tap)
-
 
             let centerX = UIScreen.main.bounds.size.width / 2
             let centerY = UIScreen.main.bounds.size.height / 2

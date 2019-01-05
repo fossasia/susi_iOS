@@ -43,7 +43,7 @@ class SkillListingViewController: UITableViewController {
     var count = 0 {
         didSet {
             if count == groups?.count {
-                activityIndicator.stopAnimating()
+                shouldAnimateIndicators(false)
                 tableView.reloadData()
             }
         }
@@ -53,7 +53,7 @@ class SkillListingViewController: UITableViewController {
     let activityIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView()
         indicator.hidesWhenStopped = true
-        indicator.activityIndicatorViewStyle = .whiteLarge
+        indicator.style = .whiteLarge
         indicator.color = UIColor.defaultColor()
         return indicator
     }()
@@ -66,8 +66,9 @@ class SkillListingViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    
         prepareActivityIndicator()
+        shouldAnimateIndicators(true)
         getAllGroups()
     }
 

@@ -47,7 +47,7 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
                     _ = attributedString.setAsLink(textToFind: message.message.extractFirstURL(),
                                                    linkURL: message.message.extractFirstURL(), text: message.message)
                 } else {
-                    attributedString.addAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16.0)],
+                    attributedString.addAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16.0)],
                                                    range: NSRange(location: 0, length: message.message.count))
                 }
 
@@ -112,7 +112,7 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
                 Client.FeedbackKeys.rating: feedback as AnyObject
             ]
 
-            Client.sharedInstance.sendFeedback(params) { (success, error) in
+            Client.sharedInstance.sendFeedback(params) { (success, _) in
                 DispatchQueue.main.async {
                     if success {
                         self.removeUpDownThumbs()
@@ -139,7 +139,7 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
                 feedbackLogParams[Client.FeedbackKeys.countryName] = countryName as AnyObject
             }
 
-            Client.sharedInstance.sendFeedbackLog(feedbackLogParams) { (success, error) in
+            Client.sharedInstance.sendFeedbackLog(feedbackLogParams) { (success, _) in
                 DispatchQueue.main.async {
                     if success {
                         self.removeUpDownThumbs()

@@ -62,7 +62,7 @@ class ControllerConstants {
     static let resetPassword = "Reset Password"
     static let currentPassword = "Current Password"
     static let newPassword = "New Password"
-    static let passwordLengthShort = "Passwords length should be atleast 6 characters"
+    static let passwordLengthShort = "Allowed password length is 6 to 64 characters"
     static let skillDetailControllerIdentifier = "skillDetail"
     static let customServerURL = "Custom Server URL"
     static let tryIt = "Try It"
@@ -119,6 +119,7 @@ class ControllerConstants {
         static let susiVoiceModel = "SUSI Voice Model"
         static let miscellaneous = "Miscellaneous"
         static let devices = "Devices"
+        static let about = "About Us"
     }
 
     struct Login {
@@ -254,6 +255,22 @@ class ControllerConstants {
         static let availableDevice = UIImage(named: "available_device_icon")
         static let deviceIcon = UIImage(named: "device_icon")
         static let roomsIcon = UIImage(named: "room-icon")
+    }
+    
+    struct AboutUs {
+        static let susiDescription = "SUSI.AI is an intelligent libre software personal assistant. It is capable of chat and voice interaction by using APIs to perform actions such as music playback , making to-do lists , setting alarms , streaming podcasts, playing audiobooks , and providing weather , traffic and other real time information. Additional functionalities can be added as console services using external APIs. SUSI.AI is able to answer questions and depending upon the context will ask for additional information in order to perform the desired outcome. The core of the assistant is the SUSI.AI server that holds the intelligence and personality of SUSI.AI."
+        static let contributersDescription = "Developed by Contributors."
+        static let susiSkillDescription = "SUSI is having many skills. You can look at the collection of skills at skills.susi.ai. SUSI skill development is easy and fun. You can edit existing skills or even create your own."
+        static let reportIssueDescription = "Please report all the issues in Github Repository Issue Tracker."
+        static let licenseDescription = "This project is currently licensed under the Apache License Version 2.0.As per the LICENSE.md"
+    }
+    
+    struct CommonURL {
+        static let susiURL = "https://chat.susi.ai"
+        static let susiSkillURL = "www.skills.susi.ai"
+        static let contributorsURL = "https://github.com/fossasia/susi_iOS/graphs/contributors"
+        static let reportIssueURL = "https://github.com/fossasia/susi_iOS/issues"
+        static let licenseURL = "https://github.com/fossasia/susi_iOS/blob/master/LICENSE"
     }
 
 }

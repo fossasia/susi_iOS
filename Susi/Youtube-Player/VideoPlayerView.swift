@@ -115,7 +115,6 @@ open class YouTubePlayerView: UIView, UIWebViewDelegate {
         addSubview(webView)
     }
 
-
     // MARK: Web view initialization
 
     fileprivate func buildWebView(_ parameters: [String: AnyObject]) {
@@ -128,7 +127,6 @@ open class YouTubePlayerView: UIView, UIWebViewDelegate {
         webView.scrollView.bounces = false
         webView.scrollView.isScrollEnabled = false
     }
-
 
     // MARK: Load player
 
@@ -152,7 +150,6 @@ open class YouTubePlayerView: UIView, UIWebViewDelegate {
 
         loadWebViewWithParameters(playerParameters())
     }
-
 
     // MARK: Player controls
 
@@ -190,7 +187,6 @@ open class YouTubePlayerView: UIView, UIWebViewDelegate {
         let fullCommand = "player." + command + ";"
         webView.stringByEvaluatingJavaScript(from: fullCommand)
     }
-
 
     // MARK: Player setup
 
@@ -235,7 +231,6 @@ open class YouTubePlayerView: UIView, UIWebViewDelegate {
         return htmlString! as String
     }
 
-
     // MARK: Player parameters and defaults
 
     fileprivate func playerParameters() -> YouTubePlayerParameters {
@@ -272,15 +267,14 @@ open class YouTubePlayerView: UIView, UIWebViewDelegate {
         }
 
         // Check for error and return nil
-        if let _ = error {
+        if error != nil {
             print("Error parsing JSON")
             return nil
         }
 
         // Success, return JSON string
-        return NSString(data: jsonData!, encoding: String.Encoding.utf8.rawValue) as? String
+        return NSString(data: jsonData!, encoding: String.Encoding.utf8.rawValue) as String?
     }
-
 
     // MARK: JS Event Handling
 
@@ -295,12 +289,9 @@ open class YouTubePlayerView: UIView, UIWebViewDelegate {
                 switch event {
                 case .YouTubeIframeAPIReady:
                     ready = true
-                    break
 
                 case .Ready:
                     delegate?.playerReady(self)
-
-                    break
 
                 case .StateChange:
                     if let newState = YouTubePlayerState(rawValue: data!) {
@@ -308,24 +299,19 @@ open class YouTubePlayerView: UIView, UIWebViewDelegate {
                         delegate?.playerStateChanged(self, playerState: newState)
                     }
 
-                    break
-
                 case .PlaybackQualityChange:
                     if let newQuality = YouTubePlaybackQuality(rawValue: data!) {
                         playbackQuality = newQuality
                         delegate?.playerQualityChanged(self, playbackQuality: newQuality)
                     }
-
-                    break
                 }
             }
         }
     }
 
-
     // MARK: UIWebViewDelegate
 
-    open func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+    open func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
 
         let url = request.url
 

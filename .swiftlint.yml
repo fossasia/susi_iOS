@@ -1,5 +1,3 @@
-line_length: 150
-
 disabled_rules:
   - force_cast
   - force_try
@@ -10,6 +8,16 @@ disabled_rules:
   - cyclomatic_complexity
   - function_body_length
   - valid_docs
+  - trailing_whitespace
+  - line_length
+
+opt_in_rules:
+  - empty_string
+
+excluded:
+  - Carthage
+  - Pods
+  - SwiftLint/Common/3rdPartyLib
 
 custom_rules:
   smiley_face:

@@ -136,7 +136,7 @@ extension SettingsViewController {
 
     func presentLoginAlert() {
         let loginAlertController = UIAlertController(title: "You are not logged-in", message: "Please login to connect device", preferredStyle: .alert)
-        let loginAction = UIAlertAction(title: "Login", style: .default, handler: { action in
+        let loginAction = UIAlertAction(title: "Login", style: .default, handler: { _ in
             self.presentLoginScreen()
         })
         let cancleAction = UIAlertAction(title: "Cancle", style: .cancel, handler: nil)
@@ -160,19 +160,19 @@ extension SettingsViewController {
 
     func doChangeLanguage() {
         let languages = Localize.availableLanguages().compactMap { Localize.displayNameForLanguage($0).isEmpty ? nil : $0 }
-        let actionSheet = UIAlertController(title: nil, message: "Set a language".localized(), preferredStyle: UIAlertControllerStyle.actionSheet)
+        let actionSheet = UIAlertController(title: nil, message: "Set a language".localized(), preferredStyle: UIAlertController.Style.actionSheet)
         for language in languages {
             let displayName = Localize.displayNameForLanguage(language)
             let languageAction = UIAlertAction(title: displayName.capitalized, style: .default, handler: {
-                (alert: UIAlertAction!) -> Void in
+                (_: UIAlertAction!) -> Void in
                 Localize.setCurrentLanguage(language)
             })
             actionSheet.addAction(languageAction)
         }
         let cancelAction = UIAlertAction(title: ControllerConstants.dialogCancelAction.localized(),
-                                         style: UIAlertActionStyle.cancel,
+                                         style: UIAlertAction.Style.cancel,
                                          handler: {
-                                            (alert: UIAlertAction) -> Void in
+                                            (_: UIAlertAction) -> Void in
         })
         actionSheet.addAction(cancelAction)
         present(actionSheet, animated: true, completion: nil)
@@ -224,9 +224,9 @@ extension SettingsViewController {
         if let link = NSURL(string: "http://susi.ai") {
             let objectsToShare = [message, link] as [Any]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-            activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+            activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
             self.present(activityVC, animated: true, completion: nil)
         }
     }
-
+    
 }

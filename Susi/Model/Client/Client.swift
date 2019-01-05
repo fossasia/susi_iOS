@@ -26,12 +26,16 @@ class Client: NSObject {
             completion(nil, NSError(domain: "makeRequestMethod", code: 1, userInfo: userInfo))
         }
 
-        Alamofire.request(url, method: httpMethod, parameters: parameters, encoding: URLEncoding(destination: .methodDependent), headers: headers).validate().responseJSON { (response: DataResponse<Any>) in
+        Alamofire.request(url,
+                          method: httpMethod,
+                          parameters: parameters,
+                          encoding: URLEncoding(destination: .methodDependent),
+                          headers: headers).validate().responseJSON { (response: DataResponse<Any>) in
             print(response.request?.url ?? "Error: invalid URL")
 
             switch(response.result) {
 
-            case .success(_):
+            case .success:
                 if let data = response.result.value as? Dictionary<String, Any> {
 
                     completion(data as AnyObject?, nil)

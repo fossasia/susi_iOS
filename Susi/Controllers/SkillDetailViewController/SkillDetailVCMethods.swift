@@ -26,17 +26,17 @@ extension SkillDetailViewController {
     func registerKeyboardNotifications() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillShow(notification:)),
-                                               name: NSNotification.Name.UIKeyboardWillShow,
+                                               name: UIResponder.keyboardWillShowNotification,
                                                object: nil)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillHide(notification:)),
-                                               name: NSNotification.Name.UIKeyboardWillHide,
+                                               name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
     }
 
     @objc func keyboardWillShow(notification: NSNotification) {
         let userInfo: NSDictionary = notification.userInfo! as NSDictionary
-        if let keyboardInfo = userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue {
+        if let keyboardInfo = userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue {
             let keyboardSize = keyboardInfo.cgRectValue.size
             let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
             scrollView.contentInset = contentInsets
@@ -149,13 +149,13 @@ extension SkillDetailViewController {
             textfield.placeholder = "Feedback message"
             textfield.borderStyle = .roundedRect
         })
-        let reportAction = UIAlertAction(title: "Report", style: .default, handler: { alert -> Void in
+        let reportAction = UIAlertAction(title: "Report", style: .default, handler: { _ -> Void in
             let feedbackTextField = reportSkillAlert.textFields![0] as UITextField
             if let feedbackMessage = feedbackTextField.text {
                 self.reportSkill(feedbackMessage: feedbackMessage)
             }
         })
-        let cancleAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action : UIAlertAction) -> Void in
+        let cancleAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (_: UIAlertAction) -> Void in
         })
         reportSkillAlert.addAction(cancleAction)
         reportSkillAlert.addAction(reportAction)
@@ -193,7 +193,6 @@ extension SkillDetailViewController {
     }
 
     func getRatingByUser() {
-
 
         if let delegate = UIApplication.shared.delegate as? AppDelegate, let user = delegate.currentUser {
             getRatingParam = [
@@ -323,7 +322,7 @@ extension SkillDetailViewController: UITextFieldDelegate {
             }
         } else {
             let loginAlertController = UIAlertController(title: "You are not logged-in", message: "Please login to post skill feedback", preferredStyle: .alert)
-            let loginAction = UIAlertAction(title: "Login", style: .default, handler: { action in
+            let loginAction = UIAlertAction(title: "Login", style: .default, handler: { _ in
                 self.presentLoginScreen()
             })
             let cancleAction = UIAlertAction(title: "Cancle", style: .cancel, handler: nil)
@@ -345,7 +344,7 @@ extension SkillDetailViewController: UITextFieldDelegate {
             Client.FiveStarRating.AccessToken: accessToken as AnyObject
         ]
 
-        Client.sharedInstance.postSkillFeedback(postFeedbackParam) { (feedback, success, responseMessage) in
+        Client.sharedInstance.postSkillFeedback(postFeedbackParam) { (_, success, responseMessage) in
             DispatchQueue.main.async {
                 if success {
                     self.skillFeedbackTextField.text = ""
@@ -442,7 +441,7 @@ extension SkillDetailViewController: UITableViewDelegate, UITableViewDataSource 
             Client.SkillListing.skill: skill?.skillKeyName as AnyObject
         ]
 
-        Client.sharedInstance.getFeedbackData(getFeedbackParam) { (feedbacks, success, message) in
+        Client.sharedInstance.getFeedbackData(getFeedbackParam) { (feedbacks, success, _) in
             DispatchQueue.main.async {
                 if success {
                     self.feedbacks = feedbacks

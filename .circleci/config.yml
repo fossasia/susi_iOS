@@ -1,9 +1,20 @@
 version: 2
 
 jobs:
-  build-and-test:
+  lint:
     macos:
-      xcode: "9.3.0"
+      xcode: "10.0.0"
+    steps:
+      - checkout
+      - run:
+          name: Install Swiftlint
+          command: sh ./Scripts/install_swiftlint.sh
+      - run:
+          name: Lint
+          command: swiftlint
+  test:
+    macos:
+      xcode: "10.0.0"
     steps:
       - checkout
       - run:
@@ -15,23 +26,33 @@ jobs:
 
   deploy:
     macos:
-      xcode: "9.3.0"
+      xcode: "10.0.0"
     steps:
       - checkout
       - run:
           name: Deploy ipa
           command: sh ./Scripts/upload_ipa.sh
-          
+
 workflows:
   version: 2
-  build-and-deploy:
+  build-test-deploy:
     jobs:
-      - build-and-test:
+      - lint:
          filters:
            branches:
              ignore:
-               - ipa
+               - /^docs[-\/].*$/
+               - /^.*-docs$/
+      - test:
+          requires:
+            - lint
+          filters:
+            branches:
+              ignore:
+                - ipa
       - deploy:
+          requires:
+            - test
           filters:
             branches:
               only: master

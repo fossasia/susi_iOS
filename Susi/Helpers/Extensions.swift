@@ -96,7 +96,7 @@ extension String {
     func extractFirstURL() -> String {
         if self.containsURL() {
             let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
-            let matches = detector.matches(in: self, options: [], range: NSMakeRange(0, self.count))
+            let matches = detector.matches(in: self, options: [], range: NSRange(location: 0, length: self.count))
 
             for match in matches {
                 let url = (self as NSString).substring(with: match.range)
@@ -108,7 +108,11 @@ extension String {
 
     var html2AttributedString: NSAttributedString? {
         do {
-            return try NSAttributedString(data: Data(utf8), options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html, NSAttributedString.DocumentReadingOptionKey.characterEncoding: String.Encoding.utf8.rawValue], documentAttributes: nil)
+            let docType = NSAttributedString.DocumentType.html
+            let charEncoding = String.Encoding.utf8.rawValue
+            return try NSAttributedString(data: Data(utf8),
+                                          options: [NSAttributedString.DocumentReadingOptionKey.documentType: docType, NSAttributedString.DocumentReadingOptionKey.characterEncoding: charEncoding],
+                                          documentAttributes: nil)
         } catch {
             print("error:", error)
             return nil
@@ -170,7 +174,7 @@ extension UIView {
             view.translatesAutoresizingMaskIntoConstraints = false
         }
 
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: viewsDictionary))
     }
 
     // Define UI margin constants
@@ -209,8 +213,8 @@ extension NSMutableAttributedString {
 
         let foundRange = self.mutableString.range(of: textToFind)
         if foundRange.location != NSNotFound {
-            self.addAttribute(NSAttributedStringKey.link, value: linkURL, range: foundRange)
-            self.addAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16.0)], range: self.mutableString.range(of: text))
+            self.addAttribute(NSAttributedString.Key.link, value: linkURL, range: foundRange)
+            self.addAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16.0)], range: self.mutableString.range(of: text))
             return true
         }
         return false
@@ -226,7 +230,7 @@ extension UIApplication {
 
 extension UILabel {
 
-    func heightForLabel(text:String, font:UIFont, width:CGFloat) -> CGFloat {
+    func heightForLabel(text: String, font: UIFont, width: CGFloat) -> CGFloat {
         let label: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
         label.numberOfLines = 0
         label.lineBreakMode = NSLineBreakMode.byWordWrapping
