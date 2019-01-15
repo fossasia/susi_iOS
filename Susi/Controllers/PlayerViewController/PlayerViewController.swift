@@ -54,7 +54,6 @@ class PlayerViewController: UIViewController {
             tap.cancelsTouchesInView = false
             blackView.addGestureRecognizer(tap)
 
-
             let centerX = UIScreen.main.bounds.size.width / 2
             let centerY = UIScreen.main.bounds.size.height / 2
 

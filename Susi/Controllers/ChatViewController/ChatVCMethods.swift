@@ -117,10 +117,18 @@ extension ChatViewController {
         view.addConstraintsWithFormat(format: "V:[v0(48)]", views: messageInputContainerView)
 
         if #available(iOS 11.0, *) {
-            bottomConstraint = NSLayoutConstraint(item: messageInputContainerView, attribute: .bottom, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, attribute: .bottom, multiplier: 1, constant: 0)
+            bottomConstraint = NSLayoutConstraint(item: messageInputContainerView,
+                                                  attribute: .bottom,
+                                                  relatedBy: .equal,
+                                                  toItem: view.safeAreaLayoutGuide,
+                                                  attribute: .bottom, multiplier: 1, constant: 0)
         } else {
             // Fallback on earlier versions
-            bottomConstraint = NSLayoutConstraint(item: messageInputContainerView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
+            bottomConstraint = NSLayoutConstraint(item: messageInputContainerView,
+                                                  attribute: .bottom,
+                                                  relatedBy: .equal,
+                                                  toItem: view,
+                                                  attribute: .bottom, multiplier: 1, constant: 0)
         }
         view.addConstraint(bottomConstraint!)
 
@@ -352,7 +360,7 @@ extension ChatViewController {
     func estimatedFrame(message: String) -> CGRect {
         let size = CGSize(width: 250, height: 1000)
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
-        return NSString(string: message).boundingRect(with: size, options: options, attributes:[NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)], context: nil)
+        return NSString(string: message).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)], context: nil)
     }
 
     // loads all messages from database

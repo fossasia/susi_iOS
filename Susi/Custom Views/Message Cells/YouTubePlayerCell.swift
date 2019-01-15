@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 
 protocol PresentControllerDelegate: class {
-    func loadNewScreen(controller: UIViewController) -> Void
+    func loadNewScreen(controller: UIViewController)
 }
 
 class YouTubePlayerCell: ChatMessageCell {

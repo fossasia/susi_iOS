@@ -64,16 +64,16 @@ extension DevicesActivityViewController {
             textfield.placeholder = ControllerConstants.DeviceActivity.enterRoomPlaceholder
             textfield.borderStyle = .roundedRect
         })
-        let nextAction = UIAlertAction(title: "Next", style: .default, handler: { alert -> Void in
+        let nextAction = UIAlertAction(title: "Next", style: .default, handler: { _ -> Void in
             let roomNameTextField = self.roomAlertController.textFields![0] as UITextField
             if let roomName = roomNameTextField.text {
                 self.setDeviceRoom(for: roomName)
             }
         })
-        let chooseRoomAction = UIAlertAction(title: "Choose Room", style: .default, handler: { alert -> Void in
+        let chooseRoomAction = UIAlertAction(title: "Choose Room", style: .default, handler: { _ -> Void in
             self.presentRoomsPicker()
         })
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action : UIAlertAction) -> Void in
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (_: UIAlertAction) -> Void in
         })
         roomAlertController.addAction(cancelAction)
         roomAlertController.addAction(nextAction)
@@ -89,13 +89,13 @@ extension DevicesActivityViewController {
             textfield.text = UserDefaults.standard.value(forKey: ControllerConstants.UserDefaultsKeys.room) as? String
             textfield.borderStyle = .roundedRect
         })
-        let nextAction = UIAlertAction(title: "Next", style: .default, handler: { alert -> Void in
+        let nextAction = UIAlertAction(title: "Next", style: .default, handler: { _ -> Void in
             let roomNameTextField = self.roomAlertController.textFields![0] as UITextField
             if let roomName = roomNameTextField.text {
                 self.setDeviceRoom(for: roomName)
             }
         })
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action : UIAlertAction) -> Void in
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (_: UIAlertAction) -> Void in
         })
         roomAlertController.addAction(cancelAction)
         roomAlertController.addAction(nextAction)
@@ -118,7 +118,7 @@ extension DevicesActivityViewController {
                 if success {
                     self.presentWifiCredentialsPopup()
                 } else {
-                    self.view.makeToast("", point: self.view.center, title: message, image: nil, completion: { didTap in
+                    self.view.makeToast("", point: self.view.center, title: message, image: nil, completion: { _ in
                         UIApplication.shared.endIgnoringInteractionEvents()
                         self.presentRoomsPopup()
                     })
@@ -134,13 +134,13 @@ extension DevicesActivityViewController {
             textfield.borderStyle = .roundedRect
             textfield.isSecureTextEntry = true
         })
-        let nextAction = UIAlertAction(title: "Next", style: .default, handler: { alert -> Void in
+        let nextAction = UIAlertAction(title: "Next", style: .default, handler: { _ -> Void in
             let passwordTextField = self.wifiAlertController.textFields![0] as UITextField
             if let password = passwordTextField.text {
                 self.sendWifiCredentials(for: password)
             }
         })
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action : UIAlertAction) -> Void in
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (_: UIAlertAction) -> Void in
         })
         wifiAlertController.addAction(cancelAction)
         wifiAlertController.addAction(nextAction)
@@ -168,7 +168,7 @@ extension DevicesActivityViewController {
                 if success {
                     self.presentUserPasswordPopup()
                 } else {
-                    self.view.makeToast("", point: self.view.center, title: message, image: nil, completion: { didTap in
+                    self.view.makeToast("", point: self.view.center, title: message, image: nil, completion: { _ in
                         UIApplication.shared.endIgnoringInteractionEvents()
                         self.presentWifiCredentialsPopup()
                     })
@@ -178,19 +178,21 @@ extension DevicesActivityViewController {
     }
 
     func presentUserPasswordPopup() {
-        passwordAlertController = UIAlertController(title: ControllerConstants.DeviceActivity.passwordAlertTitle, message: ControllerConstants.DeviceActivity.passwordAlertMessage, preferredStyle: .alert)
+        passwordAlertController = UIAlertController(title: ControllerConstants.DeviceActivity.passwordAlertTitle,
+                                                    message: ControllerConstants.DeviceActivity.passwordAlertMessage,
+                                                    preferredStyle: .alert)
         passwordAlertController.addTextField(configurationHandler: { (textfield: UITextField) in
             textfield.placeholder = ControllerConstants.DeviceActivity.userPasswordPlaceholder
             textfield.borderStyle = .roundedRect
             textfield.isSecureTextEntry = true
         })
-        let nextAction = UIAlertAction(title: "Next", style: .default, handler: { alert -> Void in
+        let nextAction = UIAlertAction(title: "Next", style: .default, handler: { _ -> Void in
             let passwordTextField = self.passwordAlertController.textFields![0] as UITextField
             if let password = passwordTextField.text {
                 self.sendAuthCredentials(userPassword: password)
             }
         })
-        let cancleAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action : UIAlertAction) -> Void in
+        let cancleAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (_: UIAlertAction) -> Void in
         })
         passwordAlertController.addAction(cancleAction)
         passwordAlertController.addAction(nextAction)
@@ -218,7 +220,7 @@ extension DevicesActivityViewController {
                     if success {
                         self.setConfiguration()
                     } else {
-                        self.view.makeToast("", point: self.view.center, title: message, image: nil, completion: { didTap in
+                        self.view.makeToast("", point: self.view.center, title: message, image: nil, completion: { _ in
                             UIApplication.shared.endIgnoringInteractionEvents()
                             self.presentUserPasswordPopup()
                         })
@@ -250,7 +252,7 @@ extension DevicesActivityViewController {
                     self.isSetupDone = true
                     self.view.makeToast(ControllerConstants.DeviceActivity.doneSetupDetailText)
                 } else {
-                    self.view.makeToast("", point: self.view.center, title: message, image: nil, completion: { didTap in
+                    self.view.makeToast("", point: self.view.center, title: message, image: nil, completion: { _ in
                         UIApplication.shared.endIgnoringInteractionEvents()
                     })
                 }
@@ -273,7 +275,7 @@ extension DevicesActivityViewController {
         alertController = UIAlertController(title: "", message: "", preferredStyle: .alert)
         alertController.view.tintColor = UIColor.black
 
-        let attributedString = NSAttributedString(string: message, attributes:[NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: UIColor.iOSGray()])
+        let attributedString = NSAttributedString(string: message, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: UIColor.iOSGray()])
         alertController.setValue(attributedString, forKey: "attributedMessage")
 
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 8, y: 2, width: 50, height: 50))

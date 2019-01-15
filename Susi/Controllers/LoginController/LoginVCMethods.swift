@@ -123,7 +123,7 @@ extension LoginViewController {
 
             self.indicatorView.startAnimating()
 
-            Client.sharedInstance.recoverPassword(params as [String: AnyObject]) { (_, message) in
+            Client.sharedInstance.recoverPassword(params as [String: AnyObject]) { (_, _) in
                 DispatchQueue.main.async {
                     self.indicatorView.stopAnimating()
 
@@ -226,7 +226,7 @@ extension LoginViewController {
                 emailTextField.dividerActiveColor = .green
             }
         } else if textField == passwordTextField, let password = passwordTextField.text {
-            if password.isEmpty || password.count < 6 || password.count > 64{
+            if password.isEmpty || password.count < 6 || password.count > 64 {
                 passwordTextField.dividerActiveColor = .red
             } else {
                 passwordTextField.dividerActiveColor = .green
