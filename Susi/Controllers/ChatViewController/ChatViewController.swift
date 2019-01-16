@@ -137,7 +137,9 @@ class ChatViewController: UICollectionViewController {
             getMessagesFromMemory()
         }
     }
-
+    // count the connectivityvalue
+    var countValue: Int = 0
+    
     // MARK: - Overrides
 
     override func viewDidLoad() {

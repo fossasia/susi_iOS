@@ -61,7 +61,13 @@ extension LoginViewController {
             self.skipButton.isEnabled = value
             self.signUpButton.isEnabled = value
             if value {
-                
+                self.countValue += 1
+                let banner = StatusBarNotificationBanner(title: ControllerConstants.BannerNotification.successTitle, style: .success, colors: CustomBannerColors())
+                if self.countValue != 1 {
+                    banner.dismissDuration = 3
+                    banner.bannerHeight = 47
+                    banner.show()
+                }
             } else {
                 let banner = StatusBarNotificationBanner(title: ControllerConstants.BannerNotification.dangerTitle, style: .danger, colors: CustomBannerColors())
                 banner.bannerHeight = 47

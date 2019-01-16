@@ -256,12 +256,12 @@ class ControllerConstants {
         static let deviceIcon = UIImage(named: "device_icon")
         static let roomsIcon = UIImage(named: "room-icon")
     }
-<<<<<<< HEAD
+    
     struct BannerNotification {
         static let dangerTitle =  "No Internet Connection! Connect to Internet"
-        static let successTitle = "Connected To Internet 😀, Welcome Back"
-=======
-    
+        static let successTitle = "Connected To Internet , Welcome Back"
+    }
+
     struct AboutUs {
         static let susiDescription = "SUSI.AI is an intelligent libre software personal assistant. It is capable of chat and voice interaction by using APIs to perform actions such as music playback , making to-do lists , setting alarms , streaming podcasts, playing audiobooks , and providing weather , traffic and other real time information. Additional functionalities can be added as console services using external APIs. SUSI.AI is able to answer questions and depending upon the context will ask for additional information in order to perform the desired outcome. The core of the assistant is the SUSI.AI server that holds the intelligence and personality of SUSI.AI."
         static let contributersDescription = "Developed by Contributors."
@@ -276,7 +276,6 @@ class ControllerConstants {
         static let contributorsURL = "https://github.com/fossasia/susi_iOS/graphs/contributors"
         static let reportIssueURL = "https://github.com/fossasia/susi_iOS/issues"
         static let licenseURL = "https://github.com/fossasia/susi_iOS/blob/master/LICENSE"
->>>>>>> 59559d684cb40ecf12ab6ada0114bf8d3a322249
     }
 
 }

@@ -17,6 +17,7 @@ import paper_onboarding
 class LoginViewController: GeneralViewController {
 
     let reachability = Reachability()!
+    var countValue: Int = 0
 
     @IBOutlet weak var susiLogo: UIImageView!
     @IBOutlet weak var emailTextField: TextField!
