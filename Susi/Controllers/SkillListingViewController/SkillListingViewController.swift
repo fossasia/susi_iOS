@@ -26,6 +26,21 @@ class SkillListingViewController: UITableViewController {
         return ib
     }()
 
+    lazy var languageButton: UIButton = {
+        let button  = UIButton()
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.addTarget(self, action: #selector(getToAllLanguageVC), for: .touchUpInside)
+        let spacing = 0.5
+        let line = UIView()
+        line.translatesAutoresizingMaskIntoConstraints = false
+        line.backgroundColor = UIColor.white
+        button.addSubview(line)
+        button.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[line]|", metrics: nil, views: ["line":line]))
+        button.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[line(2)]-(\(-spacing))-|", metrics: nil, views: ["line":line]))
+        button.setTitle("Select A Language", for: .normal)
+        return button
+    }()
+    
     // for opening settings view controller
     lazy var backButton: IconButton = {
         let ib = IconButton()
@@ -48,7 +63,9 @@ class SkillListingViewController: UITableViewController {
             }
         }
     }
-    var skills = [String: [Skill]]()
+    
+    var skills: Dictionary<String, [Skill]> = [:]
+    var presentLangugage: LanguageModel = LanguageModel.getDefaultLanguageModel()
 
     let activityIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView()
@@ -66,7 +83,6 @@ class SkillListingViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    
         prepareActivityIndicator()
         shouldAnimateIndicators(true)
         getAllGroups()
@@ -74,16 +90,17 @@ class SkillListingViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
         self.setupView()
         checkReachability()
     }
-
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.view.hideAllToasts()
+    }
     // MARK: - Table view data source
 
     func dismissingTheController() {
         if dismissChecker ?? false {
-
             self.dismiss(animated: true, completion: nil)
         }
     }

@@ -88,6 +88,7 @@ class ControllerConstants {
     static let deviceType = "iOS"
     static let skillFeedback = "Skill Feedback"
     static let emailAlreadyExists = "Email is already registered!"
+    static let noResultFound = "No Result Found Please Try Changing Different Language"
 
     struct Settings {
         static let enterToSend = "Enter To Send"
