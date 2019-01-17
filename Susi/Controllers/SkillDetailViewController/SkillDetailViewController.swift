@@ -40,6 +40,16 @@ class SkillDetailViewController: GeneralViewController {
 
         return button
     }()
+    
+    let shareSkillButton: UIButton = {
+        let shareButton = UIButton()
+        shareButton.contentHorizontalAlignment = .left
+        shareButton.setTitle("Share Skill", for: .normal)
+        shareButton.setTitleColor(.iOSGray(), for: .normal)
+        shareButton.titleLabel?.font = .systemFont(ofSize: 16)
+        shareButton.translatesAutoresizingMaskIntoConstraints = false
+        return shareButton
+    }()
 
     var skill: Skill?
     var chatViewController: ChatViewController?
@@ -120,6 +130,7 @@ class SkillDetailViewController: GeneralViewController {
         addContentType()
         setupReportSkillButton()
         setupFeedbackTextField()
+        setupShareSkillButton()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -151,6 +162,10 @@ class SkillDetailViewController: GeneralViewController {
         tryItButton.borderColor = UIColor.iOSBlue()
         ratingBackView.layer.cornerRadius = 8.0
         postButton.layer.cornerRadius = 4.0
+    }
+    
+    func getSkillURL(_ skillURL: String, _ group: String, _ skillName: String, _ language:String) -> String {
+        return "\(skillURL)/\(group)/\(skillName)/\(language)"
     }
 
 }

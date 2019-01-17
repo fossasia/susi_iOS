@@ -186,6 +186,40 @@ extension SkillDetailViewController {
             }
         }
     }
+    
+    func setupShareSkillButton() {
+        let user = UserDefaults.standard.dictionary(forKey: ControllerConstants.UserDefaultsKeys.user)
+        if user == nil {
+            view.addSubview(shareSkillButton)
+            shareSkillButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
+            shareSkillButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
+            shareSkillButton.leftAnchor.constraint(equalTo: contentType.leftAnchor).isActive = true
+            shareSkillButton.topAnchor.constraint(equalTo: contentType.bottomAnchor, constant: 8).isActive = true
+            shareSkillButton.addTarget(self, action: #selector(shareSkillAction), for: .touchUpInside)
+            
+        } else {
+            view.addSubview(shareSkillButton)
+            shareSkillButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
+            shareSkillButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
+            shareSkillButton.leftAnchor.constraint(equalTo: reportSkillButton.leftAnchor).isActive = true
+            shareSkillButton.topAnchor.constraint(equalTo: reportSkillButton.bottomAnchor, constant: 8).isActive = true
+            shareSkillButton.addTarget(self, action: #selector(shareSkillAction), for: .touchUpInside)
+            
+        }
+    }
+    // Share Skill Action
+    @objc func shareSkillAction() {
+        let activityViewController : UIActivityViewController = UIActivityViewController(activityItems: [ControllerConstants.ShareSkill.message, URL(string: getSkillURL(Client.APIURLs.SkillURL,(skill?.group)!,(skill?.skillName)!,(skill?.language)!))!], applicationActivities: nil)
+        // For overcoming the crash in iPad
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        activityViewController.excludedActivityTypes = [
+            UIActivity.ActivityType.airDrop,
+            UIActivity.ActivityType.saveToCameraRoll,
+            UIActivity.ActivityType.openInIBooks,
+            UIActivity.ActivityType.markupAsPDF]
+        self.present(activityViewController, animated: true, completion: nil)
+        
+    }
 
     func setupFeedbackTextField() {
         skillFeedbackTextField.placeholderActiveColor = UIColor.skillFeedbackColor()
