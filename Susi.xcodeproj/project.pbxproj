@@ -111,6 +111,8 @@
 		807A754421D143A1008D4032 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807A754321D143A1008D4032 /* AboutViewController.swift */; };
 		94889CA61F7CCD370028B8C3 /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94889CA51F7CCD370028B8C3 /* GeneralViewController.swift */; };
 		94889CAE1F7CEAA80028B8C3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 94889CB01F7CEAA80028B8C3 /* Localizable.strings */; };
+		A0DEC06E21E0F40300659A5B /* SelectLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DEC06D21E0F40300659A5B /* SelectLanguageViewController.swift */; };
+		A0DEC07021E0F41300659A5B /* LanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DEC06F21E0F41300659A5B /* LanguageModel.swift */; };
 		F09A34A3B776419996088BB5 /* Pods_SusiUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5994B8E49F09387802A1EB7A /* Pods_SusiUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -242,6 +244,8 @@
 		94889CAF1F7CEAA80028B8C3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		94889CB11F7CEAAA0028B8C3 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A078553387742A62D98A8C3F /* Pods-Susi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Susi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Susi/Pods-Susi.debug.xcconfig"; sourceTree = "<group>"; };
+		A0DEC06D21E0F40300659A5B /* SelectLanguageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLanguageViewController.swift; sourceTree = "<group>"; };
+		A0DEC06F21E0F41300659A5B /* LanguageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageModel.swift; sourceTree = "<group>"; };
 		C564B012515FE5529232089A /* Pods_Susi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Susi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C949F9C701CBA7B848521A51 /* Pods-SusiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SusiUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SusiUITests/Pods-SusiUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -547,9 +551,10 @@
 		6D4D9B501E768F2E0067459C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A0DEC06C21E0F40300659A5B /* SelectLanguageController */,
 				807A754521D1639B008D4032 /* AboutViewController */,
-				4075B360210E3CB300672C6A /* RoomPickerController */,
 				406482FE20FCF2EF0014EB47 /* PlayerViewController */,
+				4075B360210E3CB300672C6A /* RoomPickerController */,
 				40DE743A20E49F48003C0116 /* AllFeedbackController */,
 				407EFAC120C34C1D00675A0B /* LanguagePickerController */,
 				403E7F4320BCBD1100D7B48B /* DevicesActivityController */,
@@ -615,6 +620,7 @@
 				6D61B9B41EEBAB6000CD3536 /* AnchorAction.swift */,
 				6D61B9AC1EEBAAA200CD3536 /* AnswerAction.swift */,
 				6D61B9B61EEBAB7000CD3536 /* MapAction.swift */,
+				A0DEC06F21E0F41300659A5B /* LanguageModel.swift */,
 				6D61B9AA1EEBAA3900CD3536 /* Message.swift */,
 				6D61B9AE1EEBAAD700CD3536 /* RSSAction.swift */,
 				406F8B9F20EE72CA00D9C6AC /* VideoPlayAction.swift */,
@@ -673,6 +679,14 @@
 				94889CB01F7CEAA80028B8C3 /* Localizable.strings */,
 			);
 			path = Localization;
+			sourceTree = "<group>";
+		};
+		A0DEC06C21E0F40300659A5B /* SelectLanguageController */ = {
+			isa = PBXGroup;
+			children = (
+				A0DEC06D21E0F40300659A5B /* SelectLanguageViewController.swift */,
+			);
+			path = SelectLanguageController;
 			sourceTree = "<group>";
 		};
 		BD5FA220F268315B61F71523 /* Frameworks */ = {
@@ -977,6 +991,7 @@
 				40FB527520C037C6005D4ACD /* StopCell.swift in Sources */,
 				406F8BA020EE72CA00D9C6AC /* VideoPlayAction.swift in Sources */,
 				6DFC75B91EE077E9002F92BA /* ForgotPasswordViewController.swift in Sources */,
+				A0DEC06E21E0F40300659A5B /* SelectLanguageViewController.swift in Sources */,
 				6DE44E111E76ACAF00215B85 /* Client.swift in Sources */,
 				6D3DACC51F25FB9900CEFBC7 /* ActivityIndicatorCell.swift in Sources */,
 				6D61B9AD1EEBAAA200CD3536 /* AnswerAction.swift in Sources */,
@@ -989,6 +1004,7 @@
 				6D2F984B1E76DF2200FE2B6F /* BaseCell.swift in Sources */,
 				6D0B9CED1F2CF75B0060262A /* SettingsVCMethods.swift in Sources */,
 				6D7CE2E21F40255700C6353F /* ImageCell.swift in Sources */,
+				A0DEC07021E0F41300659A5B /* LanguageModel.swift in Sources */,
 				6DE44E1B1E76B5D600215B85 /* SignUpViewController.swift in Sources */,
 				6D9C0D291E7B223A00199828 /* User.swift in Sources */,
 				6D017B2B1F4EC941004BDE7E /* SkillListingCollectionView.swift in Sources */,
