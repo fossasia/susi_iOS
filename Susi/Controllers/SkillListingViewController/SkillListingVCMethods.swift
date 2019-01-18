@@ -29,6 +29,7 @@ extension SkillListingViewController {
     }
     //MARK: - Presents All Language VC
      @objc func getToAllLanguageVC() {
+        tableView.reloadData()
         let vc = SelectLanguageViewController()
         weak var weakSelf = self
         vc.languageSelection = {
@@ -36,7 +37,8 @@ extension SkillListingViewController {
             weakSelf?.count = 0
             weakSelf?.presentLangugage = languageModel
             weakSelf?.getAllGroups()
-            weakSelf?.shouldAnimateIndicators(true)
+            weakSelf?.shouldShowShimmerLoading = true
+            weakSelf?.tableView.reloadData()
         }
         let nvc = AppNavigationController(rootViewController: vc)
         present(nvc, animated: true, completion: nil)
