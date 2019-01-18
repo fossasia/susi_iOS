@@ -10,12 +10,16 @@ import UIKit
 import Material
 import Reachability
 
-class SelectLanguageViewController: UITableViewController {
+class SelectLanguageViewController: UIViewController {
    
     let reachability = Reachability()!
     
     var languageModel: [LanguageModel] = []
+    var searchedlanguageModel: [LanguageModel] = []
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var tableView: UITableView!
+    var isSearching = false
     lazy var backButton: IconButton = {
         let ib = IconButton()
         ib.image = Icon.cm.arrowBack
@@ -54,23 +58,48 @@ class SelectLanguageViewController: UITableViewController {
         navigationItem.leftViews = [backButton]
         tableView.separatorStyle = .none
         tableView.bounces = false
+        tableView.delegate = self
+        tableView.dataSource = self
+        searchBar.delegate = self
     }
 }
-extension SelectLanguageViewController {
-    //MARK: - TableView Methods
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return languageModel.count
+extension SelectLanguageViewController: UISearchBarDelegate {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        isSearching = false
+        tableView.reloadData()
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        isSearching = true
+        searchedlanguageModel = languageModel.filter({
+            if let text = $0.languageName?.prefix(searchText
+                .count) {
+                return text.caseInsensitiveCompare(searchText) == .orderedSame
+            }
+            return false
+        })
+        tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        view.endEditing(true)
+    }
+}
+extension SelectLanguageViewController: UITableViewDelegate, UITableViewDataSource {
+    //MARK: - TableView Methods
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return isSearching ? searchedlanguageModel.count : languageModel.count
+    }
+    
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         cell.selectionStyle = .none
-        cell.textLabel?.text = languageModel[indexPath.row].languageName
+        cell.textLabel?.text = !isSearching ? languageModel[indexPath.row].languageName : searchedlanguageModel[indexPath.row].languageName
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedLanguageModel = languageModel[indexPath.row]
+     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedLanguageModel = !isSearching ? languageModel[indexPath.row] : searchedlanguageModel[indexPath.row]
         languageSelection?(selectedLanguageModel)
         dismissController()
     }
