@@ -9,7 +9,7 @@
 import UIKit
 import Material
 
-extension ResetPasswordViewController {
+extension ResetPasswordViewController:UITextFieldDelegate {
 
     @objc func dismissView() {
         self.dismiss(animated: true, completion: nil)
@@ -23,6 +23,10 @@ extension ResetPasswordViewController {
         if let navbar = navigationController?.navigationBar {
             navbar.barTintColor = UIColor.defaultColor()
         }
+        
+        self.currentPasswordField.delegate=self
+        self.newPasswordField.delegate=self
+        self.confirmPasswordField.delegate=self
     }
 
     func validatePassword() -> [Bool: String] {
@@ -86,6 +90,13 @@ extension ResetPasswordViewController {
         newPasswordField.text = ""
         currentPasswordField.text = ""
         confirmPasswordField.text = ""
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.currentPasswordField.resignFirstResponder()
+        self.newPasswordField.resignFirstResponder()
+        self.confirmPasswordField.resignFirstResponder()
+        return true
     }
 
 }
