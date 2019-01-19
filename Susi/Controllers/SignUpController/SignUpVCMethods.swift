@@ -13,7 +13,7 @@ import SwiftValidators
 extension SignUpViewController {
 
     func addTapGesture() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
 
@@ -149,7 +149,7 @@ extension SignUpViewController {
     }
 
     // dismiss keyboard if open.
-    func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         // Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
