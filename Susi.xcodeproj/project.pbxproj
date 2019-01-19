@@ -764,7 +764,7 @@
 					};
 					6D4D9B361E768E190067459C = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 7P4K4M8A4Q;
+						DevelopmentTeam = 29HRCWU889;
 						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
@@ -1223,7 +1223,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 7P4K4M8A4Q;
+				DEVELOPMENT_TEAM = 29HRCWU889;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "Susi/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1232,7 +1232,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Susi/**",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.imjog.susi;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mranuran.susi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Susi/Snowboy Files/Susi-Bridging-Header.h";
@@ -1249,7 +1249,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 7P4K4M8A4Q;
+				DEVELOPMENT_TEAM = 29HRCWU889;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "Susi/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1258,7 +1258,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Susi/**",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.imjog.susi;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mranuran.susi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Susi/Snowboy Files/Susi-Bridging-Header.h";

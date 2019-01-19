@@ -322,6 +322,10 @@ extension LoginViewController {
         let image = ControllerConstants.Images.susiLogo
         susiLogo.image = image
         susiLogo.tintColor = .white
+        
+        self.forgotPassword.setTitleColor(.white, for: .normal)
+        self.skipButton.setTitleColor(.white, for: .normal)
+        self.signUpButton.setTitleColor(.white, for: .normal)
     }
 
     func saveUserGlobally(user: User) {
