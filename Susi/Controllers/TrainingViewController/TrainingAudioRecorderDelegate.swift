@@ -19,7 +19,7 @@ extension TrainingViewController: AVAudioRecorderDelegate {
         let recordingName = "recordedVoice\(count).wav"
         let pathArray = [dirPath, recordingName]
         let filePath = NSURL.fileURL(withPathComponents: pathArray)
-        //        print(filePath)
+                print(filePath)
 
         // Get instance
         do {

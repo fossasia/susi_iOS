@@ -581,7 +581,9 @@ extension Client {
     }
 
     func checkRegistration(_ params: [String: AnyObject], _ completion: @escaping(_ emailExists: Bool?, _ success: Bool) -> Void) {
+        print(UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.ipAddress) as! String)
         let url = getApiUrl(UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.ipAddress) as! String, Methods.CheckRegistration)
+        print("url is \(url)")
         _ = makeRequest(url, .get, [:], parameters: params, completion: { (results, message) in
             if let _ = message {
                 completion(nil, false)

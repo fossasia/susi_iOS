@@ -13,7 +13,8 @@ import SwiftValidators
 extension SignUpViewController {
 
     func addTapGesture() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
+        //change here #selector function call
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboardSignup))
         view.addGestureRecognizer(tap)
     }
 
@@ -57,6 +58,11 @@ extension SignUpViewController {
     // Dismiss View Controller
     @IBAction func dismissView() {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    //change here
+    @objc func dismissKeyboardSignup(){
+        self.view.endEditing(true)
     }
 
     @IBAction func toggleRadioButtons(_ sender: M13Checkbox) {
