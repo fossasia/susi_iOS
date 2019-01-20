@@ -16,7 +16,7 @@ class SkillListingViewController: UITableViewController {
 
     let reachability = Reachability()!
     var dismissChecker: Bool?
-
+    var isOpenThroughShortcut = false
     lazy var settingsButton: IconButton = {
         let ib = IconButton()
         ib.image = Icon.moreVertical
@@ -25,7 +25,7 @@ class SkillListingViewController: UITableViewController {
         ib.addTarget(self, action: #selector(presentSettingsController), for: .touchUpInside)
         return ib
     }()
-
+    
     lazy var languageButton: UIButton = {
         let button  = UIButton()
         button.setTitleColor(UIColor.white, for: .normal)
@@ -151,9 +151,10 @@ class SkillListingViewController: UITableViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? SkillDetailViewController, segue.identifier == ControllerConstants.skillDetailControllerIdentifier {
-            vc.chatViewController = chatViewController
-            vc.skill = selectedSkill
+        if let skillDetailVC = segue.destination as? SkillDetailViewController, segue.identifier == ControllerConstants.skillDetailControllerIdentifier {
+            skillDetailVC.chatViewController = chatViewController
+            skillDetailVC.isOpenThroughShortcut = isOpenThroughShortcut
+            skillDetailVC.skill = selectedSkill
         }
     }
 }
