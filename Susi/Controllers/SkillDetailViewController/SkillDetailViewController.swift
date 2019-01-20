@@ -31,27 +31,6 @@ class SkillDetailViewController: GeneralViewController {
         return label
     }()
 
-    let reportSkillButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.contentHorizontalAlignment = .left
-        button.setTitle("Report Skill", for: .normal)
-        button.setTitleColor(UIColor.iOSGray(), for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
-        button.translatesAutoresizingMaskIntoConstraints = false
-
-        return button
-    }()
-    
-    let shareSkillButton: UIButton = {
-        let shareButton = UIButton()
-        shareButton.contentHorizontalAlignment = .left
-        shareButton.setTitle("Share Skill", for: .normal)
-        shareButton.setTitleColor(.iOSGray(), for: .normal)
-        shareButton.titleLabel?.font = .systemFont(ofSize: 16)
-        shareButton.translatesAutoresizingMaskIntoConstraints = false
-        return shareButton
-    }()
-    
     lazy var skillOptionButton: IconButton = {
         let sb = IconButton()
         sb.image = Icon.moreVertical
