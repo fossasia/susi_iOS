@@ -258,8 +258,8 @@ class ControllerConstants {
     }
     
     struct BannerNotification {
-        static let dangerTitle =  "No Internet Connection! Connect to Internet"
-        static let successTitle = "Connected To Internet , Welcome Back"
+        static let dangerTitle =  "No internet connection! Please try connecting"
+        static let successTitle = "Connected to the internet!"
     }
 
     struct AboutUs {
