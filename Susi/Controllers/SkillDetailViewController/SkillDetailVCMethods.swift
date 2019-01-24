@@ -178,7 +178,7 @@ extension SkillDetailViewController {
     
     // Share Skill Action
     @objc func shareSkillAction() {
-        let activityViewController : UIActivityViewController = UIActivityViewController(activityItems: [ControllerConstants.ShareSkill.message, URL(string: getSkillURL(Client.APIURLs.SkillURL,(skill?.group)!,(skill?.skillName)!,(skill?.language)!))!], applicationActivities: nil)
+        let activityViewController : UIActivityViewController = UIActivityViewController(activityItems: [ControllerConstants.ShareSkill.message, URL(string: getSkillURL(Client.APIURLs.SkillURL,(skill?.group)!,(skill?.skillName)!,(skill?.language)!)) as Any], applicationActivities: nil)
         // For overcoming the crash in iPad
         activityViewController.popoverPresentationController?.sourceView = self.view
         activityViewController.excludedActivityTypes = [
