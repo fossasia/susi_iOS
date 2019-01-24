@@ -29,16 +29,16 @@ extension SkillListingViewController {
     }
     //MARK: - Presents All Language VC
      @objc func getToAllLanguageVC() {
-        let vc = SelectLanguageViewController()
+        let vc = storyboard?.instantiateViewController(withIdentifier: String(describing: SelectLanguageViewController.self)) as? SelectLanguageViewController
         weak var weakSelf = self
-        vc.languageSelection = {
+        vc?.languageSelection = {
             languageModel in
             weakSelf?.count = 0
             weakSelf?.presentLangugage = languageModel
             weakSelf?.getAllGroups()
             weakSelf?.shouldAnimateIndicators(true)
         }
-        let nvc = AppNavigationController(rootViewController: vc)
+        let nvc = AppNavigationController(rootViewController: vc!)
         present(nvc, animated: true, completion: nil)
     }
     
