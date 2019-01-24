@@ -276,7 +276,7 @@ class ControllerConstants {
     
     struct Logout {
         static let title = "Logout"
-        static let message = "Are you sure , you want to logout?"
+        static let message = "Are you sure, you want to log out?"
         static let cancel = "Cancel"
         static let confirm = "Confirm"
     }

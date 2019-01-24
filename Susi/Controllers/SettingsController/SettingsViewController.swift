@@ -128,7 +128,7 @@ class SettingsViewController: UITableViewController {
                 if logoutTitle.text == ControllerConstants.Settings.logout.localized() {
                     let logoutAlert = UIAlertController(title: ControllerConstants.Logout.title, message: ControllerConstants.Logout.message, preferredStyle: UIAlertController.Style.alert)
                     logoutAlert.addAction(UIAlertAction(title: ControllerConstants.Logout.cancel, style: .default, handler: { (action: UIAlertAction!) in
-                        logoutAlert .dismiss(animated: true, completion: nil)
+                        logoutAlert.dismiss(animated: true, completion: nil)
                     }))
                     logoutAlert.addAction(UIAlertAction(title: ControllerConstants.Logout.confirm, style: .destructive, handler: { (action: UIAlertAction!) in
                         self.logoutUser()
