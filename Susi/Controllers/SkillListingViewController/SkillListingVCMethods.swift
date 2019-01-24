@@ -54,7 +54,7 @@ extension SkillListingViewController {
     @objc func dismissController() {
         navigationController?.dismiss(animated: true, completion: nil)
         // In-case of 3D-touch home action
-        if let chatVC = self.chatViewController {
+        if let chatVC = self.chatViewController, isOpenThroughShortcut {
             present(chatVC, animated: true, completion: nil)
         }
     }
