@@ -313,13 +313,14 @@ extension ChatViewController {
             if value {
                 self.countValue += 1
                 if self.countValue != 1 {
-                self.successBanner.dismissDuration = 3
-                self.successBanner.bannerHeight = 47
-                self.successBanner.show()
+                    self.successBanner.titleLabel.textAlignment = .center
+                    self.successBanner.detailLabel.textAlignment = .center
+                    self.successBanner.show(duration: 10.0)
                 }
             } else {
-                self.dangerBanner.bannerHeight = 47
-                self.dangerBanner.show()
+                self.dangerBanner.titleLabel.textAlignment = .center
+                self.dangerBanner.detailLabel.textAlignment = .center
+                self.dangerBanner.show(duration: 10.0)
             }
         }
     }

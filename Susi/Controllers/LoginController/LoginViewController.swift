@@ -13,6 +13,7 @@ import RealmSwift
 import Toast_Swift
 import Reachability
 import paper_onboarding
+import BRYXBanner
 
 class LoginViewController: GeneralViewController {
 
@@ -29,6 +30,9 @@ class LoginViewController: GeneralViewController {
     @IBOutlet weak var signUpButton: FlatButton!
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     @IBOutlet weak var addressTextField: TextField!
+    let successBanner = Banner(title: ControllerConstants.BannerNotification.successTitle, subtitle: ControllerConstants.BannerNotification.successSubTitle, backgroundColor: UIColor(red:0.22, green:0.80, blue:0.46, alpha:1.00))
+    let dangerBanner = Banner(title: ControllerConstants.BannerNotification.dangerTitle, subtitle: ControllerConstants.BannerNotification.dangerSubTitle, backgroundColor: UIColor(red:0.90, green:0.31, blue:0.26, alpha:1.00))
+
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -107,7 +107,6 @@
 		6DEE71121F2C9DC900A512CF /* AppNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEE71111F2C9DC900A512CF /* AppNavigationController.swift */; };
 		6DFC75B91EE077E9002F92BA /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFC75B81EE077E9002F92BA /* ForgotPasswordViewController.swift */; };
 		71DF0561EA8079C5C53174C1 /* Pods_Susi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C564B012515FE5529232089A /* Pods_Susi.framework */; };
-		80892D4821C6E7950037D2FF /* CustomBannerColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80892D4721C6E7950037D2FF /* CustomBannerColors.swift */; };
 		80183F6F21D170BB00859F72 /* AboutVCMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80183F6E21D170BB00859F72 /* AboutVCMethods.swift */; };
 		807A754421D143A1008D4032 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807A754321D143A1008D4032 /* AboutViewController.swift */; };
 		94889CA61F7CCD370028B8C3 /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94889CA51F7CCD370028B8C3 /* GeneralViewController.swift */; };
@@ -237,7 +236,6 @@
 		6DE809D01F34DC6500CAE674 /* TrainingAudioRecorderDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingAudioRecorderDelegate.swift; sourceTree = "<group>"; };
 		6DEE71111F2C9DC900A512CF /* AppNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNavigationController.swift; sourceTree = "<group>"; };
 		6DFC75B81EE077E9002F92BA /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
-		80892D4721C6E7950037D2FF /* CustomBannerColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBannerColors.swift; sourceTree = "<group>"; };
 		80183F6E21D170BB00859F72 /* AboutVCMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVCMethods.swift; sourceTree = "<group>"; };
 		807A754321D143A1008D4032 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		94889CA51F7CCD370028B8C3 /* GeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
@@ -626,7 +624,6 @@
 				6D9C0D281E7B223A00199828 /* User.swift */,
 				6D61B9B01EEBAB0200CD3536 /* WebsearchAction.swift */,
 				40623B7E20D243910013FE60 /* Ratings.swift */,
-				80892D4721C6E7950037D2FF /* CustomBannerColors.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -848,22 +845,20 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Susi/Pods-Susi-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/BRYXBanner/BRYXBanner.framework",
 				"${BUILT_PRODUCTS_DIR}/BouncyLayout/BouncyLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/Fakery/Fakery.framework",
 				"${BUILT_PRODUCTS_DIR}/Ji/Ji.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Localize-Swift/Localize_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/M13Checkbox/M13Checkbox.framework",
-				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/Material/Material.framework",
 				"${BUILT_PRODUCTS_DIR}/Motion/Motion.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
-				"${BUILT_PRODUCTS_DIR}/NotificationBannerSwift/NotificationBannerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/ReadabilityKit/ReadabilityKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftValidators/SwiftValidators.framework",
 				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
@@ -872,22 +867,20 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BRYXBanner.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BouncyLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Fakery.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Ji.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Localize_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/M13Checkbox.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Material.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Motion.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NotificationBannerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReadabilityKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftValidators.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
@@ -956,7 +949,6 @@
 				40701E7F20BEAC8100B92D81 /* RatingView.swift in Sources */,
 				6D017B251F4EAF86004BDE7E /* SkillListingViewController.swift in Sources */,
 				40623B7F20D243910013FE60 /* Ratings.swift in Sources */,
-				80892D4821C6E7950037D2FF /* CustomBannerColors.swift in Sources */,
 				6D395D1D1F58966900BCC3C5 /* SkillDetailExampleCell.swift in Sources */,
 				3BC1D8D5203B177E003E62F9 /* noConnectionViewController.swift in Sources */,
 				6D395D1F1F589CC000BCC3C5 /* SkillDetailVCMethods.swift in Sources */,

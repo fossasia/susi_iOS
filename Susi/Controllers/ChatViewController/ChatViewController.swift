@@ -15,7 +15,7 @@ import Speech
 import NVActivityIndicatorView
 import Realm
 import Reachability
-import NotificationBannerSwift
+import BRYXBanner
 
 class ChatViewController: UICollectionViewController {
     // MARK: - Variable Declarations
@@ -31,8 +31,8 @@ class ChatViewController: UICollectionViewController {
         return ib
     }()
 
-    let dangerBanner  = StatusBarNotificationBanner(title: ControllerConstants.BannerNotification.dangerTitle, style: .danger, colors: CustomBannerColors())
-    let successBanner  = StatusBarNotificationBanner(title: ControllerConstants.BannerNotification.successTitle, style: .success,colors: CustomBannerColors())
+    let successBanner = Banner(title: ControllerConstants.BannerNotification.successTitle, subtitle: ControllerConstants.BannerNotification.successSubTitle, backgroundColor: UIColor(red:0.22, green:0.80, blue:0.46, alpha:1.00))
+    let dangerBanner = Banner(title: ControllerConstants.BannerNotification.dangerTitle, subtitle: ControllerConstants.BannerNotification.dangerSubTitle, backgroundColor: UIColor(red:0.90, green:0.31, blue:0.26, alpha:1.00))
 
     // scroll down button
     lazy var scrollButton: UIButton = {
