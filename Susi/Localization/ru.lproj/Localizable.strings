@@ -98,3 +98,6 @@
 
 "Password should be 6 characters long with one uppercase, lowercase and a number" = "Пароль должен быть длиной 6 символв хотябы с одной заглавной буквой, прописной и числом";
 "    Susi" = "    Susi";
+// SelectLanguage VC
+"No Result Found Please Try Changing Different Language" = "Результат не найден Пожалуйста попробуйте сменить язык";
+"Select a Language" = "Выберите язык";

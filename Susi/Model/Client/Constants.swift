@@ -40,6 +40,7 @@ extension Client {
         static let SpeakerConfig = "/speaker_config"
         static let CheckRegistration = "/aaa/checkRegistration.json"
         static let ReportSkill = "/cms/reportSkill.json"
+        static let GetLanguages = "/cms/getAllLanguages.json"
     }
 
     struct ResponseMessages {

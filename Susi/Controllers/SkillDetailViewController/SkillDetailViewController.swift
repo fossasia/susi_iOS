@@ -40,7 +40,7 @@ class SkillDetailViewController: GeneralViewController {
 
         return button
     }()
-
+    var isOpenThroughShortcut = false
     var skill: Skill?
     var chatViewController: ChatViewController?
     var selectedExample: String?

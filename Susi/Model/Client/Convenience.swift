@@ -373,11 +373,11 @@ extension Client {
 
     // MARK: - Skill Listing
 
-    func getAllGroups(_ completion: @escaping(_ groups: [String]?, _ success: Bool, _ error: String?) -> Void) {
+    func getAllGroups(parameter: [String: AnyObject]?, _ completion: @escaping(_ groups: [String]?, _ success: Bool, _ error: String?) -> Void) {
 
         let url = getApiUrl(UserDefaults.standard.object(forKey: ControllerConstants.UserDefaultsKeys.ipAddress) as! String, Methods.GetGroups)
 
-        _ = makeRequest(url, .get, [:], parameters: [:], completion: { (results, message) in
+        _ = makeRequest(url, .get, [:], parameters: (parameter ?? [:]), completion: { (results, message) in
 
             if let _ = message {
                 completion(nil, false, ResponseMessages.ServerError)
@@ -657,6 +657,20 @@ extension Client {
                 return
             }
             completion(false, ResponseMessages.ServerError)
+            return
+        })
+    }
+    
+    func getAllLanguages(_ params: [String: AnyObject], _ completion: @escaping(_ success: Bool, _ error: String?, _ data: [String]? ) -> Void) {
+        let url = getApiUrl(APIURLs.SusiAPI, Methods.GetLanguages)
+        _ = makeRequest(url, .get, [:], parameters: params, completion: { (results, message) in
+            if let _ = message {
+                completion(false, ResponseMessages.ServerError, nil)
+            } else if results != nil, let responseObj = results as? [String: Any], let languages = responseObj["languagesArray"] as? [String] {
+                completion(true, nil, languages)
+                return
+            }
+            completion(false, ResponseMessages.ServerError, nil)
             return
         })
     }

@@ -10,13 +10,13 @@ import UIKit
 import Material
 
 extension SkillListingViewController {
-
+    
     // setup view
     func setupView() {
         navigationItem.titleLabel.text = ControllerConstants.skillListing.localized()
         navigationItem.titleLabel.textAlignment = .left
         navigationItem.leftViews = [backButton]
-        navigationItem.rightViews = [settingsButton]
+        navigationItem.rightViews = [languageButton, settingsButton]
         navigationItem.titleLabel.textColor = .white
         if let navbar = navigationController?.navigationBar {
             navbar.barTintColor = UIColor.defaultColor()
@@ -27,7 +27,21 @@ extension SkillListingViewController {
         tableView.refreshControl?.tintColor = UIColor.defaultColor()
         tableView.refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
     }
-
+    //MARK: - Presents All Language VC
+     @objc func getToAllLanguageVC() {
+        let vc = storyboard?.instantiateViewController(withIdentifier: String(describing: SelectLanguageViewController.self)) as? SelectLanguageViewController
+        weak var weakSelf = self
+        vc?.languageSelection = {
+            languageModel in
+            weakSelf?.count = 0
+            weakSelf?.presentLangugage = languageModel
+            weakSelf?.getAllGroups()
+            weakSelf?.shouldAnimateIndicators(true)
+        }
+        let nvc = AppNavigationController(rootViewController: vc!)
+        present(nvc, animated: true, completion: nil)
+    }
+    
     // presents the settings controller
     @objc func presentSettingsController() {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -35,35 +49,46 @@ extension SkillListingViewController {
         let nvc = AppNavigationController(rootViewController: vc)
         present(nvc, animated: true, completion: nil)
     }
-
+    
     // dismiss controller
     @objc func dismissController() {
         navigationController?.dismiss(animated: true, completion: nil)
         // In-case of 3D-touch home action
-        if let chatVC = self.chatViewController {
+        if let chatVC = self.chatViewController, isOpenThroughShortcut {
             present(chatVC, animated: true, completion: nil)
         }
     }
-
+    
     // setup activity indicator
     func prepareActivityIndicator() {
         tableView.layout(activityIndicator).center()
     }
-
+    
     func shouldAnimateIndicators(_ animate: Bool) {
+        weak var weakSelf = self
         DispatchQueue.main.async {
             if(animate) {
-                self.activityIndicator.startAnimating()
+                weakSelf?.activityIndicator.startAnimating()
             } else {
-                self.activityIndicator.stopAnimating()
-                self.tableView.refreshControl?.endRefreshing()
+                weakSelf?.activityIndicator.stopAnimating()
+                weakSelf?.tableView.refreshControl?.endRefreshing()
+                if((weakSelf?.skills.isEmpty) ?? false && weakSelf?.reachability.connection != .none) {
+                    weakSelf?.view.makeToast(ControllerConstants.noResultFound.localized(), duration: 1000000
+                        , completion: { (didTap) in
+                            if(didTap) {
+                                weakSelf?.getToAllLanguageVC()
+                            }
+                    })
+                }
             }
         }
     }
-
+    
     // get all groups
     func getAllGroups() {
-        Client.sharedInstance.getAllGroups { (groups, success, message) in
+        languageButton.setTitle(presentLangugage.languageName, for: .normal)
+        let parameter = [Client.SkillListing.language: presentLangugage.languageCode]
+        Client.sharedInstance.getAllGroups(parameter: parameter as [String : AnyObject]) { (groups, success, message) in
             DispatchQueue.main.async {
                 if success {
                     self.groups = groups
@@ -75,16 +100,17 @@ extension SkillListingViewController {
             }
         }
     }
-
+    
     // get all skills and save them inside a list
     func getAllSkills() {
         if let groups = groups {
             for group in groups {
-
+                
                 let params = [
-                    Client.SkillListing.group: group
+                    Client.SkillListing.group: group,
+                    Client.SkillListing.language: presentLangugage.languageCode
                 ]
-
+                
                 getSkillData(params: params as [String : AnyObject], group: group)
             }
         }
@@ -97,7 +123,7 @@ extension SkillListingViewController {
             shouldAnimateIndicators(false)
         }
     }
-
+    
     func getSkillData(params: [String: AnyObject], group: String) {
         // sleep 0.3 seconds to bypass server  request failure
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
@@ -113,7 +139,7 @@ extension SkillListingViewController {
             })
         }
     }
-
+    
     func checkReachability() {
         reachability.whenUnreachable = { reachability in
             DispatchQueue.main.async {
@@ -126,5 +152,5 @@ extension SkillListingViewController {
             self.dismissingTheController()
         }
     }
-
+    
 }
