@@ -29,10 +29,9 @@ extension SkillListingViewController {
     }
     //MARK: - Presents All Language VC
      @objc func getToAllLanguageVC() {
-        tableView.reloadData()
-        let vc = SelectLanguageViewController()
+        let vc = storyboard?.instantiateViewController(withIdentifier: String(describing: SelectLanguageViewController.self)) as? SelectLanguageViewController
         weak var weakSelf = self
-        vc.languageSelection = {
+        vc?.languageSelection = {
             languageModel in
             weakSelf?.count = 0
             weakSelf?.presentLangugage = languageModel
@@ -40,7 +39,7 @@ extension SkillListingViewController {
             weakSelf?.shouldShowShimmerLoading = true
             weakSelf?.tableView.reloadData()
         }
-        let nvc = AppNavigationController(rootViewController: vc)
+        let nvc = AppNavigationController(rootViewController: vc!)
         present(nvc, animated: true, completion: nil)
     }
     
@@ -56,7 +55,7 @@ extension SkillListingViewController {
     @objc func dismissController() {
         navigationController?.dismiss(animated: true, completion: nil)
         // In-case of 3D-touch home action
-        if let chatVC = self.chatViewController {
+        if let chatVC = self.chatViewController, isOpenThroughShortcut {
             present(chatVC, animated: true, completion: nil)
         }
     }

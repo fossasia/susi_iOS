@@ -130,6 +130,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let layout = BouncyLayout()
                     let chatViewController = ChatViewController(collectionViewLayout: layout)
                     skillsVC.chatViewController = chatViewController
+                    skillsVC.isOpenThroughShortcut = true
                     let nvc = AppNavigationController(rootViewController: skillsVC)
                     self.window?.rootViewController = nvc
                     self.window?.makeKeyAndVisible()

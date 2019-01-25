@@ -97,7 +97,7 @@ extension SkillDetailViewController {
             self.chatViewController?.handleSend()
         })
         // In-case of 3D-touch home action
-        if let chatVC = self.chatViewController {
+        if let chatVC = self.chatViewController, isOpenThroughShortcut {
             present(chatVC, animated: true, completion: {
                 chatVC.inputTextField.text = query
                 chatVC.handleSend()
