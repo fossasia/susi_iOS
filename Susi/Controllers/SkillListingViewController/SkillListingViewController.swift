@@ -16,7 +16,6 @@ class SkillListingViewController: UITableViewController {
 
     let reachability = Reachability()!
     var dismissChecker: Bool?
-    var isOpenThroughShortcut = false
     lazy var settingsButton: IconButton = {
         let ib = IconButton()
         ib.image = Icon.moreVertical
@@ -51,8 +50,8 @@ class SkillListingViewController: UITableViewController {
     }()
 
     var groups: [String]?
-
-    var chatViewController: ChatViewController?
+    
+    weak var chatViewControllerDelegate: ChatViewControllerProtocol?
 
     // stores how many group's data fetched
     var count = 0 {
@@ -75,11 +74,7 @@ class SkillListingViewController: UITableViewController {
         return indicator
     }()
 
-    var selectedSkill: Skill? {
-        didSet {
-            performSegue(withIdentifier: ControllerConstants.skillDetailControllerIdentifier, sender: self)
-        }
-    }
+    var selectedSkill: Skill?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,7 +109,7 @@ class SkillListingViewController: UITableViewController {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "skillListCell", for: indexPath) as? SkillListingTableCell,
             let group = groups?[indexPath.row] {
             cell.groupName = group
-            cell.skillListController = self
+            cell.selectionDelegate = self
             cell.skills = skills[group]
             return cell
         }
@@ -152,9 +147,18 @@ class SkillListingViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let skillDetailVC = segue.destination as? SkillDetailViewController, segue.identifier == ControllerConstants.skillDetailControllerIdentifier {
-            skillDetailVC.chatViewController = chatViewController
-            skillDetailVC.isOpenThroughShortcut = isOpenThroughShortcut
+            skillDetailVC.chatViewControllerDelegate = chatViewControllerDelegate
             skillDetailVC.skill = selectedSkill
         }
+    }
+}
+extension SkillListingViewController: SkillSelectionProtocol {
+    //MARK: - SkillSelectionProtocol method
+    func didSelectSkill(skill: Skill?) {
+        guard let skill = skill else {
+            return
+        }
+        selectedSkill = skill
+        performSegue(withIdentifier: ControllerConstants.skillDetailControllerIdentifier, sender: self)
     }
 }

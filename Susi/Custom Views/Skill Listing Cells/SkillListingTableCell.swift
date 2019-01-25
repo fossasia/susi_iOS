@@ -11,8 +11,7 @@ import Material
 
 class SkillListingTableCell: UITableViewCell {
 
-    var skillListController: SkillListingViewController?
-
+    weak var selectionDelegate: SkillSelectionProtocol?
     var groupName: String? {
         didSet {
             backgroundColor = Color.grey.lighten4
@@ -24,7 +23,7 @@ class SkillListingTableCell: UITableViewCell {
         didSet {
             // Sort skills in descending order of average ratings
             let sortedSkill = skills?.sorted(by: {$0.averageRating > $1.averageRating})
-            skillListingCollectionView.skillListController = skillListController
+            skillListingCollectionView.selectionDelegate = selectionDelegate
             skillListingCollectionView.groupSkills = sortedSkill
         }
     }

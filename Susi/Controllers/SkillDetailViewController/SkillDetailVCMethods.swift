@@ -92,17 +92,10 @@ extension SkillDetailViewController {
 
     @objc func trySkillFromExample() {
         let query = selectedExample ?? self.skill?.examples.first
+        weak var weakSelf = self
         navigationController?.dismiss(animated: true, completion: {
-            self.chatViewController?.inputTextField.text = query
-            self.chatViewController?.handleSend()
+            weakSelf?.chatViewControllerDelegate?.searchWith(text: query)
         })
-        // In-case of 3D-touch home action
-        if let chatVC = self.chatViewController, isOpenThroughShortcut {
-            present(chatVC, animated: true, completion: {
-                chatVC.inputTextField.text = query
-                chatVC.handleSend()
-            })
-        }
     }
 
     func addSkillDescription() {

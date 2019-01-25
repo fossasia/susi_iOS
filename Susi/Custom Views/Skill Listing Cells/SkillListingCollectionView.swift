@@ -9,6 +9,10 @@
 import UIKit
 import Material
 
+protocol SkillSelectionProtocol: class {
+    func didSelectSkill(skill: Skill?)
+}
+
 class SkillListingCollectionView: UICollectionView, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
 
     let cellId = "cellId"
@@ -20,7 +24,7 @@ class SkillListingCollectionView: UICollectionView, UICollectionViewDelegateFlow
             self.reloadData()
         }
     }
-
+    weak var selectionDelegate: SkillSelectionProtocol?
     var skillListController: SkillListingViewController?
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -46,6 +50,7 @@ class SkillListingCollectionView: UICollectionView, UICollectionViewDelegateFlow
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectionDelegate?.didSelectSkill(skill: groupSkills?[indexPath.row])
         skillListController?.selectedSkill = groupSkills?[indexPath.row]
     }
 
