@@ -319,6 +319,8 @@ extension SkillDetailViewController: UITextFieldDelegate {
         if let delegate = UIApplication.shared.delegate as? AppDelegate, let user = delegate.currentUser {
             if let feedbackText = skillFeedbackTextField.text, feedbackText.count > 0 {
                 self.submitSkillFeedback(for: user.accessToken)
+            } else {
+                view.makeToast("Please enter a feedback to post")
             }
         } else {
             let loginAlertController = UIAlertController(title: "You are not logged-in", message: "Please login to post skill feedback", preferredStyle: .alert)
