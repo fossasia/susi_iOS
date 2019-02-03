@@ -39,6 +39,15 @@ class SkillDetailViewController: GeneralViewController {
         sb.addTarget(self, action: #selector(barButtonAction(_:event:)), for: .touchUpInside)
         return sb
     }()
+    
+    lazy var cellConfiguration: FTCellConfiguration = {
+        let cellConfig = FTCellConfiguration()
+        cellConfig.textColor = .darkGray
+        cellConfig.textAlignment = .left
+        cellConfig.textFont = .systemFont(ofSize: 17)
+        return cellConfig
+    }()
+    
     var isOpenThroughShortcut = false
     var skill: Skill?
     var chatViewController: ChatViewController?

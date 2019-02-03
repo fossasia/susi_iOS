@@ -200,7 +200,7 @@ extension SkillDetailViewController {
         config.borderColor = .lightGray
         config.menuWidth = 150
         config.menuSeparatorColor = .lightGray
-        config.menuRowHeight = 50
+        config.menuRowHeight = 44
         config.cornerRadius = 10
         
     }
@@ -209,11 +209,7 @@ extension SkillDetailViewController {
         let user = UserDefaults.standard.dictionary(forKey: ControllerConstants.UserDefaultsKeys.user)
         if user != nil {
             ftConfig()
-            let cellConfig = FTCellConfiguration()
-            cellConfig.textColor = .black
-            cellConfig.textAlignment = .center
-            cellConfig.textFont = .systemFont(ofSize: 20)
-            let cellConfis = Array(repeating: cellConfig, count: 2)
+            let cellConfis = Array(repeating: cellConfiguration, count: menuOptionsAfterLogin.count)
             FTPopOverMenu.showForEvent(event: event, with: menuOptionsAfterLogin, menuImageArray: nil, cellConfigurationArray: cellConfis, done: { (selectedIndex) in
                 if selectedIndex == 0 {
                     self.shareSkillAction()
@@ -223,11 +219,7 @@ extension SkillDetailViewController {
             })
         } else {
             ftConfig()
-            let cellConfig = FTCellConfiguration()
-            cellConfig.textColor = .black
-            cellConfig.textAlignment = .center
-            cellConfig.textFont = .systemFont(ofSize: 20)
-            let cellConfis = Array(repeating: cellConfig, count: 1)
+            let cellConfis = Array(repeating: cellConfiguration, count: menuOptionsBeforeLogin.count)
             FTPopOverMenu.showForEvent(event: event, with: menuOptionsBeforeLogin, menuImageArray: nil, cellConfigurationArray: cellConfis,  done: { (selectedIndex) in
                 if selectedIndex == 0 {
                     self.shareSkillAction()
