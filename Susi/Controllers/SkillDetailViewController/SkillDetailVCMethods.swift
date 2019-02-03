@@ -8,6 +8,7 @@
 
 import UIKit
 import Toast_Swift
+import FTPopOverMenu_Swift
 
 extension SkillDetailViewController {
 
@@ -130,19 +131,7 @@ extension SkillDetailViewController {
         }
 
     }
-
-    func setupReportSkillButton() {
-        if let delegate = UIApplication.shared.delegate as? AppDelegate, let _ = delegate.currentUser {
-            view.addSubview(reportSkillButton)
-            reportSkillButton.widthAnchor.constraint(equalToConstant: 140).isActive = true
-            reportSkillButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
-            reportSkillButton.leftAnchor.constraint(equalTo: contentType.leftAnchor).isActive = true
-            reportSkillButton.topAnchor.constraint(equalTo: contentType.bottomAnchor, constant: 8).isActive = true
-
-            reportSkillButton.addTarget(self, action: #selector(reportSkillAction), for: .touchUpInside)
-        }
-    }
-
+    
     @objc func reportSkillAction() {
         let reportSkillAlert = UIAlertController(title: "Report Skill", message: "Flag as inappropriate", preferredStyle: .alert)
         reportSkillAlert.addTextField(configurationHandler: { (textfield: UITextField) in
@@ -184,6 +173,58 @@ extension SkillDetailViewController {
                     }
                 }
             }
+        }
+    }
+    
+    // Share Skill Action
+    @objc func shareSkillAction() {
+        let activityViewController : UIActivityViewController = UIActivityViewController(activityItems: [ControllerConstants.ShareSkill.message, URL(string: getSkillURL(Client.APIURLs.SkillURL,(skill?.group)!,(skill?.skillName)!,(skill?.language)!)) as Any], applicationActivities: nil)
+        // For overcoming the crash in iPad
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        activityViewController.excludedActivityTypes = [
+            UIActivity.ActivityType.airDrop,
+            UIActivity.ActivityType.saveToCameraRoll,
+            UIActivity.ActivityType.openInIBooks,
+            UIActivity.ActivityType.markupAsPDF]
+        self.present(activityViewController, animated: true, completion: nil)
+        
+    }
+    
+    func skillOptionBarButton() {
+        navigationItem.rightViews = [skillOptionButton]
+    }
+    
+    func ftConfig() {
+        let config = FTConfiguration.shared
+        config.backgoundTintColor = .white
+        config.borderColor = .lightGray
+        config.menuWidth = 150
+        config.menuSeparatorColor = .lightGray
+        config.menuRowHeight = 44
+        config.cornerRadius = 10
+        
+    }
+    
+    @objc func barButtonAction(_ sender: UIBarButtonItem, event: UIEvent) {
+        let user = UserDefaults.standard.dictionary(forKey: ControllerConstants.UserDefaultsKeys.user)
+        if user != nil {
+            ftConfig()
+            let cellConfis = Array(repeating: cellConfiguration, count: menuOptionsAfterLogin.count)
+            FTPopOverMenu.showForEvent(event: event, with: menuOptionsAfterLogin, menuImageArray: nil, cellConfigurationArray: cellConfis, done: { (selectedIndex) in
+                if selectedIndex == 0 {
+                    self.shareSkillAction()
+                } else {
+                    self.reportSkillAction()
+                }
+            })
+        } else {
+            ftConfig()
+            let cellConfis = Array(repeating: cellConfiguration, count: menuOptionsBeforeLogin.count)
+            FTPopOverMenu.showForEvent(event: event, with: menuOptionsBeforeLogin, menuImageArray: nil, cellConfigurationArray: cellConfis,  done: { (selectedIndex) in
+                if selectedIndex == 0 {
+                    self.shareSkillAction()
+                }
+            })
         }
     }
 

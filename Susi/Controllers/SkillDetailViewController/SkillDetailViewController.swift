@@ -9,6 +9,7 @@
 import UIKit
 import Kingfisher
 import Material
+import FTPopOverMenu_Swift
 
 class SkillDetailViewController: GeneralViewController {
 
@@ -30,16 +31,23 @@ class SkillDetailViewController: GeneralViewController {
         return label
     }()
 
-    let reportSkillButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.contentHorizontalAlignment = .left
-        button.setTitle("Report Skill", for: .normal)
-        button.setTitleColor(UIColor.iOSGray(), for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
-        button.translatesAutoresizingMaskIntoConstraints = false
-
-        return button
+    lazy var skillOptionButton: IconButton = {
+        let sb = IconButton()
+        sb.image = Icon.moreVertical
+        sb.tintColor = .white
+        sb.layer.cornerRadius = 18.0
+        sb.addTarget(self, action: #selector(barButtonAction(_:event:)), for: .touchUpInside)
+        return sb
     }()
+    
+    lazy var cellConfiguration: FTCellConfiguration = {
+        let cellConfig = FTCellConfiguration()
+        cellConfig.textColor = .darkGray
+        cellConfig.textAlignment = .left
+        cellConfig.textFont = .systemFont(ofSize: 17)
+        return cellConfig
+    }()
+    
     var isOpenThroughShortcut = false
     var skill: Skill?
     var chatViewController: ChatViewController?
@@ -104,6 +112,13 @@ class SkillDetailViewController: GeneralViewController {
         UIColor.twoStarRating(),
         UIColor.oneStarRating()
     ]
+    
+    var menuOptionsAfterLogin: [String] {
+        return ["Share  Skill","Report Skill"]
+    }
+    var menuOptionsBeforeLogin: [String] {
+        return ["Share Skill"]
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,13 +133,13 @@ class SkillDetailViewController: GeneralViewController {
         setupFiveStarData()
         setupBarChart()
         addContentType()
-        setupReportSkillButton()
         setupFeedbackTextField()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         registerKeyboardNotifications()
+        skillOptionBarButton()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -151,6 +166,10 @@ class SkillDetailViewController: GeneralViewController {
         tryItButton.borderColor = UIColor.iOSBlue()
         ratingBackView.layer.cornerRadius = 8.0
         postButton.layer.cornerRadius = 4.0
+    }
+    
+    func getSkillURL(_ skillURL: String, _ group: String, _ skillName: String, _ language:String) -> String {
+        return "\(skillURL)/\(group)/\(skillName)/\(language)"
     }
 
 }
