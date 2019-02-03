@@ -14,6 +14,7 @@ extension Client {
         static let YoutubeSearch = "https://www.googleapis.com/youtube/v3/search"
         static let SnowboyTrain = "https://snowboy.kitt.ai/api/v1/train/"
         static let SpeakerBaseURL = "http://10.0.0.1:5000"
+        static let SkillURL = "https://skills.susi.ai"
     }
 
     struct Methods {

@@ -25,6 +25,7 @@ target 'Susi' do
   pod 'ReachabilitySwift'
   pod 'Localize-Swift'
   pod 'paper-onboarding'
+  pod 'FTPopOverMenu_Swift', '~> 0.1.3'
   shared_pods
 end
 
