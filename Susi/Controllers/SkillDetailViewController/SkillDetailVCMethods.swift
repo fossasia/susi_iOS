@@ -119,7 +119,7 @@ extension SkillDetailViewController {
         if contents {
             content.text = "Dynamic"
         } else {
-            content.text = "Non-Dynamic"
+            content.text = "Static"
         }
 
     }

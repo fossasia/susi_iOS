@@ -11,7 +11,11 @@ import Kingfisher
 import Material
 
 class SkillCell: CollectionViewCell {
-
+    var isLoading: Bool = false {
+        didSet {
+            showShimmer( shouldShow: isLoading)
+        }
+    }
     var skill: Skill? {
         didSet {
             skillImage.image = ControllerConstants.Images.placeholder
@@ -40,6 +44,24 @@ class SkillCell: CollectionViewCell {
     @IBOutlet weak var skillDescription: UILabel!
     @IBOutlet weak var ratingsCard: RatingView!
     @IBOutlet weak var totalRatingsLabel: UILabel!
+    
+    @IBOutlet weak var topShimmer: FBShimmeringView!
+    @IBOutlet weak var topShimmerContainer: UIView!
+
+    @IBOutlet weak var middleShimmerView: FBShimmeringView!
+    @IBOutlet weak var middleShimmerContainer: UIView!
+   
+    @IBOutlet weak var bottomShimmerView: FBShimmeringView!
+    @IBOutlet weak var bottomShimmerContainer: UIView!
+    //    @IBOutlet weak var iconTitleSV: FBShimmeringView!
+    @IBOutlet weak var ratingShimmerContainer: UIView!
+    @IBOutlet weak var ratingShimmerView: FBShimmeringView!
+    //
+//    @IBOutlet weak var exampleQueryLabelSV: FBShimmeringView!
+//
+//    @IBOutlet weak var skillDescriptionSV: FBShimmeringView!
+//    @IBOutlet weak var ratingsCardSV: FBShimmeringView!
+//    @IBOutlet weak var totalRatingsSV: FBShimmeringView!
 
     func configureShadow() {
         contentView.layer.cornerRadius = 16.0
@@ -54,7 +76,34 @@ class SkillCell: CollectionViewCell {
         layer.masksToBounds = false
         layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: contentView.layer.cornerRadius).cgPath
     }
-
+    
+    func showShimmer( shouldShow: Bool ) {
+        iconTitleView.isHidden = shouldShow
+        skillImage.isHidden = shouldShow
+        exampleQueryLabel.isHidden = shouldShow
+        skillName.isHidden = shouldShow
+        skillDescription.isHidden = shouldShow
+        ratingsCard.isHidden = shouldShow
+        totalRatingsLabel.isHidden = shouldShow
+        topShimmer.isHidden = !shouldShow
+        bottomShimmerView.isHidden = !shouldShow
+        bottomShimmerView.isHidden = !shouldShow
+        ratingShimmerContainer.isHidden = !shouldShow
+        bottomShimmerView.isHidden = !shouldShow
+        middleShimmerContainer.isHidden = !shouldShow
+        bottomShimmerContainer.isHidden = !shouldShow
+        ratingShimmerView.isHidden = !shouldShow
+        topShimmerContainer.isHidden = !shouldShow
+        topShimmer.contentView = topShimmerContainer
+        bottomShimmerView.contentView = bottomShimmerContainer
+        middleShimmerView.contentView = middleShimmerContainer
+        ratingShimmerView.contentView = ratingShimmerContainer
+        bottomShimmerView.isShimmering = shouldShow
+        middleShimmerView.isShimmering = shouldShow
+        topShimmer.isShimmering = shouldShow
+        ratingShimmerView.isShimmering = shouldShow
+    }
+    
     func roundedCorner() {
         iconTitleView.layer.cornerRadius = 16.0
         skillImage.layer.cornerRadius = 0.5 * skillImage.frame.width

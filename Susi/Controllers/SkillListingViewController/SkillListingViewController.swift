@@ -52,12 +52,14 @@ class SkillListingViewController: UITableViewController {
     var groups: [String]?
     
     weak var chatViewControllerDelegate: ChatViewControllerProtocol?
-
+    
+    var shouldShowShimmerLoading: Bool = true
     // stores how many group's data fetched
     var count = 0 {
         didSet {
             if count == groups?.count {
                 shouldAnimateIndicators(false)
+                shouldShowShimmerLoading = false
                 tableView.reloadData()
             }
         }
@@ -79,8 +81,8 @@ class SkillListingViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareActivityIndicator()
-        shouldAnimateIndicators(true)
         getAllGroups()
+        self.tableView.reloadData()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -102,15 +104,12 @@ class SkillListingViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // return the number of rows
-        return groups?.count ?? 0
+        return groups?.count ?? (shouldShowShimmerLoading ? 4 : 0)
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "skillListCell", for: indexPath) as? SkillListingTableCell,
-            let group = groups?[indexPath.row] {
-            cell.groupName = group
-            cell.selectionDelegate = self
-            cell.skills = skills[group]
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "skillListCell", for: indexPath) as? SkillListingTableCell {
+            cell.viewModel = SkillListingCellViewModel(skill: skills[groups?[indexPath.row] ?? ""], isLoading: shouldShowShimmerLoading, groupName: groups?[indexPath.row], skillListController: self)
             return cell
         }
         return UITableViewCell()
@@ -142,7 +141,7 @@ class SkillListingViewController: UITableViewController {
                 return 224.0
             }
         }
-        return 0.0
+        return shouldShowShimmerLoading ? 224.0 : 0.0
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

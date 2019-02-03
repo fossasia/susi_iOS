@@ -12,29 +12,42 @@ import Material
 class SkillListingTableCell: UITableViewCell {
 
     weak var selectionDelegate: SkillSelectionProtocol?
-    var groupName: String? {
-        didSet {
-            backgroundColor = Color.grey.lighten4
-            groupNameLabel.text = groupName
-         }
-    }
 
-    var skills: [Skill]? {
-        didSet {
-            // Sort skills in descending order of average ratings
-            let sortedSkill = skills?.sorted(by: {$0.averageRating > $1.averageRating})
-            skillListingCollectionView.selectionDelegate = selectionDelegate
-            skillListingCollectionView.groupSkills = sortedSkill
-        }
-    }
-
+    @IBOutlet weak var titleShimmerContainer: UIView!
+    @IBOutlet weak var titleShimmerView: FBShimmeringView!
     @IBOutlet weak var groupNameLabel: UILabel!
     @IBOutlet weak var skillListingCollectionView: SkillListingCollectionView!
-
+    
+    var viewModel: SkillListingCellViewModel? {
+        didSet {
+            updateView()
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-
-        selectionStyle = .none
+        setUpDefautls()
     }
 
+    func setUpDefautls() {
+        selectionStyle = .none
+        backgroundColor = Color.grey.lighten4
+    }
+
+    func updateView() {
+        shouldShimmer(showShimmer: viewModel?.isLoading ?? false)
+        groupNameLabel.text = viewModel?.groupName
+        let sortedSkill = viewModel?.skill?.sorted(by: {$0.averageRating > $1.averageRating})
+        skillListingCollectionView.selectionDelegate = viewModel?.skillListController
+        skillListingCollectionView.isLoading = viewModel?.isLoading ?? false
+        skillListingCollectionView.groupSkills = sortedSkill
+    }
+    
+    func shouldShimmer(showShimmer: Bool) {
+        titleShimmerView.contentView = titleShimmerContainer
+        titleShimmerView.isShimmering = showShimmer
+        groupNameLabel.isHidden = showShimmer
+        titleShimmerContainer.isHidden = !showShimmer
+        titleShimmerView.isHidden = !showShimmer
+    }
 }
