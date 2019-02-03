@@ -11,5 +11,8 @@
 
 #import "SnowboyWrapper.h"
 #import "TEAChart.h"
+#import "FBShimmering.h"
+#import "FBShimmeringLayer.h"
+#import "FBShimmeringView.h"
 
 #endif /* Susi_Bridging_Header_h */
