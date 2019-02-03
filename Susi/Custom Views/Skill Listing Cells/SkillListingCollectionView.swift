@@ -20,11 +20,13 @@ class SkillListingCollectionView: UICollectionView, UICollectionViewDelegateFlow
             self.reloadData()
         }
     }
-
+    
+    var isLoading: Bool = false
+    
     var skillListController: SkillListingViewController?
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return groupSkills?.count ?? 0
+        return groupSkills?.count ?? (isLoading ? 3 : 0)
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -32,6 +34,7 @@ class SkillListingCollectionView: UICollectionView, UICollectionViewDelegateFlow
             cell.skill = groupSkills?[indexPath.item]
             cell.backgroundColor = Color.grey.lighten4
             cell.depthPreset = .depth4
+            cell.isLoading = isLoading
             return cell
         }
         return UICollectionViewCell()

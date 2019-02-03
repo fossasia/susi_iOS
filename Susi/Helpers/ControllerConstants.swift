@@ -273,8 +273,17 @@ class ControllerConstants {
         static let reportIssueURL = "https://github.com/fossasia/susi_iOS/issues"
         static let licenseURL = "https://github.com/fossasia/susi_iOS/blob/master/LICENSE"
     }
+
     struct ShareSkill {
         static let message = "Hey! checkout this worderful Susi Skill "
     }
-
+    
+    struct Logout {
+        static let title = "Logout"
+        static let message = "Are you sure, you want to log out?"
+        static let cancel = "Cancel"
+        static let confirm = "Confirm"
+    }
 }
+
+

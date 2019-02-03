@@ -39,7 +39,7 @@ class SkillDetailViewController: GeneralViewController {
         sb.addTarget(self, action: #selector(barButtonAction(_:event:)), for: .touchUpInside)
         return sb
     }()
-
+    var isOpenThroughShortcut = false
     var skill: Skill?
     var chatViewController: ChatViewController?
     var selectedExample: String?

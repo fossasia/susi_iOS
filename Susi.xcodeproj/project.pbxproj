@@ -113,6 +113,10 @@
 		94889CAE1F7CEAA80028B8C3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 94889CB01F7CEAA80028B8C3 /* Localizable.strings */; };
 		A0DEC06E21E0F40300659A5B /* SelectLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DEC06D21E0F40300659A5B /* SelectLanguageViewController.swift */; };
 		A0DEC07021E0F41300659A5B /* LanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DEC06F21E0F41300659A5B /* LanguageModel.swift */; };
+		A0E42B7321F0F2D8003F06AF /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = A0E42B6B21F0F2D8003F06AF /* LICENSE */; };
+		A0E42B7421F0F2D8003F06AF /* FBShimmeringLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E42B7021F0F2D8003F06AF /* FBShimmeringLayer.m */; };
+		A0E42B7521F0F2D8003F06AF /* FBShimmeringView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E42B7121F0F2D8003F06AF /* FBShimmeringView.m */; };
+		A0E42B7621F0F2D8003F06AF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A0E42B7221F0F2D8003F06AF /* README.md */; };
 		F09A34A3B776419996088BB5 /* Pods_SusiUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5994B8E49F09387802A1EB7A /* Pods_SusiUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -246,6 +250,13 @@
 		A078553387742A62D98A8C3F /* Pods-Susi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Susi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Susi/Pods-Susi.debug.xcconfig"; sourceTree = "<group>"; };
 		A0DEC06D21E0F40300659A5B /* SelectLanguageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLanguageViewController.swift; sourceTree = "<group>"; };
 		A0DEC06F21E0F41300659A5B /* LanguageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageModel.swift; sourceTree = "<group>"; };
+		A0E42B6B21F0F2D8003F06AF /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		A0E42B6D21F0F2D8003F06AF /* FBShimmering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmering.h; sourceTree = "<group>"; };
+		A0E42B6E21F0F2D8003F06AF /* FBShimmeringLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmeringLayer.h; sourceTree = "<group>"; };
+		A0E42B6F21F0F2D8003F06AF /* FBShimmeringView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmeringView.h; sourceTree = "<group>"; };
+		A0E42B7021F0F2D8003F06AF /* FBShimmeringLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBShimmeringLayer.m; sourceTree = "<group>"; };
+		A0E42B7121F0F2D8003F06AF /* FBShimmeringView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBShimmeringView.m; sourceTree = "<group>"; };
+		A0E42B7221F0F2D8003F06AF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C564B012515FE5529232089A /* Pods_Susi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Susi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C949F9C701CBA7B848521A51 /* Pods-SusiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SusiUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SusiUITests/Pods-SusiUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -533,6 +544,7 @@
 				6D4D9B521E768FF40067459C /* Helpers */,
 				6DE44E121E76ACBA00215B85 /* Model */,
 				6D35E4811EE70F4700188E1F /* Snowboy Files */,
+				A0E42B6A21F0F2D8003F06AF /* Shimmer */,
 				6DAF3AF41F0E0FF700929D86 /* Storyboards */,
 				6D4D9B4F1E768F250067459C /* Supporting Files */,
 			);
@@ -689,6 +701,28 @@
 			path = SelectLanguageController;
 			sourceTree = "<group>";
 		};
+		A0E42B6A21F0F2D8003F06AF /* Shimmer */ = {
+			isa = PBXGroup;
+			children = (
+				A0E42B6B21F0F2D8003F06AF /* LICENSE */,
+				A0E42B6C21F0F2D8003F06AF /* FBShimmering */,
+				A0E42B7221F0F2D8003F06AF /* README.md */,
+			);
+			path = Shimmer;
+			sourceTree = "<group>";
+		};
+		A0E42B6C21F0F2D8003F06AF /* FBShimmering */ = {
+			isa = PBXGroup;
+			children = (
+				A0E42B6D21F0F2D8003F06AF /* FBShimmering.h */,
+				A0E42B6E21F0F2D8003F06AF /* FBShimmeringLayer.h */,
+				A0E42B6F21F0F2D8003F06AF /* FBShimmeringView.h */,
+				A0E42B7021F0F2D8003F06AF /* FBShimmeringLayer.m */,
+				A0E42B7121F0F2D8003F06AF /* FBShimmeringView.m */,
+			);
+			path = FBShimmering;
+			sourceTree = "<group>";
+		};
 		BD5FA220F268315B61F71523 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -804,9 +838,11 @@
 			files = (
 				6D4D9B451E768E190067459C /* LaunchScreen.storyboard in Resources */,
 				6D4D9B421E768E190067459C /* Assets.xcassets in Resources */,
+				A0E42B7321F0F2D8003F06AF /* LICENSE in Resources */,
 				94889CAE1F7CEAA80028B8C3 /* Localizable.strings in Resources */,
 				6DAF3AF61F0E101200929D86 /* Main.storyboard in Resources */,
 				40801EE520F33BBB0071860E /* YTPlayer.html in Resources */,
+				A0E42B7621F0F2D8003F06AF /* README.md in Resources */,
 				6D28983A1F144E5C00B6151A /* common.res in Resources */,
 				6D47585A1F5625740067B3A4 /* susi.pmdl in Resources */,
 			);
@@ -992,6 +1028,7 @@
 				6D87A32E1EEE54CC00A6D763 /* WebsearchCollectionView.swift in Sources */,
 				40FB527520C037C6005D4ACD /* StopCell.swift in Sources */,
 				406F8BA020EE72CA00D9C6AC /* VideoPlayAction.swift in Sources */,
+				A0E42B7521F0F2D8003F06AF /* FBShimmeringView.m in Sources */,
 				6DFC75B91EE077E9002F92BA /* ForgotPasswordViewController.swift in Sources */,
 				A0DEC06E21E0F40300659A5B /* SelectLanguageViewController.swift in Sources */,
 				6DE44E111E76ACAF00215B85 /* Client.swift in Sources */,
@@ -1023,6 +1060,7 @@
 				6DCA90641F1F0B320058CABB /* TextFieldDelegate.swift in Sources */,
 				6DE44E191E76AF8100215B85 /* ChatViewController.swift in Sources */,
 				6D61B9B31EEBAB4000CD3536 /* TableAction.swift in Sources */,
+				A0E42B7421F0F2D8003F06AF /* FBShimmeringLayer.m in Sources */,
 				6D87A3321EEE86CC00A6D763 /* RSSCell.swift in Sources */,
 				4064830120FCF3220014EB47 /* PlayerViewController.swift in Sources */,
 				407ED1DB20BEC6C3007AEE34 /* DesignableView.swift in Sources */,

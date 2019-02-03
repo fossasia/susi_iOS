@@ -125,8 +125,19 @@ class SettingsViewController: UITableViewController {
             } else if row == 2 {
                 presentResetPasswordController()
             } else if row == 3 {
-                logoutUser()
-            } 
+                if logoutTitle.text == ControllerConstants.Settings.logout.localized() {
+                    let logoutAlert = UIAlertController(title: ControllerConstants.Logout.title, message: ControllerConstants.Logout.message, preferredStyle: UIAlertController.Style.alert)
+                    logoutAlert.addAction(UIAlertAction(title: ControllerConstants.Logout.cancel, style: .default, handler: { (action: UIAlertAction!) in
+                        logoutAlert.dismiss(animated: true, completion: nil)
+                    }))
+                    logoutAlert.addAction(UIAlertAction(title: ControllerConstants.Logout.confirm, style: .destructive, handler: { (action: UIAlertAction!) in
+                        self.logoutUser()
+                    }))
+                    present(logoutAlert, animated: true, completion: nil)
+                } else {
+                    logoutUser()
+                }
+           }
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
