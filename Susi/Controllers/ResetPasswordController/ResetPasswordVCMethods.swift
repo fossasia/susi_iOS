@@ -59,7 +59,7 @@ extension ResetPasswordViewController {
             let _ = checkValidity.values.first,
             let appDelegate = UIApplication.shared.delegate as? AppDelegate,
             let user = appDelegate.currentUser,
-            isValid && isActive {
+            isValid && !isActive {
             setUIActive(active: true)
             let params = [
                 Client.UserKeys.AccessToken: user.accessToken,
