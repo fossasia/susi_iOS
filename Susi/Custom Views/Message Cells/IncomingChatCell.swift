@@ -16,6 +16,8 @@ import Material
 class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
 
     var message: Message?
+    
+    var updatedHeight: CGFloat = 40.0
 
     lazy var thumbUpIcon: IconButton = {
         let button = IconButton()
@@ -36,8 +38,15 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
         setupTheme()
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.contentView.frame.size.height = updatedHeight + 40
+        self.frame.size.height = updatedHeight + 38
+     }
+
     func setupCell(_ estimatedFrame: CGRect, _ viewFrame: CGRect) {
         if let message = message {
+            updatedHeight = estimatedFrame.height
             if message.actionType == ActionType.answer.rawValue {
                 messageTextView.frame = CGRect(x: 12, y: 4, width: max(estimatedFrame.width + 26, viewFrame.width / 3), height: estimatedFrame.height + 20)
                 textBubbleView.frame = CGRect(x: 8, y: 0, width: max(estimatedFrame.width + 40, viewFrame.width / 3), height: estimatedFrame.height + 36)
@@ -85,6 +94,7 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
         textBubbleView.addConstraintsWithFormat(format: "V:[v0(16)]-2-|", views: thumbUpIcon)
         textBubbleView.addConstraintsWithFormat(format: "V:[v0(16)]-2-|", views: thumbDownIcon)
         textBubbleView.addConstraintsWithFormat(format: "V:[v0]-4-|", views: timeLabel)
+        self.layoutIfNeeded()
     }
 
     @objc func sendFeedback(sender: IconButton) {

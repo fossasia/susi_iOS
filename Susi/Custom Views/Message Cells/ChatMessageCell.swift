@@ -40,9 +40,8 @@ class ChatMessageCell: BaseCell, UITextViewDelegate {
 
     override func setupViews() {
         super.setupViews()
-
-        addSubview(textBubbleView)
-        addSubview(messageTextView)
+        self.contentView.addSubview(textBubbleView)
+        self.contentView.addSubview(messageTextView)
         accessibilityIdentifier = ControllerConstants.TestKeys.chatCells
 
         backgroundColor = .clear
