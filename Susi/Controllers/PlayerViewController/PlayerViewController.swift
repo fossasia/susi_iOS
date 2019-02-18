@@ -41,8 +41,14 @@ class PlayerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+         NotificationCenter.default.addObserver(self, selector: #selector(self.windowBecomeVisible), name: UIWindow.didBecomeVisibleNotification, object: self.view.window)
     }
 
+    @objc func windowBecomeVisible() {
+        if(youtubePlayer.isVideoPlayerStopped()) {
+            handleDismiss()
+        }
+    }
     // shows youtube player
     func addYotubePlayer() {
         if let window = UIApplication.shared.keyWindow {
@@ -80,7 +86,7 @@ class PlayerViewController: UIViewController {
 
     @objc func handleDismiss() {
         blackView.removeFromSuperview()
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: false, completion: nil)
     }
 
 }
