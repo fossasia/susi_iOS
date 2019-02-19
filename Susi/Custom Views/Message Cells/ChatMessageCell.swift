@@ -21,6 +21,7 @@ class ChatMessageCell: BaseCell, UITextViewDelegate {
         textView.isScrollEnabled = false
         textView.isUserInteractionEnabled = true
         textView.addLongPressGesture()
+        textView.addTapGesture()
         return textView
     }()
 
@@ -47,13 +48,4 @@ class ChatMessageCell: BaseCell, UITextViewDelegate {
 
         backgroundColor = .clear
     }
-
-    func textView(_ textView: UITextView, shouldInteractWith url: URL, in characterRange: NSRange) -> Bool {
-        return true
-    }
-
-    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-        return true
-    }
-
 }
