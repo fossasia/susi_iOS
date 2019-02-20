@@ -59,6 +59,9 @@ extension SkillDetailViewController {
             skillAuthorLabel.text = "Author: \(skill.author)"
         }
         navigationItem.backButton.tintColor = .white
+        navigationItem.titleLabel.text = skill?.skillName
+        navigationItem.titleLabel.textAlignment = .left
+        navigationItem.titleLabel.textColor = .white
 
         examplesCollectionView.delegate = self
         examplesCollectionView.dataSource = self
