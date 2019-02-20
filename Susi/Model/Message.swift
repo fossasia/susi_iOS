@@ -50,7 +50,7 @@ class Message: Object {
         let messages = List<Message>()
         var skill: String = ""
 
-        if let answers = data[Client.ChatKeys.Answers] as? [[String: AnyObject]] {
+        if let answers = data[Client.ChatKeys.Answers] as? [[String: AnyObject]], answers.count > 0 {
             if let skills = answers[0][Client.ChatKeys.Skills] as? [String], skills.count > 0 {
                 skill = skills.first!
             }
