@@ -486,6 +486,8 @@ extension SkillDetailViewController: UITableViewDelegate, UITableViewDataSource 
             DispatchQueue.main.async {
                 if success {
                     self.feedbacks = feedbacks
+                    let sortedFeedback = self.feedbacks?.sorted(by: {$0.timeStamp > $1.timeStamp})
+                    self.feedbacks = sortedFeedback
                 } else {
                 }
                 self.feedbackDisplayTableView.reloadData()
