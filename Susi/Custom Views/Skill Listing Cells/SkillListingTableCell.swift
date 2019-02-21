@@ -10,6 +10,9 @@ import UIKit
 import Material
 
 class SkillListingTableCell: UITableViewCell {
+
+    weak var selectionDelegate: SkillSelectionProtocol?
+
     @IBOutlet weak var titleShimmerContainer: UIView!
     @IBOutlet weak var titleShimmerView: FBShimmeringView!
     @IBOutlet weak var groupNameLabel: UILabel!
@@ -35,8 +38,8 @@ class SkillListingTableCell: UITableViewCell {
         shouldShimmer(showShimmer: viewModel?.isLoading ?? false)
         groupNameLabel.text = viewModel?.groupName
         let sortedSkill = viewModel?.skill?.sorted(by: {$0.averageRating > $1.averageRating})
-        skillListingCollectionView.skillListController = viewModel?.skillListController
-        skillListingCollectionView.isLoading = viewModel?.isLoading ?? false 
+        skillListingCollectionView.selectionDelegate = viewModel?.skillListController
+        skillListingCollectionView.isLoading = viewModel?.isLoading ?? false
         skillListingCollectionView.groupSkills = sortedSkill
     }
     
