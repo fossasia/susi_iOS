@@ -48,9 +48,8 @@ class SkillDetailViewController: GeneralViewController {
         return cellConfig
     }()
     
-    var isOpenThroughShortcut = false
     var skill: Skill?
-    var chatViewController: ChatViewController?
+    weak var chatViewControllerDelegate: ChatViewControllerProtocol?
     var selectedExample: String?
     var submitRatingParams: [String: AnyObject] = [:]
     var getRatingParam: [String: AnyObject] = [:]

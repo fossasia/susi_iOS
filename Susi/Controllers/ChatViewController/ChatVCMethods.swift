@@ -12,6 +12,9 @@ import AVFoundation
 import RealmSwift
 import Material
 
+protocol ChatViewControllerProtocol: class {
+    func searchWith(text: String?)
+}
 extension ChatViewController {
 
     // MARK: - Keyboard Notifications
@@ -317,17 +320,21 @@ extension ChatViewController {
             }
         }
     }
-
+    func shouldOpenSkillListingVC() {
+        if(self.shouldOpenSkillListing) {
+            self.shouldOpenSkillListing = false
+            presentSkillListingController()
+        }
+    }
     // present skill listing controller
     @objc func presentSkillListingController() {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         if let vc = mainStoryboard.instantiateViewController(withIdentifier: "SkillListingController") as? SkillListingViewController {
-            vc.chatViewController = self
+            vc.chatViewControllerDelegate = self
             let nvc = AppNavigationController(rootViewController: vc)
             present(nvc, animated: true, completion: nil)
         }
     }
-
     // checks if personal trained model exists
     func checkAndAssignIfModelExists() {
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
@@ -376,4 +383,12 @@ extension ChatViewController: PresentControllerDelegate {
         self.present(controller, animated: true, completion: nil)
     }
 
+}
+
+extension ChatViewController: ChatViewControllerProtocol {
+    func searchWith(text: String?) {
+        guard let text = text else { return }
+        self.inputTextField.text = text
+        self.handleSend()
+    }
 }
