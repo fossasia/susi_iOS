@@ -16,12 +16,21 @@ import NVActivityIndicatorView
 import Realm
 import Reachability
 import BRYXBanner
+import BouncyLayout
 
 class ChatViewController: UICollectionViewController {
+    
+    init(collectionViewLayout layout: UICollectionViewLayout = BouncyLayout(), shouldOpenSkillListing: Bool = false) {
+        super.init(collectionViewLayout: layout)
+        self.shouldOpenSkillListing = shouldOpenSkillListing
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     // MARK: - Variable Declarations
-
     let reachability = Reachability()!
-
+    var shouldOpenSkillListing: Bool = false
     lazy var susiSkillListingButton: IconButton = {
         let ib = IconButton()
         ib.image = ControllerConstants.Images.susiSymbol
@@ -101,7 +110,10 @@ class ChatViewController: UICollectionViewController {
     var MODEL: String = Bundle.main.path(forResource: "susi", ofType: "pmdl")!
 
     // snowboy wrapper
-    var wrapper: SnowboyWrapper! = nil
+    lazy var wrapper: SnowboyWrapper? = {
+       var wrapper = SnowboyWrapper(resources: RESOURCE, modelStr: MODEL)
+       return wrapper
+    }()
 
     // records audio
     var audioRecorder: AVAudioRecorder!
@@ -167,6 +179,8 @@ class ChatViewController: UICollectionViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        shouldOpenSkillListingVC()
         NotificationCenter.default.addObserver(self, selector: #selector(internetConnection), name: Notification.Name.reachabilityChanged, object: reachability)
 
         do {

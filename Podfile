@@ -26,6 +26,7 @@ target 'Susi' do
   pod 'Localize-Swift'
   pod 'paper-onboarding'
   pod 'BRYXBanner'
+  pod 'FTPopOverMenu_Swift', '~> 0.1.3'
   shared_pods
 end
 

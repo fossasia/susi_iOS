@@ -3,6 +3,7 @@ PODS:
   - BouncyLayout (2.1.0)
   - BRYXBanner (0.8.3)
   - Fakery (3.3.0)
+  - FTPopOverMenu_Swift (0.1.3)
   - Ji (2.1.0):
     - Ji/Ji (= 2.1.0)
   - Ji/Ji (2.1.0):
@@ -39,6 +40,7 @@ DEPENDENCIES:
   - BouncyLayout
   - BRYXBanner
   - Fakery (~> 3.3.0)
+  - FTPopOverMenu_Swift (~> 0.1.3)
   - Kingfisher (~> 4.10.0)
   - Localize-Swift
   - M13Checkbox (from `https://github.com/Marxon13/M13Checkbox.git`, branch `swift_4_2`)
@@ -59,6 +61,7 @@ SPEC REPOS:
     - BouncyLayout
     - BRYXBanner
     - Fakery
+    - FTPopOverMenu_Swift
     - Ji
     - Kingfisher
     - Localize-Swift
@@ -99,6 +102,7 @@ SPEC CHECKSUMS:
   BouncyLayout: a7955879861375cc4e88bb64d42bcf622cd2694c
   BRYXBanner: 8cf1b119792e1cee8d7ba107297ef89f7409bc53
   Fakery: 3aae11a87721c807c18c6456500d088c1230d3e5
+  FTPopOverMenu_Swift: f67e0af3935485c1cbcc44b5c92ed530ee32d21d
   Ji: 21946da4e13425485ddd424edfaeeced0d80ad28
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   Localize-Swift: c798ec9286494866f7068f85f7c71283ac5bdab4
@@ -116,5 +120,6 @@ SPEC CHECKSUMS:
   Toast-Swift: 594b5c5e5129f15438e410207e43287f027b3c00
 
 PODFILE CHECKSUM: 5e3d88283e063650fdfb235ab63cfaa126ae2714
+
 
 COCOAPODS: 1.5.3

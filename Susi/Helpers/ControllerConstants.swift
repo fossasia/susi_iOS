@@ -88,6 +88,7 @@ class ControllerConstants {
     static let deviceType = "iOS"
     static let skillFeedback = "Skill Feedback"
     static let emailAlreadyExists = "Email is already registered!"
+    static let noResultFound = "No Result Found Please Try Changing Different Language"
 
     struct Settings {
         static let enterToSend = "Enter To Send"
@@ -280,4 +281,16 @@ class ControllerConstants {
         static let licenseURL = "https://github.com/fossasia/susi_iOS/blob/master/LICENSE"
     }
 
+    struct ShareSkill {
+        static let message = "Hey! checkout this worderful Susi Skill "
+    }
+    
+    struct Logout {
+        static let title = "Logout"
+        static let message = "Are you sure, you want to log out?"
+        static let cancel = "Cancel"
+        static let confirm = "Confirm"
+    }
 }
+
+

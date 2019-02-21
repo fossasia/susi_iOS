@@ -125,15 +125,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if shortcutHandled == true {
             shortcutHandled = false
             if shortcutIdentifier == "OpenSkillAction" {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                if let skillsVC = storyboard.instantiateViewController(withIdentifier: "SkillListingController") as? SkillListingViewController {
-                    let layout = BouncyLayout()
-                    let chatViewController = ChatViewController(collectionViewLayout: layout)
-                    skillsVC.chatViewController = chatViewController
-                    let nvc = AppNavigationController(rootViewController: skillsVC)
-                    self.window?.rootViewController = nvc
-                    self.window?.makeKeyAndVisible()
-                }
+                self.window?.rootViewController = ChatViewController( shouldOpenSkillListing: true)
+                self.window?.makeKeyAndVisible()
             }
         }
     }
