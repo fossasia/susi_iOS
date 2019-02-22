@@ -77,6 +77,8 @@ open class YouTubePlayerView: UIView, UIWebViewDelegate {
     /** The readiness of the player */
     fileprivate(set) open var ready = false
 
+    private var hasStartedPlaying = false
+
     /** The current state of the video player */
     fileprivate(set) open var playerState = YouTubePlayerState.Unstarted
 
@@ -295,6 +297,7 @@ open class YouTubePlayerView: UIView, UIWebViewDelegate {
 
                 case .StateChange:
                     if let newState = YouTubePlayerState(rawValue: data!) {
+                        hasStartedPlaying = (newState == .Playing ? true : hasStartedPlaying)
                         playerState = newState
                         delegate?.playerStateChanged(self, playerState: newState)
                     }
@@ -321,5 +324,9 @@ open class YouTubePlayerView: UIView, UIWebViewDelegate {
         }
 
         return true
+    }
+
+    func isVideoPlayerStopped() -> Bool {
+        return hasStartedPlaying && playerState == .Paused
     }
 }
