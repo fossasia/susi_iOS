@@ -14,9 +14,8 @@ extension ChatViewController: AVAudioRecorderDelegate {
         Used to initialise the snowboy wrapper
     **/
     func initSnowboy() {
-        wrapper = SnowboyWrapper(resources: RESOURCE, modelStr: MODEL)
-        wrapper.setSensitivity("0.5")
-        wrapper.setAudioGain(1.0)
+        wrapper?.setSensitivity("0.5")
+        wrapper?.setAudioGain(1.0)
         //  print("Sample rate: \(wrapper?.sampleRate()); channels: \(wrapper?.numChannels()); bits: \(wrapper?.bitsPerSample())")
     }
 
@@ -52,7 +51,7 @@ extension ChatViewController: AVAudioRecorderDelegate {
             // print("Frame capacity: \(AVAudioFrameCount(file.length))")
             // print("Buffer frame length: \(buffer.frameLength)")
 
-            let result = wrapper.runDetection(array, length: Int32(buffer!.frameLength))
+            let result = wrapper?.runDetection(array, length: Int32(buffer!.frameLength))
             // print("Result: \(result)")
 
             if result == 1 {

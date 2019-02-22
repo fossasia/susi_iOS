@@ -54,10 +54,6 @@ extension SkillListingViewController {
     // dismiss controller
     @objc func dismissController() {
         navigationController?.dismiss(animated: true, completion: nil)
-        // In-case of 3D-touch home action
-        if let chatVC = self.chatViewController, isOpenThroughShortcut {
-            present(chatVC, animated: true, completion: nil)
-        }
     }
     
     // setup activity indicator
@@ -142,16 +138,16 @@ extension SkillListingViewController {
     }
     
     func checkReachability() {
+        weak var weakSelf = self
         reachability.whenUnreachable = { reachability in
             DispatchQueue.main.async {
                 let noConnection = noConnectionViewController()
                 let view = UINavigationController(rootViewController: noConnection)
-                self.present(view, animated: true, completion: {
-                    noConnection.skillListingInstance = self
+                weakSelf?.present(view, animated: true, completion: {
+                    noConnection.skillListingInstance = weakSelf
                 })
             }
-            self.dismissingTheController()
+            weakSelf?.dismissingTheController()
         }
     }
-    
 }

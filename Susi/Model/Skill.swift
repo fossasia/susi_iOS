@@ -12,10 +12,10 @@ struct SkillListingCellViewModel {
     var skill: [Skill]?
     var groupName: String?
     var isLoading: Bool = false
-    var skillListController: SkillListingViewController?
+    weak var skillListController: SkillSelectionProtocol?
     let count = 3
     
-    init(skill: [Skill]?, isLoading: Bool, groupName: String?, skillListController: SkillListingViewController?) {
+    init(skill: [Skill]?, isLoading: Bool, groupName: String?, skillListController: SkillSelectionProtocol?) {
         self.skill = skill
         self.isLoading = isLoading
         self.groupName = groupName
