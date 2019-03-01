@@ -58,9 +58,9 @@ class SkillDetailViewController: GeneralViewController {
     var getFeedbackParam: [String: AnyObject] = [:]
     var feedbacks: [Feedback]? {
         didSet {
-            feedbackDisplayTableView.reloadData()
             let sortedFeedback = self.feedbacks?.sorted(by: {$0.timeStamp > $1.timeStamp})
             self.feedbacks = sortedFeedback
+            feedbackDisplayTableView.reloadData()
         }
     }
 
