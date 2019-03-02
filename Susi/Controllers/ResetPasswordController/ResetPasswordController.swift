@@ -10,7 +10,7 @@ import UIKit
 import Material
 import Localize_Swift
 
-class ResetPasswordViewController: UITableViewController {
+class ResetPasswordViewController: UITableViewController, UITextFieldDelegate {
 
     lazy var backButton: IconButton = {
         let button = IconButton()
@@ -40,6 +40,7 @@ class ResetPasswordViewController: UITableViewController {
                                                name: NSNotification.Name(LCLLanguageChangeNotification),
                                                object: nil)
         localizeStrings()
+        delegate()
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

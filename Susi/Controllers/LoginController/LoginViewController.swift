@@ -46,6 +46,7 @@ class LoginViewController: GeneralViewController {
         addForgotPasswordAction()
         checkReachability()
         checkSession()
+        delegate()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
 
