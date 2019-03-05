@@ -68,7 +68,7 @@ extension LoginViewController: UITextFieldDelegate {
     }
     
     //Declare delegates
-    func delegate() {
+    func addDelegates() {
         emailTextField.delegate = self
         passwordTextField.delegate = self
     }

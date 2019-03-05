@@ -25,7 +25,7 @@ extension ResetPasswordViewController {
         }
     }
     //declare delegate
-    func delegate() {
+    func addDelegates() {
         currentPasswordField.delegate = self
         newPasswordField.delegate = self
         confirmPasswordField.delegate = self

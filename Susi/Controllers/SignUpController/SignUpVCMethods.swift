@@ -55,7 +55,7 @@ extension SignUpViewController {
     }
     
     //declare delegate
-    func delegate() {
+    func addDelegates() {
         emailTextField.delegate = self
         passwordTextField.delegate = self
         confirmPasswordTextField.delegate = self

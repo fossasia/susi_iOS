@@ -40,7 +40,7 @@ class ResetPasswordViewController: UITableViewController, UITextFieldDelegate {
                                                name: NSNotification.Name(LCLLanguageChangeNotification),
                                                object: nil)
         localizeStrings()
-        delegate()
+        addDelegates()
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
