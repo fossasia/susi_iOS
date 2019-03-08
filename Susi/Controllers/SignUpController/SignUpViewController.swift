@@ -30,6 +30,7 @@ class SignUpViewController: GeneralViewController {
         addTapGesture()
         prepareFields()
         prepareSignUpButton()
+        addDelegates()
     }
 
     override func localizeStrings() {

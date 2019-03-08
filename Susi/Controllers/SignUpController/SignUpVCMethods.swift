@@ -53,6 +53,13 @@ extension SignUpViewController {
     func prepareSignUpButton() {
         signUpButton.addTarget(self, action: #selector(performSignUp), for: .touchUpInside)
     }
+    
+    //declare delegate
+    func addDelegates() {
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        confirmPasswordTextField.delegate = self
+    }
 
     // Dismiss View Controller
     @IBAction func dismissView() {
@@ -119,11 +126,18 @@ extension SignUpViewController {
 
     // function called on return button click of keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        dismissKeyboard()
-        if textField == confirmPasswordTextField {
+        switch textField {
+        case emailTextField:
+            _ = passwordTextField.becomeFirstResponder()
+        case passwordTextField:
+            _ = confirmPasswordTextField.becomeFirstResponder()
+        case confirmPasswordTextField:
+            dismissKeyboard()
             performSignUp()
+        default:
+            textField.resignFirstResponder()
         }
-        return false
+        return true
     }
 
     @objc func textFieldDidChange(textField: UITextField) {
