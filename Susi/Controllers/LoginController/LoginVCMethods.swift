@@ -18,6 +18,12 @@ extension LoginViewController: UITextFieldDelegate {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
+    
+    func setupView() {
+        skipButton.titleColor = .white
+        forgotPassword.titleColor = .white
+        signUpButton.titleColor = .white
+    }
 
     // Configures Email Text Field
     func prepareEmailField() {
