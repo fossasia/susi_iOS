@@ -262,14 +262,6 @@ extension LoginViewController: UITextFieldDelegate {
         passwordTextField.text = ""
     }
 
-    // Show sign up controller
-    func presentSignUpController() {
-        clearFields()
-
-        UserDefaults.standard.setValue(emailTextField.text, forKey: ControllerConstants.UserDefaultsKeys.typedEmailAdress)
-        let vc = SignUpViewController()
-        present(vc, animated: true, completion: nil)
-    }
 
     // Validate fields
     func isValid() -> Bool {
