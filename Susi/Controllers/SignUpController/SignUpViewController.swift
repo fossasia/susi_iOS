@@ -25,12 +25,14 @@ class SignUpViewController: GeneralViewController {
         }
     }
 
+    @IBOutlet weak var termsAndCondButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         addTapGesture()
         prepareFields()
         prepareSignUpButton()
         addDelegates()
+        termsButtonClicked()
     }
 
     override func localizeStrings() {

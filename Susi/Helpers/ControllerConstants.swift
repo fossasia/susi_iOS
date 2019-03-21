@@ -121,6 +121,7 @@ class ControllerConstants {
         static let miscellaneous = "Miscellaneous"
         static let devices = "Devices"
         static let about = "About Us"
+        static let privacy = "/privacy"
     }
 
     struct Login {

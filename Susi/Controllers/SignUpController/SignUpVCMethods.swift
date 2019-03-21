@@ -208,6 +208,18 @@ extension SignUpViewController {
             }
         }
     }
+    
+    // Terms and Conditions button
+    
+    func termsButtonClicked() {
+        termsAndCondButton.addTarget(self, action: #selector(performTandC), for: .touchUpInside)
+    }
+    
+    @objc func performTandC() {
+        
+        let termsURL = NSURL(string: "\(ControllerConstants.CommonURL.susiURL)\(ControllerConstants.Settings.privacy)")! as URL
+        UIApplication.shared.open(termsURL, options: [:], completionHandler: nil)
+    }
 
 }
 
