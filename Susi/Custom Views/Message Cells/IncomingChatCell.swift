@@ -55,6 +55,7 @@ class IncomingBubbleCell: ChatMessageCell, MKMapViewDelegate {
                 if message.message.containsURL() {
                     _ = attributedString.setAsLink(textToFind: message.message.extractFirstURL(),
                                                    linkURL: message.message.extractFirstURL(), text: message.message)
+                    messageTextView.url = message.message.extractFirstURL()
                 } else {
                     attributedString.addAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16.0)],
                                                    range: NSRange(location: 0, length: message.message.count))
