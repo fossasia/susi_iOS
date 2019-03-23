@@ -166,6 +166,9 @@ class ControllerConstants {
         static let languageCode = "languageCode"
         static let room = "room"
         static let userQuery = "userQuery"
+        static let rememberMe = "rememberMe"
+        static let saveEmailAddress = "saveEmailAddress"
+        static let savePassword = "savePassword"
     }
 
     struct TestKeys {

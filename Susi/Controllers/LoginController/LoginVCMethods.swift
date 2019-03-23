@@ -379,5 +379,30 @@ extension LoginViewController: UITextFieldDelegate {
             print(error.localizedDescription)
         }
     }
+    
+    // Remember me functions
+    
+    func prepareRememberMe() {
+        rememberMeButton.addTarget(self, action: #selector(performRememberMe), for: .valueChanged)
+        
+        if (rememberMe?.bool(forKey: ControllerConstants.UserDefaultsKeys.rememberMe))! {
+            emailTextField.text = rememberMe?.value(forKey: ControllerConstants.UserDefaultsKeys.saveEmailAddress) as? String
+            passwordTextField.text = rememberMe?.value(forKey: ControllerConstants.UserDefaultsKeys.savePassword) as? String
+            rememberMeButton.setCheckState(.checked, animated: false)
+        } else {
+            rememberMeButton.setCheckState(.unchecked, animated: false)
+        }
+    }
+    
+    @objc func performRememberMe() {
+        
+        if rememberMeButton.checkState == .checked {
+            rememberMe?.set(true, forKey: ControllerConstants.UserDefaultsKeys.rememberMe)
+            rememberMe?.set(emailTextField.text, forKey: ControllerConstants.UserDefaultsKeys.saveEmailAddress)
+            rememberMe?.set(passwordTextField.text, forKey: ControllerConstants.UserDefaultsKeys.savePassword)
+        } else {
+            rememberMe?.set(false, forKey: ControllerConstants.UserDefaultsKeys.rememberMe)
+        }
+    }
 
 }

@@ -17,6 +17,8 @@ import paper_onboarding
 class LoginViewController: GeneralViewController {
 
     let reachability = Reachability()!
+    
+    let rememberMe: UserDefaults? = UserDefaults.standard
 
     let alert = UIAlertController(title: "Warning", message: "Please Connect to Internet", preferredStyle: .alert)
 
@@ -30,7 +32,8 @@ class LoginViewController: GeneralViewController {
     @IBOutlet weak var signUpButton: FlatButton!
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     @IBOutlet weak var addressTextField: TextField!
-
+    @IBOutlet weak var rememberMeButton: M13Checkbox!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -48,6 +51,7 @@ class LoginViewController: GeneralViewController {
         checkSession()
         setupView()
         addDelegates()
+        prepareRememberMe()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
 
