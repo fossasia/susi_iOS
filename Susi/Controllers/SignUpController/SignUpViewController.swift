@@ -24,13 +24,14 @@ class SignUpViewController: GeneralViewController {
             closeButton.imageView?.transform = CGAffineTransform(rotationAngle: -(.pi/2))
         }
     }
-
+    @IBOutlet weak var resendVerificationLinkButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         addTapGesture()
         prepareFields()
         prepareSignUpButton()
         addDelegates()
+        performResendVerification()
     }
 
     override func localizeStrings() {

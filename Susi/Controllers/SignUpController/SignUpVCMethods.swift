@@ -208,7 +208,28 @@ extension SignUpViewController {
             }
         }
     }
-
+    
+    // Get Verification Link
+    
+    func performResendVerification() {
+        resendVerificationLinkButton.addTarget(self, action: #selector(resendVerificationLink), for: .touchUpInside)
+    }
+    
+    @objc func resendVerificationLink() {
+        let param = [
+            Client.UserKeys.EmailID: emailTextField.text
+        ]
+        Client.sharedInstance.resendVerificationLink(param as [String : AnyObject]) { (success, responseMessage) in
+            DispatchQueue.main.async {
+                if success {
+                    self.view.makeToast(ControllerConstants.SignUp.verificationLink)
+                } else {
+                    self.view.makeToast(responseMessage)
+                }
+            }
+        }
+    }
+    
 }
 
 extension SignUpViewController: UITextFieldDelegate {

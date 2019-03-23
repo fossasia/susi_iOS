@@ -42,6 +42,7 @@ extension Client {
         static let CheckRegistration = "/aaa/checkRegistration.json"
         static let ReportSkill = "/cms/reportSkill.json"
         static let GetLanguages = "/cms/getAllLanguages.json"
+        static let ResendVerificationLink = "/aaa/resendVerificationLink.json"
     }
 
     struct ResponseMessages {
@@ -71,6 +72,7 @@ extension Client {
         static let NewPassword = "newpassword"
         static let EmailExists = "exists"
         static let CheckEmail = "check_email"
+        static let EmailID = "emailId"
     }
 
     struct ChatKeys {
