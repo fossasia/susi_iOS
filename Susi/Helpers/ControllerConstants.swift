@@ -121,6 +121,9 @@ class ControllerConstants {
         static let miscellaneous = "Miscellaneous"
         static let devices = "Devices"
         static let about = "About Us"
+        static let account = "Account Settings"
+        static let message = "Please login to continue"
+        static let gravatarURL = "https://www.gravatar.com/avatar"
     }
 
     struct Login {

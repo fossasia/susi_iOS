@@ -42,6 +42,7 @@ extension Client {
         static let CheckRegistration = "/aaa/checkRegistration.json"
         static let ReportSkill = "/cms/reportSkill.json"
         static let GetLanguages = "/cms/getAllLanguages.json"
+        static let GetUserAvatar = "/getAvatar.png"
     }
 
     struct ResponseMessages {
