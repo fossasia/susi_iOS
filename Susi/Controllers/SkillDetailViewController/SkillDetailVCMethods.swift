@@ -103,26 +103,20 @@ extension SkillDetailViewController {
         skillDescription.text = skill?.skillDescription
     }
 
-    func addContentType() {
-        view.addSubview(contentType)
-        contentType.widthAnchor.constraint(equalToConstant: 140).isActive = true
-        contentType.heightAnchor.constraint(equalToConstant: 35).isActive = true
-        contentType.leftAnchor.constraint(equalTo: ratingBackView.leftAnchor).isActive = true
-        contentType.topAnchor.constraint(equalTo: feedbackDisplayTableView.bottomAnchor, constant: 16).isActive = true
-
-        view.addSubview(content)
-        content.leftAnchor.constraint(equalTo: contentType.rightAnchor, constant: -6).isActive = true
-        content.topAnchor.constraint(equalTo: contentType.topAnchor, constant: 8).isActive = true
-        content.widthAnchor.constraint(equalToConstant: 140).isActive = true
-        content.heightAnchor.constraint(equalToConstant: 22).isActive = true
-
-        guard let contents = skill?.dynamic_content else { return }
-        if contents {
-            content.text = "Dynamic"
+    func addSkillDetails() {
+        let locale = NSLocale(localeIdentifier: (skill?.language)!)
+        let language = locale.displayName(forKey: NSLocale.Key.identifier, value: skill?.language as Any)
+        let updatedDate = skill?.lastModifiedTime.getFirstChar(19)
+        categoryLabel.text = skill?.group
+        languageLabel.text = language
+        updatedOnLabel.text = updatedDate?.replacingOccurrences(of: "T", with: " ")
+        let content  = skill?.dynamic_content
+        if content! {
+            contentTypeLabel.text = "Dynamic"
         } else {
-            content.text = "Static"
+            contentTypeLabel.text = "Static"
         }
-
+        
     }
     
     @objc func reportSkillAction() {
