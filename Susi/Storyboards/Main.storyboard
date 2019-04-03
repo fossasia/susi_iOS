@@ -430,53 +430,51 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Custom Server URL"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="8w1-Me-Ajd">
-                                <rect key="frame" x="142" y="456" width="92" height="37"/>
-                            </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XPJ-RH-ER0">
-                                <rect key="frame" x="16" y="501" width="343" height="30"/>
+                                <rect key="frame" x="16" y="447" width="343" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Smb-Bp-A5g"/>
+                                    <constraint firstAttribute="width" constant="343" id="RXb-Jw-p08"/>
+                                    <constraint firstAttribute="height" constant="24" id="dWA-nF-3QI"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Resend Verification Link">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="8w1-Me-Ajd">
+                                <rect key="frame" x="141" y="479" width="92" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" name="iOSBlue"/>
                         <color key="tintColor" name="iOSBlue"/>
                         <constraints>
-                            <constraint firstItem="8w1-Me-Ajd" firstAttribute="leading" secondItem="E81-H1-y6d" secondAttribute="leadingMargin" constant="126" id="331-KH-2Qa"/>
-                            <constraint firstItem="8w1-Me-Ajd" firstAttribute="leading" secondItem="E81-H1-y6d" secondAttribute="leadingMargin" constant="126" id="4Kl-21-Nmj"/>
                             <constraint firstItem="TcY-GF-sf2" firstAttribute="trailing" secondItem="E81-H1-y6d" secondAttribute="trailingMargin" id="5of-Dl-Uy0"/>
-                            <constraint firstItem="XPJ-RH-ER0" firstAttribute="top" secondItem="8w1-Me-Ajd" secondAttribute="bottom" constant="8" id="72I-IH-U3L"/>
                             <constraint firstItem="N3z-41-ZBS" firstAttribute="top" secondItem="fZv-XU-9rZ" secondAttribute="bottom" constant="44" id="9c4-Sm-lE9"/>
                             <constraint firstItem="diq-Fb-8ST" firstAttribute="leading" secondItem="E81-H1-y6d" secondAttribute="leadingMargin" id="AdH-N5-gCh"/>
-                            <constraint firstItem="XPJ-RH-ER0" firstAttribute="trailing" secondItem="E81-H1-y6d" secondAttribute="trailingMargin" id="B0o-ht-6QT"/>
                             <constraint firstItem="j46-3i-Hj3" firstAttribute="leading" secondItem="mlz-rv-BcH" secondAttribute="trailing" constant="8" id="Cej-q3-19v"/>
+                            <constraint firstItem="XPJ-RH-ER0" firstAttribute="top" secondItem="diq-Fb-8ST" secondAttribute="bottom" constant="8" id="Evx-v8-Qve"/>
+                            <constraint firstItem="XPJ-RH-ER0" firstAttribute="leading" secondItem="E81-H1-y6d" secondAttribute="leadingMargin" id="GIM-ql-1bE"/>
                             <constraint firstItem="fZv-XU-9rZ" firstAttribute="leading" secondItem="E81-H1-y6d" secondAttribute="leadingMargin" id="Kgj-8S-Sen"/>
                             <constraint firstItem="TcY-GF-sf2" firstAttribute="top" secondItem="N3z-41-ZBS" secondAttribute="bottom" constant="44" id="M3w-sw-nGw"/>
+                            <constraint firstItem="8w1-Me-Ajd" firstAttribute="leading" secondItem="E81-H1-y6d" secondAttribute="leadingMargin" constant="125" id="MOx-BQ-wGG"/>
                             <constraint firstItem="diq-Fb-8ST" firstAttribute="top" secondItem="mlz-rv-BcH" secondAttribute="bottom" constant="22" id="NkC-8p-QSy"/>
                             <constraint firstItem="mlz-rv-BcH" firstAttribute="top" secondItem="TcY-GF-sf2" secondAttribute="bottom" constant="30" id="Ob4-VO-i9h"/>
                             <constraint firstItem="N3z-41-ZBS" firstAttribute="trailing" secondItem="E81-H1-y6d" secondAttribute="trailingMargin" id="OiE-bs-1Zi"/>
                             <constraint firstItem="jll-vc-Hx1" firstAttribute="top" secondItem="eYL-27-FPk" secondAttribute="bottom" id="OpU-0P-FLF"/>
                             <constraint firstItem="diq-Fb-8ST" firstAttribute="trailing" secondItem="E81-H1-y6d" secondAttribute="trailingMargin" id="Vub-YC-wBP"/>
                             <constraint firstItem="mlz-rv-BcH" firstAttribute="leading" secondItem="E81-H1-y6d" secondAttribute="leadingMargin" id="Ypx-xM-XUV"/>
-                            <constraint firstItem="8w1-Me-Ajd" firstAttribute="top" secondItem="diq-Fb-8ST" secondAttribute="bottom" constant="17" id="b9V-Zx-UGN"/>
+                            <constraint firstItem="XPJ-RH-ER0" firstAttribute="trailing" secondItem="E81-H1-y6d" secondAttribute="trailingMargin" id="aIc-NJ-ynl"/>
                             <constraint firstItem="N3z-41-ZBS" firstAttribute="leading" secondItem="E81-H1-y6d" secondAttribute="leadingMargin" id="cMQ-Uz-qhJ"/>
                             <constraint firstItem="j46-3i-Hj3" firstAttribute="trailing" secondItem="E81-H1-y6d" secondAttribute="trailingMargin" id="e6L-1F-cel"/>
                             <constraint firstItem="diq-Fb-8ST" firstAttribute="leading" secondItem="E81-H1-y6d" secondAttribute="leadingMargin" id="edf-Y9-7VH"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="8w1-Me-Ajd" secondAttribute="trailing" constant="125" id="hzC-l7-epz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8w1-Me-Ajd" secondAttribute="trailing" constant="126" id="fAf-VH-cco"/>
                             <constraint firstItem="fZv-XU-9rZ" firstAttribute="trailing" secondItem="E81-H1-y6d" secondAttribute="trailingMargin" id="j6I-YE-QDR"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="8w1-Me-Ajd" secondAttribute="trailing" constant="125" id="jXS-VJ-RDQ"/>
                             <constraint firstItem="diq-Fb-8ST" firstAttribute="trailing" secondItem="E81-H1-y6d" secondAttribute="trailingMargin" id="kBp-6M-tRP"/>
                             <constraint firstItem="TcY-GF-sf2" firstAttribute="leading" secondItem="E81-H1-y6d" secondAttribute="leadingMargin" id="n8z-1g-YSS"/>
-                            <constraint firstItem="XPJ-RH-ER0" firstAttribute="leading" secondItem="E81-H1-y6d" secondAttribute="leadingMargin" id="o7e-cW-U9j"/>
                             <constraint firstItem="jll-vc-Hx1" firstAttribute="leading" secondItem="E81-H1-y6d" secondAttribute="leading" constant="6" id="qvh-fE-tiO"/>
                             <constraint firstItem="j46-3i-Hj3" firstAttribute="top" secondItem="TcY-GF-sf2" secondAttribute="bottom" constant="26" id="s5U-54-cUJ"/>
+                            <constraint firstItem="8w1-Me-Ajd" firstAttribute="top" secondItem="XPJ-RH-ER0" secondAttribute="bottom" constant="8" id="tL2-qZ-bAl"/>
                             <constraint firstItem="fZv-XU-9rZ" firstAttribute="top" secondItem="jll-vc-Hx1" secondAttribute="bottom" constant="25" id="u9e-1v-qYn"/>
-                            <constraint firstItem="8w1-Me-Ajd" firstAttribute="top" secondItem="diq-Fb-8ST" secondAttribute="bottom" constant="17" id="yYw-tM-VTo"/>
                         </constraints>
                     </view>
                     <connections>
