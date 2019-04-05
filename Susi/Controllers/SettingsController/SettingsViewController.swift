@@ -128,9 +128,17 @@ class SettingsViewController: UITableViewController {
         } else if section == 5 {
             if row == 1 {
                 shareApp()
-            } else if row == 2 {
+            }
+        } else if section == 6 {
+            if row == 0 {
+            if user == nil {
+                presentLoginScreen()
+            } else {
+                // Will Connect to the Account Section.
+            }
+            } else if row == 1 {
                 presentResetPasswordController()
-            } else if row == 3 {
+            } else if row == 2 {
                 if logoutTitle.text == ControllerConstants.Settings.logout.localized() {
                     let logoutAlert = UIAlertController(title: ControllerConstants.Logout.title, message: ControllerConstants.Logout.message, preferredStyle: UIAlertController.Style.alert)
                     logoutAlert.addAction(UIAlertAction(title: ControllerConstants.Logout.cancel, style: .default, handler: { (action: UIAlertAction!) in
@@ -143,12 +151,6 @@ class SettingsViewController: UITableViewController {
                 } else {
                     logoutUser()
                 }
-           }
-        } else if section == 6 {
-            if user == nil {
-                presentLoginScreen()
-            } else {
-                // Will Connect to the Account Section.
             }
         }
         tableView.deselectRow(at: indexPath, animated: true)
@@ -158,7 +160,7 @@ class SettingsViewController: UITableViewController {
         let delegate = UIApplication.shared.delegate as? AppDelegate
         let user = delegate?.currentUser
         if user == nil {
-            if indexPath.section == 5 && indexPath.row == 2 {
+            if indexPath.section == 6 && indexPath.row == 1 {
                 cell.isUserInteractionEnabled = false
                 cell.textLabel?.isEnabled = false
                 cell.textLabel?.text = ControllerConstants.Settings.resetPass.localized()
