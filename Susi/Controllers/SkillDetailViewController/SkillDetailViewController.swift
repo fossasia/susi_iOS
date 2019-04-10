@@ -13,23 +13,6 @@ import FTPopOverMenu_Swift
 
 class SkillDetailViewController: GeneralViewController {
 
-    let contentType: UILabel = {
-        let label = UILabel()
-        label.text = "Content Type:"
-        label.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.medium)
-
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-
-    let content: UILabel = {
-       let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 18)
-        label.textColor = UIColor.iOSGray()
-        label.translatesAutoresizingMaskIntoConstraints = false
-
-        return label
-    }()
 
     lazy var skillOptionButton: IconButton = {
         let sb = IconButton()
@@ -114,6 +97,10 @@ class SkillDetailViewController: GeneralViewController {
         UIColor.oneStarRating()
     ]
     
+    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var languageLabel: UILabel!
+    @IBOutlet weak var updatedOnLabel: UILabel!
+    @IBOutlet weak var contentTypeLabel: UILabel!
     var menuOptionsAfterLogin: [String] {
         return ["Share  Skill","Report Skill"]
     }
@@ -133,7 +120,7 @@ class SkillDetailViewController: GeneralViewController {
         getRatingByUser()
         setupFiveStarData()
         setupBarChart()
-        addContentType()
+        addSkillDetails()
         setupFeedbackTextField()
     }
 
@@ -152,7 +139,7 @@ class SkillDetailViewController: GeneralViewController {
         super.viewWillLayoutSubviews()
         // ScrollView content size
         let labelHeight = skillDescription.heightForLabel(text: skillDescription.text!, font: UIFont.systemFont(ofSize: 16.0), width: self.view.frame.width - 64)
-        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 240.0 + feedbackTableHeighConstraint.constant + labelHeight)
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 500.0 + feedbackTableHeighConstraint.constant + labelHeight)
     }
 
     override func localizeStrings() {

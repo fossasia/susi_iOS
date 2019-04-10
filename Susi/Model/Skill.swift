@@ -46,6 +46,7 @@ class Skill: NSObject {
     var group: String = ""
     var language: String = ""
     var staffPick: Int = 0
+    var lastModifiedTime: String = ""
 
 
     init(dictionary: [String: AnyObject], skillKey: String) {
@@ -70,7 +71,11 @@ class Skill: NSObject {
         model = dictionary[Client.SkillListing.model] as? String ?? ""
         group = dictionary[Client.SkillListing.group] as? String ?? ""
         language = dictionary[Client.SkillListing.language] as? String ?? ""
+<<<<<<< HEAD
         staffPick = dictionary[Client.SkillListing.staffPick] as? Int ?? 0
+=======
+        lastModifiedTime = dictionary[Client.SkillListing.lastModifiedTime] as? String ?? ""
+>>>>>>> e96cdbf69d0bbfcddc1f99ec8ca47557e7a9d62a
     }
 
     static func getAllSkill(_ skills: [String: AnyObject], _ model: String, _ group: String, _ language: String) -> [Skill] {
