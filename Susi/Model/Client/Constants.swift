@@ -187,6 +187,7 @@ extension Client {
         static let skillRating = "skill_rating"
         static let accessToken = "access_token"
         static let feedback = "feedback"
+        static let staffPick = "staffPick"
     }
 
     struct FiveStarRating {

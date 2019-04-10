@@ -320,7 +320,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fZv-XU-9rZ" customClass="TextField" customModule="Material">
-                                <rect key="frame" x="16" y="93" width="343" height="30"/>
+                                <rect key="frame" x="16" y="141" width="343" height="30"/>
                                 <accessibility key="accessibilityConfiguration" identifier="email"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -338,7 +338,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N3z-41-ZBS" customClass="TextField" customModule="Material">
-                                <rect key="frame" x="16" y="167" width="343" height="30"/>
+                                <rect key="frame" x="16" y="215" width="343" height="30"/>
                                 <accessibility key="accessibilityConfiguration" identifier="password"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -353,7 +353,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TcY-GF-sf2" customClass="TextField" customModule="Material">
-                                <rect key="frame" x="16" y="241" width="343" height="30"/>
+                                <rect key="frame" x="16" y="289" width="343" height="30"/>
                                 <accessibility key="accessibilityConfiguration" identifier="confirmPassword"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -368,7 +368,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="diq-Fb-8ST" customClass="RaisedButton" customModule="Material">
-                                <rect key="frame" x="16" y="347" width="343" height="44"/>
+                                <rect key="frame" x="16" y="395" width="343" height="44"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration" identifier="signUp"/>
                                 <constraints>
@@ -379,7 +379,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jll-vc-Hx1">
-                                <rect key="frame" x="6" y="44" width="24" height="24"/>
+                                <rect key="frame" x="6" y="44" width="72" height="72"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" image="back_arrow"/>
                                 <connections>
@@ -387,7 +387,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mlz-rv-BcH" customClass="M13Checkbox" customModule="M13Checkbox">
-                                <rect key="frame" x="16" y="301" width="24" height="24"/>
+                                <rect key="frame" x="16" y="349" width="24" height="24"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -418,7 +418,7 @@
                                 </connections>
                             </view>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j46-3i-Hj3" customClass="TextField" customModule="Material">
-                                <rect key="frame" x="48" y="297" width="311" height="30"/>
+                                <rect key="frame" x="48" y="345" width="311" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="4PP-I0-LPd"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="sZd-Mv-gyk"/>
@@ -431,7 +431,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="8w1-Me-Ajd">
-                                <rect key="frame" x="142" y="408" width="92" height="37"/>
+                                <rect key="frame" x="142" y="456" width="92" height="37"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" name="iOSBlue"/>
@@ -520,40 +520,40 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="manual_record" translatesAutoresizingMaskIntoConstraints="NO" id="2xw-vb-Rd9">
-                                <rect key="frame" x="32" y="303" width="24" height="24.333333333333314"/>
+                                <rect key="frame" x="32" y="303" width="72" height="72"/>
                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Listening... say &quot;SUSI&quot;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZFw-Ph-8b4">
-                                <rect key="frame" x="79" y="305" width="264" height="20.333333333333314"/>
+                                <rect key="frame" x="127" y="305" width="216" height="68"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="MkY-mN-xiY">
-                                <rect key="frame" x="34" y="305" width="20" height="20"/>
+                                <rect key="frame" x="34" y="305" width="68" height="20"/>
                             </activityIndicatorView>
                             <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="manual_record" translatesAutoresizingMaskIntoConstraints="NO" id="bWp-VC-efB">
-                                <rect key="frame" x="32" y="347.33333333333331" width="24" height="24"/>
+                                <rect key="frame" x="32" y="395" width="72" height="72"/>
                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Say &quot;SUSI&quot; again" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbj-q3-I0O">
-                                <rect key="frame" x="79" y="349.33333333333331" width="264" height="21"/>
+                                <rect key="frame" x="127" y="397" width="216" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="kU6-Vs-OHY">
-                                <rect key="frame" x="34" y="349.33333333333331" width="20" height="20"/>
+                                <rect key="frame" x="34" y="397" width="68" height="20"/>
                             </activityIndicatorView>
                             <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="manual_record" translatesAutoresizingMaskIntoConstraints="NO" id="FIR-6f-0Z4">
-                                <rect key="frame" x="32" y="391.33333333333331" width="24" height="24"/>
+                                <rect key="frame" x="32" y="487" width="72" height="72"/>
                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="grs-I7-eRe">
-                                <rect key="frame" x="34" y="393.33333333333331" width="20" height="20"/>
+                                <rect key="frame" x="34" y="489" width="68" height="20"/>
                             </activityIndicatorView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Say &quot;SUSI&quot; one last time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIR-x8-YXs">
-                                <rect key="frame" x="79" y="394.33333333333331" width="264" height="21"/>
+                                <rect key="frame" x="127" y="442" width="216" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1933,6 +1933,13 @@
                                                                     <constraint firstAttribute="height" constant="30" id="Apn-mu-OlA"/>
                                                                 </constraints>
                                                             </view>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="o0e-Fo-mYa">
+                                                                <rect key="frame" x="249" y="116" width="22" height="22"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="22" id="PW0-Iv-8R3"/>
+                                                                    <constraint firstAttribute="width" constant="22" id="g7x-wv-wUJ"/>
+                                                                </constraints>
+                                                            </imageView>
                                                         </subviews>
                                                     </view>
                                                     <constraints>
@@ -1951,6 +1958,7 @@
                                                         <constraint firstItem="F7D-FG-KWc" firstAttribute="leading" secondItem="2Vo-tn-HoS" secondAttribute="leading" constant="10" id="9xL-XB-5E1"/>
                                                         <constraint firstItem="7OK-Dk-wPP" firstAttribute="leading" secondItem="2Vo-tn-HoS" secondAttribute="leadingMargin" id="Cc3-Mc-qVW"/>
                                                         <constraint firstAttribute="trailing" secondItem="F7D-FG-KWc" secondAttribute="trailing" constant="10" id="J97-KF-RSP"/>
+                                                        <constraint firstAttribute="trailing" secondItem="o0e-Fo-mYa" secondAttribute="trailing" constant="5" id="KXF-BM-8Vf"/>
                                                         <constraint firstItem="rpR-LT-2Wh" firstAttribute="leading" secondItem="XU6-F0-Qcp" secondAttribute="trailing" constant="8" id="LOT-aU-PeD"/>
                                                         <constraint firstItem="wl3-Nf-DJn" firstAttribute="top" secondItem="QG6-wv-s3u" secondAttribute="bottom" constant="5" id="LV6-ni-dXS"/>
                                                         <constraint firstItem="pwR-Bq-iUj" firstAttribute="leading" secondItem="2Vo-tn-HoS" secondAttribute="leadingMargin" id="M8n-dC-yAh"/>
@@ -1961,6 +1969,7 @@
                                                         <constraint firstAttribute="trailingMargin" secondItem="7OK-Dk-wPP" secondAttribute="trailing" constant="70" id="TZx-ky-EXo"/>
                                                         <constraint firstItem="9Xi-Pz-f4p" firstAttribute="top" secondItem="2Vo-tn-HoS" secondAttribute="top" constant="29.670000000000002" id="VTi-fa-J8U"/>
                                                         <constraint firstItem="VHw-6l-9gK" firstAttribute="leading" secondItem="2Vo-tn-HoS" secondAttribute="leadingMargin" constant="-1" id="WPD-sr-JMb"/>
+                                                        <constraint firstItem="o0e-Fo-mYa" firstAttribute="top" secondItem="QG6-wv-s3u" secondAttribute="bottom" constant="2.3300000000000001" id="d4u-dg-GT4"/>
                                                         <constraint firstItem="rpR-LT-2Wh" firstAttribute="centerY" secondItem="XU6-F0-Qcp" secondAttribute="centerY" id="fGc-uV-Viq"/>
                                                         <constraint firstAttribute="trailingMargin" secondItem="RQB-al-DgH" secondAttribute="trailing" constant="13" id="fXt-aD-b04"/>
                                                         <constraint firstAttribute="trailingMargin" secondItem="pwR-Bq-iUj" secondAttribute="trailing" id="g5L-vh-MTJ"/>
@@ -1989,6 +1998,7 @@
                                                         <outlet property="skillDescription" destination="VHw-6l-9gK" id="B3y-cf-7pS"/>
                                                         <outlet property="skillImage" destination="DcN-B8-SIq" id="5bH-zY-zrp"/>
                                                         <outlet property="skillName" destination="lad-HQ-hOq" id="8Ua-d0-GKy"/>
+                                                        <outlet property="staffPickImageView" destination="o0e-Fo-mYa" id="xwP-lw-SXZ"/>
                                                         <outlet property="topShimmer" destination="9Xi-Pz-f4p" id="2GI-d8-72C"/>
                                                         <outlet property="topShimmerContainer" destination="OTy-vD-EQr" id="GdA-Rv-kDK"/>
                                                         <outlet property="totalRatingsLabel" destination="rpR-LT-2Wh" id="nXR-2M-jWT"/>
@@ -2921,11 +2931,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="back_arrow" width="24" height="24"/>
+        <image name="back_arrow" width="72" height="72"/>
         <image name="mail-icon" width="80" height="64"/>
-        <image name="manual_record" width="24" height="24"/>
+        <image name="manual_record" width="72" height="72"/>
         <image name="placeholder" width="800" height="600"/>
-        <image name="record" width="100" height="100"/>
+        <image name="record" width="300" height="300"/>
         <image name="star_empty" width="22" height="22"/>
         <image name="star_full" width="22" height="22"/>
         <image name="star_full_gray" width="12" height="12"/>

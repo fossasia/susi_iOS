@@ -45,6 +45,7 @@ class Skill: NSObject {
     var model: String = ""
     var group: String = ""
     var language: String = ""
+    var staffPick: Int = 0
 
 
     init(dictionary: [String: AnyObject], skillKey: String) {
@@ -69,6 +70,7 @@ class Skill: NSObject {
         model = dictionary[Client.SkillListing.model] as? String ?? ""
         group = dictionary[Client.SkillListing.group] as? String ?? ""
         language = dictionary[Client.SkillListing.language] as? String ?? ""
+        staffPick = dictionary[Client.SkillListing.staffPick] as? Int ?? 0
     }
 
     static func getAllSkill(_ skills: [String: AnyObject], _ model: String, _ group: String, _ language: String) -> [Skill] {
