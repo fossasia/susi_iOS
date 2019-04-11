@@ -58,6 +58,8 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var setupDeviceTitle: UILabel!
     @IBOutlet weak var susiVoiceLanguageLabel: UILabel!
     @IBOutlet weak var aboutUsTitle: UILabel!
+    @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var userEmailTitle: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,6 +93,8 @@ class SettingsViewController: UITableViewController {
                 header.textLabel?.text = ControllerConstants.Settings.devices.localized()
             case 5:
                 header.textLabel?.text = ControllerConstants.Settings.miscellaneous.localized()
+            case 6:
+                header.textLabel?.text = ControllerConstants.Settings.account.localized()
             default:
                 break
             }
@@ -102,6 +106,8 @@ class SettingsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let section = indexPath.section
         let row = indexPath.row
+        let delegate = UIApplication.shared.delegate as? AppDelegate
+        let user = delegate?.currentUser
 
         if section == 2 {
             if row == 2 {
@@ -122,9 +128,17 @@ class SettingsViewController: UITableViewController {
         } else if section == 5 {
             if row == 1 {
                 shareApp()
-            } else if row == 2 {
+            }
+        } else if section == 6 {
+            if row == 0 {
+            if user == nil {
+                presentLoginScreen()
+            } else {
+                // Will Connect to the Account Section.
+            }
+            } else if row == 1 {
                 presentResetPasswordController()
-            } else if row == 3 {
+            } else if row == 2 {
                 if logoutTitle.text == ControllerConstants.Settings.logout.localized() {
                     let logoutAlert = UIAlertController(title: ControllerConstants.Logout.title, message: ControllerConstants.Logout.message, preferredStyle: UIAlertController.Style.alert)
                     logoutAlert.addAction(UIAlertAction(title: ControllerConstants.Logout.cancel, style: .default, handler: { (action: UIAlertAction!) in
@@ -137,19 +151,36 @@ class SettingsViewController: UITableViewController {
                 } else {
                     logoutUser()
                 }
-           }
+            }
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let user = UserDefaults.standard.dictionary(forKey: ControllerConstants.UserDefaultsKeys.user)
-        if indexPath.section == 5 && indexPath.row == 2 && user == nil {
-            cell.isUserInteractionEnabled = false
-            cell.textLabel?.isEnabled = false
-            cell.textLabel?.text = ControllerConstants.Settings.resetPass.localized()
-            cell.textLabel?.textColor = .lightGray
-            cell.selectionStyle = .none
+        let delegate = UIApplication.shared.delegate as? AppDelegate
+        let user = delegate?.currentUser
+        if user == nil {
+            if indexPath.section == 6 && indexPath.row == 1 {
+                cell.isUserInteractionEnabled = false
+                cell.textLabel?.isEnabled = false
+                cell.textLabel?.text = ControllerConstants.Settings.resetPass.localized()
+                cell.textLabel?.textColor = .lightGray
+                cell.selectionStyle = .none
+            } else if indexPath.section == 6 && indexPath.row == 0 {
+                let imageURL = URL(string: ControllerConstants.Settings.gravatarURL)
+                userImage.kf.setImage(with: imageURL)
+                roundedCorner()
+                userEmailTitle.text = ControllerConstants.Settings.message
+            }
+        } else {
+            if indexPath.section == 6 && indexPath.row == 0 {
+                let imageURL = URL(string: SettingsViewController.getAvatarPath((user?.accessToken)!) )
+                userImage.kf.setImage(with: imageURL)
+                userEmailTitle.text = user?.emailID
+                roundedCorner()
+                //Since account VC not available so, cell should be inactive
+                cell.isUserInteractionEnabled = false
+            }
         }
     }
 

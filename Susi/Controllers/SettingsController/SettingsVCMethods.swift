@@ -229,4 +229,16 @@ extension SettingsViewController {
         }
     }
     
+    func roundedCorner() {
+        userImage.layer.cornerRadius = 25.0
+        userImage.layer.borderWidth = 1.0
+        userImage.layer.borderColor = UIColor.iOSGray().cgColor
+        userImage.layer.masksToBounds = true
+        userImage.clipsToBounds = true
+    }
+    
+    static func getAvatarPath(_ accessToken: String) -> String {
+        return "\(Client.APIURLs.SusiAPI)\(Client.Methods.GetUserAvatar)?access_token=\(accessToken)"
+    }
+    
 }
