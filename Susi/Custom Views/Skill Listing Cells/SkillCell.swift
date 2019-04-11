@@ -31,12 +31,16 @@ class SkillCell: CollectionViewCell {
                 skillDescription.text = skill.skillDescription
                 ratingsCard.rating = skill.averageRating
                 totalRatingsLabel.text = "\(skill.totalRatings)"
+                if skill.staffPick == 1 {
+                    staffPickImageView.image = UIImage(named: "staff_pick")
+                }
             }
             configureShadow()
             roundedCorner()
         }
     }
 
+    @IBOutlet weak var staffPickImageView: UIImageView!
     @IBOutlet weak var iconTitleView: UIView!
     @IBOutlet weak var skillImage: UIImageView!
     @IBOutlet weak var exampleQueryLabel: UILabel!
