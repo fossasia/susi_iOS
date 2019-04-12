@@ -9,7 +9,7 @@
 import UIKit
 import Material
 
-class AllFeedbackViewController: UITableViewController {
+class AllFeedbackViewController: UITableViewController, UISearchBarDelegate {
 
     lazy var backButton: IconButton = {
         let button = IconButton()
@@ -20,10 +20,13 @@ class AllFeedbackViewController: UITableViewController {
     }()
 
     var feedbacks: [Feedback]?
+    var searchFeedbacks: [Feedback]?
 
+    @IBOutlet weak var userSearchBar: UISearchBar!
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTitle()
+        setUpSearchBar()
     }
 
     // Setup Navigation Bar
@@ -48,16 +51,16 @@ class AllFeedbackViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return feedbacks?.count ?? 0
+        return searchFeedbacks?.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         tableView.tableFooterView = UIView(frame: .zero)
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "AllFeedbackCell", for: indexPath) as? AllFeedbackCell {
-            cell.feedback = feedbacks?[indexPath.row]
-            return cell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "AllFeedbackCell") as? AllFeedbackCell else  {
+            return UITableViewCell()
         }
-        return UITableViewCell()
+        cell.feedback = searchFeedbacks?[indexPath.row]
+        return cell
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -67,6 +70,25 @@ class AllFeedbackViewController: UITableViewController {
         } else {
             return 80
         }
+    }
+    
+    func setUpSearchBar() {
+        userSearchBar.delegate = self
+        userSearchBar.placeholder = ControllerConstants.userSearch
+        searchFeedbacks = feedbacks
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchFeedbacks = feedbacks?.filter({ (searchFeedbacks) -> Bool in
+            if searchText.isEmpty { return true }
+            let username = searchFeedbacks.username
+            if !(username?.isEmpty)! {
+                return (searchFeedbacks.username?.lowercased().contains(searchText.lowercased()))!
+            } else {
+                return (searchFeedbacks.email.lowercased().contains(searchText.lowercased()))
+            }
+        })
+        tableView.reloadData()
     }
 
 }
