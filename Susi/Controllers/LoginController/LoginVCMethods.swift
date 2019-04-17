@@ -11,6 +11,7 @@ import BouncyLayout
 import M13Checkbox
 import RealmSwift
 import SwiftValidators
+import SwiftKeychainWrapper
 
 extension LoginViewController: UITextFieldDelegate {
 
@@ -190,6 +191,8 @@ extension LoginViewController: UITextFieldDelegate {
                             self.completeLogin()
                             self.fetchUserSettings(currentUser.accessToken)
                         }
+                        KeychainWrapper.standard.set(self.emailTextField.text!, forKey: ControllerConstants.KeyChainKey.userEmail)
+                        KeychainWrapper.standard.set(self.passwordTextField.text!, forKey: ControllerConstants.KeyChainKey.userPassword)
                     }
                     self.view.makeToast(message)
                     self.indicatorView.stopAnimating()
@@ -304,6 +307,7 @@ extension LoginViewController: UITextFieldDelegate {
                         self.fetchUserSettings(user.accessToken)
                     } else {
                         self.resetDB()
+                        self.removeCredentials()
                     }
                 }
             }
@@ -378,6 +382,16 @@ extension LoginViewController: UITextFieldDelegate {
         } catch let error {
             print(error.localizedDescription)
         }
+    }
+    
+    func loadCredentials() {
+        emailTextField.text = KeychainWrapper.standard.string(forKey: ControllerConstants.KeyChainKey.userEmail)
+        passwordTextField.text = KeychainWrapper.standard.string(forKey: ControllerConstants.KeyChainKey.userPassword)
+    }
+    
+    func removeCredentials() {
+        KeychainWrapper.standard.removeObject(forKey: ControllerConstants.KeyChainKey.userEmail)
+        KeychainWrapper.standard.removeObject(forKey: ControllerConstants.KeyChainKey.userPassword)
     }
 
 }
