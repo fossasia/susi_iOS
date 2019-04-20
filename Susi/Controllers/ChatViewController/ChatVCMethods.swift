@@ -11,6 +11,7 @@ import CoreLocation
 import AVFoundation
 import RealmSwift
 import Material
+import CTShowcase
 
 protocol ChatViewControllerProtocol: class {
     func searchWith(text: String?)
@@ -373,6 +374,23 @@ extension ChatViewController {
         messages = Array(realm.objects(Message.self))
         collectionView?.reloadData()
         scrollToLast()
+    }
+    
+    // Showcase configurations
+    func showCaseConfig() {
+        let skillShowcase = CTShowcaseView(title: ControllerConstants.showCase.skillButtonTitle, message: ControllerConstants.showCase.skillButtonMessage, key: ControllerConstants.showCase.skillButtonKey) {
+        }
+        let susiShowcase = CTShowcaseView(title: ControllerConstants.showCase.susiButtonTitle, message: ControllerConstants.showCase.susiButtonMessage, key: ControllerConstants.showCase.susiButtonKey) {
+        }
+        let highlighter = CTDynamicGlowHighlighter()
+        highlighter.highlightColor = UIColor.blue
+        highlighter.highlightType = .circle
+        skillShowcase.highlighter = highlighter
+        susiShowcase.highlighter = highlighter
+        skillShowcase.setup(for:self.susiSkillListingButton, offset: CGPoint.zero, margin: 3)
+        susiShowcase.setup(for:self.sendButton, offset: CGPoint.zero, margin: 3)
+        skillShowcase.show()
+        susiShowcase.show()
     }
 
 }

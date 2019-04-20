@@ -287,6 +287,15 @@ class ControllerConstants {
         static let cancel = "Cancel"
         static let confirm = "Confirm"
     }
+    
+    struct showCase {
+        static let skillButtonTitle = "Susi Skill Button"
+        static let skillButtonMessage = "Click here for Susi Skills"
+        static let skillButtonKey = "displayed"
+        static let susiButtonTitle = "Susi Button"
+        static let susiButtonMessage = "Click here to enable Susi"
+        static let susiButtonKey = "displayed1"
+    }
 }
 
 
