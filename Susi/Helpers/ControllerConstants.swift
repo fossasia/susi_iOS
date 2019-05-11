@@ -287,6 +287,11 @@ class ControllerConstants {
         static let cancel = "Cancel"
         static let confirm = "Confirm"
     }
+    
+    struct KeyChainKey {
+        static let userEmail = "userEmail"
+        static let userPassword = "userPassword"
+    }
 }
 
 
