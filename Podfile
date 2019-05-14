@@ -27,6 +27,7 @@ target 'Susi' do
   pod 'paper-onboarding'
   pod 'FTPopOverMenu_Swift', '~> 0.1.3'
   pod 'CTShowcase', '~> 2.4'
+  pod 'SwiftKeychainWrapper'
   shared_pods
 end
 

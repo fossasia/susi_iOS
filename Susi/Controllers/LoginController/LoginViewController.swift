@@ -48,6 +48,7 @@ class LoginViewController: GeneralViewController {
         checkSession()
         setupView()
         addDelegates()
+        loadCredentials()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
 

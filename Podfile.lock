@@ -32,6 +32,7 @@ PODS:
   - RealmSwift (3.7.2):
     - Realm (= 3.7.2)
   - SwiftDate (4.5.1)
+  - SwiftKeychainWrapper (3.2.0)
   - SwiftValidators (7.0.3)
   - Toast-Swift (4.0.0)
 
@@ -52,6 +53,7 @@ DEPENDENCIES:
   - ReadabilityKit
   - RealmSwift
   - SwiftDate (~> 4.5.0)
+  - SwiftKeychainWrapper
   - SwiftValidators
   - Toast-Swift (~> 4.0.0)
 
@@ -72,6 +74,7 @@ SPEC REPOS:
     - Realm
     - RealmSwift
     - SwiftDate
+    - SwiftKeychainWrapper
     - SwiftValidators
     - Toast-Swift
 
@@ -116,9 +119,11 @@ SPEC CHECKSUMS:
   Realm: dd18c3014e8d90df300b83c6da740067436089c5
   RealmSwift: 79917cae59a0c43ef8118b233a5978891dd50b4a
   SwiftDate: 7b56d42a221f582047287deb256b23fc5ed49a60
+  SwiftKeychainWrapper: 82c4c02cdc36f9a24f7edfcaab3e336401caa1a1
   SwiftValidators: 660ce9ef3f0358c25c3a6154f7edc02c7d4a0578
   Toast-Swift: 594b5c5e5129f15438e410207e43287f027b3c00
 
 PODFILE CHECKSUM: 9b8f14b1a46ec3d802c3eb0dbd813391f49a6f98
+
 
 COCOAPODS: 1.5.3

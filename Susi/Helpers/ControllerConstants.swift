@@ -296,6 +296,12 @@ class ControllerConstants {
         static let susiButtonMessage = "Click here to enable Susi"
         static let susiButtonKey = "displayed1"
     }
+        
+    struct KeyChainKey {
+        static let userEmail = "userEmail"
+        static let userPassword = "userPassword"
+
+    }
 }
 
 
