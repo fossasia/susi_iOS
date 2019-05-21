@@ -140,7 +140,7 @@ extension SkillDetailViewController {
     }
 
     func reportSkill(feedbackMessage: String) {
-        if let delegate = UIApplication.shared.delegate as? AppDelegate, let user = delegate.currentUser {
+        if let user = appDelegate?.currentUser {
 
             let params = [
                 Client.SkillListing.model: skill?.model as AnyObject,
@@ -222,7 +222,7 @@ extension SkillDetailViewController {
 
     func getRatingByUser() {
 
-        if let delegate = UIApplication.shared.delegate as? AppDelegate, let user = delegate.currentUser {
+        if let user = appDelegate?.currentUser {
             getRatingParam = [
                 Client.SkillListing.model: skill?.model as AnyObject,
                 Client.SkillListing.group: skill?.group as AnyObject,
@@ -277,7 +277,7 @@ extension SkillDetailViewController: FloatRatingViewDelegate {
             Client.FiveStarRating.stars: Int(rating) as AnyObject
         ]
 
-        if let delegate = UIApplication.shared.delegate as? AppDelegate, let user = delegate.currentUser {
+        if let user = appDelegate?.currentUser {
             submitRatingParams[Client.FiveStarRating.AccessToken] = user.accessToken as AnyObject
         }
 
@@ -344,7 +344,7 @@ extension SkillDetailViewController: UITextFieldDelegate {
 
     @objc func didPostFeedback() {
 
-        if let delegate = UIApplication.shared.delegate as? AppDelegate, let user = delegate.currentUser {
+        if let user = appDelegate?.currentUser {
             if let feedbackText = skillFeedbackTextField.text, feedbackText.count > 0 {
                 self.submitSkillFeedback(for: user.accessToken)
             }
@@ -483,17 +483,15 @@ extension SkillDetailViewController: UITableViewDelegate, UITableViewDataSource 
     //MARK:- Bookmark skill
     
     func showBookmarkButton() {
-        let delegate = UIApplication.shared.delegate as? AppDelegate
-        let user = delegate?.currentUser
-        if user == nil {
+        guard (appDelegate?.currentUser) != nil else {
             bookmarkButton.isHidden = true
-        } else {
-            bookmarkButton.isHidden = false
+            return
         }
+        bookmarkButton.isHidden = false
     }
     
      func bookmarkSkill() {
-        if let delegate = UIApplication.shared.delegate as? AppDelegate, let user = delegate.currentUser {
+        if let user = appDelegate?.currentUser {
             
             let params = [
                 Client.SkillListing.model: skill?.model as AnyObject,
@@ -517,7 +515,7 @@ extension SkillDetailViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func unBookmarkSkill() {
-        if let delegate = UIApplication.shared.delegate as? AppDelegate, let user = delegate.currentUser {
+        if let user = appDelegate?.currentUser {
             
             let params = [
                 Client.SkillListing.model: skill?.model as AnyObject,

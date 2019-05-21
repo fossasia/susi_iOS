@@ -34,6 +34,8 @@ class SkillDetailViewController: GeneralViewController {
     
     var selectButton = false
     
+    let appDelegate = UIApplication.shared.delegate as? AppDelegate
+    
     lazy var cellConfiguration: FTCellConfiguration = {
         let cellConfig = FTCellConfiguration()
         cellConfig.textColor = .darkGray
