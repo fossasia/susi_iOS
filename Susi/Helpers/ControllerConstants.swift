@@ -169,6 +169,7 @@ class ControllerConstants {
         static let languageCode = "languageCode"
         static let room = "room"
         static let userQuery = "userQuery"
+        static let bookmark = "bookmark"
     }
 
     struct TestKeys {
@@ -259,6 +260,8 @@ class ControllerConstants {
         static let availableDevice = UIImage(named: "available_device_icon")
         static let deviceIcon = UIImage(named: "device_icon")
         static let roomsIcon = UIImage(named: "room-icon")
+        static let bookmark = UIImage(named: "star_full")
+        static let unBookmark = UIImage(named: "star_empty")
     }
     
     struct AboutUs {
@@ -292,6 +295,14 @@ class ControllerConstants {
         static let userEmail = "userEmail"
         static let userPassword = "userPassword"
     }
+    
+    struct BookmarkSkill {
+        static let bookmarkValue = "1"
+        static let unBookmarkValue = "0"
+        static let bookmarkSuccessMessage = "Bookmark Added Successfully "
+        static let unBookmarkSuccessMessage = "Bookmark Removed Successfully"
+    }
+    
 }
 
 

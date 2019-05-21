@@ -23,6 +23,17 @@ class SkillDetailViewController: GeneralViewController {
         return sb
     }()
     
+    lazy var bookmarkButton: IconButton = {
+        let ib = IconButton()
+        ib.image = ControllerConstants.Images.unBookmark
+        ib.tintColor = .white
+        ib.layer.cornerRadius = 18.0
+        ib.addTarget(self, action: #selector(updateSkillBookmark), for: .touchUpInside)
+        return ib
+    }()
+    
+    var selectButton = false
+    
     lazy var cellConfiguration: FTCellConfiguration = {
         let cellConfig = FTCellConfiguration()
         cellConfig.textColor = .darkGray
@@ -122,12 +133,14 @@ class SkillDetailViewController: GeneralViewController {
         setupBarChart()
         addSkillDetails()
         setupFeedbackTextField()
+        showBookmarkButton()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         registerKeyboardNotifications()
         skillOptionBarButton()
+        updateBookmarkUI()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
