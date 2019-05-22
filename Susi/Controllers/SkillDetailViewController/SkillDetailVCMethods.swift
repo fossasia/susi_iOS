@@ -140,7 +140,7 @@ extension SkillDetailViewController {
     }
 
     func reportSkill(feedbackMessage: String) {
-        if let delegate = UIApplication.shared.delegate as? AppDelegate, let user = delegate.currentUser {
+        if let user = appDelegate?.currentUser {
 
             let params = [
                 Client.SkillListing.model: skill?.model as AnyObject,
@@ -178,7 +178,7 @@ extension SkillDetailViewController {
     }
     
     func skillOptionBarButton() {
-        navigationItem.rightViews = [skillOptionButton]
+        navigationItem.rightViews = [bookmarkButton, skillOptionButton]
     }
     
     func ftConfig() {
@@ -222,7 +222,7 @@ extension SkillDetailViewController {
 
     func getRatingByUser() {
 
-        if let delegate = UIApplication.shared.delegate as? AppDelegate, let user = delegate.currentUser {
+        if let user = appDelegate?.currentUser {
             getRatingParam = [
                 Client.SkillListing.model: skill?.model as AnyObject,
                 Client.SkillListing.group: skill?.group as AnyObject,
@@ -277,7 +277,7 @@ extension SkillDetailViewController: FloatRatingViewDelegate {
             Client.FiveStarRating.stars: Int(rating) as AnyObject
         ]
 
-        if let delegate = UIApplication.shared.delegate as? AppDelegate, let user = delegate.currentUser {
+        if let user = appDelegate?.currentUser {
             submitRatingParams[Client.FiveStarRating.AccessToken] = user.accessToken as AnyObject
         }
 
@@ -344,7 +344,7 @@ extension SkillDetailViewController: UITextFieldDelegate {
 
     @objc func didPostFeedback() {
 
-        if let delegate = UIApplication.shared.delegate as? AppDelegate, let user = delegate.currentUser {
+        if let user = appDelegate?.currentUser {
             if let feedbackText = skillFeedbackTextField.text, feedbackText.count > 0 {
                 self.submitSkillFeedback(for: user.accessToken)
             }
@@ -477,6 +477,84 @@ extension SkillDetailViewController: UITableViewDelegate, UITableViewDataSource 
                 }
                 self.feedbackDisplayTableView.reloadData()
             }
+        }
+    }
+    
+    //MARK:- Bookmark skill
+    
+    func showBookmarkButton() {
+        guard (appDelegate?.currentUser) != nil else {
+            bookmarkButton.isHidden = true
+            return
+        }
+        bookmarkButton.isHidden = false
+    }
+    
+     func bookmarkSkill() {
+        if let user = appDelegate?.currentUser {
+            
+            let params = [
+                Client.SkillListing.model: skill?.model as AnyObject,
+                Client.SkillListing.group: skill?.group as AnyObject,
+                Client.SkillListing.skill: skill?.skillKeyName as AnyObject,
+                Client.SkillListing.language: Locale.current.languageCode as AnyObject,
+                Client.SkillListing.accessToken: user.accessToken as AnyObject,
+                Client.SkillListing.bookmarkSkill: ControllerConstants.BookmarkSkill.bookmarkValue as AnyObject
+            ]
+            
+            Client.sharedInstance.bookmarkSkill(params) { (success, error) in
+                DispatchQueue.main.async {
+                    if success {
+                        self.view.makeToast(ControllerConstants.BookmarkSkill.bookmarkSuccessMessage)
+                    } else if let error = error {
+                        self.view.makeToast(error)
+                    }
+                }
+            }
+        }
+    }
+    
+    func unBookmarkSkill() {
+        if let user = appDelegate?.currentUser {
+            
+            let params = [
+                Client.SkillListing.model: skill?.model as AnyObject,
+                Client.SkillListing.group: skill?.group as AnyObject,
+                Client.SkillListing.skill: skill?.skillKeyName as AnyObject,
+                Client.SkillListing.language: Locale.current.languageCode as AnyObject,
+                Client.SkillListing.accessToken: user.accessToken as AnyObject,
+                 Client.SkillListing.bookmarkSkill: ControllerConstants.BookmarkSkill.unBookmarkValue as AnyObject
+            ]
+            
+            Client.sharedInstance.bookmarkSkill(params) { (success, error) in
+                DispatchQueue.main.async {
+                    if success {
+                        self.view.makeToast(ControllerConstants.BookmarkSkill.unBookmarkSuccessMessage)
+                    } else if let error = error {
+                        self.view.makeToast(error)
+                    }
+                }
+            }
+        }
+    }
+    
+    @objc  func updateSkillBookmark() {
+        selectButton = !selectButton
+        if selectButton {
+            bookmarkSkill()
+            bookmarkButton.image = ControllerConstants.Images.bookmark
+            UserDefaults.standard.set(true, forKey: ControllerConstants.UserDefaultsKeys.bookmark)
+        } else {
+            unBookmarkSkill()
+            UserDefaults.standard.removeObject(forKey: ControllerConstants.UserDefaultsKeys.bookmark)
+            bookmarkButton.image = ControllerConstants.Images.unBookmark
+        }
+    }
+    
+     func updateBookmarkUI() {
+        if (UserDefaults.standard.value(forKey: ControllerConstants.UserDefaultsKeys.bookmark) != nil) {
+            bookmarkButton.image = ControllerConstants.Images.bookmark
+            selectButton = !selectButton
         }
     }
 
