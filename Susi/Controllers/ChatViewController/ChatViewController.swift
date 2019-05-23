@@ -184,6 +184,7 @@ class ChatViewController: UICollectionViewController {
         } catch {
             print(error)
         }
+        showCaseConfig()
     }
 
     @objc func internetConnection(notification: NSNotification) {
