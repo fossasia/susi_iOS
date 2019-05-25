@@ -79,7 +79,7 @@ class YouTubePlayerCell: ChatMessageCell {
         if let videoID = message?.videoData?.identifier {
             let thumbnailURLString = "https://img.youtube.com/vi/\(videoID)/default.jpg"
             let thumbnailURL = URL(string: thumbnailURLString)
-            thumbnailView.kf.setImage(with: thumbnailURL, placeholder: ControllerConstants.Images.placeholder, options: nil, progressBlock: nil, completionHandler: nil)
+            thumbnailView.kf.setImage(with: thumbnailURL, placeholder: ControllerConstants.Images.placeholder)
         }
     }
 

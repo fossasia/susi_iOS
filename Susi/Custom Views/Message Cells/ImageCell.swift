@@ -77,7 +77,7 @@ class ImageCell: ChatMessageCell {
     func downloadImage() {
         if let imageString = message?.answerData?.expression, imageString.isImage() {
             if let url = URL(string: imageString) {
-                imageView.kf.setImage(with: url, placeholder: ControllerConstants.Images.placeholder, options: nil, progressBlock: nil, completionHandler: nil)
+                imageView.kf.setImage(with: url, placeholder: ControllerConstants.Images.placeholder)
             }
         }
     }
