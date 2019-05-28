@@ -19,6 +19,7 @@ extension AccountViewController {
         navigationItem.titleLabel.textAlignment = .left
         navigationItem.titleLabel.textColor = .white
         navigationItem.leftViews = [backButton]
+        navigationItem.rightViews = [settingsButton]
     }
     
     func setUpUserDetails() {
@@ -36,5 +37,9 @@ extension AccountViewController {
         userAvatarImageView.layer.borderColor = UIColor.iOSGray().cgColor
         userAvatarImageView.layer.masksToBounds = true
         userAvatarImageView.clipsToBounds = true
+    }
+    
+   @objc func settingButtonClicked() {
+        
     }
 }
