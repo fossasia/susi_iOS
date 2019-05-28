@@ -20,4 +20,21 @@ extension AccountViewController {
         navigationItem.titleLabel.textColor = .white
         navigationItem.leftViews = [backButton]
     }
+    
+    func setUpUserDetails() {
+        if let user = delegate?.currentUser {
+            let imageURL = URL(string: SettingsViewController.getAvatarPath(user.accessToken) )
+            userAvatarImageView.kf.setImage(with: imageURL)
+            userEmailLabel.text = user.emailID
+            roundedCorner()
+        }
+    }
+    
+    func roundedCorner() {
+        userAvatarImageView.layer.cornerRadius = 38.0
+        userAvatarImageView.layer.borderWidth = 1.0
+        userAvatarImageView.layer.borderColor = UIColor.iOSGray().cgColor
+        userAvatarImageView.layer.masksToBounds = true
+        userAvatarImageView.clipsToBounds = true
+    }
 }

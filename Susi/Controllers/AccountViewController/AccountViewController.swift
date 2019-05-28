@@ -11,6 +11,9 @@ import Material
 
 class AccountViewController: UIViewController {
     
+    
+    let delegate = UIApplication.shared.delegate as? AppDelegate
+    
     lazy var backButton: IconButton = {
         let ib = IconButton()
         ib.image = Icon.cm.arrowBack
@@ -19,10 +22,13 @@ class AccountViewController: UIViewController {
         return ib
     }()
 
+    @IBOutlet weak var userEmailLabel: UILabel!
+    @IBOutlet weak var userAvatarImageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTitle()
+        setUpUserDetails()
     }
     
-
+    
 }
