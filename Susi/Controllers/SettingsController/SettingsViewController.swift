@@ -134,7 +134,7 @@ class SettingsViewController: UITableViewController {
             if user == nil {
                 presentLoginScreen()
             } else {
-                // Will Connect to the Account Section.
+                presentAccountController()
             }
             } else if row == 1 {
                 presentResetPasswordController()
@@ -179,7 +179,7 @@ class SettingsViewController: UITableViewController {
                 userEmailTitle.text = user?.emailID
                 roundedCorner()
                 //Since account VC not available so, cell should be inactive
-                cell.isUserInteractionEnabled = false
+                cell.isUserInteractionEnabled = true
             }
         }
     }

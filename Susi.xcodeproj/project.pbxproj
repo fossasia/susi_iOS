@@ -109,6 +109,8 @@
 		71DF0561EA8079C5C53174C1 /* Pods_Susi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C564B012515FE5529232089A /* Pods_Susi.framework */; };
 		80183F6F21D170BB00859F72 /* AboutVCMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80183F6E21D170BB00859F72 /* AboutVCMethods.swift */; };
 		807A754421D143A1008D4032 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807A754321D143A1008D4032 /* AboutViewController.swift */; };
+		80E8C2CE229D2F400086F420 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E8C2CD229D2F400086F420 /* AccountViewController.swift */; };
+		80E8C2D0229D2F6D0086F420 /* AccountVCMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E8C2CF229D2F6D0086F420 /* AccountVCMethods.swift */; };
 		94889CA61F7CCD370028B8C3 /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94889CA51F7CCD370028B8C3 /* GeneralViewController.swift */; };
 		94889CAE1F7CEAA80028B8C3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 94889CB01F7CEAA80028B8C3 /* Localizable.strings */; };
 		A0DEC06E21E0F40300659A5B /* SelectLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DEC06D21E0F40300659A5B /* SelectLanguageViewController.swift */; };
@@ -244,6 +246,8 @@
 		6DFC75B81EE077E9002F92BA /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		80183F6E21D170BB00859F72 /* AboutVCMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVCMethods.swift; sourceTree = "<group>"; };
 		807A754321D143A1008D4032 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		80E8C2CD229D2F400086F420 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		80E8C2CF229D2F6D0086F420 /* AccountVCMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVCMethods.swift; sourceTree = "<group>"; };
 		94889CA51F7CCD370028B8C3 /* GeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
 		94889CAF1F7CEAA80028B8C3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		94889CB11F7CEAAA0028B8C3 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -563,6 +567,7 @@
 		6D4D9B501E768F2E0067459C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				80E8C2CC229D2F110086F420 /* AccountViewController */,
 				A0DEC06C21E0F40300659A5B /* SelectLanguageController */,
 				807A754521D1639B008D4032 /* AboutViewController */,
 				406482FE20FCF2EF0014EB47 /* PlayerViewController */,
@@ -683,6 +688,15 @@
 				80183F6E21D170BB00859F72 /* AboutVCMethods.swift */,
 			);
 			path = AboutViewController;
+			sourceTree = "<group>";
+		};
+		80E8C2CC229D2F110086F420 /* AccountViewController */ = {
+			isa = PBXGroup;
+			children = (
+				80E8C2CD229D2F400086F420 /* AccountViewController.swift */,
+				80E8C2CF229D2F6D0086F420 /* AccountVCMethods.swift */,
+			);
+			path = AccountViewController;
 			sourceTree = "<group>";
 		};
 		94889CAB1F7CEA620028B8C3 /* Localization */ = {
@@ -809,6 +823,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 				ru,
@@ -1005,12 +1020,14 @@
 				40623B7F20D243910013FE60 /* Ratings.swift in Sources */,
 				6D395D1D1F58966900BCC3C5 /* SkillDetailExampleCell.swift in Sources */,
 				3BC1D8D5203B177E003E62F9 /* noConnectionViewController.swift in Sources */,
+				80E8C2D0229D2F6D0086F420 /* AccountVCMethods.swift in Sources */,
 				6D395D1F1F589CC000BCC3C5 /* SkillDetailVCMethods.swift in Sources */,
 				94889CA61F7CCD370028B8C3 /* GeneralViewController.swift in Sources */,
 				6DEE71121F2C9DC900A512CF /* AppNavigationController.swift in Sources */,
 				80183F6F21D170BB00859F72 /* AboutVCMethods.swift in Sources */,
 				40801EE320F33B4C0071860E /* VideoPlayerView.swift in Sources */,
 				6DE0025B1F3FF93A0065DB85 /* AnchorCell.swift in Sources */,
+				80E8C2CE229D2F400086F420 /* AccountViewController.swift in Sources */,
 				6D24B0961EE409DB0097418A /* SignUpVCMethods.swift in Sources */,
 				40DE743920E49F3A003C0116 /* AllFeedbackViewController.swift in Sources */,
 				407EFAC020C34C0000675A0B /* LanguagePickerController.swift in Sources */,
