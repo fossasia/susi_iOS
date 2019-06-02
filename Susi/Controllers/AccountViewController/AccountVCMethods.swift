@@ -42,7 +42,8 @@ extension AccountViewController: UITextFieldDelegate {
         userAvatarImageView.layer.masksToBounds = true
         userAvatarImageView.clipsToBounds = true
     }
-    // Setting Action
+    
+    // Setting Action 
     
    @objc func settingButtonClicked() {
     if  let user = delegate?.currentUser {
@@ -61,6 +62,7 @@ extension AccountViewController: UITextFieldDelegate {
         }
     }
     }
+    
     // Key Return on Hit
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
