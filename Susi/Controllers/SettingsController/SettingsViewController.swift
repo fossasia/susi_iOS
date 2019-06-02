@@ -176,7 +176,11 @@ class SettingsViewController: UITableViewController {
             if indexPath.section == 6 && indexPath.row == 0 {
                 let imageURL = URL(string: SettingsViewController.getAvatarPath((user?.accessToken)!) )
                 userImage.kf.setImage(with: imageURL)
-                userEmailTitle.text = user?.emailID
+                if UserDefaults.standard.object(forKey: ControllerConstants.SettingParams.userName) == nil {
+                    userEmailTitle.text = user?.emailID
+                } else {
+                    userEmailTitle.text = UserDefaults.standard.object(forKey: ControllerConstants.SettingParams.userName) as? String
+                }
                 roundedCorner()
                 //Since account VC not available so, cell should be inactive
                 cell.isUserInteractionEnabled = true

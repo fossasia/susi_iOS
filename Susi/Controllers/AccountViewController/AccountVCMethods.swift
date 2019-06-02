@@ -8,14 +8,14 @@
 
 import Foundation
 
-extension AccountViewController {
+extension AccountViewController: UITextFieldDelegate {
     
     @objc func dismissView() {
         self.dismiss(animated: true, completion: nil)
     }
     
     func setupTitle() {
-        navigationItem.titleLabel.text = "Account Settings"
+        navigationItem.titleLabel.text = ControllerConstants.SettingParams.title
         navigationItem.titleLabel.textAlignment = .left
         navigationItem.titleLabel.textColor = .white
         navigationItem.leftViews = [backButton]
@@ -26,7 +26,11 @@ extension AccountViewController {
         if let user = delegate?.currentUser {
             let imageURL = URL(string: SettingsViewController.getAvatarPath(user.accessToken) )
             userAvatarImageView.kf.setImage(with: imageURL)
-            userEmailLabel.text = user.emailID
+            if UserDefaults.standard.object(forKey: ControllerConstants.SettingParams.userName) == nil {
+                userEmailLabel.text = user.emailID
+            } else {
+                userEmailLabel.text = UserDefaults.standard.object(forKey: ControllerConstants.SettingParams.userName) as? String
+            }
             roundedCorner()
         }
     }
@@ -38,8 +42,51 @@ extension AccountViewController {
         userAvatarImageView.layer.masksToBounds = true
         userAvatarImageView.clipsToBounds = true
     }
+    // Setting Action
     
    @objc func settingButtonClicked() {
-        
+    if  let user = delegate?.currentUser {
+        let param = [
+            ControllerConstants.SettingParams.userName: userNameTextField.text as AnyObject,
+            ControllerConstants.SettingParams.phoneNumber: phoneNumberTextField.text as AnyObject,
+            ControllerConstants.SettingParams.prefLanguage: prefLanguageTextField.text as AnyObject,
+            ControllerConstants.SettingParams.count: 3 as AnyObject,
+            ControllerConstants.SettingParams.accessToken: user.accessToken as AnyObject
+        ]
+        Client.sharedInstance.changeUserSettings(param) { (_, message) in
+            DispatchQueue.main.async {
+                UserDefaults.standard.set(self.userNameTextField.text, forKey: ControllerConstants.SettingParams.userName)
+                self.view.makeToast(message)
+            }
+        }
     }
+    }
+    // Key Return on Hit
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case userNameTextField:
+            _ =  phoneNumberTextField.becomeFirstResponder()
+        case phoneNumberTextField:
+            dismissKeyboard()        default:
+            textField.resignFirstResponder()
+        }
+        return true
+    }
+    
+    // Dismiss Keyboard
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    // Add Delegates
+    
+    func addDelegates() {
+        userNameTextField.delegate = self
+        phoneNumberTextField.delegate = self
+        picker.dataSource = self
+        picker.delegate = self
+    }
+    
 }
