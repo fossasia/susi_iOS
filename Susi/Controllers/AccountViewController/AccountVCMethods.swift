@@ -89,6 +89,7 @@ extension AccountViewController: UITextFieldDelegate {
         phoneNumberTextField.delegate = self
         picker.dataSource = self
         picker.delegate = self
+        prefLanguageTextField.inputView = picker
     }
     
 }

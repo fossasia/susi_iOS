@@ -36,7 +36,6 @@ class AccountViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     var preferredLanguage = ["Armenian (am-AM)","Chinese (zh-CH)","Deutsch (de-DE)"," Greek (gr-GR)","Hindi (hi-IN) ","Punjabi (pb-IN)","Nepali (np-NP)","Russian (ru-RU)","Spanish (es-SP)","French (fr-FR)","apanese (jp-JP) ","Dutch (nl-NL)","US Eng (en-US)"]
 
     @IBOutlet weak var deleteAccountButton: UIButton!
-    
     @IBOutlet weak var prefLanguageTextField: TextField!
     @IBOutlet weak var phoneNumberTextField: TextField!
     @IBOutlet weak var userNameTextField: TextField!
@@ -48,7 +47,6 @@ class AccountViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         setupTitle()
         setUpUserDetails()
         addDelegates()
-        prefLanguageTextField.inputView = picker
     }
     
     //UIPickerView Deledate Functions
