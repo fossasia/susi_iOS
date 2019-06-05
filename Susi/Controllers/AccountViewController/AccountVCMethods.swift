@@ -20,6 +20,7 @@ extension AccountViewController: UITextFieldDelegate {
         navigationItem.titleLabel.textColor = .white
         navigationItem.leftViews = [backButton]
         navigationItem.rightViews = [settingsButton]
+        deleteAccountButton.tintColor = .red
     }
     
     func setUpUserDetails() {
@@ -90,6 +91,26 @@ extension AccountViewController: UITextFieldDelegate {
         picker.dataSource = self
         picker.delegate = self
         prefLanguageTextField.inputView = picker
+    }
+    
+    // Handle Delete Account Request.
+    
+    func handleDeleteAccountRequest() {
+        deleteAccountButton.addTarget(self, action: #selector(deleteAccount), for: .touchUpInside)
+    }
+    
+    @objc func deleteAccount() {
+        
+    }
+    
+    // Handle Upload Avatar
+    
+    func handleAvatarUpload() {
+        uploadAvatarButton.addTarget(self, action: #selector(uploadAvatar), for: .touchUpInside)
+    }
+    
+    @objc func uploadAvatar() {
+    
     }
     
 }

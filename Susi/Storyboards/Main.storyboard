@@ -3108,10 +3108,18 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jRb-ll-29A">
                                 <rect key="frame" x="16" y="608" width="343" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="LCn-yv-KOO"/>
-                                    <constraint firstAttribute="width" constant="343" id="h3p-QN-xvn"/>
+                                    <constraint firstAttribute="width" constant="343" id="Lnv-Ym-1LX"/>
+                                    <constraint firstAttribute="height" constant="30" id="k9r-1T-dVf"/>
                                 </constraints>
                                 <state key="normal" title="Click here to delete account"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8FB-uS-h3d">
+                                <rect key="frame" x="16" y="563" width="343" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="343" id="ICZ-HA-mQr"/>
+                                    <constraint firstAttribute="height" constant="30" id="y8h-Vn-rlv"/>
+                                </constraints>
+                                <state key="normal" title="Click here to upload image"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3122,27 +3130,31 @@
                             <constraint firstItem="Hew-9F-nQq" firstAttribute="leading" secondItem="VEn-23-95H" secondAttribute="leadingMargin" id="B1o-Hs-J21"/>
                             <constraint firstItem="N1Y-Sg-WGK" firstAttribute="leading" secondItem="VEn-23-95H" secondAttribute="leadingMargin" constant="134" id="Ef8-vf-aG6"/>
                             <constraint firstItem="N1Y-Sg-WGK" firstAttribute="top" secondItem="s4X-I3-Ota" secondAttribute="bottom" constant="16" id="IXC-8Y-VEg"/>
-                            <constraint firstItem="jRb-ll-29A" firstAttribute="top" secondItem="Q0f-nA-mYs" secondAttribute="bottom" constant="187" id="PcT-Lk-hFI"/>
                             <constraint firstItem="Q0f-nA-mYs" firstAttribute="trailing" secondItem="VEn-23-95H" secondAttribute="trailingMargin" id="QbU-hG-kAm"/>
                             <constraint firstItem="Hew-9F-nQq" firstAttribute="trailing" secondItem="VEn-23-95H" secondAttribute="trailingMargin" id="SPl-ve-eUV"/>
+                            <constraint firstItem="jRb-ll-29A" firstAttribute="trailing" secondItem="VEn-23-95H" secondAttribute="trailingMargin" id="SiU-b3-TVx"/>
                             <constraint firstItem="Hew-9F-nQq" firstAttribute="top" secondItem="0ke-4f-wNK" secondAttribute="bottom" constant="47" id="ZRM-ID-aXg"/>
-                            <constraint firstItem="jRb-ll-29A" firstAttribute="leading" secondItem="VEn-23-95H" secondAttribute="leadingMargin" id="cC0-Ys-ncS"/>
+                            <constraint firstItem="8FB-uS-h3d" firstAttribute="leading" secondItem="VEn-23-95H" secondAttribute="leadingMargin" id="cxa-l8-EPH"/>
+                            <constraint firstItem="8FB-uS-h3d" firstAttribute="trailing" secondItem="VEn-23-95H" secondAttribute="trailingMargin" id="dXt-bD-fxx"/>
                             <constraint firstItem="Q0f-nA-mYs" firstAttribute="leading" secondItem="VEn-23-95H" secondAttribute="leadingMargin" id="eGw-0Q-cm7"/>
                             <constraint firstItem="Q0f-nA-mYs" firstAttribute="top" secondItem="kJQ-WH-5Y2" secondAttribute="bottom" constant="31" id="eTI-H4-dMZ"/>
                             <constraint firstItem="O82-y1-J3Q" firstAttribute="top" secondItem="N1Y-Sg-WGK" secondAttribute="bottom" constant="8" id="g9Z-JF-SyW"/>
+                            <constraint firstItem="8FB-uS-h3d" firstAttribute="top" secondItem="Q0f-nA-mYs" secondAttribute="bottom" constant="142" id="k3L-dM-fUP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="N1Y-Sg-WGK" secondAttribute="trailing" constant="134" id="kkZ-JL-tVn"/>
                             <constraint firstItem="0ke-4f-wNK" firstAttribute="top" secondItem="O82-y1-J3Q" secondAttribute="bottom" constant="35" id="lOU-sE-lrq"/>
                             <constraint firstItem="0ke-4f-wNK" firstAttribute="leading" secondItem="VEn-23-95H" secondAttribute="leadingMargin" id="mkx-gN-gF1"/>
                             <constraint firstItem="kJQ-WH-5Y2" firstAttribute="trailing" secondItem="VEn-23-95H" secondAttribute="trailingMargin" id="npA-oh-ait"/>
+                            <constraint firstItem="jRb-ll-29A" firstAttribute="top" secondItem="8FB-uS-h3d" secondAttribute="bottom" constant="15" id="pVJ-Ys-FsN"/>
                             <constraint firstItem="kJQ-WH-5Y2" firstAttribute="top" secondItem="Hew-9F-nQq" secondAttribute="bottom" constant="33" id="rv3-Se-PLs"/>
+                            <constraint firstItem="jRb-ll-29A" firstAttribute="leading" secondItem="VEn-23-95H" secondAttribute="leadingMargin" id="uZn-5X-mfQ"/>
                             <constraint firstItem="O82-y1-J3Q" firstAttribute="trailing" secondItem="VEn-23-95H" secondAttribute="trailingMargin" id="wbJ-Xv-nUB"/>
-                            <constraint firstItem="jRb-ll-29A" firstAttribute="trailing" secondItem="VEn-23-95H" secondAttribute="trailingMargin" id="yAg-QQ-cDg"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="deleteAccountButton" destination="jRb-ll-29A" id="nKy-kj-X6x"/>
                         <outlet property="phoneNumberTextField" destination="kJQ-WH-5Y2" id="CAK-9e-uvr"/>
                         <outlet property="prefLanguageTextField" destination="Q0f-nA-mYs" id="e66-Sd-U26"/>
+                        <outlet property="uploadAvatarButton" destination="8FB-uS-h3d" id="1GW-wV-ff3"/>
                         <outlet property="userAvatarImageView" destination="DVV-HK-CkK" id="ivv-Kd-eR3"/>
                         <outlet property="userEmailLabel" destination="O82-y1-J3Q" id="VKk-K1-3xn"/>
                         <outlet property="userNameTextField" destination="Hew-9F-nQq" id="DkX-BH-69n"/>
