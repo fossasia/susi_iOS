@@ -38,8 +38,8 @@ extension AccountViewController: UITextFieldDelegate {
     
     func roundedCorner() {
         userAvatarImageView.layer.cornerRadius = 38.0
-        userAvatarImageView.layer.borderWidth = 1.0
-        userAvatarImageView.layer.borderColor = UIColor.iOSGray().cgColor
+        userAvatarImageView.layer.borderWidth = 2.0
+        userAvatarImageView.layer.borderColor = UIColor.white.cgColor
         userAvatarImageView.layer.masksToBounds = true
         userAvatarImageView.clipsToBounds = true
     }
