@@ -33,15 +33,26 @@ extension AccountViewController: UITextFieldDelegate {
                 userEmailLabel.text = UserDefaults.standard.object(forKey: ControllerConstants.SettingParams.userName) as? String
             }
             roundedCorner()
+            outerViewShadow()
         }
     }
     
     func roundedCorner() {
         userAvatarImageView.layer.cornerRadius = 38.0
-        userAvatarImageView.layer.borderWidth = 2.0
+        userAvatarImageView.layer.borderWidth = 1.0
         userAvatarImageView.layer.borderColor = UIColor.white.cgColor
         userAvatarImageView.layer.masksToBounds = true
         userAvatarImageView.clipsToBounds = true
+    }
+    
+    // Outer View
+    
+    func outerViewShadow() {
+        outerView.layer.cornerRadius = 38.0
+        outerView.layer.shadowColor = UIColor.gray.cgColor
+        outerView.layer.shadowOpacity = 1
+        outerView.layer.shadowRadius = 10.0
+        outerView.layer.shadowOffset = CGSize.zero
     }
     
     // Setting Action 

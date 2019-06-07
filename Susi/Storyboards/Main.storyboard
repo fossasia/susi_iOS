@@ -3152,6 +3152,7 @@
                     </view>
                     <connections>
                         <outlet property="deleteAccountButton" destination="jRb-ll-29A" id="nKy-kj-X6x"/>
+                        <outlet property="outerView" destination="N1Y-Sg-WGK" id="H4y-SO-HmP"/>
                         <outlet property="phoneNumberTextField" destination="kJQ-WH-5Y2" id="CAK-9e-uvr"/>
                         <outlet property="prefLanguageTextField" destination="Q0f-nA-mYs" id="e66-Sd-U26"/>
                         <outlet property="uploadAvatarButton" destination="8FB-uS-h3d" id="1GW-wV-ff3"/>
