@@ -21,7 +21,7 @@ target 'Susi' do
   pod 'SwiftDate', '~> 4.5.0'
   pod 'NVActivityIndicatorView'
   pod 'Fakery', '~> 3.3.0'
-  pod 'M13Checkbox', :git => 'https://github.com/Marxon13/M13Checkbox.git', :branch => 'swift_4_2'
+  pod 'M13Checkbox'
   pod 'ReachabilitySwift'
   pod 'Localize-Swift'
   pod 'paper-onboarding'
