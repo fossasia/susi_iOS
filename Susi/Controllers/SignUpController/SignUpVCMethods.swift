@@ -224,7 +224,7 @@ extension SignUpViewController {
                 if success {
                     self.view.makeToast(ControllerConstants.SignUp.verificationLink)
                 } else {
-                    self.view.makeToast(responseMessage)
+                    self.view.makeToast(ControllerConstants.SignUp.errorMessage)
                 }
             }
         }

@@ -145,6 +145,7 @@ class ControllerConstants {
         static let signUp = "Sign Up"
         static let successSignup = "You successfully signed-up! An email with a verification link was sent to your address."
         static let verificationLink = "Your request for a new verification link has been processed! An email with a verification link was sent to your address."
+        static let errorMessage = "Already registeres email! please provide a new email."
     }
 
     struct UserDefaultsKeys {
