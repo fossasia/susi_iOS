@@ -171,6 +171,8 @@ class ImageCell: ChatMessageCell {
         thumbUpIcon.removeFromSuperview()
         thumbDownIcon.removeFromSuperview()
         timeLabel.rightAnchor.constraint(equalTo: textBubbleView.rightAnchor, constant: -16).isActive = true
+        thumbDownIcon.isHidden = true
+        thumbUpIcon.isHidden = true
     }
 
 }

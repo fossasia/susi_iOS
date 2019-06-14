@@ -45,6 +45,7 @@ class Skill: NSObject {
     var model: String = ""
     var group: String = ""
     var language: String = ""
+    var staffPick: Int = 0
     var lastModifiedTime: String = ""
 
 
@@ -70,6 +71,7 @@ class Skill: NSObject {
         model = dictionary[Client.SkillListing.model] as? String ?? ""
         group = dictionary[Client.SkillListing.group] as? String ?? ""
         language = dictionary[Client.SkillListing.language] as? String ?? ""
+        staffPick = dictionary[Client.SkillListing.staffPick] as? Int ?? 0
         lastModifiedTime = dictionary[Client.SkillListing.lastModifiedTime] as? String ?? ""
     }
 

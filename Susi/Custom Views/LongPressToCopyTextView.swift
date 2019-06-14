@@ -10,6 +10,8 @@ import UIKit
 
 class LongPressToCopyTextView: UITextView {
 
+    var url: String?
+
     override var canBecomeFirstResponder: Bool {
         return true
     }
@@ -22,6 +24,30 @@ class LongPressToCopyTextView: UITextView {
 
     override func copy(_ sender: Any?) {
         UIPasteboard.general.string = text
+    }
+
+    func addTapGesture() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(sender:)))
+        self.addGestureRecognizer(tapGestureRecognizer)
+    }
+
+
+    // MARK: - UIGestureRecognizer
+    @objc func handleTapGesture(sender: UITapGestureRecognizer) {
+        guard let strUrl = url  else { return }
+        let textView = UITextView(frame: self.frame)
+        textView.text = self.text
+        textView.attributedText = self.attributedText
+        if let linkedRange = self.attributedText.string.range(of: strUrl) {
+            let index = textView.layoutManager.characterIndex(for: sender.location(in: self),
+                                                              in: textView.textContainer,
+                                                              fractionOfDistanceBetweenInsertionPoints: nil)
+            if linkedRange.lowerBound.encodedOffset <= index && linkedRange.upperBound.encodedOffset >= index {
+                if let url = URL(string: strUrl) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                }
+            }
+        }
     }
 
     func addLongPressGesture() {

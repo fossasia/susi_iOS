@@ -121,6 +121,9 @@ class ControllerConstants {
         static let miscellaneous = "Miscellaneous"
         static let devices = "Devices"
         static let about = "About Us"
+        static let account = "Account Settings"
+        static let message = "Please login to continue"
+        static let gravatarURL = "https://www.gravatar.com/avatar"
     }
 
     struct Login {
@@ -168,6 +171,7 @@ class ControllerConstants {
         static let languageCode = "languageCode"
         static let room = "room"
         static let userQuery = "userQuery"
+        static let bookmark = "bookmark"
     }
 
     struct TestKeys {
@@ -258,6 +262,8 @@ class ControllerConstants {
         static let availableDevice = UIImage(named: "available_device_icon")
         static let deviceIcon = UIImage(named: "device_icon")
         static let roomsIcon = UIImage(named: "room-icon")
+        static let bookmark = UIImage(named: "star_full")
+        static let unBookmark = UIImage(named: "star_empty")
     }
     
     struct AboutUs {
@@ -286,6 +292,29 @@ class ControllerConstants {
         static let cancel = "Cancel"
         static let confirm = "Confirm"
     }
+    
+    struct showCase {
+        static let skillButtonTitle = "Susi Skill Button"
+        static let skillButtonMessage = "Click here for Susi Skills"
+        static let skillButtonKey = "displayed"
+        static let susiButtonTitle = "Susi Button"
+        static let susiButtonMessage = "Click here to enable Susi"
+        static let susiButtonKey = "displayed1"
+    }
+        
+    struct KeyChainKey {
+        static let userEmail = "userEmail"
+        static let userPassword = "userPassword"
+
+    }
+    
+    struct BookmarkSkill {
+        static let bookmarkValue = "1"
+        static let unBookmarkValue = "0"
+        static let bookmarkSuccessMessage = "Bookmark Added Successfully "
+        static let unBookmarkSuccessMessage = "Bookmark Removed Successfully"
+    }
+    
 }
 
 

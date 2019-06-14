@@ -43,6 +43,8 @@ extension Client {
         static let ReportSkill = "/cms/reportSkill.json"
         static let GetLanguages = "/cms/getAllLanguages.json"
         static let ResendVerificationLink = "/aaa/resendVerificationLink.json"
+        static let GetUserAvatar = "/getAvatar.png"
+        static let BookmarkSkill = "/cms/bookmarkSkill.json"
     }
 
     struct ResponseMessages {
@@ -189,7 +191,9 @@ extension Client {
         static let skillRating = "skill_rating"
         static let accessToken = "access_token"
         static let feedback = "feedback"
+        static let staffPick = "staffPick"
         static let lastModifiedTime = "lastModifiedTime"
+        static let bookmarkSkill = "bookmark"
     }
 
     struct FiveStarRating {

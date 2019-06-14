@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (4.7.2)
   - BouncyLayout (2.1.0)
+  - CTShowcase (2.4.0)
   - Fakery (3.3.0)
   - FTPopOverMenu_Swift (0.1.3)
   - Ji (2.1.0):
@@ -31,12 +32,14 @@ PODS:
   - RealmSwift (3.7.2):
     - Realm (= 3.7.2)
   - SwiftDate (4.5.1)
+  - SwiftKeychainWrapper (3.2.0)
   - SwiftValidators (7.0.3)
   - Toast-Swift (4.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
   - BouncyLayout
+  - CTShowcase (~> 2.4)
   - Fakery (~> 3.3.0)
   - FTPopOverMenu_Swift (~> 0.1.3)
   - Kingfisher (~> 4.10.0)
@@ -50,6 +53,7 @@ DEPENDENCIES:
   - ReadabilityKit
   - RealmSwift
   - SwiftDate (~> 4.5.0)
+  - SwiftKeychainWrapper
   - SwiftValidators
   - Toast-Swift (~> 4.0.0)
 
@@ -57,6 +61,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - BouncyLayout
+    - CTShowcase
     - Fakery
     - FTPopOverMenu_Swift
     - Ji
@@ -69,6 +74,7 @@ SPEC REPOS:
     - Realm
     - RealmSwift
     - SwiftDate
+    - SwiftKeychainWrapper
     - SwiftValidators
     - Toast-Swift
 
@@ -97,6 +103,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   BouncyLayout: a7955879861375cc4e88bb64d42bcf622cd2694c
+  CTShowcase: d6a7933f0724dadc12399b4d6d4815b419f1eb65
   Fakery: 3aae11a87721c807c18c6456500d088c1230d3e5
   FTPopOverMenu_Swift: f67e0af3935485c1cbcc44b5c92ed530ee32d21d
   Ji: 21946da4e13425485ddd424edfaeeced0d80ad28
@@ -112,9 +119,11 @@ SPEC CHECKSUMS:
   Realm: dd18c3014e8d90df300b83c6da740067436089c5
   RealmSwift: 79917cae59a0c43ef8118b233a5978891dd50b4a
   SwiftDate: 7b56d42a221f582047287deb256b23fc5ed49a60
+  SwiftKeychainWrapper: 82c4c02cdc36f9a24f7edfcaab3e336401caa1a1
   SwiftValidators: 660ce9ef3f0358c25c3a6154f7edc02c7d4a0578
   Toast-Swift: 594b5c5e5129f15438e410207e43287f027b3c00
 
-PODFILE CHECKSUM: e5b547ed712df64379156640ae0c63d2467d7609
+PODFILE CHECKSUM: 9b8f14b1a46ec3d802c3eb0dbd813391f49a6f98
+
 
 COCOAPODS: 1.5.3
