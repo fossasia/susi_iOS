@@ -14,11 +14,13 @@ Meet SUSI.AI, Your Artificial Intelligence for Personal Assistants,<br> Robots, 
   </a>
 </p>
 
-# iOS App for Susi
+# iOS App for SUSI.AI
 
-| **CircleCI** | **Code Quality** | **Chat** | **Preview** |
-|--------------|------------------|----------|-------------|
-| [![CircleCI](https://circleci.com/gh/fossasia/susi_iOS.svg?style=svg)](https://circleci.com/gh/fossasia/susi_iOS) | [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4faa165463a44fffbd23f319d78a26ea)](https://www.codacy.com/app/mb/susi_iOS?utm_source=github.com&utm_medium=referral&utm_content=fossasia/susi_iOS&utm_campaign=badger) | [![Join the chat at gitter](https://badges.gitter.im/fossasia/susi_iOS.svg)](https://gitter.im/fossasia/susi_iOS?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) | [![Preview the app](https://img.shields.io/badge/Preview-Appetize.io-orange.svg)](https://appetize.io/app/bngee02t60ambqz5ed3kjgfgkm) |
+[![CircleCI](https://circleci.com/gh/fossasia/susi_iOS.svg?style=svg)](https://circleci.com/gh/fossasia/susi_iOS)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4faa165463a44fffbd23f319d78a26ea)](https://www.codacy.com/app/mb/susi_iOS?utm_source=github.com&utm_medium=referral&utm_content=fossasia/susi_iOS&utm_campaign=badger)
+[![Join the chat at gitter](https://badges.gitter.im/fossasia/susi_iOS.svg)](https://gitter.im/fossasia/susi_iOS?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Preview the app](https://img.shields.io/badge/Preview-Appetize.io-orange.svg)](https://appetize.io/app/bngee02t60ambqz5ed3kjgfgkm)
+[![Twitter Follow](https://img.shields.io/twitter/follow/susiai_.svg?style=social&label=Follow&maxAge=2592000?style=flat-square)](https://twitter.com/susiai_)
 
 The main feature of the app is to provide a conversational interface to provide intelligent answers using the loklak/AskSusi infrastructure. The SUSI iOS App make use of the APIs to access information from the hosted server. The app also offers login functionalities to connect to other services and stored personal data. Additionally the application uses data provided by the user's phone to improve Susi answers. Geolocation information for example helps to offer better answers related to questions about "things nearby". Another main feature of the app is to connect your iPhone/iPad with SUSI Smart Speaker.
 
