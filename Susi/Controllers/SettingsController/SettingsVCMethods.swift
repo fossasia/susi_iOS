@@ -86,14 +86,12 @@ extension SettingsViewController {
                 key = ControllerConstants.UserDefaultsKeys.speechPitch
             }
 
-            params[ControllerConstants.key] = key as AnyObject
-
             if let slider = sender as? UISlider {
                 UserDefaults.standard.set(slider.value, forKey: key)
-                params[ControllerConstants.value] = UserDefaults.standard.value(forKey: key) as AnyObject
+                params[key] = UserDefaults.standard.value(forKey: key) as AnyObject
             } else {
                 UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: key), forKey: key)
-                params[ControllerConstants.value] = UserDefaults.standard.bool(forKey: key) as AnyObject
+                params[key] = UserDefaults.standard.bool(forKey: key) as AnyObject
             }
 
             if let delegate = UIApplication.shared.delegate as? AppDelegate, let user = delegate.currentUser {
