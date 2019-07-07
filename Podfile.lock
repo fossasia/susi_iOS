@@ -44,11 +44,7 @@ DEPENDENCIES:
   - FTPopOverMenu_Swift (~> 0.2.0)
   - Kingfisher (~> 5.0)
   - Localize-Swift
-<<<<<<< HEAD
-  - M13Checkbox (from `https://github.com/Marxon13/M13Checkbox.git`, branch `swift_5`)
-=======
   - M13Checkbox
->>>>>>> fc6e06e3df10b11171bfae623be7902e4789dedf
   - Material (from `https://github.com/CosmicMind/Material.git`, branch `development`)
   - Motion (from `https://github.com/CosmicMind/Motion.git`, branch `development`)
   - NVActivityIndicatorView (~> 4.7.0)
@@ -84,12 +80,6 @@ SPEC REPOS:
     - Toast-Swift
 
 EXTERNAL SOURCES:
-<<<<<<< HEAD
-  M13Checkbox:
-    :branch: swift_5
-    :git: https://github.com/Marxon13/M13Checkbox.git
-=======
->>>>>>> fc6e06e3df10b11171bfae623be7902e4789dedf
   Material:
     :branch: development
     :git: https://github.com/CosmicMind/Material.git
@@ -98,12 +88,6 @@ EXTERNAL SOURCES:
     :git: https://github.com/CosmicMind/Motion.git
 
 CHECKOUT OPTIONS:
-<<<<<<< HEAD
-  M13Checkbox:
-    :commit: 71c15babadd1d3c61019b211549128ff58598a29
-    :git: https://github.com/Marxon13/M13Checkbox.git
-=======
->>>>>>> fc6e06e3df10b11171bfae623be7902e4789dedf
   Material:
     :commit: 4ab1b08c3365a00f409a210162ae72ed8425f299
     :git: https://github.com/CosmicMind/Material.git
@@ -120,11 +104,7 @@ SPEC CHECKSUMS:
   Ji: 21946da4e13425485ddd424edfaeeced0d80ad28
   Kingfisher: 9c8f2cc6710334e06f32ba2b45e77707d5e2f0c9
   Localize-Swift: c798ec9286494866f7068f85f7c71283ac5bdab4
-<<<<<<< HEAD
-  M13Checkbox: fa392641b4be594f0a9f0f827923dd4044176e12
-=======
   M13Checkbox: 6f59404540ac98ba83a3d1afac335895a40c6a5d
->>>>>>> fc6e06e3df10b11171bfae623be7902e4789dedf
   Material: 856e0168ab93fc477f875577c152c9e62f4ab869
   Motion: 3acabedc5a499f6b12deaa34deb68b425b005720
   NVActivityIndicatorView: b19ddab2576f805cbe0fb2306cba3476e09a1dea
@@ -135,18 +115,9 @@ SPEC CHECKSUMS:
   RealmSwift: 79917cae59a0c43ef8118b233a5978891dd50b4a
   SwiftDate: 7b56d42a221f582047287deb256b23fc5ed49a60
   SwiftKeychainWrapper: 82c4c02cdc36f9a24f7edfcaab3e336401caa1a1
-<<<<<<< HEAD
-  SwiftValidators: 8389e5dd12516d228f9648c20501a23e63a5252a
-  Toast-Swift: 36f4720243c8582c2be243a60a51e193c761f541
-
-PODFILE CHECKSUM: e646ddb91fefb8ed89991777f022670fcf816c0e
-
-COCOAPODS: 1.5.3
-=======
   SwiftValidators: 660ce9ef3f0358c25c3a6154f7edc02c7d4a0578
   Toast-Swift: 594b5c5e5129f15438e410207e43287f027b3c00
 
 PODFILE CHECKSUM: c0d3ac6392c31961b5f3a0108501cdaf990069ee
 
 COCOAPODS: 1.7.2
->>>>>>> fc6e06e3df10b11171bfae623be7902e4789dedf
