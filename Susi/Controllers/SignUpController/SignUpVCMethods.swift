@@ -197,9 +197,9 @@ extension SignUpViewController {
 
     // Check if email is already registered or not
     func checkIfEmailAlreadyExists() {
-        guard let email = emailTextField.text else { return }
+        guard let emailAddress = emailTextField.text else { return }
         let emailCheckParam = [
-            Client.UserKeys.CheckEmail: email.lowercased() as AnyObject
+            Client.UserKeys.CheckEmail: emailAddress.lowercased() as AnyObject
         ]
         Client.sharedInstance.checkRegistration(emailCheckParam) { (exists, success) in
             DispatchQueue.main.async {
