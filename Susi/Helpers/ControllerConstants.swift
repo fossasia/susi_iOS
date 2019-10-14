@@ -315,6 +315,16 @@ class ControllerConstants {
         static let unBookmarkSuccessMessage = "Bookmark Removed Successfully"
     }
     
+    struct SettingParams {
+        static let userName = "userName"
+        static let phoneNumber = "phoneNo"
+        static let prefLanguage = "prefLanguage"
+        static let timeZone = "timeZone"
+        static let accessToken = "access_token"
+        static let count = "count"
+        static let title = "Account Settings"
+    }
+    
 }
 
 

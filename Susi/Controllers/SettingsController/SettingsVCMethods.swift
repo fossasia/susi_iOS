@@ -120,6 +120,15 @@ extension SettingsViewController {
         let nvc = AppNavigationController(rootViewController: vc)
         present(nvc, animated: true, completion: nil)
     }
+    
+    // Present Account View Controller
+    
+    func presentAccountController() {
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = mainStoryboard.instantiateViewController(withIdentifier: "AccountViewController")
+        let nvc = AppNavigationController(rootViewController: vc)
+        present(nvc, animated: true, completion: nil)
+    }
 
     func presentDeviceActivity() {
         if let delegate = UIApplication.shared.delegate as? AppDelegate, delegate.currentUser != nil {
