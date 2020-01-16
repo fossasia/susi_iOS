@@ -792,14 +792,14 @@
 					6D215B911EB0BE7300CD2C1D = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = MLF4G8Y374;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1130;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 6D4D9B361E768E190067459C;
 					};
 					6D4D9B361E768E190067459C = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 7P4K4M8A4Q;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1130;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1123,7 +1123,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.chashmeet.SusiUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = Susi;
 			};
 			name = Debug;
@@ -1142,7 +1142,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.chashmeet.SusiUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = Susi;
 			};
 			name = Release;
@@ -1286,7 +1286,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Susi/Snowboy Files/Susi-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1312,7 +1312,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Susi/Snowboy Files/Susi-Bridging-Header.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
