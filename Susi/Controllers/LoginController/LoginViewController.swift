@@ -16,7 +16,7 @@ import paper_onboarding
 
 class LoginViewController: GeneralViewController {
 
-    let reachability = Reachability()!
+    let reachability = try! Reachability()
 
     let alert = UIAlertController(title: "Warning", message: "Please Connect to Internet", preferredStyle: .alert)
 

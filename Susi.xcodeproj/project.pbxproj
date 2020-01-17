@@ -806,10 +806,9 @@
 			};
 			buildConfigurationList = 6D4D9B321E768E190067459C /* Build configuration list for PBXProject "Susi" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 				ru,

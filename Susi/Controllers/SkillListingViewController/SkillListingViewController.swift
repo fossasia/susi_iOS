@@ -14,7 +14,7 @@ class SkillListingViewController: UITableViewController {
 
     // for opening settings view controller
 
-    let reachability = Reachability()!
+    let reachability = try! Reachability()
     var dismissChecker: Bool?
     lazy var settingsButton: IconButton = {
         let ib = IconButton()

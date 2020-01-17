@@ -12,7 +12,7 @@ import Reachability
 
 class SelectLanguageViewController: UIViewController {
    
-    let reachability = Reachability()!
+    let reachability = try! Reachability()
     
     var languageModel: [LanguageModel] = []
     var searchedlanguageModel: [LanguageModel] = []
