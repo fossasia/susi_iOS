@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleLightContent</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIcons</key>
@@ -37,17 +39,17 @@
 	<string>Susi needs to request your gallery access to select wallpaper</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>Speech recognition will be used to determine which words you speak into this device&amp;apos;s microphone.</string>
-    <key>UIApplicationShortcutItems</key>
-    <array>
-        <dict>
-            <key>UIApplicationShortcutItemIconType</key>
-            <string>UIApplicationShortcutIconTypeLove</string>
-            <key>UIApplicationShortcutItemTitle</key>
-            <string>Open Skills</string>
-            <key>UIApplicationShortcutItemType</key>
-            <string>OpenSkillAction</string>
-        </dict>
-    </array>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeLove</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Open Skills</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>OpenSkillAction</string>
+		</dict>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -68,7 +70,7 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIStatusBarHidden</key>
-	<true/>
+	<false/>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>

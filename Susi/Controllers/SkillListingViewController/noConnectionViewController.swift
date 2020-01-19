@@ -11,7 +11,7 @@ import Reachability
 
 class noConnectionViewController: UIViewController {
     var skillListingInstance: SkillListingViewController?
-    let reachability = Reachability()!
+    let reachability = try! Reachability()
 
     let shapelayer = CAShapeLayer()
     var blinkStatus = true

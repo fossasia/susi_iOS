@@ -14,7 +14,7 @@ class SkillListingViewController: UITableViewController {
 
     // for opening settings view controller
 
-    let reachability = Reachability()!
+    let reachability = try! Reachability()
     var dismissChecker: Bool?
     lazy var settingsButton: IconButton = {
         let ib = IconButton()
@@ -127,7 +127,7 @@ class SkillListingViewController: UITableViewController {
 
     @objc func internetConnection(notification: NSNotification) {
         guard let reachability = notification.object as? Reachability else {return}
-        if reachability.connection != .none {
+        if reachability.connection != .unavailable {
             print("internet is available")
         } else {
 
