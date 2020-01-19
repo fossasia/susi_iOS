@@ -189,7 +189,7 @@ class ChatViewController: UICollectionViewController {
 
     @objc func internetConnection(notification: NSNotification) {
         guard let reachability = notification.object as? Reachability else { return }
-        if reachability.connection != .none {
+        if reachability.connection != .unavailable {
             print("internet is available")
         } else {
             print("internet is not available")

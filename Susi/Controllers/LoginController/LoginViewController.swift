@@ -68,7 +68,7 @@ class LoginViewController: GeneralViewController {
 
     @objc func internetConnection(notification: NSNotification) {
         guard let reachability = notification.object as? Reachability else { return }
-        if reachability.connection != .none {
+        if reachability.connection != .unavailable {
             print("internet connection is available")
         } else {
             print("internet connection is not available")
