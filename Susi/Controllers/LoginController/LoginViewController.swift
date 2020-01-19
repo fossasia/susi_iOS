@@ -34,7 +34,6 @@ class LoginViewController: GeneralViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        UIApplication.shared.statusBarStyle = .lightContent
 
         setupTheme()
         addTapGesture()

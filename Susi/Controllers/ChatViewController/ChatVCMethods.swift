@@ -77,7 +77,6 @@ extension ChatViewController {
 
     // setup view
     func setupView() {
-        UIApplication.shared.statusBarStyle = .lightContent
         navigationItem.titleLabel.textColor = .black
         UIApplication.shared.statusBarView?.backgroundColor = UIColor.defaultColor()
         view.backgroundColor = UIColor.chatBackgroundColor()

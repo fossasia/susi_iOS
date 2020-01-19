@@ -48,7 +48,6 @@ class OnboardingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        UIApplication.shared.statusBarStyle = .lightContent
         view.accessibilityIdentifier = "onboardingView"
 
         setupPaperOnboardingView()
