@@ -42,6 +42,29 @@ extension SkillListingViewController {
         let nvc = AppNavigationController(rootViewController: vc!)
         present(nvc, animated: true, completion: nil)
     }
+       if landmark.isFavorite {
+           image(systemName : "star.fill")
+                 .imageScale(.medium)
+                 .forebackgroundColor(.yellow)
+       }
+
+       struct landmarkList : View {
+           @state var showFavoritesOnly = false
+
+           var body : some View{
+               NavigationView{
+                   List(landmarkData) { landmark in
+                       if !self,showFavoritesOnly || landmark.isFavorite {
+                        NavigaitonLink(destination: LandmarkDetail(landmark: landmark))
+                        Landmarkrow(landmark: landmark)
+
+                    }
+               }
+            }
+             .navigationBarTitle(Text("Landmarks"))
+           }
+       }
+    }
     
     // presents the settings controller
     @objc func presentSettingsController() {
